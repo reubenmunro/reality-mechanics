@@ -23,6 +23,10 @@ import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { homedir } from "node:os";
+import {
+  walk, splitFrontmatter, frontmatterValue, shouldPublish, slugify, noteSlug,
+  wikilinkTargets, parseConditionsBlock,
+} from "./atlas-core.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const vaultRoot = resolve(here, "..");
@@ -36,43 +40,7 @@ const SITE = (process.env.ATLAS_SITE || "https://atlas.realitymechanics.nz").rep
 const SCHEMA_VERSION = "1.0.1";
 
 // ---- shared helpers (kept identical to build.mjs / export-ai-context.mjs) ----
-const slugify = (value) =>
-  value.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "note";
-
-// match build.mjs's slug rule exactly (incl. the Theory special-case)
-const noteSlug = (title, fileTitle = "") => (fileTitle === "Theory" || title === "Reality Mechanics Theory" ? "theory" : slugify(title));
-
-const frontmatterValue = (fm, key) => {
-  const m = fm.match(new RegExp(`^${key}:\\s*(.+?)\\s*$`, "mi"));
-  return m ? m[1].trim().replace(/^["']|["']$/g, "") : "";
-};
-
-const splitFrontmatter = (raw) => {
-  if (!raw.startsWith("---\n")) return { frontmatter: "", body: raw };
-  const end = raw.indexOf("\n---", 4);
-  if (end === -1) return { frontmatter: "", body: raw };
-  return { frontmatter: raw.slice(4, end), body: raw.slice(end + 4).replace(/^\n/, "") };
-};
-
-const shouldPublish = (fm) => {
-  const v = (k) => frontmatterValue(fm, k).toLowerCase();
-  return !(v("private") === "true" || v("draft") === "true" || v("grounded") === "false"
-    || v("publish") === "false" || v("published") === "false");
-};
-
-const walk = async (dir) => {
-  const entries = await readdir(dir, { withFileTypes: true });
-  const files = [];
-  for (const e of entries) {
-    const full = join(dir, e.name);
-    if (e.isDirectory()) {
-      if (e.name === ".obsidian" || e.name === "copilot") continue;
-      files.push(...(await walk(full)));
-    } else if (e.isFile() && e.name.endsWith(".md")) files.push(full);
-  }
-  return files;
-};
+// parsing primitives imported from atlas-core.mjs (titleFromBody kept local for filename fallback)
 
 const titleFromBody = (body, filePath) => {
   const m = body.match(/^#\s+(.+?)\s*$/m);
@@ -80,10 +48,6 @@ const titleFromBody = (body, filePath) => {
 };
 
 const cleanBody = (body) => body.replace(/\r\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
-
-// wikilink targets [[Target]] or [[Target|Alias]] -> Target
-const wikilinkTargets = (text) =>
-  [...text.matchAll(/\[\[([^\]|#]+)(?:[#|][^\]]*)?\]\]/g)].map((m) => m[1].trim());
 
 const stripMarkdown = (md) =>
   md
@@ -111,45 +75,6 @@ const sha256 = (s) => "sha256:" + createHash("sha256").update(s).digest("hex");
 
 // explicit Atlas relations = all wikilinks in the front matter (needs + conditions)
 const relationTitles = (fm) => [...new Set(wikilinkTargets(fm))];
-
-// ---- conditions block parser ----
-// Parses the `conditions:` YAML block from frontmatter without a full YAML library.
-// Returns { holds?, traces?, carries?, pairs?, nests?, reads?, places? } as strings or string arrays.
-const parseConditionsBlock = (frontmatter) => {
-  const lines = frontmatter.split("\n");
-  let inConditions = false;
-  let currentKey = null;
-  let currentList = null;
-  const result = {};
-  for (const rawLine of lines) {
-    const line = rawLine.replace(/\r$/, "");
-    if (!inConditions) {
-      if (/^conditions:\s*$/.test(line)) { inConditions = true; }
-      continue;
-    }
-    // back to top-level key — end of conditions block
-    if (line.length > 0 && !/^[ \t]/.test(line)) break;
-    if (!line.trim()) continue;
-    // list item under a list key
-    if (/^[ \t]+-\s/.test(line) && currentList !== null) {
-      const val = line.replace(/^[ \t]+-\s+/, "").replace(/^["']|["']$/g, "").trim();
-      currentList.push(val);
-      continue;
-    }
-    // sub-key with no inline value (list follows)
-    const listKeyMatch = line.match(/^[ \t]+(\w+):\s*$/);
-    if (listKeyMatch) {
-      currentKey = listKeyMatch[1]; currentList = []; result[currentKey] = currentList; continue;
-    }
-    // sub-key with inline string value
-    const strKeyMatch = line.match(/^[ \t]+(\w+):\s+(.+?)\s*$/);
-    if (strKeyMatch) {
-      currentKey = strKeyMatch[1]; currentList = null;
-      result[currentKey] = strKeyMatch[2].replace(/^["']|["']$/g, ""); continue;
-    }
-  }
-  return result;
-};
 
 // Resolve wikilink title-strings to canonical IDs, skipping self and unknowns
 const resolveToIds = (titles, titleToId, selfId) =>

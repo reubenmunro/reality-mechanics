@@ -4,6 +4,7 @@ import { basename, dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { homedir } from "node:os";
+import { walk, splitFrontmatter, shouldPublish, slugify } from "./atlas-core.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const vaultRoot = resolve(here, "..");
@@ -33,58 +34,7 @@ const escapeHtml = (value) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
-const slugify = (value) =>
-  value
-    .toLowerCase()
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "") || "note";
-
-const frontmatterValue = (frontmatter, key) => {
-  const match = frontmatter.match(new RegExp(`^${key}:\\s*(.+?)\\s*$`, "mi"));
-  return match ? match[1].trim().toLowerCase() : "";
-};
-
-const splitFrontmatter = (raw) => {
-  if (!raw.startsWith("---\n")) return { frontmatter: "", body: raw };
-  const end = raw.indexOf("\n---", 4);
-  if (end === -1) return { frontmatter: "", body: raw };
-  return {
-    frontmatter: raw.slice(4, end),
-    body: raw.slice(end + 4).replace(/^\n/, ""),
-  };
-};
-
-const shouldPublish = (frontmatter) => {
-  const privateValue = frontmatterValue(frontmatter, "private");
-  const draftValue = frontmatterValue(frontmatter, "draft");
-  const groundedValue = frontmatterValue(frontmatter, "grounded");
-  const publishValue = frontmatterValue(frontmatter, "publish");
-  const publishedValue = frontmatterValue(frontmatter, "published");
-  return !(
-    privateValue === "true" ||
-    draftValue === "true" ||
-    groundedValue === "false" ||
-    publishValue === "false" ||
-    publishedValue === "false"
-  );
-};
-
-const walk = async (dir) => {
-  const entries = await import("node:fs/promises").then((fs) => fs.readdir(dir, { withFileTypes: true }));
-  const files = [];
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (entry.name === ".obsidian" || entry.name === "copilot") continue;
-      files.push(...(await walk(fullPath)));
-    } else if (entry.isFile() && entry.name.endsWith(".md")) {
-      files.push(fullPath);
-    }
-  }
-  return files;
-};
+// frontmatter parsing primitives (walk, splitFrontmatter, shouldPublish, slugify) come from atlas-core.mjs
 
 const markdownInline = (text, noteByTitle) => {
   let value = escapeHtml(text);
