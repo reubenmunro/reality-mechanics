@@ -41,6 +41,7 @@ conditions:
     - "[[Tracing]]"
     - "[[Retrace Practice]]"
     - "[[Grafting]]"
+    - "[[Reasoning]]"
 
 publish: true
 status: stable
@@ -101,3 +102,4 @@ Trace becomes recognisable where held connection offers a path back toward the c
 - [[Tracing]]
 - [[Retrace Practice]]
 - [[Grafting]]
+- [[Reasoning]]

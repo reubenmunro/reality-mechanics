@@ -27,6 +27,7 @@ conditions:
     - "[[Structural Carrier]]"
     - "[[Communicating]]"
     - "[[Expressing]]"
+    - "[[Reasoning]]"
 
 publish: true
 status: stable
@@ -77,3 +78,4 @@ Read also becomes recognisable where entry into an already ordered condition cha
 - [[Structural Carrier]]
 - [[Communicating]]
 - [[Expressing]]
+- [[Reasoning]]

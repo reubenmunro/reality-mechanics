@@ -167,7 +167,7 @@ const resolveStructure = (full, byId, byTitle) => {
     _source: "body_fallback",
   };
 };
-const READ_AS = "The Atlas is a dependency-ordered carrying system, not a dictionary. `structure` is primary: holds/traces are what this depends on (trace them back); carries is what it opens; pairs is its contrast; nests is membership. Follow the relations — do not read the term as a standalone definition.";
+const READ_AS = "The Atlas is a dependency-ordered reasoning system carried by structure, not a dictionary. `structure` is primary: holds/traces are what this depends on (trace them back); carries is what it opens; pairs is its contrast; nests is membership. Follow the relations — do not read the term as a standalone definition.";
 
 // ---- tool definitions ----------------------------------------------------
 const strOrArr = { anyOf: [{ type: "string" }, { type: "array", items: { type: "string" } }] };
@@ -378,7 +378,7 @@ async function handleRpc(msg, env, ctx) {
       case "initialize":
         return ok(id, { protocolVersion: params.protocolVersion || PROTOCOL_VERSION,
           capabilities: { tools: {}, resources: {} }, serverInfo: SERVER_INFO,
-          instructions: "The Reality Mechanics Atlas is a dependency-ordered carrying system, NOT a dictionary or glossary. Its working postulate is ordinary: relation holds, order carries, trace places. A term is located by its relations, not by a definition. Always trace before defining: for any term, call get_entry and read its `structure` FIRST — follow `holds`/`traces` back to what it depends on and `carries` forward to what it opens; use get_related to traverse further. Present where a term sits in the order and what it carries and traces, never as a standalone glossary entry. search_atlas only finds entry points; the meaning is in the traversal. The order is a loop, not a ladder: when a trace reaches a primitive (empty upstream, e.g. Relation) it does NOT dead-end — the Atlas returns. Relation pairs with Ground and Seed (Seed is the return-side), and the highest order crosses through Practice back to Ground. Follow the return, not a wall; the return is not a repeat." });
+          instructions: "The Reality Mechanics Atlas is a dependency-ordered reasoning system carried by structure, NOT a dictionary or glossary. Its working postulate is ordinary: relation holds, order carries, trace places. A term is located by its relations, not by a definition. Always trace before defining: for any term, call get_entry and read its `structure` FIRST — follow `holds`/`traces` back to what it depends on and `carries` forward to what it opens; use get_related to traverse further. Present where a term sits in the order and what it carries and traces, never as a standalone glossary entry. search_atlas only finds entry points; the meaning is in the traversal. The order is a loop, not a ladder: when a trace reaches a primitive (empty upstream, e.g. Relation) it does NOT dead-end — the Atlas returns. Relation pairs with Ground and Seed (Seed is the return-side), and the highest order crosses through Practice back to Ground. Follow the return, not a wall; the return is not a repeat." });
       case "ping": return ok(id, {});
       case "tools/list": return ok(id, { tools: TOOLS });
       case "resources/list":

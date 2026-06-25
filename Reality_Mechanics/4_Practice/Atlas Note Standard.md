@@ -35,7 +35,7 @@ garden_status: rooted
 
 Atlas Note Standard names the placement standard by which an interpretation becomes a term inside the [[Atlas]].
 
-An Atlas note is a mapped position, not a glossary entry. Its form exists to make order explicit: what the term places, what holds it, what it pairs with, where it traces, where it nests, how it reads, and what it carries.
+An Atlas note is a mapped reasoning position, not a glossary entry. Its form exists to make order explicit: what the term places, what holds it, what it pairs with, where it traces, where it nests, how it reads, and what it carries.
 
 In the garden read, an Atlas note is also a planted growth. Its note form places it; its [[Garden Status]] names how it is being tended. A working note is not outside the Atlas. It is inside the Atlas as living structure whose care state remains visible.
 

@@ -38,7 +38,7 @@ It begins from a working postulate: relation holds, order carries, trace places.
 
 It is the practice through which relation becomes readable, readability becomes traceable, traceability becomes answerable, and answerability returns to practice. Terms, experiences, corrections, and contributions are placed, checked, revised, and grounded according to immediate support, readable condition, and available openings.
 
-The [[Atlas]] is the worked and tended surface produced through this discipline. The Atlas is not the authority-object; the relation-order-trace practice is what must remain repeatable.
+The [[Atlas]] is the dependency-ordered reasoning system produced through this discipline. Its written notes are the current worked and tended surface. The Atlas is not the authority-object; the relation-order-trace practice is what must remain repeatable.
 
 ## Places
 

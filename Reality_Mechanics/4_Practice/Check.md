@@ -29,6 +29,7 @@ conditions:
     - "[[Atlasing]]"
     - "[[Discipline]]"
     - "[[Garden Pass]]"
+    - "[[Reasoning]]"
 
 publish: true
 status: stable
@@ -74,3 +75,4 @@ The forward and backward movements have different evidential weight. A backward 
 - [[Atlasing]]
 - [[Discipline]]
 - [[Garden Pass]]
+- [[Reasoning]]

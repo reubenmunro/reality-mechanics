@@ -20,7 +20,7 @@ const assetVersion = String(Date.now());
 
 const site = {
   title: "Reality Mechanics Atlas",
-  description: "Relation holds. Order carries. Trace places.",
+  description: "A dependency-ordered reasoning system.",
   canonical: "https://atlas.realitymechanics.nz",
   home: "https://realitymechanics.nz",
   atlas: "https://atlas.realitymechanics.nz",
@@ -673,6 +673,19 @@ const indexTemplate = ({ notes, entryNotes, traceModeNotes, noteByTitle }) => {
     })
     .join("\n");
 
+  const startingPoints = [
+    ["Reasoning", "A reason is traceable support."],
+    ["Relation", "Where tracing begins."],
+    ["Trace", "Follow what carries back to what holds."],
+    ["Carry", "Forward availability of held connection."],
+    ["Garden Status", "How living structure is tended."],
+    ["Resolution Rate", "Meaningful distinction per available continuation."],
+  ].map(([title, gloss]) => {
+    const note = noteByTitle.get(title);
+    if (!note) return "";
+    return `<a href="${note.slug}.html"><span>${escapeHtml(title)}</span><small>${escapeHtml(gloss)}</small></a>`;
+  }).filter(Boolean).join("\n");
+
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -685,13 +698,22 @@ const indexTemplate = ({ notes, entryNotes, traceModeNotes, noteByTitle }) => {
 <body>
   <header class="hero">
     <div class="hero-copy">
-      <h1>Reality Mechanics</h1>
+      <p class="opening-question">The Atlas</p>
+      <h1>A reasoning system for traceable order.</h1>
       <p>${escapeHtml(site.description)}</p>
+      <p class="atlas-context">A reason is traceable support. Enter a term, follow what holds it, follow what it carries, and return through trace.</p>
       <div class="practice-loop">${spineChainHtml(noteByTitle)}</div>
-      <p class="coupled-entry"><a href="${site.theory}">Enter the working Postulate →</a></p>
+      <nav class="threshold-actions" aria-label="Atlas entry points">
+        <a href="reasoning.html">Start with Reasoning</a>
+        <a href="${site.theory}">Read the Postulate</a>
+        <a href="ai-participation.html">AI Participation</a>
+      </nav>
     </div>
   </header>
   <main>
+    <section class="start-points" aria-label="Suggested starting points">
+      ${startingPoints}
+    </section>
     <nav class="order-map" aria-label="The orders of the Atlas">
       ${orderedGroups.map(([key]) => {
         const label = GROUP_LABEL.get(key) ?? displayGroup(key);
@@ -700,9 +722,9 @@ const indexTemplate = ({ notes, entryNotes, traceModeNotes, noteByTitle }) => {
         return `<a href="#${id}"><span>${escapeHtml(label)}</span><small>${escapeHtml(gloss)}</small></a>`;
       }).join("\n")}
     </nav>
-    <p class="order-note">The order is a loop, not a ladder — the highest order returns through Practice to Ground.</p>
+    <p class="order-note">The order is a loop, not a ladder — Practice returns through trace to Ground.</p>
     <section class="search-band">
-      <input id="search" type="search" placeholder="Or jump to a term — Trace, Bearing, Memory" aria-label="Find a term">
+      <input id="search" type="search" placeholder="Search the Atlas — Trace, Reasoning, Bearing" aria-label="Find a term">
       <div id="results" class="results"></div>
     </section>
     ${groupsHtml}
@@ -724,7 +746,7 @@ const theoryTemplate = ({ content }) => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Working Postulate · ${escapeHtml(site.title)}</title>
-  <meta name="description" content="Reality Mechanics begins from a working postulate: Relation holds. Order carries. Trace places.">
+  <meta name="description" content="The current test the Atlas uses to keep reasoning answerable: Relation holds. Order carries. Trace places.">
   <link rel="stylesheet" href="styles.css?v=${assetVersion}">
 </head>
 <body>
@@ -738,11 +760,12 @@ const theoryTemplate = ({ content }) => `<!doctype html>
 
   <main class="theory-page">
     <header class="theory-hero">
-      <p class="theory-status">Working postulate · version 0.6</p>
+      <p class="theory-status">Working postulate · current test</p>
       <h1>Relation<br>Order<br>Trace</h1>
-      <p class="theory-lede">Reality Mechanics does not begin by defining reality. It begins by testing a small operative postulate: relation holds, order carries, trace places.</p>
+      <p class="theory-lede">The current test the Atlas uses to keep reasoning answerable: relation holds, order carries, trace places.</p>
       <div class="theory-actions">
         <a href="#formal-specification">Read the postulate ↓</a>
+        <a href="${site.atlas}/reasoning.html">Start with Reasoning →</a>
         <a href="${site.theory}/coupled-read.html">Run Coupled Read →</a>
       </div>
     </header>
@@ -766,9 +789,9 @@ const theoryTemplate = ({ content }) => `<!doctype html>
     </section>
 
     <section class="theory-tact">
-      <p class="eyebrow">Practice, not canon</p>
-      <h2>The Atlas is a worked surface for order.</h2>
-      <p>Relation, Order, and Trace bound what counts as a valid Atlas operation. The Atlas makes those operations inspectable, correctable, and repeatable.</p>
+      <p class="eyebrow">Test, not canon</p>
+      <h2>The Atlas is a reasoning system for traceable order.</h2>
+      <p>A reason is traceable support. Relation, Order, and Trace test whether that support can hold, carry, and return through trace.</p>
     </section>
 
     <div class="theory-body" id="formal-specification">

@@ -37,6 +37,7 @@ Statements demonstrated repeatedly across the grounded Atlas. Extracted, not inv
 
 - Relation is primitive. No prior term within the system produces it. ([[Relation]])
 - The current working postulate is: relation holds, order carries, trace places. Order becomes answerable where relation can hold, what holds can carry, and what carries can be traced back. ([[Theory|The Working Postulate]])
+- A reason is traceable support. Reasoning is the practice of carrying a read through traceable order so that a continuation remains answerable to what holds it. ([[Reasoning]])
 - The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — is a planted practice read, not the root postulate. It tests how the postulate becomes workable through connection, orientation, structure, clarity, and cleanliness. ([[Posture Read]], [[Theory|The Working Postulate]])
 - Connection does not require a participant to read it. It is the placeable passage where held relation offers carry and trace. ([[Connection]])
 - One connection offers two directions: carry forward, trace backward. They are not two relations. ([[Carry]], [[Trace]])

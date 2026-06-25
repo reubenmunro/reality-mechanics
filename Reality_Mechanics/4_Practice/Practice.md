@@ -34,6 +34,7 @@ conditions:
     - "[[Retrace Practice]]"
     - "[[Atlas Practice]]"
     - "[[Section]]"
+    - "[[Reasoning]]"
 
 publish: true
 status: stable
@@ -84,3 +85,4 @@ Practice becomes recognisable where return through use stays attended enough to 
 - [[Retrace Practice]]
 - [[Atlas Practice]]
 - [[Section]]
+- [[Reasoning]]

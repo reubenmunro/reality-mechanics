@@ -64,7 +64,7 @@ Compressed through resolution:
 relation enters order where distinction can resolve without losing trace.
 ```
 
-The [[Atlas]] is not a glossary and not the authority-object. It is the current worked and tended surface where this relation-order-trace practice becomes inspectable. Terms are handles; order is what they handle.
+The [[Atlas]] is not a glossary and not the authority-object. It is the current dependency-ordered reasoning system where this relation-order-trace practice becomes inspectable. Its written notes are the worked and tended surface. Terms are handles; order is what they handle.
 
 The structural pattern this names is the same one the MCP uses operationally: find an entry, read its structure, trace what holds it, follow what it carries, and return through the order.
 

@@ -25,6 +25,7 @@ conditions:
   carries:
     - "[[Translation Boundary]]"
     - "[[Degeneration Read]]"
+    - "[[Reasoning]]"
 
 publish: true
 status: stable
@@ -174,3 +175,4 @@ The tree read helps prevent repair errors. If a branch fails, the branch may be 
 
 - [[Translation Boundary]]
 - [[Degeneration Read]]
+- [[Reasoning]]

@@ -33,7 +33,7 @@ garden_status: planted
 ---
 # AI Participation
 
-How an AI participates inside the Atlas without inventing theory. These rules distil the Atlas's own practice layer — [[Check]], [[Step]], [[Groundedness]], [[Source Drift]], and the [[Atlas Note Standard]]. They constrain AI behaviour; they do not add to Reality Mechanics.
+How an AI participates inside the Atlas without inventing theory. The Atlas is a reasoning system, so AI participates by tracing structure rather than answering from definitions. These rules distil the Atlas's own practice layer — [[Check]], [[Step]], [[Groundedness]], [[Source Drift]], and the [[Atlas Note Standard]]. They constrain AI behaviour; they do not add to Reality Mechanics.
 
 ## An AI must not
 

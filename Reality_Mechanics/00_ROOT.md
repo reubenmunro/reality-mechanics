@@ -38,14 +38,14 @@ Order carries.
 Trace places.
 ```
 
-The Atlas is the dependency-ordered body produced through that discipline. It is the worked surface through which the relation-order-trace practice becomes inspectable.
+The Atlas is the dependency-ordered reasoning system produced through that discipline. It is the worked surface through which the relation-order-trace practice becomes inspectable.
 
 It is not a glossary.
 It is not a wiki.
 It is not a philosophy.
 It is not a taxonomy.
 
-It is a tended surface for order. Terms are handles; order is what they handle. Its purpose is to preserve dependency order so that humans and AI can participate within relation rather than only describe it.
+It is a tended surface for reasoning. Terms are handles; order is what they handle. Its purpose is to preserve dependency order so that humans and AI can participate within relation rather than only describe it.
 
 The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, prune where it drifts, and correct what no longer remains answerable.
 

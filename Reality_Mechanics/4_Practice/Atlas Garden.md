@@ -35,7 +35,7 @@ garden_status: planted
 
 Atlas Garden names the tended garden read of the [[Atlas]]: roots protected, branches pruned, postures planted, shade cleared, and re-entry preserved.
 
-The garden is not decoration. It is a practice container for treating the Atlas as living order rather than finished text. A garden is not kept alive by preserving every growth equally. It remains alive through care, return, pruning, shelter, composting, spacing, waiting, grafting, and attention to what lets roots keep carrying.
+The garden is not decoration. It is a practice container for tending the Atlas as a living reasoning system rather than finished text. A garden is not kept alive by preserving every growth equally. It remains alive through care, return, pruning, shelter, composting, spacing, waiting, grafting, and attention to what lets roots keep carrying.
 
 In the Atlas, a new read is a planting. A root repair is not a branch edit. A branch can grow, fail, shade another branch, or become useful compost without rewriting the trunk. A failed posture can still teach what the order could not carry.
 
@@ -49,7 +49,7 @@ Atlas Garden is held by [[Atlas Practice]], [[Tend]], [[Root Resilience]], and [
 
 ## Pairs
 
-No lateral pair is required. Atlas Garden is a practice container for tending the Atlas as living order rather than finished text.
+No lateral pair is required. Atlas Garden is a practice container for tending the Atlas as a living reasoning system rather than finished text.
 
 ## Traces
 

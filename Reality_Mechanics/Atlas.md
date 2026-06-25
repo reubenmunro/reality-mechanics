@@ -11,7 +11,7 @@ needs:
   - "[[Theory]]"
 
 conditions:
-  places: "the worked and tended surface produced by [[Reality Mechanics]] — the place where terms, traces, reads, and corrections are held in retraceable order."
+  places: "the dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order."
   holds: "the discipline of [[Reality Mechanics]], the governing dependency arrangement of [[Root Order]], and the working postulate named by [[Theory]]."
   pairs: "[[Reality Mechanics]] and [[Theory]]: Reality Mechanics is the discipline, Atlas is the worked surface, and Theory is the working postulate through which selected Atlas operations become testable."
   traces:
@@ -38,9 +38,11 @@ garden_status: rooted
 ---
 # Atlas
 
-Atlas names the worked and tended surface produced through [[Reality Mechanics]]: the place where terms, traces, reads, openings, and corrections are held in retraceable order.
+Atlas names the dependency-ordered reasoning system produced through [[Reality Mechanics]]: the worked and tended surface where terms, traces, reads, openings, and corrections are held in retraceable order.
 
-The Atlas is not identical to its written notes. Writing is its present durable medium. Its terms may be carried through words, signs, diagrams, arrangements, actions, or thought; the Atlas remains the same mapped body only where their dependency placement remains recoverable across those changes of carrier.
+An Operating System for Reasoning may become a future-facing evolution of the Atlas as its human and AI participation surfaces mature. It is not the current claim. The current claim is simpler: the Atlas is a dependency-ordered reasoning system.
+
+The Atlas is not identical to its written notes. Writing is its present durable medium. Its reasoning may be carried through words, signs, diagrams, arrangements, actions, or thought; the Atlas remains the same mapped body only where dependency placement remains recoverable across those changes of carrier.
 
 The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, prune where it drifts, and correct what no longer remains answerable.
 
@@ -54,7 +56,7 @@ The Atlas does not make order. It traces reads that enter order, checks whether 
 
 ## Places
 
-Atlas places the worked and tended surface produced by [[Reality Mechanics]] — the place where terms, traces, reads, and corrections are held in retraceable order.
+Atlas places the dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order.
 
 ## Holds
 

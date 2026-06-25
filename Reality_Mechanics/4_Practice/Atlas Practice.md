@@ -17,10 +17,11 @@ needs:
   - "[[Step]]"
   - "[[Retrace Practice]]"
   - "[[Reality-Bearing Connection]]"
+  - "[[Reasoning]]"
 
 conditions:
-  places: "the practice layer through which the Atlas remains traceable, correctable, relation-order-trace governed, and reality-bearing as it grows."
-  holds: "[[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], and [[Reality-Bearing Connection]]."
+  places: "the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows."
+  holds: "[[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], [[Reality-Bearing Connection]], and [[Reasoning]]."
   pairs: "[[Participant]]. Atlas Practice is the discipline; Participant is the one taking part in that discipline."
   traces:
     - "[[Atlas]]"
@@ -35,6 +36,7 @@ conditions:
     - "[[Retrace Practice]]"
     - "[[Place]]"
     - "[[Reality-Bearing Connection]]"
+    - "[[Reasoning]]"
     - "[[Higher Learning]]"
     - "[[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]"
   nests: "as the public discipline of placing, checking, retracing, and revising Atlas notes."
@@ -49,7 +51,7 @@ garden_status: rooted
 ---
 # Atlas Practice
 
-Atlas Practice names the practice layer through which the Atlas remains traceable, correctable, relation-order-trace governed, and reality-bearing as it grows.
+Atlas Practice names the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows.
 
 It is the recursive maintenance layer that returns to every order and asks whether a term, path, correction, or connection can still be traced, checked, revised, and carried.
 
@@ -59,11 +61,11 @@ In the tree read, Atlas Practice is tending. It distinguishes root repair from t
 
 ## Places
 
-Atlas Practice places the practice layer through which the Atlas remains traceable, correctable, relation-order-trace governed, and reality-bearing as it grows.
+Atlas Practice places the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows.
 
 ## Holds
 
-Atlas Practice is held by [[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], and [[Reality-Bearing Connection]].
+Atlas Practice is held by [[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], [[Reality-Bearing Connection]], and [[Reasoning]].
 
 ## Pairs
 
@@ -82,6 +84,7 @@ Atlas Practice pairs with [[Participant]]. Atlas Practice is the discipline; Par
 - [[Step]]
 - [[Place]]
 - [[Reality-Bearing Connection]]
+- [[Reasoning]]
 - [[Retrace Practice]]
 - [[Higher Learning]]
 - [[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]
