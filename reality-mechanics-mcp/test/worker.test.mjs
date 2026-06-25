@@ -73,11 +73,22 @@ ok(init.result.protocolVersion === "2025-06-18", "initialize echoes protocol ver
 
 const list = await rpc("tools/list", {});
 const toolNames = list.result.tools.map((t) => t.name);
-ok(["get_manifest","search_atlas","get_entry","get_related","list_entries","get_recent_changes"].every((t) => toolNames.includes(t)),
-  "tools/list lists all six tools");
+ok(["get_manifest","get_ai_entry_protocol","search_atlas","get_entry","get_related","list_entries","get_recent_changes"].every((t) => toolNames.includes(t)),
+  "tools/list lists all seven tools");
 
 const man = await callTool("get_manifest", {});
 ok(man.atlasVersion === "v1" && man.entryCount === 2, "get_manifest returns current version + count");
+
+const proto = await callTool("get_ai_entry_protocol", {});
+ok(proto.entryPath[0].arguments.id === "practice.reasoning" && proto.rules.some((r) => r.includes("structure")),
+  "get_ai_entry_protocol returns the AI entry ritual");
+
+const resources = await rpc("resources/list", {});
+ok(resources.result.resources.some((r) => r.uri === "atlas://ai-entry-protocol"),
+  "resources/list exposes the AI entry protocol");
+const protocolResource = await rpc("resources/read", { uri: "atlas://ai-entry-protocol" });
+ok(protocolResource.result.contents[0].text.includes("practice.ai-participation"),
+  "resources/read returns the AI entry protocol");
 
 const s = await callTool("search_atlas", { query: "Relation" });
 ok(s.results[0].title === "Relation" && s.results[0].matchedFields.includes("title"), "search_atlas finds exact title");

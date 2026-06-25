@@ -168,11 +168,37 @@ const resolveStructure = (full, byId, byTitle) => {
   };
 };
 const READ_AS = "The Atlas is a dependency-ordered reasoning system carried by structure, not a dictionary. `structure` is primary: holds/traces are what this depends on (trace them back); carries is what it opens; pairs is its contrast; nests is membership. Follow the relations — do not read the term as a standalone definition.";
+const AI_ENTRY_PROTOCOL = {
+  title: "AI Entry Protocol",
+  purpose: "Orient an AI participant before search so the Atlas is entered as a dependency-ordered reasoning system rather than queried as a glossary.",
+  principle: "Enter by practice before retrieval. Search finds entry points; structure carries meaning.",
+  entryPath: [
+    { step: 1, tool: "get_entry", arguments: { id: "practice.reasoning" }, reason: "Read what a reason is in Atlas terms: traceable support." },
+    { step: 2, tool: "get_entry", arguments: { id: "practice.atlas" }, reason: "Read what the Atlas is: the dependency-ordered reasoning system." },
+    { step: 3, tool: "get_entry", arguments: { id: "practice.ai-participation" }, reason: "Read the AI-facing participation constraints before contributing." },
+    { step: 4, tool: "get_entry", arguments: { id: "practice.atlas-note-standard" }, reason: "Read the note grammar: places, holds, pairs, traces, nests, reads, carries." },
+    { step: 5, tool: "search_atlas", arguments: { query: "<user term or question>" }, reason: "Use search only after orientation, and treat results as entry points." },
+    { step: 6, tool: "get_entry", arguments: { id: "<selected result id>" }, reason: "For the target term, read `structure` before prose." },
+    { step: 7, tool: "get_related", arguments: { id: "<selected result id>" }, reason: "Traverse holds/traces upstream and carries downstream before answering." },
+  ],
+  rules: [
+    "Do not answer from search results alone.",
+    "For every Atlas term, read `structure` first: holds/traces before prose, carries before implications.",
+    "Treat holds/traces as what the term depends on; treat carries as what it opens.",
+    "Use get_related for structural terms, practice terms, and any claim about dependency.",
+    "Present uncertainty as unresolved trace, not as confident definition.",
+    "Never invent primitives, carries, or merges. If a relation is not in structure, name it as a possible read rather than an Atlas dependency.",
+    "When trace reaches a primitive, follow the return through pairs/practice; do not treat it as a dead end.",
+  ],
+  startingIds: ["practice.reasoning", "practice.atlas", "practice.ai-participation", "practice.atlas-note-standard"],
+};
 
 // ---- tool definitions ----------------------------------------------------
 const strOrArr = { anyOf: [{ type: "string" }, { type: "array", items: { type: "string" } }] };
 const TOOLS = [
   { name: "get_manifest", description: "Return the identity and current state of the published Atlas (version, build time, entry count, content hash).",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
+  { name: "get_ai_entry_protocol", description: "Return the required entry ritual for AI participants: enter through Reasoning, Atlas, AI Participation, and Atlas Note Standard before search.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
   { name: "search_atlas", description: "Find entry points into the dependency-ordered Atlas by text and metadata. Each result is a place to begin tracing, not a final answer — follow its relations with get_entry/get_related.",
     inputSchema: { type: "object", additionalProperties: false, required: ["query"], properties: {
@@ -210,6 +236,10 @@ async function callTool(name, args, env) {
   if (name === "get_manifest") {
     return { schemaVersion: m.schemaVersion, atlasVersion: m.atlasVersion, builtAt: m.builtAt,
       sourceCommit: m.sourceCommit ?? null, entryCount: m.entryCount, contentHash: m.contentHash };
+  }
+
+  if (name === "get_ai_entry_protocol") {
+    return { atlasVersion: v, ...AI_ENTRY_PROTOCOL };
   }
 
   if (name === "search_atlas") {
@@ -356,6 +386,7 @@ async function readResource(uri, env) {
   const v = m.atlasVersion;
   if (uri === "atlas://manifest") return jsonResource(uri, m);
   if (uri === "atlas://index") return jsonResource(uri, await loadIndex(env, v));
+  if (uri === "atlas://ai-entry-protocol") return jsonResource(uri, { atlasVersion: v, ...AI_ENTRY_PROTOCOL });
   const em = uri.match(/^atlas:\/\/entry\/(.+)$/);
   if (em) {
     const id = decodeURIComponent(em[1]);
@@ -383,6 +414,7 @@ async function handleRpc(msg, env, ctx) {
       case "tools/list": return ok(id, { tools: TOOLS });
       case "resources/list":
         return ok(id, { resources: [
+          { uri: "atlas://ai-entry-protocol", name: "AI Entry Protocol", mimeType: "application/json" },
           { uri: "atlas://manifest", name: "Atlas manifest", mimeType: "application/json" },
           { uri: "atlas://index", name: "Atlas index", mimeType: "application/json" } ] });
       case "resources/templates/list":
