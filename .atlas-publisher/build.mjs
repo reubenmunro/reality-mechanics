@@ -642,6 +642,16 @@ const indexTemplate = ({ notes, entryNotes, traceModeNotes, noteByTitle }) => {
     return ra !== rb ? ra - rb : a.localeCompare(b);
   });
 
+  const ORDER_GLOSS = {
+    "The Atlas": "the root entrance — postulate, spine, and how to read",
+    "Ground": "what the Atlas acknowledges but does not derive",
+    "First Order": "relation becomes locatable — hold, carry, place",
+    "Second Order": "carried order is enacted as carrying",
+    "Third Order": "participating carrying becomes organised and nested",
+    "Practice": "a participant follows trace through retracing",
+    "Higher Order": "organised carrying enters its own carrying",
+  };
+
   const navHtml = `
     <nav class="order-nav" aria-label="Jump to order">
       ${orderedGroups.map(([key]) => {
@@ -682,10 +692,20 @@ const indexTemplate = ({ notes, entryNotes, traceModeNotes, noteByTitle }) => {
     </div>
   </header>
   <main>
+    <nav class="order-map" aria-label="The orders of the Atlas">
+      ${orderedGroups.map(([key]) => {
+        const label = GROUP_LABEL.get(key) ?? displayGroup(key);
+        const id = `section-${slugify(label)}`;
+        const gloss = ORDER_GLOSS[label] ?? "";
+        return `<a href="#${id}"><span>${escapeHtml(label)}</span><small>${escapeHtml(gloss)}</small></a>`;
+      }).join("\n")}
+    </nav>
+    <p class="order-note">The order is a loop, not a ladder — the highest order returns through Practice to Ground.</p>
     <section class="search-band">
-      <input id="search" type="search" placeholder="Trace, Bearing, Memory" aria-label="Find a term">
+      <input id="search" type="search" placeholder="Or jump to a term — Trace, Bearing, Memory" aria-label="Find a term">
       <div id="results" class="results"></div>
     </section>
+    ${groupsHtml}
   </main>
   <footer class="site-footer">
     <a href="https://doi.org/10.5281/zenodo.20338363" rel="noopener noreferrer">Zenodo Archive</a>

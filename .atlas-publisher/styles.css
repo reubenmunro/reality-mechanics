@@ -36,6 +36,14 @@ img { max-width: 100%; }
 .theory-document p, .theory-document li,
 .lede { font-family: var(--font-read); }
 
+/* Front-door order map */
+.order-map { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; padding: 24px 0 0; }
+.order-map a { display: block; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); text-decoration: none; }
+.order-map a:hover { border-color: var(--accent); }
+.order-map span { display: block; font-weight: 600; color: var(--ink); }
+.order-map small { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.order-note { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+
 .site-header {
   position: sticky; top: 0; z-index: 4;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
