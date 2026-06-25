@@ -1,0 +1,19 @@
+name = "reality-mechanics-mcp"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[vars]
+ATLAS_BASE = "https://atlas.realitymechanics.nz"
+
+# Production endpoint: https://mcp.realitymechanics.nz/mcp
+[[routes]]
+pattern = "mcp.realitymechanics.nz"
+custom_domain = true
+
+# Optional: basic rate limiting (Cloudflare Workers rate-limit binding).
+# [[unsafe.bindings]]
+# name = "RATE_LIMIT"
+# type = "ratelimit"
+# namespace_id = "1001"
+# simple = { limit = 120, period = 60 }

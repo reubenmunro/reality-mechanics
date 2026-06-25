@@ -1,0 +1,74 @@
+---
+grounded: true
+order: first
+kind: term
+ai_role: term
+condition_key: first.strain
+
+needs:
+  - "[[Availability]]"
+
+conditions:
+  places: "available distinction under contrast — present and pressing without yet being held or resolved"
+  holds: "[[Availability]] — distinction must be present enough to enter contrast before strain can be read"
+  pairs: "Asymmetry carries downward — into [[Bearing]]"
+  traces:
+    - "[[Availability]]"
+  nests: "between available distinction and bearing — names why a distinction becomes worth holding, resolving, or checking"
+  reads: "where available distinction can be read as under contrast — where something is present and pressing rather than merely available"
+  carries:
+    - "[[Bearing]]"
+    - "[[Threshold]]"
+    - "[[Absorb]]"
+    - "[[Release]]"
+    - "[[Disorder]]"
+    - "[[Degeneration Read]]"
+    - "[[Contend]]"
+
+publish: true
+status: stable
+garden_status: rooted
+---
+# Strain
+
+Strain names available distinction under contrast. Where availability names the condition under which distinction can present, strain names the same distinction pressing under contrast — present and pressured without yet being held or resolved. Strain does not yet name bearing, carrying, or outcome. It names the contrasted condition that can become held, resolved, remembered, or checked.
+
+## Places
+
+Strain places available distinction under contrast.
+
+## Holds
+
+Strain is held by [[Availability]]. Distinction must be present enough to enter contrast before strain can be read.
+
+## Pairs
+
+Asymmetry carries downward. Strain is a singular condition at its juncture — the press that makes bearing necessary. There is no other mode of strain required to locate strain. The structural asymmetry is fully expressed by what strain becomes: [[Bearing]].
+
+## Traces
+
+- [[Availability]]
+
+## Nests
+
+Strain nests between available distinction and bearing. It names why a distinction becomes worth holding, resolving, remembering, or checking.
+
+## Reads
+
+Strain becomes recognisable where available distinction can be read as under contrast — where something is present and pressing rather than merely available.
+
+**Structural Role.**
+
+Strain is a first-order root condition. It does not gate passage by itself; it names the pressure through which available distinction can become held as bearing.
+
+## Carries
+
+
+
+- [[Bearing]]
+- [[Threshold]]
+- [[Absorb]]
+- [[Release]]
+- [[Disorder]]
+- [[Degeneration Read]]
+- [[Contend]]

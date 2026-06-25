@@ -1,0 +1,73 @@
+---
+grounded: true
+order: second
+kind: term
+ai_role: term
+condition_key: second.kind
+
+needs:
+  - "[[Form]]"
+  - "[[Pattern]]"
+  - "[[Recognition Read|Recognition]]"
+
+conditions:
+  places: "recurrent form recognisable across distinct instances."
+  holds: "[[Form]], [[Pattern]], and [[Recognition Read|Recognition]]."
+  pairs: "[[Surface]] — Kind names recurrent form across instances; Surface names the presenting face through which that form becomes available"
+  traces:
+    - "[[Generic]]"
+    - "[[Form]]"
+    - "[[Pattern]]"
+    - "[[Recognition Read|Recognition]]"
+  nests: "where recurring form remains recognisable across distinct instances without collapsing them into sameness."
+  reads: "where distinct instances can be read as the same relational sort while remaining different instances — where recurrence and form hold enough continuity for recognition without flattening local difference."
+  carries:
+    - "[[Identity]]"
+    - "[[Inheritance]]"
+    - "[[Care]]"
+
+publish: true
+status: stable
+garden_status: rooted
+---
+# Kind
+
+Kind names recurrent form recognisable across distinct instances. Where [[Form]] names readable arrangement and [[Pattern]] names readable recurrence, kind names the condition through which different instances can be read as belonging to the same relational sort without being collapsed into sameness.
+
+Category can help read kind, but kind is more than a category. A category may sort from outside; kind remains answerable to the relation by which the instances belong together. Kind preserves enough recurrence for recognition while allowing each instance to remain locally distinct.
+
+In ordinary language, kind also names a mode of care. Structurally, this preserves the sense that relation is met according to what it is: to be kind is to meet a condition without losing its kind.
+
+## Places
+
+Kind places recurrent form recognisable across distinct instances.
+
+## Holds
+
+Kind is held by [[Form]], [[Pattern]], and [[Recognition Read|Recognition]].
+
+## Pairs
+
+Kind pairs with [[Surface]]: kind names the recurrent form recognisable across distinct instances; surface names the presenting face through which a condition becomes available. Each requires the other — kind is only kind if it presents through surfaces; surface is only surface if something of a kind is presenting through it.
+
+## Traces
+
+- [[Generic]]
+- [[Form]]
+- [[Pattern]]
+- [[Recognition Read|Recognition]]
+
+## Nests
+
+Kind nests where recurring form remains recognisable across distinct instances without collapsing them into sameness.
+
+## Reads
+
+Kind becomes recognisable where distinct instances can be read as the same relational sort while remaining different instances — where recurrence and form hold enough continuity for recognition without flattening local difference.
+
+## Carries
+
+
+- [[Identity]]
+- [[Inheritance]]
+- [[Care]]

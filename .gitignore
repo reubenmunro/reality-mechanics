@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Wrangler / build caches
+.wrangler/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Obsidian volatile state + generated plugin data
+.obsidian/workspace*.json
+.obsidian/cache/
+.smart-env/
+
+# Copilot plugin runtime (may hold API keys) + chat logs
+Reality_Mechanics/.obsidian/plugins/copilot/data.json
+Reality_Mechanics/copilot/copilot-conversations/
+
+# Editor / session backups
+*.bak
+
+# Claude Code local (machine-specific) settings
+.claude/settings.local.json
+
+# macOS
+.DS_Store
+
+# Build output (normally written outside the vault)
+Reality_Atlas_Build/

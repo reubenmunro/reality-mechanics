@@ -1,0 +1,87 @@
+---
+grounded: true
+order: third
+kind: term
+ai_role: field
+condition_key: third.body-field
+domain: body
+
+needs:
+  - "[[Field of Participation]]"
+  - "[[Organic Field]]"
+  - "[[Availability]]"
+  - "[[Strain]]"
+  - "[[Carrying]]"
+  - "[[Compatibility]]"
+
+conditions:
+  places: "the recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, and feeling — become readable as organised embodied experience."
+  holds: "[[Field of Participation]], [[Organic Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Field of Participation must structure a recurring scope and embodied structural conditions must be readable before the body field can be named."
+  pairs: "[[Cognition Field]]. Body Field names the recurring field of embodied participation; Cognition Field names the recurring field of cognitive participation. Each bounds a scope the other depends on for full participation to hold."
+  traces:
+    - "[[Field of Participation]]"
+    - "[[Organic Field]]"
+    - "[[Availability]]"
+    - "[[Strain]]"
+    - "[[Carrying]]"
+    - "[[Compatibility]]"
+  nests: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads: "where embodied sensation, limit, movement, injury, fatigue, feeling, or recovery organises participation as bodily experience."
+  carries:
+    - "[[Body]]"
+    - "[[Medicine]]" 
+
+publish: true
+status: stable
+garden_status: rooted
+---
+# Body Field
+
+Body Field names the recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, feeling — become readable as organised experience.
+
+## Places
+
+Body Field places a recurring field of participation.
+
+## Holds
+
+Body Field is held by [[Field of Participation]], [[Organic Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Field of Participation must structure a recurring scope and embodied structural conditions must be readable before the body field can be named. [[Body]] nests within this field; it does not hold the field that carries it.
+
+## Pairs
+
+Body Field pairs with [[Cognition Field]]. Body Field names the recurring field of embodied participation; Cognition Field names the recurring field of cognitive participation. Each bounds a scope the other depends on for full participation to hold.
+
+## Traces
+
+- [[Field of Participation]]
+- [[Organic Field]]
+- [[Availability]]
+- [[Strain]]
+- [[Carrying]]
+- [[Compatibility]]
+
+## Nests
+
+Body Field nests as a public field container. Detailed branch notes remain compressed as working material.
+
+[[Body]]
+[[Emotion]]
+[[Fatigue]]
+[[Fatigue Boundary]]
+[[Feeling]]
+[[Injury]]
+[[Metabolism]]
+[[Recovery]]
+
+## Reads
+
+Body Field becomes recognisable where embodied sensation, limit, movement, injury, fatigue, feeling, or recovery organises participation as bodily experience.
+
+At the [[Translation Boundary]], [[Bearing]], [[Strain]], [[Boundary]], [[Availability]], [[Resolution]], and [[Rhythm]] can become terminal to this field as local reads such as [[Body]], [[Feeling]], [[Emotion]], [[Fatigue]], [[Fatigue Boundary]], [[Injury]], and [[Recovery]].
+
+## Carries
+
+Body Field carries [[Body]] and [[Medicine]] — the field read of embodied participation and its applied branch. Nested reads are recorded under Nests; each traces its own structural ground.
+
+- [[Body]]
+- [[Medicine]]

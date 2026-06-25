@@ -1,0 +1,64 @@
+---
+grounded: true
+order: ground
+kind: term
+ai_role: term
+condition_key: ground.invariant
+
+needs:
+  - "[[Root Order]]"
+
+conditions:
+  places: "what remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility"
+  holds: "[[Root Order]] — the governing arrangement must hold before what it preserves across variation can be named"
+  pairs: "[[Primitive]] — Primitive names irreducible availability; Invariant names what remains unchanged across variation"
+  traces:
+    - "[[Root Order]]"
+  nests: "across variation — holds where change occurs without altering the condition being tested"
+  reads: "where variation occurs while a condition remains unchanged enough to keep the read stable"
+  carries:
+    - "[[Bounded Asymmetry]]"
+    - "[[Root System]]"
+    - "[[Translation Invariance]]"
+
+publish: true
+status: stable
+garden_status: rooted
+---
+# Invariant
+
+Invariant names what remains stable across traversal, revision, application, or scale. Where dependency order names structural precedence, an invariant names what that precedence preserves — the condition that continues to hold despite changes in how the system is read, applied, or extended. An invariant is not permanent or immobile; it names preserved structure.
+
+[[Bounded Asymmetry]] is the structural invariant of Reality Mechanics: it holds across domain, scale, and application.
+
+[[Clean]], [[Union]], [[Communion]], and [[Legion]] are invisible invariants at their orders. They name what must already hold before the lateral pair at that order can split.
+
+## Places
+
+Invariant places what remains stable across traversal, revision, application, or scale.
+
+## Holds
+
+Invariant is held by [[Root Order]].
+
+## Pairs
+
+Invariant pairs with [[Primitive]]. Primitive names what cannot be reduced without losing the read; Invariant names what remains unchanged across variation.
+
+## Traces
+
+- [[Root Order]]
+
+## Nests
+
+Invariant nests across variation: it holds where change occurs without altering the condition being tested.
+
+## Reads
+
+Invariant becomes recognisable where variation occurs while a condition remains unchanged enough to keep the read stable. It lets change be tested without losing what must still hold.
+
+## Carries
+
+- [[Bounded Asymmetry]]
+- [[Root System]]
+- [[Translation Invariance]]
