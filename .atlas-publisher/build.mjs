@@ -819,7 +819,7 @@ const theoryTemplate = ({ content }) => `<!doctype html>
       <div>
         <p class="eyebrow">Experiment 01</p>
         <h2>Coupled Read</h2>
-        <p>Language and mathematical notation run simultaneously over the same Index order. Their mismatch is evidence, not inconvenience.</p>
+        <p>Two carriers read the same reason: ordinary language and structural trace. Their mismatch is evidence, not inconvenience.</p>
       </div>
       <a href="${site.theory}/coupled-read.html">Open experiment →</a>
     </section>
@@ -830,32 +830,32 @@ const theoryTemplate = ({ content }) => `<!doctype html>
 const coupledReadStepsFor = (noteByTitle) => {
   const definitions = [
     {
-      title: "First → Second",
-      note: "Carry",
-      formula: "Carry ⇝ Carrying",
-      language: "Connection offers carry; carry is enacted as carrying.",
-      shade: "the forward availability of connection becomes a forward passage being made",
+      title: "Reason",
+      note: "Reasoning",
+      formula: "Reason = traceable support",
+      language: "A reason supports continuation because it can be followed back to what holds it.",
+      shade: "support is not a detached explanation; it remains answerable by trace",
     },
     {
-      title: "Second → Third",
-      note: "Participation",
-      formula: "Participation ⇝ Field",
-      language: "Carrying through participation organises into a field.",
-      shade: "participating carrying gathers into a recurring field",
+      title: "Read → Trace",
+      note: "Read",
+      formula: "Read(x) + Trace(x)",
+      language: "A meaningful distinction enters only where it can still be followed back.",
+      shade: "recognition without trace becomes fluent surface rather than reason",
     },
     {
-      title: "Third → Higher",
-      note: "Nesting",
-      formula: "Nesting ⇝ Recursion",
-      language: "Organised and nested carrying enters its own carrying.",
-      shade: "carrying becomes a carrier for its own carrying",
+      title: "Carry → Check",
+      note: "Check",
+      formula: "Carry(x) + Check(x)",
+      language: "A reason carries forward only as far as its support remains checkable.",
+      shade: "projection becomes carry only when downstream trace can recover the passage",
     },
     {
-      title: "Higher → Practice",
-      note: "Retracing",
-      formula: "Trace ⇝ Retracing",
-      language: "A participant enters trace and follows it backward.",
-      shade: "return is a participant following trace, not a forced loop",
+      title: "Return",
+      note: "Retrace Practice",
+      formula: "Reasoning ⇄ Retrace",
+      language: "The participant returns through the dependency path so the continuation remains answerable.",
+      shade: "return is not repetition; it is recovered support becoming available again",
     },
   ];
 
@@ -879,7 +879,7 @@ const coupledReadTemplate = ({ steps }) => `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coupled Read · ${escapeHtml(site.title)}</title>
-  <meta name="description" content="Language and mathematics running simultaneously over one dependency order.">
+  <meta name="description" content="Two carriers reading the same reason: ordinary language and structural trace.">
   <link rel="stylesheet" href="styles.css?v=${assetVersion}">
 </head>
 <body>
@@ -892,16 +892,16 @@ const coupledReadTemplate = ({ steps }) => `<!doctype html>
   </header>
   <main class="coupled-page">
     <header class="coupled-hero">
-      <p class="eyebrow"><a href="${site.theory}">Postulate experiment</a> · one order · two simultaneous reads</p>
+      <p class="eyebrow"><a href="${site.theory}">Postulate experiment</a> · one reason · two carriers</p>
       <h1>Coupled Read</h1>
-      <p>Two reads move together across the same order — the plain telling and the structural crossing. Neither is the source. Where they pull apart, the order shows itself.</p>
+      <p>Two carriers move through the same reason: ordinary language and structural trace. Neither is the source. Where they pull apart, the support is tested.</p>
     </header>
 
     <section class="coupled-runner" aria-labelledby="runner-title">
       <div class="runner-heading">
         <div>
-          <p class="eyebrow">The order, by carrying mode</p>
-          <h2 id="runner-title">Carry ⇝ Carrying ⇝ Participation ⇝ Nesting ⇝ Retracing</h2>
+          <p class="eyebrow">The reason, followed as order</p>
+          <h2 id="runner-title">Reason → Read → Trace → Carry → Check → Return</h2>
         </div>
         <button id="coupled-toggle" class="runner-toggle" type="button" aria-pressed="false">Pause</button>
       </div>
@@ -910,34 +910,34 @@ const coupledReadTemplate = ({ steps }) => `<!doctype html>
 
       <div class="coupled-views" aria-live="polite">
         <article class="read-panel language-panel">
-          <p class="panel-label">Language read</p>
+          <p class="panel-label">Ordinary carrier</p>
           <h3 id="language-title"></h3>
           <p id="language-line" class="language-line"></p>
           <a id="language-link" class="term-link" href="#">Open term →</a>
         </article>
 
         <article class="read-panel formula-panel">
-          <p class="panel-label">Structural read · the crossing</p>
-          <p id="formula-line" class="formula-line" aria-label="Mathematical order formula"></p>
+          <p class="panel-label">Structural carrier</p>
+          <p id="formula-line" class="formula-line" aria-label="Structural reasoning formula"></p>
           <p id="formula-shade" class="formula-shade"></p>
         </article>
       </div>
 
       <div class="index-relations">
         <div>
-          <p class="panel-label">Trace — backward, what holds it</p>
+          <p class="panel-label">Trace — what holds this step</p>
           <p id="trace-links"></p>
         </div>
         <div>
-          <p class="panel-label">Carry — forward, across the crossing</p>
+          <p class="panel-label">Carry — what this step opens</p>
           <p id="carry-links"></p>
         </div>
       </div>
     </section>
 
     <section class="coupled-note">
-      <p>The crossing is the structural read; the sentence is the telling. Both are generated from the same placed Atlas terms, and both change on the same beat. The trace and carry below are the one crossing read backward and forward.</p>
-      <p class="coupled-whole">One connection, two directions. Carrying changes mode at each crossing; the trace stays followable, or it doesn't — and that is the evidence.</p>
+      <p>The structural carrier is not more real than the ordinary sentence. Both are generated from the same placed Atlas terms, and both change on the same beat. The trace and carry below test whether the reason remains recoverable across carriers.</p>
+      <p class="coupled-whole">A reason is traceable support. If the support survives translation between carriers, the reasoning remains answerable.</p>
     </section>
   </main>
   <script>window.COUPLED_READ_STEPS = ${JSON.stringify(steps)}; window.ATLAS_TERM_BASE = ${JSON.stringify(`${site.atlas}/`)};</script>
