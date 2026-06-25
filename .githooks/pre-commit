@@ -1,0 +1,15 @@
+#!/bin/sh
+# Reality Mechanics pre-commit gate.
+# Blocks a commit that breaks Atlas structural integrity (atlas-doctor errors,
+# e.g. an undeclared cross-order leak). Editorial warnings (not-rooted notes,
+# etc.) do NOT block. Requires `node` on PATH.
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: node not found on PATH — skipping atlas-doctor gate."
+  exit 0
+fi
+if ! node .atlas-publisher/atlas-doctor.mjs --check collisions,unresolved,leaks,reciprocity,orphans,drift >/dev/null 2>&1; then
+  echo "✗ atlas-doctor found integrity errors — commit blocked."
+  echo "  Review: node .atlas-publisher/atlas-doctor.mjs"
+  exit 1
+fi
+exit 0

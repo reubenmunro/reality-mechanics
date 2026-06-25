@@ -440,3 +440,7 @@ if (totalIssues === 0) {
   console.log();
 }
 if (!verbose && totalIssues > 0) console.log(dim("Run with --verbose for full detail\n"));
+
+// Exit non-zero on integrity errors (not editorial warnings) so a pre-commit
+// hook / CI can gate on it.
+process.exitCode = results.errors > 0 ? 1 : 0;
