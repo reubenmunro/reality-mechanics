@@ -67,6 +67,8 @@ Carry-Trace Test nests wherever an Atlas note claims that one term carries anoth
 
 Carry-Trace Test becomes recognisable where a proposed forward carry is accepted only after a downstream term can recover the prior condition and relevant passage through its trace.
 
+Reckoning belongs at this point in the test. A forward carry must not be accepted simply because it is plausible, elegant, or useful. The carry becomes answerable only where the return trace can account for what the forward claim asks later terms or participants to bear.
+
 The test asks:
 
 1. Is the downstream term already available, or is it only anticipated?

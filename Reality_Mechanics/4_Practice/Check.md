@@ -68,6 +68,8 @@ Check nests where a read is tested from both directions until its boundary becom
 
 Check becomes recognisable where a term, note, or contribution is tested backward from the present read through trace, and projected forward only as openings until downstream retrace confirms carrying, so that its boundary becomes readable rather than assumed as a thing.
 
+Reckoning is the felt obligation behind check: can this term bear what it is being asked to carry? Where a read may affect later terms, participants, or consequences, check keeps reasoning answerable rather than merely coherent.
+
 The forward and backward movements have different evidential weight. A backward trace can test what had to hold for an available condition. A forward opening can guide attention or prediction, but it becomes a grounded carry only where a downstream condition can retrace the passage. [[Carry-Trace Test]] applies this distinction to note links.
 ## Carries
 

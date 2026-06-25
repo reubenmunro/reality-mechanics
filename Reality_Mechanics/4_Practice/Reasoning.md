@@ -90,6 +90,14 @@ support      what lets continuation remain answerable
 
 The Atlas does not collapse these into one meaning. It keeps their shared structural demand: each must remain traceable to what holds it.
 
+### Thinking And Reckoning
+
+Thinking can explore a read internally. It can form, compare, imagine, rehearse, revise, or test possibilities before they are carried into shared order.
+
+Reckoning names reasoning under obligation: the act of holding a read, term, claim, or action answerable to what it carries, especially where others may build from it or bear its consequences.
+
+Thinking may generate a read; reckoning tests whether that read can be responsibly carried. Reasoning becomes [[Discipline]] where thinking is held to reckoning.
+
 ## Carries
 
 - [[Atlas Practice]]
