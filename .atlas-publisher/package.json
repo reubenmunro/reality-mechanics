@@ -7,6 +7,6 @@
     "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
     "build:theory": "ATLAS_BUILD_ROOT=../Reality_Atlas_Build THEORY_BUILD_ROOT=../Reality_Atlas_Build node build.mjs",
-    "check": "python3 check_vault.py"
+    "check": "node atlas-doctor.mjs"
   }
 }

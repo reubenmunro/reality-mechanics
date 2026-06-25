@@ -15,15 +15,18 @@
  *   4. Broken reciprocity      — A carries B but B does not trace A
  *   5. Orphan notes            — published but not carried or traced by anything
  *   6. Source vs published     — vault frontmatter structure differs from built entry
- *   7. Frontmatter consistency — needs ↔ holds mismatch; traces beyond holds/pairs/crossings (accuracy)
- *   8. Placeholder language    — unfinished "…yet / not placed / none claimed" notes (pruning)
+ *   7. Frontmatter consistency — needs ↔ holds mismatch (accuracy)
+ *   8. Maturation backlog      — garden_status not-rooted notes + placeholder idiom (pruning)
  *   9. Thin notes              — low body word count (pruning / merge candidates)
+ *  10. Pair symmetry           — A pairs B but B does not pair back
+ *  11. Note template           — required spine headings + condition keys (meta/order/class exempt)
  *
  * Run:  node .atlas-publisher/atlas-doctor.mjs [--verbose] [--check <check,...>]
  *
  * Checks: collisions, unresolved, leaks, reciprocity, orphans, drift,
- *         consistency, scaffolding, thin
- * Default: all checks. Checks 1–6 are integrity (errors); 7–9 are editorial (warnings).
+ *         consistency, scaffolding, thin, pairs, template
+ * Opt-in only (not in default run): tracesdeep (traces beyond holds/pairs/crossings).
+ * Integrity checks (1–6) report errors; editorial checks (7–11) report warnings.
  *
  * Env: ATLAS_BUILD_ROOT (default ~/Reality_Atlas_Build)
  */
@@ -86,7 +89,11 @@ for (const file of sourceFiles) {
   const cond = parseConditionsBlock(frontmatter);
   const wl = (v) => wikilinkTargets(Array.isArray(v) ? v.join("\n") : (v || ""));
   const wordCount = body.replace(/[#>*_`~\-]/g, " ").split(/\s+/).filter(Boolean).length;
-  sourceNotes.push({ id, title, fileTitle, relPath, order, frontmatter, cond, wordCount,
+  const kind = frontmatterValue(frontmatter, "kind");
+  const bodyHeadings = new Set([...body.matchAll(/^##\s+(.+?)\s*$/gm)].map((m) => m[1].trim()));
+  sourceNotes.push({ id, title, fileTitle, relPath, order, frontmatter, cond, wordCount, kind, bodyHeadings,
+    condKeys: Object.keys(cond),
+    pairsProse: typeof cond.pairs === "string" ? cond.pairs : "",
     crossings: parseTopLevelList(frontmatter, "crossings"),
     condWikilinks: {
       holds: wl(cond.holds),
@@ -402,10 +409,9 @@ if (shouldRun("scaffolding")) {
   }
   console.log(dim(`  garden_status: ${Object.entries(garden).map(([k, v]) => `${k} ${v}`).join("  ·  ")}`));
   console.log(dim(`  ${immature.length} note(s) not yet rooted — the real finishing / pruning worklist:`));
-  for (const n of (verbose ? immature : immature.slice(0, 20))) {
+  for (const n of immature) record("scaffolding", "warn", `Not rooted (${n.gs}): ${n.id}`, { id: n.id, gs: n.gs });
+  for (const n of (verbose ? immature : immature.slice(0, 20)))
     console.log(dim(`     ${n.gs.padEnd(8)} ${n.id}  ${n.path}`));
-    record("scaffolding", "warn", `Not rooted (${n.gs}): ${n.id}`, { id: n.id, gs: n.gs });
-  }
   if (!verbose && immature.length > 20) console.log(dim(`     ... and ${immature.length - 20} more (use --verbose)`));
   console.log(dim(`  (${placeholders} notes use "no pair required / none claimed yet" — accepted idiom, not a defect)`));
 }
@@ -425,6 +431,70 @@ if (shouldRun("thin")) {
     console.log(dim(`  ${thin.length} thin note(s) under ${THIN} words`));
     record("thin", "warn", `${thin.length} thin notes`, { count: thin.length });
   }
+}
+
+// ==========================================================================
+// CHECK 10: Pair symmetry (A pairs B → B should pair back)
+// ==========================================================================
+if (shouldRun("pairs")) {
+  console.log(header("10. Pair symmetry (A pairs B → B should pair back)"));
+  const NO_PAIR = /no (universal )?(lateral )?pair|carr(y|ies) downward|asymmetry/i;
+  const byId = new Map(sourceNotes.map((n) => [n.id, n]));
+  let found = 0;
+  for (const n of sourceNotes) {
+    if (n.fileTitle.endsWith(" Field") || n.fileTitle.endsWith(" Domain")) continue;
+    if (NO_PAIR.test(n.pairsProse)) continue;
+    for (const t of n.condWikilinks.pairs) {
+      const targetId = titleToId.get(t);
+      if (!targetId) continue; // unresolved pairs are reported by check 2
+      const other = byId.get(targetId);
+      if (!other || other.id === n.id) continue;
+      if (NO_PAIR.test(other.pairsProse)) {
+        if (!other.pairsProse.includes(n.title)) {
+          found++;
+          console.log(warn(`${n.id} pairs [[${t}]], but ${targetId} declares no lateral pair`));
+          if (verbose) console.log(dim(`     ${n.relPath}`));
+          record("pairs", "warn", `Asymmetric pair: ${n.id} → ${targetId}`, { source: n.id, target: targetId });
+        }
+        continue;
+      }
+      const backRefs = other.condWikilinks.pairs.map((p) => titleToId.get(p)).filter(Boolean);
+      if (!backRefs.includes(n.id)) {
+        found++;
+        console.log(warn(`${n.id} pairs [[${t}]], but ${targetId} does not pair back`));
+        if (verbose) console.log(dim(`     ${n.relPath}`));
+        record("pairs", "warn", `Asymmetric pair: ${n.id} → ${targetId}`, { source: n.id, target: targetId });
+      }
+    }
+  }
+  if (found === 0) console.log(ok("All lateral pairs are reciprocal"));
+  else console.log(dim(`  ${found} asymmetric pair(s) to review`));
+}
+
+// ==========================================================================
+// CHECK 11: Note template (spine headings + condition keys)
+// ==========================================================================
+if (shouldRun("template")) {
+  console.log(header("11. Note template (spine headings + condition keys)"));
+  const SPINE = ["Places", "Holds", "Pairs", "Traces", "Nests", "Reads", "Carries"];
+  const KEYS = ["places", "holds", "pairs", "traces", "nests", "reads", "carries"];
+  const EXEMPT_KIND = new Set(["meta", "order", "class"]);
+  let found = 0;
+  for (const n of sourceNotes) {
+    if (EXEMPT_KIND.has(n.kind)) continue;
+    const missingHeadings = SPINE.filter((h) => !n.bodyHeadings.has(h));
+    const missingKeys = KEYS.filter((k) => !n.condKeys.includes(k));
+    if (missingHeadings.length || missingKeys.length) {
+      found++;
+      console.log(warn(`${n.id}`));
+      if (missingHeadings.length) console.log(dim(`     missing headings: ${missingHeadings.join(", ")}`));
+      if (missingKeys.length) console.log(dim(`     missing condition keys: ${missingKeys.join(", ")}`));
+      if (verbose) console.log(dim(`     ${n.relPath}`));
+      record("template", "warn", `Template gaps: ${n.id}`, { id: n.id, missingHeadings, missingKeys });
+    }
+  }
+  if (found === 0) console.log(ok("All term notes carry the full spine + condition keys"));
+  else console.log(dim(`  ${found} note(s) with template gaps`));
 }
 
 // ==========================================================================
