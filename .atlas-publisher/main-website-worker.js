@@ -159,6 +159,7 @@ function gardenTimingForPace(pace) {
     mode: pace === 1 ? "careful 1:1" : "accelerated nursery",
     base: {
       gardenerHours: 1,
+      groundCheckHours: 1,
       gardenCycleHours: 1,
       minimumSeasonHours: 12,
       cleanPassHours: 24,
@@ -181,6 +182,7 @@ function gardenIntervalsForPace(pace) {
   return {
     gardener: Math.max(minMs, 3600000 / safePace),
     steward: Math.max(minMs, 3600000 / safePace),
+    groundCheck: Math.max(minMs, 3600000 / safePace),
     applier: Math.max(minMs, 3600000 / safePace),
   };
 }
@@ -439,15 +441,18 @@ async function handleGardenHealth(env) {
   const pace = await readGardenPace(env);
   const intervals = gardenIntervalsForPace(pace);
 
-  const [gardenerRaw, stewardRaw, cycleRaw, gardenerWakeRaw, stewardWakeRaw, cycleWakeRaw, gardenerStatusRaw, stewardStatusRaw, cycleStatusRaw, indexRaw] = await Promise.all([
+  const [gardenerRaw, stewardRaw, groundCheckRaw, cycleRaw, gardenerWakeRaw, stewardWakeRaw, groundCheckWakeRaw, cycleWakeRaw, gardenerStatusRaw, stewardStatusRaw, groundCheckStatusRaw, cycleStatusRaw, indexRaw] = await Promise.all([
     env.GARDEN.get("schedule:api-gardener:last_run"),
     env.GARDEN.get("schedule:garden-steward:last_run"),
+    env.GARDEN.get("schedule:garden-ground-check:last_run"),
     env.GARDEN.get("schedule:garden-cycle:last_run"),
     env.GARDEN.get("schedule:api-gardener:last_wake"),
     env.GARDEN.get("schedule:garden-steward:last_wake"),
+    env.GARDEN.get("schedule:garden-ground-check:last_wake"),
     env.GARDEN.get("schedule:garden-cycle:last_wake"),
     env.GARDEN.get("schedule:api-gardener:status"),
     env.GARDEN.get("schedule:garden-steward:status"),
+    env.GARDEN.get("schedule:garden-ground-check:status"),
     env.GARDEN.get("schedule:garden-cycle:status"),
     env.GARDEN.get("proposals:index"),
   ]);
@@ -459,6 +464,7 @@ async function handleGardenHealth(env) {
   const workers = [
     { name: "gardener", last_run: gardenerRaw ? Number(gardenerRaw) : null, last_wake: gardenerWakeRaw ? Number(gardenerWakeRaw) : null, status: gardenerStatusRaw ? JSON.parse(gardenerStatusRaw) : null, interval_ms: intervals.gardener },
     { name: "steward",  last_run: stewardRaw  ? Number(stewardRaw)  : null, last_wake: stewardWakeRaw  ? Number(stewardWakeRaw)  : null, status: stewardStatusRaw  ? JSON.parse(stewardStatusRaw)  : null, interval_ms: intervals.steward },
+    { name: "ground check", last_run: groundCheckRaw ? Number(groundCheckRaw) : null, last_wake: groundCheckWakeRaw ? Number(groundCheckWakeRaw) : null, status: groundCheckStatusRaw ? JSON.parse(groundCheckStatusRaw) : null, interval_ms: intervals.groundCheck },
     { name: "applier",  last_run: cycleRaw    ? Number(cycleRaw)    : null, last_wake: cycleWakeRaw    ? Number(cycleWakeRaw)    : null, status: cycleStatusRaw    ? JSON.parse(cycleStatusRaw)    : null, interval_ms: intervals.applier },
   ];
 
@@ -759,6 +765,7 @@ function gardenPage(env) {
       max-width: 760px; margin: 0 auto; padding: 0 1.4rem 6rem;
     }
     #proposals-label {
+      display: none;
       font-family: system-ui, sans-serif;
       font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: #2a3848;
@@ -786,6 +793,7 @@ function gardenPage(env) {
       color: rgba(77,94,114,0.78);
     }
     #garden-term-rail {
+      display: none;
       margin: -0.35rem 0 1.25rem;
       display: flex; gap: 0.55rem; overflow-x: auto; padding-bottom: 0.3rem;
       scrollbar-width: none;
@@ -1046,6 +1054,7 @@ function gardenPage(env) {
 
     /* ── Pace control ── */
     #pace-control {
+      display: none;
       margin-top: 2.4rem;
       border-top: 1px solid rgba(255,255,255,0.035);
       padding-top: 1rem;
@@ -1117,7 +1126,6 @@ function gardenPage(env) {
       color: rgba(120,145,175,0.7);
     }
     #health-control {
-      display: none;
       margin-top: 1.6rem;
       border-top: 1px solid rgba(255,255,255,0.035);
       padding-top: 1rem;
@@ -1163,6 +1171,7 @@ function gardenPage(env) {
       font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
       text-transform: uppercase; color: rgba(77,94,114,0.72);
     }
+    #proposals-list, #garden-tending { display: none !important; }
 
     /* ── Empty state ── */
     #empty {
@@ -1225,7 +1234,7 @@ function gardenPage(env) {
   </details>
   <div id="garden-mode">mode loading</div>
   <div id="garden-note"></div>
-  <details id="health-control">
+  <details id="health-control" open>
     <summary>workers<span id="health-summary-line"></span></summary>
     <div id="health-rows"></div>
     <div id="health-counts"></div>
@@ -1786,6 +1795,8 @@ function healthDetail(w, now) {
     if (status.proposalId) pieces.push(status.proposalId);
     if (Number.isFinite(Number(status.applied))) pieces.push(status.applied + ' applied');
     if (Number.isFinite(Number(status.inspected))) pieces.push(status.inspected + ' inspected');
+    if (Number.isFinite(Number(status.approved))) pieces.push(status.approved + ' approved');
+    if (Number.isFinite(Number(status.held))) pieces.push(status.held + ' held');
     return pieces.join(' · ');
   }
   if (status.state === 'wake') return 'awake';
@@ -1836,7 +1847,7 @@ async function loadHealth() {
     const statusText = worstStatus === 'ok' ? ' — all running' : ' — ' + worstName + ' ' + worstStatus;
     if (summaryEl) { summaryEl.textContent = statusText; summaryEl.style.color = statusColor; }
 
-    const statusLabels = { pending: 'ungrounded', needs_preparation: 'needs prep', approved: 'grounded for cycle' };
+    const statusLabels = { pending: 'needs attention', needs_preparation: 'needs prep', approved: 'ready for cycle' };
     const parts = Object.entries(statusLabels)
       .map(([k, label]) => counts[k] ? counts[k] + ' ' + label : null)
       .filter(Boolean);

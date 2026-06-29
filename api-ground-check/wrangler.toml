@@ -1,0 +1,21 @@
+name = "reality-mechanics-garden-ground-check"
+main = "src/index.js"
+compatibility_date = "2026-06-03"
+workers_dev = true
+
+[triggers]
+crons = ["* * * * *"]
+
+[vars]
+GARDEN_PACE = "1"
+
+[[kv_namespaces]]
+binding = "GARDEN"
+id = "a6d36ff60d0a489ba42faef8e89d6d79"
+
+# Required secrets:
+#   npx wrangler secret put GARDEN_SECRET
+#
+# Optional vars:
+#   MCP_URL = "https://mcp.realitymechanics.nz/mcp"
+#   GARDEN_URL = "https://realitymechanics.nz"

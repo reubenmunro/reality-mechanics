@@ -167,6 +167,7 @@ async function approvedReadyProposals(env, options = {}) {
   const data = await gardenFetch(env, "/api/garden/proposals", { headers: {} });
   const approved = (data.proposals || [])
     .filter((proposal) => proposal.status === "approved")
+    .filter((proposal) => proposal.steward_action === "ground_check_pass")
     .map((proposal) => ({ proposal, season: seasoning(proposal, pace) }))
     .filter(({ season }) => force ? season.reason !== "held in shade for review" : season.eligible)
     .sort((a, b) => String(a.proposal.proposed_at || a.proposal.logged_at || "").localeCompare(String(b.proposal.proposed_at || b.proposal.logged_at || "")));
@@ -211,7 +212,14 @@ async function applyProposal(env, proposal) {
   const patchSection = normalizeSectionName(patch.section);
   const matchedSection = sections.find((section) => section.toLowerCase() === patchSection.toLowerCase());
   if (!matchedSection) {
-    return { ok: false, proposalId: proposal.id, error: `section_not_found: ${patch.section}` };
+    await gardenFetch(env, `/api/garden/needs-preparation/${encodeURIComponent(proposal.id)}`, { method: "POST" });
+    return {
+      ok: true,
+      skipped: true,
+      proposalId: proposal.id,
+      entry: { id: entry.id, title: entry.title },
+      reason: `section_not_found: ${patch.section}`,
+    };
   }
 
   const update = await mcpCall(env, "update_entry_section", {
@@ -243,12 +251,23 @@ async function runApplyPass(env, options = {}) {
     try {
       results.push(await applyProposal(env, proposal));
     } catch (error) {
-      results.push({
-        ok: false,
-        proposalId: proposal.id,
-        entryId: proposal.proposal_for || null,
-        error: error.message || "apply_proposal_failed",
-      });
+      try {
+        await gardenFetch(env, `/api/garden/needs-preparation/${encodeURIComponent(proposal.id)}`, { method: "POST" });
+        results.push({
+          ok: true,
+          skipped: true,
+          proposalId: proposal.id,
+          entryId: proposal.proposal_for || null,
+          reason: error.message || "apply_proposal_failed",
+        });
+      } catch (markError) {
+        results.push({
+          ok: false,
+          proposalId: proposal.id,
+          entryId: proposal.proposal_for || null,
+          error: error.message || markError.message || "apply_proposal_failed",
+        });
+      }
     }
   }
 
@@ -277,7 +296,7 @@ export default {
         const result = await runApplyPass(env);
         await recordSchedule(env, "garden-cycle", {
           state: "ok",
-          result: result?.skipped ? "skipped" : "ran",
+          result: result?.attempted ? "ran" : result?.skipped ? "skipped" : "ran",
           reason: result?.reason || null,
           attempted: result?.attempted ?? null,
           applied: result?.applied ?? null,
