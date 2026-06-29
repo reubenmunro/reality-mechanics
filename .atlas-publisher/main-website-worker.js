@@ -159,7 +159,7 @@ function gardenTimingForPace(pace) {
     mode: pace === 1 ? "careful 1:1" : "accelerated nursery",
     base: {
       gardenerHours: 1,
-      gardenCycleHours: 24,
+      gardenCycleHours: 1,
       minimumSeasonHours: 12,
       cleanPassHours: 24,
       thinSectionHours: 48,
@@ -1019,8 +1019,8 @@ function gardenPage(env) {
     }
     .pc-btn-discard {
       min-height: 36px;
-      padding: 0.48rem 0.68rem;
-      border-color: rgba(255,255,255,0.035); color: rgba(42,56,72,0.55);
+      padding: 0.48rem 0;
+      border: 0; color: rgba(42,56,72,0.55);
       opacity: 0.72;
     }
     .pc-btn-discard:hover {
@@ -1199,7 +1199,7 @@ function gardenPage(env) {
 <div id="proposals-wrap">
   <div id="proposals-label">
     <span class="pulse-dot"></span>
-    <span id="plabel-text">term tending</span>
+      <span id="plabel-text">clean finding</span>
   </div>
   <div id="garden-status-strip" aria-live="polite"></div>
   <div id="garden-term-rail" aria-label="Terms with proposed edits"></div>
@@ -1367,9 +1367,9 @@ function renderGarden(proposals) {
   list.innerHTML = '';
 
   if (!visible.length) {
-    list.innerHTML = '<div id="empty">the garden is resting</div>';
+    list.innerHTML = '<div id="empty">' + (grounded.length ? 'approved edits are entering through Garden Cycle' : 'the garden is resting') + '</div>';
     label.classList.add('quiet');
-    labelText.textContent = grounded.length ? 'all tended' : 'term tending';
+    labelText.textContent = grounded.length ? 'entering naturally' : 'clean finding';
     return;
   }
 
@@ -1378,7 +1378,7 @@ function renderGarden(proposals) {
     .sort((a, b) => new Date(b.proposed_at || b.logged_at || 0) - new Date(a.proposed_at || a.logged_at || 0));
   const first = termProposals[0] || visible[0];
   label.classList.toggle('quiet', false);
-  labelText.textContent = first?.term || 'term tending';
+  labelText.textContent = first?.term || 'clean finding';
   if (first) renderProposalCard(first, 0, list);
 }
 
@@ -1401,10 +1401,7 @@ function renderProposalCard(p, i, list) {
   const shadeCount = Number(p.shade_count || 0);
   const parsed = parseProposalEdit(p.proposed_changes || '');
   const replacement = parsed.replacement || '';
-  const notes = parsed.notes || '';
   const section = parsed.section || '';
-  const stewardNote = p.steward_note || '';
-  const stewardAction = p.steward_action || '';
   const fieldHref = p.proposal_for ? '/field#' + encodeURIComponent(p.proposal_for) : '/field';
 
   card.innerHTML = \`
@@ -1416,14 +1413,10 @@ function renderProposalCard(p, i, list) {
     <div class="pc-term">\${escape(p.term || '')}</div>
     <div class="pc-summary">\${escape(p.summary || '')}</div>
     <div class="pc-felt"></div>
-    <div class="pc-reason"><input type="text" maxlength="160" placeholder="why? — your reason, kept on your device" onchange="saveReason('\${p.id}', this.value)" /></div>
     <details class="pc-edit" open>
       <summary>proposed edit</summary>
       \${section ? \`<div class="pc-edit-label">Section</div><div class="pc-edit-section">\${escape(section)}</div>\` : ''}
       \${replacement ? \`<div class="pc-edit-label">Replacement</div><pre>\${escape(replacement)}</pre>\` : '<div class="pc-edit-notes">No prepared replacement yet.</div>'}
-      \${notes ? \`<div class="pc-edit-label">Notes</div><div class="pc-edit-notes">\${escape(notes)}</div>\` : ''}
-      \${stewardNote ? \`<div class="pc-edit-label">Steward\${stewardAction ? ' · ' + escape(stewardAction) : ''}</div><div class="pc-edit-notes">\${escape(stewardNote)}</div>\` : ''}
-      \${p.reciprocity_issues ? \`<div class="pc-edit-label">Trace check</div><div class="pc-edit-notes">\${escape(p.reciprocity_issues)}</div>\` : ''}
     </details>
     <div class="pc-season">\${escape(season)}</div>
     <div class="pc-signals">
@@ -1431,18 +1424,11 @@ function renderProposalCard(p, i, list) {
       <button class="pc-signal shade \${mine === 'shade' ? 'active' : ''}" onclick="signal('\${p.id}','shade')">Shade \${shadeCount}</button>
     </div>
     <div class="pc-actions">
-      <button class="pc-btn pc-btn-ground" onclick="act('\${p.id}','approved')">Approve</button>
-      <a class="pc-field-link" href="\${fieldHref}">Field</a>
-      <button class="pc-btn pc-btn-discard" onclick="act('\${p.id}','discarded')">Let go</button>
+      <button class="pc-btn pc-btn-ground" onclick="act('\${p.id}','approved')">Let it enter</button>
+      <a class="pc-field-link" href="\${fieldHref}">Term</a>
+      <button class="pc-btn pc-btn-discard" onclick="act('\${p.id}','discarded')">Pass</button>
     </div>
   \`;
-    const tendedRec = readTended()[p.id];
-    if (tendedRec && tendedRec.reason) {
-      const rwrap = card.querySelector('.pc-reason');
-      const rinput = card.querySelector('.pc-reason input');
-      if (rwrap) rwrap.classList.add('show');
-      if (rinput) rinput.value = tendedRec.reason;
-    }
     list.appendChild(card);
   } catch(e) {
     console.error('[garden] card error', i, p && p.term, e.message);
@@ -1599,7 +1585,7 @@ async function act(id, status) {
   }
   if (actionButton) {
     actionButton.disabled = true;
-    actionButton.textContent = isGround ? 'Approving' : 'Letting go';
+    actionButton.textContent = isGround ? 'Entering' : 'Passing';
   }
 
   const ep = status === 'approved' ? '/api/garden/approve/' + id
@@ -1626,7 +1612,7 @@ async function act(id, status) {
         const season = card.querySelector('.pc-season');
         if (season) season.textContent = 'approved';
         if (actionButton) {
-          actionButton.textContent = 'Approved';
+          actionButton.textContent = 'Entering';
           actionButton.classList.add('settled');
         }
         card.querySelectorAll('button').forEach((button) => { button.disabled = true; });
@@ -1652,7 +1638,7 @@ async function act(id, status) {
     }
     if (actionButton) {
       actionButton.disabled = false;
-      actionButton.textContent = isGround ? 'Approve' : 'Let go';
+      actionButton.textContent = isGround ? 'Let it enter' : 'Pass';
     }
   }
 }
