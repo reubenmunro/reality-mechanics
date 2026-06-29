@@ -1,4 +1,5 @@
 const DEFAULT_GARDEN_URL = "https://realitymechanics.nz";
+const DEFAULT_MCP_URL = "https://mcp.realitymechanics.nz/mcp";
 const DEFAULT_MODEL = "gpt-5";
 const MAX_PROPOSALS = 12;
 const STEWARD_BASE_HOURS = 1;
@@ -84,6 +85,28 @@ function hasPreparedReplacement(proposal) {
   return Boolean(section && replacement);
 }
 
+function parseConcreteProposal(proposal) {
+  const text = String(proposal.proposed_changes || "");
+  const sectionMatch = text.match(/^Section:\s*(.+)$/mi);
+  const replacementMatch = text.match(/^Proposed replacement:\s*\n([\s\S]*?)(?:\n\n(?:Notes|Reason|Care action):|$)/mi);
+  return {
+    section: String(sectionMatch?.[1] || "").replace(/^#+\s*/, "").trim(),
+    replacement: String(replacementMatch?.[1] || "").trim(),
+  };
+}
+
+function noteText(proposal) {
+  return String(proposal.proposed_changes || "").match(/^Notes:\s*\n([\s\S]*)$/mi)?.[1]?.trim() || "";
+}
+
+function extractSections(content) {
+  const sections = [];
+  const re = /^##\s+(.+)$/gm;
+  let match;
+  while ((match = re.exec(content || ""))) sections.push(match[1].trim());
+  return sections;
+}
+
 async function gardenFetch(env, path, options = {}) {
   const res = await fetch(`${env.GARDEN_URL || DEFAULT_GARDEN_URL}${path}`, {
     ...options,
@@ -97,6 +120,29 @@ async function gardenFetch(env, path, options = {}) {
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || `garden_http_${res.status}`);
   return data;
+}
+
+async function mcpCall(env, name, args = {}, auth = false) {
+  const res = await fetch(env.MCP_URL || DEFAULT_MCP_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json, text/event-stream",
+      ...(auth && env.GARDEN_SECRET ? { "Authorization": `Bearer ${env.GARDEN_SECRET}` } : {}),
+    },
+    body: JSON.stringify({
+      jsonrpc: "2.0",
+      id: Date.now(),
+      method: "tools/call",
+      params: { name, arguments: args },
+    }),
+  });
+
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message || "mcp_error");
+  const result = data.result?.structuredContent ?? JSON.parse(data.result?.content?.[0]?.text || "{}");
+  if (result?.error) throw new Error(`${name}: ${result.error}`);
+  return result;
 }
 
 async function signal(env, proposalId, kind) {
@@ -217,14 +263,83 @@ async function applyJudgement(env, proposal, judgement) {
   return { proposalId: proposal.id, term: proposal.term, action: judgement.action, applied, confidence: judgement.confidence };
 }
 
+function groundCheck(proposal, entry) {
+  const lit = proposal.steward_action === "light" || Number(proposal.light_count || 0) > 0;
+  if (!lit) return { ok: false, reason: "waiting for steward light" };
+  if (Number(proposal.shade_count || 0) > 0) return { ok: false, reason: "proposal has shade" };
+  if (!proposal.proposal_for) return { ok: false, reason: "missing entry id" };
+
+  const patch = parseConcreteProposal(proposal);
+  if (!patch.section || !patch.replacement) return { ok: false, reason: "missing section or replacement" };
+  if (patch.replacement.length < 40) return { ok: false, reason: "replacement too thin" };
+  if (patch.replacement.length > 3600) return { ok: false, reason: "replacement too broad" };
+  if (/^#{1,6}\s+/m.test(patch.replacement)) return { ok: false, reason: "replacement contains heading" };
+  if (/\b(new term|create new term|invent|placeholder|todo)\b/i.test(patch.replacement)) return { ok: false, reason: "replacement carries meta-language" };
+
+  const notes = noteText(proposal);
+  if (notes.length > 260) return { ok: false, reason: "notes too long" };
+  if (/\b(as an ai|language model|proposal|should be reviewed|human)\b/i.test(notes)) return { ok: false, reason: "notes carry process language" };
+
+  const sections = extractSections(entry.content);
+  const matchedSection = sections.find((section) => section.toLowerCase() === patch.section.toLowerCase());
+  if (!matchedSection) return { ok: false, reason: `section not found: ${patch.section}` };
+
+  const lowerSummary = String(proposal.summary || "").toLowerCase();
+  if (/\b(root order|ground order|delete|remove the whole|rewrite all|entire entry)\b/.test(lowerSummary)) return { ok: false, reason: "too broad for automatic entry" };
+
+  return { ok: true, section: matchedSection };
+}
+
+async function runGroundCheckPass(env, proposals) {
+  const candidates = proposals
+    .filter((proposal) => proposal.status === "pending")
+    .filter((proposal) => proposal.steward_action === "light" || Number(proposal.light_count || 0) > 0)
+    .slice(0, MAX_PROPOSALS);
+
+  if (!candidates.length) return { inspected: 0, approved: 0, held: 0, results: [] };
+
+  const results = [];
+  for (const proposal of candidates) {
+    try {
+      if (!proposal.proposal_for) {
+        await stewardNote(env, proposal.id, "ground_check_hold", "missing entry id");
+        await gardenFetch(env, `/api/garden/needs-preparation/${encodeURIComponent(proposal.id)}`, { method: "POST" });
+        results.push({ proposalId: proposal.id, term: proposal.term, approved: false, reason: "missing entry id" });
+        continue;
+      }
+
+      const entry = await mcpCall(env, "get_entry", { id: proposal.proposal_for });
+      const check = groundCheck(proposal, entry);
+      if (!check.ok) {
+        await stewardNote(env, proposal.id, "ground_check_hold", check.reason);
+        await gardenFetch(env, `/api/garden/needs-preparation/${encodeURIComponent(proposal.id)}`, { method: "POST" });
+        results.push({ proposalId: proposal.id, term: proposal.term, approved: false, reason: check.reason });
+        continue;
+      }
+
+      await stewardNote(env, proposal.id, "ground_check_pass", "ground check passed");
+      await gardenFetch(env, `/api/garden/approve/${encodeURIComponent(proposal.id)}`, { method: "POST" });
+      results.push({ proposalId: proposal.id, term: proposal.term, approved: true, section: check.section });
+    } catch (error) {
+      results.push({ proposalId: proposal.id, term: proposal.term, ok: false, error: error.message || "ground_check_failed" });
+    }
+  }
+
+  return {
+    inspected: candidates.length,
+    approved: results.filter((result) => result.approved).length,
+    held: results.filter((result) => !result.approved).length,
+    results,
+  };
+}
+
 async function runStewardPass(env) {
   const data = await gardenFetch(env, "/api/garden/proposals");
-  const proposals = (data.proposals || [])
+  const allProposals = data.proposals || [];
+  const proposals = allProposals
     .filter((proposal) => ["pending", "approved"].includes(proposal.status))
     .filter((proposal) => !proposal.stewarded_at)
     .slice(0, MAX_PROPOSALS);
-
-  if (!proposals.length) return { ok: true, skipped: true, reason: "no open proposals needing steward walk" };
 
   const results = [];
   for (const proposal of proposals) {
@@ -236,10 +351,20 @@ async function runStewardPass(env) {
     }
   }
 
+  const freshData = await gardenFetch(env, "/api/garden/proposals");
+  const ground = await runGroundCheckPass(env, freshData.proposals || allProposals);
+
+  if (!proposals.length && !ground.inspected) {
+    return { ok: true, skipped: true, reason: "no open proposals needing steward or ground check" };
+  }
+
   return {
-    ok: results.every((result) => result.ok !== false),
+    ok: results.every((result) => result.ok !== false) && ground.results.every((result) => result.ok !== false),
     role: "garden-steward",
     inspected: proposals.length,
+    groundChecked: ground.inspected,
+    approved: ground.approved,
+    held: ground.held,
     results,
   };
 }
@@ -248,18 +373,20 @@ export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil((async () => {
       await recordSchedule(env, "garden-steward", { state: "wake" });
-      const due = await scheduledDue(env, "garden-steward", STEWARD_BASE_HOURS);
-      if (!due.due) {
-        await recordSchedule(env, "garden-steward", { state: "skip", nextMs: due.nextMs || null, intervalMs: due.intervalMs });
-        return;
-      }
+      const pace = await readGardenPace(env);
+      const intervalMs = Math.max(60 * 1000, STEWARD_BASE_HOURS * 3600000 / pace);
+      if (env.GARDEN) await env.GARDEN.put("schedule:garden-steward:last_run", String(Date.now()));
       try {
         const result = await runStewardPass(env);
         await recordSchedule(env, "garden-steward", {
           state: "ok",
           result: result?.skipped ? "skipped" : "ran",
           reason: result?.reason || null,
+          intervalMs,
           inspected: result?.inspected ?? null,
+          groundChecked: result?.groundChecked ?? null,
+          approved: result?.approved ?? null,
+          held: result?.held ?? null,
         });
       } catch (error) {
         await recordSchedule(env, "garden-steward", { state: "error", error: error.message || "steward_pass_failed" });

@@ -160,6 +160,7 @@ async function reviewProposal(env, proposal) {
         body: JSON.stringify({ action: "ground_check_hold", note: check.reason }),
         headers: { "Content-Type": "application/json" },
       });
+      await gardenFetch(env, `/api/garden/needs-preparation/${encodeURIComponent(proposal.id)}`, { method: "POST" });
     }
     return { proposalId: proposal.id, term: proposal.term, approved: false, reason: check.reason };
   }
@@ -205,17 +206,16 @@ export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil((async () => {
       await recordSchedule(env, "garden-ground-check", { state: "wake" });
-      const due = await scheduledDue(env, "garden-ground-check", GROUND_CHECK_BASE_HOURS);
-      if (!due.due) {
-        await recordSchedule(env, "garden-ground-check", { state: "skip", nextMs: due.nextMs || null, intervalMs: due.intervalMs });
-        return;
-      }
+      const pace = await readGardenPace(env);
+      const intervalMs = Math.max(60 * 1000, GROUND_CHECK_BASE_HOURS * 3600000 / pace);
+      if (env.GARDEN) await env.GARDEN.put("schedule:garden-ground-check:last_run", String(Date.now()));
       try {
         const result = await runGroundCheck(env);
         await recordSchedule(env, "garden-ground-check", {
           state: "ok",
           result: result?.skipped ? "skipped" : "ran",
           reason: result?.reason || null,
+          intervalMs,
           inspected: result?.inspected ?? null,
           approved: result?.approved ?? null,
           held: result?.held ?? null,

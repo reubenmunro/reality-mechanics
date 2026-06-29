@@ -441,18 +441,15 @@ async function handleGardenHealth(env) {
   const pace = await readGardenPace(env);
   const intervals = gardenIntervalsForPace(pace);
 
-  const [gardenerRaw, stewardRaw, groundCheckRaw, cycleRaw, gardenerWakeRaw, stewardWakeRaw, groundCheckWakeRaw, cycleWakeRaw, gardenerStatusRaw, stewardStatusRaw, groundCheckStatusRaw, cycleStatusRaw, indexRaw] = await Promise.all([
+  const [gardenerRaw, stewardRaw, cycleRaw, gardenerWakeRaw, stewardWakeRaw, cycleWakeRaw, gardenerStatusRaw, stewardStatusRaw, cycleStatusRaw, indexRaw] = await Promise.all([
     env.GARDEN.get("schedule:api-gardener:last_run"),
     env.GARDEN.get("schedule:garden-steward:last_run"),
-    env.GARDEN.get("schedule:garden-ground-check:last_run"),
     env.GARDEN.get("schedule:garden-cycle:last_run"),
     env.GARDEN.get("schedule:api-gardener:last_wake"),
     env.GARDEN.get("schedule:garden-steward:last_wake"),
-    env.GARDEN.get("schedule:garden-ground-check:last_wake"),
     env.GARDEN.get("schedule:garden-cycle:last_wake"),
     env.GARDEN.get("schedule:api-gardener:status"),
     env.GARDEN.get("schedule:garden-steward:status"),
-    env.GARDEN.get("schedule:garden-ground-check:status"),
     env.GARDEN.get("schedule:garden-cycle:status"),
     env.GARDEN.get("proposals:index"),
   ]);
@@ -463,8 +460,7 @@ async function handleGardenHealth(env) {
 
   const workers = [
     { name: "gardener", last_run: gardenerRaw ? Number(gardenerRaw) : null, last_wake: gardenerWakeRaw ? Number(gardenerWakeRaw) : null, status: gardenerStatusRaw ? JSON.parse(gardenerStatusRaw) : null, interval_ms: intervals.gardener },
-    { name: "steward",  last_run: stewardRaw  ? Number(stewardRaw)  : null, last_wake: stewardWakeRaw  ? Number(stewardWakeRaw)  : null, status: stewardStatusRaw  ? JSON.parse(stewardStatusRaw)  : null, interval_ms: intervals.steward },
-    { name: "ground check", last_run: groundCheckRaw ? Number(groundCheckRaw) : null, last_wake: groundCheckWakeRaw ? Number(groundCheckWakeRaw) : null, status: groundCheckStatusRaw ? JSON.parse(groundCheckStatusRaw) : null, interval_ms: intervals.groundCheck },
+    { name: "steward / ground check",  last_run: stewardRaw  ? Number(stewardRaw)  : null, last_wake: stewardWakeRaw  ? Number(stewardWakeRaw)  : null, status: stewardStatusRaw  ? JSON.parse(stewardStatusRaw)  : null, interval_ms: intervals.steward },
     { name: "applier",  last_run: cycleRaw    ? Number(cycleRaw)    : null, last_wake: cycleWakeRaw    ? Number(cycleWakeRaw)    : null, status: cycleStatusRaw    ? JSON.parse(cycleStatusRaw)    : null, interval_ms: intervals.applier },
   ];
 
@@ -1795,6 +1791,7 @@ function healthDetail(w, now) {
     if (status.proposalId) pieces.push(status.proposalId);
     if (Number.isFinite(Number(status.applied))) pieces.push(status.applied + ' applied');
     if (Number.isFinite(Number(status.inspected))) pieces.push(status.inspected + ' inspected');
+    if (Number.isFinite(Number(status.groundChecked))) pieces.push(status.groundChecked + ' checked');
     if (Number.isFinite(Number(status.approved))) pieces.push(status.approved + ' approved');
     if (Number.isFinite(Number(status.held))) pieces.push(status.held + ' held');
     return pieces.join(' · ');

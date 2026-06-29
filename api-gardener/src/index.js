@@ -139,6 +139,7 @@ async function gardenMemoryKeys(env) {
       try {
         const raw = await env.GARDEN.get(item.name);
         const memory = raw ? JSON.parse(raw) : {};
+        if (memory.lastStatus === "needs_preparation") return null;
         const lastAt = memory.lastAt || memory.at || "";
         const ageDays = lastAt ? (Date.now() - new Date(lastAt).getTime()) / 86400000 : 0;
         if (ageDays > MEMORY_RECENT_SKIP_DAYS) return null;
