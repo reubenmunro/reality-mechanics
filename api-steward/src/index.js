@@ -292,7 +292,8 @@ function groundCheck(proposal, entry) {
 
 async function runGroundCheckPass(env, proposals) {
   const candidates = proposals
-    .filter((proposal) => proposal.status === "pending")
+    .filter((proposal) => proposal.status === "pending" || proposal.status === "approved")
+    .filter((proposal) => proposal.steward_action !== "ground_check_pass")
     .filter((proposal) => proposal.steward_action === "light" || Number(proposal.light_count || 0) > 0)
     .slice(0, MAX_PROPOSALS);
 

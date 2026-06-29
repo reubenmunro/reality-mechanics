@@ -1489,38 +1489,18 @@ function baseSeasonHours(p) {
 
 function seasoningText(p) {
   if (p.status === 'needs_preparation') return 'held for gardener preparation';
-  const base = baseSeasonHours(p);
-  const light = Number(p.light_count || 0);
   const shade = Number(p.shade_count || 0);
   if (shade >= 3) return 'held in shade for review';
-
-  const created = new Date(p.proposed_at || p.logged_at || Date.now()).getTime();
-  const lightFactor = Math.max(0.5, 1 - Math.min(light, 2) * 0.25);
-  const shadeFactor = 1 + Math.min(shade, 4) * 0.5;
-  const carefulHours = Math.max(12, base * lightFactor * shadeFactor);
-  const adjusted = carefulHours / Math.max(0.001, Number(gardenTiming.pace || 1));
-  const remainingMs = created + adjusted * 3600000 - Date.now();
-  if (remainingMs <= 0) return 'seasoned, eligible to enter';
-
-  const hours = Math.ceil(remainingMs / 3600000);
-  const days = Math.floor(hours / 24);
-  const rest = hours % 24;
-  if (days > 0) return 'seasoning ' + days + 'd ' + rest + 'h';
-  return 'seasoning ' + hours + 'h';
+  if (p.status === 'approved') return 'grounded, entering through Cycle';
+  if (p.status === 'pending') return 'awaiting steward / ground check';
+  return 'watching';
 }
 
 function seasoningRemainingMs(p) {
   if (p.status === 'needs_preparation') return Infinity;
-  const base = baseSeasonHours(p);
-  const light = Number(p.light_count || 0);
   const shade = Number(p.shade_count || 0);
   if (shade >= 3) return Infinity;
-  const created = new Date(p.proposed_at || p.logged_at || Date.now()).getTime();
-  const lightFactor = Math.max(0.5, 1 - Math.min(light, 2) * 0.25);
-  const shadeFactor = 1 + Math.min(shade, 4) * 0.5;
-  const carefulHours = Math.max(12, base * lightFactor * shadeFactor);
-  const adjusted = carefulHours / Math.max(0.001, Number(gardenTiming.pace || 1));
-  return created + adjusted * 3600000 - Date.now();
+  return 0;
 }
 
 async function signal(id, kind) {

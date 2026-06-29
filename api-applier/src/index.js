@@ -1,6 +1,9 @@
 const DEFAULT_MCP_URL = "https://mcp.realitymechanics.nz/mcp";
 const DEFAULT_GARDEN_URL = "https://realitymechanics.nz";
 const APPLY_BASE_HOURS = 1;
+const NORMAL_APPLY_LIMIT = 2;
+const CATCHUP_APPLY_LIMIT = 6;
+const FETCH_TIMEOUT_MS = 20000;
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -34,42 +37,28 @@ async function readGardenPace(env) {
   return Math.min(stored, 1000);
 }
 
-function baseSeasonHours(proposal) {
-  const kind = String(proposal.kind || "");
-  const order = String(proposal.order || "").toLowerCase();
-  // Mirror the UI seasoning display so what Reuben sees matches when things apply
-  if (order === "ground" || order === "root" || kind === "root" || kind === "trunk") return 168;
-  if (kind === "clean-pass") return 24;
-  if (order === "first") return 168;
-  if (order === "second") return 336;
-  if (order === "third") return 504;
-  if (order === "practice") return 72;
-  if (order === "higher") return 24;
-  return 72;
-}
-
-function adjustedSeasonHours(proposal, pace) {
-  const base = baseSeasonHours(proposal);
-  const shade = Number(proposal.shade_count || 0);
-  const light = Number(proposal.light_count || 0);
-  const lightFactor = Math.max(0.5, 1 - Math.min(light, 2) * 0.25);
-  const shadeFactor = 1 + Math.min(shade, 4) * 0.5;
-  const carefulHours = Math.max(12, base * lightFactor * shadeFactor);
-  return carefulHours / pace;
-}
-
-function seasoning(proposal, pace, nowMs = Date.now()) {
+function groundedEligibility(proposal) {
   const shade = Number(proposal.shade_count || 0);
   if (shade >= 3) return { eligible: false, reason: "held in shade for review" };
+  if (proposal.steward_action !== "ground_check_pass") return { eligible: false, reason: "waiting for ground check" };
+  return { eligible: true, reason: "grounded" };
+}
 
-  const created = new Date(proposal.proposed_at || proposal.logged_at || Date.now()).getTime();
-  const adjusted = adjustedSeasonHours(proposal, pace);
-  const remainingMs = created + adjusted * 3600000 - nowMs;
-  return {
-    eligible: remainingMs <= 0,
-    remainingHours: Math.max(0, Math.ceil(remainingMs / 3600000)),
-    adjustedHours: adjusted,
-  };
+function applyLimitFor(backlog) {
+  if (backlog >= 100) return CATCHUP_APPLY_LIMIT;
+  if (backlog >= 50) return 5;
+  if (backlog >= 20) return 4;
+  return NORMAL_APPLY_LIMIT;
+}
+
+async function fetchWithTimeout(resource, options = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort("timeout"), FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(resource, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function scheduledDue(env, key, baseHours) {
@@ -125,7 +114,7 @@ function parseConcreteProposal(proposedChanges) {
 }
 
 async function mcpCall(env, name, args = {}, auth = false) {
-  const res = await fetch(env.MCP_URL || DEFAULT_MCP_URL, {
+  const res = await fetchWithTimeout(env.MCP_URL || DEFAULT_MCP_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -148,7 +137,7 @@ async function mcpCall(env, name, args = {}, auth = false) {
 }
 
 async function gardenFetch(env, path, options = {}) {
-  const res = await fetch(`${env.GARDEN_URL || DEFAULT_GARDEN_URL}${path}`, {
+  const res = await fetchWithTimeout(`${env.GARDEN_URL || DEFAULT_GARDEN_URL}${path}`, {
     ...options,
     headers: {
       "Accept": "application/json",
@@ -163,29 +152,29 @@ async function gardenFetch(env, path, options = {}) {
 
 async function approvedReadyProposals(env, options = {}) {
   const force = !!options.force;
-  const pace = await readGardenPace(env);
   const data = await gardenFetch(env, "/api/garden/proposals", { headers: {} });
   const approved = (data.proposals || [])
     .filter((proposal) => proposal.status === "approved")
-    .filter((proposal) => proposal.steward_action === "ground_check_pass")
-    .map((proposal) => ({ proposal, season: seasoning(proposal, pace) }))
-    .filter(({ season }) => force ? season.reason !== "held in shade for review" : season.eligible)
+    .map((proposal) => ({ proposal, eligibility: groundedEligibility(proposal) }))
+    .filter(({ eligibility }) => force ? eligibility.reason !== "held in shade for review" : eligibility.eligible)
     .sort((a, b) => String(a.proposal.proposed_at || a.proposal.logged_at || "").localeCompare(String(b.proposal.proposed_at || b.proposal.logged_at || "")));
+  const limit = force ? CATCHUP_APPLY_LIMIT : applyLimitFor(approved.length);
+  const selected = approved.slice(0, limit);
 
-  if (!approved.length) {
+  if (!selected.length) {
     const next = (data.proposals || [])
       .filter((proposal) => proposal.status === "approved")
-      .map((proposal) => ({ id: proposal.id, term: proposal.term, season: seasoning(proposal, pace) }))
-      .sort((a, b) => (a.season.remainingHours ?? Infinity) - (b.season.remainingHours ?? Infinity))[0];
-    return { proposals: [], next };
+      .map((proposal) => ({ id: proposal.id, term: proposal.term, eligibility: groundedEligibility(proposal) }))
+      .find((proposal) => proposal.eligibility.reason);
+    return { proposals: [], next, backlog: approved.length, limit };
   }
 
   const proposals = [];
-  for (const { proposal: summary } of approved) {
+  for (const { proposal: summary } of selected) {
     const detail = await gardenFetch(env, `/api/garden/proposal/${encodeURIComponent(summary.id)}`);
     proposals.push({ ...summary, ...detail });
   }
-  return { proposals, next: null };
+  return { proposals, next: null, backlog: approved.length, limit };
 }
 
 async function applyProposal(env, proposal) {
@@ -243,7 +232,7 @@ async function applyProposal(env, proposal) {
 async function runApplyPass(env, options = {}) {
   const selected = await approvedReadyProposals(env, options);
   if (!selected.proposals.length) {
-    return { ok: true, skipped: true, reason: "no seasoned approved proposal", next: selected.next || null };
+    return { ok: true, skipped: true, reason: "no grounded approved proposal", next: selected.next || null, backlog: selected.backlog || 0, limit: selected.limit || NORMAL_APPLY_LIMIT };
   }
 
   const results = [];
@@ -279,6 +268,10 @@ async function runApplyPass(env, options = {}) {
     applied: results.filter((result) => result.ok && !result.skipped).length,
     skipped: results.filter((result) => result.skipped).length,
     failed: results.filter((result) => !result.ok && !result.skipped).length,
+    backlog: selected.backlog,
+    limit: selected.limit,
+    firstSkip: results.find((result) => result.skipped)?.reason || null,
+    firstFailure: results.find((result) => !result.ok && !result.skipped)?.error || null,
     results,
   };
 }
@@ -287,21 +280,24 @@ export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil((async () => {
       await recordSchedule(env, "garden-cycle", { state: "wake" });
-      const due = await scheduledDue(env, "garden-cycle", APPLY_BASE_HOURS);
-      if (!due.due) {
-        await recordSchedule(env, "garden-cycle", { state: "skip", nextMs: due.nextMs || null, intervalMs: due.intervalMs });
-        return;
-      }
+      const pace = await readGardenPace(env);
+      const intervalMs = Math.max(60 * 1000, APPLY_BASE_HOURS * 3600000 / pace);
+      if (env.GARDEN) await env.GARDEN.put("schedule:garden-cycle:last_run", String(Date.now()));
       try {
         const result = await runApplyPass(env);
         await recordSchedule(env, "garden-cycle", {
           state: "ok",
           result: result?.attempted ? "ran" : result?.skipped ? "skipped" : "ran",
           reason: result?.reason || null,
+          intervalMs,
           attempted: result?.attempted ?? null,
           applied: result?.applied ?? null,
           failed: result?.failed ?? null,
           skipped: result?.skipped ?? null,
+          backlog: result?.backlog ?? null,
+          limit: result?.limit ?? null,
+          firstSkip: result?.firstSkip || null,
+          firstFailure: result?.firstFailure || null,
           next: result?.next?.term || result?.next?.id || null,
         });
       } catch (error) {
