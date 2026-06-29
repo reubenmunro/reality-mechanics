@@ -24,7 +24,7 @@ else
   exit 1
 fi
 
-"$NODE_BIN" --check .atlas-publisher/main-website-worker.js
+"$NODE_BIN" --input-type=module --check < .atlas-publisher/main-website-worker.js
 WORKER_PATH="$PWD/.atlas-publisher/main-website-worker.js"
 WRANGLER_WORKDIR="$HOME/Reality_Atlas_Build/.wrangler-main-workdir"
 WRANGLER_CLI_DIR="$HOME/Reality_Atlas_Build/.wrangler-cli"
@@ -63,7 +63,7 @@ else
   exit 1
 fi
 
-(cd "$WRANGLER_WORKDIR" && NPM_CONFIG_CACHE="$NPM_CACHE_DIR" "$WRANGLER_BIN" deploy "$WORKER_PATH" --name=super-frost-d434 --compatibility-date=2026-06-03)
+(cd "$WRANGLER_WORKDIR" && NPM_CONFIG_CACHE="$NPM_CACHE_DIR" "$WRANGLER_BIN" deploy "$WORKER_PATH" --name=super-frost-d434 --compatibility-date=2026-06-03 --keep-vars)
 
 echo
 echo "Done."

@@ -581,6 +581,13 @@ async function signalProposal(request, env, id, signal) {
 }
 
 async function handleGardenStats(request, env) {
+  if (request.method === "GET") {
+    if (!env.GARDEN)
+      return new Response(JSON.stringify({ ok: true, stats: null }), { status: 200, headers: JSON_HEADERS });
+    const statsRaw = await env.GARDEN.get("garden:stats");
+    return new Response(JSON.stringify({ ok: true, stats: statsRaw ? JSON.parse(statsRaw) : null }), { status: 200, headers: JSON_HEADERS });
+  }
+
   if (request.method !== "POST")
     return new Response(JSON.stringify({ error: "method_not_allowed" }), { status: 405, headers: JSON_HEADERS });
   if (!gardenAuthorized(request, env))
@@ -1288,11 +1295,12 @@ function renderTending(proposals) {
   (proposals || []).forEach(function (p) { byId[p.id] = p; });
   const fateOf = function (id) {
     const t = tended[id], p = byId[id];
-    if (t.kind === 'ground') return 'you approved it';
+    if (t.kind === 'ground') return 'marked grounded';
     if (!p) return 'moved on';
     if (p.status === 'approved' || p.status === 'applied') return 'took root';
     if (p.status === 'discarded') return 'let go';
-    return 'seasoning';
+    if (p.status === 'needs_preparation') return 'held for prep';
+    return 'being checked';
   };
   const rows = ids.map(function (id) {
     const t = tended[id];
@@ -1774,6 +1782,10 @@ function healthDetail(w, now) {
     if (Number.isFinite(Number(status.groundChecked))) pieces.push(status.groundChecked + ' checked');
     if (Number.isFinite(Number(status.approved))) pieces.push(status.approved + ' approved');
     if (Number.isFinite(Number(status.held))) pieces.push(status.held + ' held');
+    if (Number.isFinite(Number(status.backlog))) pieces.push(status.backlog + ' queued');
+    if (Number.isFinite(Number(status.limit))) pieces.push('limit ' + status.limit);
+    if (status.firstSkip) pieces.push('skip: ' + status.firstSkip);
+    if (status.firstFailure) pieces.push('fail: ' + status.firstFailure);
     return pieces.join(' · ');
   }
   if (status.state === 'wake') return 'awake';
@@ -1824,7 +1836,7 @@ async function loadHealth() {
     const statusText = worstStatus === 'ok' ? ' — all running' : ' — ' + worstName + ' ' + worstStatus;
     if (summaryEl) { summaryEl.textContent = statusText; summaryEl.style.color = statusColor; }
 
-    const statusLabels = { pending: 'needs attention', needs_preparation: 'needs prep', approved: 'ready for cycle' };
+    const statusLabels = { pending: 'awaiting check', needs_preparation: 'held for prep', approved: 'entering Cycle' };
     const parts = Object.entries(statusLabels)
       .map(([k, label]) => counts[k] ? counts[k] + ' ' + label : null)
       .filter(Boolean);
