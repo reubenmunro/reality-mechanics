@@ -3350,7 +3350,7 @@ function computeOrderLabels() {
     .filter((op) => spineFracById[op.id] != null)
     .map((op) => ({ id: op.id, deg: termDegree(op) }))
     .sort((a, b) => b.deg - a.deg)
-    .slice(0, 14)
+    .slice(0, 10)
     .map((o) => o.id);
 }
 function setScaleMode(mode) {
@@ -3368,6 +3368,28 @@ function nearestOrderTerm(x, y) {
     if (d < bestDist) { bestDist = d; best = id; }
   }
   return bestDist < 30 ? best : null;
+}
+function orderWheelTermPosition(op, idx, total, cx, cy, rx, ry) {
+  const order = spineDisplayOrder(op);
+  const orderDepth = ORDER_DEPTHS[String(order || op.order || 'ground').toLowerCase()] ?? 0.5;
+  const profile = op.profile || computeProfile(op);
+  const physics = profile.engine?.values || enginePhysics(profile).values;
+  const seed = hashStr(op.id);
+  const base = total ? idx / total : 0;
+  const a = Math.PI + base * Math.PI * 2;
+  const ring = 0.54
+    + orderDepth * 0.27
+    + profile.resolution * 0.05
+    + physics.capacity * 0.04
+    - physics.gravity * 0.03;
+  const breathe = Math.sin(time * (0.008 + physics.velocity * 0.018 + physics.heat * 0.01) + (seed % 628) / 100) *
+    (3 + physics.opening * 9 + physics.pressure * 4 - physics.damping * 3);
+  return {
+    angle: a,
+    x: cx + Math.cos(a) * (rx * ring + breathe),
+    y: cy + Math.sin(a) * (ry * ring + breathe * 0.72),
+    ring,
+  };
 }
 function drawOrderScaleView() {
   const { cx, cy, rx, ry } = orderScaleGeometry();
@@ -3390,14 +3412,14 @@ function drawOrderScaleView() {
   });
   orderScreenPos = {};
   ctx.globalCompositeOperation = 'lighter';
-  Object.values(allOps).forEach((op) => {
-    const frac = spineFracById[op.id];
-    if (frac == null) return;
-    const a = Math.PI + frac * Math.PI * 2;
+  const ids = spineFlat.filter((id) => allOps[id]);
+  const total = ids.length || 1;
+  ids.forEach((id, idx) => {
+    const op = allOps[id];
     const deg = termDegree(op);
-    const depth = 0.1 + (hashStr(op.id) % 100) / 100 * 0.44;
-    const ex = cx + Math.cos(a) * rx * (1 - depth);
-    const ey = cy + Math.sin(a) * ry * (1 - depth);
+    const p = orderWheelTermPosition(op, idx, total, cx, cy, rx, ry);
+    const ex = p.x;
+    const ey = p.y;
     orderScreenPos[op.id] = { x: ex, y: ey };
     const fr = colourMode === 'fire' ? fireFor(op.order) : { h: 24, s: 80, l: 50 };
     const bright = Math.min(1, 0.32 + deg * 0.06);
@@ -3411,11 +3433,17 @@ function drawOrderScaleView() {
   ctx.globalCompositeOperation = 'source-over';
   ctx.font = '600 12px "Iowan Old Style", Charter, Georgia, serif';
   ctx.textAlign = 'center';
+  const labelBoxes = [];
   orderLabelIds.forEach((id) => {
     const p = orderScreenPos[id];
     if (!p) return;
+    const title = allOps[id].title;
+    const w = ctx.measureText(title).width + 14;
+    const box = { x0: p.x - w / 2, x1: p.x + w / 2, y0: p.y - 24, y1: p.y - 4 };
+    if (labelBoxes.some((b) => !(box.x1 < b.x0 || box.x0 > b.x1 || box.y1 < b.y0 || box.y0 > b.y1))) return;
+    labelBoxes.push(box);
     ctx.fillStyle = 'rgba(200,180,155,0.52)';
-    ctx.fillText(allOps[id].title, p.x, p.y - 9);
+    ctx.fillText(title, p.x, p.y - 9);
   });
   ctx.font = '500 15px "Iowan Old Style", Charter, Georgia, serif';
   ctx.fillStyle = 'rgba(200,180,155,0.5)';
@@ -3627,7 +3655,7 @@ function spineEnterAtPoint(x, y) {
 canvas.addEventListener('pointerdown', (event) => {
   canvas.setPointerCapture(event.pointerId);
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
-  if (activePointers.size === 1 && isNearSpine(event.clientX, event.clientY)) {
+  if (scaleMode !== 'order' && activePointers.size === 1 && isNearSpine(event.clientX, event.clientY)) {
     spineActive = true;
     spineCoasting = false;
     spineVelocity = 0;
@@ -3646,7 +3674,7 @@ canvas.addEventListener('pointerdown', (event) => {
   }
 });
 canvas.addEventListener('pointermove', (event) => {
-  hoverId = nearestOperation(event.clientX, event.clientY);
+  hoverId = scaleMode === 'order' ? nearestOrderTerm(event.clientX, event.clientY) : nearestOperation(event.clientX, event.clientY);
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (spineActive) {
     const now = performance.now();
