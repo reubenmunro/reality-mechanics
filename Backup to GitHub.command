@@ -11,6 +11,12 @@ fi
 echo "Backing up Reality Mechanics to GitHub..."
 echo
 
+if [ -f "scripts/root-live-atlas.mjs" ]; then
+  echo "Rooting applied live Garden growth into Markdown first..."
+  node scripts/root-live-atlas.mjs --apply
+  echo
+fi
+
 git add -A -- \
   ':!Reality_Mechanics/.obsidian/workspace.json' \
   ':!Reality_Mechanics/.obsidian/workspace-mobile.json' \
