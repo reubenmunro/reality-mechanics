@@ -180,8 +180,8 @@ function gardenIntervalsForPace(pace) {
   const safePace = Math.max(0.001, Number(pace || 1));
   return {
     gardener: Math.max(minMs, 3600000 / safePace),
-    steward: Math.max(minMs, 86400000 / safePace),
-    applier: Math.max(minMs, 86400000 / safePace),
+    steward: Math.max(minMs, 3600000 / safePace),
+    applier: Math.max(minMs, 3600000 / safePace),
   };
 }
 
