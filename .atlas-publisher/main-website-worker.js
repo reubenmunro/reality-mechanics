@@ -756,7 +756,7 @@ function gardenPage(env) {
 
     /* ── Proposals ── */
     #proposals-wrap {
-      max-width: 640px; margin: 0 auto; padding: 0 1.4rem 6rem;
+      max-width: 760px; margin: 0 auto; padding: 0 1.4rem 6rem;
     }
     #proposals-label {
       font-family: system-ui, sans-serif;
@@ -776,6 +776,7 @@ function gardenPage(env) {
       50%      { opacity: 1;   transform: scale(1.5); }
     }
     #garden-status-strip {
+      display: none;
       margin: -0.75rem 0 1.35rem;
       min-height: 1rem;
       display: flex; flex-wrap: wrap; gap: 0.42rem 0.7rem;
@@ -784,12 +785,36 @@ function gardenPage(env) {
       text-transform: uppercase;
       color: rgba(77,94,114,0.78);
     }
+    #garden-term-rail {
+      margin: -0.35rem 0 1.25rem;
+      display: flex; gap: 0.55rem; overflow-x: auto; padding-bottom: 0.3rem;
+      scrollbar-width: none;
+    }
+    #garden-term-rail::-webkit-scrollbar { display: none; }
+    .garden-term-tab {
+      flex: 0 0 auto; max-width: 16rem;
+      border: 0; border-bottom: 1px solid rgba(255,255,255,0.055);
+      background: transparent; color: rgba(77,94,114,0.92);
+      padding: 0.45rem 0.15rem 0.38rem;
+      font: 700 0.58rem/1.2 system-ui, sans-serif;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      cursor: pointer;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .garden-term-tab.active {
+      color: rgba(212,197,169,0.82);
+      border-bottom-color: hsl(var(--flame, 24 84% 50%) / 0.68);
+    }
+    .garden-term-tab .count {
+      margin-left: 0.35rem; color: rgba(200,96,26,0.62);
+    }
     #garden-status-strip span {
       white-space: nowrap;
     }
     #garden-status-strip .warm { color: rgba(200,96,26,0.62); }
     #garden-status-strip .cool { color: rgba(100,165,220,0.64); }
     #garden-status-strip .held { color: rgba(154,142,118,0.68); }
+    #garden-status-strip { display: none !important; }
 
     .proposal-card {
       margin-bottom: 1.2rem;
@@ -866,6 +891,7 @@ function gardenPage(env) {
       text-transform: uppercase; color: rgba(120,145,175,0.8); margin-bottom: 0.5rem;
       display: flex; gap: 1rem; align-items: center;
     }
+    .pc-meta .quiet { color: rgba(77,94,114,0.66); }
     .pc-kind { color: rgba(200,96,26,0.85); }
     .pc-conf-high  { color: rgba(100,195,100,0.85); }
     .pc-conf-med   { color: rgba(210,185,80,0.85); }
@@ -887,14 +913,14 @@ function gardenPage(env) {
     }
     .pc-paths a:hover { color: rgba(200,96,26,0.78); }
     .pc-summary {
-      font-size: 0.88rem; line-height: 1.55;
+      font-size: 0.96rem; line-height: 1.55;
       color: rgba(225,210,180,0.9); margin-bottom: 1rem;
     }
     .pc-edit {
-      margin: -0.35rem 0 1rem;
+      margin: 0 0 1rem;
       border-top: 1px solid rgba(255,255,255,0.026);
       border-bottom: 1px solid rgba(255,255,255,0.026);
-      padding: 0.62rem 0;
+      padding: 0.8rem 0;
     }
     .pc-edit summary {
       cursor: pointer;
@@ -923,7 +949,7 @@ function gardenPage(env) {
       color: rgba(212,197,169,0.5);
     }
     .pc-edit pre {
-      margin-top: 0.35rem; max-height: 260px; overflow: auto;
+      margin-top: 0.35rem; max-height: min(42vh, 360px); overflow: auto;
       white-space: pre-wrap; word-break: break-word;
       font: 0.78rem/1.48 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       color: rgba(212,197,169,0.58);
@@ -938,7 +964,7 @@ function gardenPage(env) {
       text-transform: uppercase; color: rgba(100,165,220,0.85); margin: -0.35rem 0 0.9rem;
     }
     .pc-signals {
-      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.15rem;
+      display: none;
     }
     .pc-signal {
       font-family: system-ui, sans-serif;
@@ -975,6 +1001,13 @@ function gardenPage(env) {
       min-width: 9.4rem;
       background: rgba(200,96,26,0.035);
     }
+    .pc-field-link {
+      min-height: 36px; padding: 0.48rem 0;
+      color: rgba(100,165,220,0.62); text-decoration: none;
+      font: 700 0.58rem/36px system-ui, sans-serif;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .pc-field-link:hover { color: rgba(100,165,220,0.9); }
     .pc-btn-ground:hover {
       border-color: rgba(200,96,26,0.8); color: #c8601a;
       background: rgba(200,96,26,0.06);
@@ -1068,6 +1101,7 @@ function gardenPage(env) {
       color: rgba(77,94,114,0.72);
     }
     #garden-mode {
+      display: none;
       margin-top: 1.8rem;
       font-family: system-ui, sans-serif;
       font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
@@ -1075,6 +1109,7 @@ function gardenPage(env) {
       color: rgba(200,96,26,0.58);
     }
     #garden-note {
+      display: none;
       margin-top: 0.45rem;
       max-width: 34rem;
       font-family: system-ui, sans-serif;
@@ -1082,6 +1117,7 @@ function gardenPage(env) {
       color: rgba(120,145,175,0.7);
     }
     #health-control {
+      display: none;
       margin-top: 1.6rem;
       border-top: 1px solid rgba(255,255,255,0.035);
       padding-top: 1rem;
@@ -1163,9 +1199,10 @@ function gardenPage(env) {
 <div id="proposals-wrap">
   <div id="proposals-label">
     <span class="pulse-dot"></span>
-    <span id="plabel-text">proposals</span>
+    <span id="plabel-text">term tending</span>
   </div>
   <div id="garden-status-strip" aria-live="polite"></div>
+  <div id="garden-term-rail" aria-label="Terms with proposed edits"></div>
   <details id="garden-tending" style="display:none">
     <summary><span class="gt-pulse"></span><span id="gt-tally">your tending</span></summary>
     <div id="gt-rows"></div>
@@ -1211,6 +1248,7 @@ const voterId = (() => {
 })();
 let gardenTiming = ${JSON.stringify(gardenTiming(env))};
 let lastProposals = [];
+let activeGardenTerm = '';
 
 // Fire palette shared with the Field: a tended term glows the same order-colour it burns above.
 const FIRE_ORDERS = {
@@ -1245,7 +1283,7 @@ function renderTending(proposals) {
   (proposals || []).forEach(function (p) { byId[p.id] = p; });
   const fateOf = function (id) {
     const t = tended[id], p = byId[id];
-    if (t.kind === 'ground') return 'you grounded it';
+    if (t.kind === 'ground') return 'you approved it';
     if (!p) return 'moved on';
     if (p.status === 'approved' || p.status === 'applied') return 'took root';
     if (p.status === 'discarded') return 'let go';
@@ -1272,6 +1310,149 @@ function renderTending(proposals) {
   wrap.style.display = '';
 }
 
+function proposalTermKey(p) {
+  return String(p.proposal_for || p.entry_id || p.term || p.id || '');
+}
+
+function selectGardenTerm(key) {
+  activeGardenTerm = String(key || '');
+  if (activeGardenTerm) {
+    try { history.replaceState(null, '', '#term=' + encodeURIComponent(activeGardenTerm)); } catch (e) {}
+    ls.setItem('gardenActiveTerm', activeGardenTerm);
+  }
+  renderGarden(lastProposals);
+}
+
+function renderGardenTermRail(proposals) {
+  const rail = document.getElementById('garden-term-rail');
+  if (!rail) return;
+  const groups = [];
+  const byKey = {};
+  (proposals || []).forEach((p) => {
+    const key = proposalTermKey(p);
+    if (!key) return;
+    if (!byKey[key]) {
+      byKey[key] = { key, title: p.term || key, order: p.order || '', count: 0, newest: 0 };
+      groups.push(byKey[key]);
+    }
+    byKey[key].count += 1;
+    byKey[key].newest = Math.max(byKey[key].newest, new Date(p.proposed_at || p.logged_at || 0).getTime() || 0);
+  });
+  groups.sort((a, b) => b.newest - a.newest);
+  if (!activeGardenTerm || !byKey[activeGardenTerm]) {
+    const hashTerm = decodeURIComponent((location.hash.match(/term=([^&]+)/) || [])[1] || '');
+    activeGardenTerm = byKey[hashTerm] ? hashTerm : (groups[0]?.key || '');
+  }
+  rail.innerHTML = groups.map((g) =>
+    '<button class="garden-term-tab ' + (g.key === activeGardenTerm ? 'active' : '') + '" style="--flame:' + flameVar(g.order) + '" onclick="selectGardenTerm(' + JSON.stringify(g.key).replace(/"/g, '&quot;') + ')">'
+      + escape(g.title) + (g.count > 1 ? '<span class="count">' + g.count + '</span>' : '') +
+    '</button>'
+  ).join('');
+}
+
+function renderGarden(proposals) {
+  const list = document.getElementById('proposals-list');
+  const label = document.getElementById('proposals-label');
+  const labelText = document.getElementById('plabel-text');
+  const visible = (proposals || []).filter(p => p.status === 'pending');
+  const grounded = (proposals || []).filter(p => p.status === 'approved');
+  renderGardenStatusStrip({
+    pending: visible.length,
+    approved: grounded.length,
+    needs_preparation: (proposals || []).filter(p => p.status === 'needs_preparation').length,
+    applied: (proposals || []).filter(p => p.status === 'applied').length,
+  });
+
+  renderGardenTermRail(visible);
+  list.innerHTML = '';
+
+  if (!visible.length) {
+    list.innerHTML = '<div id="empty">the garden is resting</div>';
+    label.classList.add('quiet');
+    labelText.textContent = grounded.length ? 'all tended' : 'term tending';
+    return;
+  }
+
+  const termProposals = visible
+    .filter((p) => proposalTermKey(p) === activeGardenTerm)
+    .sort((a, b) => new Date(b.proposed_at || b.logged_at || 0) - new Date(a.proposed_at || a.logged_at || 0));
+  const first = termProposals[0] || visible[0];
+  label.classList.toggle('quiet', false);
+  labelText.textContent = first?.term || 'term tending';
+  if (first) renderProposalCard(first, 0, list);
+}
+
+function renderProposalCard(p, i, list) {
+  let card;
+  try {
+  card = document.createElement('div');
+  card.className = 'proposal-card ' + (p.status || 'pending');
+  card.dataset.id = p.id;
+  card.dataset.kind = p.kind || '';
+  card.dataset.order = p.order || '';
+  card.dataset.term = p.term || '';
+  card.dataset.proposedAt = p.proposed_at || p.logged_at || '';
+  card.dataset.loggedAt = p.logged_at || '';
+  card.style.setProperty('--flame', flameVar(p.order));
+
+  const mine = ls.getItem('gardenSignal:' + p.id) || '';
+  const season = seasoningText(p);
+  const lightCount = Number(p.light_count || 0);
+  const shadeCount = Number(p.shade_count || 0);
+  const parsed = parseProposalEdit(p.proposed_changes || '');
+  const replacement = parsed.replacement || '';
+  const notes = parsed.notes || '';
+  const section = parsed.section || '';
+  const stewardNote = p.steward_note || '';
+  const stewardAction = p.steward_action || '';
+  const fieldHref = p.proposal_for ? '/field#' + encodeURIComponent(p.proposal_for) : '/field';
+
+  card.innerHTML = \`
+    <div class="pc-meta">
+      <span class="pc-flame" style="background:hsl(var(--flame))"></span>
+      <span class="quiet">\${escape(p.kind || 'proposal')}</span>
+      <span class="quiet">\${timeAgo(new Date(p.proposed_at || p.logged_at || Date.now()))}</span>
+    </div>
+    <div class="pc-term">\${escape(p.term || '')}</div>
+    <div class="pc-summary">\${escape(p.summary || '')}</div>
+    <div class="pc-felt"></div>
+    <div class="pc-reason"><input type="text" maxlength="160" placeholder="why? — your reason, kept on your device" onchange="saveReason('\${p.id}', this.value)" /></div>
+    <details class="pc-edit" open>
+      <summary>proposed edit</summary>
+      \${section ? \`<div class="pc-edit-label">Section</div><div class="pc-edit-section">\${escape(section)}</div>\` : ''}
+      \${replacement ? \`<div class="pc-edit-label">Replacement</div><pre>\${escape(replacement)}</pre>\` : '<div class="pc-edit-notes">No prepared replacement yet.</div>'}
+      \${notes ? \`<div class="pc-edit-label">Notes</div><div class="pc-edit-notes">\${escape(notes)}</div>\` : ''}
+      \${stewardNote ? \`<div class="pc-edit-label">Steward\${stewardAction ? ' · ' + escape(stewardAction) : ''}</div><div class="pc-edit-notes">\${escape(stewardNote)}</div>\` : ''}
+      \${p.reciprocity_issues ? \`<div class="pc-edit-label">Trace check</div><div class="pc-edit-notes">\${escape(p.reciprocity_issues)}</div>\` : ''}
+    </details>
+    <div class="pc-season">\${escape(season)}</div>
+    <div class="pc-signals">
+      <button class="pc-signal light \${mine === 'light' ? 'active' : ''}" onclick="signal('\${p.id}','light')">Light \${lightCount}</button>
+      <button class="pc-signal shade \${mine === 'shade' ? 'active' : ''}" onclick="signal('\${p.id}','shade')">Shade \${shadeCount}</button>
+    </div>
+    <div class="pc-actions">
+      <button class="pc-btn pc-btn-ground" onclick="act('\${p.id}','approved')">Approve</button>
+      <a class="pc-field-link" href="\${fieldHref}">Field</a>
+      <button class="pc-btn pc-btn-discard" onclick="act('\${p.id}','discarded')">Let go</button>
+    </div>
+  \`;
+    const tendedRec = readTended()[p.id];
+    if (tendedRec && tendedRec.reason) {
+      const rwrap = card.querySelector('.pc-reason');
+      const rinput = card.querySelector('.pc-reason input');
+      if (rwrap) rwrap.classList.add('show');
+      if (rinput) rinput.value = tendedRec.reason;
+    }
+    list.appendChild(card);
+  } catch(e) {
+    console.error('[garden] card error', i, p && p.term, e.message);
+    const err = document.createElement('div');
+    err.style.cssText = 'color:#ff6622;padding:0.5rem 0;font-family:system-ui;font-size:0.75rem';
+    err.textContent = 'proposal error: ' + e.message;
+    list.appendChild(err);
+  }
+}
+
 async function load() {
   const jsEl = document.getElementById('js-loading');
   if (jsEl) jsEl.textContent = 'js running…';
@@ -1286,118 +1467,9 @@ async function load() {
   }
   const { proposals = [], stats = null, timing = null } = data;
   gardenTiming = timing || gardenTiming;
-  renderPaceControl();
-
-  // Render proposals
-  const list = document.getElementById('proposals-list');
-  const label = document.getElementById('proposals-label');
-  const labelText = document.getElementById('plabel-text');
-
-  const visible = proposals.filter(p => p.status === 'pending');
-  const grounded = proposals.filter(p => p.status === 'approved');
-  renderGardenStatusStrip({
-    pending: visible.length,
-    approved: grounded.length,
-    needs_preparation: proposals.filter(p => p.status === 'needs_preparation').length,
-    applied: proposals.filter(p => p.status === 'applied').length,
-  });
-
-  list.innerHTML = '';
-
-  if (!visible.length) {
-    list.innerHTML = '<div id="empty">no proposals yet — the garden is resting</div>';
-    label.classList.add('quiet');
-    labelText.textContent = grounded.length ? 'all grounded' : 'proposals';
-    return;
-  }
-
-  labelText.textContent = visible.length
-    ? visible.length + ' ungrounded'
-    : 'all tended';
-  if (!visible.length) label.classList.add('quiet');
-
-  proposals.forEach((p, i) => {
-    if (p.status !== 'pending') return;
-    let card;
-    try {
-    card = document.createElement('div');
-    card.className = 'proposal-card ' + (p.status || 'pending');
-    card.dataset.id = p.id;
-    card.dataset.kind = p.kind || '';
-    card.dataset.order = p.order || '';
-    card.dataset.term = p.term || '';
-    card.dataset.proposedAt = p.proposed_at || p.logged_at || '';
-    card.dataset.loggedAt = p.logged_at || '';
-    card.style.setProperty('--flame', flameVar(p.order));
-
-    const confClass = p.confidence === 'high' ? 'pc-conf-high'
-                    : p.confidence === 'low'  ? 'pc-conf-low'
-                    : 'pc-conf-med';
-    const mine = ls.getItem('gardenSignal:' + p.id) || '';
-    const season = seasoningText(p);
-    const lightCount = Number(p.light_count || 0);
-    const shadeCount = Number(p.shade_count || 0);
-    const parsed = parseProposalEdit(p.proposed_changes || '');
-    const replacement = parsed.replacement || '';
-    const notes = parsed.notes || '';
-    const section = parsed.section || '';
-    const canInspect = Boolean(section || replacement || notes || p.reciprocity_issues);
-    const stewardNote = p.steward_note || '';
-    const stewardAction = p.steward_action || '';
-    const statusLabel = p.status === 'needs_preparation'
-      ? 'needs gardener preparation'
-      : '';
-
-    card.innerHTML = \`
-      <div class="pc-meta">
-        <span class="pc-flame" style="background:hsl(var(--flame))"></span>
-        <span class="pc-kind">\${escape(p.kind || '')}</span>
-        <span>\${timeAgo(new Date(p.proposed_at || p.logged_at || Date.now()))}</span>
-      </div>
-      <div class="pc-term">\${escape(p.term || '')}</div>
-      \${p.proposal_for ? \`<div class="pc-paths"><a href="/atlas#\${encodeURIComponent(p.proposal_for)}">Atlas</a><a href="/field#\${encodeURIComponent(p.proposal_for)}">Field</a></div>\` : ''}
-      <div class="pc-summary">\${escape(p.summary || '')}</div>
-      <div class="pc-felt"></div>
-      <div class="pc-reason"><input type="text" maxlength="160" placeholder="why? — your reason, kept on your device" onchange="saveReason('\${p.id}', this.value)" /></div>
-      <details class="pc-edit">
-        <summary>look closer</summary>
-        <div class="pc-edit-label">Confidence</div><div class="pc-edit-notes \${confClass}">\${escape(p.confidence || 'unstated')}</div>
-        \${stewardNote ? \`<div class="pc-edit-label">Steward\${stewardAction ? ' · ' + escape(stewardAction) : ''}</div><div class="pc-edit-notes">\${escape(stewardNote)}</div>\` : ''}
-        \${section ? \`<div class="pc-edit-label">Section</div><div class="pc-edit-section">\${escape(section)}</div>\` : ''}
-        \${replacement ? \`<div class="pc-edit-label">Proposed replacement</div><pre>\${escape(replacement)}</pre>\` : ''}
-        \${notes ? \`<div class="pc-edit-label">Notes</div><div class="pc-edit-notes">\${escape(notes)}</div>\` : ''}
-        \${p.reciprocity_issues ? \`<div class="pc-edit-label">Trace check</div><div class="pc-edit-notes">\${escape(p.reciprocity_issues)}</div>\` : ''}
-      </details>
-      <div class="pc-season">\${escape(season)}</div>
-      \${p.status === 'pending' ? \`
-      <div class="pc-signals">
-        <button class="pc-signal light \${mine === 'light' ? 'active' : ''}" onclick="signal('\${p.id}','light')">Light \${lightCount}</button>
-        <button class="pc-signal shade \${mine === 'shade' ? 'active' : ''}" onclick="signal('\${p.id}','shade')">Shade \${shadeCount}</button>
-      </div>
-      <div class="pc-actions">
-        <button class="pc-btn pc-btn-ground" onclick="act('\${p.id}','approved')">Ground</button>
-        <button class="pc-btn pc-btn-discard" onclick="act('\${p.id}','discarded')">Discard</button>
-      </div>\` : \`<div class="pc-meta" style="color:rgba(120,145,175,0.6)">\${statusLabel || escape(p.status || '')}</div>\`}
-    \`;
-      const tendedRec = readTended()[p.id];
-      if (tendedRec && tendedRec.reason) {
-        const rwrap = card.querySelector('.pc-reason');
-        const rinput = card.querySelector('.pc-reason input');
-        if (rwrap) rwrap.classList.add('show');
-        if (rinput) rinput.value = tendedRec.reason;
-      }
-      list.appendChild(card);
-      console.log('[garden] rendered', i, p.term, p.status);
-    } catch(e) {
-      console.error('[garden] card error', i, p && p.term, e.message);
-      const err = document.createElement('div');
-      err.style.cssText = 'color:#ff6622;padding:0.5rem 0;font-family:system-ui;font-size:0.75rem';
-      err.textContent = '⚠️ ' + (p && p.term || 'proposal ' + i) + ': ' + e.message;
-      list.appendChild(err);
-    }
-  });
-
   lastProposals = proposals;
+  renderPaceControl();
+  renderGarden(proposals);
   renderTending(proposals);
 }
 
@@ -1527,7 +1599,7 @@ async function act(id, status) {
   }
   if (actionButton) {
     actionButton.disabled = true;
-    actionButton.textContent = isGround ? 'Holding' : 'Discarding';
+    actionButton.textContent = isGround ? 'Approving' : 'Letting go';
   }
 
   const ep = status === 'approved' ? '/api/garden/approve/' + id
@@ -1552,9 +1624,9 @@ async function act(id, status) {
     if (card) {
       if (isGround) {
         const season = card.querySelector('.pc-season');
-        if (season) season.textContent = 'grounded';
+        if (season) season.textContent = 'approved';
         if (actionButton) {
-          actionButton.textContent = 'Grounded';
+          actionButton.textContent = 'Approved';
           actionButton.classList.add('settled');
         }
         card.querySelectorAll('button').forEach((button) => { button.disabled = true; });
@@ -1580,7 +1652,7 @@ async function act(id, status) {
     }
     if (actionButton) {
       actionButton.disabled = false;
-      actionButton.textContent = isGround ? 'Ground' : 'Discard';
+      actionButton.textContent = isGround ? 'Approve' : 'Let go';
     }
   }
 }
@@ -1603,7 +1675,7 @@ function paceLabel(pace) {
 function modeLabel(pace) {
   const n = Number(pace || 1);
   const gardenerMs = Math.max(60000, 3600000 / Math.max(0.001, n));
-  const cycleMs = Math.max(60000, 86400000 / Math.max(0.001, n));
+  const cycleMs = Math.max(60000, 3600000 / Math.max(0.001, n));
   const mode = n === 1 ? 'careful' : 'nursery';
   return mode + ' mode · gardener ' + formatDuration(gardenerMs) + ' · steward/cycle ' + formatDuration(cycleMs);
 }
