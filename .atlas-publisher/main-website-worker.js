@@ -1,6 +1,13 @@
 // main-website-worker.js
 // realitymechanics.nz — the Atlas is the site
 
+import { RELATION_FIELDS } from "../atlas-structure-contract.mjs";
+import { observeParticipantMovement } from "../relation-event-runtime.mjs";
+import { EMPTY_PARTICIPANT_STATE, reduceParticipantState } from "../participant-state-reducer.mjs";
+import { respondWithPulse } from "../pulse-inhabitant.mjs";
+import { respondWithThreshold } from "../threshold-inhabitant.mjs";
+import { gatherSymbolicResponses } from "../symbolic-inhabitant-composer.mjs";
+
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
   "Cache-Control": "no-store",
@@ -252,7 +259,7 @@ async function handleFieldEntries(env) {
 
   const [rows, memory] = await Promise.all([
     env.ATLAS_DB.prepare(
-    "SELECT id, title, entry_order, garden_status, structure FROM entries ORDER BY source_path, id"
+    "SELECT id, title, entry_order, garden_status, structure, excerpt FROM entries ORDER BY source_path, id"
     ).all(),
     readGardenMemory(env),
   ]);
@@ -264,6 +271,7 @@ async function handleFieldEntries(env) {
       title: r.title,
       order: r.entry_order || "operation",
       gardenStatus: r.garden_status,
+      behaviour: r.excerpt || '',
       holds:   s.holds   || [],
       traces:  s.traces  || [],
       carries: s.carries || [],
@@ -276,6 +284,150 @@ async function handleFieldEntries(env) {
     ...JSON_HEADERS,
     "Cache-Control": "public, max-age=120",
   }});
+}
+
+// ── Minimal Ark ───────────────────────────────────────────────────────────────
+
+function arkParseStructure(value) {
+  try { return value ? JSON.parse(value) : {}; } catch { return {}; }
+}
+
+function arkEntryFromRow(row) {
+  if (!row) return null;
+  return { id: row.id, title: row.title, structure: arkParseStructure(row.structure) };
+}
+
+async function arkGetEntry(env, id) {
+  if (!env.ATLAS_DB || !id) return null;
+  const row = await env.ATLAS_DB.prepare("SELECT id, title, structure FROM entries WHERE id = ? LIMIT 1").bind(id).first();
+  return arkEntryFromRow(row);
+}
+
+async function arkFirstEntry(env) {
+  if (!env.ATLAS_DB) return null;
+  const row = await env.ATLAS_DB.prepare(
+    "SELECT id, title, structure FROM entries WHERE lower(title) = 'ground' OR id LIKE '%ground%' ORDER BY CASE WHEN lower(title) = 'ground' THEN 0 ELSE 1 END, entry_order, id LIMIT 1"
+  ).first();
+  return arkEntryFromRow(row);
+}
+
+async function arkRelatedEntries(env, entry) {
+  const relatedIds = [];
+  const relationById = {};
+  for (const field of RELATION_FIELDS) {
+    for (const id of entry?.structure?.[field] || []) {
+      if (!relationById[id]) {
+        relationById[id] = field;
+        relatedIds.push(id);
+      }
+    }
+  }
+  const out = [];
+  for (const id of relatedIds.slice(0, 8)) {
+    const target = await arkGetEntry(env, id);
+    if (target) out.push({ id: target.id, title: target.title, relation: relationById[id] });
+  }
+  return out;
+}
+
+function arkGather(state) {
+  return gatherSymbolicResponses(state, [respondWithPulse, respondWithThreshold]).responses;
+}
+
+async function arkPublicState(env, entry, event, state) {
+  return {
+    entry: { id: entry.id, title: entry.title },
+    related: await arkRelatedEntries(env, entry),
+    event,
+    participant: { memory: state.memory, experience: state.experience },
+    inhabitants: arkGather(state),
+  };
+}
+
+async function handleArkEnter(request, env) {
+  if (request.method !== "POST")
+    return new Response(JSON.stringify({ error: "method_not_allowed" }), { status: 405, headers: JSON_HEADERS });
+  const body = await request.json().catch(() => ({}));
+  const participantId = String(body.participantId || "ark-participant");
+  const entry = await arkFirstEntry(env);
+  if (!entry) return new Response(JSON.stringify({ error: "atlas_unavailable" }), { status: 503, headers: JSON_HEADERS });
+  const event = observeParticipantMovement({ participantId, fromEntry: null, toEntry: entry, previousEvents: [] });
+  const reduced = reduceParticipantState(EMPTY_PARTICIPANT_STATE, event);
+  if (!reduced.accepted)
+    return new Response(JSON.stringify({ error: "ark_state_rejected", reason: reduced.reason }), { status: 400, headers: JSON_HEADERS });
+  const state = reduced.state;
+  return new Response(JSON.stringify(await arkPublicState(env, entry, event, state)), { status: 200, headers: JSON_HEADERS });
+}
+
+async function handleArkMove(request, env) {
+  if (request.method !== "POST")
+    return new Response(JSON.stringify({ error: "method_not_allowed" }), { status: 405, headers: JSON_HEADERS });
+  const body = await request.json().catch(() => ({}));
+  const participantId = String(body.participantId || "ark-participant");
+  const current = body.currentId ? await arkGetEntry(env, String(body.currentId)) : null;
+  const target = await arkGetEntry(env, String(body.to || ""));
+  if (!target) return new Response(JSON.stringify({ error: "entry_not_found" }), { status: 404, headers: JSON_HEADERS });
+  const previousEvents = Array.isArray(body.events) ? body.events : [];
+  const event = observeParticipantMovement({ participantId, fromEntry: current, toEntry: target, previousEvents });
+  const reduced = reduceParticipantState(body.state || EMPTY_PARTICIPANT_STATE, event);
+  if (!reduced.accepted)
+    return new Response(JSON.stringify({ error: "ark_state_rejected", reason: reduced.reason }), { status: 400, headers: JSON_HEADERS });
+  const state = reduced.state;
+  return new Response(JSON.stringify(await arkPublicState(env, target, event, state)), { status: 200, headers: JSON_HEADERS });
+}
+
+function arkPage() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ark</title>
+<style>
+body{margin:0;background:#101214;color:#f1eee7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(820px,calc(100% - 32px));margin:0 auto;padding:34px 0 44px}
+header,section{border-bottom:1px solid rgba(241,238,231,.12);padding:20px 0}
+h1,h2,p{margin:0}h1{margin-top:8px;font-size:clamp(2rem,7vw,4.8rem);font-weight:560;letter-spacing:0;line-height:.98}
+h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#aaa49a;margin-bottom:14px}
+button{border:1px solid rgba(217,154,78,.24);border-radius:8px;background:rgba(24,27,30,.86);color:#f1eee7;padding:10px 12px;font:inherit;cursor:pointer}
+button:hover{border-color:rgba(217,154,78,.72)}.muted{color:#aaa49a}.orientation{margin-top:12px;color:#d2cbc0}
+.encounter{padding:38px 0}.term{font-size:clamp(2.6rem,10vw,7rem);font-weight:520;line-height:.95;color:#f4d19c}
+.status{margin-top:14px;color:#aaa49a}.paths{display:grid;gap:10px}.path{display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;padding:13px 14px}
+.path span{color:#aaa49a;font-size:.9rem}.path strong{font-weight:520}.inhabitants{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+article{display:grid;gap:8px;border:1px solid rgba(241,238,231,.12);border-radius:8px;background:rgba(24,27,30,.72);padding:14px}
+article strong{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#aaa49a}article span{color:#d99a4e;font-size:1.45rem}
+details{padding:18px 0}summary{cursor:pointer;color:#aaa49a}pre{overflow:auto;border:1px solid rgba(241,238,231,.12);border-radius:8px;background:#181b1e;padding:12px;color:#d8d2c8}
+</style>
+</head>
+<body><main>
+<header><p class="muted">Atlas -> Ark</p><h1>Enter. Encounter. Move.</h1><p class="orientation">The Atlas preserves the world. The Ark carries you through it.</p></header>
+<section><button id="enter">Enter Ark</button><p id="status" class="status">Waiting.</p></section>
+<section class="encounter"><h2>Encounter</h2><div id="entry-title" class="term">No encounter yet.</div></section>
+<section><h2>Paths</h2><div id="related" class="paths"></div></section>
+<section><h2>Inhabitants</h2><div id="inhabitants" class="inhabitants"></div></section>
+<details><summary>show structure / debug</summary><pre id="event"></pre></details>
+</main>
+<script>
+const participantId = 'ark-' + crypto.randomUUID();
+let currentId = null, state = null, events = [];
+const $ = id => document.getElementById(id);
+async function post(path, body = {}) {
+  const res = await fetch(path, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ participantId, ...body }) });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Ark movement failed');
+  return data;
+}
+function render(data) {
+  currentId = data.entry.id; state = data.participant; events = [...events, data.event];
+  $('entry-title').textContent = data.entry.title;
+  $('status').textContent = data.event.type + ' observed.';
+  $('related').innerHTML = data.related.length ? data.related.map(e => '<button class="path" data-id="'+e.id+'"><strong>'+e.title+'</strong><span>'+e.relation+'</span></button>').join('') : '<p class="muted">No related paths available here.</p>';
+  $('inhabitants').innerHTML = data.inhabitants.map(i => '<article><strong>'+i.inhabitant+'</strong><span>'+i.response.symbol+'</span></article>').join('');
+  $('event').textContent = JSON.stringify({ type:data.event.type, relation:data.event.relation, localFrequency:data.event.localFrequency, trace:data.event.trace }, null, 2);
+}
+$('enter').onclick = async () => { try { events = []; render(await post('/api/ark/enter')); } catch(e) { $('status').textContent = e.message; } };
+$('related').onclick = async e => { const b = e.target.closest('button[data-id]'); if (!b) return; try { render(await post('/api/ark/move', { currentId, to:b.dataset.id, state, events })); } catch(err) { $('status').textContent = err.message; } };
+</script></body></html>`;
 }
 
 async function readGardenMemory(env) {
@@ -2061,7 +2213,7 @@ function fieldPage() {
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { margin: 0; width: 100%; height: 100%; overflow: hidden; overflow-x: hidden; }
-    body { margin: 0; width: 100%; max-width: 100vw; height: 100%; overflow: hidden; overflow-x: hidden; background: #06080d; color: #d4c5a9; }
+    body { margin: 0; width: 100%; max-width: 100vw; height: 100%; overflow: hidden; overflow-x: hidden; background: #06080d; color: #d4c5a9; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
     canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
     #top {
       position: fixed; inset: 1.4rem 1.6rem auto 1.6rem; z-index: 5;
@@ -2085,6 +2237,11 @@ function fieldPage() {
       transition: opacity 0.42s ease, transform 0.42s ease;
     }
     #field-read.ready { opacity: 0.74; transform: translateY(0); }
+    #fr-port { margin-bottom: 1.05rem; }
+    #fr-port-line {
+      font: 600 0.68rem/1.45 system-ui, sans-serif;
+      letter-spacing: 0.04em; color: rgba(120,145,175,0.58);
+    }
     #fr-title {
       font: 500 clamp(1.45rem, 3vw, 2rem)/1.05 "Iowan Old Style", Charter, Georgia, serif;
       color: rgba(212,197,169,0.9); margin-bottom: 0.34rem;
@@ -2114,14 +2271,6 @@ function fieldPage() {
     }
     #fr-care span { color: rgba(146,166,190,0.78); }
     #fr-composition:empty, #fr-enabled:empty, #fr-care:empty { display: none; margin: 0; }
-    #field-input {
-      flex: 1; min-width: 0; border: 0; border-bottom: 1px solid rgba(255,255,255,0.08);
-      background: rgba(6,8,13,0.38); color: rgba(212,197,169,0.82);
-      outline: none; padding: 0.7rem 0.2rem 0.55rem;
-      font: 500 1rem/1.2 "Iowan Old Style", Charter, Georgia, serif;
-      text-align: center; border-radius: 0;
-    }
-    #field-input::placeholder { color: rgba(58,80,112,0.7); }
     #panel {
       position: fixed; top: 0; right: 0; bottom: 0; width: min(25rem, 86vw);
       transform: translateX(101%); transition: transform 0.34s cubic-bezier(.32,.72,0,1);
@@ -2168,37 +2317,22 @@ function fieldPage() {
       color: rgba(77,94,114,0.9); font: 600 0.68rem/1.45 system-ui, sans-serif;
     }
     .reason-list li { margin: 0.18rem 0; }
-    #colour-toggle {
-      position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 6;
-      border: 0; background: none; padding: 0; cursor: pointer;
-      font: 600 0.66rem/1.5 system-ui, sans-serif; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(58,80,112,0.62); transition: color 0.3s;
-    }
-    #colour-toggle:hover { color: rgba(120,145,175,0.85); }
-    #scale-toggle {
-      position: fixed; left: 50%; transform: translateX(-50%); bottom: 1.6rem; z-index: 6;
-      border: 0; background: none; padding: 0; cursor: pointer;
-      font: 600 0.66rem/1.5 system-ui, sans-serif; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(58,80,112,0.62); transition: color 0.3s;
-    }
-    #scale-toggle:hover { color: rgba(120,145,175,0.85); }
     @media (max-width: 700px) {
       #top { inset: 1rem 1rem auto 1rem; }
       #entry { bottom: 1rem; }
       #panel { width: 100vw; }
-      #colour-toggle { right: 1rem; bottom: 1rem; }
-      #scale-toggle { bottom: 2.7rem; }
     }
   </style>
 </head>
 <body>
 <canvas id="field"></canvas>
 <div id="top">
-  <a href="/atlas">Atlas</a>
   <div id="mode">Field</div>
-  <a href="/garden">Garden</a>
 </div>
 <section id="field-read" aria-live="polite">
+  <div id="fr-port">
+    <div id="fr-port-line"></div>
+  </div>
   <div id="fr-title"></div>
   <div id="fr-order"></div>
   <div id="fr-composition"></div>
@@ -2212,15 +2346,16 @@ function fieldPage() {
   <p id="read-behaviour"></p>
   <div id="read-data"></div>
 </aside>
-<button id="scale-toggle" aria-label="Whole or term">◯</button>
-<button id="colour-toggle" aria-label="Colour mode">◐</button>
 <script>
 let allOps = {};      // full Atlas index: id -> entry (holds/traces/carries/pairs/nests as id arrays)
 let liveProposals = []; // non-discarded garden proposals for garden pressure
 let gardenMemory = {};  // applied/terminal tending sediment: id -> compact memory
+let currentFieldReferenceFrame = null;
+let globalFrameIds = new Set();
+let localFrameIds = new Set();
+let coupledSensibility = {};
 const canvas = document.getElementById('field');
 const ctx = canvas.getContext('2d', { alpha: false });
-const input = document.getElementById('field-input');
 const panel = document.getElementById('panel');
 const closePanel = document.getElementById('close-panel');
 const modeEl = document.getElementById('mode');
@@ -2237,13 +2372,27 @@ let targetPan = { x: 0, y: 0 };
 let pointer = null;
 let hoverId = null;
 let operations = {};
+let arkParticipantId = 'field-' + crypto.randomUUID();
+let arkState = null;
+let arkEvents = [];
+let arkPulseResponse = null;
+let arkThresholdResponse = null;
+let arkLastEvent = null;
+let arkMovementAt = 0;
+let traversalMap = {};   // "fromId:toId" -> { count, lastAt }
+let lastTraversalKey = null;
 
 const relationTypes = [
-  { key: 'holds', color: [94, 112, 126], strength: 0.56, direction: 'anchor' },
-  { key: 'traces', color: [94, 132, 170], strength: 0.72, direction: 'return' },
-  { key: 'carries', color: [200, 96, 26], strength: 0.78, direction: 'outward' },
-  { key: 'pairs', color: [165, 126, 76], strength: 0.48, direction: 'lateral' },
-  { key: 'nests', color: [84, 105, 93], strength: 0.42, direction: 'enclose' },
+  // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
+  // bowMult:  arc bow depth multiplier
+  // beadSpeed: travelling bead velocity multiplier
+  // branchProb: probability of filament branches (0 = none, 1 = always)
+  // strandMult: strand count multiplier
+  { key: 'holds',   color: [94, 112, 126],  strength: 0.56, direction: 'anchor',  wiggMult: 0.18, bowMult: 0.5,  beadSpeed: 0.3,  branchProb: 0.0,  strandMult: 0.55 },
+  { key: 'traces',  color: [94, 132, 170],  strength: 0.72, direction: 'return',  wiggMult: 1.85, bowMult: 0.85, beadSpeed: 0.28, branchProb: 0.88, strandMult: 1.5  },
+  { key: 'carries', color: [200, 96, 26],   strength: 0.78, direction: 'outward', wiggMult: 0.32, bowMult: 1.5,  beadSpeed: 1.75, branchProb: 0.0,  strandMult: 0.65 },
+  { key: 'pairs',   color: [165, 126, 76],  strength: 0.48, direction: 'lateral', wiggMult: 0.65, bowMult: 0.4,  beadSpeed: 0.5,  branchProb: 0.08, strandMult: 0.5  },
+  { key: 'nests',   color: [84, 105, 93],   strength: 0.42, direction: 'enclose', wiggMult: 0.12, bowMult: 0.28, beadSpeed: 0.18, branchProb: 0.0,  strandMult: 0.35 },
 ];
 
 const basinTypes = [
@@ -2539,6 +2688,119 @@ function resize() {
   canvas.style.width = innerWidth + 'px';
   canvas.style.height = innerHeight + 'px';
   ctx.setTransform(dpr,0,0,dpr,0,0);
+  // Re-seed particle positions after resize — radial pressure will re-settle them
+  if (Object.keys(fieldParticles).length) initFieldParticles();
+}
+
+const STRUCTURAL_FIELD_FRAMES = new Set([
+  'practice.ratio-read',
+  'practice.skeleton-read',
+  'practice.growth-read',
+  'practice.operations-read',
+  'practice.whole-read',
+]);
+
+function isStructuralFieldFrame(id) {
+  return STRUCTURAL_FIELD_FRAMES.has(id);
+}
+
+function isHomeFrame(id) {
+  return String(allOps[id]?.title || '').toLowerCase() === 'reality mechanics';
+}
+
+function opOrder(op) {
+  return String(op?.entry_order || op?.order || '').toLowerCase();
+}
+
+function addIfPresent(set, id) {
+  if (allOps[id]) set.add(id);
+}
+
+function immediateCarries(ids) {
+  const next = new Set();
+  ids.forEach((id) => (allOps[id]?.carries || []).forEach((childId) => addIfPresent(next, childId)));
+  return next;
+}
+
+function recursiveCarries(ids) {
+  const reached = new Set(ids);
+  const queue = [...ids];
+  while (queue.length) {
+    const id = queue.shift();
+    (allOps[id]?.carries || []).forEach((childId) => {
+      if (!allOps[childId] || reached.has(childId)) return;
+      reached.add(childId);
+      queue.push(childId);
+    });
+  }
+  return reached;
+}
+
+function structuralFieldFrameIds(frameId) {
+  const ids = new Set();
+  if (!frameId || frameId === 'practice.whole-read') return new Set(globalFrameIds);
+
+  if (frameId === 'practice.ratio-read') {
+    Object.values(allOps).forEach((op) => {
+      const order = opOrder(op);
+      if (order === 'ground' || order === 'first') ids.add(op.id);
+    });
+    ['second.sensibility', 'second.appearance', 'first.ratio'].forEach((id) => addIfPresent(ids, id));
+    return ids;
+  }
+
+  if (frameId === 'practice.skeleton-read') {
+    Object.values(allOps).forEach((op) => {
+      if (op.id.startsWith('ground.') || opOrder(op) === 'ground') ids.add(op.id);
+    });
+    immediateCarries(['ground.seed', 'ground.ground']).forEach((id) => ids.add(id));
+    return ids;
+  }
+
+  if (frameId === 'practice.growth-read') {
+    structuralFieldFrameIds('practice.skeleton-read').forEach((id) => ids.add(id));
+    recursiveCarries(ids).forEach((id) => ids.add(id));
+    return ids;
+  }
+
+  if (frameId === 'practice.operations-read') {
+    ['first.carry', 'first.trace', 'first.hold', 'first.pair', 'first.nest', 'first.read'].forEach((id) => addIfPresent(ids, id));
+    immediateCarries(ids).forEach((id) => ids.add(id));
+    return ids;
+  }
+
+  return ids;
+}
+
+function refreshCoupledFrame() {
+  globalFrameIds = new Set(Object.keys(allOps));
+  localFrameIds = structuralFieldFrameIds(currentFieldReferenceFrame);
+  globalFrameIds.forEach((id) => {
+    if (coupledSensibility[id] == null) coupledSensibility[id] = 1;
+  });
+  Object.keys(coupledSensibility).forEach((id) => {
+    if (!globalFrameIds.has(id)) delete coupledSensibility[id];
+  });
+}
+
+function setCurrentFieldReferenceFrame(id) {
+  if (!id || id === 'practice.whole-read') currentFieldReferenceFrame = null;
+  else currentFieldReferenceFrame = currentFieldReferenceFrame === id ? null : id;
+  refreshCoupledFrame();
+}
+
+function coupledSensibilityTarget(id) {
+  if (!currentFieldReferenceFrame) return 1;
+  return localFrameIds.has(id) ? 1 : 0.08;
+}
+
+function sensibilityAlpha(id) {
+  return coupledSensibility[id] ?? coupledSensibilityTarget(id);
+}
+
+function relationSensibility(aId, bId) {
+  if (!currentFieldReferenceFrame) return 1;
+  return Math.max(0.08, (sensibilityAlpha(aId) + sensibilityAlpha(bId)) * 0.5);
 }
 
 // Returns ids of the focus term and all its direct relations from the full index
@@ -2724,7 +2986,37 @@ function fireFor(order) { return FIRE_ORDERS[order] || FIRE_ORDERS.ground; }
 
 // Colour mode: 'fire' = order-hue with brightness carrying the burn; 'heat' = original ember↔ash.
 let colourMode = 'fire';
-try { const m = localStorage.getItem('fieldColourMode'); if (m === 'heat' || m === 'fire') colourMode = m; } catch (e) {}
+
+function relationRatioWeight(key) {
+  return ({ holds: 0.9, traces: 0.78, carries: 1, pairs: 0.62, nests: 0.54, reads: 0.72 })[key] || 0.48;
+}
+
+function arkRatioSignature(event) {
+  if (!event) return null;
+  const direct = Array.isArray(event.relation) ? event.relation : [];
+  const reciprocal = Array.isArray(event.ratio?.reciprocalRelation) ? event.ratio.reciprocalRelation : [];
+  const directWeight = direct.reduce((sum, key) => sum + relationRatioWeight(key), 0);
+  const reciprocalWeight = reciprocal.reduce((sum, key) => sum + relationRatioWeight(key), 0);
+  const totalWeight = Math.max(0.001, directWeight + reciprocalWeight);
+  const frequency = clamp01((event.localFrequency?.count || 1) / 12);
+  const relationContact = clamp01((direct.length + reciprocal.length) / 4);
+  const asymmetry = event.from ? clamp01(Math.abs(directWeight - reciprocalWeight) / totalWeight) : 0.18;
+  const unexpected = event.type === 'unexpected_ratio' ? 1 : 0;
+  const recurrence = event.type === 'return' || event.type === 'absence_return' ? 0.62
+    : event.type === 'retrace' ? 0.74
+    : event.type === 'loop_completed' ? 1
+    : event.type === 'settling' ? 0.36
+    : 0;
+  return {
+    direct, reciprocal,
+    contact: clamp01(relationContact + unexpected * 0.22),
+    asymmetry: clamp01(asymmetry + unexpected * 0.42),
+    frequency,
+    recurrence,
+    openness: clamp01(1 - relationContact + unexpected * 0.28),
+    tension: clamp01(asymmetry * 0.56 + frequency * 0.24 + unexpected * 0.52),
+  };
+}
 
 function drawAmbientHeat() {
   if (ambientPulse < 0.005) return;
@@ -2750,11 +3042,116 @@ function drawAmbientHeat() {
   ctx.restore();
 }
 
+async function callArk(fromId, toId) {
+  try {
+    const body = fromId
+      ? { participantId: arkParticipantId, currentId: fromId, to: toId, state: arkState, events: arkEvents }
+      : { participantId: arkParticipantId, to: toId, state: null, events: [] };
+    const res = await fetch('/api/ark/move', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+    if (!res.ok) return;
+    const data = await res.json();
+    arkState = data.participant;
+    arkEvents = [...arkEvents, data.event].slice(-24);
+    arkLastEvent = data.event || null;
+    arkMovementAt = performance.now();
+    arkPulseResponse = data.inhabitants?.find(i => i.inhabitant === 'pulse')?.response || null;
+    arkThresholdResponse = data.inhabitants?.find(i => i.inhabitant === 'threshold')?.response || null;
+    if (data.event?.from && data.event?.to) {
+      const key = data.event.from + ':' + data.event.to;
+      const prev = traversalMap[key] || { count: 0, lastAt: 0 };
+      traversalMap[key] = { count: prev.count + 1, lastAt: Date.now() };
+      lastTraversalKey = key;
+    }
+  } catch (_) {}
+}
+
+function traversalEmphasis(fromId, toId) {
+  const key = fromId + ':' + toId;
+  const reverseKey = toId + ':' + fromId;
+  const forward = traversalMap[key];
+  const reverse = traversalMap[reverseKey];
+  const isLast = key === lastTraversalKey;
+  const ratio = isLast ? arkRatioSignature(arkLastEvent) : null;
+  const ageFactor = forward ? Math.exp(-(Date.now() - forward.lastAt) / 8000) : 0;
+  const countBoost = forward ? Math.min(1, forward.count / 4) * 0.4 : 0;
+  const reverseBoost = reverse ? Math.min(1, reverse.count / 4) * 0.12 : 0;
+  const ratioBoost = ratio ? (ratio.contact * 0.2 + ratio.recurrence * 0.22 + ratio.tension * 0.18) * ageFactor : 0;
+  return 1 + (isLast ? 0.7 * ageFactor : 0) + countBoost + reverseBoost + ratioBoost;
+}
+
+function arkMovementAge() {
+  if (!arkMovementAt) return 0;
+  return Math.exp(-(performance.now() - arkMovementAt) / 1800);
+}
+
+function drawArkMovementWake(focus) {
+  const ratio = arkRatioSignature(arkLastEvent);
+  const age = arkMovementAge();
+  if (!focus || !ratio || age < 0.03) return;
+  const p = screen(focus);
+  const from = operations[arkLastEvent?.from];
+  const fromPoint = from ? screen(from) : null;
+  const angle = fromPoint ? Math.atan2(p.y - fromPoint.y, p.x - fromPoint.x) : focus.phase + ratio.asymmetry * Math.PI;
+  const contact = ratio.contact;
+  const tension = ratio.tension;
+  const openness = ratio.openness;
+  const recurrence = ratio.recurrence;
+  const unexpected = arkLastEvent?.type === 'unexpected_ratio' ? 1 : 0;
+  const baseRadius = (74 + contact * 58 + openness * 44 + tension * 36) * scale;
+  const [r,g,b] = unexpected ? [220, 118, 42] : recurrence > 0.55 ? [120, 160, 210] : [200, 150, 82];
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const bloomRadius = baseRadius * (1.1 + (1 - age) * 0.5);
+  const bloom = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, bloomRadius);
+  bloom.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.12 + contact * 0.06 + tension * 0.06)) + ')');
+  bloom.addColorStop(0.42, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.035 + unexpected * 0.02)) + ')');
+  bloom.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+  ctx.fillStyle = bloom;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, bloomRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  const flecks = 5;
+  for (let i = 0; i < flecks; i++) {
+    const fleckAngle = angle + i * Math.PI * 2 / flecks + Math.sin(time * 0.7 + i) * ratio.asymmetry * 0.18;
+    const fleckDistance = baseRadius * (0.34 + openness * 0.18 + (i % 2) * 0.08);
+    const fx = p.x + Math.cos(fleckAngle) * fleckDistance;
+    const fy = p.y + Math.sin(fleckAngle) * fleckDistance;
+    const fleckRadius = Math.max(1.1, (1.8 + contact * 2.2 + tension * 1.6) * scale);
+    const fleck = ctx.createRadialGradient(fx, fy, 0, fx, fy, fleckRadius * 3.5);
+    fleck.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * 0.16) + ')');
+    fleck.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+    ctx.fillStyle = fleck;
+    ctx.beginPath();
+    ctx.arc(fx, fy, fleckRadius * 3.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  if (fromPoint) {
+    const dist = Math.max(1, Math.hypot(p.x - fromPoint.x, p.y - fromPoint.y));
+    const pull = Math.min(dist * 0.34, 150 * scale);
+    const nx = Math.cos(angle), ny = Math.sin(angle);
+    const sx = p.x - nx * pull, sy = p.y - ny * pull;
+    const cx = p.x - nx * pull * 0.36 - ny * baseRadius * (0.08 + tension * 0.1);
+    const cy = p.y - ny * pull * 0.36 + nx * baseRadius * (0.08 + tension * 0.1);
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    ctx.quadraticCurveTo(cx, cy, p.x, p.y);
+    ctx.strokeStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.075 + tension * 0.05)) + ')';
+    ctx.lineWidth = Math.max(0.45, (0.65 + ratio.frequency * 0.7) * scale);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
 function enterOperation(id) {
   const found = allOps[id] ? id : Object.values(allOps).find((op) => op.title.toLowerCase() === id.toLowerCase())?.id;
   if (!found) return;
+  if (isStructuralFieldFrame(found)) setCurrentFieldReferenceFrame(found);
+  else if (isHomeFrame(found)) setCurrentFieldReferenceFrame(null);
   homeMode = false;
   targetFocusId = found;
+  const previousFocusId = focusId;
   focusId = found;
   syncSpineToFocus(found);
   settled = 0;
@@ -2765,6 +3162,7 @@ function enterOperation(id) {
   history.replaceState({}, '', '/field#' + encodeURIComponent(found));
   renderFieldRead(found);
   renderPanel(found);
+  callArk(previousFocusId, found).catch(() => {});
 }
 
 function renderFieldRead(id) {
@@ -2773,8 +3171,8 @@ function renderFieldRead(id) {
   // Carry scale stays visual — the embers carry the temperament (colour = order, brightness =
   // burn, size = weight, motion = family). The numbers live in the read scale: the panel that
   // opens on tap. Here we keep only the term's identity.
-  document.getElementById('fr-title').textContent = op.title;
-  document.getElementById('fr-order').textContent = orderLabel(op.order);
+  document.getElementById('fr-title').textContent = '';
+  document.getElementById('fr-order').textContent = '';
   document.getElementById('fr-composition').innerHTML = '';
   document.getElementById('fr-enabled').innerHTML = '';
   document.getElementById('fr-care').innerHTML = '';
@@ -3019,7 +3417,7 @@ function bezierPoint(a, c, b, t) {
 
 function drawFilament(pa, pb, control, type, source, target, offset, strand, emphasis = 1) {
   const physics = source.engine?.values || enginePhysics(source).values;
-  const wiggle = 8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7;
+  const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1);
   const split = 0.18 + (strand % 5) * 0.13;
   const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
@@ -3041,7 +3439,9 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   ctx.lineWidth = Math.max(0.35, (0.32 + source.density * 0.45) * scale);
   ctx.stroke();
 
-  if (source.turbulence < 0.18 && strand % 3 !== 0) return;
+  const branchProb = type.branchProb ?? 0.33;
+  if (branchProb <= 0) return;
+  if (source.turbulence < 0.18 && Math.random() > branchProb) return;
   const start = bezierPoint(pa, control, pb, split);
   const branchLength = (18 + physics.velocity * 52 + source.turbulence * 24 + physics.opening * 18) * scale;
   const branchAngle = Math.atan2(pb.y - pa.y, pb.x - pa.x) + (strand % 2 ? 1 : -1) * (0.65 + source.airflow * 0.5);
@@ -3062,18 +3462,25 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
 }
 
 function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
+  emphasis *= relationSensibility(a.id, b.id);
   const pa = screen(a), pb = screen(b);
   const source = a.profile || computeProfile(a);
   const target = b.profile || computeProfile(b);
   const sourcePhysics = source.engine?.values || enginePhysics(source).values;
   const targetPhysics = target.engine?.values || enginePhysics(target).values;
+  const isLastPath = lastTraversalKey === a.id + ':' + b.id;
+  const movementAge = isLastPath ? arkMovementAge() : 0;
+  const movementRatio = movementAge > 0.03 ? arkRatioSignature(arkLastEvent) : null;
   const dx = pb.x - pa.x, dy = pb.y - pa.y;
   const dist = Math.max(1, Math.hypot(dx, dy));
   const nx = -dy / dist, ny = dx / dist;
-  const currentSpeed = 0.54 + sourcePhysics.velocity * 0.9 + sourcePhysics.heat * 0.45 + source.turbulence * 0.24 - targetPhysics.gravity * 0.14 - sourcePhysics.friction * 0.18;
+  const currentSpeed = (0.54 + sourcePhysics.velocity * 0.9 + sourcePhysics.heat * 0.45 + source.turbulence * 0.24 - targetPhysics.gravity * 0.14 - sourcePhysics.friction * 0.18)
+    * (type.beadSpeed ?? 1)
+    * (movementRatio ? 1 + movementAge * (movementRatio.frequency * 0.55 + movementRatio.recurrence * 0.34 + movementRatio.tension * 0.28) : 1);
   const pulse = (Math.sin(time * currentSpeed + a.phase + offset) + 1) / 2;
-  const bowBase = type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36;
-  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18);
+  const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
+  const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
+  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow;
   const cx = (pa.x + pb.x) / 2 + nx * bow;
   const cy = (pa.y + pb.y) / 2 + ny * bow;
   const control = { x: cx, y: cy };
@@ -3082,7 +3489,8 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const targetOrder = spineDisplayOrder(b);
   const crossing = sourceOrder !== targetOrder;
   const meeting = relationMeeting(source, target, type);
-  const currentAlpha = (0.026 + type.strength * 0.07 + source.heat * 0.045 - source.ash * 0.03) * emphasis;
+  const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
+  const currentAlpha = (0.026 + type.strength * 0.07 + source.heat * 0.045 - source.ash * 0.03) * emphasis * (1 + movementBoost);
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -3092,10 +3500,10 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, currentAlpha, currentAlpha)
     : relationColor(type, currentAlpha);
-  ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.72 + sourcePhysics.capacity * 0.52 + (family === 'motion' ? 0.34 : 0)) * scale);
+  ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.72 + sourcePhysics.capacity * 0.52 + (family === 'motion' ? 0.34 : 0) + movementBoost * 1.4) * scale);
   ctx.stroke();
 
-  const strandCount = Math.floor(2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3);
+  const strandCount = Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1)));
   for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis);
 
   if (colourMode === 'fire' && crossing) {
@@ -3115,7 +3523,8 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const t = type.direction === 'return' ? 1 - pulse : pulse;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
-  const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, 14 + (12 + source.heat * 18) * scale);
+  const beadRadius = (14 + (12 + source.heat * 18) * scale) * (1 + movementBoost * 0.46);
+  const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
     glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, (0.16 + source.heat * 0.2) * emphasis, 16));
     glow.addColorStop(1, fireMix(sourceOrder, targetOrder, t, 0, 0));
@@ -3125,7 +3534,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   }
   ctx.fillStyle = glow;
   ctx.beginPath();
-  ctx.arc(qx, qy, 14 + (12 + source.heat * 18) * scale, 0, Math.PI * 2);
+  ctx.arc(qx, qy, beadRadius, 0, Math.PI * 2);
   ctx.fill();
   ctx.restore();
 }
@@ -3144,6 +3553,8 @@ function drawIncomingCurrents(focus) {
 
 function drawOperation(op, local, isFocus) {
   const p = screen(op);
+  ctx.save();
+  ctx.globalAlpha *= sensibilityAlpha(op.id);
   const profile = op.profile || computeProfile(op);
   const physics = profile.engine?.values || enginePhysics(profile).values;
   const families = familyComposition(profile);
@@ -3154,11 +3565,19 @@ function drawOperation(op, local, isFocus) {
   const anchorBoost = topFamily === 'anchor' ? 1.16 : 1;
   const strainBoost = topFamily === 'strain' ? 1.2 : 1;
   const settleBoost = topFamily === 'settlement' ? 1.14 : 1;
-  const pulseRate = (0.26 + physics.heat * 0.72 + physics.velocity * 0.32 + physics.pressure * 0.22 - physics.damping * 0.2) * (topFamily === 'motion' ? 1.18 : topFamily === 'settlement' ? 0.82 : 1);
+  const arkPulse = isFocus ? arkPulseResponse : null;
+  const arkThreshold = isFocus ? arkThresholdResponse : null;
+  const arkRatio = isFocus ? arkRatioSignature(arkLastEvent) : null;
+  const pulseIntensity = { first: 0.7, passage: 0.2, familiar: 0.4, return: 0.6, retrace: 0.9, loop: 1.0 };
+  const pulseTempo    = { first: 'slow', passage: 'single', familiar: 'single', return: 'quick', retrace: 'dense', loop: 'dense' };
+  const ratioTempo = arkRatio ? 0.84 + arkRatio.frequency * 0.54 + arkRatio.recurrence * 0.34 + arkRatio.tension * 0.24 - arkRatio.contact * 0.12 : 1;
+  const arkTempoMult  = arkPulse ? (({ single: 0.55, slow: 0.78, quick: 1.28, dense: 1.65 }[pulseTempo[arkPulse.symbol]] || 1) * ratioTempo) : 1;
+  const arkHeatBoost  = arkPulse ? ((pulseIntensity[arkPulse.symbol] || 0) * 0.07 + (arkRatio ? (arkRatio.frequency * 0.035 + arkRatio.tension * 0.045 + arkRatio.recurrence * 0.025) : 0)) : 0;
+  const pulseRate = (0.26 + physics.heat * 0.72 + physics.velocity * 0.32 + physics.pressure * 0.22 - physics.damping * 0.2) * (topFamily === 'motion' ? 1.18 : topFamily === 'settlement' ? 0.82 : 1) * arkTempoMult;
   const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 : 13 + profile.density * 10 + physics.capacity * 8) * scale *
-    (1 + Math.sin(time * pulseRate + op.phase) * (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025));
+    (1 + Math.sin(time * pulseRate + op.phase) * (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (arkRatio ? arkRatio.frequency * 0.018 + arkRatio.recurrence * 0.014 : 0)));
   const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * 2.5);
-  const heatAlpha = isFocus ? 0.18 + physics.heat * 0.34 : baseAlpha * (0.5 + physics.heat);
+  const heatAlpha = isFocus ? 0.12 + physics.heat * 0.20 + arkHeatBoost : baseAlpha * (0.5 + physics.heat);
   const ashAlpha = physics.decay * (isFocus ? 0.26 : 0.14);
   const midAlpha = 0.05 + profile.density * 0.08;
   let coreCol, midCol;
@@ -3203,6 +3622,20 @@ function drawOperation(op, local, isFocus) {
   ctx.fillStyle = isFocus ? 'rgba(212,197,169,' + (0.35 + profile.resolution * 0.28) + ')' : 'rgba(120,145,175,' + (0.18 + profile.resolution * 0.18) + ')';
   ctx.fill();
 
+  if (isFocus) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'source-over';
+    const labelSize = Math.max(18, Math.min(42, (op.title === 'Reality Mechanics' ? 28 : 23) * scale));
+    ctx.font = '500 ' + labelSize + 'px "Iowan Old Style", Charter, Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(212,197,169,0.84)';
+    ctx.shadowColor = 'rgba(6,8,13,0.82)';
+    ctx.shadowBlur = 16;
+    ctx.fillText(op.title, p.x, p.y - radius * 0.72);
+    ctx.restore();
+  }
+
   if (profile.gardenMemory > 0.08) {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
@@ -3214,25 +3647,44 @@ function drawOperation(op, local, isFocus) {
     ctx.restore();
   }
 
-  const labelThreshold = 0.75 + physics.pressure * 0.2 + physics.decay * 0.2 - physics.damping * 0.22 * settleBoost - profile.maturity * 0.12;
-  if (homeMode && !isFocus) return;
-  const labelAlpha = homeMode ? 0 : Math.max(0, Math.min(1, (scale - labelThreshold) * 1.8)) * resolving * (local ? 1 : 0.25);
-  const focusAlpha = isFocus ? resolving * Math.max(0.2, Math.min(1, scale + profile.resolution * 0.2 - profile.turbulence * 0.16)) : 0;
-  if (labelAlpha > 0.02 || hoverId === op.id || focusAlpha > 0.02) {
-    let focusSize = homeMode ? 42 : 24;
-    if (isFocus && homeMode) {
-      ctx.font = '500 ' + focusSize + 'px "Iowan Old Style", Charter, Georgia, serif';
-      const maxW = innerWidth * 0.88;
-      while (focusSize > 18 && ctx.measureText(op.title.toUpperCase()).width > maxW) {
-        focusSize -= 2;
-        ctx.font = '500 ' + focusSize + 'px "Iowan Old Style", Charter, Georgia, serif';
-      }
+  if (isFocus && arkThreshold) {
+    const thresholdPalette = { entering:[146,190,220,0.14], withdrawing:[94,132,170,0.16], returning:[200,140,60,0.18], held:[94,112,126,0.13], crossing:[200,96,26,0.15], settling:[120,145,130,0.10] };
+    const [tr,tg,tb,ta] = thresholdPalette[arkThreshold.symbol] || [120,145,175,0.10];
+    const contact = arkRatio ? arkRatio.contact : 0.35;
+    const asymmetry = arkRatio ? arkRatio.asymmetry : 0.28;
+    const tension = arkRatio ? arkRatio.tension : 0.18;
+    const openness = arkRatio ? arkRatio.openness : 0.5;
+    const glowRadius = radius * (2.08 + contact * 0.5 + openness * 0.18 + tension * 0.24);
+    const glowAlpha = ta * (0.55 + contact * 0.42 + tension * 0.38);
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const contactGlow = ctx.createRadialGradient(p.x, p.y, radius * 0.45, p.x, p.y, glowRadius);
+    contactGlow.addColorStop(0, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.44)+')');
+    contactGlow.addColorStop(0.36, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.18)+')');
+    contactGlow.addColorStop(1, 'rgba('+tr+','+tg+','+tb+',0)');
+    ctx.fillStyle = contactGlow;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
+    ctx.fill();
+    const sparkCount = 4;
+    for (let i = 0; i < sparkCount; i++) {
+      const a = op.phase + time * (0.12 + tension * 0.08) + i * Math.PI * 2 / sparkCount + Math.sin(i + op.phase) * asymmetry * 0.16;
+      const d = radius * (0.9 + contact * 0.42 + openness * 0.16 + (i % 2) * 0.18);
+      const sx = p.x + Math.cos(a) * d;
+      const sy = p.y + Math.sin(a) * d;
+      const sr = Math.max(1.2, (2.2 + contact * 2.4 + tension * 1.8) * scale);
+      const spark = ctx.createRadialGradient(sx, sy, 0, sx, sy, sr * 3.4);
+      spark.addColorStop(0, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.72)+')');
+      spark.addColorStop(1, 'rgba('+tr+','+tg+','+tb+',0)');
+      ctx.fillStyle = spark;
+      ctx.beginPath();
+      ctx.arc(sx, sy, sr * 3.4, 0, Math.PI * 2);
+      ctx.fill();
     }
-    ctx.font = (isFocus ? '500 ' + focusSize + 'px ' : '600 12px ') + '"Iowan Old Style", Charter, Georgia, serif';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = isFocus ? 'rgba(212,197,169,' + Math.max(labelAlpha, focusAlpha * 0.7) + ')' : 'rgba(146,166,190,' + Math.max(labelAlpha, hoverId === op.id ? 0.8 : 0) + ')';
-    ctx.fillText(isFocus ? op.title.toUpperCase() : op.title, p.x, p.y + radius + (isFocus ? 25 : 18));
+    ctx.restore();
   }
+
+  ctx.restore();
 }
 
 function drawProposals() {
@@ -3254,55 +3706,7 @@ function renderPanel(id) {
   document.getElementById('read-title').textContent = op.title;
   document.getElementById('read-behaviour').textContent = op.behaviour;
   const data = document.getElementById('read-data');
-  const temperament = ['heat', 'gravity', 'return', 'continuation', 'density', 'airflow', 'turbulence', 'resolution', 'maturity', 'wither', 'ash']
-    .map((key) => {
-      const value = Math.round((profile[key] || 0) * 100);
-      return '<div class="temper-row"><span>' + key + '</span><span class="temper-bar"><span class="temper-fill" style="width:' + value + '%"></span></span><span>' + value + '</span></div>';
-    }).join('');
-  const basins = basinTypes
-    .map((basin) => {
-      const value = Math.round(((profile.basins?.weights || {})[basin.key] || 0) * 100);
-      return '<div class="temper-row"><span>' + basin.title + '</span><span class="temper-bar"><span class="temper-fill" style="width:' + value + '%"></span></span><span>' + value + '</span></div>';
-    }).join('');
-  const dominant = (profile.basins?.dominant || []).map((item) => basinTitle(item.key)).join(' / ');
-  const composition = familyComposition(profile)
-    .map((item) => '<div class="temper-row"><span>' + item.title + '</span><span class="temper-bar"><span class="temper-fill" style="width:' + item.percent + '%;background:' + item.color + '"></span></span><span>' + item.percent + '%</span></div>')
-    .join('');
-  const engineValues = profile.engine?.values || enginePhysics(profile).values;
-  const engine = engineConstants
-    .map((constant) => {
-      const value = Math.round((engineValues[constant.key] || 0) * 100);
-      return '<div class="temper-row"><span>' + constant.title + '</span><span class="temper-bar"><span class="temper-fill" style="width:' + value + '%"></span></span><span>' + value + '</span></div>';
-    }).join('');
-  const engineDominant = (profile.engine?.dominant || [])
-    .map((item) => engineConstants.find((constant) => constant.key === item.key))
-    .filter(Boolean)
-    .slice(0, 3);
-  const engineRead = engineDominant.length
-    ? '<ul class="reason-list">' + engineDominant.map((constant) => '<li>' + constant.title + ': ' + constant.terms.join(' + ') + '</li>').join('') + '</ul>'
-    : '';
-  const enabled = enabledBy(profile).join(' / ');
-  const misfit = profile.misfit ? '<div class="read-group"><h3>misfit</h3><ul class="reason-list"><li>' + profile.misfit + '</li></ul></div>' : '';
-  const memory = profile.gardenMemoryRecord
-    ? '<div class="read-group"><h3>former</h3><ul class="reason-list"><li>' +
-      'recognition ' + Math.round(Number(profile.gardenMemoryRecord.ratios?.recognition || 0) * 100) + '% · ' +
-      'resolution ' + Math.round(Number(profile.gardenMemoryRecord.ratios?.resolution || 0) * 100) + '% · ' +
-      'return ' + Math.round(Number(profile.gardenMemoryRecord.ratios?.return || 0) * 100) + '%</li><li>' +
-      'stability ' + Math.round(Number(profile.gardenMemoryRecord.ratios?.stability || 0) * 100) + '% · ' +
-      'pressure ' + Math.round(Number(profile.gardenMemoryRecord.ratios?.pressure || 0) * 100) + '%</li><li>' +
-      [profile.gardenMemoryRecord.lastCareAction || 'tended', profile.gardenMemoryRecord.lastTargetSection || '', profile.gardenMemoryRecord.lastAt || '']
-        .filter(Boolean).join(' · ') +
-      '</li></ul></div>'
-    : '';
-  const reasons = '<ul class="reason-list">' + profile.reasons.map((reason) => '<li>' + reason + '</li>').join('') + '</ul>';
-  data.innerHTML = '<div class="read-group"><h3>composition</h3>' + composition + '<ul class="reason-list"><li>' + orderLabel(op.order) + '</li><li>kindled: ' + enabled + '</li><li>tend: ' + careSignal(profile) + '</li></ul></div>' +
-    '<div class="read-group"><h3>basin pull</h3><ul class="reason-list"><li>' + dominant + '</li></ul>' + basins + '</div>' +
-    '<div class="read-group"><h3>engine constants</h3>' + engineRead + engine + '</div>' +
-    memory +
-    misfit +
-    '<div class="read-group"><h3>temperament</h3>' + temperament + '</div>' +
-    '<div class="read-group"><h3>why</h3>' + reasons + '</div>' +
-    relationTypes.map(({ key }) => {
+  data.innerHTML = ['holds', 'traces', 'pairs'].map((key) => {
     const items = op[key] || [];
     if (!items.length) return '';
     return '<div class="read-group"><h3>' + key + '</h3>' + items.map((item) => {
@@ -3333,13 +3737,13 @@ function step(dt) {
   // Spine momentum coast with bump-friction detents
   if (spineCoasting && spineFlat.length) {
     const total = spineFlat.length;
-    spineVelocity = Math.max(-6, Math.min(6, spineVelocity)); // hard cap
-    spineVelocity *= 0.76; // friction — stops quickly
+    spineVelocity = Math.max(-2.5, Math.min(2.5, spineVelocity)); // hard cap
+    spineVelocity *= 0.68; // friction — stops quickly
     spineFracPos += spineVelocity;
     spineFracPos = wrapSpinePos(spineFracPos, total);
     const newIdx = spineIndexFromPos(spineFracPos);
     if (newIdx !== spineCurrentIdx) {
-      spineVelocity *= 0.72; // bump — each term crossing absorbs momentum
+      spineVelocity *= 0.60; // bump — each term crossing absorbs momentum
       spineCurrentIdx = newIdx;
       const now = performance.now();
       if (!spineLastEnter || now - spineLastEnter > 150) {
@@ -3363,6 +3767,15 @@ function step(dt) {
   ambientCurrentOrder = focusOrder;
   ambientPulse = Math.max(0, ambientPulse - dt * 2.2);
   ambientOrderDepth += (targetDepth - ambientOrderDepth) * Math.min(1, dt * 1.4);
+  homeAlpha = homeMode ? 1.0 : Math.max(0, homeAlpha - dt * 1.8);
+  globalFrameIds.forEach((id) => {
+    const target = coupledSensibilityTarget(id);
+    const current = coupledSensibility[id] ?? target;
+    coupledSensibility[id] = current + (target - current) * Math.min(1, dt * 2.5);
+  });
+  // Ratio-driven simulation runs continuously — the field doesn't stop when a term is entered,
+  // the read changes. Slow to 20% speed once focused so it breathes without thrashing.
+  if (Object.keys(fieldParticles).length) stepFieldParticles(homeMode ? dt : dt * 0.2);
   const focusProfile = focus?.profile || (focus ? computeProfile(focus) : null);
   const focusPhysics = focusProfile?.engine?.values || (focusProfile ? enginePhysics(focusProfile).values : null);
   Object.values(operations).forEach((op) => {
@@ -3514,17 +3927,28 @@ function draw() {
   drawAmbientHeat();
   if (scaleMode === 'order') { drawOrderScaleView(); if (fieldReadEl) fieldReadEl.classList.remove('ready'); return; }
   drawOrderSpine();
-  drawBasinGradients();
-  const focus = operations[focusId];
-  const local = new Set(localIds(focusId));
+
+  // Home field: the field before orientation — ratios present, unread.
+  // Persists as a fading underlay as the focused view resolves.
+  if (homeMode || homeAlpha > 0.01 || currentFieldReferenceFrame) drawHomeField(Math.max(homeAlpha, currentFieldReferenceFrame ? 0.58 : 0));
+
   if (!homeMode) {
-    drawIncomingCurrents(focus);
-    relationTypes.forEach((type) => {
-      (focus[type.key] || []).forEach((id, i) => operations[id] && drawCurrent(focus, operations[id], type, i));
-    });
-    drawProposals();
+    drawBasinGradients();
+    const focus = operations[focusId];
+    const local = new Set(localIds(focusId));
+    if (focus) {
+      drawIncomingCurrents(focus);
+      relationTypes.forEach((type) => {
+        (focus[type.key] || []).forEach((id, i) => {
+          if (!operations[id]) return;
+          drawCurrent(focus, operations[id], type, i, traversalEmphasis(focus.id, id));
+        });
+      });
+      drawProposals();
+      drawArkMovementWake(focus);
+    }
+    Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId));
   }
-  Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId));
   if (fieldReadEl) fieldReadEl.classList.toggle('ready', !homeMode && settled > 0.9);
 }
 
@@ -3532,8 +3956,8 @@ let last = performance.now();
 function loop(now) {
   const dt = Math.min(0.05, (now - last) / 1000);
   last = now;
-  step(dt);
-  draw();
+  try { step(dt); } catch (e) { console.error('[field] step error:', e); }
+  try { draw(); } catch (e) { console.error('[field] draw error:', e); }
   requestAnimationFrame(loop);
 }
 
@@ -3541,7 +3965,7 @@ const activePointers = new Map();
 let pinchStartDist = null, pinchStartScale = null;
 
 // ── Order loop slider ─────────────────────────────────────────────────────────
-const SPINE_ORDERS = ['seed', 'ground', 'first', 'second', 'third', 'practice', 'higher'];
+const SPINE_ORDERS = ['ground', 'first', 'second', 'third', 'practice', 'higher'];
 let spineSequence = {};   // order -> [ids sorted by connection count desc]
 let spineFlat = [];       // all ids in full dependency order
 let spineTermFrac = [];   // flat index -> centre fraction [0,1) on the equal-band ring
@@ -3562,9 +3986,7 @@ function buildSpineSequence() {
   const present = [];
   SPINE_ORDERS.forEach((order) => {
     const terms = Object.values(allOps)
-      .filter((op) => order === 'seed'
-        ? spineDisplayOrder(op) === 'seed'
-        : String(op.order || '').toLowerCase() === order && spineDisplayOrder(op) !== 'seed')
+      .filter((op) => String(op.order || '').toLowerCase() === order)
       .sort((a, b) => {
         const score = (op) => (op.holds||[]).length + (op.traces||[]).length + (op.carries||[]).length + (op.pairs||[]).length + (op.nests||[]).length;
         return score(b) - score(a);
@@ -3590,13 +4012,200 @@ function buildSpineSequence() {
       flatIdx++;
     });
   });
+  buildHomeConnections();
+}
+
+// ── Ratio-driven field simulation ──────────────────────────────────────────
+// The field is a field of structural ratios. Positions, brightness and
+// condensation emerge from live structural tension — not from coordinates we
+// assign. Terms are where those tensions become sensible enough to name.
+//
+// Forces:
+//   carries  — directed spring: carrier holds its position, carried term pulled toward it
+//   pairs    — mutual spring at coupled equilibrium distance
+//   traces   — weak trailing pull (memory, not gravity)
+//   radial   — each order band has a natural ring; depth pressure holds terms there
+//   repulse  — short-range repulsion prevents collapse within a band
+//
+// D1 / MCP is the source of truth. When structure changes, the simulation
+// re-settles naturally without manual layout.
+
+let homeConnections = [];   // { a, b, typeKey } — structural edges for both forces + drawing
+let fieldParticles = {};    // id -> { x, y, vx, vy, fx, fy, mass, op }
+let homeAlpha = 1.0;        // fades 1→0 when entering a term; home field underlays focused view
+
+// Seed position: hash-derived concentric ring. Simulation drifts from here.
+// Ring formula: minimum 0.18 at ground so even the most fundamental terms
+// have a visible spread radius; higher orders push outward to 0.90.
+function homePosition(op) {
+  const p = fieldParticles[op.id];
+  if (p) return p;  // simulation has taken over
+  const order = spineDisplayOrder(op) || op.order || 'ground';
+  const depth = ORDER_DEPTHS[order] ?? 0.4;
+  const hash = hashStr(op.id);
+  const angle = (hash % 997) / 997 * Math.PI * 2;
+  const cx = innerWidth / 2, cy = innerHeight * 0.44;
+  const maxR = Math.min(cx * 0.82, cy * 0.90);
+  return { x: cx + Math.cos(angle) * (0.18 + depth * 0.72) * maxR,
+           y: cy + Math.sin(angle) * (0.18 + depth * 0.72) * maxR };
+}
+
+function buildHomeConnections() {
+  homeConnections = [];
+  const seen = new Set();
+  Object.values(allOps).forEach((a) => {
+    ['carries', 'pairs', 'traces'].forEach((key) => {
+      (a[key] || []).forEach((bId) => {
+        const b = allOps[bId];
+        if (!b) return;
+        const edgeKey = [a.id, bId].sort().join('\x00') + key;
+        if (seen.has(edgeKey)) return;
+        seen.add(edgeKey);
+        homeConnections.push({ a, b, typeKey: key });
+      });
+    });
+  });
+  initFieldParticles();
+}
+
+function initFieldParticles() {
+  fieldParticles = {};
+  Object.values(allOps).forEach((op) => {
+    const seed = homePosition(op);  // hash-based seed before particles exist
+    const connections = (op.holds||[]).length + (op.traces||[]).length
+      + (op.carries||[]).length + (op.pairs||[]).length + (op.nests||[]).length;
+    fieldParticles[op.id] = {
+      x: seed.x, y: seed.y,
+      vx: (hashStr(op.id + 'vx') % 100 - 50) * 0.04,
+      vy: (hashStr(op.id + 'vy') % 100 - 50) * 0.04,
+      fx: 0, fy: 0,
+      mass: Math.max(1, 1 + connections * 0.5),
+      op,
+    };
+  });
+}
+
+function stepFieldParticles(dt) {
+  const dtc = Math.min(dt, 0.032);
+  const cx = innerWidth / 2, cy = innerHeight * 0.44;
+  const maxR = Math.min(cx * 0.82, cy * 0.92);
+
+  // Reset forces
+  const particles = Object.values(fieldParticles);
+  particles.forEach((p) => { p.fx = 0; p.fy = 0; });
+
+  // ① Structural spring forces from ratio edges
+  homeConnections.forEach(({ a, b, typeKey }) => {
+    const pa = fieldParticles[a.id], pb = fieldParticles[b.id];
+    if (!pa || !pb) return;
+    const dx = pb.x - pa.x, dy = pb.y - pa.y;
+    const dist = Math.max(1, Math.hypot(dx, dy));
+    const nx = dx / dist, ny = dy / dist;
+
+    // Rest distance scales with viewport; type determines coupling tightness
+    const unit = maxR * 0.14;
+    const rest = typeKey === 'carries' ? unit * 0.62
+               : typeKey === 'pairs'   ? unit * 0.48
+               :                         unit * 1.0;   // traces — loose, drifting
+    const k    = typeKey === 'carries' ? 0.22
+               : typeKey === 'pairs'   ? 0.16
+               :                         0.06;
+
+    const force = k * (dist - rest);
+
+    // Carries is asymmetric: carrier (a) resists, carried (b) yields
+    const massA = typeKey === 'carries' ? pa.mass * 1.8 : pa.mass;
+    const massB = typeKey === 'carries' ? pb.mass * 0.55 : pb.mass;
+    pa.fx += force * nx / massA;
+    pa.fy += force * ny / massA;
+    pb.fx -= force * nx / massB;
+    pb.fy -= force * ny / massB;
+  });
+
+  // ② Radial order-depth pressure — keeps bands stratified
+  particles.forEach((p) => {
+    const order = spineDisplayOrder(p.op) || p.op.order || 'ground';
+    const depth = ORDER_DEPTHS[order] ?? 0.4;
+    const targetR = (0.18 + depth * 0.72) * maxR;
+    const dx = p.x - cx, dy = p.y - cy;
+    const r = Math.max(1, Math.hypot(dx, dy));
+    const radialError = r - targetR;
+    p.fx -= 0.035 * radialError * (dx / r);
+    p.fy -= 0.035 * radialError * (dy / r);
+  });
+
+  // ③ Short-range repulsion within same order band (prevents collapse)
+  // Group by order to limit comparisons to ~(n/6)² rather than n²
+  const byOrder = {};
+  particles.forEach((p) => {
+    const ord = p.op.order || 'ground';
+    (byOrder[ord] = byOrder[ord] || []).push(p);
+  });
+  Object.values(byOrder).forEach((group) => {
+    for (let i = 0; i < group.length; i++) {
+      for (let j = i + 1; j < group.length; j++) {
+        const pa = group[i], pb = group[j];
+        const dx = pb.x - pa.x, dy = pb.y - pa.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 1 || dist > 72) continue;
+        const repulse = 1.2 / (dist * dist);
+        const nx = dx / dist, ny = dy / dist;
+        pa.fx -= repulse * nx / pa.mass;
+        pa.fy -= repulse * ny / pa.mass;
+        pb.fx += repulse * nx / pb.mass;
+        pb.fy += repulse * ny / pb.mass;
+      }
+    }
+  });
+
+  // ④ Integrate with velocity damping
+  const damp = Math.pow(0.78, dtc * 60);
+  particles.forEach((p) => {
+    p.vx = (p.vx + p.fx * dtc * 60) * damp;
+    p.vy = (p.vy + p.fy * dtc * 60) * damp;
+    p.x += p.vx * dtc * 60;
+    p.y += p.vy * dtc * 60;
+    // Soft boundary
+    const mx = 24, my = 24, maxY = innerHeight * 0.80;
+    if (p.x < mx)            p.vx += (mx - p.x) * 0.12;
+    if (p.x > innerWidth-mx) p.vx -= (p.x - (innerWidth - mx)) * 0.12;
+    if (p.y < my)            p.vy += (my - p.y) * 0.12;
+    if (p.y > maxY)          p.vy -= (p.y - maxY) * 0.12;
+  });
+}
+
+function drawHomeField(alpha) {
+  if (!homeConnections.length) return;
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const n = Math.min(homeConnections.length, 220);
+  for (let i = 0; i < n; i++) {
+    const { a, b, typeKey } = homeConnections[Math.floor(Math.random() * homeConnections.length)];
+    const pa = homePosition(a), pb = homePosition(b);
+    const dx = pb.x - pa.x, dy = pb.y - pa.y;
+    const dist = Math.max(1, Math.hypot(dx, dy));
+    const nx = -dy / dist, ny = dx / dist;
+    const t = time * 0.13 + (hashStr(a.id) % 100) * 0.063;
+    const bowAmt = typeKey === 'carries' ? 26 : typeKey === 'pairs' ? 11 : 18;
+    const bow = bowAmt * (1 + Math.sin(t) * 0.42);
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
+    const baseA = typeKey === 'carries' ? 0.048 : typeKey === 'pairs' ? 0.032 : 0.024;
+    const breathe = 0.55 + 0.45 * Math.sin(t * 0.68 + (hashStr(b.id) % 100) * 0.04);
+    const sense = relationSensibility(a.id, b.id);
+    ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * breathe * alpha * sense, baseA * breathe * alpha * sense);
+    ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
+    ctx.stroke();
+  }
+  ctx.restore();
 }
 
 function spineGeometry() {
-  const rx = Math.min(innerWidth * 0.31, 360);
-  const ry = Math.max(24, Math.min(innerHeight * 0.065, 48));
+  const rx = Math.min(innerWidth * 0.22, 240);
+  const ry = Math.max(14, Math.min(innerHeight * 0.04, 28));
   const cx = innerWidth / 2;
-  const cy = innerHeight * 0.79;
+  const cy = innerHeight * 0.88;
   return { cx, cy, rx, ry };
 }
 
@@ -3764,7 +4373,7 @@ canvas.addEventListener('pointermove', (event) => {
 canvas.addEventListener('pointerup', (event) => {
   if (spineActive) {
     spineActive = false;
-    spineVelocity = Math.max(-6, Math.min(6, spineVelocity));
+    spineVelocity = Math.max(-2.5, Math.min(2.5, spineVelocity));
     if (Math.abs(spineVelocity) > 0.4 && spineFlat.length) {
       spineCoasting = true;
     } else if (spineCurrentIdx >= 0) {
@@ -3786,7 +4395,7 @@ canvas.addEventListener('pointerup', (event) => {
   if (activePointers.size === 1 && pointer && !pointer.moved) {
     const id = nearestOperation(event.clientX, event.clientY);
     if (id) {
-      if (id === focusId) panel.classList.add('open');
+      if (id === focusId) panel.classList.toggle('open');
       else enterOperation(id);
     }
   }
@@ -3806,6 +4415,7 @@ canvas.addEventListener('wheel', (event) => {
   settled = Math.max(0.2, settled - 0.35);
 }, { passive: false });
 closePanel.addEventListener('click', () => panel.classList.remove('open'));
+canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 window.addEventListener('resize', resize);
 
 window.addEventListener('keydown', (event) => {
@@ -3844,6 +4454,7 @@ async function bootstrap() {
     entries.forEach((e) => { allOps[e.id] = e; });
     gardenMemory = memory || {};
     liveProposals = proposals.filter((p) => p.status !== 'discarded' && p.status !== 'applied' && p.status !== 'needs_preparation');
+    refreshCoupledFrame();
     buildSpineSequence();
   } catch(err) {
     modeEl.textContent = 'Field';
@@ -3852,7 +4463,6 @@ async function bootstrap() {
   }
 
   const hash = decodeURIComponent(location.hash.slice(1) || '');
-  const isHome = !hash || !allOps[hash];
   const startId = (hash && allOps[hash]) ? hash
     : Object.values(allOps).find((op) => op.title === 'Reality Mechanics')?.id
     || Object.values(allOps).find((op) => op.title === 'Relation')?.id
@@ -3861,7 +4471,7 @@ async function bootstrap() {
 
   if (!startId) { modeEl.textContent = 'Field'; requestAnimationFrame(loop); return; }
 
-  homeMode = isHome;
+  homeMode = false;
   focusId = startId;
   targetFocusId = startId;
   syncSpineToFocus(startId);
@@ -3870,6 +4480,7 @@ async function bootstrap() {
   modeEl.textContent = allOps[startId].title;
   renderFieldRead(startId);
   renderPanel(startId);
+  callArk(null, startId).catch(() => {});
   requestAnimationFrame(loop);
 }
 
@@ -4572,6 +5183,12 @@ async function handleRequest(request, env) {
   if (pathname === "/api/enter")
     return handleEnterApi(request);
 
+  if (pathname === "/api/ark/enter")
+    return handleArkEnter(request, env);
+
+  if (pathname === "/api/ark/move")
+    return handleArkMove(request, env);
+
   // Garden API
   if (pathname === "/api/field/entries")
     return handleFieldEntries(env);
@@ -4627,6 +5244,19 @@ async function handleRequest(request, env) {
     return updateProposalStatus(env, id, "needs_preparation");
   }
 
+  if (pathname === "/api/garden/bulk-discard-prep" && request.method === "POST") {
+    if (!gardenAuthorized(request, env))
+      return gardenUnauthorized();
+    const raw = await env.GARDEN.get("proposals:index");
+    const index = raw ? JSON.parse(raw) : [];
+    const discarded = index.filter(p => p.status === "needs_preparation").length;
+    const updated = index.map(p =>
+      p.status === "needs_preparation" ? { ...p, status: "discarded" } : p
+    );
+    await env.GARDEN.put("proposals:index", JSON.stringify(updated));
+    return new Response(JSON.stringify({ ok: true, discarded }), { status: 200, headers: JSON_HEADERS });
+  }
+
   if (pathname.startsWith("/api/garden/steward-note/")) {
     const id = pathname.replace("/api/garden/steward-note/", "");
     return handleGardenStewardNote(request, env, id);
@@ -4641,6 +5271,9 @@ async function handleRequest(request, env) {
 
   if (pathname === "/" || pathname === "")
     return new Response(fieldPage(), { headers: HTML_HEADERS });
+
+  if (pathname === "/ark")
+    return Response.redirect(new URL("/field", request.url), 302);
 
   if (pathname === "/garden")
     return new Response(gardenPage(env), { headers: HTML_HEADERS });
