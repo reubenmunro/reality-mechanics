@@ -3455,9 +3455,9 @@ function drawSmoke() {
   const focus = operations[focusId];
   const focusProfile = focus?.profile || null;
   const family = focusProfile ? familyComposition(focusProfile)[0]?.key : 'anchor';
-  const grad = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.max(innerWidth, innerHeight) * 0.62);
+  const grad = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.max(innerWidth, innerHeight) * 0.88);
   grad.addColorStop(0, '#0b1018');
-  grad.addColorStop(0.45, '#07090e');
+  grad.addColorStop(0.56, '#07090e');
   grad.addColorStop(1, '#05070b');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, innerWidth, innerHeight);
@@ -3474,9 +3474,16 @@ function drawSmoke() {
     const r = 36 + i * 6.3 + Math.sin(time * 0.35 + i) * 18;
     const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
     const y = Math.sin(a * 0.82) * r * compression;
+    const puffR = 24 + (i % 9) * 7;
+    const puffA = 0.009 + (i % 5) * 0.0025 + (focusProfile?.ash || 0) * 0.008;
+    const puffGrad = ctx.createRadialGradient(x, y, 0, x, y, puffR * 1.38);
+    puffGrad.addColorStop(0, 'rgba(58,80,112,' + puffA + ')');
+    puffGrad.addColorStop(0.46, 'rgba(58,80,112,' + (puffA * 0.28) + ')');
+    puffGrad.addColorStop(0.78, 'rgba(58,80,112,0)');
+    puffGrad.addColorStop(1, 'rgba(58,80,112,0)');
     ctx.beginPath();
-    ctx.fillStyle = 'rgba(58,80,112,' + (0.007 + (i % 5) * 0.002 + (focusProfile?.ash || 0) * 0.006) + ')';
-    ctx.arc(x, y, 24 + (i % 9) * 7, 0, Math.PI * 2);
+    ctx.fillStyle = puffGrad;
+    ctx.arc(x, y, puffR * 1.38, 0, Math.PI * 2);
     ctx.fill();
   }
   ctx.restore();
@@ -4094,7 +4101,7 @@ function operationAmbientBudget(local, isFocus, structuralMass, fieldPressure = 
   return {
     endpointOnly,
     wrinkleMax: endpointOnly ? 0 : Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46) * quality * (1 - fieldPressure * 0.35) * (1 - fieldTension * 0.18))),
-    glowSpread: isFocus ? Math.max(1.62, 2.12 - fieldTension * 0.36) : Math.max(0.96, (1.82 - structuralMass * 0.34 - fieldPressure * 0.48 - fieldTension * 0.24) * adaptiveAmbientScale(0.78)),
+    glowSpread: isFocus ? Math.max(1.62, 2.12 - fieldTension * 0.36) : Math.max(0.88, (1.44 - structuralMass * 0.28 - fieldPressure * 0.38 - fieldTension * 0.18) * adaptiveAmbientScale(0.78)),
   };
 }
 
@@ -4187,6 +4194,17 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
       coreGlow.addColorStop(1, 'rgba(120,145,175,0)');
     }
     fillCondensation(p, endpointRadius * (2.05 - fieldTension * 0.22), op.phase + time * 0.04, coreGlow, 0.28 - fieldTension * 0.06, 8);
+    const edgeAlpha = 0.018 + fieldTension * 0.028 + structuralMass * 0.012;
+    strokeCondensation(
+      p,
+      endpointRadius * (1.15 + structuralMass * 0.18),
+      op.phase + time * 0.02,
+      colourMode === 'fire'
+        ? fireColor(order, edgeAlpha, 12)
+        : 'rgba(212,197,169,' + edgeAlpha + ')',
+      Math.max(0.28, scale * (0.28 + fieldTension * 0.16)),
+      Math.max(0.05, 0.12 - fieldTension * 0.045)
+    );
     ctx.restore();
     return;
   }
@@ -4207,8 +4225,9 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     midCol = 'rgba(120,82,54,' + midAlpha + ')';
   }
   grad.addColorStop(0, coreCol);
-  grad.addColorStop(0.38, midCol);
-  grad.addColorStop(0.68, 'rgba(76,92,112,' + ashAlpha + ')');
+  grad.addColorStop(0.22, midCol);
+  grad.addColorStop(0.45, 'rgba(76,92,112,' + ashAlpha + ')');
+  grad.addColorStop(0.72, 'rgba(76,92,112,' + (ashAlpha * 0.15) + ')');
   grad.addColorStop(1, 'rgba(0,0,0,0)');
   fillCondensation(p, radius * ambientBudget.glowSpread, op.phase + time * (isFocus ? 0.012 : 0.02), grad, Math.max(0.06, (isFocus ? 0.12 : 0.22) - fieldTension * 0.06));
   if (local || isFocus) {
