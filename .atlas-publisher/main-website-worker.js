@@ -3746,36 +3746,52 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const dx = pb.x - pa.x, dy = pb.y - pa.y;
   const dist = Math.max(1, Math.hypot(dx, dy));
   const nx = -dy / dist, ny = dx / dist;
-  const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
-  const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
-  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
+  const tx = dx / dist, ty = dy / dist;
   const worldMidX = (a.x + b.x) / 2;
   const worldMidY = (a.y + b.y) / 2;
   const gradient = pressureGradientAt(worldMidX, worldMidY);
   const rhythm = relationRhythm(source, target, type, gradient, relationMass, movementRatio);
   const isCarry = type.key === 'carries';
+  const isPair = type.key === 'pairs';
+  const isNest = type.key === 'nests';
+  const pairAnswer = isPair
+    ? Math.sin(time * (0.18 + rhythm.reciprocity * 0.42) + offset + (source.phase || 0) * 0.2)
+    : 0;
+  const nestCycle = isNest
+    ? Math.sin(time * (0.12 + rhythm.circulation * 0.22) + offset + (source.enclosure || 0) * Math.PI)
+    : 0;
+  const bowBase = (
+    type.direction === 'return' ? -46 :
+    type.direction === 'lateral' ? pairAnswer * (36 + rhythm.reciprocity * 24) :
+    type.direction === 'enclose' ? (22 + rhythm.circulation * 26) * (0.82 + nestCycle * 0.24) :
+    36
+  ) * (type.bowMult ?? 1);
+  const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
+  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
   const rhythmRate = 0.16
     + rhythm.cadence * 1.18
     + rhythm.intermittence * 0.62
     + rhythm.reciprocity * 0.34
     + rhythm.circulation * 0.24
     - rhythm.persistence * 0.42;
-  const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * 0.18
-    + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1;
+  const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * (isPair ? 0.32 : 0.18)
+    + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1
+    + rhythm.circulation * Math.sin(time * (0.16 + rhythm.circulation * 0.24) + offset) * (isNest ? 0.2 : 0.08);
   const pulse = (Math.sin(time * Math.max(0.08, rhythmRate) + a.phase + offset + rhythmPhase) + 1) / 2;
   const rhythmPresence = clamp01(
     rhythm.cadence * 0.38
     + rhythm.intermittence * 0.18
-    + rhythm.reciprocity * 0.12
-    + rhythm.circulation * 0.08
+    + rhythm.reciprocity * (isPair ? 0.22 : 0.12)
+    + rhythm.circulation * (isNest ? 0.2 : 0.08)
     + (1 - rhythm.persistence) * 0.08
     + (isCarry ? 0.18 : 0)
   );
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
   const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
+  const containment = isNest ? dist * (0.07 + rhythm.circulation * 0.07 + relationMass * 0.03) : 0;
   const targetControlWorld = {
-    x: worldMidX + nx * ((bow + fieldBend) / Math.max(0.001, scale)),
-    y: worldMidY + ny * ((bow + fieldBend) / Math.max(0.001, scale)),
+    x: worldMidX - tx * containment + nx * ((bow + fieldBend) / Math.max(0.001, scale)),
+    y: worldMidY - ty * containment + ny * ((bow + fieldBend) / Math.max(0.001, scale)),
   };
   const trajectoryKey = a.id + ':' + type.key + ':' + b.id;
   const previousControlWorld = relationTrajectoryMemory.get(trajectoryKey) || targetControlWorld;
@@ -3835,7 +3851,10 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     ctx.fill();
   }
 
-  const t = type.direction === 'return' ? 1 - pulse : pulse;
+  const t = type.direction === 'return' ? 1 - pulse
+    : isPair ? clamp01(0.5 + Math.sin(time * (0.26 + rhythm.reciprocity * 0.42) + offset + rhythmPhase) * (0.34 + rhythm.reciprocity * 0.12))
+    : isNest ? clamp01(0.48 + Math.sin(time * (0.16 + rhythm.circulation * 0.3) + offset + rhythmPhase) * (0.24 + rhythm.circulation * 0.12))
+    : pulse;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
   const beadRadius = (9 + (8 + source.heat * 8 + relationMass * 4 + rhythmPresence * 5) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.2);
