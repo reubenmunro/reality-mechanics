@@ -2408,6 +2408,24 @@ const FIELD_RENDER_BUDGET = Object.freeze({
   ambientWrinkles: 3,
 });
 
+let adaptiveFrameMs = 16.7;
+let ambientQuality = 1;
+
+function updateAdaptiveRenderQuality(frameMs) {
+  if (!Number.isFinite(frameMs) || frameMs <= 0) return;
+  adaptiveFrameMs += (frameMs - adaptiveFrameMs) * 0.08;
+  const targetQuality = adaptiveFrameMs > 30 ? 0.44
+    : adaptiveFrameMs > 24 ? 0.62
+      : adaptiveFrameMs > 19 ? 0.82
+        : 1;
+  const rate = targetQuality < ambientQuality ? 0.12 : 0.025;
+  ambientQuality += (targetQuality - ambientQuality) * rate;
+}
+
+function adaptiveAmbientScale(floor = 0.5) {
+  return floor + (1 - floor) * ambientQuality;
+}
+
 const basinTypes = [
   { key: 'hold', title: 'Hold', x: -0.58, y: 0.42, color: [92, 105, 118] },
   { key: 'trace', title: 'Trace', x: -0.42, y: -0.28, color: [86, 128, 168] },
@@ -3239,7 +3257,8 @@ function drawSmoke() {
   ctx.translate(pan.x, pan.y);
   const drift = family === 'motion' ? 0.14 : family === 'settlement' ? 0.045 : family === 'strain' ? 0.075 : 0.06;
   const compression = family === 'strain' ? 0.56 : family === 'anchor' ? 0.68 : 0.82;
-  for (let i = 0; i < FIELD_RENDER_BUDGET.smokePuffs; i++) {
+  const smokePuffs = Math.max(18, Math.round(FIELD_RENDER_BUDGET.smokePuffs * adaptiveAmbientScale(0.42)));
+  for (let i = 0; i < smokePuffs; i++) {
     const a = i * 0.42 + time * (drift + (i % 7) * 0.004);
     const r = 36 + i * 6.3 + Math.sin(time * 0.35 + i) * 18;
     const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
@@ -3365,7 +3384,7 @@ function drawBasinGradients() {
   ctx.globalCompositeOperation = 'lighter';
   basinTypes.forEach((basin) => {
     const weight = weights[basin.key] || 0;
-    if (weight < 0.16) return;
+    if (weight < 0.16 + (1 - ambientQuality) * 0.12) return;
     const x = cx + basin.x * basinScale;
     const y = cy + basin.y * basinScale;
     const radius = (120 + weight * 190) * scale;
@@ -3455,7 +3474,8 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
   const targetMass = target.fieldStates?.structuralMass || target.structuralMass || 0;
   const relationMass = (sourceMass + targetMass) * 0.5;
-  const segments = relationMass > 0.48 ? FIELD_RENDER_BUDGET.filamentSegmentsCompressed : FIELD_RENDER_BUDGET.filamentSegments;
+  const baseSegments = relationMass > 0.48 ? FIELD_RENDER_BUDGET.filamentSegmentsCompressed : FIELD_RENDER_BUDGET.filamentSegments;
+  const segments = Math.max(7, Math.round(baseSegments * adaptiveAmbientScale(0.62)));
   const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
   const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035 + sourceMass * 0.018) * emphasis;
@@ -3545,7 +3565,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.58 + sourcePhysics.capacity * 0.44 + relationMass * 0.72 + (family === 'motion' ? 0.22 : 0) + movementBoost * 1.4) * scale);
   ctx.stroke();
 
-  const strandCeiling = Math.max(1, Math.round(FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4));
+  const strandCeiling = Math.max(1, Math.round((FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4) * adaptiveAmbientScale(0.72)));
   const strandCount = Math.min(strandCeiling, Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48))));
   for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis);
 
@@ -3660,9 +3680,11 @@ function operationAmbientBudget(local, isFocus, structuralMass) {
   const wrinkleMax = isFocus ? FIELD_RENDER_BUDGET.focusWrinkles
     : local ? FIELD_RENDER_BUDGET.localWrinkles
       : FIELD_RENDER_BUDGET.ambientWrinkles;
+  const qualityFloor = isFocus ? 0.86 : local ? 0.54 : 0.4;
+  const quality = adaptiveAmbientScale(qualityFloor);
   return {
-    wrinkleMax: Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46))),
-    glowSpread: isFocus ? 2.5 : Math.max(1.68, 2.24 - structuralMass * 0.38),
+    wrinkleMax: Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46) * quality)),
+    glowSpread: isFocus ? 2.5 : Math.max(1.58, (2.24 - structuralMass * 0.38) * adaptiveAmbientScale(0.82)),
   };
 }
 
@@ -4083,7 +4105,9 @@ function draw() {
 
 let last = performance.now();
 function loop(now) {
-  const dt = Math.min(0.05, (now - last) / 1000);
+  const frameMs = now - last;
+  updateAdaptiveRenderQuality(frameMs);
+  const dt = Math.min(0.05, frameMs / 1000);
   last = now;
   try { step(dt); } catch (e) { console.error('[field] step error:', e); }
   try { draw(); } catch (e) { console.error('[field] draw error:', e); }
@@ -4319,7 +4343,7 @@ function drawHomeField(alpha) {
   if (!homeConnections.length) return;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const n = Math.min(homeConnections.length, FIELD_RENDER_BUDGET.homeCurrents);
+  const n = Math.min(homeConnections.length, Math.max(42, Math.round(FIELD_RENDER_BUDGET.homeCurrents * adaptiveAmbientScale(0.38))));
   for (let i = 0; i < n; i++) {
     const { a, b, typeKey } = homeConnections[Math.floor(Math.random() * homeConnections.length)];
     const pa = homePosition(a), pb = homePosition(b);
