@@ -2382,6 +2382,7 @@ let arkMovementAt = 0;
 let traversalMap = {};   // "fromId:toId" -> { count, lastAt }
 let lastTraversalKey = null;
 let pressureField = null;
+let relationPressureTraces = [];
 
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
@@ -2414,6 +2415,9 @@ const FIELD_PRESSURE_GRID = Object.freeze({
   rows: 28,
   influence: 150,
   padding: 180,
+  traceInfluence: 86,
+  traceLimit: 260,
+  traceDecay: 0.9,
 });
 
 let adaptiveFrameMs = 16.7;
@@ -3318,7 +3322,52 @@ function buildPressureField() {
       }
     }
   });
+  relationPressureTraces.forEach((trace) => {
+    const influence = FIELD_PRESSURE_GRID.traceInfluence * (0.72 + trace.strength * 0.4);
+    const minX = Math.max(0, Math.floor((trace.x - influence - minXBound) / cellW));
+    const maxX = Math.min(cols - 1, Math.ceil((trace.x + influence - minXBound) / cellW));
+    const minY = Math.max(0, Math.floor((trace.y - influence - minYBound) / cellH));
+    const maxY = Math.min(rows - 1, Math.ceil((trace.y + influence - minYBound) / cellH));
+    const denom = Math.max(1, influence * influence);
+    for (let y = minY; y <= maxY; y++) {
+      const gy = minYBound + (y + 0.5) * cellH;
+      for (let x = minX; x <= maxX; x++) {
+        const gx = minXBound + (x + 0.5) * cellW;
+        const d2 = (gx - trace.x) * (gx - trace.x) + (gy - trace.y) * (gy - trace.y);
+        const falloff = Math.exp(-d2 / denom);
+        values[y * cols + x] += trace.strength * falloff;
+      }
+    }
+  });
   pressureField = { cols, rows, cellW, cellH, minX: minXBound, minY: minYBound, values };
+}
+
+function decayPressureTraces(dt) {
+  if (!relationPressureTraces.length) return;
+  const decay = Math.exp(-dt * FIELD_PRESSURE_GRID.traceDecay);
+  relationPressureTraces = relationPressureTraces
+    .map((trace) => ({ ...trace, strength: trace.strength * decay }))
+    .filter((trace) => trace.strength > 0.006)
+    .slice(-FIELD_PRESSURE_GRID.traceLimit);
+}
+
+function addPressureTrace(x, y, strength) {
+  relationPressureTraces.push({ x, y, strength });
+  if (relationPressureTraces.length > FIELD_PRESSURE_GRID.traceLimit) {
+    relationPressureTraces.splice(0, relationPressureTraces.length - FIELD_PRESSURE_GRID.traceLimit);
+  }
+}
+
+function recordRelationPressureTrace(a, b, controlWorld, strength) {
+  if (!Number.isFinite(strength) || strength <= 0) return;
+  [0.28, 0.5, 0.72].forEach((t) => {
+    const mt = 1 - t;
+    addPressureTrace(
+      mt * mt * a.x + 2 * mt * t * controlWorld.x + t * t * b.x,
+      mt * mt * a.y + 2 * mt * t * controlWorld.y + t * t * b.y,
+      strength * (t === 0.5 ? 1 : 0.62)
+    );
+  });
 }
 
 function pressureAt(x, y) {
@@ -3663,6 +3712,10 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const cx = midX + nx * (bow + fieldBend);
   const cy = midY + ny * (bow + fieldBend);
   const control = { x: cx, y: cy };
+  const controlWorld = {
+    x: worldMidX + nx * ((bow + fieldBend) / Math.max(0.001, scale)),
+    y: worldMidY + ny * ((bow + fieldBend) / Math.max(0.001, scale)),
+  };
   const family = familyComposition(source)[0]?.key || 'motion';
   const sourceOrder = spineDisplayOrder(a);
   const targetOrder = spineDisplayOrder(b);
@@ -3670,6 +3723,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
   const currentAlpha = (0.08 + type.strength * 0.20 + source.heat * 0.13 + relationMass * 0.07 - source.ash * 0.06) * emphasis * (1 + movementBoost);
+  recordRelationPressureTrace(a, b, controlWorld, Math.min(0.032, currentAlpha * 0.055));
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -4038,6 +4092,7 @@ function nearestOperation(x, y) {
 function step(dt) {
   time += dt;
   settled = Math.min(3, settled + dt);
+  decayPressureTraces(dt);
 
   // Spine momentum coast with bump-friction detents
   if (spineCoasting && spineFlat.length) {
