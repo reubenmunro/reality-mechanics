@@ -2381,6 +2381,7 @@ let arkLastEvent = null;
 let arkMovementAt = 0;
 let traversalMap = {};   // "fromId:toId" -> { count, lastAt }
 let lastTraversalKey = null;
+let pressureField = null;
 
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
@@ -2406,6 +2407,12 @@ const FIELD_RENDER_BUDGET = Object.freeze({
   focusWrinkles: 12,
   localWrinkles: 7,
   ambientWrinkles: 3,
+});
+
+const FIELD_PRESSURE_GRID = Object.freeze({
+  cols: 42,
+  rows: 28,
+  influence: 150,
 });
 
 let adaptiveFrameMs = 16.7;
@@ -3270,6 +3277,64 @@ function screen(op) {
   };
 }
 
+function buildPressureField() {
+  const cols = FIELD_PRESSURE_GRID.cols;
+  const rows = FIELD_PRESSURE_GRID.rows;
+  const cellW = innerWidth / cols;
+  const cellH = innerHeight / rows;
+  const values = new Float32Array(cols * rows);
+  Object.values(operations).forEach((op) => {
+    const profile = op.profile || computeProfile(op);
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+    const p = screen(op);
+    const influence = FIELD_PRESSURE_GRID.influence * (0.62 + structuralMass * 0.9) * scale;
+    const strength = 0.22 + structuralMass * 0.78 + profile.density * 0.16;
+    const minX = Math.max(0, Math.floor((p.x - influence) / cellW));
+    const maxX = Math.min(cols - 1, Math.ceil((p.x + influence) / cellW));
+    const minY = Math.max(0, Math.floor((p.y - influence) / cellH));
+    const maxY = Math.min(rows - 1, Math.ceil((p.y + influence) / cellH));
+    const denom = Math.max(1, influence * influence);
+    for (let y = minY; y <= maxY; y++) {
+      const gy = (y + 0.5) * cellH;
+      for (let x = minX; x <= maxX; x++) {
+        const gx = (x + 0.5) * cellW;
+        const d2 = (gx - p.x) * (gx - p.x) + (gy - p.y) * (gy - p.y);
+        const falloff = Math.exp(-d2 / denom);
+        values[y * cols + x] += strength * falloff;
+      }
+    }
+  });
+  pressureField = { cols, rows, cellW, cellH, values };
+}
+
+function pressureAt(x, y) {
+  if (!pressureField) return 0;
+  const { cols, rows, cellW, cellH, values } = pressureField;
+  const gx = Math.max(0, Math.min(cols - 1.001, x / cellW - 0.5));
+  const gy = Math.max(0, Math.min(rows - 1.001, y / cellH - 0.5));
+  const x0 = Math.floor(gx), y0 = Math.floor(gy);
+  const x1 = Math.min(cols - 1, x0 + 1), y1 = Math.min(rows - 1, y0 + 1);
+  const tx = gx - x0, ty = gy - y0;
+  const a = values[y0 * cols + x0], b = values[y0 * cols + x1];
+  const c = values[y1 * cols + x0], d = values[y1 * cols + x1];
+  return (a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty;
+}
+
+function pressureGradientAt(x, y) {
+  if (!pressureField) return { x: 0, y: 0, pressure: 0 };
+  const stepX = pressureField.cellW;
+  const stepY = pressureField.cellH;
+  const left = pressureAt(x - stepX, y);
+  const right = pressureAt(x + stepX, y);
+  const up = pressureAt(x, y - stepY);
+  const down = pressureAt(x, y + stepY);
+  return {
+    x: (right - left) / Math.max(1, stepX * 2),
+    y: (down - up) / Math.max(1, stepY * 2),
+    pressure: pressureAt(x, y),
+  };
+}
+
 function drawSmoke() {
   const cx = innerWidth / 2, cy = innerHeight / 2;
   const focus = operations[focusId];
@@ -3574,8 +3639,13 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
   const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
-  const cx = (pa.x + pb.x) / 2 + nx * bow;
-  const cy = (pa.y + pb.y) / 2 + ny * bow;
+  const midX = (pa.x + pb.x) / 2;
+  const midY = (pa.y + pb.y) / 2;
+  const gradient = pressureGradientAt(midX, midY);
+  const lateralPressure = -(gradient.x * nx + gradient.y * ny);
+  const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18);
+  const cx = midX + nx * (bow + fieldBend);
+  const cy = midY + ny * (bow + fieldBend);
   const control = { x: cx, y: cy };
   const family = familyComposition(source)[0]?.key || 'motion';
   const sourceOrder = spineDisplayOrder(a);
@@ -4158,7 +4228,7 @@ function draw() {
     const focus = operations[focusId];
     const local = new Set(localIds(focusId));
     const fieldPressure = focusedFieldPressure(focus, Object.keys(operations).length);
-
+    buildPressureField();
 
     if (focus) {
       drawIncomingCurrents(focus);
