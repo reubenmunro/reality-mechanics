@@ -2593,21 +2593,37 @@ function careSignal(profile) {
 
 function enginePhysics(profile) {
   const weights = profile?.basins?.weights || {};
+  const structuralMass = profile?.fieldStates?.structuralMass || profile?.structuralMass || 0;
   const values = {
-    gravity: clamp01(profile.gravity * 0.7 + (weights.hold || 0) * 0.3),
+    gravity: clamp01(profile.gravity * 0.62 + (weights.hold || 0) * 0.26 + structuralMass * 0.12),
     return: clamp01(profile.return * 0.68 + (weights.trace || 0) * 0.32),
-    velocity: clamp01(profile.continuation * 0.46 + profile.airflow * 0.24 + (weights.carry || 0) * 0.2 + (weights.gateway || 0) * 0.1),
-    friction: clamp01((weights.bearing || 0) * 0.28 + (weights.hold || 0) * 0.22 + profile.wither * 0.2 + profile.ash * 0.2 + profile.turbulence * 0.1),
-    pressure: clamp01(profile.turbulence * 0.34 + profile.density * 0.24 + (weights.bearing || 0) * 0.28 + (weights.garden || 0) * 0.14),
+    velocity: clamp01((profile.continuation * 0.46 + profile.airflow * 0.24 + (weights.carry || 0) * 0.2 + (weights.gateway || 0) * 0.1) * (1 - structuralMass * 0.18)),
+    friction: clamp01((weights.bearing || 0) * 0.24 + (weights.hold || 0) * 0.2 + profile.wither * 0.18 + profile.ash * 0.16 + profile.turbulence * 0.08 + structuralMass * 0.22),
+    pressure: clamp01(profile.turbulence * 0.28 + profile.density * 0.2 + (weights.bearing || 0) * 0.24 + (weights.garden || 0) * 0.12 + structuralMass * 0.16),
     capacity: clamp01(profile.density * 0.34 + profile.continuation * 0.24 + profile.resolution * 0.18 + (weights.carry || 0) * 0.14 + (weights.hold || 0) * 0.1),
-    damping: clamp01(profile.resolution * 0.58 + (weights.terminal || 0) * 0.22 + profile.maturity * 0.12 + (weights.read || 0) * 0.08),
+    damping: clamp01(profile.resolution * 0.46 + (weights.terminal || 0) * 0.18 + profile.maturity * 0.1 + (weights.read || 0) * 0.08 + structuralMass * 0.28),
     opening: clamp01(profile.airflow * 0.5 + (weights.gateway || 0) * 0.34 + (weights.place || 0) * 0.16),
     collision: clamp01((weights.bearing || 0) * 0.3 + (weights.terminal || 0) * 0.28 + (weights.hold || 0) * 0.22 + profile.gravity * 0.2),
-    heat: clamp01(profile.heat * 0.72 + (weights.garden || 0) * 0.1 + (weights.carry || 0) * 0.12 + profile.turbulence * 0.06),
-    decay: clamp01(profile.wither * 0.45 + profile.ash * 0.32 + profile.turbulence * 0.16 - profile.resolution * 0.12),
+    heat: clamp01((profile.heat * 0.72 + (weights.garden || 0) * 0.1 + (weights.carry || 0) * 0.12 + profile.turbulence * 0.06) * (1 - structuralMass * 0.14)),
+    decay: clamp01(profile.wither * 0.38 + profile.ash * 0.28 + profile.turbulence * 0.12 - profile.resolution * 0.12 - structuralMass * 0.12),
   };
   const dominant = Object.entries(values).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([key, value]) => ({ key, value }));
   return { values, dominant };
+}
+
+function deriveFieldStates(op, profile, incoming) {
+  const outgoingTotal = op.holds.length + op.traces.length + op.carries.length + op.pairs.length + op.nests.length;
+  const incomingTotal = incoming.holds + incoming.traces + incoming.carries + incoming.pairs + incoming.nests;
+  const total = Math.max(1, outgoingTotal + incomingTotal);
+  const relationRatio = clamp01(total / (total + 8));
+  const holdRatio = clamp01((op.holds.length + incoming.holds) / total);
+  const carryRatio = clamp01((op.carries.length + incoming.carries) / total);
+  const traceRatio = clamp01((op.traces.length + incoming.traces) / total);
+  const pairNestRatio = clamp01((op.pairs.length + incoming.pairs + op.nests.length + incoming.nests) / total);
+  const groundedRatio = clamp01(profile.gravity * 0.28 + profile.resolution * 0.24 + profile.maturity * 0.18 + profile.density * 0.14);
+  const relationRoleRatio = clamp01(holdRatio * 0.24 + carryRatio * 0.18 + traceRatio * 0.12 + pairNestRatio * 0.08);
+  const structuralMass = clamp01(relationRatio * 0.42 + relationRoleRatio + groundedRatio + profile.gardenMemory * 0.08);
+  return Object.freeze({ structuralMass });
 }
 
 function computeProfile(op) {
@@ -2664,6 +2680,8 @@ function computeProfile(op) {
     gardenMemoryRecord,
     reasons: profileReasons(op, incoming, gardenPressure, gardenMemoryWeight, biasName),
   };
+  profile.fieldStates = deriveFieldStates(op, profile, incoming);
+  profile.structuralMass = profile.fieldStates.structuralMass;
   profile.basins = computeBasins(op, profile, incoming, gardenPressure);
   profile.engine = enginePhysics(profile);
   const expected = expectedBasinsForOrder(op.order);
@@ -3417,9 +3435,10 @@ function bezierPoint(a, c, b, t) {
 
 function drawFilament(pa, pb, control, type, source, target, offset, strand, emphasis = 1) {
   const physics = source.engine?.values || enginePhysics(source).values;
-  const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1);
+  const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
+  const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
-  const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035) * emphasis;
+  const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035 + sourceMass * 0.018) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
   const targetOrder = spineDisplayOrder(target);
   ctx.beginPath();
@@ -3439,7 +3458,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   ctx.lineWidth = Math.max(0.35, (0.32 + source.density * 0.45) * scale);
   ctx.stroke();
 
-  const branchProb = type.branchProb ?? 0.33;
+  const branchProb = (type.branchProb ?? 0.33) * (1 - sourceMass * 0.7);
   if (branchProb <= 0) return;
   if (source.turbulence < 0.18 && Math.random() > branchProb) return;
   const start = bezierPoint(pa, control, pb, split);
@@ -3453,7 +3472,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
     start.x + Math.cos(branchAngle) * branchLength,
     start.y + Math.sin(branchAngle) * branchLength
   );
-  const branchAlpha = (0.014 + source.turbulence * 0.028 + physics.velocity * 0.026 + physics.pressure * 0.012) * emphasis;
+  const branchAlpha = (0.014 + source.turbulence * 0.028 + physics.velocity * 0.026 + physics.pressure * 0.012) * emphasis * (1 - sourceMass * 0.45);
   ctx.strokeStyle = colourMode === 'fire'
     ? fireMix(sourceOrder, targetOrder, split, branchAlpha, 10)
     : relationColor(type, branchAlpha);
@@ -3468,6 +3487,9 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const target = b.profile || computeProfile(b);
   const sourcePhysics = source.engine?.values || enginePhysics(source).values;
   const targetPhysics = target.engine?.values || enginePhysics(target).values;
+  const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
+  const targetMass = target.fieldStates?.structuralMass || target.structuralMass || 0;
+  const relationMass = (sourceMass + targetMass) * 0.5;
   const isLastPath = lastTraversalKey === a.id + ':' + b.id;
   const movementAge = isLastPath ? arkMovementAge() : 0;
   const movementRatio = movementAge > 0.03 ? arkRatioSignature(arkLastEvent) : null;
@@ -3476,11 +3498,12 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const nx = -dy / dist, ny = dx / dist;
   const currentSpeed = (0.54 + sourcePhysics.velocity * 0.9 + sourcePhysics.heat * 0.45 + source.turbulence * 0.24 - targetPhysics.gravity * 0.14 - sourcePhysics.friction * 0.18)
     * (type.beadSpeed ?? 1)
+    * (1 - relationMass * 0.2)
     * (movementRatio ? 1 + movementAge * (movementRatio.frequency * 0.55 + movementRatio.recurrence * 0.34 + movementRatio.tension * 0.28) : 1);
   const pulse = (Math.sin(time * currentSpeed + a.phase + offset) + 1) / 2;
   const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
-  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow;
+  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
   const cx = (pa.x + pb.x) / 2 + nx * bow;
   const cy = (pa.y + pb.y) / 2 + ny * bow;
   const control = { x: cx, y: cy };
@@ -3490,7 +3513,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const crossing = sourceOrder !== targetOrder;
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
-  const currentAlpha = (0.026 + type.strength * 0.07 + source.heat * 0.045 - source.ash * 0.03) * emphasis * (1 + movementBoost);
+  const currentAlpha = (0.026 + type.strength * 0.07 + source.heat * 0.045 + relationMass * 0.024 - source.ash * 0.03) * emphasis * (1 + movementBoost);
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -3500,16 +3523,16 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, currentAlpha, currentAlpha)
     : relationColor(type, currentAlpha);
-  ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.72 + sourcePhysics.capacity * 0.52 + (family === 'motion' ? 0.34 : 0) + movementBoost * 1.4) * scale);
+  ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.58 + sourcePhysics.capacity * 0.44 + relationMass * 0.72 + (family === 'motion' ? 0.22 : 0) + movementBoost * 1.4) * scale);
   ctx.stroke();
 
-  const strandCount = Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1)));
+  const strandCount = Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48)));
   for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis);
 
   if (colourMode === 'fire' && crossing) {
     const meetT = clamp01(meeting.t + Math.sin(time * (0.32 + sourcePhysics.heat * 0.22 + meeting.pressure * 0.18) + offset) * (0.025 + meeting.pressure * 0.05));
     const meet = bezierPoint(pa, control, pb, meetT);
-    const meetRadius = (10 + sourcePhysics.heat * 12 + targetPhysics.heat * 9 + meeting.strength * 16 + meeting.pressure * 8) * scale;
+    const meetRadius = (10 + sourcePhysics.heat * 10 + targetPhysics.heat * 8 + meeting.strength * 14 + meeting.pressure * 6 + relationMass * 10) * scale;
     const meetGlow = ctx.createRadialGradient(meet.x, meet.y, 1, meet.x, meet.y, meetRadius * 2.2);
     meetGlow.addColorStop(0, fireMix(sourceOrder, targetOrder, meetT, (0.08 + meeting.strength * 0.1) * emphasis, 18));
     meetGlow.addColorStop(0.34, fireMix(sourceOrder, targetOrder, meetT, (0.04 + meeting.strength * 0.05) * emphasis, 8));
@@ -3523,7 +3546,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const t = type.direction === 'return' ? 1 - pulse : pulse;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
-  const beadRadius = (14 + (12 + source.heat * 18) * scale) * (1 + movementBoost * 0.46);
+  const beadRadius = (14 + (12 + source.heat * 14 + relationMass * 8) * scale) * (1 + movementBoost * 0.46);
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
     glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, (0.16 + source.heat * 0.2) * emphasis, 16));
@@ -3557,6 +3580,7 @@ function drawOperation(op, local, isFocus) {
   ctx.globalAlpha *= sensibilityAlpha(op.id);
   const profile = op.profile || computeProfile(op);
   const physics = profile.engine?.values || enginePhysics(profile).values;
+  const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
   const families = familyComposition(profile);
   const topFamily = families[0]?.key || 'anchor';
   const resolving = Math.min(1, settled / 1.8);
@@ -3573,13 +3597,14 @@ function drawOperation(op, local, isFocus) {
   const ratioTempo = arkRatio ? 0.84 + arkRatio.frequency * 0.54 + arkRatio.recurrence * 0.34 + arkRatio.tension * 0.24 - arkRatio.contact * 0.12 : 1;
   const arkTempoMult  = arkPulse ? (({ single: 0.55, slow: 0.78, quick: 1.28, dense: 1.65 }[pulseTempo[arkPulse.symbol]] || 1) * ratioTempo) : 1;
   const arkHeatBoost  = arkPulse ? ((pulseIntensity[arkPulse.symbol] || 0) * 0.07 + (arkRatio ? (arkRatio.frequency * 0.035 + arkRatio.tension * 0.045 + arkRatio.recurrence * 0.025) : 0)) : 0;
-  const pulseRate = (0.26 + physics.heat * 0.72 + physics.velocity * 0.32 + physics.pressure * 0.22 - physics.damping * 0.2) * (topFamily === 'motion' ? 1.18 : topFamily === 'settlement' ? 0.82 : 1) * arkTempoMult;
-  const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 : 13 + profile.density * 10 + physics.capacity * 8) * scale *
-    (1 + Math.sin(time * pulseRate + op.phase) * (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (arkRatio ? arkRatio.frequency * 0.018 + arkRatio.recurrence * 0.014 : 0)));
+  const pulseRate = (0.26 + physics.heat * 0.72 + physics.velocity * 0.32 + physics.pressure * 0.22 - physics.damping * 0.2) * (topFamily === 'motion' ? 1.18 : topFamily === 'settlement' ? 0.82 : 1) * arkTempoMult * (1 - structuralMass * 0.34);
+  const pulseDepth = (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (arkRatio ? arkRatio.frequency * 0.018 + arkRatio.recurrence * 0.014 : 0)) * (1 - structuralMass * 0.46);
+  const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 + structuralMass * 12 : 13 + profile.density * 8 + physics.capacity * 6 + structuralMass * 8) * scale *
+    (1 + Math.sin(time * pulseRate + op.phase) * pulseDepth);
   const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * 2.5);
-  const heatAlpha = isFocus ? 0.12 + physics.heat * 0.20 + arkHeatBoost : baseAlpha * (0.5 + physics.heat);
-  const ashAlpha = physics.decay * (isFocus ? 0.26 : 0.14);
-  const midAlpha = 0.05 + profile.density * 0.08;
+  const heatAlpha = isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018;
+  const ashAlpha = physics.decay * (isFocus ? 0.22 : 0.11) * (1 - structuralMass * 0.4);
+  const midAlpha = 0.05 + profile.density * 0.06 + structuralMass * 0.035;
   let coreCol, midCol;
   if (colourMode === 'fire') {
     const fr = fireFor(spineDisplayOrder(op));
@@ -3599,20 +3624,20 @@ function drawOperation(op, local, isFocus) {
   ctx.arc(p.x, p.y, radius * 2.5, 0, Math.PI * 2);
   ctx.fill();
 
-  const wrinkleCount = Math.floor(4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0));
+  const wrinkleCount = Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58));
   ctx.save();
   ctx.translate(p.x, p.y);
   ctx.rotate(op.phase * 0.2 + time * (0.018 + profile.airflow * 0.012));
   for (let i = 0; i < wrinkleCount; i++) {
     const a = i * 2.399 + op.phase;
     const inner = radius * (0.35 + (i % 5) * 0.07);
-    const outer = radius * (0.72 + (i % 7) * 0.045) * motionBoost;
-    const curl = Math.sin(time * (0.16 + physics.velocity * 0.18) + i + op.phase) * radius * (0.04 + physics.pressure * 0.08 + physics.opening * 0.04 + (topFamily === 'strain' ? 0.04 : 0));
+    const outer = radius * (0.72 + (i % 7) * 0.045) * (1 + (motionBoost - 1) * (1 - structuralMass * 0.5));
+    const curl = Math.sin(time * (0.16 + physics.velocity * 0.18) + i + op.phase) * radius * (0.04 + physics.pressure * 0.08 + physics.opening * 0.04 + (topFamily === 'strain' ? 0.04 : 0)) * (1 - structuralMass * 0.62);
     ctx.beginPath();
     ctx.moveTo(Math.cos(a) * inner, Math.sin(a) * inner);
     ctx.quadraticCurveTo(Math.cos(a + 0.35) * (inner + outer) * 0.5 + curl, Math.sin(a + 0.35) * (inner + outer) * 0.5 - curl, Math.cos(a + 0.7) * outer, Math.sin(a + 0.7) * outer);
-    ctx.strokeStyle = 'rgba(212,197,169,' + (0.025 + profile.maturity * 0.055 - profile.ash * 0.018) + ')';
-    ctx.lineWidth = Math.max(0.35, scale * (0.35 + profile.density * 0.55));
+    ctx.strokeStyle = 'rgba(212,197,169,' + (0.025 + profile.maturity * 0.045 + structuralMass * 0.025 - profile.ash * 0.018) + ')';
+    ctx.lineWidth = Math.max(0.35, scale * (0.35 + profile.density * 0.42 + structuralMass * 0.32));
     ctx.stroke();
   }
   ctx.restore();
@@ -3781,16 +3806,18 @@ function step(dt) {
   Object.values(operations).forEach((op) => {
     const profile = op.profile || computeProfile(op);
     const physics = profile.engine?.values || enginePhysics(profile).values;
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
     const isFocus = op.id === focusId;
     const orbit = op.orbit || { direction: 1, speed: 0, sweep: 0, radial: 0 };
-    const heldAngle = op.angle + (isFocus ? 0 : Math.sin(time * orbit.speed * orbit.direction + op.orbitPhase) * Math.max(0, orbit.sweep));
-    const heldRadius = op.radius + (isFocus ? 0 : Math.sin(time * (orbit.speed * 0.72 + 0.008) + op.phase) * Math.max(0, orbit.radial));
+    const steadiness = 1 - structuralMass * 0.54;
+    const heldAngle = op.angle + (isFocus ? 0 : Math.sin(time * orbit.speed * orbit.direction + op.orbitPhase) * Math.max(0, orbit.sweep) * steadiness);
+    const heldRadius = op.radius + (isFocus ? 0 : Math.sin(time * (orbit.speed * 0.72 + 0.008) + op.phase) * Math.max(0, orbit.radial) * steadiness);
     const heldX = isFocus ? op.tx : Math.cos(heldAngle) * heldRadius;
     const heldY = isFocus ? op.ty : Math.sin(heldAngle) * heldRadius * 0.82;
     const slotDx = heldX - op.tx;
     const slotDy = heldY - op.ty;
     const breathe = Math.sin(time * (0.18 + physics.velocity * 0.25 + physics.heat * 0.18 + physics.pressure * 0.08) + op.phase) *
-      (1.2 + physics.opening * 4.8 + physics.pressure * 3.6 + physics.velocity * 2.2 - physics.damping * 2.2);
+      (1.2 + physics.opening * 4.8 + physics.pressure * 3.6 + physics.velocity * 2.2 - physics.damping * 2.2) * steadiness;
     let gx = 0, gy = 0;
     if (!isFocus && focusProfile && focusPhysics) {
       const dx = -op.x, dy = -op.y;
@@ -3802,7 +3829,7 @@ function step(dt) {
     const basin = basinVector(profile, 30 + (focusPhysics?.gravity || 0) * 18 + physics.capacity * 16);
     gx += basin.x * (0.022 + physics.damping * 0.018 + physics.velocity * 0.012);
     gy += basin.y * (0.022 + physics.damping * 0.018 + physics.velocity * 0.012);
-    const damping = 2.8 + physics.damping * 3 + physics.friction * 1.4 + profile.maturity * 1.2 - physics.pressure * 0.9;
+    const damping = 2.8 + physics.damping * 3 + physics.friction * 1.4 + profile.maturity * 1.2 + structuralMass * 1.6 - physics.pressure * 0.9;
     op.x += (op.tx + slotDx + gx + Math.cos(op.angle + time * 0.05) * breathe - op.x) * Math.min(1, dt * damping);
     op.y += (op.ty + slotDy + gy + Math.sin(op.angle + time * 0.06) * breathe - op.y) * Math.min(1, dt * damping);
   });
@@ -4074,12 +4101,14 @@ function initFieldParticles() {
     const seed = homePosition(op);  // hash-based seed before particles exist
     const connections = (op.holds||[]).length + (op.traces||[]).length
       + (op.carries||[]).length + (op.pairs||[]).length + (op.nests||[]).length;
+    const profile = op.profile || computeProfile(op);
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
     fieldParticles[op.id] = {
       x: seed.x, y: seed.y,
       vx: (hashStr(op.id + 'vx') % 100 - 50) * 0.04,
       vy: (hashStr(op.id + 'vy') % 100 - 50) * 0.04,
       fx: 0, fy: 0,
-      mass: Math.max(1, 1 + connections * 0.5),
+      mass: Math.max(1, 1 + connections * 0.35 + structuralMass * 3.4),
       op,
     };
   });
@@ -4098,24 +4127,29 @@ function stepFieldParticles(dt) {
   homeConnections.forEach(({ a, b, typeKey }) => {
     const pa = fieldParticles[a.id], pb = fieldParticles[b.id];
     if (!pa || !pb) return;
+    const profileA = a.profile || computeProfile(a);
+    const profileB = b.profile || computeProfile(b);
+    const massAState = profileA.fieldStates?.structuralMass || profileA.structuralMass || 0;
+    const massBState = profileB.fieldStates?.structuralMass || profileB.structuralMass || 0;
+    const relationMass = (massAState + massBState) * 0.5;
     const dx = pb.x - pa.x, dy = pb.y - pa.y;
     const dist = Math.max(1, Math.hypot(dx, dy));
     const nx = dx / dist, ny = dy / dist;
 
     // Rest distance scales with viewport; type determines coupling tightness
     const unit = maxR * 0.14;
-    const rest = typeKey === 'carries' ? unit * 0.62
+    const rest = (typeKey === 'carries' ? unit * 0.62
                : typeKey === 'pairs'   ? unit * 0.48
-               :                         unit * 1.0;   // traces — loose, drifting
-    const k    = typeKey === 'carries' ? 0.22
+               :                         unit * 1.0) * (1 - relationMass * 0.16);   // traces — loose, drifting
+    const k    = (typeKey === 'carries' ? 0.22
                : typeKey === 'pairs'   ? 0.16
-               :                         0.06;
+               :                         0.06) * (1 + relationMass * 0.62);
 
     const force = k * (dist - rest);
 
     // Carries is asymmetric: carrier (a) resists, carried (b) yields
-    const massA = typeKey === 'carries' ? pa.mass * 1.8 : pa.mass;
-    const massB = typeKey === 'carries' ? pb.mass * 0.55 : pb.mass;
+    const massA = typeKey === 'carries' ? pa.mass * (1.8 + massAState * 0.6) : pa.mass;
+    const massB = typeKey === 'carries' ? pb.mass * Math.max(0.44, 0.55 - massBState * 0.08) : pb.mass;
     pa.fx += force * nx / massA;
     pa.fy += force * ny / massA;
     pb.fx -= force * nx / massB;
@@ -4125,13 +4159,15 @@ function stepFieldParticles(dt) {
   // ② Radial order-depth pressure — keeps bands stratified
   particles.forEach((p) => {
     const order = spineDisplayOrder(p.op) || p.op.order || 'ground';
+    const profile = p.op.profile || computeProfile(p.op);
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
     const depth = ORDER_DEPTHS[order] ?? 0.4;
     const targetR = (0.18 + depth * 0.72) * maxR;
     const dx = p.x - cx, dy = p.y - cy;
     const r = Math.max(1, Math.hypot(dx, dy));
     const radialError = r - targetR;
-    p.fx -= 0.035 * radialError * (dx / r);
-    p.fy -= 0.035 * radialError * (dy / r);
+    p.fx -= (0.035 + structuralMass * 0.012) * radialError * (dx / r);
+    p.fy -= (0.035 + structuralMass * 0.012) * radialError * (dy / r);
   });
 
   // ③ Short-range repulsion within same order band (prevents collapse)
@@ -4161,8 +4197,11 @@ function stepFieldParticles(dt) {
   // ④ Integrate with velocity damping
   const damp = Math.pow(0.78, dtc * 60);
   particles.forEach((p) => {
-    p.vx = (p.vx + p.fx * dtc * 60) * damp;
-    p.vy = (p.vy + p.fy * dtc * 60) * damp;
+    const profile = p.op.profile || computeProfile(p.op);
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+    const massDamp = Math.pow(1 - structuralMass * 0.16, dtc * 60);
+    p.vx = (p.vx + p.fx * dtc * 60) * damp * massDamp;
+    p.vy = (p.vy + p.fy * dtc * 60) * damp * massDamp;
     p.x += p.vx * dtc * 60;
     p.y += p.vy * dtc * 60;
     // Soft boundary
