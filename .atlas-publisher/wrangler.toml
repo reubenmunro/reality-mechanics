@@ -1,0 +1,19 @@
+name = "super-frost-d434"
+main = "main-website-worker.js"
+compatibility_date = "2025-06-01"
+
+[vars]
+GARDEN_PACE = "1"
+
+[[routes]]
+pattern = "realitymechanics.nz"
+custom_domain = true
+
+[[kv_namespaces]]
+binding = "GARDEN"
+id = "a6d36ff60d0a489ba42faef8e89d6d79"
+
+[[d1_databases]]
+binding = "ATLAS_DB"
+database_name = "atlas-d1"
+database_id = "ffc9622e-02a4-4561-b11e-4e54fac92967"
