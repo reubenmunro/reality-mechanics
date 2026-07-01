@@ -2405,9 +2405,9 @@ const FIELD_RENDER_BUDGET = Object.freeze({
   filamentSegments: 14,
   filamentSegmentsCompressed: 10,
   relationStrands: 6,
-  focusWrinkles: 12,
-  localWrinkles: 7,
-  ambientWrinkles: 3,
+  focusWrinkles: 6,
+  localWrinkles: 4,
+  ambientWrinkles: 1,
 });
 
 const FIELD_PRESSURE_GRID = Object.freeze({
@@ -3185,6 +3185,8 @@ function drawArkMovementWake(focus) {
   const age = arkMovementAge();
   if (!focus || !ratio || age < 0.03) return;
   const p = screen(focus);
+  const profile = focus.profile || computeProfile(focus);
+  const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
   const from = operations[arkLastEvent?.from];
   const fromPoint = from ? screen(from) : null;
   const angle = fromPoint ? Math.atan2(p.y - fromPoint.y, p.x - fromPoint.x) : focus.phase + ratio.asymmetry * Math.PI;
@@ -3200,15 +3202,15 @@ function drawArkMovementWake(focus) {
   ctx.globalCompositeOperation = 'lighter';
   const bloomRadius = baseRadius * (1.1 + (1 - age) * 0.5);
   const bloom = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, bloomRadius);
-  bloom.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.12 + contact * 0.06 + tension * 0.06)) + ')');
-  bloom.addColorStop(0.42, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.035 + unexpected * 0.02)) + ')');
+  bloom.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.07 + contact * 0.035 + tension * 0.035) * (1 - structuralMass * 0.28)) + ')');
+  bloom.addColorStop(0.42, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * (0.02 + unexpected * 0.012) * (1 - structuralMass * 0.34)) + ')');
   bloom.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
   ctx.fillStyle = bloom;
   ctx.beginPath();
   ctx.arc(p.x, p.y, bloomRadius, 0, Math.PI * 2);
   ctx.fill();
 
-  const flecks = 5;
+  const flecks = structuralMass > 0.42 ? 0 : 2;
   for (let i = 0; i < flecks; i++) {
     const fleckAngle = angle + i * Math.PI * 2 / flecks + Math.sin(time * 0.7 + i) * ratio.asymmetry * 0.18;
     const fleckDistance = baseRadius * (0.34 + openness * 0.18 + (i % 2) * 0.08);
@@ -3216,7 +3218,7 @@ function drawArkMovementWake(focus) {
     const fy = p.y + Math.sin(fleckAngle) * fleckDistance;
     const fleckRadius = Math.max(1.1, (1.8 + contact * 2.2 + tension * 1.6) * scale);
     const fleck = ctx.createRadialGradient(fx, fy, 0, fx, fy, fleckRadius * 3.5);
-    fleck.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * 0.16) + ')');
+    fleck.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (age * 0.06) + ')');
     fleck.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
     ctx.fillStyle = fleck;
     ctx.beginPath();
@@ -3757,13 +3759,13 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const t = type.direction === 'return' ? 1 - pulse : pulse;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
-  const beadRadius = (14 + (12 + source.heat * 14 + relationMass * 8) * scale) * (1 + movementBoost * 0.46);
+  const beadRadius = (8 + (7 + source.heat * 8 + relationMass * 4) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.24);
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
-    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, (0.16 + source.heat * 0.2) * emphasis, 16));
+    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, (0.055 + source.heat * 0.07) * emphasis * (1 - relationMass * 0.32), 12));
     glow.addColorStop(1, fireMix(sourceOrder, targetOrder, t, 0, 0));
   } else {
-    glow.addColorStop(0, relationColor(type, (0.16 + source.heat * 0.2) * emphasis));
+    glow.addColorStop(0, relationColor(type, (0.055 + source.heat * 0.07) * emphasis * (1 - relationMass * 0.32)));
     glow.addColorStop(1, relationColor(type, 0));
   }
   ctx.fillStyle = glow;
@@ -4000,11 +4002,11 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     ctx.globalCompositeOperation = 'lighter';
     strokeCondensation(
       p,
-      radius * (1.18 + profile.gardenMemory * 0.18 + structuralMass * 0.14),
+      radius * (1.12 + profile.gardenMemory * 0.11 + structuralMass * 0.08),
       op.phase + time * 0.01,
-      'rgba(154,142,118,' + (0.018 + profile.gardenMemory * 0.045 + structuralMass * 0.024) + ')',
-      Math.max(0.45, (0.82 + structuralMass * 0.75) * scale),
-      0.18
+      'rgba(154,142,118,' + (0.01 + profile.gardenMemory * 0.022 + structuralMass * 0.012) + ')',
+      Math.max(0.35, (0.48 + structuralMass * 0.32) * scale),
+      0.16
     );
     ctx.restore();
   }
@@ -4016,8 +4018,8 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     const asymmetry = arkRatio ? arkRatio.asymmetry : 0.28;
     const tension = arkRatio ? arkRatio.tension : 0.18;
     const openness = arkRatio ? arkRatio.openness : 0.5;
-    const glowRadius = radius * (2.08 + contact * 0.5 + openness * 0.18 + tension * 0.24);
-    const glowAlpha = ta * (0.55 + contact * 0.42 + tension * 0.38);
+    const glowRadius = radius * (1.84 + contact * 0.34 + openness * 0.12 + tension * 0.18);
+    const glowAlpha = ta * (0.34 + contact * 0.24 + tension * 0.22) * (1 - structuralMass * 0.18);
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
     const contactGlow = ctx.createRadialGradient(p.x, p.y, radius * 0.45, p.x, p.y, glowRadius);
@@ -4025,7 +4027,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     contactGlow.addColorStop(0.36, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.18)+')');
     contactGlow.addColorStop(1, 'rgba('+tr+','+tg+','+tb+',0)');
     fillCondensation(p, glowRadius, op.phase + time * 0.012, contactGlow, 0.1);
-    const sparkCount = Math.max(2, Math.round(4 - structuralMass * 2));
+    const sparkCount = structuralMass > 0.28 ? 0 : 1;
     for (let i = 0; i < sparkCount; i++) {
       const a = op.phase + time * (0.12 + tension * 0.08) + i * Math.PI * 2 / sparkCount + Math.sin(i + op.phase) * asymmetry * 0.16;
       const d = radius * (0.9 + contact * 0.42 + openness * 0.16 + (i % 2) * 0.18);
