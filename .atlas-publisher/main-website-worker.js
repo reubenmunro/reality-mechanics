@@ -2383,6 +2383,8 @@ let traversalMap = {};   // "fromId:toId" -> { count, lastAt }
 let lastTraversalKey = null;
 let pressureField = null;
 let relationPressureTraces = [];
+let relationTrajectoryMemory = new Map();
+let fieldMediumDt = 1 / 60;
 
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
@@ -2417,6 +2419,9 @@ const FIELD_PRESSURE_GRID = Object.freeze({
   traceInfluence: 86,
   traceLimit: 260,
   traceDecay: 0.9,
+  boundsRelax: 1.8,
+  pressureRelax: 3.2,
+  trajectoryRelax: 5.2,
 });
 
 let adaptiveFrameMs = 16.7;
@@ -3293,15 +3298,26 @@ function buildPressureField() {
   }
   const xs = points.map((op) => op.x);
   const ys = points.map((op) => op.y);
-  const minXBound = Math.min(...xs) - FIELD_PRESSURE_GRID.padding;
-  const maxXBound = Math.max(...xs) + FIELD_PRESSURE_GRID.padding;
-  const minYBound = Math.min(...ys) - FIELD_PRESSURE_GRID.padding;
-  const maxYBound = Math.max(...ys) + FIELD_PRESSURE_GRID.padding;
-  const width = Math.max(1, maxXBound - minXBound);
-  const height = Math.max(1, maxYBound - minYBound);
+  const targetMinX = Math.min(...xs) - FIELD_PRESSURE_GRID.padding;
+  const targetMaxX = Math.max(...xs) + FIELD_PRESSURE_GRID.padding;
+  const targetMinY = Math.min(...ys) - FIELD_PRESSURE_GRID.padding;
+  const targetMaxY = Math.max(...ys) + FIELD_PRESSURE_GRID.padding;
+  const targetWidth = Math.max(1, targetMaxX - targetMinX);
+  const targetHeight = Math.max(1, targetMaxY - targetMinY);
+  const boundsAlpha = Math.min(1, fieldMediumDt * FIELD_PRESSURE_GRID.boundsRelax);
+  const minXBound = pressureField
+    ? pressureField.minX + (targetMinX - pressureField.minX) * boundsAlpha
+    : targetMinX;
+  const minYBound = pressureField
+    ? pressureField.minY + (targetMinY - pressureField.minY) * boundsAlpha
+    : targetMinY;
+  const currentWidth = pressureField ? pressureField.cellW * cols : targetWidth;
+  const currentHeight = pressureField ? pressureField.cellH * rows : targetHeight;
+  const width = pressureField ? currentWidth + (targetWidth - currentWidth) * boundsAlpha : targetWidth;
+  const height = pressureField ? currentHeight + (targetHeight - currentHeight) * boundsAlpha : targetHeight;
   const cellW = width / cols;
   const cellH = height / rows;
-  const values = new Float32Array(cols * rows);
+  const targetValues = new Float32Array(cols * rows);
   points.forEach((op) => {
     const profile = op.profile || computeProfile(op);
     const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
@@ -3319,7 +3335,7 @@ function buildPressureField() {
         const gx = minXBound + (x + 0.5) * cellW;
         const d2 = (gx - p.x) * (gx - p.x) + (gy - p.y) * (gy - p.y);
         const falloff = Math.exp(-d2 / denom);
-        values[y * cols + x] += strength * falloff;
+        targetValues[y * cols + x] += strength * falloff;
       }
     }
   });
@@ -3336,11 +3352,24 @@ function buildPressureField() {
         const gx = minXBound + (x + 0.5) * cellW;
         const d2 = (gx - trace.x) * (gx - trace.x) + (gy - trace.y) * (gy - trace.y);
         const falloff = Math.exp(-d2 / denom);
-        values[y * cols + x] += trace.strength * falloff;
+        targetValues[y * cols + x] += trace.strength * falloff;
       }
     }
   });
-  pressureField = { cols, rows, cellW, cellH, minX: minXBound, minY: minYBound, values };
+  if (!pressureField || pressureField.values.length !== targetValues.length) {
+    pressureField = { cols, rows, cellW, cellH, minX: minXBound, minY: minYBound, values: targetValues };
+    return;
+  }
+  const pressureAlpha = Math.min(1, fieldMediumDt * FIELD_PRESSURE_GRID.pressureRelax);
+  for (let i = 0; i < targetValues.length; i++) {
+    pressureField.values[i] += (targetValues[i] - pressureField.values[i]) * pressureAlpha;
+  }
+  pressureField.cols = cols;
+  pressureField.rows = rows;
+  pressureField.cellW = cellW;
+  pressureField.cellH = cellH;
+  pressureField.minX = minXBound;
+  pressureField.minY = minYBound;
 }
 
 function decayPressureTraces(dt) {
@@ -3720,8 +3749,6 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
   const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
-  const midX = (pa.x + pb.x) / 2;
-  const midY = (pa.y + pb.y) / 2;
   const worldMidX = (a.x + b.x) / 2;
   const worldMidY = (a.y + b.y) / 2;
   const gradient = pressureGradientAt(worldMidX, worldMidY);
@@ -3746,13 +3773,30 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   );
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
   const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
-  const cx = midX + nx * (bow + fieldBend);
-  const cy = midY + ny * (bow + fieldBend);
-  const control = { x: cx, y: cy };
-  const controlWorld = {
+  const targetControlWorld = {
     x: worldMidX + nx * ((bow + fieldBend) / Math.max(0.001, scale)),
     y: worldMidY + ny * ((bow + fieldBend) / Math.max(0.001, scale)),
   };
+  const trajectoryKey = a.id + ':' + type.key + ':' + b.id;
+  const previousControlWorld = relationTrajectoryMemory.get(trajectoryKey) || targetControlWorld;
+  const trajectoryAlpha = Math.min(1, fieldMediumDt * FIELD_PRESSURE_GRID.trajectoryRelax);
+  const controlWorld = {
+    x: previousControlWorld.x + (targetControlWorld.x - previousControlWorld.x) * trajectoryAlpha,
+    y: previousControlWorld.y + (targetControlWorld.y - previousControlWorld.y) * trajectoryAlpha,
+  };
+  relationTrajectoryMemory.set(trajectoryKey, controlWorld);
+  if (relationTrajectoryMemory.size > 720) {
+    for (const key of relationTrajectoryMemory.keys()) {
+      relationTrajectoryMemory.delete(key);
+      if (relationTrajectoryMemory.size <= 600) break;
+    }
+  }
+  const control = {
+    x: innerWidth / 2 + (controlWorld.x + pan.x) * scale,
+    y: innerHeight / 2 + (controlWorld.y + pan.y) * scale,
+  };
+  const cx = control.x;
+  const cy = control.y;
   const family = familyComposition(source)[0]?.key || 'motion';
   const sourceOrder = spineDisplayOrder(a);
   const targetOrder = spineDisplayOrder(b);
@@ -4128,6 +4172,7 @@ function nearestOperation(x, y) {
 }
 
 function step(dt) {
+  fieldMediumDt = dt;
   time += dt;
   settled = Math.min(3, settled + dt);
   decayPressureTraces(dt);
