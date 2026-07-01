@@ -2387,14 +2387,13 @@ let relationPressureTraces = [];
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
   // bowMult:  arc bow depth multiplier
-  // beadSpeed: travelling bead velocity multiplier
   // branchProb: probability of filament branches (0 = none, 1 = always)
   // strandMult: strand count multiplier
-  { key: 'holds',   color: [94, 112, 126],  strength: 0.56, direction: 'anchor',  wiggMult: 0.18, bowMult: 0.5,  beadSpeed: 0.3,  branchProb: 0.0,  strandMult: 0.55 },
-  { key: 'traces',  color: [94, 132, 170],  strength: 0.72, direction: 'return',  wiggMult: 1.85, bowMult: 0.85, beadSpeed: 0.28, branchProb: 0.88, strandMult: 1.5  },
-  { key: 'carries', color: [200, 96, 26],   strength: 0.78, direction: 'outward', wiggMult: 0.32, bowMult: 1.5,  beadSpeed: 1.75, branchProb: 0.0,  strandMult: 0.65 },
-  { key: 'pairs',   color: [165, 126, 76],  strength: 0.48, direction: 'lateral', wiggMult: 0.65, bowMult: 0.4,  beadSpeed: 0.5,  branchProb: 0.08, strandMult: 0.5  },
-  { key: 'nests',   color: [84, 105, 93],   strength: 0.42, direction: 'enclose', wiggMult: 0.12, bowMult: 0.28, beadSpeed: 0.18, branchProb: 0.0,  strandMult: 0.35 },
+  { key: 'holds',   color: [94, 112, 126],  strength: 0.56, direction: 'anchor',  wiggMult: 0.18, bowMult: 0.5,  branchProb: 0.0,  strandMult: 0.55 },
+  { key: 'traces',  color: [94, 132, 170],  strength: 0.72, direction: 'return',  wiggMult: 1.85, bowMult: 0.85, branchProb: 0.88, strandMult: 1.5  },
+  { key: 'carries', color: [200, 96, 26],   strength: 0.78, direction: 'outward', wiggMult: 0.32, bowMult: 1.5,  branchProb: 0.0,  strandMult: 0.65 },
+  { key: 'pairs',   color: [165, 126, 76],  strength: 0.48, direction: 'lateral', wiggMult: 0.65, bowMult: 0.4,  branchProb: 0.08, strandMult: 0.5  },
+  { key: 'nests',   color: [84, 105, 93],   strength: 0.42, direction: 'enclose', wiggMult: 0.12, bowMult: 0.28, branchProb: 0.0,  strandMult: 0.35 },
 ];
 
 const FIELD_RENDER_BUDGET = Object.freeze({
@@ -3727,6 +3726,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const worldMidY = (a.y + b.y) / 2;
   const gradient = pressureGradientAt(worldMidX, worldMidY);
   const rhythm = relationRhythm(source, target, type, gradient, relationMass, movementRatio);
+  const isCarry = type.key === 'carries';
   const rhythmRate = 0.16
     + rhythm.cadence * 1.18
     + rhythm.intermittence * 0.62
@@ -3736,6 +3736,14 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * 0.18
     + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1;
   const pulse = (Math.sin(time * Math.max(0.08, rhythmRate) + a.phase + offset + rhythmPhase) + 1) / 2;
+  const rhythmPresence = clamp01(
+    rhythm.cadence * 0.38
+    + rhythm.intermittence * 0.18
+    + rhythm.reciprocity * 0.12
+    + rhythm.circulation * 0.08
+    + (1 - rhythm.persistence) * 0.08
+    + (isCarry ? 0.18 : 0)
+  );
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
   const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
   const cx = midX + nx * (bow + fieldBend);
@@ -3786,13 +3794,14 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const t = type.direction === 'return' ? 1 - pulse : pulse;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
-  const beadRadius = (8 + (7 + source.heat * 8 + relationMass * 4) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.24);
+  const beadRadius = (9 + (8 + source.heat * 8 + relationMass * 4 + rhythmPresence * 5) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.2);
+  const rhythmAlpha = (0.07 + source.heat * 0.072 + rhythmPresence * 0.058 + (isCarry ? 0.018 : 0)) * emphasis * (1 - relationMass * 0.24);
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
-    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, (0.055 + source.heat * 0.07) * emphasis * (1 - relationMass * 0.32), 12));
+    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, rhythmAlpha, 12 + rhythmPresence * 4));
     glow.addColorStop(1, fireMix(sourceOrder, targetOrder, t, 0, 0));
   } else {
-    glow.addColorStop(0, relationColor(type, (0.055 + source.heat * 0.07) * emphasis * (1 - relationMass * 0.32)));
+    glow.addColorStop(0, relationColor(type, rhythmAlpha));
     glow.addColorStop(1, relationColor(type, 0));
   }
   ctx.fillStyle = glow;
