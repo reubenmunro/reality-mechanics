@@ -3622,6 +3622,28 @@ function relationMeeting(source, target, type) {
   };
 }
 
+function relationRhythm(source, target, type, gradient, relationMass, movementRatio = null) {
+  const sourcePhysics = source.engine?.values || enginePhysics(source).values;
+  const targetPhysics = target.engine?.values || enginePhysics(target).values;
+  const mediumPressure = clamp01((gradient?.pressure || 0) / 3.2);
+  const fieldTension = clamp01(Math.hypot(gradient?.x || 0, gradient?.y || 0) * 2600);
+  const carry = type.key === 'carries' ? 1 : 0;
+  const hold = type.key === 'holds' ? 1 : 0;
+  const trace = type.key === 'traces' ? 1 : 0;
+  const pair = type.key === 'pairs' ? 1 : 0;
+  const nest = type.key === 'nests' ? 1 : 0;
+  const recurrence = movementRatio ? movementRatio.recurrence : 0;
+  const frequency = movementRatio ? movementRatio.frequency : 0;
+  const tension = movementRatio ? movementRatio.tension : 0;
+  return {
+    cadence: clamp01(carry * 0.46 + sourcePhysics.velocity * 0.28 + sourcePhysics.heat * 0.12 + frequency * 0.1 + fieldTension * 0.08),
+    persistence: clamp01(hold * 0.52 + targetPhysics.gravity * 0.2 + sourcePhysics.friction * 0.12 + relationMass * 0.14 + mediumPressure * 0.08),
+    intermittence: clamp01(trace * 0.5 + source.return * 0.18 + target.return * 0.12 + recurrence * 0.14 + tension * 0.06),
+    reciprocity: clamp01(pair * 0.54 + source.resonance * 0.18 + target.resonance * 0.18 + mediumPressure * 0.1),
+    circulation: clamp01(nest * 0.52 + source.enclosure * 0.18 + target.enclosure * 0.16 + sourcePhysics.damping * 0.08 + mediumPressure * 0.06),
+  };
+}
+
 function bezierPoint(a, c, b, t) {
   const mt = 1 - t;
   return {
@@ -3696,11 +3718,6 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const dx = pb.x - pa.x, dy = pb.y - pa.y;
   const dist = Math.max(1, Math.hypot(dx, dy));
   const nx = -dy / dist, ny = dx / dist;
-  const currentSpeed = (0.54 + sourcePhysics.velocity * 0.9 + sourcePhysics.heat * 0.45 + source.turbulence * 0.24 - targetPhysics.gravity * 0.14 - sourcePhysics.friction * 0.18)
-    * (type.beadSpeed ?? 1)
-    * (1 - relationMass * 0.2)
-    * (movementRatio ? 1 + movementAge * (movementRatio.frequency * 0.55 + movementRatio.recurrence * 0.34 + movementRatio.tension * 0.28) : 1);
-  const pulse = (Math.sin(time * currentSpeed + a.phase + offset) + 1) / 2;
   const bowBase = (type.direction === 'return' ? -46 : type.direction === 'lateral' ? Math.sin(time + offset) * 42 : 36) * (type.bowMult ?? 1);
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
   const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
@@ -3709,6 +3726,16 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const worldMidX = (a.x + b.x) / 2;
   const worldMidY = (a.y + b.y) / 2;
   const gradient = pressureGradientAt(worldMidX, worldMidY);
+  const rhythm = relationRhythm(source, target, type, gradient, relationMass, movementRatio);
+  const rhythmRate = 0.16
+    + rhythm.cadence * 1.18
+    + rhythm.intermittence * 0.62
+    + rhythm.reciprocity * 0.34
+    + rhythm.circulation * 0.24
+    - rhythm.persistence * 0.42;
+  const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * 0.18
+    + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1;
+  const pulse = (Math.sin(time * Math.max(0.08, rhythmRate) + a.phase + offset + rhythmPhase) + 1) / 2;
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
   const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
   const cx = midX + nx * (bow + fieldBend);
