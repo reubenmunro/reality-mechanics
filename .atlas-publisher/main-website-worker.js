@@ -3145,8 +3145,8 @@ function drawAmbientHeat() {
   const r = Math.round(60 + d * 170);
   const g = Math.round(110 + d * 140);
   const b = Math.round(70 + d * 160);
-  const coreAlpha = pulse * 0.18;
-  const midAlpha  = pulse * 0.07;
+  const coreAlpha = pulse * 0.11;
+  const midAlpha  = pulse * 0.04;
   const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
   grad.addColorStop(0,    'rgba(' + r + ',' + g + ',' + b + ',' + coreAlpha + ')');
   grad.addColorStop(0.38, 'rgba(' + r + ',' + g + ',' + b + ',' + midAlpha  + ')');
@@ -3469,7 +3469,7 @@ function drawSmoke() {
     const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
     const y = Math.sin(a * 0.82) * r * compression;
     ctx.beginPath();
-    ctx.fillStyle = 'rgba(58,80,112,' + (0.012 + (i % 5) * 0.003 + (focusProfile?.ash || 0) * 0.01) + ')';
+    ctx.fillStyle = 'rgba(58,80,112,' + (0.007 + (i % 5) * 0.002 + (focusProfile?.ash || 0) * 0.006) + ')';
     ctx.arc(x, y, 24 + (i % 9) * 7, 0, Math.PI * 2);
     ctx.fill();
   }
@@ -3595,8 +3595,8 @@ function drawBasinGradients() {
     const radius = (120 + weight * 190) * scale;
     const [r,g,b] = basin.color;
     const grad = ctx.createRadialGradient(x, y, 1, x, y, radius);
-    grad.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (0.018 + weight * 0.045) + ')');
-    grad.addColorStop(0.48, 'rgba(' + r + ',' + g + ',' + b + ',' + (0.006 + weight * 0.018) + ')');
+    grad.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + (0.01 + weight * 0.03) + ')');
+    grad.addColorStop(0.48, 'rgba(' + r + ',' + g + ',' + b + ',' + (0.003 + weight * 0.011) + ')');
     grad.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
     ctx.fillStyle = grad;
     ctx.beginPath();
@@ -3804,7 +3804,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   const segments = Math.max(7, Math.round(baseSegments * adaptiveAmbientScale(0.62)));
   const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
-  const alpha = (0.072 + type.strength * 0.13 + source.heat * 0.10 + sourceMass * 0.052) * emphasis;
+  const alpha = (0.048 + type.strength * 0.105 + source.heat * 0.074 + sourceMass * 0.038) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
   const targetOrder = spineDisplayOrder(target);
   ctx.beginPath();
@@ -3821,7 +3821,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, alpha, alpha)
     : relationColor(type, alpha);
-  ctx.lineWidth = Math.max(0.6, (0.62 + source.density * 0.88) * scale);
+  ctx.lineWidth = Math.max(0.45, (0.48 + source.density * 0.62) * scale);
   ctx.stroke();
 
   const branchProb = (type.branchProb ?? 0.33) * (1 - relationMass * 0.82);
@@ -3934,7 +3934,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const crossing = sourceOrder !== targetOrder;
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
-  const currentAlpha = (0.08 + type.strength * 0.20 + source.heat * 0.13 + relationMass * 0.07 - source.ash * 0.06) * emphasis * (1 + movementBoost);
+  const currentAlpha = (0.1 + type.strength * 0.22 + source.heat * 0.1 + relationMass * 0.06 - source.ash * 0.05) * emphasis * (1 + movementBoost);
   recordRelationPressureTrace(a, b, controlWorld, Math.min(0.032, currentAlpha * 0.055));
 
   ctx.save();
@@ -3945,7 +3945,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, currentAlpha, currentAlpha)
     : relationColor(type, currentAlpha);
-  ctx.lineWidth = Math.max(0.9, (1.0 + source.density * 1.1 + sourcePhysics.capacity * 0.88 + relationMass * 1.44 + (family === 'motion' ? 0.44 : 0) + movementBoost * 2.4) * scale);
+  ctx.lineWidth = Math.max(1.05, (1.08 + source.density * 0.78 + sourcePhysics.capacity * 0.74 + relationMass * 1.18 + (family === 'motion' ? 0.34 : 0) + movementBoost * 1.8) * scale);
   ctx.stroke();
 
   const strandCeiling = Math.max(1, Math.round((FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4) * adaptiveAmbientScale(0.72)));
@@ -4075,7 +4075,7 @@ function operationAmbientBudget(local, isFocus, structuralMass, fieldPressure = 
   return {
     endpointOnly,
     wrinkleMax: endpointOnly ? 0 : Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46) * quality * (1 - fieldPressure * 0.35))),
-    glowSpread: isFocus ? 2.5 : Math.max(1.18, (2.24 - structuralMass * 0.38 - fieldPressure * 0.54) * adaptiveAmbientScale(0.82)),
+    glowSpread: isFocus ? 2.18 : Math.max(1.04, (1.82 - structuralMass * 0.34 - fieldPressure * 0.48) * adaptiveAmbientScale(0.78)),
   };
 }
 
@@ -4172,9 +4172,9 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
 
   const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * ambientBudget.glowSpread);
   const settleRamp = isFocus ? 1 : Math.max(0.12, resolving);
-  const heatAlpha = (isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018) * settleRamp;
-  const ashAlpha = physics.decay * (isFocus ? 0.22 : 0.11) * (1 - structuralMass * 0.4);
-  const midAlpha = 0.05 + profile.density * 0.06 + structuralMass * 0.035;
+  const heatAlpha = (isFocus ? 0.11 + physics.heat * 0.13 + arkHeatBoost * 0.82 + structuralMass * 0.036 : baseAlpha * (0.42 + physics.heat * 0.82 * (1 - structuralMass * 0.18)) + structuralMass * 0.014) * settleRamp;
+  const ashAlpha = physics.decay * (isFocus ? 0.16 : 0.07) * (1 - structuralMass * 0.4);
+  const midAlpha = 0.032 + profile.density * 0.045 + structuralMass * 0.028;
   let coreCol, midCol;
   if (colourMode === 'fire') {
     const fr = fireFor(spineDisplayOrder(op));
@@ -4210,9 +4210,9 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   ctx.restore();
 
   if (isFocus) {
-    const arrivalRadius = Math.max(1.2, radius * 0.075);
+    const arrivalRadius = Math.max(1.5, radius * 0.082);
     const arrivalGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, arrivalRadius * 2.4);
-    arrivalGlow.addColorStop(0, 'rgba(212,197,169,' + (0.34 + profile.resolution * 0.24) + ')');
+    arrivalGlow.addColorStop(0, 'rgba(212,197,169,' + (0.42 + profile.resolution * 0.26) + ')');
     arrivalGlow.addColorStop(1, 'rgba(212,197,169,0)');
     fillCondensation(p, arrivalRadius * 2.4, op.phase + time * 0.03, arrivalGlow, 0.2);
   }
