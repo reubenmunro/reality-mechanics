@@ -3718,16 +3718,25 @@ function operationAmbientBudget(local, isFocus, structuralMass, fieldPressure = 
 }
 
 function condensationPath(p, radius, phase, irregularity = 0.16, points = 11) {
-  ctx.beginPath();
-  for (let i = 0; i <= points; i++) {
-    const a = phase + i * Math.PI * 2 / points;
+  const samples = [];
+  const count = Math.max(18, points * 2);
+  for (let i = 0; i < count; i++) {
+    const a = phase + i * Math.PI * 2 / count;
     const wobble = 1
       + Math.sin(a * 2.1 + time * 0.18 + phase) * irregularity
       + Math.cos(a * 3.7 - time * 0.11 + phase * 0.4) * irregularity * 0.46;
-    const x = p.x + Math.cos(a) * radius * wobble;
-    const y = p.y + Math.sin(a) * radius * wobble * (0.86 + Math.sin(phase) * 0.04);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
+    samples.push({
+      x: p.x + Math.cos(a) * radius * wobble,
+      y: p.y + Math.sin(a) * radius * wobble * (0.86 + Math.sin(phase) * 0.04),
+    });
+  }
+  ctx.beginPath();
+  for (let i = 0; i < count; i++) {
+    const current = samples[i];
+    const next = samples[(i + 1) % count];
+    const mid = { x: (current.x + next.x) * 0.5, y: (current.y + next.y) * 0.5 };
+    if (i === 0) ctx.moveTo(mid.x, mid.y);
+    ctx.quadraticCurveTo(next.x, next.y, (next.x + samples[(i + 2) % count].x) * 0.5, (next.y + samples[(i + 2) % count].y) * 0.5);
   }
   ctx.closePath();
 }
