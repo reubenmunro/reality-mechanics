@@ -2402,7 +2402,7 @@ const FIELD_RENDER_BUDGET = Object.freeze({
   homeCurrents: 120,
   filamentSegments: 14,
   filamentSegmentsCompressed: 10,
-  relationStrands: 3,
+  relationStrands: 6,
   focusWrinkles: 12,
   localWrinkles: 7,
   ambientWrinkles: 3,
@@ -2857,27 +2857,58 @@ function relationSensibility(aId, bId) {
 }
 
 // Returns ids of the focus term and all its direct relations from the full index
-function localIdsFromIndex(id) {
+function localIdsFromIndex(id, maxNodes = 120) {
   const focus = allOps[id];
   if (!focus) return [id];
-  const ids = new Set([focus.id]);
-  relationTypes.forEach(({ key }) => (focus[key] || []).forEach((child) => ids.add(child)));
+
+  // Build reverse adjacency map once for fast incoming-edge lookup
+  const incoming = {};
   Object.values(allOps).forEach((op) => {
     relationTypes.forEach(({ key }) => {
-      if ((op[key] || []).includes(focus.id)) ids.add(op.id);
+      (op[key] || []).forEach((target) => {
+        if (!incoming[target]) incoming[target] = [];
+        incoming[target].push(op.id);
+      });
     });
   });
+
+  // BFS expanding outward until maxNodes reached
+  const ids = new Set([id]);
+  let frontier = [id];
+  while (ids.size < maxNodes && frontier.length) {
+    const next = [];
+    for (const nodeId of frontier) {
+      const op = allOps[nodeId];
+      if (!op) continue;
+      // Outgoing relations
+      relationTypes.forEach(({ key }) => {
+        (op[key] || []).forEach((child) => {
+          if (!ids.has(child) && allOps[child]) { ids.add(child); next.push(child); }
+        });
+      });
+      // Incoming relations
+      (incoming[nodeId] || []).forEach((parent) => {
+        if (!ids.has(parent) && allOps[parent]) { ids.add(parent); next.push(parent); }
+      });
+      if (ids.size >= maxNodes) break;
+    }
+    frontier = next;
+  }
+
   liveProposals.forEach((p) => {
-    if (p.from === focus.id || p.to === focus.id) { ids.add(p.from); ids.add(p.to); }
+    if (ids.has(p.from) || ids.has(p.to)) {
+      if (allOps[p.from]) ids.add(p.from);
+      if (allOps[p.to]) ids.add(p.to);
+    }
   });
   return [...ids].filter((xId) => allOps[xId]);
 }
 
 function initOperations(id) {
-  const ids = localIdsFromIndex(id);
+  const focus2 = allOps[id]; if (!focus2) return; const ids = new Set([id]); const rkeys = ["carries","holds","traces","pairs","nests"]; rkeys.forEach(k => (focus2[k]||[]).forEach(c => { if(allOps[c]) ids.add(c); })); Object.values(allOps).forEach(op => rkeys.forEach(k => { if((op[k]||[]).includes(id)) ids.add(op.id); }));
   const prev = operations;
   operations = {};
-  ids.forEach((childId, i) => {
+  Array.from(ids).forEach((childId, i) => {
     const op = allOps[childId];
     if (!op) return;
     const p = prev[childId];
@@ -3478,7 +3509,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   const segments = Math.max(7, Math.round(baseSegments * adaptiveAmbientScale(0.62)));
   const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
-  const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035 + sourceMass * 0.018) * emphasis;
+  const alpha = (0.072 + type.strength * 0.13 + source.heat * 0.10 + sourceMass * 0.052) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
   const targetOrder = spineDisplayOrder(target);
   ctx.beginPath();
@@ -3495,7 +3526,7 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, alpha, alpha)
     : relationColor(type, alpha);
-  ctx.lineWidth = Math.max(0.35, (0.32 + source.density * 0.45) * scale);
+  ctx.lineWidth = Math.max(0.6, (0.62 + source.density * 0.88) * scale);
   ctx.stroke();
 
   const branchProb = (type.branchProb ?? 0.33) * (1 - relationMass * 0.82);
@@ -3552,7 +3583,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const crossing = sourceOrder !== targetOrder;
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
-  const currentAlpha = (0.026 + type.strength * 0.07 + source.heat * 0.045 + relationMass * 0.024 - source.ash * 0.03) * emphasis * (1 + movementBoost);
+  const currentAlpha = (0.08 + type.strength * 0.20 + source.heat * 0.13 + relationMass * 0.07 - source.ash * 0.06) * emphasis * (1 + movementBoost);
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -3562,7 +3593,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, currentAlpha, currentAlpha)
     : relationColor(type, currentAlpha);
-  ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.58 + sourcePhysics.capacity * 0.44 + relationMass * 0.72 + (family === 'motion' ? 0.22 : 0) + movementBoost * 1.4) * scale);
+  ctx.lineWidth = Math.max(0.9, (1.0 + source.density * 1.1 + sourcePhysics.capacity * 0.88 + relationMass * 1.44 + (family === 'motion' ? 0.44 : 0) + movementBoost * 2.4) * scale);
   ctx.stroke();
 
   const strandCeiling = Math.max(1, Math.round((FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4) * adaptiveAmbientScale(0.72)));
@@ -3641,22 +3672,7 @@ function compressedRelationField(focus, compressedCount, structuralMass, directi
     glow.addColorStop(0.5, 'rgba(94,132,170,' + (alpha * 0.18) + ')');
     glow.addColorStop(1, 'rgba(94,132,170,0)');
   }
-  ctx.fillStyle = glow;
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, radius * 1.35, 0, Math.PI * 2);
-  ctx.fill();
-  const sweep = Math.PI * (0.34 + Math.min(0.34, compressedCount * 0.018));
-  const base = focus.phase + time * (0.025 + physics.return * 0.018) * (direction === 'in' ? -1 : 1);
-  ctx.lineWidth = Math.max(0.75, (1.05 + structuralMass * 2.2) * scale);
-  ctx.strokeStyle = colourMode === 'fire'
-    ? fireColor(order, alpha * 1.25, 14)
-    : 'rgba(212,197,169,' + (alpha * 0.9) + ')';
-  for (let i = 0; i < 2; i++) {
-    const r = radius * (0.55 + i * 0.22);
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, r, base + i * Math.PI * 0.78, base + i * Math.PI * 0.78 + sweep);
-    ctx.stroke();
-  }
+  fillCondensation(p, radius * 1.35, focus.phase + time * 0.01, glow, 0.12);
   ctx.restore();
 }
 
@@ -3701,6 +3717,34 @@ function operationAmbientBudget(local, isFocus, structuralMass, fieldPressure = 
   };
 }
 
+function condensationPath(p, radius, phase, irregularity = 0.16, points = 11) {
+  ctx.beginPath();
+  for (let i = 0; i <= points; i++) {
+    const a = phase + i * Math.PI * 2 / points;
+    const wobble = 1
+      + Math.sin(a * 2.1 + time * 0.18 + phase) * irregularity
+      + Math.cos(a * 3.7 - time * 0.11 + phase * 0.4) * irregularity * 0.46;
+    const x = p.x + Math.cos(a) * radius * wobble;
+    const y = p.y + Math.sin(a) * radius * wobble * (0.86 + Math.sin(phase) * 0.04);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+}
+
+function fillCondensation(p, radius, phase, gradient, irregularity = 0.16, points = 11) {
+  ctx.fillStyle = gradient;
+  condensationPath(p, radius, phase, irregularity, points);
+  ctx.fill();
+}
+
+function strokeCondensation(p, radius, phase, style, width, irregularity = 0.12) {
+  ctx.strokeStyle = style;
+  ctx.lineWidth = width;
+  condensationPath(p, radius, phase, irregularity, 14);
+  ctx.stroke();
+}
+
 function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const p = screen(op);
   ctx.save();
@@ -3711,7 +3755,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const families = familyComposition(profile);
   const topFamily = families[0]?.key || 'anchor';
   const resolving = Math.min(1, settled / 1.8);
-  const baseAlpha = local ? 0.28 : 0.05;
+  const baseAlpha = local ? 0.55 : 0.07;
   const motionBoost = topFamily === 'motion' ? 1.18 : 1;
   const anchorBoost = topFamily === 'anchor' ? 1.16 : 1;
   const strainBoost = topFamily === 'strain' ? 1.2 : 1;
@@ -3741,22 +3785,23 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
       endpointGlow.addColorStop(0, 'rgba(120,145,175,0.14)');
       endpointGlow.addColorStop(1, 'rgba(120,145,175,0)');
     }
-    ctx.fillStyle = endpointGlow;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, radius * 0.82, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, endpointRadius, 0, Math.PI * 2);
-    ctx.fillStyle = colourMode === 'fire'
-      ? fireColor(order, 0.48, 18)
-      : 'rgba(120,145,175,0.42)';
-    ctx.fill();
+    fillCondensation(p, radius * 0.82, op.phase + time * 0.018, endpointGlow, 0.22);
+    const coreGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, endpointRadius * 2.2);
+    if (colourMode === 'fire') {
+      coreGlow.addColorStop(0, fireColor(order, 0.34, 18));
+      coreGlow.addColorStop(1, fireColor(order, 0, 0));
+    } else {
+      coreGlow.addColorStop(0, 'rgba(120,145,175,0.28)');
+      coreGlow.addColorStop(1, 'rgba(120,145,175,0)');
+    }
+    fillCondensation(p, endpointRadius * 2.2, op.phase + time * 0.04, coreGlow, 0.28, 8);
     ctx.restore();
     return;
   }
 
   const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * ambientBudget.glowSpread);
-  const heatAlpha = isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018;
+  const settleRamp = isFocus ? 1 : Math.max(0.12, resolving);
+  const heatAlpha = (isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018) * settleRamp;
   const ashAlpha = physics.decay * (isFocus ? 0.22 : 0.11) * (1 - structuralMass * 0.4);
   const midAlpha = 0.05 + profile.density * 0.06 + structuralMass * 0.035;
   let coreCol, midCol;
@@ -3773,10 +3818,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   grad.addColorStop(0.38, midCol);
   grad.addColorStop(0.68, 'rgba(76,92,112,' + ashAlpha + ')');
   grad.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = grad;
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, radius * ambientBudget.glowSpread, 0, Math.PI * 2);
-  ctx.fill();
+  fillCondensation(p, radius * ambientBudget.glowSpread, op.phase + time * (isFocus ? 0.012 : 0.02), grad, isFocus ? 0.12 : 0.22);
 
   const wrinkleCount = Math.min(ambientBudget.wrinkleMax, Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58)));
   ctx.save();
@@ -3796,10 +3838,13 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   }
   ctx.restore();
 
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, Math.max(1.2, radius * 0.08), 0, Math.PI * 2);
-  ctx.fillStyle = isFocus ? 'rgba(212,197,169,' + (0.35 + profile.resolution * 0.28) + ')' : 'rgba(120,145,175,' + (0.18 + profile.resolution * 0.18) + ')';
-  ctx.fill();
+  if (isFocus) {
+    const arrivalRadius = Math.max(1.2, radius * 0.075);
+    const arrivalGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, arrivalRadius * 2.4);
+    arrivalGlow.addColorStop(0, 'rgba(212,197,169,' + (0.34 + profile.resolution * 0.24) + ')');
+    arrivalGlow.addColorStop(1, 'rgba(212,197,169,0)');
+    fillCondensation(p, arrivalRadius * 2.4, op.phase + time * 0.03, arrivalGlow, 0.2);
+  }
 
   if (isFocus) {
     ctx.save();
@@ -3818,11 +3863,14 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   if (profile.gardenMemory > 0.08) {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, radius * (1.2 + profile.gardenMemory * 0.22 + structuralMass * 0.16), 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(154,142,118,' + (0.022 + profile.gardenMemory * 0.07 + structuralMass * 0.03) + ')';
-    ctx.lineWidth = Math.max(0.6, (1.15 + structuralMass * 1.2) * scale);
-    ctx.stroke();
+    strokeCondensation(
+      p,
+      radius * (1.18 + profile.gardenMemory * 0.18 + structuralMass * 0.14),
+      op.phase + time * 0.01,
+      'rgba(154,142,118,' + (0.018 + profile.gardenMemory * 0.045 + structuralMass * 0.024) + ')',
+      Math.max(0.45, (0.82 + structuralMass * 0.75) * scale),
+      0.18
+    );
     ctx.restore();
   }
 
@@ -3841,10 +3889,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     contactGlow.addColorStop(0, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.44)+')');
     contactGlow.addColorStop(0.36, 'rgba('+tr+','+tg+','+tb+','+(glowAlpha * 0.18)+')');
     contactGlow.addColorStop(1, 'rgba('+tr+','+tg+','+tb+',0)');
-    ctx.fillStyle = contactGlow;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
-    ctx.fill();
+    fillCondensation(p, glowRadius, op.phase + time * 0.012, contactGlow, 0.1);
     const sparkCount = Math.max(2, Math.round(4 - structuralMass * 2));
     for (let i = 0; i < sparkCount; i++) {
       const a = op.phase + time * (0.12 + tension * 0.08) + i * Math.PI * 2 / sparkCount + Math.sin(i + op.phase) * asymmetry * 0.16;
@@ -3946,7 +3991,7 @@ function step(dt) {
   ambientCurrentOrder = focusOrder;
   ambientPulse = Math.max(0, ambientPulse - dt * 2.2);
   ambientOrderDepth += (targetDepth - ambientOrderDepth) * Math.min(1, dt * 1.4);
-  homeAlpha = homeMode ? 1.0 : Math.max(0, homeAlpha - dt * 1.8);
+  homeAlpha = homeMode ? 1.0 : Math.max(0, homeAlpha - dt * 3.5);
   globalFrameIds.forEach((id) => {
     const target = coupledSensibilityTarget(id);
     const current = coupledSensibility[id] ?? target;
@@ -3954,7 +3999,7 @@ function step(dt) {
   });
   // Ratio-driven simulation runs continuously — the field doesn't stop when a term is entered,
   // the read changes. Slow to 20% speed once focused so it breathes without thrashing.
-  if (Object.keys(fieldParticles).length) stepFieldParticles(homeMode ? dt : dt * 0.2);
+  if (Object.keys(fieldParticles).length && (homeMode || homeAlpha > 0.01)) stepFieldParticles(homeMode ? dt : dt * 0.2);
   const focusProfile = focus?.profile || (focus ? computeProfile(focus) : null);
   const focusPhysics = focusProfile?.engine?.values || (focusProfile ? enginePhysics(focusProfile).values : null);
   Object.values(operations).forEach((op) => {
@@ -4107,7 +4152,6 @@ function draw() {
   drawSmoke();
   drawAmbientHeat();
   if (scaleMode === 'order') { drawOrderScaleView(); if (fieldReadEl) fieldReadEl.classList.remove('ready'); return; }
-  drawOrderSpine();
 
   // Home field: the field before orientation — ratios present, unread.
   // Persists as a fading underlay as the focused view resolves.
@@ -4115,9 +4159,12 @@ function draw() {
 
   if (!homeMode) {
     drawBasinGradients();
+    drawOrderSpine();
     const focus = operations[focusId];
     const local = new Set(localIds(focusId));
     const fieldPressure = focusedFieldPressure(focus, Object.keys(operations).length);
+
+
     if (focus) {
       drawIncomingCurrents(focus);
       const focusProfile = focus.profile || computeProfile(focus);
@@ -4661,6 +4708,8 @@ async function bootstrap() {
     liveProposals = proposals.filter((p) => p.status !== 'discarded' && p.status !== 'applied' && p.status !== 'needs_preparation');
     refreshCoupledFrame();
     buildSpineSequence();
+    // Pre-cache profiles for all entries so stepFieldParticles never calls computeProfile per-frame
+    Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
   } catch(err) {
     modeEl.textContent = 'Field';
     console.error('field bootstrap failed:', err);
