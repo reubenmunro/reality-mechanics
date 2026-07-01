@@ -2413,6 +2413,7 @@ const FIELD_PRESSURE_GRID = Object.freeze({
   cols: 42,
   rows: 28,
   influence: 150,
+  padding: 180,
 });
 
 let adaptiveFrameMs = 16.7;
@@ -3280,38 +3281,51 @@ function screen(op) {
 function buildPressureField() {
   const cols = FIELD_PRESSURE_GRID.cols;
   const rows = FIELD_PRESSURE_GRID.rows;
-  const cellW = innerWidth / cols;
-  const cellH = innerHeight / rows;
+  const points = Object.values(operations);
+  if (!points.length) {
+    pressureField = null;
+    return;
+  }
+  const xs = points.map((op) => op.x);
+  const ys = points.map((op) => op.y);
+  const minXBound = Math.min(...xs) - FIELD_PRESSURE_GRID.padding;
+  const maxXBound = Math.max(...xs) + FIELD_PRESSURE_GRID.padding;
+  const minYBound = Math.min(...ys) - FIELD_PRESSURE_GRID.padding;
+  const maxYBound = Math.max(...ys) + FIELD_PRESSURE_GRID.padding;
+  const width = Math.max(1, maxXBound - minXBound);
+  const height = Math.max(1, maxYBound - minYBound);
+  const cellW = width / cols;
+  const cellH = height / rows;
   const values = new Float32Array(cols * rows);
-  Object.values(operations).forEach((op) => {
+  points.forEach((op) => {
     const profile = op.profile || computeProfile(op);
     const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
-    const p = screen(op);
-    const influence = FIELD_PRESSURE_GRID.influence * (0.62 + structuralMass * 0.9) * scale;
+    const p = { x: op.x, y: op.y };
+    const influence = FIELD_PRESSURE_GRID.influence * (0.62 + structuralMass * 0.9);
     const strength = 0.22 + structuralMass * 0.78 + profile.density * 0.16;
-    const minX = Math.max(0, Math.floor((p.x - influence) / cellW));
-    const maxX = Math.min(cols - 1, Math.ceil((p.x + influence) / cellW));
-    const minY = Math.max(0, Math.floor((p.y - influence) / cellH));
-    const maxY = Math.min(rows - 1, Math.ceil((p.y + influence) / cellH));
+    const minX = Math.max(0, Math.floor((p.x - influence - minXBound) / cellW));
+    const maxX = Math.min(cols - 1, Math.ceil((p.x + influence - minXBound) / cellW));
+    const minY = Math.max(0, Math.floor((p.y - influence - minYBound) / cellH));
+    const maxY = Math.min(rows - 1, Math.ceil((p.y + influence - minYBound) / cellH));
     const denom = Math.max(1, influence * influence);
     for (let y = minY; y <= maxY; y++) {
-      const gy = (y + 0.5) * cellH;
+      const gy = minYBound + (y + 0.5) * cellH;
       for (let x = minX; x <= maxX; x++) {
-        const gx = (x + 0.5) * cellW;
+        const gx = minXBound + (x + 0.5) * cellW;
         const d2 = (gx - p.x) * (gx - p.x) + (gy - p.y) * (gy - p.y);
         const falloff = Math.exp(-d2 / denom);
         values[y * cols + x] += strength * falloff;
       }
     }
   });
-  pressureField = { cols, rows, cellW, cellH, values };
+  pressureField = { cols, rows, cellW, cellH, minX: minXBound, minY: minYBound, values };
 }
 
 function pressureAt(x, y) {
   if (!pressureField) return 0;
-  const { cols, rows, cellW, cellH, values } = pressureField;
-  const gx = Math.max(0, Math.min(cols - 1.001, x / cellW - 0.5));
-  const gy = Math.max(0, Math.min(rows - 1.001, y / cellH - 0.5));
+  const { cols, rows, cellW, cellH, minX, minY, values } = pressureField;
+  const gx = Math.max(0, Math.min(cols - 1.001, (x - minX) / cellW - 0.5));
+  const gy = Math.max(0, Math.min(rows - 1.001, (y - minY) / cellH - 0.5));
   const x0 = Math.floor(gx), y0 = Math.floor(gy);
   const x1 = Math.min(cols - 1, x0 + 1), y1 = Math.min(rows - 1, y0 + 1);
   const tx = gx - x0, ty = gy - y0;
@@ -3641,9 +3655,11 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
   const midX = (pa.x + pb.x) / 2;
   const midY = (pa.y + pb.y) / 2;
-  const gradient = pressureGradientAt(midX, midY);
+  const worldMidX = (a.x + b.x) / 2;
+  const worldMidY = (a.y + b.y) / 2;
+  const gradient = pressureGradientAt(worldMidX, worldMidY);
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
-  const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18);
+  const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
   const cx = midX + nx * (bow + fieldBend);
   const cy = midY + ny * (bow + fieldBend);
   const control = { x: cx, y: cy };
