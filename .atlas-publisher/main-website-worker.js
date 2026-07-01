@@ -2317,6 +2317,17 @@ function fieldPage() {
       color: rgba(77,94,114,0.9); font: 600 0.68rem/1.45 system-ui, sans-serif;
     }
     .reason-list li { margin: 0.18rem 0; }
+    #relation-debug {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 18;
+      width: min(34rem, calc(100vw - 2rem)); max-height: min(56vh, 32rem);
+      overflow: auto; display: none; pointer-events: auto;
+      margin: 0; padding: 0.85rem 0.95rem;
+      background: rgba(5,7,11,0.88); border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(192,205,220,0.78);
+      font: 600 0.64rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap; backdrop-filter: blur(14px);
+    }
+    #relation-debug.ready { display: block; }
     @media (max-width: 700px) {
       #top { inset: 1rem 1rem auto 1rem; }
       #entry { bottom: 1rem; }
@@ -2346,6 +2357,7 @@ function fieldPage() {
   <p id="read-behaviour"></p>
   <div id="read-data"></div>
 </aside>
+<pre id="relation-debug" aria-live="polite"></pre>
 <script>
 let allOps = {};      // full Atlas index: id -> entry (holds/traces/carries/pairs/nests as id arrays)
 let liveProposals = []; // non-discarded garden proposals for garden pressure
@@ -2360,6 +2372,7 @@ const panel = document.getElementById('panel');
 const closePanel = document.getElementById('close-panel');
 const modeEl = document.getElementById('mode');
 const fieldReadEl = document.getElementById('field-read');
+const relationDebugEl = document.getElementById('relation-debug');
 let dpr = 1, w = 0, h = 0;
 let focusId = null;
 let targetFocusId = null;
@@ -2385,6 +2398,9 @@ let pressureField = null;
 let relationPressureTraces = [];
 let relationTrajectoryMemory = new Map();
 let fieldMediumDt = 1 / 60;
+let relationDebugEnabled = new URLSearchParams(location.search).get('debug') === 'relations';
+let relationDebugSamples = [];
+let relationDebugLastRender = 0;
 
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
@@ -3678,6 +3694,7 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
     const anchor = 0.52 + Math.sin(time * (0.08 + rhythm.persistence * 0.08) + offset + rhythmPhase) * (0.025 + rhythm.persistence * 0.025);
     return {
       mode: 'anchor',
+      behaviour: 'sustained pressure near a held midpoint',
       t: clamp01(anchor),
       radiusScale: 1.08 + rhythm.persistence * 0.16,
       alphaScale: 0.78 + rhythm.persistence * 0.22,
@@ -3689,6 +3706,7 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
     const memory = (Math.sin(time * (0.42 + rhythm.intermittence * 0.36) + offset + rhythmPhase) + 1) / 2;
     return {
       mode: 'return',
+      behaviour: 'intermittent return along a remembered path',
       t: returnPulse,
       radiusScale: 0.82 + memory * 0.2,
       alphaScale: 0.46 + rhythm.intermittence * 0.32 + memory * 0.3,
@@ -3698,6 +3716,7 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
   if (key === 'pairs') {
     return {
       mode: 'answer',
+      behaviour: 'reciprocal answering around the shared middle',
       t: clamp01(0.5 + Math.sin(time * (0.26 + rhythm.reciprocity * 0.42) + offset + rhythmPhase) * (0.34 + rhythm.reciprocity * 0.12)),
       radiusScale: 1,
       alphaScale: 1,
@@ -3707,6 +3726,7 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
   if (key === 'nests') {
     return {
       mode: 'circulate',
+      behaviour: 'slow circulation inside containment',
       t: clamp01(0.48 + Math.sin(time * (0.16 + rhythm.circulation * 0.3) + offset + rhythmPhase) * (0.24 + rhythm.circulation * 0.12)),
       radiusScale: 1,
       alphaScale: 1,
@@ -3715,11 +3735,56 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
   }
   return {
     mode: 'travel',
+    behaviour: 'transported current progressing along the relation',
     t: type.direction === 'return' ? 1 - pulse : pulse,
     radiusScale: 1,
     alphaScale: 1,
     lift: 12,
   };
+}
+
+function debugNumber(value) {
+  return Number.isFinite(value) ? Number(value).toFixed(2) : '0.00';
+}
+
+function debugRelationSample(sample) {
+  if (!relationDebugEnabled) return;
+  relationDebugSamples.push(sample);
+}
+
+function renderRelationDebug() {
+  if (!relationDebugEl) return;
+  relationDebugEl.classList.toggle('ready', relationDebugEnabled);
+  if (!relationDebugEnabled) return;
+  if (performance.now() - relationDebugLastRender < 180) return;
+  relationDebugLastRender = performance.now();
+  const rows = relationDebugSamples.slice(0, 24).map((sample) => {
+    const rhythm = sample.rhythm;
+    const expression = sample.expression;
+    return [
+      sample.type.toUpperCase() + '  ' + sample.from + ' -> ' + sample.to,
+      '  rhythm     c:' + debugNumber(rhythm.cadence)
+        + ' p:' + debugNumber(rhythm.persistence)
+        + ' i:' + debugNumber(rhythm.intermittence)
+        + ' r:' + debugNumber(rhythm.reciprocity)
+        + ' n:' + debugNumber(rhythm.circulation),
+      '  expression mode:' + expression.mode
+        + ' t:' + debugNumber(expression.t)
+        + ' radius:' + debugNumber(expression.radiusScale)
+        + ' alpha:' + debugNumber(expression.alphaScale),
+      '  glow       radius:' + debugNumber(sample.glow.radius)
+        + ' alpha:' + debugNumber(sample.glow.alpha)
+        + ' lift:' + debugNumber(expression.lift),
+      '  should     ' + expression.behaviour,
+    ].join('\\n');
+  });
+  relationDebugEl.textContent = [
+    'relation rhythm expression debug',
+    'Shift+D toggles. URL: ?debug=relations',
+    'focus: ' + (operations[focusId]?.title || focusId || 'none') + ' | visible relations: ' + relationDebugSamples.length,
+    '',
+    rows.join('\\n\\n') || 'no visible relation samples yet',
+  ].join('\\n');
 }
 
 function bezierPoint(a, c, b, t) {
@@ -3907,6 +3972,14 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
   const beadRadius = (9 + (8 + source.heat * 8 + relationMass * 4 + rhythmPresence * 5) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.2) * expression.radiusScale;
   const rhythmAlpha = (0.07 + source.heat * 0.072 + rhythmPresence * 0.058 + (isCarry ? 0.018 : 0)) * emphasis * (1 - relationMass * 0.24) * expression.alphaScale;
+  debugRelationSample({
+    type: type.key,
+    from: a.title || a.id,
+    to: b.title || b.id,
+    rhythm,
+    expression,
+    glow: { radius: beadRadius, alpha: rhythmAlpha },
+  });
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
     glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, rhythmAlpha, expression.lift + rhythmPresence * 4));
@@ -4435,6 +4508,7 @@ function drawOrderScaleView() {
 }
 
 function draw() {
+  relationDebugSamples = [];
   drawSmoke();
   drawAmbientHeat();
   if (scaleMode === 'order') { drawOrderScaleView(); if (fieldReadEl) fieldReadEl.classList.remove('ready'); return; }
@@ -4474,6 +4548,7 @@ function draw() {
     Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId, fieldPressure));
   }
   if (fieldReadEl) fieldReadEl.classList.toggle('ready', !homeMode && settled > 0.9);
+  renderRelationDebug();
 }
 
 let last = performance.now();
@@ -4958,6 +5033,12 @@ window.addEventListener('resize', resize);
 
 window.addEventListener('keydown', (event) => {
   if (event.target !== document.body && event.target.tagName !== 'CANVAS') return;
+  if (event.shiftKey && event.key.toLowerCase() === 'd') {
+    event.preventDefault();
+    relationDebugEnabled = !relationDebugEnabled;
+    renderRelationDebug();
+    return;
+  }
   if (!spineFlat.length) return;
   if (event.key === 'ArrowRight') {
     event.preventDefault();
