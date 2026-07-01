@@ -3604,7 +3604,10 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
 
 function relationCompressionLimit(structuralMass, total) {
   if (total <= 3) return total;
-  return Math.max(3, Math.min(total, Math.round(total * (1 - structuralMass * 0.62))));
+  const relationPressure = clamp01((total - 10) / 30);
+  const ratioLimit = Math.round(total * (1 - structuralMass * 0.72 - relationPressure * 0.42));
+  const absoluteLimit = Math.round(14 - structuralMass * 4 - relationPressure * 6);
+  return Math.max(3, Math.min(total, ratioLimit, absoluteLimit));
 }
 
 function relationDrawScore(op, type, index) {
@@ -3676,19 +3679,29 @@ function drawIncomingCurrents(focus) {
   compressedRelationField(focus, incoming.length - limit, structuralMass, 'in');
 }
 
-function operationAmbientBudget(local, isFocus, structuralMass) {
+function focusedFieldPressure(focus, localCount) {
+  if (!focus) return 0;
+  const profile = focus.profile || computeProfile(focus);
+  const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+  const neighbourhoodPressure = clamp01((localCount - 16) / 30);
+  return clamp01(structuralMass * 0.68 + neighbourhoodPressure * 0.58);
+}
+
+function operationAmbientBudget(local, isFocus, structuralMass, fieldPressure = 0) {
   const wrinkleMax = isFocus ? FIELD_RENDER_BUDGET.focusWrinkles
     : local ? FIELD_RENDER_BUDGET.localWrinkles
       : FIELD_RENDER_BUDGET.ambientWrinkles;
   const qualityFloor = isFocus ? 0.86 : local ? 0.54 : 0.4;
   const quality = adaptiveAmbientScale(qualityFloor);
+  const endpointOnly = !isFocus && fieldPressure > 0.38;
   return {
-    wrinkleMax: Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46) * quality)),
-    glowSpread: isFocus ? 2.5 : Math.max(1.58, (2.24 - structuralMass * 0.38) * adaptiveAmbientScale(0.82)),
+    endpointOnly,
+    wrinkleMax: endpointOnly ? 0 : Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46) * quality * (1 - fieldPressure * 0.35))),
+    glowSpread: isFocus ? 2.5 : Math.max(1.18, (2.24 - structuralMass * 0.38 - fieldPressure * 0.54) * adaptiveAmbientScale(0.82)),
   };
 }
 
-function drawOperation(op, local, isFocus) {
+function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const p = screen(op);
   ctx.save();
   ctx.globalAlpha *= sensibilityAlpha(op.id);
@@ -3706,7 +3719,7 @@ function drawOperation(op, local, isFocus) {
   const arkPulse = isFocus ? arkPulseResponse : null;
   const arkThreshold = isFocus ? arkThresholdResponse : null;
   const arkRatio = isFocus ? arkRatioSignature(arkLastEvent) : null;
-  const ambientBudget = operationAmbientBudget(local, isFocus, structuralMass);
+  const ambientBudget = operationAmbientBudget(local, isFocus, structuralMass, fieldPressure);
   const pulseIntensity = { first: 0.7, passage: 0.2, familiar: 0.4, return: 0.6, retrace: 0.9, loop: 1.0 };
   const pulseTempo    = { first: 'slow', passage: 'single', familiar: 'single', return: 'quick', retrace: 'dense', loop: 'dense' };
   const ratioTempo = arkRatio ? 0.84 + arkRatio.frequency * 0.54 + arkRatio.recurrence * 0.34 + arkRatio.tension * 0.24 - arkRatio.contact * 0.12 : 1;
@@ -3716,6 +3729,32 @@ function drawOperation(op, local, isFocus) {
   const pulseDepth = (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (arkRatio ? arkRatio.frequency * 0.018 + arkRatio.recurrence * 0.014 : 0)) * (1 - structuralMass * 0.46);
   const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 + structuralMass * 12 : 13 + profile.density * 8 + physics.capacity * 6 + structuralMass * 8) * scale *
     (1 + Math.sin(time * pulseRate + op.phase) * pulseDepth);
+
+  if (ambientBudget.endpointOnly) {
+    const endpointRadius = Math.max(2.4, radius * (0.18 + structuralMass * 0.06));
+    const endpointGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 0.82);
+    const order = spineDisplayOrder(op);
+    if (colourMode === 'fire') {
+      endpointGlow.addColorStop(0, fireColor(order, 0.18, 14));
+      endpointGlow.addColorStop(1, fireColor(order, 0, 0));
+    } else {
+      endpointGlow.addColorStop(0, 'rgba(120,145,175,0.14)');
+      endpointGlow.addColorStop(1, 'rgba(120,145,175,0)');
+    }
+    ctx.fillStyle = endpointGlow;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, radius * 0.82, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, endpointRadius, 0, Math.PI * 2);
+    ctx.fillStyle = colourMode === 'fire'
+      ? fireColor(order, 0.48, 18)
+      : 'rgba(120,145,175,0.42)';
+    ctx.fill();
+    ctx.restore();
+    return;
+  }
+
   const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * ambientBudget.glowSpread);
   const heatAlpha = isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018;
   const ashAlpha = physics.decay * (isFocus ? 0.22 : 0.11) * (1 - structuralMass * 0.4);
@@ -4078,6 +4117,7 @@ function draw() {
     drawBasinGradients();
     const focus = operations[focusId];
     const local = new Set(localIds(focusId));
+    const fieldPressure = focusedFieldPressure(focus, Object.keys(operations).length);
     if (focus) {
       drawIncomingCurrents(focus);
       const focusProfile = focus.profile || computeProfile(focus);
@@ -4098,7 +4138,7 @@ function draw() {
       drawProposals();
       drawArkMovementWake(focus);
     }
-    Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId));
+    Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId, fieldPressure));
   }
   if (fieldReadEl) fieldReadEl.classList.toggle('ready', !homeMode && settled > 0.9);
 }
