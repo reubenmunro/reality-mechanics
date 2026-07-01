@@ -2395,6 +2395,19 @@ const relationTypes = [
   { key: 'nests',   color: [84, 105, 93],   strength: 0.42, direction: 'enclose', wiggMult: 0.12, bowMult: 0.28, beadSpeed: 0.18, branchProb: 0.0,  strandMult: 0.35 },
 ];
 
+const FIELD_RENDER_BUDGET = Object.freeze({
+  dprLargeViewport: 1.5,
+  dprVeryLargeViewport: 1.25,
+  smokePuffs: 48,
+  homeCurrents: 120,
+  filamentSegments: 14,
+  filamentSegmentsCompressed: 10,
+  relationStrands: 3,
+  focusWrinkles: 12,
+  localWrinkles: 7,
+  ambientWrinkles: 3,
+});
+
 const basinTypes = [
   { key: 'hold', title: 'Hold', x: -0.58, y: 0.42, color: [92, 105, 118] },
   { key: 'trace', title: 'Trace', x: -0.42, y: -0.28, color: [86, 128, 168] },
@@ -2699,7 +2712,11 @@ function refreshProfiles() {
 }
 
 function resize() {
-  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const area = innerWidth * innerHeight;
+  const maxDpr = area > 2200000 ? FIELD_RENDER_BUDGET.dprVeryLargeViewport
+    : area > 1300000 ? FIELD_RENDER_BUDGET.dprLargeViewport
+      : 2;
+  dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
   w = Math.floor(innerWidth * dpr);
   h = Math.floor(innerHeight * dpr);
   canvas.width = w; canvas.height = h;
@@ -3222,7 +3239,7 @@ function drawSmoke() {
   ctx.translate(pan.x, pan.y);
   const drift = family === 'motion' ? 0.14 : family === 'settlement' ? 0.045 : family === 'strain' ? 0.075 : 0.06;
   const compression = family === 'strain' ? 0.56 : family === 'anchor' ? 0.68 : 0.82;
-  for (let i = 0; i < 84; i++) {
+  for (let i = 0; i < FIELD_RENDER_BUDGET.smokePuffs; i++) {
     const a = i * 0.42 + time * (drift + (i % 7) * 0.004);
     const r = 36 + i * 6.3 + Math.sin(time * 0.35 + i) * 18;
     const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
@@ -3436,14 +3453,17 @@ function bezierPoint(a, c, b, t) {
 function drawFilament(pa, pb, control, type, source, target, offset, strand, emphasis = 1) {
   const physics = source.engine?.values || enginePhysics(source).values;
   const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
+  const targetMass = target.fieldStates?.structuralMass || target.structuralMass || 0;
+  const relationMass = (sourceMass + targetMass) * 0.5;
+  const segments = relationMass > 0.48 ? FIELD_RENDER_BUDGET.filamentSegmentsCompressed : FIELD_RENDER_BUDGET.filamentSegments;
   const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
   const alpha = (0.025 + type.strength * 0.045 + source.heat * 0.035 + sourceMass * 0.018) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
   const targetOrder = spineDisplayOrder(target);
   ctx.beginPath();
-  for (let s = 0; s <= 18; s++) {
-    const t = s / 18;
+  for (let s = 0; s <= segments; s++) {
+    const t = s / segments;
     const p = bezierPoint(pa, control, pb, t);
     const n = Math.sin(t * Math.PI * 3 + time * (0.7 + source.airflow) + offset + strand) * wiggle * Math.sin(t * Math.PI);
     const skew = Math.cos(t * Math.PI * 2 + offset + strand) * wiggle * 0.38 * Math.sin(t * Math.PI);
@@ -3458,9 +3478,8 @@ function drawFilament(pa, pb, control, type, source, target, offset, strand, emp
   ctx.lineWidth = Math.max(0.35, (0.32 + source.density * 0.45) * scale);
   ctx.stroke();
 
-  const branchProb = (type.branchProb ?? 0.33) * (1 - sourceMass * 0.7);
-  if (branchProb <= 0) return;
-  if (source.turbulence < 0.18 && Math.random() > branchProb) return;
+  const branchProb = (type.branchProb ?? 0.33) * (1 - relationMass * 0.82);
+  if (branchProb < 0.24 || strand > 0 || emphasis < 0.18) return;
   const start = bezierPoint(pa, control, pb, split);
   const branchLength = (18 + physics.velocity * 52 + source.turbulence * 24 + physics.opening * 18) * scale;
   const branchAngle = Math.atan2(pb.y - pa.y, pb.x - pa.x) + (strand % 2 ? 1 : -1) * (0.65 + source.airflow * 0.5);
@@ -3526,7 +3545,8 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.lineWidth = Math.max(0.5, (0.55 + source.density * 0.58 + sourcePhysics.capacity * 0.44 + relationMass * 0.72 + (family === 'motion' ? 0.22 : 0) + movementBoost * 1.4) * scale);
   ctx.stroke();
 
-  const strandCount = Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48)));
+  const strandCeiling = Math.max(1, Math.round(FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4));
+  const strandCount = Math.min(strandCeiling, Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48))));
   for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis);
 
   if (colourMode === 'fire' && crossing) {
@@ -3636,6 +3656,16 @@ function drawIncomingCurrents(focus) {
   compressedRelationField(focus, incoming.length - limit, structuralMass, 'in');
 }
 
+function operationAmbientBudget(local, isFocus, structuralMass) {
+  const wrinkleMax = isFocus ? FIELD_RENDER_BUDGET.focusWrinkles
+    : local ? FIELD_RENDER_BUDGET.localWrinkles
+      : FIELD_RENDER_BUDGET.ambientWrinkles;
+  return {
+    wrinkleMax: Math.max(2, Math.round(wrinkleMax * (1 - structuralMass * 0.46))),
+    glowSpread: isFocus ? 2.5 : Math.max(1.68, 2.24 - structuralMass * 0.38),
+  };
+}
+
 function drawOperation(op, local, isFocus) {
   const p = screen(op);
   ctx.save();
@@ -3654,6 +3684,7 @@ function drawOperation(op, local, isFocus) {
   const arkPulse = isFocus ? arkPulseResponse : null;
   const arkThreshold = isFocus ? arkThresholdResponse : null;
   const arkRatio = isFocus ? arkRatioSignature(arkLastEvent) : null;
+  const ambientBudget = operationAmbientBudget(local, isFocus, structuralMass);
   const pulseIntensity = { first: 0.7, passage: 0.2, familiar: 0.4, return: 0.6, retrace: 0.9, loop: 1.0 };
   const pulseTempo    = { first: 'slow', passage: 'single', familiar: 'single', return: 'quick', retrace: 'dense', loop: 'dense' };
   const ratioTempo = arkRatio ? 0.84 + arkRatio.frequency * 0.54 + arkRatio.recurrence * 0.34 + arkRatio.tension * 0.24 - arkRatio.contact * 0.12 : 1;
@@ -3663,7 +3694,7 @@ function drawOperation(op, local, isFocus) {
   const pulseDepth = (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (arkRatio ? arkRatio.frequency * 0.018 + arkRatio.recurrence * 0.014 : 0)) * (1 - structuralMass * 0.46);
   const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 + structuralMass * 12 : 13 + profile.density * 8 + physics.capacity * 6 + structuralMass * 8) * scale *
     (1 + Math.sin(time * pulseRate + op.phase) * pulseDepth);
-  const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * 2.5);
+  const grad = ctx.createRadialGradient(p.x, p.y, 1, p.x, p.y, radius * ambientBudget.glowSpread);
   const heatAlpha = isFocus ? 0.12 + physics.heat * 0.16 + arkHeatBoost + structuralMass * 0.04 : baseAlpha * (0.5 + physics.heat * (1 - structuralMass * 0.18)) + structuralMass * 0.018;
   const ashAlpha = physics.decay * (isFocus ? 0.22 : 0.11) * (1 - structuralMass * 0.4);
   const midAlpha = 0.05 + profile.density * 0.06 + structuralMass * 0.035;
@@ -3683,10 +3714,10 @@ function drawOperation(op, local, isFocus) {
   grad.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.fillStyle = grad;
   ctx.beginPath();
-  ctx.arc(p.x, p.y, radius * 2.5, 0, Math.PI * 2);
+  ctx.arc(p.x, p.y, radius * ambientBudget.glowSpread, 0, Math.PI * 2);
   ctx.fill();
 
-  const wrinkleCount = Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58));
+  const wrinkleCount = Math.min(ambientBudget.wrinkleMax, Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58)));
   ctx.save();
   ctx.translate(p.x, p.y);
   ctx.rotate(op.phase * 0.2 + time * (0.018 + profile.airflow * 0.012));
@@ -4288,7 +4319,7 @@ function drawHomeField(alpha) {
   if (!homeConnections.length) return;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const n = Math.min(homeConnections.length, 220);
+  const n = Math.min(homeConnections.length, FIELD_RENDER_BUDGET.homeCurrents);
   for (let i = 0; i < n; i++) {
     const { a, b, typeKey } = homeConnections[Math.floor(Math.random() * homeConnections.length)];
     const pa = homePosition(a), pb = homePosition(b);
