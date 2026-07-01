@@ -3562,16 +3562,78 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.restore();
 }
 
+function relationCompressionLimit(structuralMass, total) {
+  if (total <= 3) return total;
+  return Math.max(3, Math.min(total, Math.round(total * (1 - structuralMass * 0.62))));
+}
+
+function relationDrawScore(op, type, index) {
+  const profile = op.profile || computeProfile(op);
+  const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+  const relationWeight = type.key === 'holds' ? 1.0
+    : type.key === 'carries' ? 0.92
+      : type.key === 'traces' ? 0.78
+        : type.key === 'pairs' ? 0.62
+          : 0.48;
+  return relationWeight + structuralMass * 0.7 + termDegree(op) * 0.018 - index * 0.001;
+}
+
+function compressedRelationField(focus, compressedCount, structuralMass, direction = 'in') {
+  if (!compressedCount || structuralMass < 0.12) return;
+  const p = screen(focus);
+  const profile = focus.profile || computeProfile(focus);
+  const physics = profile.engine?.values || enginePhysics(profile).values;
+  const radius = (72 + structuralMass * 74 + Math.min(10, compressedCount) * 4 + physics.gravity * 24) * scale;
+  const alpha = Math.min(0.18, (0.026 + compressedCount * 0.006 + structuralMass * 0.09) * sensibilityAlpha(focus.id));
+  const order = spineDisplayOrder(focus);
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const glow = ctx.createRadialGradient(p.x, p.y, radius * 0.22, p.x, p.y, radius * 1.35);
+  if (colourMode === 'fire') {
+    glow.addColorStop(0, fireColor(order, alpha * 0.55, 12));
+    glow.addColorStop(0.48, fireColor(order, alpha * 0.22, 4));
+    glow.addColorStop(1, fireColor(order, 0, 0));
+  } else {
+    glow.addColorStop(0, 'rgba(154,142,118,' + (alpha * 0.55) + ')');
+    glow.addColorStop(0.5, 'rgba(94,132,170,' + (alpha * 0.18) + ')');
+    glow.addColorStop(1, 'rgba(94,132,170,0)');
+  }
+  ctx.fillStyle = glow;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, radius * 1.35, 0, Math.PI * 2);
+  ctx.fill();
+  const sweep = Math.PI * (0.34 + Math.min(0.34, compressedCount * 0.018));
+  const base = focus.phase + time * (0.025 + physics.return * 0.018) * (direction === 'in' ? -1 : 1);
+  ctx.lineWidth = Math.max(0.75, (1.05 + structuralMass * 2.2) * scale);
+  ctx.strokeStyle = colourMode === 'fire'
+    ? fireColor(order, alpha * 1.25, 14)
+    : 'rgba(212,197,169,' + (alpha * 0.9) + ')';
+  for (let i = 0; i < 2; i++) {
+    const r = radius * (0.55 + i * 0.22);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, base + i * Math.PI * 0.78, base + i * Math.PI * 0.78 + sweep);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
 function drawIncomingCurrents(focus) {
   if (!focus) return;
+  const focusProfile = focus.profile || computeProfile(focus);
+  const structuralMass = focusProfile.fieldStates?.structuralMass || focusProfile.structuralMass || 0;
+  const incoming = [];
   relationTypes.forEach((type) => {
-    let offset = 0;
-    Object.values(operations).forEach((op) => {
+    Object.values(operations).forEach((op, index) => {
       if (op.id === focus.id || !(op[type.key] || []).includes(focus.id)) return;
-      drawCurrent(op, focus, type, offset + 0.5, 0.34);
-      offset += 1;
+      incoming.push({ op, type, score: relationDrawScore(op, type, index) });
     });
   });
+  incoming.sort((a, b) => b.score - a.score || a.op.id.localeCompare(b.op.id));
+  const limit = relationCompressionLimit(structuralMass, incoming.length);
+  incoming.slice(0, limit).forEach((item, index) => {
+    drawCurrent(item.op, focus, item.type, index + 0.5, 0.34 + structuralMass * 0.16);
+  });
+  compressedRelationField(focus, incoming.length - limit, structuralMass, 'in');
 }
 
 function drawOperation(op, local, isFocus) {
@@ -3665,9 +3727,9 @@ function drawOperation(op, local, isFocus) {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
     ctx.beginPath();
-    ctx.arc(p.x, p.y, radius * (1.24 + profile.gardenMemory * 0.28), 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(154,142,118,' + (0.025 + profile.gardenMemory * 0.09) + ')';
-    ctx.lineWidth = Math.max(0.6, 1.4 * scale);
+    ctx.arc(p.x, p.y, radius * (1.2 + profile.gardenMemory * 0.22 + structuralMass * 0.16), 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(154,142,118,' + (0.022 + profile.gardenMemory * 0.07 + structuralMass * 0.03) + ')';
+    ctx.lineWidth = Math.max(0.6, (1.15 + structuralMass * 1.2) * scale);
     ctx.stroke();
     ctx.restore();
   }
@@ -3691,7 +3753,7 @@ function drawOperation(op, local, isFocus) {
     ctx.beginPath();
     ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
     ctx.fill();
-    const sparkCount = 4;
+    const sparkCount = Math.max(2, Math.round(4 - structuralMass * 2));
     for (let i = 0; i < sparkCount; i++) {
       const a = op.phase + time * (0.12 + tension * 0.08) + i * Math.PI * 2 / sparkCount + Math.sin(i + op.phase) * asymmetry * 0.16;
       const d = radius * (0.9 + contact * 0.42 + openness * 0.16 + (i % 2) * 0.18);
@@ -3965,12 +4027,21 @@ function draw() {
     const local = new Set(localIds(focusId));
     if (focus) {
       drawIncomingCurrents(focus);
+      const focusProfile = focus.profile || computeProfile(focus);
+      const structuralMass = focusProfile.fieldStates?.structuralMass || focusProfile.structuralMass || 0;
+      const outgoing = [];
       relationTypes.forEach((type) => {
-        (focus[type.key] || []).forEach((id, i) => {
+        (focus[type.key] || []).forEach((id, index) => {
           if (!operations[id]) return;
-          drawCurrent(focus, operations[id], type, i, traversalEmphasis(focus.id, id));
+          outgoing.push({ op: operations[id], type, id, score: relationDrawScore(operations[id], type, index) });
         });
       });
+      outgoing.sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
+      const limit = relationCompressionLimit(structuralMass, outgoing.length);
+      outgoing.slice(0, limit).forEach((item, index) => {
+        drawCurrent(focus, item.op, item.type, index, traversalEmphasis(focus.id, item.id) * (1 + structuralMass * 0.12));
+      });
+      compressedRelationField(focus, outgoing.length - limit, structuralMass, 'out');
       drawProposals();
       drawArkMovementWake(focus);
     }
