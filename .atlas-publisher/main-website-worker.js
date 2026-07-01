@@ -3846,20 +3846,6 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     fillCondensation(p, arrivalRadius * 2.4, op.phase + time * 0.03, arrivalGlow, 0.2);
   }
 
-  if (isFocus) {
-    ctx.save();
-    ctx.globalCompositeOperation = 'source-over';
-    const labelSize = Math.max(18, Math.min(42, (op.title === 'Reality Mechanics' ? 28 : 23) * scale));
-    ctx.font = '500 ' + labelSize + 'px "Iowan Old Style", Charter, Georgia, serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = 'rgba(212,197,169,0.84)';
-    ctx.shadowColor = 'rgba(6,8,13,0.82)';
-    ctx.shadowBlur = 16;
-    ctx.fillText(op.title, p.x, p.y - radius * 0.72);
-    ctx.restore();
-  }
-
   if (profile.gardenMemory > 0.08) {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
