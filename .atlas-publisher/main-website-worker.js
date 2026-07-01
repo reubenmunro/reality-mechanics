@@ -3672,6 +3672,56 @@ function relationRhythm(source, target, type, gradient, relationMass, movementRa
   };
 }
 
+function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
+  const key = type.key;
+  if (key === 'holds') {
+    const anchor = 0.52 + Math.sin(time * (0.08 + rhythm.persistence * 0.08) + offset + rhythmPhase) * (0.025 + rhythm.persistence * 0.025);
+    return {
+      mode: 'anchor',
+      t: clamp01(anchor),
+      radiusScale: 1.08 + rhythm.persistence * 0.16,
+      alphaScale: 0.78 + rhythm.persistence * 0.22,
+      lift: 10,
+    };
+  }
+  if (key === 'traces') {
+    const returnPulse = 1 - pulse;
+    const memory = (Math.sin(time * (0.42 + rhythm.intermittence * 0.36) + offset + rhythmPhase) + 1) / 2;
+    return {
+      mode: 'return',
+      t: returnPulse,
+      radiusScale: 0.82 + memory * 0.2,
+      alphaScale: 0.46 + rhythm.intermittence * 0.32 + memory * 0.3,
+      lift: 11,
+    };
+  }
+  if (key === 'pairs') {
+    return {
+      mode: 'answer',
+      t: clamp01(0.5 + Math.sin(time * (0.26 + rhythm.reciprocity * 0.42) + offset + rhythmPhase) * (0.34 + rhythm.reciprocity * 0.12)),
+      radiusScale: 1,
+      alphaScale: 1,
+      lift: 12 + rhythm.reciprocity * 4,
+    };
+  }
+  if (key === 'nests') {
+    return {
+      mode: 'circulate',
+      t: clamp01(0.48 + Math.sin(time * (0.16 + rhythm.circulation * 0.3) + offset + rhythmPhase) * (0.24 + rhythm.circulation * 0.12)),
+      radiusScale: 1,
+      alphaScale: 1,
+      lift: 12 + rhythm.circulation * 4,
+    };
+  }
+  return {
+    mode: 'travel',
+    t: type.direction === 'return' ? 1 - pulse : pulse,
+    radiusScale: 1,
+    alphaScale: 1,
+    lift: 12,
+  };
+}
+
 function bezierPoint(a, c, b, t) {
   const mt = 1 - t;
   return {
@@ -3851,17 +3901,15 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     ctx.fill();
   }
 
-  const t = type.direction === 'return' ? 1 - pulse
-    : isPair ? clamp01(0.5 + Math.sin(time * (0.26 + rhythm.reciprocity * 0.42) + offset + rhythmPhase) * (0.34 + rhythm.reciprocity * 0.12))
-    : isNest ? clamp01(0.48 + Math.sin(time * (0.16 + rhythm.circulation * 0.3) + offset + rhythmPhase) * (0.24 + rhythm.circulation * 0.12))
-    : pulse;
+  const expression = relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset);
+  const t = expression.t;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
-  const beadRadius = (9 + (8 + source.heat * 8 + relationMass * 4 + rhythmPresence * 5) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.2);
-  const rhythmAlpha = (0.07 + source.heat * 0.072 + rhythmPresence * 0.058 + (isCarry ? 0.018 : 0)) * emphasis * (1 - relationMass * 0.24);
+  const beadRadius = (9 + (8 + source.heat * 8 + relationMass * 4 + rhythmPresence * 5) * scale) * (1 + movementBoost * 0.22) * (1 - relationMass * 0.2) * expression.radiusScale;
+  const rhythmAlpha = (0.07 + source.heat * 0.072 + rhythmPresence * 0.058 + (isCarry ? 0.018 : 0)) * emphasis * (1 - relationMass * 0.24) * expression.alphaScale;
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);
   if (colourMode === 'fire') {
-    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, rhythmAlpha, 12 + rhythmPresence * 4));
+    glow.addColorStop(0, fireMix(sourceOrder, targetOrder, t, rhythmAlpha, expression.lift + rhythmPresence * 4));
     glow.addColorStop(1, fireMix(sourceOrder, targetOrder, t, 0, 0));
   } else {
     glow.addColorStop(0, relationColor(type, rhythmAlpha));
