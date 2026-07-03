@@ -53,4 +53,10 @@ Required repository secrets:
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 
-Pushes to `main` deploy changed active surfaces. The workflow can also be started manually with **Run workflow**.
+Pull requests run tests only and do not deploy. Pushes to `main` and manual **Run workflow** runs deploy the active surfaces after a Cloudflare secret preflight.
+
+If deploy fails before a Worker uploads, check:
+
+1. GitHub repository **Settings -> Secrets and variables -> Actions**.
+2. `CLOUDFLARE_API_TOKEN` exists and has Workers/D1 deploy permissions.
+3. `CLOUDFLARE_ACCOUNT_ID` matches the Cloudflare account that owns the routes and `atlas-d1`.

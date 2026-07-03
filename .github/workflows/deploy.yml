@@ -2,6 +2,15 @@ name: Deploy Reality Mechanics
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".atlas-publisher/**"
+      - "member/**"
+      - "reality-mechanics-mcp/**"
+      - "atlas-structure-contract.mjs"
+      - "field-maturity.mjs"
+      - ".github/workflows/deploy.yml"
   push:
     branches: [main]
     paths:
@@ -13,9 +22,32 @@ on:
       - ".github/workflows/deploy.yml"
 
 jobs:
-  deploy-field:
+  cloudflare-secrets:
+    name: Cloudflare secrets
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Check deploy secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=0
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error title=Missing repository secret::Add CLOUDFLARE_API_TOKEN in Settings → Secrets and variables → Actions."
+            missing=1
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error title=Missing repository secret::Add CLOUDFLARE_ACCOUNT_ID in Settings → Secrets and variables → Actions."
+            missing=1
+          fi
+          exit "$missing"
+
+  field:
     name: Field
     runs-on: ubuntu-latest
+    needs: [cloudflare-secrets]
+    if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,15 +60,18 @@ jobs:
           npm test
           node --check main-website-worker.js
       - name: Deploy Field
+        if: github.event_name != 'pull_request'
         working-directory: .atlas-publisher
         run: npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-  deploy-calibration:
+  calibration:
     name: Calibration
     runs-on: ubuntu-latest
+    needs: [cloudflare-secrets]
+    if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,15 +83,18 @@ jobs:
           npm ci
           npm test
       - name: Deploy Calibration
+        if: github.event_name != 'pull_request'
         working-directory: member
         run: npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-  deploy-mcp:
+  mcp:
     name: MCP
     runs-on: ubuntu-latest
+    needs: [cloudflare-secrets]
+    if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -68,6 +106,7 @@ jobs:
           npm ci
           npm test
       - name: Deploy MCP
+        if: github.event_name != 'pull_request'
         working-directory: reality-mechanics-mcp
         run: npx wrangler deploy
         env:
