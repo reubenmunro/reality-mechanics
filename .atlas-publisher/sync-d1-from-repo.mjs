@@ -126,7 +126,6 @@ const columns = [
 const lines = [
   "-- Generated from GitHub repository files. Do not edit D1 directly.",
   "-- Source: Reality_Mechanics/*.md",
-  "BEGIN TRANSACTION;",
   "DELETE FROM entries;",
   ...rows.map((row) => {
     const values = columns.map((key) => {
@@ -136,7 +135,6 @@ const lines = [
     });
     return `INSERT INTO entries (${columns.join(",")}) VALUES (${values.join(",")});`;
   }),
-  "COMMIT;",
   "INSERT INTO entries_fts(entries_fts) VALUES('rebuild');",
   "",
 ];
