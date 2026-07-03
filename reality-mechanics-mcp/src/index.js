@@ -22,6 +22,8 @@ const SERVER_INFO = { name: "reality-mechanics-atlas", version: "2.3.0" };
 const MAX_QUERY = 200;
 const SEARCH_MAX = 25, SEARCH_DEFAULT = 8;
 const LIST_MAX = 200, LIST_DEFAULT = 50;
+const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
+const GITHUB_BRANCH = "main";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -92,6 +94,18 @@ function excerptFromText(text, max = 180) {
   const value = String(text || "").trim();
   if (value.length <= max) return value;
   return `${value.slice(0, max).trim()}…`;
+}
+
+function githubSourceLinks(sourcePath) {
+  const path = String(sourcePath || "").trim();
+  if (!path) return null;
+  const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+  return {
+    sourcePath: path,
+    githubViewUrl: `${GITHUB_REPO_URL}/blob/${GITHUB_BRANCH}/${encodedPath}`,
+    githubEditUrl: `${GITHUB_REPO_URL}/edit/${GITHUB_BRANCH}/${encodedPath}`,
+    githubRawUrl: `${GITHUB_REPO_URL}/raw/${GITHUB_BRANCH}/${encodedPath}`,
+  };
 }
 
 // Walk upstream holds/traces chains from a starting entry ID up to maxDepth hops.
@@ -278,6 +292,12 @@ const TOOLS = [
   { name: "get_related",
     description: "Traverse an entry's typed, directional dependency relations: upstream (holds/traces — what it depends on), downstream (carries — what it opens), lateral (pairs), nesting. The core navigation tool.",
     inputSchema: { type: "object", additionalProperties: false, required: ["id"], properties: { id: { type: "string" } } } },
+
+  { name: "open_source_for_entry",
+    description: "Return the GitHub source file for an Atlas entry after reading it through D1. This is a read-only bridge from semantic navigation to source editing.",
+    inputSchema: { type: "object", additionalProperties: false, properties: {
+      id: { type: "string", description: "Atlas entry id, e.g. first.ratio" },
+      title: { type: "string", description: "Exact Atlas title when id is not known, e.g. Ratio" } } } },
 
   { name: "read_ratio",
     description: "Read a ratio between two Atlas entries from a declared reference frame. Returns the structural relation, reciprocal relation, and continuation pressure without creating a new dependency.",
@@ -475,6 +495,8 @@ async function callTool(name, args, env) {
 
     return {
       id: e.id, title: e.title, publicUrl: e.public_url,
+      sourcePath: e.source_path,
+      source: githubSourceLinks(e.source_path),
       status: e.status, gardenStatus: e.garden_status, grounded: e.grounded,
       order: e.entry_order, type: e.entry_type,
       structure: resolvedStructure,
@@ -533,6 +555,45 @@ async function callTool(name, args, env) {
     }
 
     return result;
+  }
+
+  // ── open_source_for_entry ──
+  if (name === "open_source_for_entry") {
+    const id = String(args.id || "").trim();
+    const title = String(args.title || "").trim();
+    if (!id && !title) return { error: "id or title is required" };
+
+    const rows = id
+      ? await dbAll(env,
+          "SELECT id, title, source_path, public_url, updated, content_hash FROM entries WHERE id = ?",
+          [id])
+      : await dbAll(env,
+          "SELECT id, title, source_path, public_url, updated, content_hash FROM entries WHERE title = ? COLLATE NOCASE",
+          [title]);
+
+    if (!rows.length) return { notFound: true, id: id || null, title: title || null };
+
+    const entries = rows.map((row) => {
+      const source = githubSourceLinks(row.source_path);
+      return {
+        id: row.id,
+        title: row.title,
+        publicUrl: row.public_url,
+        updated: row.updated,
+        contentHash: row.content_hash,
+        sourcePath: row.source_path || null,
+        source,
+        editable: !!source,
+      };
+    });
+
+    return {
+      query: id ? { id } : { title },
+      count: entries.length,
+      collision: entries.length > 1,
+      entries,
+      instruction: "Read through MCP first, edit the GitHub source file, commit, then run the repo-to-D1 sync so MCP reads the regenerated structure.",
+    };
   }
 
   // ── read_ratio ──

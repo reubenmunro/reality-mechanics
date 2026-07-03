@@ -8,6 +8,7 @@ const rows = [
   {
     id: "practice.atlas",
     title: "Atlas",
+    source_path: "Reality_Mechanics/Atlas.md",
     public_url: "https://realitymechanics.nz/field#practice.atlas",
     status: "stable",
     garden_status: "rooted",
@@ -22,11 +23,13 @@ const rows = [
     excerpt: "Atlas names the dependency-ordered reasoning system.",
     content: "# Atlas\n\nAtlas names the dependency-ordered reasoning system.",
     word_count: 7,
+    content_hash: "sha256:atlas",
     updated: "2026-06-30T00:00:00.000Z",
   },
   {
     id: "practice.ai-participation",
     title: "AI Participation",
+    source_path: "Reality_Mechanics/AI_PARTICIPATION.md",
     public_url: "https://realitymechanics.nz/field#practice.ai-participation",
     status: "stable",
     garden_status: "rooted",
@@ -41,11 +44,13 @@ const rows = [
     excerpt: "AI participation remains answerable to Atlas structure.",
     content: "# AI Participation\n\nAI participation remains answerable to Atlas structure.",
     word_count: 8,
+    content_hash: "sha256:ai-participation",
     updated: "2026-06-30T00:00:00.000Z",
   },
   {
     id: "practice.atlas-note-standard",
     title: "Atlas Note Standard",
+    source_path: "Reality_Mechanics/4_Practice/Atlas Note Standard.md",
     public_url: "https://realitymechanics.nz/field#practice.atlas-note-standard",
     status: "stable",
     garden_status: "rooted",
@@ -60,11 +65,13 @@ const rows = [
     excerpt: "Atlas Note Standard names the note grammar.",
     content: "# Atlas Note Standard\n\n## Holds\n\nAtlas.",
     word_count: 6,
+    content_hash: "sha256:atlas-note-standard",
     updated: "2026-06-30T00:00:00.000Z",
   },
   {
     id: "practice.ungrounded",
     title: "Ungrounded",
+    source_path: "Reality_Mechanics/4_Practice/Ungrounded.md",
     public_url: "https://realitymechanics.nz/field#practice.ungrounded",
     status: "stable",
     garden_status: "planted",
@@ -97,6 +104,13 @@ function makeDb() {
           if (/WHERE id IN/.test(sql)) {
             const ids = new Set(this.params);
             return { results: rows.filter((row) => ids.has(row.id)) };
+          }
+          if (/WHERE id = \?/.test(sql)) {
+            return { results: rows.filter((row) => row.id === this.params[0]) };
+          }
+          if (/WHERE title = \? COLLATE NOCASE/.test(sql)) {
+            const title = String(this.params[0] || "").toLowerCase();
+            return { results: rows.filter((row) => row.title.toLowerCase() === title) };
           }
           return { results: rows };
         },
@@ -157,6 +171,7 @@ ok(["begin_atlas_session", "get_ai_entry_protocol", "get_entry", "get_related"].
   "tools/list exposes core structure-first tools");
 ok(["search_atlas", "get_entry_by_title", "list_entries", "get_recent_changes", "read_ratio"].every((t) => toolNames.includes(t)),
   "tools/list exposes useful read tools");
+ok(toolNames.includes("open_source_for_entry"), "tools/list exposes source bridge tool");
 ok(["get_field_terms", "find_shared_ground", "translate_reason"].every((t) => toolNames.includes(t)),
   "tools/list exposes field translation read tools");
 ok(!["write_proposal", "update_entry_section", "ground_entry", "rebuild_search_index", "submit_atlas_insert", "list_garden_proposals"].some((t) => toolNames.includes(t)),
@@ -181,8 +196,13 @@ ok(session.requiredPracticeEntries.every((entry) => entry.operatorContract?.fami
 
 const entry = await callTool("get_entry", { id: "practice.atlas" });
 ok(entry.structure.carries.some((item) => item.id === "practice.ai-participation"), "get_entry resolves canonical structure first");
+ok(entry.source.githubEditUrl.endsWith("/edit/main/Reality_Mechanics/Atlas.md"), "get_entry includes GitHub source links");
 ok(entry.layers.frontmatter && entry.layers.prose, "get_entry includes layer contract");
 ok(entry.operatorContract.families.some((family) => family.key === "carry"), "get_entry includes operator contract");
 ok(entry._read_as.includes("prose is human language"), "get_entry read-as distinguishes prose from structure");
+
+const source = await callTool("open_source_for_entry", { id: "practice.atlas" });
+ok(source.entries[0].sourcePath === "Reality_Mechanics/Atlas.md", "open_source_for_entry returns source path");
+ok(source.entries[0].source.githubEditUrl.includes("/edit/main/Reality_Mechanics/Atlas.md"), "open_source_for_entry returns GitHub edit URL");
 
 console.log(`\nAll ${passed} assertions passed.`);
