@@ -34,10 +34,10 @@ export const TRANSLATION_SURFACES = Object.freeze({
   structure: "Canonical relation/order layer. All representations must remain answerable to this.",
   frontmatter: "AI-readable translation of structure. It condenses structure for machines and workers.",
   prose: "Human-readable translation of structure. It explains without overriding structure.",
-  mcp: "Operational translation of structure for AI sessions, traversal, and bounded writes.",
+  mcp: "Read-only traversal translation of structure for external sessions.",
   field: "Visual and pressure translation of structure. It shows readability, lag, and strain.",
-  workerMemory: "Lag-state translation of work in progress. It never creates canonical relations.",
-  export: "Published translation of structure for static pages, archives, and future adapters.",
+  calibration: "Participant-facing reasoning translation. It helps move from pressure to retraceable next step.",
+  d1: "Generated read model rebuilt from the GitHub repository. It is never the editable source.",
 });
 
 export const READING_ORDER = Object.freeze([
@@ -52,52 +52,48 @@ export const READING_ORDER = Object.freeze([
 
 export const WORKER_ORDER = Object.freeze([
   {
-    key: "reader",
-    currentWorker: "api-gardener",
-    state: "read",
-    role: "Detect a readable pressure or ratio without editing canonical structure.",
+    key: "repository",
+    currentWorker: "GitHub",
+    state: "canonical",
+    role: "Hold the editable Atlas markdown and frontmatter.",
   },
   {
-    key: "reasoner",
-    currentWorker: "api-gardener",
-    state: "proposed",
-    role: "Turn the read into a traceable proposal with an explicit section and reason.",
+    key: "d1_sync",
+    currentWorker: "sync-d1-from-repo",
+    state: "generated",
+    role: "Rebuild the D1 read model from repository source.",
   },
   {
-    key: "steward",
-    currentWorker: "api-steward",
-    state: "stewarded",
-    role: "Judge proportion, scope, risk, and whether the proposal deserves light or shade.",
+    key: "field",
+    currentWorker: "reality-mechanics-main",
+    state: "readable",
+    role: "Expose the structural field as the public visual surface.",
   },
   {
-    key: "grounder",
-    currentWorker: "api-ground-check",
-    state: "ground_checked",
-    role: "Check that a lit proposal still matches the shared structure/proposal contract.",
+    key: "mcp",
+    currentWorker: "reality-mechanics-mcp",
+    state: "readable",
+    role: "Expose read-only Atlas traversal tools.",
   },
   {
-    key: "applier",
-    currentWorker: "api-applier",
-    state: "applied",
-    role: "Apply only validated continuations through the MCP write boundary.",
-  },
-  {
-    key: "publisher",
-    currentWorker: "atlas-publisher",
-    state: "published",
-    role: "Translate canonical structure into public pages, AI export, field physics, and archive.",
+    key: "calibration",
+    currentWorker: "reality-mechanics-calibration",
+    state: "usable",
+    role: "Expose the participant-facing calibration tool.",
   },
 ]);
 
 export const LAG_STATES = Object.freeze([
-  "read",
-  "proposed",
-  "stewarded",
-  "ground_checked",
+  "received",
+  "prepared",
+  "needs_attention",
+  "approved",
   "applied",
   "published",
-  "synced",
-  "stale",
+  "affirmed",
+  "rejected",
+  "discarded",
+  "superseded",
 ]);
 
 export const RATIO_CONTRACT = Object.freeze({
@@ -161,7 +157,7 @@ export const STRUCTURAL_EVENT_FIELDS = Object.freeze([
 export const PARTICIPANT_READING_CONTRACT = Object.freeze({
   frequencyRule: "The runtime may carry local frequency as an event read, but it does not make frequency global.",
   timeRule: "The runtime records occurrence; it does not turn time into Atlas meaning.",
-  eventRule: "The runtime observes participant movement and translates it into structural events. Interfaces, AI inhabitants, ambient effects, and Garden actions listen.",
+  eventRule: "The runtime observes participant movement and translates it into structural events. Interfaces, calibration passes, and future adapters may listen.",
 });
 
 export const INHABITANT_CONTRACT = Object.freeze({
@@ -189,8 +185,8 @@ export const ATLAS_STRUCTURE_CONTRACT = Object.freeze({
   version: "2026-06-30.ratio-reading-order",
   principle: "The Atlas is not stored many times. It is read many ways.",
   canonicalRule: "Structure is canonical. Every representation is a translation. Every translation must be retraceable to structure.",
-  sourceRule: "D1/frontmatter structure fields form the operational canonical record until the next storage migration makes that record explicit in one substrate.",
-  translationRule: "Frontmatter, prose, MCP responses, worker memory, visual physics, static exports, and future adapters are translations; none may silently invent a second Atlas.",
+  sourceRule: "GitHub repository markdown and frontmatter form the editable canonical record. D1 is a generated read model rebuilt from that record.",
+  translationRule: "Frontmatter, prose, MCP responses, Field, Calibration, generated D1, and future adapters are translations; none may silently invent a second Atlas.",
   lagRule: "Lag is natural when workers move in order. Lag is acceptable only when the current state and source representation are explicit.",
   structureFields: STRUCTURE_FIELDS,
   relationFields: RELATION_FIELDS,

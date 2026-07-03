@@ -15,7 +15,9 @@ conditions:
     - "[[Ground]]"
   nests: "at Ground level — prior to Clean, holding Relation before the first order operates"
   reads: "where Fabric holds as a whole and what was nested within Relation from the start becomes recognisable without having to pull the chain apart"
-  carries: []
+  carries:
+    - "[[One]]"
+    - "[[Other]]"
 
 publish: true
 status: stable
@@ -23,15 +25,19 @@ garden_status: rooted
 ---
 # Seed
 
-Seed names Ground as relation-to-Ground becomes carryable and recoverable within what begins. It is the Ground-level condition that holds [[Relation]] before the dependency spine begins.
+Seed names Ground as relation-to-Ground becomes carryable and recoverable within what begins. It is the Ground-level condition that can become generative when Seed : Ground becomes active.
 
-Where [[Clean]] holds Relation at the first order — invisibly, becoming readable only when it fails — Seed holds Relation prior to order altogether. Seed is not produced by the chain, not inside the dependency spine, and not an invariant at any order level. [[Ground]] is the acknowledged prior; Seed is the return-side of that prior becoming present within what grows from it.
+Seed may exist without generating. Ground may exist without producing Seed. Generation begins when Seed : Ground becomes active relation.
+
+In reading order, Seed is usually recognised last. A participant begins with fruit, growth, or some completed cycle, then retraces toward the generative condition that had to already be true. [[One]] : [[Other]] is the first readable expression of that condition, not its replacement.
+
+Where [[Clean]] holds Relation at the first order — invisibly, becoming readable only when it fails — Seed holds generative potential prior to order altogether. Seed is not produced by the chain, not inside the dependency spine, and not an invariant at any order level. [[Ground]] is the acknowledged prior; Seed is the return-side of that prior becoming present within what grows from it.
 
 [[Fabric]] is the recognition condition. The chain does not produce Seed at its close; it runs far enough for what was already nested within Relation to become visible as Fabric.
 
 ## Places
 
-Seed places the Ground-level condition that holds [[Relation]] before [[Clean]] holds it at the first order. [[Ground]] and Seed together name the first in/out bifurcation around Relation: Ground as the acknowledged prior, Seed as the generative return nested within Relation from its start. Neither is inside the dependency spine. Both are source-side conditions around it, while Relation remains the primitive from which the dependency spine begins.
+Seed places the Ground-level condition that can become generative when Seed : [[Ground]] becomes active. [[Ground]] and Seed together name the first in/out bifurcation around the dependency spine: Ground as the acknowledged prior, Seed as the generative return nested within what begins. Neither is inside the dependency spine.
 
 ## Holds
 
@@ -47,7 +53,7 @@ Seed pairs with [[Ground]]. Ground names the acknowledged prior; Seed names that
 
 ## Nests
 
-Seed nests at Ground level, prior to Clean, holding Relation before the first order operates.
+Seed nests at Ground level, prior to Clean, as generative potential. [[One]] : [[Other]] nests in reading order as the first readable expression of Seed : Ground becoming active.
 
 ## Reads
 
@@ -55,4 +61,7 @@ Seed becomes recognisable in [[Fabric]] — where the whole carries before each 
 
 ## Carries
 
-Nothing. Carrying is a spine operation and Seed is prior to the spine. Seed holds [[Relation]] and is recovered in [[Fabric]], not transmitted through the chain.
+Seed opens [[One]] and [[Other]] as source-side readings. This is not ordinary carrying inside the spine; it marks how reading order first recognises the generative condition.
+
+- [[One]]
+- [[Other]]

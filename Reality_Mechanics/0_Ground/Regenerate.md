@@ -34,6 +34,8 @@ Regenerate names the structural condition of returning to generative conditions.
 
 Regenerate is recovery, not replacement. The carrying does not stop; the trace to what carries the carrying is restored.
 
+As an order-generation read, regeneration is recurrence in carrying form: prior carrying returns to generative conditions strongly enough to become a bounded rule for new carrying.
+
 [[Practice]], [[Retrace Practice]], and [[Higher Retrace]] are instances of Regenerate at different levels: each returns through accumulated carrying to recover dependency contact.
 
 ## Places
@@ -62,6 +64,8 @@ Regenerate nests at Ground as the structural condition through which the generat
 Regenerate becomes recognisable where carrying that has lost its generative trace recovers contact with the source that generated it — where what was treating itself as primitive traces back through what it carries to what carried it into being.
 
 It is the return to generative conditions from within what has been generated.
+
+Fibonacci is a useful exemplar, not a model for Regenerate: the next term is produced from a bounded trace of prior terms. Regenerate has the same carrying shape where what was previously carried becomes available again as the condition from which continuation can be generated.
 
 ## Carries
 

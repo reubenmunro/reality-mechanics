@@ -23,6 +23,7 @@ conditions:
   reads: "where a carrying condition can be read by what it can support within the current scope — where load remains possible up to the point at which compatibility begins to fail."
   carries:
     - "[[Pressure]]"
+    - "[[Energy]]"
     - "[[Overload]]"
     - "[[Balance]]"
     - "[[Resonance]]"
@@ -64,10 +65,13 @@ Capacity becomes recognisable where a carrying condition can be read by what it 
 
 Capacity becomes especially visible through [[Pressure]]: load locally borne through relation tests how much carrying can remain compatible before reduction, release, transfer, overload, or re-resolution becomes necessary.
 
+[[Energy]] names generated availability for carrying where that availability becomes readable as supportable capacity, pressure, flow, work, movement, transformation, maintenance, repair, or continuation.
+
 ## Carries
 
 
 - [[Pressure]]
+- [[Energy]]
 - [[Overload]]
 - [[Balance]]
 - [[Resonance]]

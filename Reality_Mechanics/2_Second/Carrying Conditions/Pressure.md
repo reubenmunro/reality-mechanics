@@ -26,6 +26,7 @@ conditions:
   reads: "Pressure becomes readable where load is not only present but locally borne through a relation, making demand, strain, form, or adjustment active at a boundary, body, surface, system, or field."
   carries:
     - "[[Retain]]"
+    - "[[Energy]]"
     - "[[Balance]]"
     - "[[Overload]]"
     - "[[Grief]]"
@@ -40,6 +41,8 @@ garden_status: rooted
 Pressure names the emergent condition where load becomes locally borne through relation.
 
 Pressure is not load alone and not the carrier alone. It appears where load meets a local carrying relation. This is why pressure can be generative: it is the active edge where carrying becomes felt, formed, adjusted, resisted, retained, released, or resolved.
+
+Where pressure generates supportable availability for carrying, it can become readable as [[Energy]].
 
 ## Places
 
@@ -76,6 +79,7 @@ Pressure does not become incompatible by existing. It becomes incompatible where
 Pressure carries [[Retain]], [[Balance]], and [[Overload]] — the local regulatory branch of pressure and the excess condition where pressure exceeds compatible carrying.
 
 - [[Retain]]
+- [[Energy]]
 - [[Balance]]
 - [[Overload]]
 - [[Grief]]

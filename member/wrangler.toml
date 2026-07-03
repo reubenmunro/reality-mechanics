@@ -1,0 +1,11 @@
+# Calibration — public mechanical reasoning calibration.
+# No AI, no MCP, no D1, no Garden secret, no KV, no cron.
+
+name = "reality-mechanics-calibration"
+main = "src/index.js"
+compatibility_date = "2026-06-03"
+workers_dev = true
+
+[[routes]]
+pattern = "calibration.realitymechanics.nz"
+custom_domain = true

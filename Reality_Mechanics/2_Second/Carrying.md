@@ -24,6 +24,8 @@ conditions:
     - "[[Union]]"
     - "[[Compatibility]]"
     - "[[Flow]]"
+    - "[[Energy]]"
+    - "[[Carried Condition]]"
     - "[[Resistance]]"
     - "[[Load]]"
     - "[[Capacity]]"
@@ -113,6 +115,8 @@ Carrying becomes recognisable where held forward availability is being entered o
 - [[Union]]
 - [[Compatibility]]
 - [[Flow]]
+- [[Energy]]
+- [[Carried Condition]]
 - [[Resistance]]
 - [[Load]]
 - [[Capacity]]

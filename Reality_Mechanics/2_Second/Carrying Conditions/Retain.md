@@ -23,6 +23,7 @@ conditions:
   nests: "inside carrying as ongoing keeping of pressure after it has become locally borne."
   reads: "Retain becomes readable where pressure remains kept in a carrying relation without immediately discharging, transferring, or collapsing."
   carries:
+    - "[[Energy]]"
     - "[[Balance]]"
 
 publish: true
@@ -62,8 +63,9 @@ Retain nests inside carrying as ongoing keeping of pressure after it has become 
 
 Retain becomes readable where pressure remains kept in a carrying relation without immediately discharging, transferring, or collapsing.
 
-Retained pressure can generate form, attention, memory, structure, discipline, growth, or repair where the carrying relation remains compatible. It becomes incompatible where pressure is kept beyond capacity, beyond resolution band, or beyond the relation able to receive and integrate it.
+Retained pressure can generate form, attention, memory, structure, discipline, growth, repair, or [[Energy]] where the carrying relation remains compatible. It becomes incompatible where pressure is kept beyond capacity, beyond resolution band, or beyond the relation able to receive and integrate it.
 
 ## Carries
 
+- [[Energy]]
 - [[Balance]]

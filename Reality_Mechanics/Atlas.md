@@ -29,6 +29,7 @@ conditions:
     - "[[Atlasing]]"
     - "[[Translation Invariance]]"
     - "[[Atlas Root]]"
+    - "[[Atlas vNext Root Refactor]]"
     - "[[AI Participation]]"
     - "[[Invariants]]"
 
@@ -46,13 +47,24 @@ The Atlas is not identical to its written notes. Writing is its present durable 
 
 The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, prune where it drifts, and correct what no longer remains answerable.
 
-The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
+The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. The vNext correction distinguishes generative order from reading order. [[Seed]] : [[Ground]] names the generative condition becoming active; [[One]] : [[Other]] names the first readable expression of that condition; [[Ratio]] names relation made readable as comparison without collapse. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
 
 Its value is in [[Reality-Bearing Connection]]: terms, supports, reads, openings, and retraces connected in a way that can carry reality rather than merely link information.
 
 The Atlas couples reads and nests them by dependency, so pattern recognition stays traceable to what carries it. Coupling lets terms, supports, and reads participate in one another; nesting keeps that participation ordered enough to retrace.
 
 The Atlas does not make order. It traces reads that enter order, checks whether they remain answerable to what carries them, and shows what they carry forward.
+
+The Atlas is not attempting to describe reality from outside. It exists within reading order. Its purpose is to preserve faithful retraceability while remaining answerable to the generative order it seeks to read. It preserves dependency, ratio, reason, rational proportion, reference frame, and traceability without claiming to stand outside reality.
+
+Current vNext distinction:
+
+```text
+Generative: Seed : Ground → Generation → Growth → Fruit → Seed
+Reading:    Fruit → Growth → Generation → Seed : Ground
+```
+
+The test is not whether this sounds simpler. The test is whether the existing Atlas can support faithful retracing from readable fruit back toward generative conditions without confusing reading order for generation.
 
 ## Places
 
@@ -85,6 +97,7 @@ Atlas nests term notes, root notes, applied reads, practice notes, and higher-or
 [[Translation Boundary]]
 [[Translation Invariance]]
 [[Atlasing]]
+[[Atlas vNext Root Refactor]]
 
 ## Reads
 
@@ -111,5 +124,6 @@ In the tree read, Atlas keeps roots, trunk, branches, translation boundaries, pa
 - [[Atlasing]]
 - [[Translation Invariance]]
 - [[Atlas Root]]
+- [[Atlas vNext Root Refactor]]
 - [[AI Participation]]
 - [[Invariants]]

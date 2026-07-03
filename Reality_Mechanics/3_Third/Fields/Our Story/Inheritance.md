@@ -41,6 +41,8 @@ garden_status: rooted
 
 Inheritance names an our-story path read where memory, practice, term, place, obligation, or relation is carried into later participation.
 
+[[Borne and Carried]] names the human-scope condition inside inheritance: human carrying begins in received carrying.
+
 ## Places
 
 Inheritance places the condition through which prior carrying is passed forward through recurrence and recognition — what a field, community, or practice continues to carry from prior relation.
@@ -81,4 +83,3 @@ Second: [[Carrying]], [[Recurrence]], [[Recognition Read|Recognition]], [[Medium
 Third: [[Inheritance]] places that structural read inside the [[Our Story Field]].
 
 ## Carries
-

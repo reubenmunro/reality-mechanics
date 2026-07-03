@@ -23,7 +23,8 @@ conditions:
   reads: "where inheritance, memory, narrative, history, or intergenerational carrying organises participation as shared continuity."
   carries:
     - "[[Inheritance]]"
-    - "[[Carrying Better]]" 
+    - "[[Carrying Better]]"
+    - "[[Borne and Carried]]"
 
 publish: true
 status: stable
@@ -58,15 +59,17 @@ Our Story Field nests as a public field container. Detailed branch notes remain 
 [[Our Story]]
 [[Inheritance]]
 [[Carrying Better]]
+[[Borne and Carried]]
 
 ## Reads
 
 Our Story Field becomes recognisable where inheritance, memory, narrative, history, or intergenerational carrying organises participation as shared continuity.
 
-At the [[Translation Boundary]], [[Memory]], [[Recurrence]], [[Carrying]], [[Inheritance]], [[Bearing Source|source]], and [[Return]] can become terminal to this field as local reads such as [[Our Story]], [[Inheritance]], and [[Carrying Better]].
+At the [[Translation Boundary]], [[Memory]], [[Recurrence]], [[Carrying]], [[Inheritance]], [[Bearing Source|source]], and [[Return]] can become terminal to this field as local reads such as [[Our Story]], [[Inheritance]], [[Borne and Carried]], and [[Carrying Better]].
 
 ## Carries
 
-Our Story Field carries [[Inheritance]] and [[Carrying Better]] — the structural reads through which shared relational history is passed forward and improved. Nested reads are recorded under Nests; each traces its own structural ground.
+Our Story Field carries [[Inheritance]], [[Borne and Carried]], and [[Carrying Better]] — the structural reads through which shared relational history is received, passed forward, and improved. Nested reads are recorded under Nests; each traces its own structural ground.
 - [[Inheritance]]
 - [[Carrying Better]]
+- [[Borne and Carried]]

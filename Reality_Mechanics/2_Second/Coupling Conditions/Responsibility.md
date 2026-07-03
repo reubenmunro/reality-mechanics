@@ -66,6 +66,8 @@ A vehicle may carry impact while responsibility traces to the driver–vehicle c
 
 Responsibility does not by itself determine praise, blame, punishment, or repair. It first locates answerable participation in the dependency path.
 
+At human scope, [[Borne and Carried]] gives one reason responsibility becomes readable without reducing it to imposed debt: received carrying can become answerable carrying.
+
 ## Carries
 
 - [[Competence Boundary]]

@@ -1,0 +1,12 @@
+{
+  "name": "reality-mechanics-calibration",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --check src/index.js && node test/invariants.test.mjs",
+    "deploy": "npm test && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.107.0"
+  }
+}

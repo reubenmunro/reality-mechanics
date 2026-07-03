@@ -1,0 +1,75 @@
+name: Deploy Reality Mechanics
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".atlas-publisher/**"
+      - "member/**"
+      - "reality-mechanics-mcp/**"
+      - "atlas-structure-contract.mjs"
+      - "field-maturity.mjs"
+      - ".github/workflows/deploy.yml"
+
+jobs:
+  deploy-field:
+    name: Field
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test Field worker
+        run: |
+          cd .atlas-publisher
+          npm install --no-audit --fund=false
+          npm test
+          node --check main-website-worker.js
+      - name: Deploy Field
+        working-directory: .atlas-publisher
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+  deploy-calibration:
+    name: Calibration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test Calibration worker
+        run: |
+          cd member
+          npm ci
+          npm test
+      - name: Deploy Calibration
+        working-directory: member
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+  deploy-mcp:
+    name: MCP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test MCP worker
+        run: |
+          cd reality-mechanics-mcp
+          npm ci
+          npm test
+      - name: Deploy MCP
+        working-directory: reality-mechanics-mcp
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

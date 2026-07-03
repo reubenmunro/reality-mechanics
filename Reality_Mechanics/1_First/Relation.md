@@ -8,12 +8,12 @@ condition_key: first.relation
 needs: []
 
 conditions:
-  places: "the primitive condition of the Atlas — what the dependency spine begins from"
-  holds: "primitive within the system — no prior term produces it"
-  pairs: "[[Ground]] — Ground is acknowledged but not derived; Relation is the primitive from which tracing begins. Seed names the return-side of this source condition, but does not become a prior term in the dependency spine."
+  places: "active relation within the Atlas — the primitive condition through which generation can occur and from which tracing begins."
+  holds: "primitive within the system — no prior term produces it. Ratio is the readable form of relation, not the generative source of relation."
+  pairs: "[[Ground]] and [[Ratio]] — Ground is acknowledged but not derived; Ratio is how relation becomes readable to a participant."
   traces: []
-  nests: "beneath first-order reads — downstream terms remain traceable only where they do not replace Relation as primitive"
-  reads: "where downstream terms can be traced back through their conditions without making any downstream term primitive in its place"
+  nests: "beneath first-order reads as the active relation that can generate, while Ratio belongs to reading order as relation made readable."
+  reads: "where downstream terms can be traced back through their conditions without making any downstream term primitive in its place."
   carries:
     - "[[Connection]]"
     - "[[Place]]"
@@ -38,23 +38,27 @@ garden_status: rooted
 ---
 # Relation
 
-Relation names the primitive condition. Relation relates; it is not produced from a prior term within the system.
+Relation names active relation within the Atlas.
 
-Relation is not an object, substance, cause, or container. It names the relating condition that holds without requiring anything prior. It remains available where no downstream term is treated as primitive in its place.
+Relation remains primitive inside the system: relation relates, and no prior term inside the system produces it.
+
+The vNext correction does not make Relation downstream of [[Ratio]]. It distinguishes generation from recognition. Generation occurs through active relation; Ratio is the readable form relation takes when a participant can compare a held reference with what is other than that reference.
+
+Relation is not an object, substance, cause, or container. It names the relating condition that holds without requiring a prior term within the Atlas.
 
 [[Connection]] is relation holding between distinguishable conditions. Relation remains primitive. [[Connection]] is the first placed passage through which held relation becomes available to carry and trace.
 
 ## Places
 
-Relation places the primitive condition of the Atlas.
+Relation places active relation within the Atlas: the primitive condition through which generation can occur and from which tracing begins.
 
 ## Holds
 
-Relation is held in place by being primitive within the system. No prior term produces it. From the Ground side, Relation is held through Seed; from inside the dependency spine, Relation begins without a prior dependency.
+Relation is held in place by being primitive within the system. No prior term produces it. Ratio belongs to reading order as relation made readable; it does not produce Relation.
 
 ## Pairs
 
-Relation pairs with [[Ground]]: Ground is acknowledged but not derived; Relation is the primitive from which tracing begins. [[Seed]] names the return-side of this source condition — relation-to-Ground becoming carryable within the loop — but Seed does not become a prior term in the dependency spine. Relation remains primitive inside the system.
+Relation pairs with [[Ground]] and [[Ratio]]: Ground is acknowledged but not derived; Ratio is how relation becomes readable to a participant. [[Seed]] names the return-side of the source condition, while [[One]] : [[Other]] names the first readable expression of Seed : Ground becoming active.
 
 ## Traces
 
@@ -62,11 +66,13 @@ Relation is primitive. No prior dependency within the system.
 
 ## Nests
 
-Relation nests beneath first-order reads. Downstream terms remain traceable only where they do not replace Relation as primitive.
+Relation nests beneath first-order reads as the active relation that can generate. [[Ratio]] belongs to reading order as relation made readable.
 
 ## Reads
 
-Relation becomes recognisable where downstream terms can be traced back through their conditions without making any downstream term primitive.
+Relation becomes recognisable where downstream terms can be traced back through their conditions without making any downstream term primitive in its place.
+
+The corrected test is not whether One : Other replaces Relation. It is whether One : Other names the first readable expression through which active relation can be recognised and retraced.
 
 ## Carries
 

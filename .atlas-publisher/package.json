@@ -4,9 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.mjs",
     "test": "node --test test/*.test.mjs",
-    "build:theory": "ATLAS_BUILD_ROOT=../Reality_Atlas_Build THEORY_BUILD_ROOT=../Reality_Atlas_Build node build.mjs",
-    "check": "node atlas-doctor.mjs"
+    "sync:d1": "node sync-d1-from-repo.mjs"
   }
 }

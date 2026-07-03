@@ -44,8 +44,9 @@ The pass is deliberately ordinary. It keeps the garden read from becoming a meta
 2. Trace what holds it.
 3. Test what it claims to carry.
 4. Name what it shades or what shades it.
-5. Ask whether the pass improved resolution rate.
-6. Name the garden status and choose the next care action.
+5. Ask whether the growth preserves generative trace or shows degenerative trace.
+6. Ask whether the pass improved resolution rate.
+7. Name the garden status and choose the next care action.
 ```
 
 The possible care actions are:
@@ -95,12 +96,16 @@ What does it claim to carry?
 What does it shade?
 What shades it?
 Can it be re-entered?
+Does it preserve generative trace?
+Does it show degenerative trace?
 Did this pass increase resolution rate?
 What garden status names its current care state?
 What care action keeps the Atlas alive?
 ```
 
 The pass does not force every growth to become stable. Some growths remain working. Some are left ungrounded. Some are composted as failed postures. The test is not whether the growth is impressive or whether the edit was fast; the test is whether the Atlas can keep its relation, trace, re-entry, and next continuation clean enough to tend.
+
+Where continuation or repair is specifically at issue, [[Generate and Regenerate]] can be used inside a Garden Pass to test whether the growth preserves generative trace, shows degenerative trace, or only records what happened.
 
 ## Carries
 

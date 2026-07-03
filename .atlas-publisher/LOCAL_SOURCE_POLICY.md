@@ -1,26 +1,24 @@
-# Local Atlas Source Policy
+# Atlas Source Policy
 
-The live Atlas is updated through the Garden/D1 path.
+The GitHub repository is the editable source of truth for Atlas terms.
 
-`Reality_Mechanics` local markdown is now a draft/mirror space, not the live source
-used for public publishing or AI search.
+`Reality_Mechanics` markdown is the term source. D1 is a generated read model
+for public surfaces, MCP traversal, Field states, and runtime reads.
 
 ## Update Path
 
-1. Propose Atlas changes through the Garden/MCP write path.
-2. Review and apply them into the canonical D1-backed Atlas.
-3. Let public surfaces and AI-facing tools read from canonical D1.
-4. Refresh local files only as a mirror/export when needed.
+1. Edit Atlas terms in `Reality_Mechanics`.
+2. Commit and push those edits to GitHub.
+3. Build or export from the repository.
+4. Sync generated data into D1.
+5. Let public surfaces and AI-facing tools read D1 as generated data.
 
 ## Guardrail
 
-Local-source build/export tools stop by default.
-
-Only use `ALLOW_LOCAL_ATLAS_SOURCE=1` when deliberately creating an archival export
-from local files. Do not use that override for normal Atlas updates.
+D1 writes to Atlas term rows are not an editing workflow. Direct edits to
+`entries` should be retired or treated as emergency recovery only.
 
 ## Reason
 
-If local files can publish directly, a local draft can appear true on disk while the
-live Atlas, MCP search, and AI readers still see a different structure. That breaks
-retracing.
+If D1 becomes editable, the public Atlas can drift away from the repository. The
+repository must be able to rebuild D1 from scratch.

@@ -3,13 +3,15 @@ main = "src/index.js"
 compatibility_date = "2025-06-01"
 workers_dev = true
 
-[vars]
-ATLAS_BASE = "https://atlas.realitymechanics.nz"
-
 # Production endpoint: https://mcp.realitymechanics.nz/mcp
 [[routes]]
 pattern = "mcp.realitymechanics.nz"
 custom_domain = true
+
+[[d1_databases]]
+binding = "ATLAS_DB"
+database_name = "atlas-d1"
+database_id = "ffc9622e-02a4-4561-b11e-4e54fac92967"
 
 # Optional: basic rate limiting (Cloudflare Workers rate-limit binding).
 # [[unsafe.bindings]]

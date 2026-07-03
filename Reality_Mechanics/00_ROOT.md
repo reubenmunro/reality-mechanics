@@ -30,7 +30,9 @@ garden_status: planted
 ---
 # Atlas Root
 
-Reality Mechanics is the discipline of keeping relation traceable as order. It begins from a working postulate:
+Reality Mechanics is the discipline of keeping relation traceable as order. The vNext correction distinguishes generative order from reading order: generation occurs through active relation, while the Atlas works by recognising what has become readable and retracing what had to already be true.
+
+The working postulate remains:
 
 ```text
 Relation holds.
@@ -51,7 +53,42 @@ The Atlas is not the authority-object. The relation-order-trace practice is what
 
 ## Root Dependency Order
 
-[[Relation]] grounds. Two conditions arise from it: [[Connection]] (relation holding between distinguishable conditions) and [[Asymmetry]] (relation uneven enough for distinction to begin). [[Posture]] is connection held with orientation, depending on both.
+The Atlas does not attempt to describe an absolute beginning. It preserves a disciplined reading practice: start from what has become readable, then retrace what had to already be true.
+
+Generative order:
+
+```text
+Seed : Ground
+↓
+Generation
+↓
+Growth
+↓
+Fruit
+↓
+Seed
+```
+
+Reading order:
+
+```text
+Fruit
+↑
+Growth
+↑
+Generation
+↑
+Seed : Ground
+```
+
+[[Relation]] remains primitive within the Atlas. The vNext insight does not replace Relation with [[One]] : [[Other]]. Instead:
+
+- [[Seed]] : [[Ground]] names the generative condition becoming active.
+- [[One]] : [[Other]] names the first readable expression of that condition.
+- [[Ratio]] names relation made readable as comparison without collapse.
+- Reason names the retraceable account of that ratio.
+
+The Atlas lives primarily in reading order. It remains answerable to generative order without claiming to stand outside it.
 
 **Dependency spine:**
 

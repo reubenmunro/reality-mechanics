@@ -7,17 +7,21 @@ condition_key: second.relative
 
 needs:
   - "[[Relation]]"
+  - "[[Ratio]]"
+  - "[[Reference Frame]]"
   - "[[Boundary]]"
   - "[[Closure Scope]]"
   - "[[Scale]]"
   - "[[Readability]]"
 
 conditions:
-  places: "a read placed through relation."
-  holds: "[[Relation]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, boundary must locate the read, scope and scale must be locatable, and the condition must be readable before relativity can be named without drifting into arbitrariness."
-  pairs: "No lateral pair is required at this placement yet. Relative names placed relation, not the denial of truth."
+  places: "a read placed through relation, ratio, and reference frame."
+  holds: "[[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, ratio must make comparison readable, the reference frame must be explicit, boundary must locate the read, scope and scale must be locatable, and the condition must be readable before relativity can be named without drifting into arbitrariness."
+  pairs: "[[Reference Frame]] — Relative names the placed read; Reference Frame names the reference through which the placement remains answerable."
   traces:
     - "[[Relation]]"
+    - "[[Ratio]]"
+    - "[[Reference Frame]]"
     - "[[Boundary]]"
     - "[[Closure Scope]]"
     - "[[Scale]]"
@@ -33,29 +37,31 @@ garden_status: rooted
 ---
 # Relative
 
-Relative names a read placed through relation.
+Relative names a read placed through relation, ratio, and reference frame.
 
-Relative does not mean unreal, arbitrary, or merely subjective. It means placed. A relative read is answerable to the relation, scope, scale, and carrying conditions through which it becomes readable.
+Relative does not mean unreal, arbitrary, or merely subjective. It means placed. A relative read is answerable to the relation, ratio, reference frame, scope, scale, and carrying conditions through which it becomes readable.
 
-The question is not whether something is only relative. The question is: relative to what, through what, and within what scope?
+The question is not whether something is only relative. The question is: relative to what, through what ratio, in what reference frame, and within what scope?
 
 ## Places
 
-Relative places a read placed through relation.
+Relative places a read through relation, ratio, and reference frame.
 
 ## Holds
 
-Relative is held by [[Relation]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, boundary must locate the read, scope and scale must be locatable, and the condition must be readable.
+Relative is held by [[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, ratio must make comparison readable, the reference frame must be explicit, boundary must locate the read, scope and scale must be locatable, and the condition must be readable.
 
 ## Pairs
 
-No lateral pair is required at this placement yet. Relative names placed relation, not the denial of truth.
+Relative pairs with [[Reference Frame]]. Relative names the placed read; Reference Frame names the reference through which the placement remains answerable.
 
 Relative protects against two drifts: false absoluteness, where a local read is treated as if it came from nowhere; and vague relativism, where placement is mistaken for the loss of truth rather than the condition through which truth can be checked.
 
 ## Traces
 
 - [[Relation]]
+- [[Ratio]]
+- [[Reference Frame]]
 - [[Boundary]]
 - [[Closure Scope]]
 - [[Scale]]

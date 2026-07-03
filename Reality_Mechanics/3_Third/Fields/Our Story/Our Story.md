@@ -21,6 +21,7 @@ conditions:
   reads: "where participation carries prior relation forward through memory, inheritance, account, and retrace."
   carries:
     - "[[Inheritance]]"
+    - "[[Borne and Carried]]"
 
 publish: true
 status: stable
@@ -53,6 +54,7 @@ Our Story nests within the Our Story Field branch as the field-level container f
 
 [[Inheritance]]
 [[Carrying Better]]
+[[Borne and Carried]]
 
 ## Reads
 
@@ -61,3 +63,4 @@ Our Story becomes recognisable where participation carries prior relation forwar
 ## Carries
 
 - [[Inheritance]]
+- [[Borne and Carried]]

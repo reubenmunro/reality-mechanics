@@ -16,7 +16,7 @@ needs:
 conditions:
   places: "the condition through which inherited carrying is improved — where retrace makes prior carrying available for correction, refinement, or more compatible continuation."
   holds: "[[Carrying]], [[Our Story Field]], [[Retrace Read]], [[Progress]], and [[Ship and Ark]]. Inherited carrying must be retraceable and retrace must make correction available before improved continuation can be named."
-  pairs: "[[Inheritance]]. Inheritance names what is passed forward from prior carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable."
+  pairs: "[[Inheritance]] and [[Borne and Carried]]. Inheritance names what is passed forward from prior carrying; Borne and Carried names the received origin of human carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable."
   traces:
     - "[[Carrying]]"
     - "[[Our Story Field]]"
@@ -45,7 +45,7 @@ Carrying Better is held by [[Carrying]], [[Our Story Field]], [[Retrace Read]], 
 
 ## Pairs
 
-Carrying Better pairs with [[Inheritance]]. Inheritance names what is passed forward from prior carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable.
+Carrying Better pairs with [[Inheritance]] and [[Borne and Carried]]. Inheritance names what is passed forward from prior carrying; Borne and Carried names the received origin of human carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable.
 
 ## Traces
 

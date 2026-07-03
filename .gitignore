@@ -3,6 +3,7 @@ node_modules/
 
 # Wrangler / build caches
 .wrangler/
+.atlas-publisher/generated/
 
 # Python caches
 __pycache__/

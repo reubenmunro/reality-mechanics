@@ -39,6 +39,8 @@ It does not replace individual term traces. It gathers the main dependency movem
 
 Order Trace presents the generative direction of the mapped order. Its claims are grounded in the reverse read: each downstream condition must be able to retrace the prior conditions whose carrying it confirms. The forward path opens what may follow; the return path distinguishes confirmed dependency from projected sequence.
 
+[[Order Generation]] gives exemplar systems for this kind of read. Counting shows successor order, Euclid shows constructive order from bounded postulates, and Fibonacci shows regenerative recurrence from bounded prior terms. These are not copied by the Atlas; they make visible how simple bounded rules can generate ordered continuation.
+
 One useful read of the order is tree-like. [[Ground]] holds the rooting condition. [[First Order]] is the root structure becoming readable, partly hidden and partly visible, moving down into ground and up toward later order. [[Second Order]] is the trunk: stable carrying, coupling, closure, presence, readability, and participation. [[Third Order]] branches into fields, domains, translation boundaries, path reads, and applied reads. [[Higher Order]] is the retrace of the whole tree as nesting, recursion, fabric, thread, invisible bearing, and hidden bearing.
 
 ## Places
@@ -155,6 +157,17 @@ Regenerate      at every level: return to generative conditions from within the 
 ```
 
 [[Generic]] is what the spine itself instantiates at each order: Relation generates First Order conditions; First Order generates Second Order structure; Second Order generates Third Order fields. Each is a generic of the next. [[Degenerate]] is the cross-order risk: any term at any level can carry forward while losing the trace back to what generated it. [[Retrace Practice]] and [[Higher Retrace]] are instances of [[Regenerate]] — the response to Degenerate at their respective levels.
+
+The reference map for generative systems is:
+
+```text
+Counting      successor order
+Euclid        constructive order
+Fibonacci     recurrence order
+Atlas         dependency order
+Ark Run       bounded carrying through dependency order
+Regenerate    recurrence in carrying form
+```
 
 The bearing line already ends at the organic/engineered pair:
 

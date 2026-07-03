@@ -23,6 +23,7 @@ conditions:
   nests: "at the excess point where load exceeds supportable capacity."
   reads: "where what bears on carrying exceeds what the current condition can support or resolve — where continuation cannot remain compatible without change, support, reduction, translation, or re-resolution."
   carries:
+    - "[[Carried Condition]]"
     - "[[Incoherence]]"
     - "[[Collapse]]"
 
@@ -32,7 +33,7 @@ garden_status: rooted
 ---
 # Overload
 
-Overload names load or pressure exceeding supportable capacity. Where load names what bears on carrying, pressure names load locally borne through relation, and capacity names supportable carrying within a current condition, overload names the condition where carrying is strained beyond what can remain compatible at that scope. Overload does not name weakness or failure by itself; it names the excess condition that makes reduction, release, re-resolution, disorder, or collapse likely unless support or scope changes.
+Overload names load or pressure exceeding supportable capacity. Where load names what bears on carrying, pressure names load locally borne through relation, and capacity names supportable carrying within a current condition, overload names the condition where carrying is strained beyond what can remain compatible at that scope. Overload does not name weakness or failure by itself; it names the excess condition that makes reduction, release, return to [[Carried Condition]], re-resolution, disorder, or collapse likely unless support or scope changes.
 
 ## Places
 
@@ -59,7 +60,7 @@ Overload nests at the excess point where load exceeds supportable capacity.
 
 ## Reads
 
-Overload becomes recognisable where what bears on carrying exceeds what the current condition can support — where continuation cannot remain compatible without change, support, reduction, or re-resolution.
+Overload becomes recognisable where what bears on carrying exceeds what the current condition can support — where continuation cannot remain compatible without change, support, reduction, return to [[Carried Condition]], or re-resolution.
 
 Overload can occur when demand exceeds the resolution band of the carrier: too much scale, rate, intensity, ambiguity, novelty, or consequence is required to be received and carried at once. The problem is not only quantity of load; it is incompatibility between demand and the range through which the carrier can resolve order.
 
@@ -68,3 +69,4 @@ Overload can occur when demand exceeds the resolution band of the carrier: too m
 
 - [[Incoherence]]
 - [[Collapse]]
+- [[Carried Condition]]

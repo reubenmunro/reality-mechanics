@@ -1,127 +1,188 @@
 /**
- * Offline tests for the Reality Mechanics Atlas MCP Worker.
- * Mocks the Cache API and fetch with Atlas-export fixtures; no network.
- * Run: npm test   (or: node test/worker.test.mjs)
+ * Offline tests for the D1-backed Reality Mechanics Atlas MCP Worker.
+ * No network; provides a tiny ATLAS_DB mock with the SQL shapes used here.
  */
 import assert from "node:assert";
 
-// ---- fixtures (shape matches build-atlas-ai-index.mjs output) ----
-const manifest = { schemaVersion: "1.0.1", atlasVersion: "v1", builtAt: "2026-06-20T00:00:00.000Z",
-  sourceCommit: null, entryCount: 2, contentHash: "sha256:deadbeef",
-  current: { index: "/ai/current/index.json", atlas: "/ai/current/atlas.md", entries: "/ai/current/entries/" } };
-const relation = { id: "first.relation", title: "Relation", slug: "relation",
-  sourcePath: "Reality_Mechanics/1_First/Relation.md", publicUrl: "https://atlas.realitymechanics.nz/relation.html",
-  excerpt: "Relation names the primitive condition.", status: "stable", type: "primitive", order: "first",
-  branch: undefined, aliases: [], tags: [], related: ["first.connection"], updated: "2026-06-20",
-  contentHash: "sha256:rel", content: "# Relation\nRelation names the primitive condition.\n\n## Holds\nRelation is primitive.\n\n## Carries\n- [[Connection]]\n",
-  plainText: "Relation names the primitive condition", headings: [{ depth: 2, text: "Holds", anchor: "holds" }], wordCount: 5 };
-const connection = { id: "first.connection", title: "Connection", slug: "connection",
-  sourcePath: "Reality_Mechanics/1_First/Connection.md", publicUrl: "https://atlas.realitymechanics.nz/connection.html",
-  excerpt: "Connection is relation holding between distinguishable conditions.", status: "working", type: "term", order: "first",
-  aliases: [], tags: [], related: ["first.relation"], updated: "2026-06-19", contentHash: "sha256:con",
-  content: "# Connection\nConnection is relation holding between distinguishable conditions.",
-  plainText: "Connection is relation holding between distinguishable conditions", headings: [], wordCount: 7 };
+const rows = [
+  {
+    id: "practice.atlas",
+    title: "Atlas",
+    public_url: "https://realitymechanics.nz/field#practice.atlas",
+    status: "stable",
+    garden_status: "rooted",
+    grounded: 1,
+    entry_order: "practice",
+    entry_type: "practice",
+    aliases: "[]",
+    tags: "[]",
+    related: "[]",
+    structure: JSON.stringify({ holds: [], traces: [], carries: ["practice.ai-participation"], pairs: [], nests: [], reads: [] }),
+    headings: "[]",
+    excerpt: "Atlas names the dependency-ordered reasoning system.",
+    content: "# Atlas\n\nAtlas names the dependency-ordered reasoning system.",
+    word_count: 7,
+    updated: "2026-06-30T00:00:00.000Z",
+  },
+  {
+    id: "practice.ai-participation",
+    title: "AI Participation",
+    public_url: "https://realitymechanics.nz/field#practice.ai-participation",
+    status: "stable",
+    garden_status: "rooted",
+    grounded: 1,
+    entry_order: "practice",
+    entry_type: "practice",
+    aliases: "[]",
+    tags: "[]",
+    related: "[]",
+    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
+    headings: "[]",
+    excerpt: "AI participation remains answerable to Atlas structure.",
+    content: "# AI Participation\n\nAI participation remains answerable to Atlas structure.",
+    word_count: 8,
+    updated: "2026-06-30T00:00:00.000Z",
+  },
+  {
+    id: "practice.atlas-note-standard",
+    title: "Atlas Note Standard",
+    public_url: "https://realitymechanics.nz/field#practice.atlas-note-standard",
+    status: "stable",
+    garden_status: "rooted",
+    grounded: 1,
+    entry_order: "practice",
+    entry_type: "practice",
+    aliases: "[]",
+    tags: "[]",
+    related: "[]",
+    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
+    headings: "[]",
+    excerpt: "Atlas Note Standard names the note grammar.",
+    content: "# Atlas Note Standard\n\n## Holds\n\nAtlas.",
+    word_count: 6,
+    updated: "2026-06-30T00:00:00.000Z",
+  },
+  {
+    id: "practice.ungrounded",
+    title: "Ungrounded",
+    public_url: "https://realitymechanics.nz/field#practice.ungrounded",
+    status: "stable",
+    garden_status: "planted",
+    grounded: 0,
+    entry_order: "practice",
+    entry_type: "practice",
+    aliases: "[]",
+    tags: "[]",
+    related: "[]",
+    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
+    headings: "[]",
+    excerpt: "Ungrounded test entry.",
+    content: "# Ungrounded\n\n## Reads\n\nStill settling.",
+    word_count: 4,
+    content_hash: "sha256:ungrounded-before",
+    updated: "2026-06-30T00:00:00.000Z",
+  },
+];
 
-const compact = (e) => ({ id: e.id, title: e.title, slug: e.slug, sourcePath: e.sourcePath, publicUrl: e.publicUrl,
-  excerpt: e.excerpt, status: e.status, type: e.type, order: e.order, branch: e.branch, aliases: e.aliases,
-  tags: e.tags, related: e.related, updated: e.updated, contentHash: e.contentHash });
-const searchRec = (e) => ({ ...compact(e), headings: e.headings.map((h) => h.text), text: e.plainText });
-
-const FIX = {
-  "/ai/manifest.json": manifest,
-  "/ai/current/index.json": { schemaVersion: "1.0.1", atlasVersion: "v1", entries: [compact(relation), compact(connection)] },
-  "/ai/current/search.json": { schemaVersion: "1.0.1", atlasVersion: "v1", entries: [searchRec(relation), searchRec(connection)] },
-  "/ai/current/entries/first.relation.json": { ...relation, schemaVersion: "1.0.1", atlasVersion: "v1" },
-};
-
-// ---- mock Cache API + fetch ----
-const cacheStore = new Map();
-globalThis.caches = { default: {
-  async match(req) { const k = req.url || String(req); return cacheStore.has(k) ? new Response(cacheStore.get(k)) : undefined; },
-  async put(req, res) { const k = req.url || String(req); cacheStore.set(k, await res.text()); },
-} };
-globalThis.fetch = async (url) => {
-  const u = new URL(String(url));
-  const key = Object.keys(FIX).find((k) => u.pathname === k);
-  if (!key) return new Response("not found", { status: 404 });
-  return new Response(JSON.stringify(FIX[key]), { status: 200, headers: { "content-type": "application/json" } });
-};
+function makeDb() {
+  return {
+    prepare(sql) {
+      return {
+        params: [],
+        bind(...params) { this.params = params; return this; },
+        async all() {
+          if (/GROUP BY garden_status/.test(sql)) {
+            return { results: [{ garden_status: "rooted", n: rows.length }] };
+          }
+          if (/WHERE id IN/.test(sql)) {
+            const ids = new Set(this.params);
+            return { results: rows.filter((row) => ids.has(row.id)) };
+          }
+          return { results: rows };
+        },
+        async first() {
+          if (/COUNT\(\*\) as n/.test(sql)) return { n: rows.length };
+          if (/WHERE id = \?/.test(sql)) return rows.find((row) => row.id === this.params[0]) || null;
+          return rows[0] || null;
+        },
+        async run() {
+          return { success: true };
+        },
+      };
+    },
+  };
+}
 
 const worker = (await import("../src/index.js")).default;
-const env = { ATLAS_BASE: "https://atlas.realitymechanics.nz" };
+const env = { ATLAS_DB: makeDb() };
 let rpcId = 0;
-async function rpc(method, params) {
-  const req = new Request("https://mcp.example/mcp", { method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params }) });
-  const res = await worker.fetch(req, env, {});
-  return res.json();
+
+async function rpc(method, params, headers = {}) {
+  const req = new Request("https://mcp.example/mcp", {
+    method: "POST",
+    headers: { "content-type": "application/json", ...headers },
+    body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params }),
+  });
+  return (await worker.fetch(req, env, {})).json();
 }
-const callTool = async (name, args) => {
+
+async function callTool(name, args = {}) {
   const r = await rpc("tools/call", { name, arguments: args });
   assert.ok(r.result, `tools/call ${name} returned: ${JSON.stringify(r)}`);
   return r.result.structuredContent;
-};
+}
 
 let passed = 0;
 const ok = (cond, msg) => { assert.ok(cond, msg); console.log("  ✓ " + msg); passed++; };
 
-// ---- tests ----
 const init = await rpc("initialize", { protocolVersion: "2025-06-18" });
 ok(init.result.serverInfo.name === "reality-mechanics-atlas", "initialize returns server info");
-ok(init.result.protocolVersion === "2025-06-18", "initialize echoes protocol version");
+ok(init.result.instructions.includes("Frontmatter is AI language; prose is human language"), "initialize exposes layer instructions");
+
+const preflight = await worker.fetch(new Request("https://mcp.example/mcp", {
+  method: "OPTIONS",
+  headers: {
+    Origin: "https://realitymechanics.nz",
+    "Access-Control-Request-Method": "POST",
+    "Access-Control-Request-Headers": "content-type,authorization,cf-access-client-id,cf-access-client-secret,mcp-session-id,mcp-protocol-version",
+  },
+}), env, {});
+const allowedHeaders = preflight.headers.get("Access-Control-Allow-Headers") || "";
+ok(preflight.status === 200 && allowedHeaders.includes("Authorization"), "MCP preflight allows Authorization");
+ok(allowedHeaders.includes("CF-Access-Client-Id") && allowedHeaders.includes("CF-Access-Client-Secret"), "MCP preflight allows Cloudflare Access service-token headers");
 
 const list = await rpc("tools/list", {});
 const toolNames = list.result.tools.map((t) => t.name);
-ok(["get_manifest","get_ai_entry_protocol","search_atlas","get_entry","get_related","list_entries","get_recent_changes"].every((t) => toolNames.includes(t)),
-  "tools/list lists all seven tools");
-ok(!toolNames.includes("submit_atlas_insert"), "tools/list does not advertise legacy submit_atlas_insert");
+ok(["begin_atlas_session", "get_ai_entry_protocol", "get_entry", "get_related"].every((t) => toolNames.includes(t)),
+  "tools/list exposes core structure-first tools");
+ok(["search_atlas", "get_entry_by_title", "list_entries", "get_recent_changes", "read_ratio"].every((t) => toolNames.includes(t)),
+  "tools/list exposes useful read tools");
+ok(["get_field_terms", "find_shared_ground", "translate_reason"].every((t) => toolNames.includes(t)),
+  "tools/list exposes field translation read tools");
+ok(!["write_proposal", "update_entry_section", "ground_entry", "rebuild_search_index", "submit_atlas_insert", "list_garden_proposals"].some((t) => toolNames.includes(t)),
+  "tools/list exposes no write, maintenance, or Garden tools");
 
-const man = await callTool("get_manifest", {});
-ok(man.atlasVersion === "v1" && man.entryCount === 2, "get_manifest returns current version + count");
+const rejectedWrite = await rpc("tools/call", { name: "write_proposal", arguments: { entry_id: "practice.atlas" } });
+ok(rejectedWrite.error?.code === -32601, "write_proposal is not callable");
 
-const proto = await callTool("get_ai_entry_protocol", {});
-ok(proto.entryPath[0].arguments.id === "practice.reasoning" && proto.rules.some((r) => r.includes("structure")),
-  "get_ai_entry_protocol returns the AI entry ritual");
+const proto = await callTool("get_ai_entry_protocol");
+ok(proto.startingIds.length === 3 && proto.startingIds[0] === "practice.atlas", "entry protocol starts from current three ids");
+ok(proto.layerContract.layers.structure && proto.layerContract.layers.prose, "entry protocol includes structure/prose layer contract");
+ok(proto.operatorContract.families.length === 7, "entry protocol includes seven operator families");
+ok(proto.rules.some((rule) => rule.includes("GitHub markdown/frontmatter")), "entry protocol names GitHub as editable source of truth");
+ok(proto.rules.some((rule) => rule.includes("edge shows operation in passage")), "entry protocol names operator edge/term correspondence");
 
-const resources = await rpc("resources/list", {});
-ok(resources.result.resources.some((r) => r.uri === "atlas://ai-entry-protocol"),
-  "resources/list exposes the AI entry protocol");
-const protocolResource = await rpc("resources/read", { uri: "atlas://ai-entry-protocol" });
-ok(protocolResource.result.contents[0].text.includes("practice.ai-participation"),
-  "resources/read returns the AI entry protocol");
+const session = await callTool("begin_atlas_session");
+ok(session.protocol.layerContract.workerOrder.some((step) => step.startsWith("structure:")), "begin_atlas_session exposes worker order");
+ok(session.governance.layerRule.includes("Frontmatter is AI language"), "begin_atlas_session exposes layer governance");
+ok(session.governance.operatorRule.includes("edge behavior"), "begin_atlas_session exposes operator invariant");
+ok(session.requiredPracticeEntries.every((entry) => entry.layers?.structure), "session practice entries include layer contract");
+ok(session.requiredPracticeEntries.every((entry) => entry.operatorContract?.families?.length === 7), "session practice entries include operator contract");
 
-const s = await callTool("search_atlas", { query: "Relation" });
-ok(s.results[0].title === "Relation" && s.results[0].matchedFields.includes("title"), "search_atlas finds exact title");
-ok(s.results.every((r) => r.atlasVersion === "v1"), "every search result carries atlas version");
-const sBody = await callTool("search_atlas", { query: "distinguishable" });
-ok(sBody.results.some((r) => r.title === "Connection" && r.matchedFields.includes("content")), "body-term search returns relevant entry");
-const sFilter = await callTool("search_atlas", { query: "relation", type: "primitive" });
-ok(sFilter.results.every((r) => r.type === "primitive"), "search type filter works");
-const sLimit = await callTool("search_atlas", { query: "relation", limit: 1 });
-ok(sLimit.results.length <= 1, "search result limit enforced");
-
-const ent = await callTool("get_entry", { id: "first.relation" });
-ok(ent.content.includes("# Relation") && ent._trace.publicUrl === relation.publicUrl, "get_entry returns full source + trace");
-ok(ent.structure.carries.some((r) => r.id === "first.connection"), "get_entry leads with dependency structure (carries)");
-ok(ent.atlasVersion === "v1", "get_entry carries atlas version");
-const entBad = await callTool("get_entry", { id: "../secret" });
-ok(entBad.error, "invalid id is rejected (no path escape)");
-const entMiss = await callTool("get_entry", { id: "nope.missing" });
-ok(entMiss.notFound, "unknown id returns structured not-found");
-
-const rel = await callTool("get_related", { id: "first.relation" });
-ok(rel.downstream.carries.some((r) => r.id === "first.connection"), "get_related groups typed/directional relations");
-const relInf = await callTool("get_related", { id: "first.relation", includeInferred: true });
-ok(Array.isArray(relInf.inferred) && relInf.inferredNote.includes("authored"), "inferred relations are clearly separated");
-
-const li = await callTool("list_entries", { order: "first" });
-ok(li.entries.length === 2 && li.total === 2, "list_entries filters by metadata");
-
-const rc = await callTool("get_recent_changes", { since: "2026-06-19" });
-ok(rc.basis === "metadata" && rc.entries.some((e) => e.id === "first.relation"), "get_recent_changes is metadata-based and works");
-
-const bad = await rpc("tools/call", { name: "does_not_exist", arguments: {} });
-ok(bad.error && bad.error.code === -32601, "unknown tool -> method-not-found error");
+const entry = await callTool("get_entry", { id: "practice.atlas" });
+ok(entry.structure.carries.some((item) => item.id === "practice.ai-participation"), "get_entry resolves canonical structure first");
+ok(entry.layers.frontmatter && entry.layers.prose, "get_entry includes layer contract");
+ok(entry.operatorContract.families.some((family) => family.key === "carry"), "get_entry includes operator contract");
+ok(entry._read_as.includes("prose is human language"), "get_entry read-as distinguishes prose from structure");
 
 console.log(`\nAll ${passed} assertions passed.`);

@@ -103,6 +103,17 @@ Asymmetry → Bounded Asymmetry → Strained Asymmetry → Resolved Asymmetry
 Boundary → Availability → Strain → Bearing → Resolution
 ```
 
+**Reading / Generation Distinction.**
+
+Root Order is dependency order, not chronology. The vNext correction sharpens this: the Atlas reads backward from what has become available, while generation moves forward through active relation.
+
+```text
+Generative order: Seed : Ground → Generation → Growth → Fruit → Seed
+Reading order:    Fruit → Growth → Generation → Seed : Ground
+```
+
+[[One]] : [[Other]] belongs to reading order as the first readable expression of the generative condition. [[Ratio]] is relation made readable. Neither replaces [[Relation]] as primitive within the dependency spine.
+
 **Cross-Order Pattern.**
 
 The orders repeat a grounded movement without becoming identical.
