@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -146,7 +146,24 @@ await writeFile(outPath, lines.join("\n"));
 console.log(`Generated ${relative(repoRoot, outPath)} from ${rows.length} tracked Atlas notes.`);
 
 if (apply) {
-  const wrangler = spawnSync("npx", ["wrangler", "d1", "execute", "atlas-d1", "--remote", "--file", outPath], {
+  const wranglerCandidates = [
+    join(repoRoot, ".atlas-publisher", "node_modules", ".bin", "wrangler"),
+    join(repoRoot, "member", "node_modules", ".bin", "wrangler"),
+    join(repoRoot, "reality-mechanics-mcp", "node_modules", ".bin", "wrangler"),
+  ];
+  let wranglerCommand = "npx";
+  let wranglerArgs = ["wrangler"];
+  for (const candidate of wranglerCandidates) {
+    try {
+      await access(candidate);
+      wranglerCommand = candidate;
+      wranglerArgs = [];
+      break;
+    } catch {
+      // Fall back to npx when no workspace Wrangler is installed.
+    }
+  }
+  const wrangler = spawnSync(wranglerCommand, [...wranglerArgs, "d1", "execute", "atlas-d1", "--remote", "--file", outPath], {
     cwd: repoRoot,
     stdio: "inherit",
   });
