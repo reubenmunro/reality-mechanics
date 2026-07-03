@@ -75,6 +75,7 @@ const list = await rpc("tools/list", {});
 const toolNames = list.result.tools.map((t) => t.name);
 ok(["get_manifest","get_ai_entry_protocol","search_atlas","get_entry","get_related","list_entries","get_recent_changes"].every((t) => toolNames.includes(t)),
   "tools/list lists all seven tools");
+ok(!toolNames.includes("submit_atlas_insert"), "tools/list does not advertise legacy submit_atlas_insert");
 
 const man = await callTool("get_manifest", {});
 ok(man.atlasVersion === "v1" && man.entryCount === 2, "get_manifest returns current version + count");
