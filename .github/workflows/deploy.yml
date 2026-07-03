@@ -49,8 +49,8 @@ jobs:
     needs: [cloudflare-secrets]
     if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Test Field worker
@@ -73,8 +73,8 @@ jobs:
     needs: [cloudflare-secrets]
     if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Test Calibration worker
@@ -96,8 +96,8 @@ jobs:
     needs: [cloudflare-secrets]
     if: always() && (github.event_name == 'pull_request' || needs.cloudflare-secrets.result == 'success')
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Test MCP worker
