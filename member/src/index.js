@@ -390,7 +390,7 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/" && request.method === "GET") {
+    if (url.pathname === "/" && (request.method === "GET" || request.method === "HEAD")) {
       return new Response(PAGE, {
         headers: {
           "content-type": "text/html; charset=utf-8",
