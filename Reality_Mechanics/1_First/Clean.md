@@ -20,7 +20,7 @@ conditions:
   carries:
     - "[[Clear]]"
     - "[[Tact]]"
-    - "[[Shade Clearing]]"
+    - "[[Daylighting]]"
 
 publish: true
 status: stable
@@ -62,4 +62,4 @@ Clean becomes recognisable where relation is not carrying unnecessary residue, m
 
 - [[Clear]]
 - [[Tact]]
-- [[Shade Clearing]]
+- [[Daylighting]]

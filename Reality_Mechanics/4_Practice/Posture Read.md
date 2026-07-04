@@ -24,7 +24,7 @@ conditions:
   nests: "inside Atlas Practice as a working order experiment, not as a replacement for the Atlas or a final doctrine."
   reads: "where a postulate is treated as a posture of relation: not a belief to defend, but an orientation through which relation becomes constructible, readable, and retraceable."
   carries:
-    - "[[Atlas Garden]]"
+    - "[[Atlas Fabric]]"
 
 publish: true
 status: working
@@ -98,4 +98,4 @@ The read remains working. It may clarify the Atlas, distort it, or fail. Its val
 
 ## Carries
 
-- [[Atlas Garden]]
+- [[Atlas Fabric]]

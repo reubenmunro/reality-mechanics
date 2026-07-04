@@ -15,7 +15,7 @@ needs:
 conditions:
   places: "the practice instrument for asking how carrying is generated, where its trace is preserved or lost, and how it can be regenerated and carried again."
   holds: "[[Order Generation]], [[Generative Trace]], [[Degenerative Trace]], [[Check]], and [[Recarry]]. A generated carrying, a trace check, a possible degeneration path, and a way to re-enter carrying must be available before the instrument can be used."
-  pairs: "[[Garden Pass]]. Garden Pass tends a growth; Generate and Regenerate tests whether the growth preserves enough generative trace to continue, diagnose loss, and re-enter carrying."
+  pairs: "[[Bearing Pass]]. Bearing Pass tends a member; Generate and Regenerate tests whether the member preserves enough generative trace to continue, diagnose loss, and re-enter carrying."
   traces:
     - "[[Order Generation]]"
     - "[[Generative Trace]]"
@@ -58,7 +58,7 @@ Order Generation gives exemplar systems. Generative Trace asks whether the gener
 
 ## Pairs
 
-Generate and Regenerate pairs with [[Garden Pass]]. Garden Pass tends a growth; Generate and Regenerate tests whether the growth preserves enough generative trace to continue, diagnose loss, and re-enter carrying.
+Generate and Regenerate pairs with [[Bearing Pass]]. Bearing Pass tends a member; Generate and Regenerate tests whether the member preserves enough generative trace to continue, diagnose loss, and re-enter carrying.
 
 ## Traces
 

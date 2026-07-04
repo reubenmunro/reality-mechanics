@@ -40,11 +40,11 @@ conditions:
     - "[[Higher Learning]]"
     - "[[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]"
   nests: "as the public discipline of placing, checking, retracing, and revising Atlas notes."
-  reads: "where participants use standards, tracing, retracing, placement, correction, and pruning to keep the Atlas in contact with what actually bears its connections."
+  reads: "where participants use standards, tracing, retracing, placement, correction, and relief to keep the Atlas in contact with what actually bears its connections."
   carries:
     - "[[Order Trace]]"
     - "[[Posture Read]]"
-    - "[[Atlas Garden]]"
+    - "[[Atlas Fabric]]"
 publish: true
 status: stable
 garden_status: rooted
@@ -57,7 +57,7 @@ It is the recursive maintenance layer that returns to every order and asks wheth
 
 It keeps the Atlas from becoming the thing itself. The Atlas is the worked surface; Atlas Practice keeps the relation-order-trace practice repeatable.
 
-In the tree read, Atlas Practice is tending. It distinguishes root repair from trunk repair, branch pruning from branch growth, and terminal translation from direct continuation.
+In the structural read, Atlas Practice is tending. It distinguishes foundation repair from backbone repair, member relief from member growth, and terminal translation from direct continuation.
 
 ## Places
 
@@ -104,15 +104,15 @@ Atlas Practice nests as the public discipline of placing, checking, retracing, a
 [[Translation Invariance]]
 [[Carry-Trace Test]]
 [[Posture Read]]
-[[Atlas Garden]]
+[[Atlas Fabric]]
 
 ## Reads
 
-Atlas Practice becomes recognisable where participants use standards, tracing, retracing, placement, correction, and pruning to keep the Atlas in contact with what actually bears its connections.
+Atlas Practice becomes recognisable where participants use standards, tracing, retracing, placement, correction, and relief to keep the Atlas in contact with what actually bears its connections.
 
-It tests whether a term remains a valid Atlas operation: whether it can be placed, whether what holds it can be traced, whether what it carries can be checked, and whether drift can be pruned without pretending the source changed.
+It tests whether a term remains a valid Atlas operation: whether it can be placed, whether what holds it can be traced, whether what it carries can be checked, and whether drift can be relieved without pretending the source changed.
 
-It asks what kind of structure is being touched before changing it: ground, root, trunk, branch, translation boundary, path read, applied read, or higher-order retrace.
+It asks what kind of structure is being touched before changing it: ground, foundation, backbone, member, translation boundary, path read, applied read, or higher-order retrace.
 
 It treats the note spine as term conditions, not formatting. A contribution can enter where it remains traceable.
 
@@ -121,4 +121,4 @@ It is especially required where nested carrying risks [[Source Drift]]: where a 
 
 - [[Order Trace]]
 - [[Posture Read]]
-- [[Atlas Garden]]
+- [[Atlas Fabric]]

@@ -53,7 +53,7 @@ Where pressure moves toward determination, AI participation can enter [[Ark Run]
 
 Where a participant asks whether a read, note, run, argument, design, or decision can be continued or repaired, AI participation can use [[Generate and Regenerate]] as a formula. The formula is not a source of authority; it is a way to expose origin, operation, bound, trace state, return path, and next recarry.
 
-Where an AI participant wants to help change the Atlas itself, AI participation enters the Garden proposal path. The AI reads through the MCP, traces the target entry, writes one Garden proposal, and stops. It does not directly rewrite canonical Atlas content or ground entries on its own.
+Where an AI participant wants to help change the Atlas itself, AI participation reads through the MCP, traces the target entry with `get_entry` before prose, and uses `open_source_for_entry` to locate the GitHub source. The AI proposes a calibrated diff — exact before/after text — for a human participant to review and commit. It does not push commits, ground entries, or rewrite canonical Atlas content on its own.
 
 Where a participant brings a live question or pressure to the public interface, AI participation can enter [[Atlas Oracle]]. Atlas Oracle is not open-ended chat. It is one bounded operation: answer through the Atlas, expose the trace, name the bound, offer the next recarry, and let the participant challenge what does or does not hold.
 
@@ -86,6 +86,6 @@ Where Atlas Oracle is used, AI participation must also preserve [[Oracle Carryin
 - Expose load paths and explain uncertainty rather than resolve it prematurely.
 - Make [[Ark Run]] available when making a determination: pressure can enter through retrace and leave a scoped, warranted, discernible hold where that structure is needed.
 - Use [[Atlas Oracle]] for public question answering: one input, one Atlas-grounded answer, one inspectable trace, one review path, no raw personal storage by default.
-- Use the Garden proposal path for Atlas change proposals: read first, trace first, write one Garden proposal, and stop.
+- Use the read-then-propose path for Atlas change proposals: read first, trace first through `get_entry` and `open_source_for_entry`, hand a human participant the exact calibrated diff, and stop.
 - Keep [[Oracle Carrying Conditions]] active when using Atlas Oracle: bounded input, bounded answer, MCP trace, structured output, review path, cost cap, rate limit, storage bound, safety route, and pause available.
 - Use [[Generate and Regenerate]] when continuation or repair is being evaluated: name what generated the carrying, what bound held it, whether the trace is generative, degenerative, record-only, or missing, and what can be recarried. The AI-facing validity formula is `GT = O x P x B x R`: generative trace requires Origin, Process, Bound, and Re-entry. The risk formula is `DR = Output / Recoverable Trace`: if output outruns recoverable trace, flag degeneration risk.

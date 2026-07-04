@@ -28,7 +28,7 @@ conditions:
   carries:
     - "[[Atlasing]]"
     - "[[Discipline]]"
-    - "[[Garden Pass]]"
+    - "[[Bearing Pass]]"
     - "[[Reasoning]]"
 
 publish: true
@@ -76,5 +76,5 @@ The forward and backward movements have different evidential weight. A backward 
 
 - [[Atlasing]]
 - [[Discipline]]
-- [[Garden Pass]]
+- [[Bearing Pass]]
 - [[Reasoning]]

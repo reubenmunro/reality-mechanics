@@ -28,7 +28,7 @@ conditions:
   nests: "where resolving distinction, carrying, coupling, and nested prior order remain available quickly enough to support meaningful continuation."
   reads: "where different systems, practices, or the Atlas itself can be compared by how quickly they resolve meaningful distinction without losing coupling, clearance, re-entry, or trace."
   carries:
-    - "[[Garden Pass]]"
+    - "[[Bearing Pass]]"
 
 publish: true
 status: working
@@ -42,7 +42,7 @@ Resolution Rate is not simple speed. It is the speed at which relation can be re
 
 A system may move quickly while resolving poorly. Another may move more slowly but resolve more meaningfully because more order is already nested and available.
 
-The Atlas can use Resolution Rate on itself. A garden pass has improved resolution rate where new growth, shade, strain, or uncertainty becomes more placed, traceable, re-enterable, and available for correct continuation.
+The Atlas can use Resolution Rate on itself. A bearing pass has improved resolution rate where new material, occlusion, strain, or uncertainty becomes more placed, traceable, re-enterable, and available for correct continuation.
 
 ## Places
 
@@ -84,14 +84,14 @@ A senior architect can resolve downstream consequences faster than a graduate be
 
 AI can resolve linguistic pattern extremely quickly, but that does not mean it resolves lived reality at the same rate. In AI use, Resolution Rate must still be checked against [[AI Coupling]] and the traceability of what the fast linguistic read claims to carry.
 
-In the garden read, Resolution Rate becomes visible where the Atlas converts growth into care without losing re-entry:
+In the structural read, Resolution Rate becomes visible where the Atlas converts new material into care without losing re-entry:
 
 ```text
 new or strained material
--> placed growth
+-> placed member
 -> clearer holds
 -> fewer false carries
--> named garden status
+-> named bearing status
 -> available next care action
 ```
 
@@ -107,8 +107,8 @@ Slow proceeding may still carry a high Resolution Rate where more order is alrea
 
 ## Carries
 
-- [[Garden Pass]]
+- [[Bearing Pass]]
 
-Garden Pass can retrace Resolution Rate because a tending pass asks whether the pass increased the Atlas's ability to resolve meaningful distinction while preserving trace, re-entry, and available continuation.
+Bearing Pass can retrace Resolution Rate because a bearing pass asks whether the pass increased the Atlas's ability to resolve meaningful distinction while preserving trace, re-entry, and available continuation.
 
 Possible future candidates include operating cadence, prediction, drift risk, and AI coupling, but those should become carries only where downstream notes can retrace this dependency.

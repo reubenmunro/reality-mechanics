@@ -31,7 +31,7 @@ conditions:
   nests: "inside Atlas Practice as a human-facing instrument and AI-facing bounded operation."
   reads: "where an answer is useful because it can be met, tested, rejected, corrected, and tended through the trace that carried it."
   carries:
-    - "[[Garden Pass]]"
+    - "[[Bearing Pass]]"
     - "[[Generative Trace]]"
     - "[[Care-Control Check]]"
 
@@ -182,6 +182,6 @@ Meaning can wait.
 
 ## Carries
 
-- [[Garden Pass]]
+- [[Bearing Pass]]
 - [[Generative Trace]]
 - [[Care-Control Check]]

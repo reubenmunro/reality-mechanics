@@ -22,7 +22,7 @@ conditions:
     - "[[Decoupling]]"
     - "[[Recarry]]"
     - "[[Balance]]"
-    - "[[Composting]]"
+    - "[[Decommissioning]]"
 
 publish: true
 status: stable
@@ -67,4 +67,4 @@ Release can restore compatibility where retained pressure has exceeded the relat
 - [[Decoupling]]
 - [[Recarry]]
 - [[Balance]]
-- [[Composting]]
+- [[Decommissioning]]

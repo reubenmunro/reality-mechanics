@@ -24,7 +24,7 @@ conditions:
     - "[[Trace]]"
   carries:
     - "[[Atlas Practice]]"
-  nests: "beside the Atlas as a versioned working postulate, answerable to Atlas placement, garden tending, alternative posture, and correction by failure."
+  nests: "beside the Atlas as a versioned working postulate, answerable to Atlas placement, structural tending, alternative posture, and correction by failure."
   reads: "where relation holds, order carries, and trace places; where [[Resolution Rate]] tests whether meaningful distinction can resolve without losing order; and where [[Posture Read]] remains available as a planted practice read."
 
 publish: true
@@ -84,7 +84,7 @@ The postulate is deliberately small. It does not say this is the only possible l
 
 ## Status
 
-Rooted working postulate, version 0.6. This version is currently load-bearing for the Atlas, but remains answerable to garden passes, alternative postures, and failure tests.
+Rooted working postulate, version 0.6. This version is currently load-bearing for the Atlas, but remains answerable to bearing passes, alternative postures, and failure tests.
 
 This version replaces the posture-sequence framing of version 0.5. The posture sequence — Connection, Posture, Structure, Clear, Clean — is retained as a planted [[Posture Read]] and practice test. It is not the root postulate. Hold, Carry, and Place remain first-order terms with their own dependency placements.
 
@@ -181,15 +181,15 @@ To use a term as an Atlas term:
 2. Trace what must already hold for it.
 3. Show what it carries forward.
 4. Check whether its wording can change while its placement remains recoverable.
-5. Prune or revise it where it drifts from what bears it.
+5. Relieve or revise it where it drifts from what bears it.
 
 This is why the Atlas is closer to a tended surface than a monument. A term is kept where it remains traceable. It is revised where its placement no longer answers to what it claims to carry.
 
-## Garden Care
+## Structural Care
 
-The working postulate is tended as trunk, not defended as doctrine. It is rooted because it currently bears Atlas practice, not because it is immune to revision.
+The working postulate is tended as backbone, not defended as doctrine. It is load-bearing because it currently carries Atlas practice, not because it is immune to revision.
 
-Alternative postures can be planted through [[Posture Read]]. A failed posture can be composted as structural learning where it shows what could not hold, carry, place, clear, clean, or remain re-enterable. A failed postulate can also be tended this way: it is revised where it stops helping the Atlas place relation, carry order, or return by trace.
+Alternative postures can be placed through [[Posture Read]]. A failed posture can be decommissioned as structural learning where it shows what could not hold, carry, place, clear, clean, or remain re-enterable. A failed postulate can also be tended this way: it is revised where it stops helping the Atlas place relation, carry order, or return by trace.
 
 ## Failure Tests
 

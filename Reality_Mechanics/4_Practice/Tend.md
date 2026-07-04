@@ -26,7 +26,7 @@ conditions:
   reads: "Tend becomes readable where attention does not only notice a relation, but returns to adjust conditions so the relation can keep holding."
   carries:
     - "[[Contend]]"
-    - "[[Atlas Garden]]"
+    - "[[Atlas Fabric]]"
 
 publish: true
 status: stable
@@ -66,11 +66,11 @@ Tend nests within practice as the recurrent care through which relation remains 
 
 Tend becomes readable where attention does not only notice a relation, but returns to adjust conditions so the relation can keep holding.
 
-In a garden, tending may prune, water, shelter, feed, weed, stake, or wait. In a relation, it may listen, repair, restrain, return, clarify, or give space. The action changes with the field; the structure is recurrent care preserving availability through relation.
+In a structure, tending may relieve, reinforce, brace, inspect, realign, or wait. In a relation, it may listen, repair, restrain, return, clarify, or give space. The action changes with the field; the structure is recurrent care preserving availability through relation.
 
 ## Carries
 
 Tend carries [[Contend]] — tending where care must meet pressure, resistance, or competing claim without abandoning the relation it is trying to preserve.
 
 - [[Contend]]
-- [[Atlas Garden]]
+- [[Atlas Fabric]]

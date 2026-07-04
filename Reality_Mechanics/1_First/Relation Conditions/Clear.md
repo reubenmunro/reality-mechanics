@@ -21,7 +21,7 @@ conditions:
   carries:
     - "[[Clearance]]"
     - "[[Relation Read]]"
-    - "[[Shade Clearing]]"
+    - "[[Daylighting]]"
 
 publish: true
 status: stable
@@ -62,4 +62,4 @@ Clear becomes recognisable where relation can be read without obstruction, obscu
 
 - [[Clearance]]
 - [[Relation Read]]
-- [[Shade Clearing]]
+- [[Daylighting]]

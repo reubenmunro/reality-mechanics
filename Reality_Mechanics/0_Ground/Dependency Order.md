@@ -24,7 +24,7 @@ conditions:
     - "[[Placement Mode]]"
     - "[[Diagnosis]]"
     - "[[Carry-Trace Test]]"
-    - "[[Grafting]]"
+    - "[[Splicing]]"
 
 publish: true
 status: stable
@@ -67,4 +67,4 @@ Dependency Order becomes recognisable where a term can be traced through its pri
 - [[Placement Mode]]
 - [[Diagnosis]]
 - [[Carry-Trace Test]]
-- [[Grafting]]
+- [[Splicing]]

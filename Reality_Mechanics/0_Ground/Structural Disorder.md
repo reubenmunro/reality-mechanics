@@ -21,8 +21,8 @@ conditions:
     - "[[Dependency Disorder]]"
     - "[[Degenerate]]"
     - "[[Diagnosis]]"
-    - "[[Shade Clearing]]"
-    - "[[Pruning]]"
+    - "[[Daylighting]]"
+    - "[[Relief]]"
 
 publish: true
 status: stable
@@ -66,5 +66,5 @@ Structural Disorder becomes recognisable where dependency is obscured, displaced
 - [[Dependency Disorder]]
 - [[Degenerate]]
 - [[Diagnosis]]
-- [[Shade Clearing]]
-- [[Pruning]]
+- [[Daylighting]]
+- [[Relief]]

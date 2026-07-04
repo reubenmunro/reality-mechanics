@@ -27,7 +27,7 @@ conditions:
   nests: "inside Atlas Oracle as the runtime conditions that preserve bounded carrying."
   reads: "where governance is not a separate policy layer but a condition of operation: the answer can run only while cost, scope, trace, storage, safety, and review remain bounded."
   carries:
-    - "[[Garden Pass]]"
+    - "[[Bearing Pass]]"
     - "[[Generative Trace]]"
 
 publish: true
@@ -138,5 +138,5 @@ Koha is allowed only as optional reciprocal carrying. It should not become the c
 
 ## Carries
 
-- [[Garden Pass]]
+- [[Bearing Pass]]
 - [[Generative Trace]]

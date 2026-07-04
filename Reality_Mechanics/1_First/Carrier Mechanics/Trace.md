@@ -40,7 +40,7 @@ conditions:
     - "[[Step]]"
     - "[[Tracing]]"
     - "[[Retrace Practice]]"
-    - "[[Grafting]]"
+    - "[[Splicing]]"
     - "[[Reasoning]]"
 
 publish: true
@@ -101,5 +101,5 @@ Trace becomes recognisable where held connection offers a path back toward the c
 - [[Step]]
 - [[Tracing]]
 - [[Retrace Practice]]
-- [[Grafting]]
+- [[Splicing]]
 - [[Reasoning]]

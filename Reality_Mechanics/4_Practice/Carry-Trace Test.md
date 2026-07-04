@@ -23,7 +23,7 @@ conditions:
   nests: "wherever an Atlas note claims that one term carries another, including paths with multiple prior conditions or interrupted passage"
   reads: "where a proposed forward carry is accepted only after a downstream term can recover the prior condition and relevant passage through its trace"
   carries:
-    - "[[Garden Pass]]"
+    - "[[Bearing Pass]]"
 
 publish: true
 status: stable
@@ -92,6 +92,6 @@ The deeper warrant for the test is nesting location. A carry claimed without a r
 
 ## Carries
 
-- [[Garden Pass]]
+- [[Bearing Pass]]
 
-The test usually returns its result to the dependency links being checked. It carries Garden Pass where the Atlas is being tended as a garden, because a tending pass requires the carry-trace distinction before deciding whether to plant, prune, graft, clear, compost, wait, or release.
+The test usually returns its result to the dependency links being checked. It carries Bearing Pass where the Atlas is being maintained as a structure, because a bearing pass requires the carry-trace distinction before deciding whether to place, relieve, splice, daylight, decommission, wait, or release.

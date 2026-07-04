@@ -21,12 +21,12 @@ conditions:
     - "[[Groundedness]]"
     - "[[Retrace Read|Retrace]]"
   nests: "within higher-order or practice conditions."
-  reads: "where the root system can withstand correction, pruning, drift detection, and remapping without losing the dependency order that keeps terms retraceable."
+  reads: "where the root system can withstand correction, relief, drift detection, and remapping without losing the dependency order that keeps terms retraceable."
   carries:
     - "[[Retrace Practice]]"
-    - "[[Atlas Garden]]"
-    - "[[Pruning]]"
-    - "[[Composting]]"
+    - "[[Atlas Fabric]]"
+    - "[[Relief]]"
+    - "[[Decommissioning]]"
 
 publish: true
 status: stable
@@ -36,7 +36,7 @@ garden_status: rooted
 
 Root Resilience names the capacity of a grounded root system to withstand branch-level disruption without losing dependency order.
 
-It is not an immune system, policing layer, or governance framework. Root Resilience arises where the root system remains grounded enough that branch-level drift, overgrowth, misplaced terms, or ungrounded material can be pruned, remapped, or left ungrounded without corrupting the root order.
+It is not an immune system, policing layer, or governance framework. Root Resilience arises where the root system remains grounded enough that branch-level drift, overgrowth, misplaced terms, or ungrounded material can be relieved, remapped, or left ungrounded without corrupting the root order.
 
 ## Places
 
@@ -64,12 +64,12 @@ Root Resilience nests within higher-order or practice conditions.
 
 ## Reads
 
-Root Resilience becomes recognisable where the root system can withstand correction, pruning, drift detection, and remapping without losing the dependency order that keeps terms retraceable.
+Root Resilience becomes recognisable where the root system can withstand correction, relief, drift detection, and remapping without losing the dependency order that keeps terms retraceable.
 
 ## Carries
 
 
 - [[Retrace Practice]]
-- [[Atlas Garden]]
-- [[Pruning]]
-- [[Composting]]
+- [[Atlas Fabric]]
+- [[Relief]]
+- [[Decommissioning]]
