@@ -8,19 +8,19 @@ condition_key: foundation.common-term-structure
 needs: []
 
 conditions:
-  places: "the common mechanics through which a structural condition remains identifiable, retraceable, readable, and answerable across implementation change."
-  holds: "the distinction between structural identity, structural mechanics, and current record convention."
-  pairs: "[[Atlas Note Standard]] as the current record implementation; Common Term Structure remains prior to any implementation."
+  places: "the common mechanics through which each record preserves the present calibration of how a structural operation proceeds through dependency."
+  holds: "the relation between recovered position, proceeding operation, calibrated language, and current record convention."
+  pairs: "[[Current Record Convention]] as the present repository encoding; Common Term Structure preserves the authoring discipline."
   traces:
     - "[[Reality Mechanics]]"
     - "[[Structure]]"
     - "[[Ratio]]"
     - "[[Trace]]"
     - "[[Carry]]"
-  nests: "where terms remain living records whose identity and membership can be tracked while their structure is refined."
-  reads: "where a term can be written, reviewed, revised, and recovered without confusing current labels, formats, or categories with the mechanics they serve."
+  nests: "where structural records preserve position, proceeding, and recalibration across implementation change."
+  reads: "where a participant can be positioned by language, retrace the operation, and continue calibration through dependency."
   carries:
-    - "[[Atlas Note Standard]]"
+    - "[[Current Record Convention]]"
     - "[[Groundedness]]"
     - "[[Retrace Practice]]"
     - "[[Carry-Trace Test]]"
@@ -31,120 +31,87 @@ garden_status: planted
 ---
 # Common Term Structure
 
-Defines the common mechanics through which a structural condition remains identifiable, retraceable, readable, and answerable across implementation change.
+## Purpose
 
-This is not a writing style.
+Each record preserves the present calibration of how a structural operation proceeds through dependency.
 
-This is not a software format.
+The record positions participation so the proceeding operation can be retraced, recalibrated, and carried by future participants.
 
-This is not an implementation standard first.
+## Recovery Order
 
-It is the structural standard a term must answer to before it can be written, revised, or grounded.
+Recover position.
 
-Current implementations, including the Atlas, must conform to this structure rather than define it.
+Observe how the operation proceeds.
+
+Calibrate the language.
+
+Preserve the current calibration.
+
+## Language
+
+Language positions participation.
+
+Position gives the participant a place to begin.
+
+Structure preserves the relation between positions.
+
+Dependency unfolds proceeding.
+
+Language is recalibrated as recovered position becomes clearer.
+
+## Structural Reads
+
+Each heading provides another structural read of the same proceeding operation.
+
+The headings calibrate the record from different structural positions.
+
+Each section preserves the same operation through its own read.
 
 ## Places
 
-Common Term Structure places the minimum mechanics required for a condition to be recorded without being frozen.
-
-A term is a placed condition.
-
-A term is not a label.
-
-A term is not a definition.
-
-A term records structural participation.
+Places calibrates where the operation becomes available.
 
 ## Holds
 
-Common Term Structure is held by the distinction between identity, mechanics, and convention.
-
-Identity keeps the condition recoverable.
-
-Mechanics expose how the condition participates.
-
-Convention records how the current implementation stores and reads that participation.
-
-These must not be collapsed into one another.
+Holds calibrates what presently bears the operation.
 
 ## Pairs
 
-Common Term Structure pairs with [[Atlas Note Standard]] while the Atlas remains the current implementation.
-
-Common Term Structure states the mechanics.
-
-Atlas Note Standard states the current record form.
-
-The implementation can change without replacing the mechanics.
+Pairs calibrates what completes the read of the operation where a paired condition is recoverable.
 
 ## Traces
 
-- [[Reality Mechanics]]
-- [[Structure]]
-- [[Ratio]]
-- [[Trace]]
-- [[Carry]]
+Traces calibrates the recoverable dependency through which the operation can be retraced.
 
-Trace exists for recovery.
-
-Trace should continue as far as necessary for structural retrace.
-
-Trace is not limited to the immediately previous term.
+Trace continues as far as structural retrace requires.
 
 ## Nests
 
-Common Term Structure nests inside Reality Mechanics as a discipline for maintaining structural continuity.
-
-A structural record should allow refinement without losing identity.
-
-Terms are expected to develop as their participation becomes clearer.
-
-Categories, labels, and metadata are current reads.
-
-They should remain editable where later tracing shows that a category is better understood as a ratio, process, threshold, state, or relation.
+Nests calibrates where the operation remains stable enough to participate in larger or smaller reads.
 
 ## Reads
 
-Common Term Structure becomes recognisable where a term can change without losing recoverable identity.
+Reads calibrates how another participant can recover the operation from the current record.
 
-The heading identifies the condition.
+The heading anchors position.
 
-The body exposes the mechanics.
+The body calibrates proceeding.
 
-The body should not repeat the work already performed by the heading.
-
-The prose should remain valid if the heading were replaced by "this condition".
-
-Every sentence should perform structural work.
-
-Structural work includes placing, distinguishing, recovering dependency, exposing participation, showing threshold, or showing continuation.
-
-Description without structural work should be removed.
+Each sentence preserves one identifiable structural operation.
 
 ## Carries
 
-Common Term Structure carries a review discipline for every term.
+Carries calibrates what the operation makes available for downstream retrace.
 
-Before writing or revising a term, read the term against this structure.
+Carry records demonstrated continuation.
 
-A term should expose:
+Possible continuation remains an opening until a downstream trace confirms it.
 
-- stable identity
-- current operational metadata
-- structural conditions
-- dependency
-- recognition
-- continuation
-- ratio and threshold where adjustment matters
-- current record convention
+## Current Record Convention
 
-### Current Record Convention
+The current repository convention records terms in Markdown with frontmatter.
 
-The current repository implementation records terms in Markdown with frontmatter.
-
-The current record convention is operational.
-
-It is not final ontology.
+The convention is operational and remains editable as the recovered structure becomes clearer.
 
 Current fields include:
 
@@ -177,11 +144,11 @@ garden_status:
 
 They help the present system sort, read, and publish records.
 
-They must remain editable where the terms reveal better structure.
+They remain editable where the terms reveal better structure.
 
-The `garden_status` field is a legacy implementation label and should not be treated as structural mechanics.
+`garden_status` is a legacy implementation label.
 
-### Wikilinks
+## Wikilinks
 
 The current implementation uses wikilinks to encode structural references.
 
@@ -192,47 +159,44 @@ Use:
 [[Target|Visible Text]]
 ```
 
-A wikilink must perform structural work.
+A wikilink performs structural work.
 
-It should hold, trace, pair, nest, read, or carry the current condition.
+It holds, traces, pairs, nests, reads, or carries the current condition.
 
-Decorative links should be removed.
+## Ratio And Adjustment
 
-### Ratio And Adjustment
+A structural record preserves the ratios that make adjustment possible.
 
-A structural record should preserve the ratios that make adjustment possible.
-
-A ratio is not only a visible comparison between two terms.
-
-A ratio is also the sensed relation by which carrying can change before distortion becomes visible.
+A ratio is a sensed relation through which carrying can change before distortion becomes visible.
 
 Order, frequency, threshold, and proportion are current reads of changing relation.
 
-A term should remain editable where later tracing shows that a category is better understood as a process, ratio, threshold, or adjustment.
+## Stewardship
 
-### Care And Control Threshold
+Proceed from the current calibrated floor.
 
-Care bears what cannot yet be borne elsewhere.
+Allow dependency to unfold.
 
-Control begins where carrying refuses to return when another participant can now bear it.
+Preserve the improved calibration.
 
-A term should avoid over-carrying its reader.
+Repeat.
 
-Enough structure should be present for retrace.
+Edit language when recovered position becomes clearer than the current record.
 
-Excess explanation should be removed where it replaces the reader's own participation.
+Preserve language when recovered position remains stable.
 
-### Validation
+## Validation
 
-Before a term is considered structurally complete, confirm:
+Before a record is considered structurally complete, confirm:
 
 - identity remains recoverable
-- mechanics remain explicit
-- metadata supports rather than constrains structure
-- trace remains recoverable beyond immediate dependency where needed
-- carry records demonstrated continuation rather than prediction
+- position is preserved
+- proceeding remains explicit
+- metadata supports structure
+- trace remains recoverable
+- carry records demonstrated continuation
 - ratio and threshold are visible where adjustment matters
 - references perform structural work
-- prose exposes mechanics rather than repeating the heading
-- implementation has not been confused with mechanics
-- the record allows future refinement without losing structural continuity
+- prose preserves the proceeding operation
+- implementation remains answerable to mechanics
+- future recalibration can continue without losing structural continuity
