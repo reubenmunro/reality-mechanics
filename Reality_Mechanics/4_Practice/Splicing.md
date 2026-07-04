@@ -13,7 +13,7 @@ needs:
 conditions:
   places: "the structural practice of reconnecting a member to the support it actually traces, rather than the support it claimed or appeared to have."
   holds: "[[Bearing Pass]], [[Dependency Order]], and [[Trace]]. A bearing pass must locate the member, dependency order must distinguish real support from apparent support, and trace must make the return path followable."
-  pairs: "No lateral pair is required. Splicing is a care action inside Bearing Pass."
+  pairs: "Splicing carries downward as a care action inside Bearing Pass."
   traces:
     - "[[Bearing Pass]]"
     - "[[Dependency Order]]"
@@ -41,7 +41,7 @@ Splicing is held by [[Bearing Pass]], [[Dependency Order]], and [[Trace]]. A bea
 
 ## Pairs
 
-No lateral pair is required. Splicing is a care action inside Bearing Pass.
+Splicing carries downward as a care action inside Bearing Pass.
 
 ## Traces
 
@@ -68,4 +68,4 @@ What support can receive it without forcing the order?
 
 ## Carries
 
-No downstream carries are claimed yet.
+Carries remain open until a downstream trace confirms one.

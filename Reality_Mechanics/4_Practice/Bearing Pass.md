@@ -14,7 +14,7 @@ needs:
 conditions:
   places: "a repeatable bearing pass through an Atlas member: identify it, trace what holds it, test what it carries, name occlusion, and choose the next care action."
   holds: "[[Atlas Fabric]], [[Check]], [[Carry-Trace Test]], and [[Resolution Rate]]. The fabric must provide the care frame, Check must locate the boundary of the member, Carry-Trace Test must distinguish confirmed carries from openings, and Resolution Rate must keep tending answerable to cleaner continuation rather than mere speed."
-  pairs: "No lateral pair is required. Bearing Pass is a repeated care movement inside Atlas Fabric."
+  pairs: "Bearing Pass carries downward as a repeated care movement inside Atlas Fabric."
   traces:
     - "[[Atlas Fabric]]"
     - "[[Check]]"
@@ -70,7 +70,7 @@ Bearing Pass is held by [[Atlas Fabric]], [[Check]], [[Carry-Trace Test]], and [
 
 ## Pairs
 
-No lateral pair is required. Bearing Pass is a repeated care movement inside Atlas Fabric.
+Bearing Pass carries downward as a repeated care movement inside Atlas Fabric.
 
 ## Traces
 

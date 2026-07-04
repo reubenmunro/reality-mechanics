@@ -13,7 +13,7 @@ needs:
 conditions:
   places: "the structural practice of removing drift, overgrowth, or misplaced carrying without treating member correction as foundation replacement."
   holds: "[[Bearing Pass]], [[Root Resilience]], and [[Structural Disorder]]. A bearing pass must locate the member, the foundation must remain resilient enough to withstand member correction, and structural disorder must name the dependency loss being relieved."
-  pairs: "No lateral pair is required. Relief is a care action inside Bearing Pass."
+  pairs: "Relief carries downward as a care action inside Bearing Pass."
   traces:
     - "[[Bearing Pass]]"
     - "[[Root Resilience]]"
@@ -41,7 +41,7 @@ Relief is held by [[Bearing Pass]], [[Root Resilience]], and [[Structural Disord
 
 ## Pairs
 
-No lateral pair is required. Relief is a care action inside Bearing Pass.
+Relief carries downward as a care action inside Bearing Pass.
 
 ## Traces
 
@@ -68,4 +68,4 @@ What must be released because it no longer answers to what holds it?
 
 ## Carries
 
-No downstream carries are claimed yet.
+Carries remain open until a downstream trace confirms one.

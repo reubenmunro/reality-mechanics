@@ -14,7 +14,7 @@ needs:
 conditions:
   places: "the maintained structural read of the Atlas: foundation held, members relieved, postures placed, occlusion daylighted, and re-entry preserved."
   holds: "[[Atlas Practice]], [[Tend]], [[Root Resilience]], and [[Posture Read]]. Atlas Practice must hold the discipline, tending must return with care, the foundation must withstand member-level work, and posture experiments must be placeable without becoming doctrine."
-  pairs: "No lateral pair is required. Atlas Fabric is a practice container for maintaining the Atlas as living order rather than finished text."
+  pairs: "Atlas Fabric carries downward as a practice container for maintaining the Atlas as living order rather than finished text."
   traces:
     - "[[Atlas Practice]]"
     - "[[Tend]]"
@@ -47,7 +47,7 @@ Atlas Fabric is held by [[Atlas Practice]], [[Tend]], [[Root Resilience]], and [
 
 ## Pairs
 
-No lateral pair is required. Atlas Fabric is a practice container for maintaining the Atlas as a living reasoning system rather than finished text.
+Atlas Fabric carries downward as a practice container for maintaining the Atlas as a living reasoning system rather than finished text.
 
 ## Traces
 

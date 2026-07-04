@@ -13,7 +13,7 @@ needs:
 conditions:
   places: "the structural practice of releasing failed or relieved material as doctrine while keeping what it taught available to the order."
   holds: "[[Bearing Pass]], [[Release]], and [[Root Resilience]]. A bearing pass must identify the material, release must let the claim go, and root resilience must keep the failure from corrupting the dependency order."
-  pairs: "No lateral pair is required. Decommissioning is a care action inside Bearing Pass."
+  pairs: "Decommissioning carries downward as a care action inside Bearing Pass."
   traces:
     - "[[Bearing Pass]]"
     - "[[Release]]"
@@ -41,7 +41,7 @@ Decommissioning is held by [[Bearing Pass]], [[Release]], and [[Root Resilience]
 
 ## Pairs
 
-No lateral pair is required. Decommissioning is a care action inside Bearing Pass.
+Decommissioning carries downward as a care action inside Bearing Pass.
 
 ## Traces
 
@@ -68,4 +68,4 @@ What needs to be released so the foundation can stay clean?
 
 ## Carries
 
-No downstream carries are claimed yet.
+Carries remain open until a downstream trace confirms one.

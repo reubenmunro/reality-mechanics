@@ -14,7 +14,7 @@ needs:
 conditions:
   places: "the structural practice of restoring readability where order is present but occluded by crowding, residue, missing trace, misplaced support, or overgrowth."
   holds: "[[Bearing Pass]], [[Structural Disorder]], [[Clear]], and [[Clean]]. A bearing pass must locate the occluded member, structural disorder must name the loss of dependency readability, clear must make the path readable, and clean must keep the correction from carrying residue."
-  pairs: "No lateral pair is required. Daylighting is a care action inside Bearing Pass."
+  pairs: "Daylighting carries downward as a care action inside Bearing Pass."
   traces:
     - "[[Bearing Pass]]"
     - "[[Structural Disorder]]"
@@ -43,7 +43,7 @@ Daylighting is held by [[Bearing Pass]], [[Structural Disorder]], [[Clear]], and
 
 ## Pairs
 
-No lateral pair is required. Daylighting is a care action inside Bearing Pass.
+Daylighting carries downward as a care action inside Bearing Pass.
 
 ## Traces
 
@@ -71,4 +71,4 @@ What can be relieved, spliced, spaced, decommissioned, or left working so re-ent
 
 ## Carries
 
-No downstream carries are claimed yet. Daylighting is a care action; later carries should be added only where a repeated practice becomes a distinct retraceable continuation.
+Carries remain open until a downstream trace confirms one. Daylighting is a care action; later carries belong only where a repeated practice becomes a distinct retraceable continuation.
