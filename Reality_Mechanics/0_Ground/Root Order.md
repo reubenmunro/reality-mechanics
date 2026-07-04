@@ -104,7 +104,7 @@ Boundary → Availability → Strain → Bearing → Resolution
 
 **Reading / Generation Distinction.**
 
-Root Order is dependency order, not chronology. The vNext correction sharpens this: the Atlas reads backward from what has become available, while generation moves forward through active relation.
+Root Order is dependency order, not chronology. The Atlas reads backward from what has become available, while generation moves forward through active relation.
 
 ```text
 Generative order: Seed : Ground → Generation → Growth → Fruit → Seed
