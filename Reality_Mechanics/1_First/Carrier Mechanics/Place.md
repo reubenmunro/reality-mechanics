@@ -12,7 +12,7 @@ needs:
 
 conditions:
   places: "locatable entry into relation, so an operation can be read, checked, corrected, or carried forward."
-  holds: "[[Relation]]. Relation must be available before any operation can become locatable within it."
+  holds: "[[Relation]]. Relation must remain available for any operation to become locatable within it — Relation does not finish before Place begins."
   pairs: "No lateral pair is required. Place is a first-order operation in the Atlas, locatable through relation, carry, and trace rather than constituted by a lateral pairing."
   traces:
     - "[[Relation]]"
@@ -37,7 +37,7 @@ Place places locatable entry into relation, so an operation can be read, checked
 
 ## Holds
 
-Place is held by [[Relation]]. Relation must be available before any operation can become locatable within it. This is the first-order Place operation identified by `first.place`, not the downstream field note of the same title.
+Place is held by [[Relation]]. Relation must remain available for any operation to become locatable within it — Relation does not finish before Place begins; Place is Relation's own availability made locatable, checkable, and enterable. This is the first-order Place operation identified by `first.place`, not the downstream field note of the same title.
 
 ## Pairs
 

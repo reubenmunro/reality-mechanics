@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "recognition of meaningful distinction at the current scope"
-  holds: "[[Trace]] — the distinction must be followable before it can be taken up as meaningful"
+  holds: "[[Trace]] — the distinction must remain followable for it to be taken up as meaningful; trace does not finish before read begins"
   pairs: "Asymmetry carries downward — into [[Readability]], [[Thread]], [[Step]], and [[Retrace Read|Retrace]]"
   traces:
     - "[[Trace]]"
@@ -44,7 +44,7 @@ Read places recognition of meaningful distinction at the current scope.
 
 ## Holds
 
-Read is held by [[Trace]]. The distinction must be followable before it can be taken up as meaningful.
+Read is held by [[Trace]]. The distinction must remain followable for it to be taken up as meaningful — trace does not finish before read begins; a read may widen or recur without exhausting the trace it draws on.
 
 ## Pairs
 
