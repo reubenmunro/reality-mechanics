@@ -66,6 +66,34 @@ If no, the current edge may be the nearest sufficient generation.
 
 This rule protects depth without making every deep ancestor a direct generator.
 
+## Generative vs. supporting dependency
+
+Necessary dependency: what must remain true. The full holds-set.
+
+Generative dependency: removal collapses the mechanic into a different, already-named mechanic.
+
+Supporting dependency: removal leaves the same mechanic occurring, but no longer answerable to the rest of the Atlas (untraceable, ungrounded, unverifiable).
+
+Test: remove the dependency. Does the term become a different named thing, or does it stay itself but disconnected?
+
+Generative core: the subset of a term's dependencies that pass the generative test. May be one member or more than one.
+
+Compound generation: |generative core| > 1. Independent of whether supporting dependencies also exist.
+
+Confirmed against Recarry (holds Carrying, Trace, Contact, Groundedness, Release, Compatibility):
+
+- Remove Contact -> plain Carrying, undisrupted. A different named mechanic. Generative.
+- Remove Release -> carrier holds disruption alone; heads toward Strain or Collapse. Generative.
+- Remove Compatibility -> released load, nowhere to land; Collapse. Generative.
+- Remove Trace or Groundedness -> the same redistribution still occurs, no longer traceable to origin. Supporting.
+- Generative core = {Contact, Release, Compatibility}. Supporting = {Trace, Groundedness}.
+
+Open, not confirmed: Carrying's own role in Recarry, and the analogous roles of Bearing in Resolution and Resolved Asymmetry in Coupling. Removing each of these does not produce a different named mechanic (the generative test) and does not merely strand an otherwise-intact mechanic as unverifiable (the supporting test) -- it produces absence, not a rival state. This pattern recurred in all three compound cases tested. Not enough evidence to name a third category. Record as pressure only.
+
+Nearest Sufficient Generation and generative/supporting are different axes. Nearest-sufficient selects which ancestor, possibly several edges back, to credit as generator. Generative/supporting partitions a term's own immediate holds-set. Do not conflate.
+
+Simple chains (Relation -> Place, Connection -> Carry/Trace, Trace -> Read): single dependency, nothing to partition against. Generative equals nearest-sufficient trivially.
+
 ## Recovery template
 
 For each primitive:
