@@ -2,7 +2,23 @@
 
 > Working document. Not canon.
 >
-> This document recovers whether the Atlas carries inherited mechanics beneath dependency order. It records pressure and current reads only. It does not create ontology.
+> Inheritance recovers where a generated mechanic continues through a family. It follows Generation. It does not create ontology.
+
+## Relation to other reads
+
+Generation asks:
+
+> What mechanic does this primitive keep making recoverable?
+
+Inheritance asks:
+
+> Where does that mechanic continue through a family?
+
+Dependency asks:
+
+> What must already be true for this term to hold?
+
+Generation, inheritance, and dependency may coincide. They are not assumed to be the same.
 
 ## Discipline
 
@@ -10,17 +26,21 @@ Inheritance is not taxonomy.
 
 Taxonomy groups terms by likeness.
 
-Inheritance recovers the mechanic a term family continues to carry.
-
-Dependency asks:
-
-> What must already be true?
-
-Inheritance asks:
-
-> Which primitive mechanic remains recognisable here?
+Inheritance recovers the mechanic a family continues to carry from its generator.
 
 A term may depend on one condition while inheriting a mechanic from another.
+
+## Recovery rule
+
+Recover upward before outward.
+
+1. Recover the generator.
+2. Recover the mechanic.
+3. Test where the mechanic continues.
+4. Recover the family.
+5. Only then recalibrate individual notes.
+
+If Generation remains open, Inheritance remains provisional.
 
 ## Current read
 
@@ -36,21 +56,31 @@ Availability
 Connection
 → Coupling family
 
-These lines are not accepted as canon. They are pressure lines for recovery.
+These lines are pressure lines for recovery.
 
-## Recovery order
+## Recovery template
 
-For each family:
+For each inheritance family:
 
-1. Recover the generator.
-2. Recover the family mechanic.
-3. Test each member against the generator.
-4. Name pressure where the family fails.
-5. Leave ontology unchanged until the inheritance survives repeated testing.
+- Generator
+- Generated mechanic
+- Appears through
+- Observed reads
+- Pressure
+- Must recover
+- Decision
 
-## Family reads
+---
 
-### Relation → Carrier family
+# Relation → Carrier family
+
+Generator:
+
+- Relation
+
+Generated mechanic:
+
+- Open. See `Working/Primitive Mechanics.md` / Generation.
 
 Appears through:
 
@@ -60,20 +90,35 @@ Appears through:
 - Read
 - Place
 
-Current read:
+Observed reads:
 
-- Relation may generate the mechanic by which relation becomes holdable, movable, retraceable, readable, and placeable.
+- Hold and Carry show dependency without sequence.
+- Carry and Trace read forward and backward availability through held connection.
 
 Pressure:
 
-- Hold and Carry have already shown dependency without sequence.
+- Carrier terms may be note-grammar operators as well as inherited mechanics.
 - Trace, Read, and Place need to be checked as inherited mechanics, not merely note-grammar operations.
 
 Must recover:
 
 - What from Relation remains recognisable in every carrier term.
 
-### Boundary → Bearing family
+Decision:
+
+- Open.
+
+---
+
+# Boundary → Bearing family
+
+Generator:
+
+- Boundary
+
+Generated mechanic:
+
+- Open. See `Working/Primitive Mechanics.md` / Generation.
 
 Appears through:
 
@@ -81,20 +126,35 @@ Appears through:
 - Bearing
 - Resolution
 
-Current read:
-
-- Boundary may generate the mechanic by which difference becomes pressured, held, and determined.
-
-Pressure:
+Observed reads:
 
 - Strain and Bearing preserve persistent dependency.
 - Resolution is terminal determination, not simple persistence.
 
+Pressure:
+
+- Boundary may generate both open bearing and terminal determination.
+- Resolution may mark crossing into another inherited mechanic.
+
 Must recover:
 
-- Whether Boundary generates both open bearing and terminal determination, or whether Resolution marks the crossing into another inherited mechanic.
+- Whether Boundary remains recognisable through pressure, bearing, and determination.
 
-### Availability → Participation family
+Decision:
+
+- Open.
+
+---
+
+# Availability → Participation family
+
+Generator:
+
+- Availability
+
+Generated mechanic:
+
+- Open. See `Working/Primitive Mechanics.md` / Generation.
 
 Appears through:
 
@@ -104,20 +164,35 @@ Appears through:
 - Participant
 - Member
 
-Current read:
+Observed reads:
 
-- Availability may generate the mechanic by which relation becomes locally available enough to be inhabited, entered, and carried by a participant.
+- Presence may be Availability becoming local.
+- Participation is held by Carrying, Presence, and Bearing Relation.
 
 Pressure:
 
-- Participation is not simply Place-family. Its immediate dependencies are Carrying, Presence, and Bearing Relation.
-- Presence may be Availability becoming local.
+- Participation is not simply Place-family.
+- Participation may inherit Availability while depending on Carrier and Bearing conditions.
 
 Must recover:
 
 - What from Availability remains recognisable through Presence, Bearing Relation, Participation, Participant, and Member.
 
-### Connection → Coupling family
+Decision:
+
+- Open.
+
+---
+
+# Connection → Coupling family
+
+Generator:
+
+- Connection
+
+Generated mechanic:
+
+- Open. See `Working/Primitive Mechanics.md` / Generation.
 
 Appears through:
 
@@ -126,18 +201,25 @@ Appears through:
 - Nest
 - Nesting
 
-Current read:
+Observed reads:
 
-- Connection may generate the mechanic by which relation holds together, recurs, and remains available across nested orders.
+- Couple:Nest and Coupling:Nesting may not name the same ratio.
+- Noun forms may mark gathered positions while -ing forms mark proceeding operations.
 
 Pressure:
 
-- Couple:Nest and Coupling:Nesting may not be the same ratio.
-- The noun forms may mark gathered positions; the -ing forms may mark proceeding operations.
+- Nesting may inherit Connection directly.
+- Nesting may also be Coupling made recursively available.
 
 Must recover:
 
 - Whether Coupling and Nesting inherit one connection mechanic, or whether Nesting marks a later mechanic generated by Coupling.
+
+Decision:
+
+- Open.
+
+---
 
 ## Guard
 
@@ -146,3 +228,5 @@ Do not make a family canonical because it reads well.
 Accept an inheritance only where the Atlas repeatedly recovers the same mechanic across the family.
 
 If a member fails the read, decide whether the family is wrong, the generator is wrong, or the note has drifted.
+
+The Atlas is the test. The working read yields.
