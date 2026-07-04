@@ -30,7 +30,7 @@ status: stable
 ---
 # Degenerate
 
-Degenerate names the structural condition where carrying continues while the generative trace is lost. What was generated from a prior source carries on — its form persists, its downstream effects continue — but the dependency trace back to what generated it has been dropped. The generated instance has become a local primitive: treated as if it had no generative origin, as if it were the source.
+Degenerate names carrying that continues after generative trace is lost; its position remains readable against the possibility of Regenerate return. What was generated from a prior source carries on — its form persists, its downstream effects continue — but the dependency trace back to what generated it has been dropped. The generated instance has become a local primitive: treated as if it had no generative origin, as if it were the source.
 
 Degenerate is a specific form of [[Structural Disorder]]: the structure may still function, but it carries as if its source no longer matters. What was generated begins behaving as generator.
 
