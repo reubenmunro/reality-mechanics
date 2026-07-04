@@ -42,7 +42,7 @@ Bearing Relation is held by [[Coupling]], [[Presence]], and [[Bearing]]. Coupled
 
 ## Pairs
 
-Asymmetry carries downward. Bearing Relation is a singular condition at its juncture — the named structural connection between coupled conditions. There is no lateral contrast required to locate bearing relation. The structural asymmetry is fully expressed by what bearing relation becomes: [[Participation]].
+Asymmetry carries downward. Bearing Relation is a singular condition at its juncture — the named structural connection between coupled conditions. There is no lateral contrast required to locate bearing relation. The structural asymmetry is fully expressed in [[Participation]]: bearing relation does not finish before participation begins; participation is bearing relation remaining active while it takes part.
 
 ## Traces
 

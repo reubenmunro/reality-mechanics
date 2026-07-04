@@ -42,7 +42,7 @@ Presence is held by [[Coupling]]. Coupled relation remains held while it is loca
 
 ## Pairs
 
-Asymmetry carries downward. Presence is a singular condition at its juncture — the condition under which coupling becomes available for participation. There is no lateral contrast required to locate presence. The structural asymmetry is fully expressed by what presence becomes: [[Bearing Relation]].
+Asymmetry carries downward. Presence is a singular condition at its juncture — the condition under which coupling becomes available for participation. There is no lateral contrast required to locate presence. The structural asymmetry is fully expressed in [[Bearing Relation]]: presence does not finish before bearing relation begins; bearing relation is presence remaining available while it bears on what it is coupled with.
 
 ## Traces
 
