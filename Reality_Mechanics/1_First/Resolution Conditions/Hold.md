@@ -14,8 +14,8 @@ conditions:
   pairs: "[[Release]] — Hold maintains a resolved condition in place; Release lets it go. Each requires the other to be locatable."
   traces:
     - "[[Resolution]]"
-  nests: "under first-order resolution — may support later carrying but is not carrying by itself"
-  reads: "where resolved bearing stays together enough to remain available for reading, support, or later carrying"
+  nests: "under first-order resolution, remaining present through whatever it supports without being carrying itself"
+  reads: "where resolved bearing stays together enough to remain available for reading, support, and the carrying that continues through it"
   carries:
     - "[[Carry]]"
     - "[[Trace]]"
@@ -29,7 +29,7 @@ status: stable
 ---
 # Hold
 
-Hold names resolution remaining supportable as the same condition. Where bearing names strain sustained as readable and resolution names bearing determined at the current scope, hold names that determination settling as continued support rather than collapse, discharge, deformation, or transfer.
+Hold names resolution remaining supportable as the same condition. Hold remains the condition that makes [[Carry]] possible — not a stage that finishes before carrying begins, but the supportability that stays present while carrying continues. Where bearing names strain sustained as readable and resolution names bearing determined at the current scope, hold names that determination settling as continued support rather than collapse, discharge, deformation, or transfer.
 
 
 ## Places
@@ -50,11 +50,11 @@ Hold pairs with [[Release]]: hold names the maintaining of a resolved condition 
 
 ## Nests
 
-Hold nests under first-order resolution. It may support later carrying, but it is not carrying by itself.
+Hold nests under first-order resolution, remaining present through whatever it supports. It is not carrying by itself, but it does not finish before carrying begins — it stays present while carrying continues.
 
 ## Reads
 
-Hold becomes recognisable where resolved bearing stays together enough to remain available for reading, support, or later carrying.
+Hold becomes recognisable where resolved bearing stays together enough to remain available for reading, support, and the carrying that continues through it.
 ## Carries
 
 

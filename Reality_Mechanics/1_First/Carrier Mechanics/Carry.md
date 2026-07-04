@@ -11,7 +11,7 @@ needs:
 
 conditions:
   places: "the forward availability of held connection."
-  holds: "[[Hold]] and [[Connection]]. Connection must hold before forward passage through it can be available."
+  holds: "[[Hold]] and [[Connection]]. Connection must remain held for forward passage through it to be available — Hold does not finish before Carry begins; Carry is held support becoming available beyond itself."
   pairs: "[[Trace]]. Carry is the forward availability of held connection; Trace is the backward availability of the same connection."
   traces:
     - "[[Hold]]"
@@ -39,7 +39,7 @@ Carry places the forward availability of held connection.
 
 ## Holds
 
-Carry is held by [[Hold]] and [[Connection]]. Connection must hold before forward passage through it can be available.
+Carry is held by [[Hold]] and [[Connection]]. Connection must remain held for forward passage through it to be available — Hold does not finish before Carry begins; Carry is held support becoming available beyond itself.
 
 ## Pairs
 
