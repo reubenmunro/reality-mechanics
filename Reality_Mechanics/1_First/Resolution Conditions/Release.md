@@ -7,14 +7,16 @@ condition_key: first.release
 
 needs:
   - "[[Resolution]]"
+  - "[[Bearing]]"
   - "[[Strain]]"
 
 conditions:
   places: "resolution where held strain exits, discharges, or is no longer retained by the bearing condition"
-  holds: "[[Resolution]] and [[Strain]] — strain must be present and determined as leaving the bearing condition"
+  holds: "[[Resolution]], [[Bearing]], and [[Strain]] — strain must be present, borne, and determined as leaving the bearing condition"
   pairs: "[[Hold]] and [[Retain]] — Release lets a resolved condition go; Hold maintains it in place; Retain keeps pressure within a carrying relation. Release is readable against both what was held and what could be retained."
   traces:
     - "[[Resolution]]"
+    - "[[Bearing]]"
     - "[[Strain]]"
   nests: "under first-order resolution — can open later decoupling where the released condition no longer remains coupled"
   reads: "where strain is resolved by being let out, discharged, or no longer retained in the bearing condition"
@@ -39,7 +41,7 @@ Release places resolution where held strain exits, discharges, or is no longer r
 
 ## Holds
 
-Release is held by [[Resolution]] and [[Strain]]. Strain must be present and determined as leaving the bearing condition.
+Release is held by [[Resolution]], [[Bearing]], and [[Strain]]. Strain must be present, borne, and determined as leaving the bearing condition.
 
 ## Pairs
 
@@ -48,6 +50,7 @@ Release pairs with [[Hold]] and [[Retain]]. Release lets a resolved strained con
 ## Traces
 
 - [[Resolution]]
+- [[Bearing]]
 - [[Strain]]
 
 ## Nests
