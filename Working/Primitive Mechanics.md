@@ -20,6 +20,26 @@ Dependency asks:
 
 Generation, inheritance, and dependency may coincide. They are not assumed to be the same.
 
+## Reference frames
+
+A reference frame may be used to discover structure.
+
+A reference frame is not proof and does not import ontology into the Atlas.
+
+It lets a distinction become readable where Atlas language is still too compressed.
+
+Music is a useful reference frame because it keeps several mechanics apart:
+
+- Generation: what makes sounding possible.
+- Inheritance: what character remains present through every note.
+- Dependency: what must already hold for a phrase, rhythm, or continuation to proceed.
+- Participation: who or what enters the available music.
+- Coupling: where parts lock together without becoming identical.
+- Trace: how a line can be followed back.
+- Read: how rhythm, phrase, or relation becomes recognisable.
+
+Music does not define these terms. It helps expose the difference between them.
+
 ## Rule
 
 Do not define the primitive first.
@@ -34,6 +54,7 @@ For each primitive:
 
 - Current read
 - Mechanic
+- Reference-frame reads
 - Appears through
 - Observed reads
 - Pressure
@@ -58,6 +79,13 @@ Mechanic:
 - Open.
 - Current pressure read: Relation may generate availability for held relation to become placeable, carryable, traceable, readable, and structurally answerable without any downstream term replacing Relation as primitive.
 
+Reference-frame reads:
+
+- In music, an instrument does not disappear when a note sounds. The note inherits the instrument's character while depending on local holding, pressure, timing, and participation.
+- A held note can carry only while it remains held. Holding is dependency-prior without being sequentially finished.
+- A melody can depend on prior notes while every note still inherits the instrument. This helps keep dependency and inheritance apart.
+- Rhythm is not the instrument, the note, or the sequence alone. It becomes readable across relation, interval, and recurrence.
+
 Appears through:
 
 - Place
@@ -80,11 +108,13 @@ Pressure:
 - The proposed Carrier family mixes direct relation-carries with terms mediated by Connection and Hold.
 - Carrier terms may be note-grammar operators as well as inherited mechanics.
 - The D1 read may lag behind the latest GitHub corrections; generated reads must be checked against repository source before prose changes.
+- Musical analogy suggests inherited character may persist through indirect lineage. Direct carry may not be the only form of inheritance.
 
 Must recover:
 
 - Whether Relation generates the whole Carrier family directly, or whether Relation first generates placeability while Connection generates carry/trace through held relation.
 - What from Relation remains recognisable wherever relation becomes holdable, movable, retraceable, readable, or placeable.
+- Whether immediate and ancestral inheritance are needed to describe terms like Carry, Trace, Carrying, and Recarry.
 
 Decision:
 
@@ -105,6 +135,10 @@ Current read:
 Mechanic:
 
 - Not yet recovered.
+
+Reference-frame reads:
+
+- Pending.
 
 Appears through:
 
@@ -142,6 +176,10 @@ Current read:
 Mechanic:
 
 - Not yet recovered.
+
+Reference-frame reads:
+
+- Pending.
 
 Appears through:
 
@@ -182,6 +220,10 @@ Mechanic:
 
 - Not yet recovered.
 
+Reference-frame reads:
+
+- Pending.
+
 Appears through:
 
 - Couple
@@ -215,5 +257,7 @@ Decision:
 This document records recovery only.
 
 No primitive mechanic becomes canonical until it survives repeated structural testing against the existing Atlas.
+
+Reference frames help expose structure. They do not author structure.
 
 The Atlas is the test. The working read yields.
