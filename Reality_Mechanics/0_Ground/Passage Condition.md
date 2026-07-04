@@ -20,7 +20,6 @@ conditions:
     - "[[Allow]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 
 # Passage Condition

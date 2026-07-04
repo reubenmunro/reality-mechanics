@@ -23,7 +23,6 @@ conditions:
     - "[[Higher Order Crossing]]"
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Higher Order
 

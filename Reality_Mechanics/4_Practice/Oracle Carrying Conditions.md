@@ -32,7 +32,6 @@ conditions:
 
 publish: true
 status: working
-bearing_status: provisional
 aliases:
   - Oracle Conditions
   - Oracle Governance

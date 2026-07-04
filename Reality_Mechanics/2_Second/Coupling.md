@@ -40,7 +40,6 @@ conditions:
   - '[[Exchanging]]'
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Coupling
 

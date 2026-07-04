@@ -21,7 +21,6 @@ conditions:
     - "[[First Order Crossing|Threshold (First → Second)]]"
 publish: true
 status: working
-bearing_status: provisional
 ---
 # First Order
 

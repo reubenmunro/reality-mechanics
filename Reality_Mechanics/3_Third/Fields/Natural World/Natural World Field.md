@@ -32,7 +32,6 @@ conditions:
     - "[[Timescale]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Natural World Field
 

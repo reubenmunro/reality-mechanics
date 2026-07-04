@@ -25,11 +25,9 @@ conditions:
   reads: "where the Atlas is treated as a living carrying system whose terms must be placed, borne, relieved, daylighted, spliced, or left ungrounded according to what keeps re-entry possible and improves [[Resolution Rate]] without losing trace."
   carries:
     - "[[Bearing Pass]]"
-    - "[[Bearing Status]]"
 
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Atlas Fabric
 
@@ -70,7 +68,6 @@ foundation  what must keep holding for the order to remain traceable
 backbone    the carrying structure that lets members grow without replacing the foundation
 member      a domain, read, posture, or experiment that can grow, fail, or be relieved
 occlusion   order present but obscured, residue-bearing, crowded, or unreadable
-status      the bearing state of a member: provisional, bearing, commissioning, occluded, spliced, relieved, decommissioning, dormant, or overloading
 relief      correction that removes drift without pretending the source changed
 placement   placing a new read where it can be tended before it carries doctrine
 splicing    connecting a member to a support it can actually trace
@@ -98,11 +95,8 @@ Occlusion does not mean badness. It names order that cannot presently be read cl
 
 The fabric also protects the Atlas from premature doctrine. A posture can be placed and tended before it is allowed to carry the backbone. A failed posture can be decommissioned: kept as structural record about what could not hold, carry, place, clear, or clean.
 
-[[Bearing Status]] keeps uncertainty inside the fabric. A member does not need to be final before it is placed; it needs a bearing state that lets the Atlas tend it without mistaking it for foundation, backbone, doctrine, or waste.
-
 [[Resolution Rate]] lets the fabric measure itself. A sound structure is not the one that adds the most notes fastest; it is the one that can absorb new or strained material and leave cleaner relation, trace, re-entry, and continuation behind.
 
 ## Carries
 
 - [[Bearing Pass]]
-- [[Bearing Status]]

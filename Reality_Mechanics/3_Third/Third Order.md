@@ -29,7 +29,6 @@ conditions:
     - "[[Opacity]]"
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Third Order
 

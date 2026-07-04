@@ -27,7 +27,6 @@ conditions:
     - "[[Degeneration Read]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Path Reads
 

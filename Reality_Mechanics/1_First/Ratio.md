@@ -27,7 +27,6 @@ conditions:
 
 publish: true
 status: working
-bearing_status: provisional
 aliases:
   - Proportion
 ---

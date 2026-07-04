@@ -29,7 +29,6 @@ order_terminal:
   terminal_mode: nested_participation
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Nesting
 

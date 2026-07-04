@@ -31,7 +31,6 @@ conditions:
 
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Organic and Organised Organisation
 

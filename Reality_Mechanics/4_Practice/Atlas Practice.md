@@ -47,7 +47,6 @@ conditions:
     - "[[Atlas Fabric]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Atlas Practice
 

@@ -23,7 +23,6 @@ conditions:
   nests: "inside Atlas Fabric as the ordinary pass for tending a term, member, posture, domain, applied read, or failed growth."
   reads: "where a participant can return to one member and ask what it is, what holds it, what it occludes, what it carries, whether resolution rate improved, and what care action preserves re-entry."
   carries:
-    - "[[Bearing Status]]"
     - "[[Daylighting]]"
     - "[[Relief]]"
     - "[[Splicing]]"
@@ -31,7 +30,6 @@ conditions:
 
 publish: true
 status: working
-bearing_status: commissioning
 ---
 # Bearing Pass
 
@@ -46,7 +44,7 @@ The pass is deliberately ordinary. It keeps the structural read from becoming a 
 4. Name what it occludes or what occludes it.
 5. Ask whether the member preserves generative trace or shows degenerative trace.
 6. Ask whether the pass improved resolution rate.
-7. Name the bearing status and choose the next care action.
+7. Choose the next care action.
 ```
 
 The possible care actions are:
@@ -99,7 +97,6 @@ Can it be re-entered?
 Does it preserve generative trace?
 Does it show degenerative trace?
 Did this pass increase resolution rate?
-What bearing status names its current care state?
 What care action keeps the Atlas alive?
 ```
 
@@ -109,7 +106,6 @@ Where continuation or repair is specifically at issue, [[Generate and Regenerate
 
 ## Carries
 
-- [[Bearing Status]]
 - [[Daylighting]]
 - [[Relief]]
 - [[Splicing]]

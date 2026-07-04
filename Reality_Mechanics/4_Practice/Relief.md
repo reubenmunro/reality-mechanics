@@ -24,7 +24,6 @@ conditions:
 
 publish: true
 status: working
-bearing_status: commissioning
 ---
 # Relief
 

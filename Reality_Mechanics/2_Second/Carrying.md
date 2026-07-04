@@ -75,7 +75,6 @@ conditions:
 
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Carrying
 

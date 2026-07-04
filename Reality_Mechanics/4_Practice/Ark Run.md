@@ -32,7 +32,6 @@ conditions:
 
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Ark Run
 

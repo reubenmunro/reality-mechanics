@@ -28,7 +28,6 @@ conditions:
 
 publish: true
 status: developing
-bearing_status: provisional
 ---
 # Current Record Convention
 
@@ -140,18 +139,15 @@ conditions:
 
 publish:
 status:
-bearing_status:
 ```
 
 `condition_key` carries stable identity.
 
-`order`, `kind`, `ai_role`, `status`, and `bearing_status` are current operational labels.
+`order`, `kind`, `ai_role`, and `status` are current operational labels.
 
 They help the present system sort, read, and publish records.
 
 They must remain editable where the terms reveal better structure.
-
-`bearing_status` is an implementation label and should not be treated as structural mechanics.
 
 ### Heading
 

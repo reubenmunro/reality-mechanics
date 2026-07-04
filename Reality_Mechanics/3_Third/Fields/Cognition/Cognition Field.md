@@ -31,7 +31,6 @@ conditions:
     - "[[Cognition]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Cognition Field
 

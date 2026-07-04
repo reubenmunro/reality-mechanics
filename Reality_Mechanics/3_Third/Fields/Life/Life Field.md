@@ -34,7 +34,6 @@ conditions:
     - "[[Timescale]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Life Field
 

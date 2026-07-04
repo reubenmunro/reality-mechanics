@@ -27,7 +27,6 @@ conditions:
     - "[[Atlas Practice]]"
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Step
 

@@ -41,7 +41,6 @@ conditions:
 
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Parenting as Maintained Coupling
 

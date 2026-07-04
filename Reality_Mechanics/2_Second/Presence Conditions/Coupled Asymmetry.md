@@ -21,7 +21,6 @@ conditions:
   carries: []
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Coupled Asymmetry
 

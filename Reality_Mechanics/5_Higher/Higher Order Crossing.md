@@ -28,7 +28,6 @@ conditions:
     - "[[Atlas Practice]]"
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Higher Order Crossing
 

@@ -22,7 +22,6 @@ conditions:
     - "[[Second Order Crossing|Threshold (Second → Third)]]"
 publish: true
 status: working
-bearing_status: provisional
 ---
 # Second Order
 

@@ -29,7 +29,6 @@ conditions:
 
 publish: true
 status: stable
-bearing_status: bearing
 ---
 # Inherited Term Drift
 
