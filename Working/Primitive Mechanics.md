@@ -440,13 +440,15 @@ Decision:
 
 ## What a term names
 
-A term does not name a dependency, a contribution, or a bare contribution-set. It names the mechanic that becomes recoverable once a sufficient contribution-set stands together.
+See Method Reconciliation.md: the layer named "Mechanic" below is Places, the Atlas's own existing field. Recorded here as reconciliation, not invention -- recovered independently first, then found to already exist.
 
-Chain, none of it mergeable: Dependency (the full necessary set) -> Contribution (what each member does, independently) -> Generation (which subset is sufficient) -> Mechanic (what becomes newly true once that subset holds) -> Reads (the distinct way the mechanic becomes recoverable) -> Term (the name given to that read).
+A term does not name a dependency, a contribution, or a bare contribution-set. It names the condition (Places) that becomes recoverable once a sufficient contribution-set stands together.
 
-Reads is not missing. It is the Atlas's own mandatory Reads field, present on every note. It collapses trivially into Mechanic wherever only one read exists -- confirmed across every single-mechanic term tested (Boundary, Availability, Strain, Bearing, Connection, Carrying, Recarry, Coupling). It becomes visible as its own layer only where a mechanic supports more than one read.
+Chain, none of it mergeable: Dependency (the full necessary set) -> Contribution (what each member does, independently) -> Generation (which subset is sufficient) -> Places (the condition that becomes stated once that subset holds) -> Reads (the distinct way the condition becomes recognisable) -> Term (the name given to that read).
 
-Direct evidence: Carry and Trace name the same mechanic (held Connection + Hold availability) with the same dependency set, but their own Reads fields diverge by direction only -- "passage from a prior condition into a further condition" versus "a path back toward the condition from which its forward carry proceeds." One mechanic, two reads, two terms.
+Reads is not missing. It is the Atlas's own mandatory Reads field, present on every note. It collapses trivially into Places wherever only one read exists -- confirmed across every single-condition term tested (Boundary, Availability, Strain, Bearing, Connection, Carrying, Recarry, Coupling). It becomes visible as its own layer only where a condition supports more than one read.
+
+Direct evidence: Carry and Trace name the same condition (held Connection + Hold availability) with the same dependency set, but their own Reads fields diverge by direction only -- "passage from a prior condition into a further condition" versus "a path back toward the condition from which its forward carry proceeds." One condition, two reads, two terms.
 
 Do not name this layer "Read." That word is already occupied by a narrower, unrelated First-order term (Trace's own downstream enactment as meaningful uptake). Use "Reads," matching the Atlas's own field name, already grammatically distinct from "Read" in the note-grammar itself.
 
