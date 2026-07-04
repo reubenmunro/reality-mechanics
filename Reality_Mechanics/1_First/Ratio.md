@@ -36,7 +36,7 @@ Ratio names relation made readable between distinguishable terms.
 
 Ratio is not first a number. Number can formalise ratio later. Ratio is the readable form through which distinguishable terms can remain in accountable relation without collapse. It needs a held reference, a distinguishable other, and enough [[Clearance]] for their between to remain readable.
 
-In the corrected refactor, Ratio does not generate [[Relation]]. Ratio is how relation becomes readable to a participant: Seed : Ground, One : Other, In : Out, Radiant : Shaded. These are not merely paired words. They are readable ratios where distinguishable terms remain answerable to the relation between them.
+Ratio does not generate [[Relation]]. Ratio is how relation becomes readable to a participant: Seed : Ground, One : Other, In : Out, Radiant : Shaded. These are not merely paired words. They are readable ratios where distinguishable terms remain answerable to the relation between them.
 
 ## Places
 

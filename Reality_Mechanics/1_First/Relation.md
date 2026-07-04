@@ -71,7 +71,7 @@ Relation nests beneath first-order reads as the active relation that can generat
 
 Relation becomes recognisable where downstream terms can be traced back through their conditions without making any downstream term primitive in its place.
 
-The corrected test is not whether One : Other replaces Relation. It is whether One : Other names the first readable expression through which active relation can be recognised and retraced.
+The test is not whether One : Other replaces Relation. It is whether One : Other names the first readable expression through which active relation can be recognised and retraced.
 
 ## Carries
 
