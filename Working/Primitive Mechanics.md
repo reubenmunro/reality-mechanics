@@ -1,126 +1,158 @@
-# Primitive Mechanics (Working)
+# Generative Mechanics (Working)
 
-> Research document. Not canon.
+> Working document. Not canon.
 >
-> Purpose: recover the irreducible mechanic of each primitive before calibrating inheritance families or Atlas prose.
+> This document recovers the mechanic each primitive continues to generate. It exists to listen to the Atlas, not to instruct it.
 
 ## Principle
 
-A primitive is recognised by the mechanic it continually generates.
+A primitive is recognised by the mechanic it continually makes recoverable.
 
-The task is not to define the primitive, but to recover the invariant that remains recognisable throughout the families that inherit from it.
+The task is not to define the primitive.
+
+The task is to recover what remains recognisable wherever that primitive's mechanic appears through later terms.
+
+## Discipline
+
+Do not begin from an idea and place it into the Atlas.
+
+Begin from the Atlas, recover what keeps appearing, name the pressure, and test whether the same mechanic survives wider trace.
 
 ## Method
 
 For each primitive:
 
-1. Recover the primitive itself.
-2. Recover its inherited mechanic.
-3. Test the proposed inheritance family.
-4. Attempt to falsify the hypothesis.
-5. Only then recalibrate Atlas terms.
+1. Read the primitive through the Atlas.
+2. Recover the mechanic currently visible.
+3. Test where that mechanic appears through later terms.
+4. Name pressure and failure to recover.
+5. Leave Atlas terms unchanged until the mechanic survives repeated structural testing.
 
 ---
 
 # Relation
 
-Status: Investigating
+Status: open recovery
 
-Observed mechanic:
+Current read:
+
 - Not yet recovered.
 
-Candidate inheritance family:
+Appears through:
+
 - Hold
 - Carry
 - Trace
 - Read
 - Place
 
-Evidence:
+Observed reads:
+
 - Pending.
 
-Counter evidence:
+Pressure:
+
 - Pending.
 
-Predictions:
-- Every member should preserve Relation's invariant.
+Must recover:
+
+- What from Relation remains recognisable wherever relation becomes holdable, movable, retraceable, readable, or placeable.
 
 ---
 
 # Boundary
 
-Status: Investigating
+Status: open recovery
 
-Observed mechanic:
+Current read:
+
 - Not yet recovered.
 
-Candidate inheritance family:
+Appears through:
+
 - Strain
 - Bearing
 - Resolution
 
-Evidence:
+Observed reads:
+
 - Pending.
 
-Counter evidence:
-- Pending.
+Pressure:
 
-Predictions:
-- Every member should preserve Boundary's invariant.
+- Resolution is terminal determination, not simple persistence.
+
+Must recover:
+
+- What from Boundary remains recognisable where difference becomes pressured, held, or determined.
 
 ---
 
 # Availability
 
-Status: Investigating
+Status: open recovery
 
-Observed mechanic:
+Current read:
+
 - Not yet recovered.
 
-Candidate inheritance family:
+Appears through:
+
 - Presence
 - Bearing Relation
 - Participation
 - Participant
 - Member
 
-Evidence:
+Observed reads:
+
 - Pending.
 
-Counter evidence:
-- Pending.
+Pressure:
 
-Predictions:
-- Every member should preserve Availability's invariant.
+- Presence may be Availability becoming local.
+- Participation is held by Carrying, Presence, and Bearing Relation, but may inherit the Availability mechanic rather than the Carrier mechanic.
+
+Must recover:
+
+- What from Availability remains recognisable where relation becomes locally available, enterable, inhabitable, or membered.
 
 ---
 
 # Connection
 
-Status: Investigating
+Status: open recovery
 
-Observed mechanic:
+Current read:
+
 - Not yet recovered.
 
-Candidate inheritance family:
+Appears through:
+
 - Couple
 - Coupling
 - Nest
 - Nesting
 
-Evidence:
+Observed reads:
+
 - Pending.
 
-Counter evidence:
-- Pending.
+Pressure:
 
-Predictions:
-- Every member should preserve Connection's invariant.
+- Couple:Nest and Coupling:Nesting may not name the same ratio.
+- Noun forms may mark gathered positions while -ing forms mark proceeding operations.
+
+Must recover:
+
+- What from Connection remains recognisable where relation holds together, couples, recurs, or nests across orders.
 
 ---
 
-## Research discipline
+## Guard
 
-This document records hypotheses and evidence only.
+This document records recovery, pressure, and current reads only.
 
-No inheritance family becomes canonical until its invariant survives repeated structural testing against the existing Atlas.
+No primitive mechanic becomes canonical until it survives repeated structural testing against the existing Atlas.
+
+If the Atlas fails to recover a proposed mechanic, the proposed mechanic yields.
