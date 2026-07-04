@@ -104,6 +104,34 @@ export const RATIO_CONTRACT = Object.freeze({
   requiredRead: ["left", "right", "referenceFrame", "relation", "trace", "continuation"],
 });
 
+export const COMMON_TERM_STRUCTURE_CONTRACT = Object.freeze({
+  name: "Common Term Structure",
+  entryId: "foundation.common-term-structure",
+  sourcePath: "Reality_Mechanics/Common Term Structure.md",
+  role: "Authoring and review constraint for structural terms.",
+  rule: "Any task that creates, revises, restructures, grounds, publishes, or critiques a term must read and remain answerable to Common Term Structure before changing the GitHub source.",
+  readModeRule: "Simple lookup and traversal may proceed without applying the authoring constraint, but any structural modification or evaluation must apply it.",
+  authoringOrder: Object.freeze([
+    "read Common Term Structure",
+    "read the target term structure before prose",
+    "traverse related dependencies with get_related",
+    "identify drift between mechanics, metadata, prose, and references",
+    "edit the GitHub source only where the change remains answerable",
+    "sync D1 from the repository so MCP reads the generated record",
+  ]),
+  checks: Object.freeze([
+    "identity remains recoverable",
+    "metadata supports structure rather than freezing ontology",
+    "trace remains recoverable beyond immediate dependency where needed",
+    "carry records demonstrated continuation rather than prediction",
+    "ratio and threshold are visible where adjustment matters",
+    "references perform structural work",
+    "prose exposes mechanics rather than repeating the heading",
+    "implementation has not been confused with mechanics",
+    "future refinement remains possible without losing structural continuity",
+  ]),
+});
+
 export const WORLD_PHYSICS = Object.freeze({
   layer: "invariant",
   rule: "World physics describes Reality Mechanics itself. Runtime implementations answer to it; they do not define it.",
@@ -188,6 +216,7 @@ export const ATLAS_STRUCTURE_CONTRACT = Object.freeze({
   sourceRule: "GitHub repository markdown and frontmatter form the editable canonical record. D1 is a generated read model rebuilt from that record.",
   translationRule: "Frontmatter, prose, MCP responses, Field, Calibration, generated D1, and future adapters are translations; none may silently invent a second Atlas.",
   lagRule: "Lag is natural when workers move in order. Lag is acceptable only when the current state and source representation are explicit.",
+  authoringRule: COMMON_TERM_STRUCTURE_CONTRACT.rule,
   structureFields: STRUCTURE_FIELDS,
   relationFields: RELATION_FIELDS,
   translationSurfaces: TRANSLATION_SURFACES,
@@ -196,11 +225,12 @@ export const ATLAS_STRUCTURE_CONTRACT = Object.freeze({
   lagStates: LAG_STATES,
   worldPhysics: WORLD_PHYSICS,
   ratio: RATIO_CONTRACT,
+  commonTermStructure: COMMON_TERM_STRUCTURE_CONTRACT,
   runtime: RELATION_EVENT_RUNTIME_CONTRACT,
 });
 
 export const CONTRACT_SUMMARY =
-  `${ATLAS_STRUCTURE_CONTRACT.canonicalRule} ${ATLAS_STRUCTURE_CONTRACT.translationRule} ${ATLAS_STRUCTURE_CONTRACT.lagRule} ${RELATION_EVENT_RUNTIME_CONTRACT.principle} ${RELATION_EVENT_RUNTIME_CONTRACT.bespokeRule}`;
+  `${ATLAS_STRUCTURE_CONTRACT.canonicalRule} ${ATLAS_STRUCTURE_CONTRACT.translationRule} ${ATLAS_STRUCTURE_CONTRACT.lagRule} ${ATLAS_STRUCTURE_CONTRACT.authoringRule} ${RELATION_EVENT_RUNTIME_CONTRACT.principle} ${RELATION_EVENT_RUNTIME_CONTRACT.bespokeRule}`;
 
 export function structureContractForSurface(surface) {
   const key = String(surface || "").trim();
