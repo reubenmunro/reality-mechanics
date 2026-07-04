@@ -210,45 +210,64 @@ Decision:
 
 # Connection
 
-Status: open recovery
+Status: active recovery
 
 Current read:
 
-- Open.
+- Connection is held by Relation.
+- Connection places relation holding between distinguishable conditions so passage is available in more than one direction.
+- Connection carries Carry and Trace directly.
+- Carry and Trace are directional availability within one connection, not two separate connections.
+- Coupling is not directly held by Connection in the current dependency structure. It is held by Resolved Asymmetry and Carrying.
 
 Mechanic:
 
-- Not yet recovered.
+- Open.
+- Current pressure read: Connection may generate held passage between distinguishable conditions. That passage opens directional availability as Carry and Trace.
+- Coupling may be a later second-order mechanic where carried resolved conditions become mutually available while remaining distinct.
 
 Reference-frame reads:
 
-- Pending.
+- In music, a held interval or line can offer forward continuation and backward recoverability without becoming performance yet.
+- Two instruments sounding together are not yet coupled in the stronger sense unless their parts become mutually available, answerable, or locked in relation.
+- A connection may make passage possible; coupling may make mutual participation possible.
 
 Appears through:
 
-- Couple
+- Carry
+- Trace
 - Coupling
+- Couple
 - Nest
 - Nesting
 
 Observed reads:
 
-- Couple:Nest and Coupling:Nesting may not name the same ratio.
-- Noun forms may mark gathered positions while -ing forms mark proceeding operations.
+- Connection directly carries Carry and Trace.
+- Carry and Trace preserve one connection read in two directions: forward availability and backward availability.
+- Coupling holds Resolved Asymmetry and Carrying, not Connection directly.
+- Coupling places distinct resolved conditions held in mutual availability without collapse.
+- Coupling carries Presence, Compatibility, Pair, Coupled Boundary, Coupled Contact, Bearing Relation, and later nested/engineered/maintained coupling terms.
 
 Pressure:
 
-- Nesting may inherit Connection directly, or it may be Coupling made recursively available.
-- Carry and Trace may indicate that Connection generates the forward/backward availability of held relation, not Relation alone.
+- The earlier line Connection → Coupling family may be too compressed.
+- Connection may generate passage first; Coupling may generate mutual availability after carrying and resolution.
+- Nesting may inherit through Coupling rather than directly from Connection.
+- Carry and Trace may belong closer to Connection than the initial Relation → Carrier family suggested.
 
 Must recover:
 
-- What from Connection remains recognisable where relation holds together, couples, recurs, or nests across orders.
-- Whether Connection also generates the Carrier passage mechanic before or alongside Coupling.
+- Whether Connection's generated mechanic is passage, mutual availability, or both at different orders.
+- Whether Coupling inherits Connection ancestrally through Carrying and Resolved Asymmetry rather than immediately.
+- Whether the Coupling family should begin at Coupling rather than Connection.
+- Whether Carry and Trace belong to a Connection-passage family while Place belongs more directly to Relation.
 
 Decision:
 
 - Open.
+- Current recovery does not yet justify accepting Connection → Coupling family as a simple direct inheritance.
+- Current pressure suggests a split: Connection → Carry/Trace as passage, Coupling → Presence/Pair/Bearing Relation as mutual availability.
 
 ---
 
