@@ -442,13 +442,15 @@ Decision:
 
 A term does not name a dependency, a contribution, or a bare contribution-set. It names the mechanic that becomes recoverable once a sufficient contribution-set stands together.
 
-Chain, none of it mergeable: Dependency (the full necessary set) -> Contribution (what each member does, independently) -> Generation (which subset is sufficient) -> Mechanic (what becomes newly true once that subset holds) -> Term (the name given to it).
+Chain, none of it mergeable: Dependency (the full necessary set) -> Contribution (what each member does, independently) -> Generation (which subset is sufficient) -> Mechanic (what becomes newly true once that subset holds) -> Reads (the distinct way the mechanic becomes recoverable) -> Term (the name given to that read).
 
-Tested against eleven terms across two families (Boundary through Resolution; Connection through Coupling). No case found where a term's own definition restates a dependency or a single contribution rather than naming something new. Carry names forward availability -- neither Connection nor Hold, but what stands once both hold. Resolution names determination -- neither Bearing nor Clearance, but what stands once both hold.
+Reads is not missing. It is the Atlas's own mandatory Reads field, present on every note. It collapses trivially into Mechanic wherever only one read exists -- confirmed across every single-mechanic term tested (Boundary, Availability, Strain, Bearing, Connection, Carrying, Recarry, Coupling). It becomes visible as its own layer only where a mechanic supports more than one read.
 
-Composition (Recarry) does not reopen this. Composition is a claim about how contributions relate to each other internally (sequential, output-feeding-input). Naming is a claim about what the outer label points at. Independent questions. Recarry still names a resulting condition ("carrying returned... and held again, differently"), not the Contact-Release-Compatibility sequence itself.
+Direct evidence: Carry and Trace name the same mechanic (held Connection + Hold availability) with the same dependency set, but their own Reads fields diverge by direction only -- "passage from a prior condition into a further condition" versus "a path back toward the condition from which its forward carry proceeds." One mechanic, two reads, two terms.
 
-Mechanic and Term are not strictly 1:1. Carry and Trace are two directions through one held connection -- one underlying mechanic, two terms, split by direction. Naming includes a carving choice, not just a label attached to an already-singular mechanic. Watch for this recurring elsewhere before treating it as more than one instance.
+Do not name this layer "Read." That word is already occupied by a narrower, unrelated First-order term (Trace's own downstream enactment as meaningful uptake). Use "Reads," matching the Atlas's own field name, already grammatically distinct from "Read" in the note-grammar itself.
+
+Tested against eleven terms across two families. No case found where a term's own definition restates a dependency or a single contribution rather than naming something new. Composition (Recarry) does not reopen this. Composition is a claim about how contributions relate to each other internally (sequential, output-feeding-input). Naming is a claim about what the outer label points at. Independent questions. Recarry still names a resulting condition ("carrying returned... and held again, differently"), not the Contact-Release-Compatibility sequence itself.
 
 ## Guard
 
