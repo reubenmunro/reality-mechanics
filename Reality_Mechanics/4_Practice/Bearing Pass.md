@@ -31,7 +31,7 @@ conditions:
 
 publish: true
 status: working
-garden_status: tending
+bearing_status: commissioning
 ---
 # Bearing Pass
 

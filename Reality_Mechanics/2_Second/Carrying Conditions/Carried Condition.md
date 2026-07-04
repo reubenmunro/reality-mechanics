@@ -31,7 +31,7 @@ conditions:
 
 publish: true
 status: working
-garden_status: planted
+bearing_status: provisional
 ---
 # Carried Condition
 

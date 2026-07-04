@@ -27,7 +27,7 @@ conditions:
 
 publish: true
 status: developing
-garden_status: planted
+bearing_status: provisional
 ---
 # Common Term Structure
 
@@ -135,18 +135,18 @@ conditions:
 
 publish:
 status:
-garden_status:
+bearing_status:
 ```
 
 `condition_key` carries stable identity.
 
-`order`, `kind`, `ai_role`, `status`, and `garden_status` are current operational labels.
+`order`, `kind`, `ai_role`, `status`, and `bearing_status` are current operational labels.
 
 They help the present system sort, read, and publish records.
 
 They remain editable where the terms reveal better structure.
 
-`garden_status` is a legacy implementation label.
+`bearing_status` is an implementation label, not structural mechanics.
 
 ## Wikilinks
 

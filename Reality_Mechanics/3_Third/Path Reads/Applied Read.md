@@ -36,7 +36,7 @@ conditions:
 
 publish: true
 status: stable
-garden_status: rooted
+bearing_status: bearing
 ---
 # Applied Read
 

@@ -26,7 +26,7 @@ conditions:
 
 publish: true
 status: working
-garden_status: tending
+bearing_status: commissioning
 ---
 # Bearing Status
 
@@ -36,7 +36,7 @@ Bearing Status does not decide whether a member is allowed to exist. If a term c
 
 [[Groundedness]] remains the foundation-contact check: whether the member remains answerable to what holds it. Bearing Status is the visible care state around that check.
 
-In note metadata, `garden_status` may name this care state directly. It should not replace `status`, `grounded`, or the note's declared structure; it tells a participant how to tend the member next.
+In note metadata, `bearing_status` may name this care state directly. It should not replace `status`, `grounded`, or the note's declared structure; it tells a participant how to tend the member next.
 
 When no individual bearing pass has yet been made, a conservative default may be used: stable notes can be marked `bearing`, working notes can be marked `provisional`, and active care practices can be marked `commissioning`. Later passes may revise these care states without changing whether the note belongs to the Atlas.
 

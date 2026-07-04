@@ -34,7 +34,7 @@ order_terminal:
   terminal_mode: recursive_nesting
 publish: true
 status: stable
-garden_status: rooted
+bearing_status: bearing
 ---
 # Recursion
 

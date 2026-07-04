@@ -29,7 +29,7 @@ conditions:
     - "[[Opacity]]"
 publish: true
 status: working
-garden_status: planted
+bearing_status: provisional
 ---
 # Third Order
 

@@ -21,7 +21,7 @@ conditions:
     - "[[First Order Crossing|Threshold (First → Second)]]"
 publish: true
 status: working
-garden_status: planted
+bearing_status: provisional
 ---
 # First Order
 

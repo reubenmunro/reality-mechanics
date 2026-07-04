@@ -40,7 +40,7 @@ order_terminal:
   terminal_mode: resolves_current_asymmetry
 publish: true
 status: stable
-garden_status: rooted
+bearing_status: bearing
 ---
 # Resolution
 
