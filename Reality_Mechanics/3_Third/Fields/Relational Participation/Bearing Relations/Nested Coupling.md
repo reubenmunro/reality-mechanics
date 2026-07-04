@@ -10,15 +10,17 @@ needs:
   - "[[Coupling]]"
   - "[[Nested Relation]]"
   - "[[Carrying]]"
+  - "[[Participation]]"
 
 conditions:
   places: "coupling held within a larger coupling structure — distinct resolved conditions in mutual availability where that availability is itself carried within a containing relation."
-  holds: "[[Coupling]], [[Nested Relation]], and [[Carrying]]. Coupling must be present, the nested relation must carry it, and carrying must continue before the nesting of coupling can be read."
+  holds: "[[Coupling]], [[Nested Relation]], [[Carrying]], and [[Participation]]. Coupling must be present, the nested relation must carry it, carrying must continue, and that continuation must be readable as participation before the nesting of coupling can be read."
   pairs: "[[Engineered Coupling]] — Nested Coupling names coupling that arises through nesting within a larger structure; Engineered Coupling names coupling deliberately constructed by constraint."
   traces:
     - "[[Coupling]]"
     - "[[Nested Relation]]"
     - "[[Carrying]]"
+    - "[[Participation]]"
   nests: "within Relational Participation as the condition through which coupling is carried within a wider carrying scope — the structural ground for family, organisation, and embedded social structure reads."
   reads: "Nested Coupling becomes readable where coupling participates in further coupling without losing its dependency order."
   carries: []
@@ -36,7 +38,7 @@ Nested Coupling places coupling held within a larger coupling structure — dist
 
 ## Holds
 
-Nested Coupling is held by [[Coupling]], [[Nested Relation]], and [[Carrying]]. Coupling must be present, the nested relation must carry it, and carrying must continue before the nesting of coupling can be read.
+Nested Coupling is held by [[Coupling]], [[Nested Relation]], [[Carrying]], and [[Participation]]. Coupling must be present, the nested relation must carry it, carrying must continue, and that continuation must be readable as participation before the nesting of coupling can be read.
 
 ## Pairs
 
@@ -47,6 +49,7 @@ Nested Coupling pairs with [[Engineered Coupling]]: nested coupling names coupli
 - [[Coupling]]
 - [[Nested Relation]]
 - [[Carrying]]
+- [[Participation]]
 
 ## Nests
 

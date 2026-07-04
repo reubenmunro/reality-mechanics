@@ -10,15 +10,17 @@ needs:
   - "[[Coupling]]"
   - "[[Carrying]]"
   - "[[Constraint]]"
+  - "[[Compatibility]]"
 
 conditions:
   places: "coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability — coupling shaped by constraint and carrying rather than emergent."
-  holds: "[[Coupling]], [[Carrying]], and [[Constraint]]. Coupling must hold, carrying must continue, and a constraining structure must shape the coupling before it can be read as engineered."
+  holds: "[[Coupling]], [[Carrying]], [[Constraint]], and [[Compatibility]]. Coupling must hold, carrying must continue, a constraining structure must shape the coupling, and the imposed continuation must remain compatible before it can be read as engineered."
   pairs: "[[Nested Coupling]] — Engineered Coupling names coupling deliberately constructed by constraint; Nested Coupling names coupling that arises through nesting within a larger structure."
   traces:
     - "[[Coupling]]"
     - "[[Carrying]]"
     - "[[Constraint]]"
+    - "[[Compatibility]]"
   nests: "within Relational Participation as the condition through which coupling is deliberately structured — the structural ground for Technology Domain and AI domain reads."
   reads: "Engineered coupling becomes readable where constructed carrying preserves availability, bearing, resolution, and dependency order."
   carries: []
@@ -36,7 +38,7 @@ Engineered Coupling places coupling that is deliberately constructed to hold dis
 
 ## Holds
 
-Engineered Coupling is held by [[Coupling]], [[Carrying]], and [[Constraint]]. Coupling must hold, carrying must continue, and a constraining structure must shape the coupling before it can be read as engineered.
+Engineered Coupling is held by [[Coupling]], [[Carrying]], [[Constraint]], and [[Compatibility]]. Coupling must hold, carrying must continue, a constraining structure must shape the coupling, and the imposed continuation must remain compatible before it can be read as engineered.
 
 ## Pairs
 
@@ -47,6 +49,7 @@ Engineered Coupling pairs with [[Nested Coupling]]: engineered coupling names co
 - [[Coupling]]
 - [[Carrying]]
 - [[Constraint]]
+- [[Compatibility]]
 
 ## Nests
 
