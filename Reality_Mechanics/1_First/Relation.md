@@ -41,7 +41,7 @@ Relation names active relation within the Atlas.
 
 Relation remains primitive inside the system: relation relates, and no prior term inside the system produces it.
 
-The vNext correction does not make Relation downstream of [[Ratio]]. It distinguishes generation from recognition. Generation occurs through active relation; Ratio is the readable form relation takes when a participant can compare a held reference with what is other than that reference.
+Relation does not become downstream of [[Ratio]]. Generation and recognition are distinct: generation occurs through active relation; Ratio is the readable form relation takes when a participant can compare a held reference with what is other than that reference.
 
 Relation is not an object, substance, cause, or container. It names the relating condition that holds without requiring a prior term within the Atlas.
 

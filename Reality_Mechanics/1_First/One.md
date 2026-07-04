@@ -29,7 +29,7 @@ One names the first readable reference.
 
 One is not an isolated object, a counted unit, or a self-originating substance. It is the first held reference through which a read can begin. Without One, there is no place from which comparison can be made. Without Other, One collapses into the whole or becomes an untested assertion.
 
-In the corrected vNext read, [[One]] and [[Other]] are read together as `One : Other`. One gives reference. Other gives distinction. The colon names the relational boundary, ratio, and clearance that allows comparison without collapse.
+Read together, [[One]] and [[Other]] form `One : Other`. One gives reference. Other gives distinction. The colon names the relational boundary, ratio, and clearance that allows comparison without collapse.
 
 One : Other does not replace [[Seed]] : [[Ground]] and does not replace [[Relation]]. It names the first readable expression of the generative condition: the point where active relation can be recognised by a participant as reference and distinction.
 

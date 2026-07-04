@@ -30,7 +30,7 @@ Other names the first readable distinction from a held reference.
 
 Other is not merely negation. It is not whatever One rejects. Other is the distinguishable not-same that lets One be a reference rather than an unbounded whole.
 
-In the corrected vNext read, [[One]] and Other are read together as `One : Other`. One gives reference. Other gives distinction. The colon names the relational boundary, ratio, and clearance that keeps comparison from collapsing into sameness or drifting into unrelated separation.
+Read together, [[One]] and Other form `One : Other`. One gives reference. Other gives distinction. The colon names the relational boundary, ratio, and clearance that keeps comparison from collapsing into sameness or drifting into unrelated separation.
 
 One : Other does not replace [[Seed]] : [[Ground]]. It is the first readable expression of that generative condition becoming active.
 
