@@ -438,6 +438,18 @@ Decision:
 
 ---
 
+## What a term names
+
+A term does not name a dependency, a contribution, or a bare contribution-set. It names the mechanic that becomes recoverable once a sufficient contribution-set stands together.
+
+Chain, none of it mergeable: Dependency (the full necessary set) -> Contribution (what each member does, independently) -> Generation (which subset is sufficient) -> Mechanic (what becomes newly true once that subset holds) -> Term (the name given to it).
+
+Tested against eleven terms across two families (Boundary through Resolution; Connection through Coupling). No case found where a term's own definition restates a dependency or a single contribution rather than naming something new. Carry names forward availability -- neither Connection nor Hold, but what stands once both hold. Resolution names determination -- neither Bearing nor Clearance, but what stands once both hold.
+
+Composition (Recarry) does not reopen this. Composition is a claim about how contributions relate to each other internally (sequential, output-feeding-input). Naming is a claim about what the outer label points at. Independent questions. Recarry still names a resulting condition ("carrying returned... and held again, differently"), not the Contact-Release-Compatibility sequence itself.
+
+Mechanic and Term are not strictly 1:1. Carry and Trace are two directions through one held connection -- one underlying mechanic, two terms, split by direction. Naming includes a carving choice, not just a label attached to an already-singular mechanic. Watch for this recurring elsewhere before treating it as more than one instance.
+
 ## Guard
 
 This document records recovery only.
