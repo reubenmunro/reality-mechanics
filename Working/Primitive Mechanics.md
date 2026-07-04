@@ -66,33 +66,46 @@ If no, the current edge may be the nearest sufficient generation.
 
 This rule protects depth without making every deep ancestor a direct generator.
 
-## Generative vs. supporting dependency
+## Dependency contribution
 
-Necessary dependency: what must remain true. The full holds-set.
+Do not classify dependencies. Recover what each one does.
 
-Generative dependency: removal collapses the mechanic into a different, already-named mechanic.
+Question: what unique work disappears if this dependency is removed? Not what mechanic remains -- what work is no longer possible.
 
-Supporting dependency: removal leaves the same mechanic occurring, but no longer answerable to the rest of the Atlas (untraceable, ungrounded, unverifiable).
+Recover each dependency's contribution independently. Do not compare or sort them before naming what each does.
 
-Test: remove the dependency. Does the term become a different named thing, or does it stay itself but disconnected?
+Test case, Resolution (holds Bearing, Clearance):
 
-Generative core: the subset of a term's dependencies that pass the generative test. May be one member or more than one.
+- Bearing supplies the material: held strain, the pressed condition that has something to settle.
+- Clearance opens legible space: relation held apart enough that a change registers as having happened. Resolution's own text: "without the readable between, there is no interval, separation, or strain across which resolution can occur."
 
-Compound generation: |generative core| > 1. Independent of whether supporting dependencies also exist.
+Test case, Coupling (holds Resolved Asymmetry, Carrying):
 
-Confirmed against Recarry (holds Carrying, Trace, Contact, Groundedness, Release, Compatibility):
+- Resolved Asymmetry keeps conditions distinct: without it, nothing separate to couple; collapse into sameness.
+- Carrying extends availability: without it, two resolved conditions sit apart, never reaching each other.
 
-- Remove Contact -> plain Carrying, undisrupted. A different named mechanic. Generative.
-- Remove Release -> carrier holds disruption alone; heads toward Strain or Collapse. Generative.
-- Remove Compatibility -> released load, nowhere to land; Collapse. Generative.
-- Remove Trace or Groundedness -> the same redistribution still occurs, no longer traceable to origin. Supporting.
-- Generative core = {Contact, Release, Compatibility}. Supporting = {Trace, Groundedness}.
+Test case, Recarry (holds Carrying, Trace, Contact, Groundedness, Release, Compatibility):
 
-Open, not confirmed: Carrying's own role in Recarry, and the analogous roles of Bearing in Resolution and Resolved Asymmetry in Coupling. Removing each of these does not produce a different named mechanic (the generative test) and does not merely strand an otherwise-intact mechanic as unverifiable (the supporting test) -- it produces absence, not a rival state. This pattern recurred in all three compound cases tested. Not enough evidence to name a third category. Record as pressure only.
+- Carrying moves the ongoing activity being redirected.
+- Trace locates origin: where the carrying came from.
+- Contact alters: the disruption event itself.
+- Groundedness answers to wider support: keeps the altered path honest to real foundation.
+- Release frees the local carrier from holding the disrupted load alone.
+- Compatibility admits the released load into wider grounding relations.
 
-Nearest Sufficient Generation and generative/supporting are different axes. Nearest-sufficient selects which ancestor, possibly several edges back, to credit as generator. Generative/supporting partitions a term's own immediate holds-set. Do not conflate.
+Six distinct jobs. Checked adjacent pairs specifically for overlap: Trace and Groundedness both look like "connect to something real" but differ -- Trace answers where from (backward, lineage); Groundedness answers still supported by what (present, foundation). Groundedness and Compatibility both look like "the receiving side" but differ -- Groundedness is the carrying's own honesty; Compatibility is the destination's capacity to receive.
 
-Simple chains (Relation -> Place, Connection -> Carry/Trace, Trace -> Read): single dependency, nothing to partition against. Generative equals nearest-sufficient trivially.
+Contributions repeat across mechanics: Carrying's contribution is the same function in Coupling and in Recarry -- extends availability forward beyond its current boundary. Same job, different downstream compound. Confirmed repeat, not coincidence of naming; matches Carrying's own definition (`Carry is held support becoming available beyond itself`) unchanged.
+
+This resolves what generative/supporting classification could not. Bearing, Resolved Asymmetry, and Carrying-in-Recarry all failed that binary because it asked which bucket before asking what each does. All three have the same answer: each supplies the material the other dependencies act on. That is a real, sayable contribution. It does not need a third bucket.
+
+Generation depends on contribution, not the reverse. Sufficiency (Nearest Sufficient Generation) means: the candidate ancestor's own contribution covers everything the mechanic needs. To know Carrying alone is not sufficient generation for Recarry, you must already know disruption, freeing, and receivability are needed contributions Carrying's own job does not cover. There is no way to test sufficiency except by checking contributions against what is needed.
+
+Do not name a category (generative, supporting, enabling, contextual) unless the same unclassifiable pattern recurs after contribution has already been recovered and still resists description. So far it has not recurred -- contribution language has covered every case tested.
+
+Open: whether the contribution-verbs found so far (supplies, opens, keeps-distinct, extends, locates, alters, answers, frees, admits) approach a small closed vocabulary repeating across the Atlas, or are an early sample. Three compounds is not enough to know.
+
+Simple chains (Relation -> Place, Connection -> Carry/Trace, Trace -> Read): single dependency, one contribution, nothing to compare it against.
 
 ## Recovery template
 
