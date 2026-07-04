@@ -68,16 +68,22 @@ A term may depend on one condition while inheriting a mechanic from another.
 
 ## Recovery rule
 
-Recover upward before outward.
+Standing discipline, not a step: observe. Return to repository source continuously. Every operation below requires its own return to source, not one preliminary read.
 
-1. Recover the generator.
-2. Recover the mechanic.
-3. Test where the mechanic continues.
-4. Distinguish immediate inheritance, ancestral inheritance, dependency, and determination pressure.
-5. Recover the family.
-6. Only then recalibrate individual notes.
+Four operations, three of them strictly sequential, the last two branching in parallel:
 
-If Generation remains open, Inheritance remains provisional.
+1. Recover dependencies. The complete necessary set, fixed before any per-item analysis, so completeness can later be checked against it.
+2. Recover contribution. For each dependency independently: what unique work disappears if it is removed. No comparison, no sorting, no labels.
+3. Recover the smallest sufficient set (Generation). A set-membership test only: does this contribution, or this subset, fully account for the mechanic? Tested recursively outward across the whole reachable chain -- this is what "nearest" and "sufficient" collapse into, one operation, not two. Contributions outside the sufficient set need no name; their contribution already stands from step 2.
+4. Branch, both read from step 3, neither depending on the other:
+   - Inheritance: how far back does this specific quality remain recognisable, traced ancestrally.
+   - Crossing: does this generation cross an order boundary; if so, direct or determined.
+
+Falsified: Observe as step 1 (it is continuous, not completed once). Inheritance before Crossing as sequential (Resolution's own text -- "resolution closes one condition without ending relation" -- holds both simultaneously; they answer different axes and cannot be one continuing question).
+
+Recalibrating a term's own prose once recovery is complete is a downstream, optional consequence of this method. It is not a fifth operation within it.
+
+If Generation remains open, Inheritance and Crossing remain provisional.
 
 ## Current pressure lines
 
