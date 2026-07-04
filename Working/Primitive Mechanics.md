@@ -270,17 +270,25 @@ Current read:
 - Connection places relation holding between distinguishable conditions so passage is available in more than one direction.
 - Connection carries Carry and Trace directly.
 - Carry and Trace are directional availability within one connection, not two separate connections.
+- Carrying is held by Hold and Carry and traces Connection.
+- Carrying enacts held forward availability; it is movement through passage, not the same thing as passage being available.
+- Recarry is held by Carrying, Trace, Contact, Groundedness, Release, and Compatibility.
+- Recarry preserves carrying through contact, alteration, release, and compatible wider grounding rather than restarting the same path.
 - Coupling is not directly held by Connection in the current dependency structure. It is held by Resolved Asymmetry and Carrying.
 
 Mechanic:
 
 - Open.
-- Current pressure read: Connection may generate held passage between distinguishable conditions. That passage opens directional availability as Carry and Trace.
+- Current pressure read: Connection generates held passage between distinguishable conditions. That passage opens directional availability as Carry and Trace.
+- Carrying may be the second-order enactment of Connection's passage mechanic.
+- Recarry may be passage re-entered after contact and alteration, with trace and compatibility preserving continuity through changed path.
 - Coupling may be a later second-order mechanic where carried resolved conditions become mutually available while remaining distinct.
 
 Reference-frame reads:
 
 - In music, a held interval or line can offer forward continuation and backward recoverability without becoming performance yet.
+- Carrying is closer to playing through the available line than to the line merely being available.
+- Recarry is like taking up the line again after contact with another part: the phrase continues, but not untouched.
 - Two instruments sounding together are not yet coupled in the stronger sense unless their parts become mutually available, answerable, or locked in relation.
 - A connection may make passage possible; coupling may make mutual participation possible.
 
@@ -288,6 +296,8 @@ Appears through:
 
 - Carry
 - Trace
+- Carrying
+- Recarry
 - Coupling
 - Couple
 - Nest
@@ -297,6 +307,10 @@ Observed reads:
 
 - Connection directly carries Carry and Trace.
 - Carry and Trace preserve one connection read in two directions: forward availability and backward availability.
+- Carrying is held by Hold and Carry, and traces Connection.
+- Carrying names movement through held forward availability.
+- Recarry is held by Carrying, Trace, Contact, Groundedness, Release, and Compatibility.
+- Recarry names carrying returned through contact still held, but altered by trace.
 - Coupling holds Resolved Asymmetry and Carrying, not Connection directly.
 - Coupling places distinct resolved conditions held in mutual availability without collapse.
 - Coupling carries Presence, Compatibility, Pair, Coupled Boundary, Coupled Contact, Bearing Relation, and later nested/engineered/maintained coupling terms.
@@ -304,13 +318,15 @@ Observed reads:
 Pressure:
 
 - The earlier line Connection -> Coupling family may be too compressed.
-- Connection may generate passage first; Coupling may generate mutual availability after carrying and resolution.
+- Connection may generate passage first; Carrying enacts passage; Recarry returns passage through altered contact; Coupling may then generate mutual availability after carrying and resolution.
+- This chain resembles determination depth, but it is not terminal in the same way as Boundary -> Resolution. It is continuing-path depth rather than closure-depth.
 - Nesting may inherit through Coupling rather than directly from Connection.
 - Carry and Trace may belong closer to Connection than the initial Relation -> Carrier family suggested.
 
 Must recover:
 
-- Whether Connection's generated mechanic is passage, mutual availability, or both at different orders.
+- Whether Connection's generated mechanic should be named passage, held passage, or directional availability.
+- Whether Carrying and Recarry are determination-depth stages of passage or enacted/returned forms of passage.
 - Whether Coupling inherits Connection ancestrally through Carrying and Resolved Asymmetry rather than immediately.
 - Whether the Coupling family should begin at Coupling rather than Connection.
 - Whether Carry and Trace belong to a Connection-passage family while Place belongs more directly to Relation.
@@ -318,8 +334,9 @@ Must recover:
 Decision:
 
 - Open.
-- Current recovery does not yet justify accepting Connection -> Coupling family as a simple direct inheritance.
-- Current pressure suggests a split: Connection -> Carry/Trace as passage, Coupling -> Presence/Pair/Bearing Relation as mutual availability.
+- Current recovery further weakens Connection -> Coupling as simple direct inheritance.
+- Current pressure supports Connection -> Carry/Trace as passage, Carrying -> enacted passage, Recarry -> returned/altered passage, and Coupling -> mutual availability.
+- Determination depth may be present here, but as continuing-path depth rather than terminal closure. Hold this as pressure, not methodology.
 
 ---
 
