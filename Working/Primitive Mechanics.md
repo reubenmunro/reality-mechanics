@@ -48,12 +48,31 @@ Recover the mechanic that survives trace.
 
 If the mechanic cannot be recovered through later terms, the proposed mechanic yields.
 
+## Nearest sufficient generation
+
+Generation should always be read at the shortest successful distance.
+
+Generation belongs to the nearest ancestor that completely accounts for a mechanic.
+
+A longer ancestor may still be true as inheritance, but it should not be credited as the generator if a nearer condition fully explains the mechanic.
+
+Recovery test:
+
+> Can this generative edge be shortened without losing explanatory power?
+
+If yes, generation has not yet been recovered.
+
+If no, the current edge may be the nearest sufficient generation.
+
+This rule protects depth without making every deep ancestor a direct generator.
+
 ## Recovery template
 
 For each primitive:
 
 - Current read
 - Mechanic
+- Nearest sufficient generation
 - Reference-frame reads
 - Appears through
 - Observed reads
@@ -82,6 +101,11 @@ Mechanic:
 - Open.
 - Current pressure read: Relation may generate placeability or locatable answerability first. The Carrier chain then separates into Place as direct relation-entry, Hold as resolved supportability, Connection as passage, Carry/Trace as directional passage, and Read as meaningful uptake of trace.
 - Relation may not generate the whole Carrier family directly; it may remain ancestrally present wherever an operation becomes locatable, answerable, or readable within relation.
+
+Nearest sufficient generation:
+
+- Relation -> Place is the nearest successful edge currently recovered.
+- Relation -> Carry, Trace, Carrying, Recarry, or Read is too long if Connection, Hold, or Trace can fully account for the local mechanic.
 
 Reference-frame reads:
 
@@ -156,6 +180,12 @@ Mechanic:
 - Current pressure read: Boundary generates localisation of distinction. It does not yet generate bearing by itself; it locates the edge through which later availability, strain, bearing, and resolution become readable.
 - The chain Boundary -> Availability -> Strain -> Bearing -> Resolution appears as determination depth: located distinction becomes presentable, pressured, sustained, then determined.
 
+Nearest sufficient generation:
+
+- Boundary -> Availability is the nearest successful edge currently recovered.
+- Boundary -> Bearing is too long if Availability -> Strain -> Bearing fully accounts for the bearing mechanic.
+- Boundary -> Resolution is too long if Bearing plus Clearance accounts for local determination.
+
 Reference-frame reads:
 
 - In music, a bar line, fret, key, or interval boundary locates difference without producing the later phrase by itself.
@@ -222,6 +252,12 @@ Mechanic:
 - Current pressure read: Availability generates presentability for a located distinction. It does not generate participation directly; it makes later participation possible by allowing located distinction to enter strain, holding, allowance, resolution, or carrying.
 - Presence appears to be a second-order localising of availability after Coupling: coupled relation locally available to read.
 - Participation appears to be active entry of a present bearing relation, not availability alone.
+
+Nearest sufficient generation:
+
+- Availability -> Strain is the nearest successful direct edge currently recovered in First Order.
+- Availability -> Participation is too long if Presence plus Bearing Relation plus Carrying fully accounts for the participation mechanic.
+- Availability may remain ancestral through Presence where local availability is still recognisable.
 
 Reference-frame reads:
 
@@ -297,6 +333,13 @@ Mechanic:
 - Carrying may be the second-order enactment of Connection's passage mechanic.
 - Recarry may be passage re-entered after contact and alteration, with trace and compatibility preserving continuity through changed path.
 - Coupling may be a later second-order mechanic where carried resolved conditions become mutually available while remaining distinct.
+
+Nearest sufficient generation:
+
+- Connection -> Carry / Trace is the nearest successful edge currently recovered.
+- Connection -> Carrying is too long if Hold + Carry fully account for enacted forward passage.
+- Connection -> Recarry is too long if Carrying + Trace + Contact + Groundedness + Release + Compatibility fully account for returned altered carrying.
+- Connection -> Coupling is too long if Resolved Asymmetry + Carrying account for mutual availability.
 
 Reference-frame reads:
 
