@@ -44,40 +44,53 @@ For each primitive:
 
 # Relation
 
-Status: open recovery
+Status: active recovery
 
 Current read:
 
-- Open.
+- Relation remains primitive inside the Atlas.
+- No prior Atlas term produces it.
+- Ratio belongs to reading order as relation made readable, not as the source of Relation.
+- Relation carries both direct first-order terms and later practice terms; not every carry is evidence of one inheritance family.
 
 Mechanic:
 
-- Not yet recovered.
+- Open.
+- Current pressure read: Relation may generate availability for held relation to become placeable, carryable, traceable, readable, and structurally answerable without any downstream term replacing Relation as primitive.
 
 Appears through:
 
+- Place
 - Hold
 - Carry
 - Trace
 - Read
-- Place
 
 Observed reads:
 
-- Hold and Carry show dependency without sequence.
-- Carry and Trace read forward and backward availability through held connection.
+- Relation directly carries Place.
+- Place is held by Relation and places locatable entry into relation.
+- Carry and Trace are a paired read of held Connection: Carry is forward availability; Trace is backward availability.
+- Carry and Trace inherit Relation only through held Connection and Hold, not as direct carries from Relation.
+- Hold and Carry show dependency without sequence: holding remains present while carrying proceeds.
+- Read depends downstream of Trace as recovery of what the held path makes readable.
 
 Pressure:
 
+- The proposed Carrier family mixes direct relation-carries with terms mediated by Connection and Hold.
 - Carrier terms may be note-grammar operators as well as inherited mechanics.
+- The D1 read may lag behind the latest GitHub corrections; generated reads must be checked against repository source before prose changes.
 
 Must recover:
 
+- Whether Relation generates the whole Carrier family directly, or whether Relation first generates placeability while Connection generates carry/trace through held relation.
 - What from Relation remains recognisable wherever relation becomes holdable, movable, retraceable, readable, or placeable.
 
 Decision:
 
 - Open.
+- Current recovery does not yet justify accepting Relation → Carrier family as a completed inheritance.
+- The next test is Connection, because Carry and Trace appear to inherit Relation through held Connection rather than directly.
 
 ---
 
@@ -184,10 +197,12 @@ Observed reads:
 Pressure:
 
 - Nesting may inherit Connection directly, or it may be Coupling made recursively available.
+- Carry and Trace may indicate that Connection generates the forward/backward availability of held relation, not Relation alone.
 
 Must recover:
 
 - What from Connection remains recognisable where relation holds together, couples, recurs, or nests across orders.
+- Whether Connection also generates the Carrier passage mechanic before or alongside Coupling.
 
 Decision:
 
