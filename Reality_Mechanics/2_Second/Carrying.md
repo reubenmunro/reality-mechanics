@@ -78,7 +78,7 @@ status: stable
 ---
 # Carrying
 
-Carrying is not yet [[Retracing]]. [[Carry]] is the forward passage made available where relation is held. Carrying is movement through that passage. What carries may be resolved, strained, changing, or still being formed; [[Resolution]] can shape carrying without being a universal prerequisite for it.
+[[Carry]] is the forward passage made available where relation is held. Carrying is movement through that passage — not yet [[Retracing]], which follows the same connection backward. What carries may be resolved, strained, changing, or still being formed; [[Resolution]] can shape carrying without being a universal prerequisite for it.
 
 Carrying does not create a separate relation from trace. The same connection that carries forward offers [[Trace]] backward. [[Retracing]] is a participant following that trace.
 
