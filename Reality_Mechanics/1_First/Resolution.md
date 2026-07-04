@@ -9,15 +9,12 @@ needs:
 - "[[Clearance]]"
 conditions:
   places: bearing determined at the current scope of evaluation — held strain settling into a readable condition without terminating relation
-  holds: '[[Bearing]] and [[Clearance]] — strain must be held, and relation must remain
-    held apart enough for change across the difference to become readable, before
-    it can settle into a determined condition'
+  holds: '[[Bearing]] and [[Clearance]] — strain must be held, and relation must remain held apart enough for change across the difference to become readable as a determined condition'
   pairs: "No lateral pair is required at this placement. Resolution can shape what is carried without being the source of every carrying."
   traces:
   - '[[Bearing]]'
   - "[[Clearance]]"
-  nests: as the first-order crossing support into Second Order — closes a condition
-    at one scope without terminating wider relation
+  nests: as the first-order crossing support into Second Order — closes a condition at one scope without terminating wider relation
   reads: where bearing can be read as determined — where held contrast has settled into a readable outcome at the current scope without ending wider relation
   carries:
   - '[[Hold]]'
@@ -53,7 +50,7 @@ Resolution places bearing determined at the current scope of evaluation — held
 
 ## Holds
 
-Resolution is held by [[Bearing]] and [[Clearance]]. Strain must be held, and relation must remain apart enough for change across the difference to become readable.
+Resolution is held by [[Bearing]] and [[Clearance]]. Strain must be held, and relation must remain apart enough for change across the difference to become readable as a determined condition.
 
 ## Pairs
 
@@ -72,11 +69,9 @@ Resolution nests as the first-order crossing support into Second Order. It close
 
 Resolution becomes recognisable where bearing can be read as determined: held contrast settled into a readable outcome at the current scope.
 
-Resolution is not simply solving. It is the determination of held difference. Without clearance there is no readable between; without the readable between, there is no interval, separation, or strain across which resolution can occur.
+Resolution determines held difference at a current scope; solving is one local form this can take. Without clearance there is no readable between; without the readable between, there is no interval, separation, or strain across which resolution can occur.
 
 ## Carries
-
-
 
 - [[Hold]]
 - [[Failure]]
