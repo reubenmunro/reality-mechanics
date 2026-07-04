@@ -40,7 +40,7 @@ Closure is held by [[Boundary]] and [[Resolution]]. A read must be bounded and d
 
 ## Pairs
 
-Asymmetry carries downward. Closure is a singular condition — the bounding of resolution at a [[Scope]]. There is no lateral contrast at the closure level. The asymmetry is expressed in what closure becomes: [[Closure Scope]].
+Asymmetry carries downward. Closure is a singular condition — the bounding of resolution at a [[Scope]]. There is no lateral contrast at the closure level. The asymmetry is expressed in [[Closure Scope]]: closure does not finish before closure scope begins; closure scope is closure remaining bounded while its range becomes locatable.
 
 ## Traces
 
