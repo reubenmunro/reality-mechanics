@@ -42,7 +42,7 @@ Strain is held by [[Availability]]. Distinction must be present enough to enter 
 
 ## Pairs
 
-Asymmetry carries downward. Strain is a singular condition at its juncture — the press that makes bearing necessary. There is no other mode of strain required to locate strain. The structural asymmetry is fully expressed by what strain becomes: [[Bearing]].
+Asymmetry carries downward. Strain is a singular condition at its juncture — the press that makes bearing necessary. There is no other mode of strain required to locate strain. The structural asymmetry is fully expressed in [[Bearing]]: strain does not finish before bearing begins; bearing is strain remaining pressing while it is held.
 
 ## Traces
 
@@ -58,7 +58,7 @@ Strain becomes recognisable where available distinction can be read as under con
 
 **Structural Role.**
 
-Strain is a first-order root condition. It does not gate passage by itself; it names the pressure through which available distinction can become held as bearing.
+Strain is a first-order root condition. It does not gate passage by itself; it names the pressure that remains present while bearing holds it.
 
 ## Carries
 
