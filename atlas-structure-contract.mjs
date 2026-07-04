@@ -14,7 +14,6 @@ export const STRUCTURE_FIELDS = Object.freeze([
   "entry_order",
   "entry_type",
   "status",
-  "garden_status",
   "grounded",
   "structure",
   "content_hash",

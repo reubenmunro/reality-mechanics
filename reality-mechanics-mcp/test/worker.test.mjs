@@ -11,7 +11,6 @@ const rows = [
     source_path: "Reality_Mechanics/Atlas.md",
     public_url: "https://realitymechanics.nz/field#practice.atlas",
     status: "stable",
-    garden_status: "rooted",
     grounded: 1,
     entry_order: "practice",
     entry_type: "practice",
@@ -32,7 +31,6 @@ const rows = [
     source_path: "Reality_Mechanics/AI_PARTICIPATION.md",
     public_url: "https://realitymechanics.nz/field#practice.ai-participation",
     status: "stable",
-    garden_status: "rooted",
     grounded: 1,
     entry_order: "practice",
     entry_type: "practice",
@@ -53,7 +51,6 @@ const rows = [
     source_path: "Reality_Mechanics/4_Practice/Atlas Note Standard.md",
     public_url: "https://realitymechanics.nz/field#practice.atlas-note-standard",
     status: "stable",
-    garden_status: "rooted",
     grounded: 1,
     entry_order: "practice",
     entry_type: "practice",
@@ -74,7 +71,6 @@ const rows = [
     source_path: "Reality_Mechanics/4_Practice/Ungrounded.md",
     public_url: "https://realitymechanics.nz/field#practice.ungrounded",
     status: "stable",
-    garden_status: "planted",
     grounded: 0,
     entry_order: "practice",
     entry_type: "practice",
@@ -98,9 +94,6 @@ function makeDb() {
         params: [],
         bind(...params) { this.params = params; return this; },
         async all() {
-          if (/GROUP BY garden_status/.test(sql)) {
-            return { results: [{ garden_status: "rooted", n: rows.length }] };
-          }
           if (/WHERE id IN/.test(sql)) {
             const ids = new Set(this.params);
             return { results: rows.filter((row) => ids.has(row.id)) };

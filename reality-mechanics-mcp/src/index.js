@@ -140,16 +140,11 @@ async function getUpstreamIds(env, startId, maxDepth = 3) {
 }
 
 async function manifest(env) {
-  const counts = await dbAll(env,
-    "SELECT garden_status, COUNT(*) as n FROM entries GROUP BY garden_status");
   const total = await dbFirst(env, "SELECT COUNT(*) as n FROM entries");
-  const stats = {};
-  counts.forEach(r => { stats[r.garden_status || "unknown"] = r.n; });
   return {
     atlasVersion: "d1-live",
     note: "Atlas reads come from generated D1. GitHub markdown/frontmatter is the editable source.",
     entryCount: total?.n || 0,
-    maturityStats: stats,
   };
 }
 
@@ -161,7 +156,6 @@ function sessionEntry(row) {
     title: entry.title,
     publicUrl: entry.public_url,
     status: entry.status,
-    gardenStatus: entry.garden_status,
     grounded: entry.grounded,
     order: entry.entry_order,
     type: entry.entry_type,
@@ -282,7 +276,7 @@ const TOOLS = [
   { name: "search_atlas",
     description: "Find entry points into the dependency-ordered Atlas by text and metadata. Each result is a place to begin tracing, not a final answer — follow its relations with get_entry/get_related.",
     inputSchema: { type: "object", additionalProperties: false, required: ["query"], properties: {
-      query: { type: "string" }, order: strOrArr, garden_status: strOrArr,
+      query: { type: "string" }, order: strOrArr,
       grounded: { type: "boolean" }, limit: { type: "integer", minimum: 1, maximum: SEARCH_MAX } } } },
 
   { name: "get_entry",
@@ -313,7 +307,7 @@ const TOOLS = [
   { name: "list_entries",
     description: "List entries by metadata filters. Supports pagination via offset.",
     inputSchema: { type: "object", additionalProperties: false, properties: {
-      order: strOrArr, garden_status: strOrArr, grounded: { type: "boolean" },
+      order: strOrArr, grounded: { type: "boolean" },
       limit: { type: "integer", minimum: 1, maximum: LIST_MAX },
       offset: { type: "integer", minimum: 0 } } } },
 
@@ -424,11 +418,6 @@ async function callTool(name, args, env) {
       clauses.push(`e.entry_order IN (${orders.map(() => "?").join(",")})`);
       params.push(...orders);
     }
-    if (args.garden_status) {
-      const gs = Array.isArray(args.garden_status) ? args.garden_status : [args.garden_status];
-      clauses.push(`e.garden_status IN (${gs.map(() => "?").join(",")})`);
-      params.push(...gs);
-    }
     if (args.grounded !== undefined) {
       clauses.push("e.grounded = ?");
       params.push(args.grounded ? 1 : 0);
@@ -438,7 +427,7 @@ async function callTool(name, args, env) {
     params.push(limit);
 
     const rows = await dbAll(env,
-      `SELECT e.id, e.title, e.excerpt, e.status, e.garden_status, e.grounded,
+      `SELECT e.id, e.title, e.excerpt, e.status, e.grounded,
               e.entry_order, e.entry_type, e.source_path, e.public_url, e.updated, e.content_hash
        FROM entries e ${where} LIMIT ?`, params);
 
@@ -446,7 +435,7 @@ async function callTool(name, args, env) {
       query, count: rows.length,
       results: rows.map(r => ({
         id: r.id, title: r.title, excerpt: r.excerpt,
-        status: r.status, gardenStatus: r.garden_status, grounded: r.grounded === 1,
+        status: r.status, grounded: r.grounded === 1,
         order: r.entry_order, type: r.entry_type,
         sourcePath: r.source_path, publicUrl: r.public_url,
         updated: r.updated, contentHash: r.content_hash,
@@ -497,7 +486,7 @@ async function callTool(name, args, env) {
       id: e.id, title: e.title, publicUrl: e.public_url,
       sourcePath: e.source_path,
       source: githubSourceLinks(e.source_path),
-      status: e.status, gardenStatus: e.garden_status, grounded: e.grounded,
+      status: e.status, grounded: e.grounded,
       order: e.entry_order, type: e.entry_type,
       structure: resolvedStructure,
       layers: LAYER_CONTRACT.layers,
@@ -646,7 +635,7 @@ async function callTool(name, args, env) {
     if (!query) return { error: "title is required" };
 
     const rows = await dbAll(env,
-      "SELECT id, title, entry_order, entry_type, status, garden_status, source_path, public_url, content_hash FROM entries WHERE title = ? COLLATE NOCASE",
+      "SELECT id, title, entry_order, entry_type, status, source_path, public_url, content_hash FROM entries WHERE title = ? COLLATE NOCASE",
       [query]);
 
     if (!rows.length) {
@@ -661,7 +650,7 @@ async function callTool(name, args, env) {
       query, count: rows.length, collision: rows.length > 1,
       entries: rows.map(r => ({
         id: r.id, title: r.title, order: r.entry_order, type: r.entry_type,
-        status: r.status, gardenStatus: r.garden_status,
+        status: r.status,
         sourcePath: r.source_path, publicUrl: r.public_url, contentHash: r.content_hash,
       })),
     };
@@ -679,11 +668,6 @@ async function callTool(name, args, env) {
       clauses.push(`entry_order IN (${orders.map(() => "?").join(",")})`);
       params.push(...orders);
     }
-    if (args.garden_status) {
-      const gs = Array.isArray(args.garden_status) ? args.garden_status : [args.garden_status];
-      clauses.push(`garden_status IN (${gs.map(() => "?").join(",")})`);
-      params.push(...gs);
-    }
     if (args.grounded !== undefined) {
       clauses.push("grounded = ?");
       params.push(args.grounded ? 1 : 0);
@@ -692,7 +676,7 @@ async function callTool(name, args, env) {
     const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
     const countRow = await dbFirst(env, `SELECT COUNT(*) as n FROM entries ${where}`, params);
     const rows = await dbAll(env,
-      `SELECT id, title, status, garden_status, grounded, entry_order, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
+      `SELECT id, title, status, grounded, entry_order, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
       [...params, limit, offset]);
 
     return {
@@ -700,7 +684,7 @@ async function callTool(name, args, env) {
       hasMore: offset + rows.length < (countRow?.n || 0),
       entries: rows.map(r => ({
         id: r.id, title: r.title, status: r.status,
-        gardenStatus: r.garden_status, grounded: r.grounded === 1,
+        grounded: r.grounded === 1,
         order: r.entry_order, publicUrl: r.public_url,
         sourcePath: r.source_path, updated: r.updated,
       })),
@@ -712,11 +696,11 @@ async function callTool(name, args, env) {
     const since = String(args.since || "");
     const limit = Math.min(Math.max(parseInt(args.limit) || LIST_DEFAULT, 1), LIST_MAX);
     const rows = await dbAll(env,
-      "SELECT id, title, updated, public_url, garden_status, grounded FROM entries WHERE updated > ? ORDER BY updated DESC LIMIT ?",
+      "SELECT id, title, updated, public_url, grounded FROM entries WHERE updated > ? ORDER BY updated DESC LIMIT ?",
       [since, limit]);
     return {
       count: rows.length,
-      entries: rows.map(r => ({ id: r.id, title: r.title, updated: r.updated, publicUrl: r.public_url, gardenStatus: r.garden_status, grounded: r.grounded === 1 })),
+      entries: rows.map(r => ({ id: r.id, title: r.title, updated: r.updated, publicUrl: r.public_url, grounded: r.grounded === 1 })),
     };
   }
 
@@ -734,7 +718,7 @@ async function callTool(name, args, env) {
       [pattern1, pattern2]);
 
     const rows = await dbAll(env,
-      `SELECT id, title, entry_order, entry_type, garden_status, grounded, public_url, source_path, structure
+      `SELECT id, title, entry_order, entry_type, grounded, public_url, source_path, structure
        FROM entries WHERE (source_path LIKE ? OR source_path LIKE ?) ORDER BY entry_order, title LIMIT ?`,
       [pattern1, pattern2, limit]);
 
@@ -753,7 +737,7 @@ async function callTool(name, args, env) {
         const struct = r.structure ? JSON.parse(r.structure) : null;
         return {
           id: r.id, title: r.title, order: r.entry_order, type: r.entry_type,
-          gardenStatus: r.garden_status, grounded: r.grounded === 1,
+          grounded: r.grounded === 1,
           publicUrl: r.public_url, sourcePath: r.source_path,
           upstream: struct ? { holds: (struct.holds || []), traces: (struct.traces || []) } : null,
         };

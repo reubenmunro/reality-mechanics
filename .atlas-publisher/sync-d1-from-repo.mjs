@@ -100,7 +100,6 @@ const rows = rawNotes.map((note) => {
     plain_text: text,
     excerpt: excerpt(text),
     status: frontmatterValue(note.frontmatter, "status") || "stable",
-    garden_status: frontmatterValue(note.frontmatter, "garden_status") || "rooted",
     grounded: frontmatterValue(note.frontmatter, "grounded").toLowerCase() === "true" ? 1 : 0,
     entry_order: frontmatterValue(note.frontmatter, "order") || id.split(".")[0],
     entry_type: frontmatterValue(note.frontmatter, "kind") || "term",
@@ -119,7 +118,7 @@ const rows = rawNotes.map((note) => {
 
 const columns = [
   "id", "title", "slug", "source_path", "public_url", "content", "plain_text", "excerpt",
-  "status", "garden_status", "grounded", "entry_order", "entry_type", "branch", "aliases",
+  "status", "grounded", "entry_order", "entry_type", "branch", "aliases",
   "tags", "related", "structure", "headings", "word_count", "content_hash", "created", "updated",
 ];
 
