@@ -25,7 +25,7 @@ status: stable
 ---
 # Higher Faith
 
-Higher Faith names participation through carrying that has repeatedly resolved through higher retrace. Where invisible bearing names nested organisation carrying participation without requiring explicit retracing, higher faith names the condition through which that carrying is trusted to continue: the dependency path has been retraced enough times that participation can move forward without reconstructing it each time. Faith here is not belief without trace. It is participation carried by what retrace has repeatedly confirmed. Faith is above the current read, not above Relation.
+Higher Faith names participation through carrying that has repeatedly resolved through higher retrace, remaining locatable against the possibility of Source Drift — trust that retrace would not confirm. Where invisible bearing names nested organisation carrying participation without requiring explicit retracing, higher faith names the condition through which that carrying is trusted to continue: the dependency path has been retraced enough times that participation can move forward without reconstructing it each time. Faith here is not belief without trace. It is participation carried by what retrace has repeatedly confirmed. Faith is above the current read, not above Relation.
 
 ## Places
 

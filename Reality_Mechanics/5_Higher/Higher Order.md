@@ -26,7 +26,7 @@ status: working
 ---
 # Higher Order
 
-Higher Order names the register where organised carrying enters, reads, and may alter its own carrying.
+Higher Order names the register where organised carrying enters, reads, and may alter its own carrying, remaining locatable against the Opacity it resolves — Ground enclosed within accumulated structure until retraced through.
 
 In the tree read, Higher Order is whole-tree retrace. It looks back across ground, roots, trunk, branches, terminal boundaries, visible growth, and hidden carrying without collapsing them into one level.
 
