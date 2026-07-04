@@ -93,7 +93,7 @@ Atlas Practice pairs with [[Participant]]. Atlas Practice is the discipline; Par
 
 Atlas Practice nests as the public discipline of placing, checking, retracing, and revising Atlas notes.
 
-[[Atlas Note Standard]]
+[[Common Term Structure]]
 [[Participant]]
 [[Check]]
 [[Atlasing]]

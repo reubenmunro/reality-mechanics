@@ -8,18 +8,18 @@ condition_key: practice.discipline
 needs:
   - "[[Practice]]"
   - "[[Closure Scope]]"
-  - "[[Atlas Note Standard]]"
+  - "[[Common Term Structure]]"
   - "[[Check]]"
 
 conditions:
   places: "practice constrained by a standard, scope, and retraceable correction."
-  holds: "[[Practice]], [[Closure Scope]], [[Atlas Note Standard]], and [[Check]]."
+  holds: "[[Practice]], [[Closure Scope]], [[Common Term Structure]], and [[Check]]."
   pairs: "[[Practice]]. Discipline gives the ordered constraint through which practice remains answerable."
   traces:
     - "[[Practice]]"
     - "[[Restraint]]"
     - "[[Closure Scope]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Check]]"
     - "[[Attend]]"
   nests: "within higher-order or practice conditions."
@@ -42,7 +42,7 @@ Discipline places practice constrained by a standard, scope, and retraceable cor
 
 ## Holds
 
-Discipline is held by [[Practice]], [[Closure Scope]], [[Atlas Note Standard]], and [[Check]].
+Discipline is held by [[Practice]], [[Closure Scope]], [[Common Term Structure]], and [[Check]].
 
 ## Pairs
 
@@ -53,7 +53,7 @@ Discipline pairs with [[Practice]]. Discipline gives the ordered constraint thro
 - [[Practice]]
 - [[Restraint]]
 - [[Closure Scope]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Check]]
 - [[Attend]]
 

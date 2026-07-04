@@ -22,7 +22,7 @@ conditions:
     - "[[Groundedness]]"
     - "[[Relation]]"
     - "[[Theory]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
   nests: "inside Atlas Practice as a checksum over dependency order, carry/trace reciprocity, grounding authority, and source drift."
   reads: "where repeated Atlas constraints can be reviewed as stable enough to protect structure while still remaining answerable to their cited source notes."
   carries: "No direct downstream term is required. Invariants protects repeated structural constraints rather than founding a new branch."
@@ -43,7 +43,7 @@ Statements demonstrated repeatedly across the grounded Atlas. Extracted, not inv
 - One connection offers two directions: carry forward, trace backward. They are not two relations. ([[Carry]], [[Trace]])
 - Carrying and retracing enter the same connection from different directions; they do not create separate relations. ([[Carrying]], [[Retracing]])
 - Where there is no connection, no carry or trace is claimed. Absence of connection is not by itself failure, drift, or disorder. ([[Connection]])
-- A carry that cannot be retraced is a label, not a condition. If A carries B, B traces A. ([[Atlas Note Standard]])
+- A carry that cannot be retraced is a label, not a condition. If A carries B, B traces A. ([[Common Term Structure]])
 - The deeper warrant for reciprocity is nesting location. A carry without a backtrace leaves the carried term's position in the nested order unresolved. Running carry and trace simultaneously through the same passage is how a participant locates a pattern's nesting position — and how unclear nesting is resolved. ([[Carry-Trace Test]], [[Posture Read]])
 - Dependency is antisymmetric: a note never traces what it carries.
 - Membership is not dependency. It lives in [[Nesting|Nests]], not in carries.

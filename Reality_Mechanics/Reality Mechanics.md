@@ -22,7 +22,7 @@ conditions:
   reads: "where a term can be placed by structural role, direct trace, readable condition, available openings, and retraceable correction without losing dependency order."
   carries:
     - "[[Atlas]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Participant]]"
     - "[[Retrace Practice]]"
 
@@ -78,6 +78,6 @@ It also becomes recognisable where a domain read can be translated outward into 
 ## Carries
 
 - [[Atlas]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Participant]]
 - [[Retrace Practice]]

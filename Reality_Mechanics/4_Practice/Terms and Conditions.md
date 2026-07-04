@@ -9,17 +9,17 @@ needs:
   - "[[Term]]"
   - "[[Condition]]"
   - "[[Groundedness]]"
-  - "[[Atlas Note Standard]]"
+  - "[[Common Term Structure]]"
 
 conditions:
   places: "the structural agreement between named terms and the conditions that allow those terms to serve inside the Atlas."
-  holds: "[[Term]], [[Condition]], [[Groundedness]], and [[Atlas Note Standard]]."
+  holds: "[[Term]], [[Condition]], [[Groundedness]], and [[Common Term Structure]]."
   pairs: "[[Terms of Service]] — both reverse the ordinary acceptance order: participation must remain answerable to the terms that make carrying possible. Terms and Conditions holds that reversal inward, where terms serve inside the Atlas through traceable conditions; Terms of Service holds it outward, where human service answers to the earth carrying it. Each requires the other to be locatable: the inward standard without the outward boundary is self-enclosed; the outward boundary without the inward standard has no terms to answer with."
   traces:
     - "[[Term]]"
     - "[[Condition]]"
     - "[[Groundedness]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
   nests: "at the root of the Atlas as a public-facing and practice-facing bridge. It can sit beside [[Reality Mechanics]] and [[Atlas]] because it names the standard by which the mapped body keeps its terms serviceable."
   reads: "where a named word cannot be treated as valid merely because it has been named. It must show where it places, what holds it, what it pairs with, where it traces, where it nests, how it reads, and what it carries."
   carries:
@@ -42,7 +42,7 @@ Terms and Conditions places the structural agreement between named terms and the
 
 ## Holds
 
-Terms and Conditions is held by [[Term]], [[Condition]], [[Groundedness]], and [[Atlas Note Standard]].
+Terms and Conditions is held by [[Term]], [[Condition]], [[Groundedness]], and [[Common Term Structure]].
 
 A term without traceable conditions drifts back toward an ungrounded word. A condition without a placed term has nothing definite to test, carry, or correct.
 
@@ -55,7 +55,7 @@ Terms and Conditions pairs with [[Terms of Service]]. Terms and Conditions holds
 - [[Term]]
 - [[Condition]]
 - [[Groundedness]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 
 ## Nests
 

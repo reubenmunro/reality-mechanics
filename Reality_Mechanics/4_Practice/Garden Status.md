@@ -22,7 +22,7 @@ conditions:
   nests: "inside Atlas Garden as the care vocabulary for growths that are placed, rooted, tending, shading, grafted, pruned, composting, dormant, or invasive."
   reads: "where a term or branch is inside the Atlas and needs its care state named so the Atlas can tend uncertainty through order."
   carries:
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
 
 publish: true
 status: working
@@ -92,4 +92,4 @@ What does it need next?
 
 ## Carries
 
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]

@@ -8,7 +8,7 @@ condition_key: practice.ai-participation
 needs:
   - "[[Atlas]]"
   - "[[Participant]]"
-  - "[[Atlas Note Standard]]"
+  - "[[Common Term Structure]]"
   - "[[Groundedness]]"
   - "[[Ark Run]]"
   - "[[Atlas Oracle]]"
@@ -16,12 +16,12 @@ needs:
 
 conditions:
   places: "the participation rule for AI working inside the Atlas without inventing theory, grounding notes, or collapsing dependency order."
-  holds: "[[Atlas]], [[Participant]], [[Atlas Note Standard]], [[Groundedness]], [[Ark Run]], [[Atlas Oracle]], and [[Oracle Carrying Conditions]]."
+  holds: "[[Atlas]], [[Participant]], [[Common Term Structure]], [[Groundedness]], [[Ark Run]], [[Atlas Oracle]], and [[Oracle Carrying Conditions]]."
   pairs: "[[Participant]]. AI Participation names a constrained participant mode; Participant names the broader condition of taking part."
   traces:
     - "[[Atlas]]"
     - "[[Participant]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Groundedness]]"
     - "[[Check]]"
     - "[[Step]]"
@@ -43,7 +43,7 @@ garden_status: planted
 ---
 # AI Participation
 
-How an AI participates inside the Atlas without inventing theory. The Atlas is a reasoning system, so AI participates by tracing structure rather than answering from definitions. These rules distil the Atlas's own practice layer — [[Check]], [[Step]], [[Groundedness]], [[Source Drift]], [[Ark Run]], and the [[Atlas Note Standard]]. They constrain AI behaviour; they do not add to Reality Mechanics.
+How an AI participates inside the Atlas without inventing theory. The Atlas is a reasoning system, so AI participates by tracing structure rather than answering from definitions. These rules distil the Atlas's own practice layer — [[Check]], [[Step]], [[Groundedness]], [[Source Drift]], [[Ark Run]], and the [[Common Term Structure]]. They constrain AI behaviour; they do not add to Reality Mechanics.
 
 For AI systems, the primary doorway is the Reality Mechanics MCP. Public pages may be read by people, and the public AI export may be inspected, but Atlas-assisted AI should use the MCP protocol so search, entry reading, relation traversal, and the AI entry protocol remain available as tools rather than background memory.
 

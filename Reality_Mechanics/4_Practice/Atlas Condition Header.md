@@ -19,7 +19,7 @@ conditions:
     - "[[Term]]"
     - "[[Condition]]"
     - "[[Terms and Conditions]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
   nests: "within Atlas practice, note formatting, AI-assisted reading, and grounding workflow"
   reads: "the top of a note carries the gathered condition summary while the body carries the full human-facing read"
   carries: []
@@ -58,7 +58,7 @@ No lateral pair is required at this placement. Atlas Condition Header is a note-
 - [[Term]]
 - [[Condition]]
 - [[Terms and Conditions]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 
 ## Nests
 

@@ -130,4 +130,4 @@ An order changes where carrying takes on a new structural role. A crossing is th
 - Carry forward: move only what can be retraced.
 - Preserve dependency order: never make a downstream term primitive in place of what holds it.
 
-See [[Reality Mechanics]] (the discipline), [[Theory]] (the working postulate), [[Atlas Note Standard]] (the note grammar), [[AI Participation]] (how AI participates), and [[Invariants]] (what does not change).
+See [[Reality Mechanics]] (the discipline), [[Theory]] (the working postulate), [[Common Term Structure]] (the authoring standard), [[AI Participation]] (how AI participates), and [[Invariants]] (what does not change).

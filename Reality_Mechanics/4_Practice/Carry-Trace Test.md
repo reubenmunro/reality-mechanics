@@ -6,17 +6,17 @@ ai_role: practice
 condition_key: practice.carry-trace-test
 
 needs:
-  - "[[Atlas Note Standard]]"
+  - "[[Common Term Structure]]"
   - "[[Dependency Order]]"
   - "[[Trace]]"
   - "[[Retracing]]"
 
 conditions:
   places: "the Atlas practice test that distinguishes confirmed downstream carrying from projected openings by requiring a recoverable return trace"
-  holds: "[[Atlas Note Standard]], [[Dependency Order]], [[Trace]], and [[Retracing]] — term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded"
+  holds: "[[Common Term Structure]], [[Dependency Order]], [[Trace]], and [[Retracing]] — term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded"
   pairs: "Asymmetry carries downward — Carry-Trace Test checks two directions through one dependency relation; no lateral co-condition is required for it to be locatable"
   traces:
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Dependency Order]]"
     - "[[Trace]]"
     - "[[Retracing]]"
@@ -41,7 +41,7 @@ Carry-Trace Test places the Atlas practice test that distinguishes confirmed dow
 
 ## Holds
 
-Carry-Trace Test is held by [[Atlas Note Standard]], [[Dependency Order]], [[Trace]], and [[Retracing]]. Term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded.
+Carry-Trace Test is held by [[Common Term Structure]], [[Dependency Order]], [[Trace]], and [[Retracing]]. Term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded.
 
 ## Pairs
 
@@ -54,7 +54,7 @@ evidential direction:  A ◀──traces── B
 
 ## Traces
 
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Dependency Order]]
 - [[Trace]]
 - [[Retracing]]

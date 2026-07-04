@@ -7,16 +7,16 @@ condition_key: practice.atlasing
 
 needs:
   - "[[Atlas]]"
-  - "[[Atlas Note Standard]]"
+  - "[[Common Term Structure]]"
   - "[[Reality-Bearing Connection]]"
 
 conditions:
   places: "the act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace."
-  holds: "[[Atlas]], [[Atlas Note Standard]], and [[Reality-Bearing Connection]]."
+  holds: "[[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]]."
   pairs: "Asymmetry carries downward — Atlasing is the terminal practice of placing, revising, and connecting terms in the Atlas; it opens the work without carrying a further structural term"
   traces:
     - "[[Atlas]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Reality-Bearing Connection]]"
     - "[[Check]]"
   nests: "as the ongoing practice of keeping the Atlas placed, grounded, and retraceable."
@@ -39,17 +39,17 @@ Atlasing places the act of placing, revising, or connecting terms inside the Atl
 
 ## Holds
 
-Atlasing is held by [[Atlas]], [[Atlas Note Standard]], and [[Reality-Bearing Connection]].
+Atlasing is held by [[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]].
 
 ## Pairs
 
-Atlasing is vertical. It names the act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace. Atlasing holds [[Atlas]], [[Atlas Note Standard]], and [[Reality-Bearing Connection]] — it is the downstream practice that those conditions make available. It carries no further term. There is no lateral co-present condition that Atlasing requires and that requires Atlasing in return at this order.
+Atlasing is vertical. It names the act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace. Atlasing holds [[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]] — it is the downstream practice that those conditions make available. It carries no further term. There is no lateral co-present condition that Atlasing requires and that requires Atlasing in return at this order.
 
 
 ## Traces
 
 - [[Atlas]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Reality-Bearing Connection]]
 - [[Check]]
 

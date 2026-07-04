@@ -22,7 +22,7 @@ conditions:
   nests: "term notes, root notes, applied reads, practice notes, and higher-order retraces without making them identical."
   reads: "where terms, traces, reads, and corrections are held together by structural role, immediate support, available openings, and retraceable placement."
   carries:
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Atlas Practice]]"
     - "[[Reality-Bearing Connection]]"
     - "[[Theory|The Working Postulate]]"
@@ -91,7 +91,7 @@ Atlas also pairs with [[Theory]]. Atlas preserves dependency-ordered interpretat
 
 Atlas nests term notes, root notes, applied reads, practice notes, and higher-order retraces without making them identical.
 
-[[Atlas Note Standard]]
+[[Common Term Structure]]
 [[Reality-Bearing Connection]]
 [[Order Trace]]
 [[Translation Boundary]]
@@ -117,7 +117,7 @@ In the tree read, Atlas keeps roots, trunk, branches, translation boundaries, pa
 
 ## Carries
 
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Atlas Practice]]
 - [[Reality-Bearing Connection]]
 - [[Theory|The Working Postulate]]

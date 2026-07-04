@@ -17,7 +17,7 @@ conditions:
   pairs: "[[Step]]. Check tests the boundary of a read; Step names the smallest answerable movement from it."
   traces:
     - "[[Terms and Conditions]]"
-    - "[[Atlas Note Standard]]"
+    - "[[Common Term Structure]]"
     - "[[Groundedness]]"
     - "[[Practice]]"
     - "[[Boundary]]"
@@ -54,7 +54,7 @@ Check pairs with [[Step]]. Check tests the boundary of a read; Step names the sm
 ## Traces
 
 - [[Terms and Conditions]]
-- [[Atlas Note Standard]]
+- [[Common Term Structure]]
 - [[Groundedness]]
 - [[Practice]]
 - [[Boundary]]
