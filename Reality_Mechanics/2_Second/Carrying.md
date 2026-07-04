@@ -11,7 +11,7 @@ needs:
 
 conditions:
   places: "held forward availability being enacted."
-  holds: "[[Hold]] and [[Carry]]. Forward passage must be held before it can be enacted as carrying."
+  holds: "[[Hold]] and [[Carry]]. Forward passage remains held while it is enacted as carrying; hold does not finish before carrying begins."
   pairs: "[[Retracing]]. Carrying enacts held forward availability; Retracing follows the backward availability of the same held connection."
   traces:
     - "[[Hold]]"
@@ -90,7 +90,7 @@ Carrying places held forward availability being enacted.
 
 ## Holds
 
-Carrying is held by [[Hold]] and [[Carry]]. Forward passage must be held before it can be enacted.
+Carrying is held by [[Hold]] and [[Carry]]. Forward passage remains held while it is enacted as carrying.
 
 ## Pairs
 

@@ -12,7 +12,7 @@ needs:
 
 conditions:
   places: "contact maintained strongly enough for carrying, resistance, pressure, grip, traction, or effect to pass between conditions."
-  holds: "[[Contact]], [[Coupling]], and [[Presence]]. Contact must be locally available and held in relation before it can carry effect."
+  holds: "[[Contact]], [[Coupling]], and [[Presence]]. Contact must remain locally available and held in relation while it carries effect."
   pairs: "[[Interposed Carrier]] — coupled contact names contact carrying effect; interposed carrier names a condition entering between contact and coupling, changing or interrupting what can pass."
   traces:
     - "[[Contact]]"
@@ -44,7 +44,7 @@ Coupled Contact places contact maintained strongly enough for carrying, resistan
 
 ## Holds
 
-Coupled Contact is held by [[Contact]], [[Coupling]], and [[Presence]]. Contact must be locally available and held in relation before it can carry effect.
+Coupled Contact is held by [[Contact]], [[Coupling]], and [[Presence]]. Contact must remain locally available and held in relation while it carries effect.
 
 ## Pairs
 

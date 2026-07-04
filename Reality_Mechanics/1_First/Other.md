@@ -11,7 +11,7 @@ needs:
 
 conditions:
   places: "the first readable distinction from a held reference — what lets One : Other express active Seed : Ground without becoming the generative condition itself."
-  holds: "[[One]] and [[Seed]]. A reference must be held, and the source-side availability must remain acknowledged, before Other can become readable without becoming mere negation."
+  holds: "[[One]] and [[Seed]]. A reference must remain held, and the source-side availability must remain acknowledged, while Other is read as distinct rather than mere negation."
   pairs: "[[One]] — Other establishes distinction from reference; One establishes the reference from which distinction can be read."
   traces:
     - "[[One]]"
@@ -40,7 +40,7 @@ Other places the first readable distinction from a held reference: what lets One
 
 ## Holds
 
-Other is held by [[One]] and [[Seed]]. A reference must be held, and the source-side availability must remain acknowledged, before Other can become readable without becoming mere negation.
+Other is held by [[One]] and [[Seed]]. A reference must remain held, and the source-side availability must remain acknowledged, while Other is read as distinct rather than mere negation.
 
 ## Pairs
 

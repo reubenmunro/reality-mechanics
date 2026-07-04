@@ -14,7 +14,7 @@ needs:
 
 conditions:
   places: "the crossing where held first-order carry is entered and enacted as second-order carrying."
-  holds: "[[First Order]], [[Hold]], [[Connection]], [[Carry]], and [[Place]]. First-order passage must be held and directionally available before it can be enacted as carrying. Place makes that passage enterable and checkable."
+  holds: "[[First Order]], [[Hold]], [[Connection]], [[Carry]], and [[Place]]. First-order passage remains held and directionally available while it is enacted as carrying; hold does not finish before carrying begins. Place makes that passage enterable and checkable."
   pairs: "Asymmetry carries downward — marks the transition into [[Carrying]] and [[Second Order]]"
   traces:
     - "[[First Order]]"

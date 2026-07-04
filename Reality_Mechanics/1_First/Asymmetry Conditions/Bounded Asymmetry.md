@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "the hinge where uneven relation becomes local enough to be distinguished — asymmetry held locally enough that a boundary can form"
-  holds: "[[Asymmetry]] — unevenness must already be readable before it can be locally held"
+  holds: "[[Asymmetry]] — unevenness must remain readable while it is held locally"
   pairs: "Asymmetry carries downward — into [[Distinction]] and [[Strained Asymmetry]]. Distinction carries the located/readable branch; Strained Asymmetry carries the bearing branch."
   traces:
     - "[[Asymmetry]]"
@@ -36,7 +36,7 @@ Bounded Asymmetry places the hinge where uneven relation becomes local enough to
 
 ## Holds
 
-Bounded Asymmetry is held by [[Asymmetry]]. Unevenness must already be readable before it can be locally held.
+Bounded Asymmetry is held by [[Asymmetry]]. Unevenness must remain readable while it is held locally.
 
 ## Pairs
 

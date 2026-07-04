@@ -11,7 +11,7 @@ needs:
 
 conditions:
   places: "a read becoming identifiable as this again."
-  holds: "[[Readability]] and [[Cognitive Participation]]. A read must be available and relation must participate in that readability before the read can become identifiable as this."
+  holds: "[[Readability]] and [[Cognitive Participation]]. A read must remain available, and relation must remain participating in that readability, while the read is held as identifiable as this."
   pairs: "[[Retrace Read|Retrace]]. Recognition reads this again; Retrace follows back through what made the read available."
   traces:
     - "[[Readability]]"
@@ -42,7 +42,7 @@ Recognition Read places a read becoming identifiable as this again.
 
 ## Holds
 
-Recognition Read is held by [[Readability]] and [[Cognitive Participation]]. A read must be available and relation must participate in that readability before the read can become identifiable as this.
+Recognition Read is held by [[Readability]] and [[Cognitive Participation]]. A read must remain available, and relation must remain participating in that readability, while the read is held as identifiable as this.
 
 ## Pairs
 

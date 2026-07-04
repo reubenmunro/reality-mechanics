@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "coupled relation locally available to read."
-  holds: "[[Coupling]]. Coupled relation must hold before it can become locally available within scope."
+  holds: "[[Coupling]] — coupled relation remains held while it is locally available within scope; coupling does not finish before presence begins"
   pairs: "Asymmetry carries downward — into [[Bearing Relation]]"
   traces:
     - "[[Coupling]]"
@@ -38,7 +38,7 @@ Presence places coupled relation locally available to read.
 
 ## Holds
 
-Presence is held by [[Coupling]]. Coupled relation must hold before it can become locally available within scope.
+Presence is held by [[Coupling]]. Coupled relation remains held while it is locally available within scope; coupling does not finish before presence begins.
 
 ## Pairs
 

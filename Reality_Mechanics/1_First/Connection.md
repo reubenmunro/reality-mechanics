@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "relation holding between distinguishable conditions so that passage is available in more than one direction."
-  holds: "[[Relation]]. Relation must hold before connection within relation can become available."
+  holds: "[[Relation]]. Relation must remain held for connection within relation to be available."
   pairs: "Connection opens into [[Carry]] and [[Trace]] as directional availability within one relation, not two separate relations."
   traces:
     - "[[Relation]]"
@@ -41,7 +41,7 @@ Connection places relation holding between distinguishable conditions so that pa
 
 ## Holds
 
-Connection is held by [[Relation]]. Relation must hold before connection within relation can become available.
+Connection is held by [[Relation]]. Relation must remain held for connection within relation to be available.
 
 ## Pairs
 

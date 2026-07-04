@@ -12,7 +12,7 @@ needs:
 
 conditions:
   places: "coupled relation bearing on coupled relation."
-  holds: "[[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must be locally available and able to bear before active participation can begin."
+  holds: "[[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must remain locally available and able to bear while active participation proceeds."
   pairs: "Asymmetry carries downward — into [[Participation]]"
   traces:
     - "[[Coupling]]"
@@ -38,7 +38,7 @@ Bearing Relation places coupled relation bearing on coupled relation.
 
 ## Holds
 
-Bearing Relation is held by [[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must be locally available and able to bear before active participation can begin.
+Bearing Relation is held by [[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must remain locally available and able to bear while active participation proceeds.
 
 ## Pairs
 

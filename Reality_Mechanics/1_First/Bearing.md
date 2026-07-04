@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "strain held as a readable condition — sustained without collapsing or dissipating"
-  holds: "[[Strain]] — strain must press before it can be held"
+  holds: "[[Strain]] — strain must remain pressing while it is held"
   pairs: "Asymmetry carries downward — into [[Resolution]]"
   traces:
     - "[[Strain]]"
@@ -59,7 +59,7 @@ Bearing places strain held as a readable condition.
 
 ## Holds
 
-Bearing is held by [[Strain]]. Strain must press before it can be held.
+Bearing is held by [[Strain]]. Strain must remain pressing while it is held.
 
 ## Pairs
 

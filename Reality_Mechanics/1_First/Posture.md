@@ -11,7 +11,7 @@ needs:
 
 conditions:
   places: "connection held with orientation — how relation is held toward relation so that order can become constructible."
-  holds: "[[Connection]] and [[Asymmetry]]. Connection must hold as a passage, and asymmetry must give that passage direction, before the holding can become oriented enough for order to begin."
+  holds: "[[Connection]] and [[Asymmetry]]. Connection must remain held as a passage, and asymmetry must continue giving that passage direction, while order proceeds through the oriented holding."
   pairs: "No lateral pair placed yet."
   traces:
     - "[[Connection]]"
@@ -40,7 +40,7 @@ Posture places connection held with orientation: how relation is held toward rel
 
 ## Holds
 
-Posture is held by [[Connection]] and [[Asymmetry]]. Connection must hold as a passage, and asymmetry must give that passage direction, before the holding can become oriented enough for order to begin.
+Posture is held by [[Connection]] and [[Asymmetry]]. Connection must remain held as a passage, and asymmetry must continue giving that passage direction, while order proceeds through the oriented holding.
 
 ## Pairs
 

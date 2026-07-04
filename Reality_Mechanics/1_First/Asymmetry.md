@@ -10,7 +10,7 @@ needs:
 
 conditions:
   places: "the first readable unevenness within Relation — what makes distinction possible before locality or order can be read"
-  holds: "[[Relation]] — relation must hold before unevenness within it can become readable"
+  holds: "[[Relation]] — relation must remain held for unevenness within it to be readable"
   pairs: "[[Clearance]] — asymmetry gives unevenness; clearance keeps relation from collapsing or becoming unrelated"
   traces:
     - "[[Relation]]"
@@ -33,7 +33,7 @@ Asymmetry places the first readable unevenness within [[Relation]].
 
 ## Holds
 
-Asymmetry is held by [[Relation]]. Relation must hold before unevenness within relation can become readable.
+Asymmetry is held by [[Relation]]. Relation must remain held for unevenness within relation to be readable.
 
 ## Pairs
 
