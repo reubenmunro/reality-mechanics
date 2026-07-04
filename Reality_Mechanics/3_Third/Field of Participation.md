@@ -7,14 +7,16 @@ condition_key: third.field-of-participation
 
 needs:
   - "[[Participation]]"
+  - "[[Recurrence]]"
   - "[[Natural Order]]"
 
 conditions:
   places: "a recurring organisation arising through participation."
-  holds: "[[Participation]] and [[Natural Order]]."
+  holds: "[[Participation]], [[Recurrence]], and [[Natural Order]]."
   pairs: "Asymmetry carries downward — into [[Organic Field]] ↔ [[Organised Domain]]"
   traces:
     - "[[Participation]]"
+    - "[[Recurrence]]"
     - "[[Natural Order]]"
     - "[[Second Order Crossing|Threshold (Second → Third)]]"
     - "[[Translation Boundary]]"
@@ -57,7 +59,7 @@ It places the recurring bed in which structural terms can become local without b
 
 ## Holds
 
-Field of Participation is held by [[Participation]] and [[Natural Order]].
+Field of Participation is held by [[Participation]], [[Recurrence]], and [[Natural Order]].
 
 ## Pairs
 
@@ -66,6 +68,7 @@ Asymmetry carries downward. Field of Participation is the recurring organisation
 ## Traces
 
 - [[Participation]]
+- [[Recurrence]]
 - [[Natural Order]]
 - [[Second Order Crossing|Threshold (Second → Third)]]
 
