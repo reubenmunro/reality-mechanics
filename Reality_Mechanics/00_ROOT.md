@@ -29,7 +29,7 @@ status: working
 ---
 # Atlas Root
 
-Reality Mechanics is the discipline of keeping relation traceable as order. The vNext correction distinguishes generative order from reading order: generation occurs through active relation, while the Atlas works by recognising what has become readable and retracing what had to already be true.
+Reality Mechanics is the discipline of keeping relation traceable as order. Generative order and reading order are distinct: generation occurs through active relation, while the Atlas works by recognising what has become readable and retracing what had to already be true.
 
 The working postulate remains:
 
@@ -48,7 +48,7 @@ It is not a taxonomy.
 
 It is a tended surface for reasoning. Terms are handles; order is what they handle. Its purpose is to preserve dependency order so that humans and AI can participate within relation rather than only describe it.
 
-The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, prune where it drifts, and correct what no longer remains answerable.
+The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
 
 ## Root Dependency Order
 
@@ -80,7 +80,7 @@ Generation
 Seed : Ground
 ```
 
-[[Relation]] remains primitive within the Atlas. The vNext insight does not replace Relation with [[One]] : [[Other]]. Instead:
+[[Relation]] remains primitive within the Atlas. This does not replace Relation with [[One]] : [[Other]]. Instead:
 
 - [[Seed]] : [[Ground]] names the generative condition becoming active.
 - [[One]] : [[Other]] names the first readable expression of that condition.

@@ -29,7 +29,6 @@ conditions:
     - "[[Atlasing]]"
     - "[[Translation Invariance]]"
     - "[[Atlas Root]]"
-    - "[[Atlas vNext Root Refactor]]"
     - "[[AI Participation]]"
     - "[[Invariants]]"
 
@@ -44,9 +43,9 @@ An Operating System for Reasoning may become a future-facing evolution of the At
 
 The Atlas is not identical to its written notes. Writing is its present durable medium. Its reasoning may be carried through words, signs, diagrams, arrangements, actions, or thought; the Atlas remains the same mapped body only where dependency placement remains recoverable across those changes of carrier.
 
-The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, prune where it drifts, and correct what no longer remains answerable.
+The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
 
-The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. The vNext correction distinguishes generative order from reading order. [[Seed]] : [[Ground]] names the generative condition becoming active; [[One]] : [[Other]] names the first readable expression of that condition; [[Ratio]] names relation made readable as comparison without collapse. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
+The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. Generative order and reading order are distinct: [[Seed]] : [[Ground]] names the generative condition becoming active; [[One]] : [[Other]] names the first readable expression of that condition; [[Ratio]] names relation made readable as comparison without collapse. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
 
 Its value is in [[Reality-Bearing Connection]]: terms, supports, reads, openings, and retraces connected in a way that can carry reality rather than merely link information.
 
@@ -56,7 +55,7 @@ The Atlas does not make order. It traces reads that enter order, checks whether 
 
 The Atlas is not attempting to describe reality from outside. It exists within reading order. Its purpose is to preserve faithful retraceability while remaining answerable to the generative order it seeks to read. It preserves dependency, ratio, reason, rational proportion, reference frame, and traceability without claiming to stand outside reality.
 
-Current vNext distinction:
+Generative order and reading order:
 
 ```text
 Generative: Seed : Ground → Generation → Growth → Fruit → Seed
@@ -96,7 +95,6 @@ Atlas nests term notes, root notes, applied reads, practice notes, and higher-or
 [[Translation Boundary]]
 [[Translation Invariance]]
 [[Atlasing]]
-[[Atlas vNext Root Refactor]]
 
 ## Reads
 
@@ -112,7 +110,7 @@ The Atlas tests its structure through [[Translation Invariance]]: vary the carri
 
 The Atlas keeps [[Regenerate|regeneration]] available: each term keeps a trace back to what generates it, so accumulated carrying does not have to become [[Source Drift]].
 
-In the tree read, Atlas keeps roots, trunk, branches, translation boundaries, path reads, applied reads, and tending practices distinct enough to be cared for. A branch can be pruned or translated without pretending the trunk has changed. The trunk is not replaced unless the carrying structure itself proves wrongly read. Ground and root conditions are not casually edited; they are retraced.
+In the tree read, Atlas keeps roots, trunk, branches, translation boundaries, path reads, applied reads, and tending practices distinct enough to be cared for. A branch can be relieved or translated without pretending the trunk has changed. The trunk is not replaced unless the carrying structure itself proves wrongly read. Ground and root conditions are not casually edited; they are retraced.
 
 ## Carries
 
@@ -123,6 +121,5 @@ In the tree read, Atlas keeps roots, trunk, branches, translation boundaries, pa
 - [[Atlasing]]
 - [[Translation Invariance]]
 - [[Atlas Root]]
-- [[Atlas vNext Root Refactor]]
 - [[AI Participation]]
 - [[Invariants]]

@@ -35,7 +35,7 @@ Posture Read names a versioned order experiment: a postulate can be read as a po
 
 A posture is not a proof and not a doctrine. It is how relation is held toward relation so that an order can become constructible. In this read, Euclid is useful as an exemplar because his postulates show relation entering a constructible order. Reality Mechanics does not copy geometry; it asks what kind of relational posture lets an order become traceable, comparable, correctable, and re-enterable.
 
-Posture Read is planted rather than rooted. It gives the Atlas a tended place to grow, compare, test, fail, graft, or compost postulate experiments without mistaking the experiment for the root system.
+Posture Read is planted rather than rooted. It gives the Atlas a tended place to grow, compare, test, fail, splice, or decommission postulate experiments without mistaking the experiment for the root system.
 
 The current experimental sequence is:
 

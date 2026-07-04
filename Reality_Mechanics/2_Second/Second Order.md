@@ -59,7 +59,7 @@ Second Order nests carrying, coupling, presence, coupled contact, bearing relati
 
 Second Order becomes recognisable where connection is actively carrying through coupling, presence, bearing relation, closure, readability, and participation.
 
-It is read as trunk rather than branch. When a later field or domain drifts, the branch can often be pruned or regrown while the second-order carrying structure remains stable.
+It is read as trunk rather than branch. When a later field or domain drifts, the branch can often be relieved or regrown while the second-order carrying structure remains stable.
 
 ## Carries
 

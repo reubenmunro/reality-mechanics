@@ -181,7 +181,7 @@ Strain
 
 Invisible Bearing (organic non-presentation: accumulated through nesting) and Hidden Bearing (engineered non-presentation: deliberately structured not to surface) are the same duality at Higher Order that Asymmetry and Clearance are at Ground.
 
-The tree read helps prevent repair errors. If a branch fails, the branch may be pruned, regrown, or translated differently. The trunk is not replaced unless the carrying structure itself proves wrongly read. Ground and root conditions are not casually edited; they are retraced.
+The tree read helps prevent repair errors. If a branch fails, the branch may be relieved, regrown, or translated differently. The trunk is not replaced unless the carrying structure itself proves wrongly read. Ground and root conditions are not casually edited; they are retraced.
 
 ## Carries
 
