@@ -1,32 +1,44 @@
-# Generative Mechanics (Working)
+# Generation (Working)
 
 > Working document. Not canon.
 >
-> This document recovers the mechanic each primitive continues to generate. It exists to listen to the Atlas, not to instruct it.
+> Generation recovers the mechanic a primitive continues to make available. It listens to the Atlas before any inheritance or prose change is made.
 
-## Principle
+## Relation to other reads
 
-A primitive is recognised by the mechanic it continually makes recoverable.
+Generation asks:
 
-The task is not to define the primitive.
+> What mechanic does this primitive keep making recoverable?
 
-The task is to recover what remains recognisable wherever that primitive's mechanic appears through later terms.
+Inheritance asks:
 
-## Discipline
+> Where does that mechanic continue through a family?
 
-Do not begin from an idea and place it into the Atlas.
+Dependency asks:
 
-Begin from the Atlas, recover what keeps appearing, name the pressure, and test whether the same mechanic survives wider trace.
+> What must already be true for this term to hold?
 
-## Method
+Generation, inheritance, and dependency may coincide. They are not assumed to be the same.
+
+## Rule
+
+Do not define the primitive first.
+
+Recover the mechanic that survives trace.
+
+If the mechanic cannot be recovered through later terms, the proposed mechanic yields.
+
+## Recovery template
 
 For each primitive:
 
-1. Read the primitive through the Atlas.
-2. Recover the mechanic currently visible.
-3. Test where that mechanic appears through later terms.
-4. Name pressure and failure to recover.
-5. Leave Atlas terms unchanged until the mechanic survives repeated structural testing.
+- Current read
+- Mechanic
+- Appears through
+- Observed reads
+- Pressure
+- Must recover
+- Decision
 
 ---
 
@@ -35,6 +47,10 @@ For each primitive:
 Status: open recovery
 
 Current read:
+
+- Open.
+
+Mechanic:
 
 - Not yet recovered.
 
@@ -48,15 +64,20 @@ Appears through:
 
 Observed reads:
 
-- Pending.
+- Hold and Carry show dependency without sequence.
+- Carry and Trace read forward and backward availability through held connection.
 
 Pressure:
 
-- Pending.
+- Carrier terms may be note-grammar operators as well as inherited mechanics.
 
 Must recover:
 
 - What from Relation remains recognisable wherever relation becomes holdable, movable, retraceable, readable, or placeable.
+
+Decision:
+
+- Open.
 
 ---
 
@@ -65,6 +86,10 @@ Must recover:
 Status: open recovery
 
 Current read:
+
+- Open.
+
+Mechanic:
 
 - Not yet recovered.
 
@@ -76,15 +101,20 @@ Appears through:
 
 Observed reads:
 
-- Pending.
+- Strain remains pressing while Bearing holds it.
+- Resolution is terminal determination at the current scope.
 
 Pressure:
 
-- Resolution is terminal determination, not simple persistence.
+- Boundary may generate both open bearing and terminal determination, or Resolution may mark a crossing into another mechanic.
 
 Must recover:
 
 - What from Boundary remains recognisable where difference becomes pressured, held, or determined.
+
+Decision:
+
+- Open.
 
 ---
 
@@ -93,6 +123,10 @@ Must recover:
 Status: open recovery
 
 Current read:
+
+- Open.
+
+Mechanic:
 
 - Not yet recovered.
 
@@ -106,16 +140,20 @@ Appears through:
 
 Observed reads:
 
-- Pending.
+- Presence may be Availability becoming local.
+- Participation is held by Carrying, Presence, and Bearing Relation.
 
 Pressure:
 
-- Presence may be Availability becoming local.
-- Participation is held by Carrying, Presence, and Bearing Relation, but may inherit the Availability mechanic rather than the Carrier mechanic.
+- Participation may inherit Availability while depending on Carrier and Bearing conditions.
 
 Must recover:
 
 - What from Availability remains recognisable where relation becomes locally available, enterable, inhabitable, or membered.
+
+Decision:
+
+- Open.
 
 ---
 
@@ -124,6 +162,10 @@ Must recover:
 Status: open recovery
 
 Current read:
+
+- Open.
+
+Mechanic:
 
 - Not yet recovered.
 
@@ -136,23 +178,27 @@ Appears through:
 
 Observed reads:
 
-- Pending.
+- Couple:Nest and Coupling:Nesting may not name the same ratio.
+- Noun forms may mark gathered positions while -ing forms mark proceeding operations.
 
 Pressure:
 
-- Couple:Nest and Coupling:Nesting may not name the same ratio.
-- Noun forms may mark gathered positions while -ing forms mark proceeding operations.
+- Nesting may inherit Connection directly, or it may be Coupling made recursively available.
 
 Must recover:
 
 - What from Connection remains recognisable where relation holds together, couples, recurs, or nests across orders.
 
+Decision:
+
+- Open.
+
 ---
 
 ## Guard
 
-This document records recovery, pressure, and current reads only.
+This document records recovery only.
 
 No primitive mechanic becomes canonical until it survives repeated structural testing against the existing Atlas.
 
-If the Atlas fails to recover a proposed mechanic, the proposed mechanic yields.
+The Atlas is the test. The working read yields.
