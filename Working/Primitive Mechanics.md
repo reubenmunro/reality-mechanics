@@ -73,11 +73,15 @@ Current read:
 - No prior Atlas term produces it.
 - Ratio belongs to reading order as relation made readable, not as the source of Relation.
 - Relation carries both direct first-order terms and later practice terms; not every carry is evidence of one inheritance family.
+- Place is the clearest immediate generated mechanic from Relation: locatable entry into relation.
+- Hold depends on Resolution, not directly on Relation, but it opens Carry, Trace, Carrying, Read, and Retain.
+- Read is held by Trace and takes followable distinction up as meaningful within scope.
 
 Mechanic:
 
 - Open.
-- Current pressure read: Relation may generate availability for held relation to become placeable, carryable, traceable, readable, and structurally answerable without any downstream term replacing Relation as primitive.
+- Current pressure read: Relation may generate placeability or locatable answerability first. The Carrier chain then separates into Place as direct relation-entry, Hold as resolved supportability, Connection as passage, Carry/Trace as directional passage, and Read as meaningful uptake of trace.
+- Relation may not generate the whole Carrier family directly; it may remain ancestrally present wherever an operation becomes locatable, answerable, or readable within relation.
 
 Reference-frame reads:
 
@@ -85,6 +89,8 @@ Reference-frame reads:
 - A held note can carry only while it remains held. Holding is dependency-prior without being sequentially finished.
 - A melody can depend on prior notes while every note still inherits the instrument. This helps keep dependency and inheritance apart.
 - Rhythm is not the instrument, the note, or the sequence alone. It becomes readable across relation, interval, and recurrence.
+- Place is like giving the note or phrase a locatable entry in the piece: without place it may sound, but cannot be entered, checked, or carried as part of the ordered music.
+- Read is like recognising a trace as meaningful phrase, rhythm, or relation rather than merely hearing a sound.
 
 Appears through:
 
@@ -98,29 +104,37 @@ Observed reads:
 
 - Relation directly carries Place.
 - Place is held by Relation and places locatable entry into relation.
+- Place makes an operation enterable, readable, checkable, correctable, or carryable within relation.
+- Without Place, a carry may be available but not enterable; a hold may persist but not be checkable; a trace may exist but not be recoverable to a participant.
+- Hold is held by Resolution and carries Carry, Trace, Carrying, Read, and Retain.
+- Hold is not carrying by itself; it is resolved supportability that can make later carrying and reading supportable.
 - Carry and Trace are a paired read of held Connection: Carry is forward availability; Trace is backward availability.
 - Carry and Trace inherit Relation only through held Connection and Hold, not as direct carries from Relation.
-- Hold and Carry show dependency without sequence: holding remains present while carrying proceeds.
+- Read is held by Trace and names recognition of meaningful distinction.
 - Read depends downstream of Trace as recovery of what the held path makes readable.
 
 Pressure:
 
-- The proposed Carrier family mixes direct relation-carries with terms mediated by Connection and Hold.
+- The proposed Carrier family mixes direct relation-carries with terms mediated by Resolution, Hold, Connection, and Trace.
 - Carrier terms may be note-grammar operators as well as inherited mechanics.
+- Place is the strongest direct Relation mechanic so far; Carry, Trace, Carrying, and Read are structurally mediated.
 - The D1 read may lag behind the latest GitHub corrections; generated reads must be checked against repository source before prose changes.
 - Musical analogy suggests inherited character may persist through indirect lineage. Direct carry may not be the only form of inheritance.
 
 Must recover:
 
-- Whether Relation generates the whole Carrier family directly, or whether Relation first generates placeability while Connection generates carry/trace through held relation.
+- Whether Relation's generated mechanic should be named placeability, locatable entry, or structural answerability.
+- Whether Relation generates the whole Carrier family directly, or whether Relation generates placeability while Connection generates carry/trace and Trace generates Read.
 - What from Relation remains recognisable wherever relation becomes holdable, movable, retraceable, readable, or placeable.
-- Whether immediate and ancestral inheritance are needed to describe terms like Carry, Trace, Carrying, and Recarry.
+- Whether immediate and ancestral inheritance are needed to describe terms like Carry, Trace, Carrying, Recarry, and Read.
+- Whether Hold belongs in Carrier recovery or in the Boundary/Resolution determination chain as supportability that later enables carrier mechanics.
 
 Decision:
 
 - Open.
-- Current recovery does not yet justify accepting Relation -> Carrier family as a completed inheritance.
-- The next test is Connection, because Carry and Trace appear to inherit Relation through held Connection rather than directly.
+- Current recovery does not justify accepting Relation -> Carrier family as a completed inheritance.
+- Current recovery supports Relation -> Place as the clearest immediate line.
+- Carry, Trace, Carrying, Recarry, and Read should remain in a mediated carrier/passage/read recovery until the Relation mechanic is cleaner.
 
 ---
 
