@@ -119,49 +119,74 @@ Must recover:
 Decision:
 
 - Open.
-- Current recovery does not yet justify accepting Relation → Carrier family as a completed inheritance.
+- Current recovery does not yet justify accepting Relation -> Carrier family as a completed inheritance.
 - The next test is Connection, because Carry and Trace appear to inherit Relation through held Connection rather than directly.
 
 ---
 
 # Boundary
 
-Status: open recovery
+Status: active recovery
 
 Current read:
 
-- Open.
+- Boundary is held by Distinction.
+- Boundary names the locating act through which distinction becomes a local condition.
+- Boundary does not separate relation absolutely; it locates distinction within relation.
+- Boundary is both a first-order root condition and a passage condition.
+- Boundary carries Availability directly.
 
 Mechanic:
 
-- Not yet recovered.
+- Open.
+- Current pressure read: Boundary generates localisation of distinction. It does not yet generate bearing by itself; it locates the edge through which later availability, strain, bearing, and resolution become readable.
+- The chain Boundary -> Availability -> Strain -> Bearing -> Resolution appears as determination depth: located distinction becomes presentable, pressured, sustained, then determined.
 
 Reference-frame reads:
 
-- Pending.
+- In music, a bar line, fret, key, or interval boundary locates difference without producing the later phrase by itself.
+- A boundary makes a note, interval, or phrase locally distinguishable; availability lets it sound or enter; strain gives tension; bearing sustains it; resolution settles it at the current scope.
 
 Appears through:
 
+- Availability
 - Strain
 - Bearing
 - Resolution
 
 Observed reads:
 
-- Strain remains pressing while Bearing holds it.
-- Resolution is terminal determination at the current scope.
+- Boundary directly carries Availability.
+- Availability names the condition through which located distinction can present.
+- Availability directly carries Strain.
+- Strain names available distinction under contrast.
+- Strain directly carries Bearing.
+- Bearing names strain held as a readable condition.
+- Bearing directly carries Resolution.
+- Resolution names bearing determined at the current scope of evaluation.
+- Resolution is order-terminal for First Order and closes one condition without ending wider relation.
+- Resolution depends on Bearing and Clearance, which means determination requires held strain and readable difference across which change can resolve.
 
 Pressure:
 
-- Boundary may generate both open bearing and terminal determination, or Resolution may mark a crossing into another mechanic.
+- Boundary -> Bearing family is too compressed if Boundary generates localisation and Bearing is several determinations downstream.
+- Strain, Bearing, and Resolution may be successive determinations of located distinction rather than siblings in one family.
+- Resolution confirms terminal determination at current scope; it does not simply continue open bearing.
+- Clearance appears at Resolution as an additional dependency, suggesting determination requires relation held apart enough for readable change, not just bearing alone.
 
 Must recover:
 
-- What from Boundary remains recognisable where difference becomes pressured, held, or determined.
+- Whether Boundary's generated mechanic should be named localisation, located distinction, or passage edge.
+- Whether Strain, Bearing, and Resolution should be read as determination-depth stages rather than one inheritance family.
+- Whether determination depth is a general read that appears in other primitive chains or only in the Boundary chain.
+- Whether Clearance marks a crossing condition into determination rather than a direct Boundary inheritance.
 
 Decision:
 
 - Open.
+- Current recovery weakens Boundary -> Bearing as a simple inheritance family.
+- Current pressure supports Boundary -> Localisation / Located Distinction as the primitive mechanic.
+- The chain from Availability through Resolution should be held as a determination-depth read until repeated elsewhere.
 
 ---
 
@@ -216,7 +241,7 @@ Pressure:
 - Availability is conceptually visible inside Presence, but the current structure does not mark it as Presence's immediate dependency.
 - Presence may be a translated/localised second-order availability of Coupling rather than a direct child of Availability.
 - Participation may inherit Availability ancestrally through Presence while depending immediately on Carrying and Bearing Relation.
-- The phrase Availability → Participation family is too compressed if Availability first generates presentability, Presence localises coupled availability, and Participation activates bearing relation within scope.
+- The phrase Availability -> Participation family is too compressed if Availability first generates presentability, Presence localises coupled availability, and Participation activates bearing relation within scope.
 - Participant and Member should not be tested until Participation itself is better placed.
 
 Must recover:
@@ -229,8 +254,8 @@ Must recover:
 Decision:
 
 - Open.
-- Current recovery weakens Availability → Participation as a direct inheritance.
-- Current pressure supports Availability → Presentability/Enterability as the primitive mechanic.
+- Current recovery weakens Availability -> Participation as a direct inheritance.
+- Current pressure supports Availability -> Presentability/Enterability as the primitive mechanic.
 - Presence may be the second-order local availability of Coupling; Participation may be downstream activation through Carrying + Presence + Bearing Relation.
 
 ---
@@ -278,10 +303,10 @@ Observed reads:
 
 Pressure:
 
-- The earlier line Connection → Coupling family may be too compressed.
+- The earlier line Connection -> Coupling family may be too compressed.
 - Connection may generate passage first; Coupling may generate mutual availability after carrying and resolution.
 - Nesting may inherit through Coupling rather than directly from Connection.
-- Carry and Trace may belong closer to Connection than the initial Relation → Carrier family suggested.
+- Carry and Trace may belong closer to Connection than the initial Relation -> Carrier family suggested.
 
 Must recover:
 
@@ -293,8 +318,8 @@ Must recover:
 Decision:
 
 - Open.
-- Current recovery does not yet justify accepting Connection → Coupling family as a simple direct inheritance.
-- Current pressure suggests a split: Connection → Carry/Trace as passage, Coupling → Presence/Pair/Bearing Relation as mutual availability.
+- Current recovery does not yet justify accepting Connection -> Coupling family as a simple direct inheritance.
+- Current pressure suggests a split: Connection -> Carry/Trace as passage, Coupling -> Presence/Pair/Bearing Relation as mutual availability.
 
 ---
 
