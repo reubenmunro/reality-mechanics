@@ -150,9 +150,9 @@ Current Commission:
 
 **First-order prose calibration (D-008A)** or **Maintained Coupling prose (D-006A)**
 
-D-008 whole-Atlas structural calibration and D-009 layout check are complete. Next work applies Structural Reading to Class A backlog terms.
+D-008 whole-Atlas structural calibration and D-009 layout check are complete. D-010 calibrated Tier 1 and extracted operations. Next work applies Structural Reading to Tier 2 backlog or drift-family prose.
 
-Governing evidence: `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/reports/D-008-whole-atlas-calibration.md`.
+Governing evidence: `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/practice/STRUCTURAL_READING_OPERATIONS.md`.
 
 Previous commissions completed:
 
@@ -166,6 +166,7 @@ Previous commissions completed:
 - **D-007** — Structural Reading discipline (`docs/practice/STRUCTURAL_READING.md`)
 - **D-008** — Whole Atlas calibration (`docs/reports/D-008-whole-atlas-calibration.md`)
 - **D-009** — Format + layout check before D-008 commit (`docs/reports/D-009-format-layout-check.md`)
+- **D-010** — Structural Reading operations discovery; Tier 1 calibrated (`docs/reports/D-010-structural-reading-operations.md`)
 
 ---
 

@@ -28,9 +28,13 @@ status: stable
 ---
 # Clear
 
-Clear names the readable side of clean relation. A relation is clear where it can be read without obstruction, obscurity, or false mixture. Clear is not the same as clean: clean names the invariant carrier of undrifted relation; clear names the readable condition that clean makes available.
+Clear names the readable side of clean relation — where relation is unobstructed enough for clearance to be held.
 
-Clear opens [[Clearance]]. Clearance is not merely empty space; it is held separation that can be read. Clear is the prior condition by which clearance becomes readable rather than merely absent, vague, or unrelated.
+Clear is held by [[Clean]] and [[Relation]]. Relation must remain free from residue or drift before it can be read without obstruction.
+
+Clear is not the same as [[Clean]]: Clean names the invariant carrier of undrifted relation; Clear names the readable condition that Clean makes available.
+
+Held clear offers [[Clearance]], [[Relation Read]], and [[Daylighting]]. Clearance is held separation that can be read — not merely empty space.
 
 ## Places
 

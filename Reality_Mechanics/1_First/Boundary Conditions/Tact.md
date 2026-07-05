@@ -26,9 +26,13 @@ status: stable
 ---
 # Tact
 
-Tact names the handling side of clean relation. Tact is not politeness in the shallow sense; it is the condition by which relation can meet, touch, or be handled without collapsing into interference, pressure, collision, or harm.
+Tact names the handling side of clean relation — where relation can meet or be touched without collapsing into interference, pressure, or harm.
 
-Tact opens [[Contact]]. Contact is not yet coupling; it is the meeting condition itself. Tact is the prior handling condition that lets contact remain clean enough to be carried further.
+Tact is held by [[Clean]] and [[Relation]]. Relation must remain free from residue or drift before contact can be handled without distortion.
+
+Tact is not politeness in the shallow sense; it is the handling condition by which relation can meet or be handled without collapsing into interference, pressure, collision, or harm.
+
+Held tact offers [[Contact]]. Contact is not yet coupling; it is the meeting condition Tact carries forward.
 
 ## Places
 

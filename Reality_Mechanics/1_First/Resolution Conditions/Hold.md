@@ -29,8 +29,13 @@ status: stable
 ---
 # Hold
 
-Hold names resolution remaining supportable as the same condition. Hold remains the condition that makes [[Carry]] possible — not a stage that finishes before carrying begins, but the supportability that stays present while carrying continues. Where bearing names strain sustained as readable and resolution names bearing determined at the current scope, hold names that determination settling as continued support rather than collapse, discharge, deformation, or transfer.
+Hold names resolution remaining supportable as the same condition.
 
+Hold is held by [[Resolution]]. Bearing must be determined at the current scope before resolution can remain supportable as the same condition.
+
+Hold makes [[Carry]] possible — not a stage that finishes before carrying begins, but supportability that stays present while carrying continues.
+
+Where [[Bearing]] names strain sustained as readable and [[Resolution]] names bearing determined at the current scope, Hold names that determination settling as continued support rather than collapse, discharge, deformation, or transfer.
 
 ## Places
 
@@ -55,9 +60,8 @@ Hold nests under first-order resolution, remaining present through whatever it s
 ## Reads
 
 Hold becomes recognisable where resolved bearing stays together enough to remain available for reading, support, and the carrying that continues through it.
+
 ## Carries
-
-
 - [[Carry]]
 - [[Trace]]
 - [[First Order Crossing|Threshold (First → Second)]]

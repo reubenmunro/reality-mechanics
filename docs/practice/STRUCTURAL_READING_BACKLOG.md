@@ -15,11 +15,11 @@ Ontology expansion from this backlog is **rejected** unless a separate commissio
 | Measure | Count |
 |---|---:|
 | Published terms characterised | 424 / 424 |
-| Prose calibrated (applied) | 1 — Connection (D-006) |
-| Class A — language refinement backlog | 67 |
+| Prose calibrated (applied) | 6 — Connection (D-006); Hold, Clear, Shift, Release, Tact (D-010) |
+| Class A — language refinement backlog | 62 |
 | Class B — structural completion (not prose-only) | 3 |
 | Class C — candidate unnamed places | **0 promoted** |
-| Class D — insufficient evidence / preserve unknown | 356 |
+| Class D — insufficient evidence / preserve unknown | 361 |
 
 ---
 
@@ -27,17 +27,14 @@ Ontology expansion from this backlog is **rejected** unless a separate commissio
 
 One term per commission unless steward authorises a bounded batch.
 
-### Tier 1 — First-order load-bearing (priority)
+### Tier 1 — First-order load-bearing
 
-Inverted dependency and/or meta-language on first-order terms. Apply D-006 five-pass method.
+**Batch A (inverted dependency) — complete (D-010):** Hold · Clear · Shift · Release · Tact
+
+**Remaining Tier 1:**
 
 | Term | Issue | Notes |
 |---|---|---|
-| Hold | inverted_dependency | Name Resolution/Bearing hold before carried availability |
-| Clear | inverted_dependency | Name Clearance/distinction hold before downstream reads |
-| Shift | inverted_dependency; weak_retrace | Reorder hold before movement |
-| Release | inverted_dependency | Name terminal/hold ancestry first |
-| Tact | inverted_dependency | Name Relation/distinction hold first |
 | Clean | ungrounded_drift | Wikilink grounded drift term or remove |
 | Allow | weak_retrace | Retrace Capacity, Compatibility, Scope in opening or defer to template |
 | Distinction | weak_retrace | Retrace Asymmetry |
@@ -45,7 +42,7 @@ Inverted dependency and/or meta-language on first-order terms. Apply D-006 five-
 | Time | weak_retrace | Retrace Return, Cycle, Frequency |
 | Resolution | weak_retrace | Space/Time lateral reads — justify or move to template |
 
-**Suggested batch commission:** D-008A (Hold, Clear, Shift, Release, Tact).
+Operations from Batch A: `docs/practice/STRUCTURAL_READING_OPERATIONS.md`
 
 ### Tier 2 — Hubs and coupling chain
 
@@ -77,6 +74,13 @@ Remaining Class A terms in third, practice, ground, higher orders — see full r
 | Term | Commission | Status |
 |---|---|---|
 | Connection | D-006 | Applied — opening body refined; frontmatter unchanged |
+| Hold | D-010 | Applied — hold before movement; opening refined |
+| Clear | D-010 | Applied — hold before movement; places alignment |
+| Shift | D-010 | Applied — hold before movement; pair read deferred |
+| Release | D-010 | Applied — hold before movement |
+| Tact | D-010 | Applied — hold before movement; places alignment |
+
+**Operations extracted:** `docs/practice/STRUCTURAL_READING_OPERATIONS.md` (D-010 evidence)
 
 ---
 

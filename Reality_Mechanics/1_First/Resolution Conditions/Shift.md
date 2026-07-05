@@ -27,7 +27,11 @@ status: stable
 ---
 # Shift
 
-Shift names resolution where bearing relocates orientation without yielding, failing, or being lost. Where [[Hold]] names resolution staying the same and [[Yield]] names a give under strain, shift names bearing resolving into a changed orientation.
+Shift names resolution where bearing relocates orientation without yielding, failing, transferring, or being lost.
+
+Shift is held by [[Resolution]] and [[Orientation]]. Bearing must be determined, and orientation must be available, before reorientation can be read.
+
+Where [[Hold]] names resolution staying the same and [[Yield]] names a give under strain, Shift names bearing resolving into a changed orientation without yielding or failing.
 
 ## Places
 
@@ -53,8 +57,8 @@ Shift nests under first-order resolution as reorientation without loss. It may r
 ## Reads
 
 Shift becomes recognisable where resolved bearing relocates its orientation rather than staying, giving, exiting, or failing — where the condition is read as having changed direction while remaining itself.
-## Carries
 
+## Carries
 
 - [[Threshold]]
 - [[Adaptation]]

@@ -31,9 +31,13 @@ status: stable
 ---
 # Release
 
-Release names resolution where held strain exits, discharges, or is no longer retained by the bearing condition. It is the determination of strain leaving the hold of the condition that bore it.
+Release names resolution where held strain exits, discharges, or is no longer retained by the bearing condition.
 
-At second order, release becomes part of pressure regulation. [[Retain]] names pressure kept within a carrying relation; release names the letting-out or leaving condition that prevents pressure from being held as if it must remain in place.
+Release is held by [[Resolution]], [[Bearing]], and [[Strain]]. Strain must be present, borne, and determined as leaving the bearing condition.
+
+Release names the determination of strain leaving the hold of the condition that bore it.
+
+At second order, release becomes part of pressure regulation. [[Retain]] names pressure kept within a carrying relation; Release names the letting-out or leaving condition that prevents pressure from being held as if it must remain in place.
 
 ## Places
 
@@ -64,7 +68,6 @@ Release becomes recognisable where strain is resolved by being let out, discharg
 Release can restore compatibility where retained pressure has exceeded the relation able to carry it. It can become incompatible where what is released has no relation able to receive, distribute, or carry the consequence.
 
 ## Carries
-
 
 - [[Decoupling]]
 - [[Recarry]]

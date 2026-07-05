@@ -250,6 +250,7 @@ Use D-006 as evidence, not authority.
 | `docs/practice/PRACTICE.md` | Steward flow governs when calibrated prose may be applied |
 | `docs/practice/PRACTICE_CALCULUS.md` | Calculus remains candidate; structural reading does not promote it |
 | Calibration Engine v1 | Demonstrates read-model walk; structural reading extends to Atlas prose |
+| `docs/practice/STRUCTURAL_READING_OPERATIONS.md` | Evidence-based operations from D-010 (+ D-006); not promoted Calculus |
 
 ---
 

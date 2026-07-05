@@ -64,6 +64,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Structural Reading discipline | D-007 | Resolved | No prose-reading discipline | `docs/practice/STRUCTURAL_READING.md` |
 | Whole Atlas calibration | D-008 | Resolved | Does Atlas imply unnamed places or prose gaps? | Reports `docs/reports/D-008-*`; backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`; 67 Class A; 0 Class C |
 | Format + layout check (pre D-008 commit) | D-009 | Resolved | D-008 artefacts layout-consistent? | `docs/reports/D-009-format-layout-check.md` |
+| Structural Reading operations discovery | D-010 | Resolved | What operations recur when prose becomes faithful? | `docs/practice/STRUCTURAL_READING_OPERATIONS.md`; Tier 1 calibrated |
 
 ---
 
