@@ -17,10 +17,10 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 - **Platform:** Three active public surfaces — Field, Calibration, MCP — with GitHub Actions deployment on `main`. Retired surfaces (Garden, standalone Atlas pages, Theory, Ark) are explicitly excluded (`README.md`).
 - **Atlas:** 492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
 - **Stewardship:** Audit method stabilised in `docs/stewardship/` (2026-07-04); 17 families / ~51 terms audited; coverage incomplete.
-- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004). `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
-- **Structural reading:** Whole Atlas calibrated (D-008); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`; Connection prose refined and synced (D-006).
+- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004, D-019). `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
+- **Structural reading:** Whole Atlas calibrated (D-008); Tier 1 place + hold prose calibrated corpus-wide (D-018A–D) and live on Field/MCP (D-019); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
 
-**Git:** `main` working tree clean and up to date with `origin/main` (as of D-004, 2026-07-05).
+**Git:** `main` working tree clean and up to date with `origin/main` (as of D-019, 2026-07-05).
 
 No repository document declares a single project phase label (Discovery, Release Candidate, etc.).
 
@@ -32,7 +32,7 @@ No repository document declares a single project phase label (Discovery, Release
 | Atlas source | Canonical in GitHub — 492 files | `Reality_Mechanics/`; `README.md` |
 | Stewardship method | Stabilised — spec, case studies, audit log in place | Commits through 2026-07-04 on `main` |
 | Stewardship coverage | In progress — ~10% of Atlas files directly audited | `docs/stewardship/AUDIT_LOG.md` |
-| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004); version label `2026.07.03-i983` unchanged | `docs/reports/D-003-deployment-verification.md`; `docs/reports/D-004-d1-sync-read-model-verification.md` |
+| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004, D-019); D-018D hold prose live; version label `2026.07.03-i983` unchanged | `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-atlas-website-sync-deployment.md` |
 
 ---
 
@@ -87,8 +87,8 @@ Open work recorded in repository documents — not a priority backlog.
 
 | Investigation | Status | Record |
 |---------------|--------|--------|
-| **Build & deployment verification** | **Resolved** — D-003 audit + D-004 D1 sync repair | `REPOSITORY_VERIFICATION.md` (COMPLETE); `docs/reports/D-003-…`; `docs/reports/D-004-…` |
-| **Structural reading / Atlas prose calibration** | **D-008 complete** — 424 terms characterised; 67 Class A backlog; 0 ontology promotions | `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/reports/D-008-whole-atlas-calibration.md`; `docs/reports/D-008-term-register.md` |
+| **Build & deployment verification** | **Resolved** — D-003 audit + D-004/D-019 D1 sync | `REPOSITORY_VERIFICATION.md` (COMPLETE); `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-…` |
+| **Structural reading / Atlas prose calibration** | **Tier 1 live** — D-018A place + D-018D hold corpus-wide; D-019 synced to Field/MCP; Tier 2 backlog open | `docs/reports/D-018D-tier-1-hold-calibration.md`; `docs/reports/D-019-atlas-website-sync-deployment.md`; `docs/practice/STRUCTURAL_READING_BACKLOG.md` |
 | **Maintained Coupling dependency gap** | Resolved — live in D1 after D-004 | `AUDIT_LOG.md`; Field/MCP verified `second.compatibility` in holds/traces |
 | **Interposed Carrier `"carrying"` language** | Open — insufficient evidence either direction | `docs/stewardship/OPEN_QUESTIONS.md`; `AUDIT_LOG.md` Confirmed Non-Repairs |
 | **Stewardship coverage gap** | ~51 of 492 Atlas files audited; no queue of remaining families | `docs/stewardship/AUDIT_LOG.md`; method in `docs/stewardship/README.md` |
@@ -97,10 +97,6 @@ Open work recorded in repository documents — not a priority backlog.
 ---
 
 ## Next Investigation
-
-**D1 sync after Atlas prose commit**
-
-Connection opening prose was refined through structural reading (D-006). Apply D1 sync before Field/MCP serve the updated text.
 
 **D1 sync automation + version metadata**
 
@@ -150,10 +146,10 @@ Stewardship open items remain in `docs/stewardship/OPEN_QUESTIONS.md`.
 |-----------|--------|-------|
 | **Atlas** | Active source; 492 files | Pre-commit references missing `atlas-doctor.mjs` |
 | **Stewardship** | Method stabilised; audit partial | Zero method failures; no outstanding proposals (`AUDIT_LOG.md:86-88`) |
-| **Field** | Active surface | D1-bound; entries synced 2026-07-05 (D-004) |
+| **Field** | Active surface | D1-bound; D-018D hold prose live (D-019 sync, 2026-07-05) |
 | **Calibration** | Active surface | No D1/MCP/AI; `npm --prefix member test` |
 | **MCP** | Active surface | Read-only, D1-bound; post-sync structure verified |
-| **Build / sync** | Verified operational | D-004 sync apply success; manual apply still required after Atlas commits |
+| **Build / sync** | Verified operational | D-019 sync apply success (492 queries, 3431 rows); manual apply still required after Atlas commits |
 | **Deployment** | CI + local scripts | `deploy.yml` excludes `Reality_Mechanics/**` from triggers |
 | **Automation** | Partial | Pre-commit + GitHub Actions; atlas-doctor missing |
 | **Retired** | Excluded | Garden, standalone Atlas pages, Theory, Ark (`README.md`) |

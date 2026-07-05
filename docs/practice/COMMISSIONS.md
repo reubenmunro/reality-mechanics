@@ -80,6 +80,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Hold & movement calibration | D-018B | Resolved | Can explanatory body align from existing structure? | `docs/reports/D-018B-hold-movement-calibration.md`; Tier 1 rule from `conditions.holds`; not applied |
 | Hold rule falsification | D-018C | Resolved | Does Tier 1 hold rule survive blind sample test? | `docs/reports/D-018C-hold-rule-falsification.md`; **safe with exclusions**; not applied |
 | Tier 1 hold sentence calibration | D-018D | Resolved | Apply revised Tier 1 hold rule corpus-wide | `docs/reports/D-018D-tier-1-hold-calibration.md`; 481 files; 485/488 aligned |
+| Atlas website sync + deployment | D-019 | Resolved | Publish D-018D prose to live Observatory | `docs/reports/D-019-atlas-website-sync-deployment.md`; D1 synced; Field + MCP verified |
 
 ---
 

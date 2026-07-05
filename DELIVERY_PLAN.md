@@ -151,11 +151,11 @@ The website must progressively reveal:
 
 Current Commission:
 
-**First-order prose calibration (D-008A)** or **Maintained Coupling prose (D-006A)**
+**Tier 2 structural reading backlog** or **Field excerpt visibility** (hold paragraph beyond 28-word sheet excerpt)
 
-D-008 whole-Atlas structural calibration and D-009 layout check are complete. D-010 calibrated Tier 1 and extracted operations. Next work applies Structural Reading to Tier 2 backlog or drift-family prose.
+D-018A–D completed Tier 1 place + hold calibration (481 files). D-019 synced calibrated prose to production D1; Field and MCP verified live.
 
-Governing evidence: `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/practice/STRUCTURAL_READING_OPERATIONS.md`.
+Governing evidence: `docs/reports/D-019-atlas-website-sync-deployment.md`; `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/practice/STRUCTURAL_READING_OPERATIONS.md`.
 
 Previous commissions completed:
 
@@ -173,6 +173,9 @@ Previous commissions completed:
 - **D-014** — Runtime principles derivation (`docs/reports/D-014-runtime-principles-derivation.md`)
 - **D-015A/B** — Derived Ratio document and falsification (`docs/runtime/DERIVED_RATIO.md`; D-015B report)
 - **D-016** — Discovery-to-implementation process (`docs/practice/DISCOVERY_TO_IMPLEMENTATION.md`)
+- **D-018A** — Opening place calibration (`docs/reports/D-018A-opening-place-calibration.md`)
+- **D-018B/C/D** — Hold rule assessment, falsification, corpus-wide hold calibration (`docs/reports/D-018D-tier-1-hold-calibration.md`)
+- **D-019** — Atlas website sync + deployment verification (`docs/reports/D-019-atlas-website-sync-deployment.md`)
 
 ---
 

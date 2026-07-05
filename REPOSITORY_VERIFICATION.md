@@ -3,7 +3,7 @@
 Status:
 **COMPLETE** (verified 2026-07-05 via D-003 / D-004)
 
-Evidence reports: `docs/reports/D-003-deployment-verification.md`, `docs/reports/D-004-d1-sync-read-model-verification.md`
+Evidence reports: `docs/reports/D-003-deployment-verification.md`, `docs/reports/D-004-d1-sync-read-model-verification.md`, `docs/reports/D-019-atlas-website-sync-deployment.md`
 
 ---
 
@@ -42,8 +42,8 @@ Note: D1 sync is **manual** (`npm --prefix .atlas-publisher run sync:d1 -- --app
 | Local repository | Source of edits | ☑ | D-003: clean tree, `main` @ `48bab6b`+ |
 | GitHub | Canonical repository | ☑ | Branch up to date with `origin/main` |
 | Cloudflare Workers | Public surfaces | ☑ | D-003: deploy run `28733802660` success; Workers modified 2026-07-05 |
-| D1 | Generated read-model | ☑ | D-004: `sync:d1 --apply` success; Maintained Coupling → Compatibility live |
-| MCP | AI read interface | ☑ | D-003/D-004: endpoint live; structure reads match post-sync D1 |
+| D1 | Generated read-model | ☑ | D-004/D-019: `sync:d1 --apply` success; Maintained Coupling → Compatibility live; D-018D hold prose live |
+| MCP | AI read interface | ☑ | D-003/D-004/D-019: endpoint live; structure and prose reads match post-sync D1 |
 | Atlas | Structural source | ☑ | 492 files; GitHub canonical |
 | Observatory | Public submission medium | ☑ | Submission 001, Field, Calibration linked and live |
 
@@ -85,11 +85,11 @@ Objective: Verify runtime services supporting the Observatory.
 
 Status: **Complete**
 
-Evidence (D-003/D-004):
+Evidence (D-003/D-004/D-019):
 
-- D1 `atlas-d1`: sync apply succeeded (492 queries, 3433 rows written).
-- Field `/api/field/states`: 200; post-sync Maintained Coupling includes `second.compatibility`.
-- MCP `get_entry("third.maintained-coupling")`: includes Compatibility in structure reads.
+- D1 `atlas-d1`: sync apply succeeded (492 queries, 3431 rows written — D-019 verification re-apply).
+- Field `/api/field/states`: 200; 490 states; D-018D place → hold prose verified on five probe terms (Connection, Hold, Out, Not, Cognitive Metabolism).
+- MCP `get_entry`: place → hold → movement confirmed on same five terms.
 - Calibration `/api/health`: `{"ok":true,"runtime":"mechanical","ai":false}`.
 
 Note: `garden_config.atlas_version` label still reads `2026.07.03-i983` — sync does not update this metadata key.
@@ -120,8 +120,9 @@ Open issues:
 
 Resolved issues:
 
-- **D1 read-model stale relative to Git source** — resolved by D-004 (`sync:d1 --apply`).
+- **D1 read-model stale relative to Git source** — resolved by D-004 and re-verified D-019 (`sync:d1 --apply` after D-018D).
 - **Maintained Coupling → Compatibility not live** — resolved; present in Field and MCP post-sync.
+- **D-018D hold calibration not live on Observatory** — resolved by D-019; Field excerpts and MCP prose verified.
 - **Worker deployment unverified** — resolved by D-003.
 
 Risks:
@@ -135,7 +136,7 @@ Risks:
 
 Accepted / Deferred / Rejected: **Accepted** (verification complete for active Observatory path)
 
-Reason: D-003 identified the synchronisation break; D-004 repaired and verified the D1 read-model. Residual gaps are metadata and automation, not live structure for the verified repair.
+Reason: D-003 identified the synchronisation break; D-004 repaired and D-019 re-verified the D1 read-model after D-018D hold calibration. Residual gaps are metadata and automation, not live structure or prose for verified repairs.
 
 ---
 
