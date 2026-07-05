@@ -74,6 +74,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Derived Ratio design document | D-015A | Resolved | Document Derived Ratio as structure–behaviour bridge | `docs/runtime/DERIVED_RATIO.md` |
 | Derived Ratio falsification | D-015B | Resolved | Falsify D-015A against Observatory evidence | `docs/reports/D-015B-derived-ratio-falsification.md` |
 | Discovery-to-implementation process | D-016 | Resolved | Gate architectural discoveries before implementation | `docs/practice/DISCOVERY_TO_IMPLEMENTATION.md` |
+| Ember runtime model | D-017A | Resolved | Characterise ember as candidate runtime model | `docs/runtime/EMBER_RUNTIME_MODEL.md`; `docs/reports/D-017A-ember-runtime-model.md` |
 
 ---
 
