@@ -68,6 +68,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Field runtime audit | D-010A | Resolved | How does Field behave at runtime? | `docs/reports/D-010A-runtime-audit.md` |
 | Generalise ratio mechanics | D-010B | Resolved | All relation types participate in shared ratio engine | `docs/reports/D-010B-generalise-ratio-mechanics.md` |
 | Emergent behaviour observations | D-011 | Resolved | What behaviours recur from current runtime? | `docs/reports/D-011-emergent-behaviour-observations.md` |
+| Behaviour retrace instrument | D-012 | Resolved | Make Field behaviour retraceable to Atlas structure | `docs/reports/D-012-behaviour-retrace-instrument.md`; `/api/field/behaviour-trace`; Mechanics panel |
 
 ---
 

@@ -7,6 +7,7 @@ import {
   readFieldConfig,
   structureCarriesEntry,
 } from "../field-maturity.mjs";
+import { buildFieldBehaviourTrace, buildTraceIndex } from "./field-behaviour-trace.mjs";
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -197,6 +198,38 @@ async function handleFieldStates(env) {
   }});
 }
 
+export async function deriveFieldBehaviourTrace(env, focusId, runtimeOverlay = {}) {
+  const payload = await deriveFieldStatesPayload(env);
+  const statesById = buildTraceIndex(payload.states);
+  const focusState = statesById[focusId];
+  if (!focusState) return null;
+  return buildFieldBehaviourTrace({
+    focusId,
+    focusState,
+    statesById,
+    thresholds: payload.thresholds,
+    runtimeOverlay,
+  });
+}
+
+async function handleFieldBehaviourTrace(env, focusId, request) {
+  if (!env.ATLAS_DB)
+    return new Response(JSON.stringify({ error: "db_unavailable" }), { status: 503, headers: JSON_HEADERS });
+  if (!focusId)
+    return new Response(JSON.stringify({ error: "focus_id_required" }), { status: 400, headers: JSON_HEADERS });
+  let runtimeOverlay = {};
+  try {
+    const overlay = new URL(request.url).searchParams.get("runtime");
+    if (overlay) runtimeOverlay = JSON.parse(overlay);
+  } catch {
+    return new Response(JSON.stringify({ error: "invalid_runtime_overlay" }), { status: 400, headers: JSON_HEADERS });
+  }
+  const trace = await deriveFieldBehaviourTrace(env, focusId, runtimeOverlay);
+  if (!trace)
+    return new Response(JSON.stringify({ error: "focus_not_found", focusId }), { status: 404, headers: JSON_HEADERS });
+  return new Response(JSON.stringify(trace), { status: 200, headers: JSON_HEADERS });
+}
+
 // ── Field page ────────────────────────────────────────────────────────────────
 
 export function fieldPage(options = {}) {
@@ -306,6 +339,46 @@ export function fieldPage(options = {}) {
       white-space: pre-wrap; backdrop-filter: blur(14px);
     }
     #relation-debug.ready { display: block; }
+    #mechanics-panel {
+      position: fixed; left: 1rem; bottom: 1rem; z-index: 19;
+      width: min(22rem, calc(100vw - 2rem)); max-height: min(62vh, 36rem);
+      overflow: auto; display: none; pointer-events: auto;
+      background: rgba(5,7,11,0.92); border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px); padding: 0.85rem 0.95rem 1rem;
+      color: rgba(212,197,169,0.88);
+      font: 500 0.72rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
+    }
+    #mechanics-panel.ready { display: block; }
+    #mechanics-panel h2 {
+      margin: 0 0 0.55rem; font: 700 0.58rem/1 system-ui, sans-serif;
+      letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,96,26,0.72);
+    }
+    #mechanics-panel .mechanics-hint {
+      margin: 0 0 0.55rem; color: rgba(58,80,112,0.82);
+      font: 600 0.58rem/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    #mechanics-panel .mechanics-focus {
+      margin: 0 0 0.85rem; color: rgba(192,205,220,0.78);
+      font: 600 0.62rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    #mechanics-panel .behaviour-trace {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; margin-top: 0.75rem;
+    }
+    #mechanics-panel .behaviour-trace:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    #mechanics-panel .behaviour-trace h3 {
+      margin: 0 0 0.35rem; font: 700 0.58rem/1.2 system-ui, sans-serif;
+      letter-spacing: 0.08em; text-transform: uppercase; color: rgba(200,96,26,0.58);
+    }
+    #mechanics-panel dl { margin: 0; }
+    #mechanics-panel dt {
+      margin: 0.35rem 0 0.08rem; font: 700 0.52rem/1 system-ui, sans-serif;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(58,80,112,0.92);
+    }
+    #mechanics-panel dd {
+      margin: 0; color: rgba(212,197,169,0.82);
+      font: 500 0.72rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
+      white-space: pre-wrap;
+    }
     @media (max-width: 700px) {
       #top { inset: 1rem 1rem auto 1rem; }
       #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
@@ -336,6 +409,12 @@ export function fieldPage(options = {}) {
   <p id="sheet-empty"></p>
 </section>
 <pre id="relation-debug" aria-live="polite"></pre>
+<aside id="mechanics-panel" aria-live="polite" aria-label="Field mechanics trace">
+  <h2>Field Mechanics</h2>
+  <p class="mechanics-hint">Shift+M toggles. URL: ?debug=mechanics</p>
+  <div id="mechanics-focus" class="mechanics-focus"></div>
+  <div id="mechanics-traces"></div>
+</aside>
 <script>
 let allOps = {};      // full Atlas index: id -> entry (holds/traces/carries/pairs/nests as id arrays)
 let fieldStatesPayload = null; // /api/field/states: semantic renderer contract + geometry ids
@@ -354,6 +433,9 @@ const sheetExcerptEl = document.getElementById('sheet-excerpt');
 const sheetRelationsEl = document.getElementById('sheet-relations');
 const sheetEmptyEl = document.getElementById('sheet-empty');
 const relationDebugEl = document.getElementById('relation-debug');
+const mechanicsPanelEl = document.getElementById('mechanics-panel');
+const mechanicsFocusEl = document.getElementById('mechanics-focus');
+const mechanicsTracesEl = document.getElementById('mechanics-traces');
 const INITIAL_REGISTER = ${JSON.stringify(initialRegister)};
 let readRegister = INITIAL_REGISTER;
 let dpr = 1, w = 0, h = 0;
@@ -379,6 +461,11 @@ let fieldMediumDt = 1 / 60;
 let relationDebugEnabled = new URLSearchParams(location.search).get('debug') === 'relations';
 let relationDebugSamples = [];
 let relationDebugLastRender = 0;
+let mechanicsEnabled = new URLSearchParams(location.search).get('debug') === 'mechanics';
+let fieldBehaviourTrace = null;
+let mechanicsLastRefresh = 0;
+let mechanicsRefreshPending = false;
+window.__fieldBehaviourTrace = null;
 
 const relationTypes = [
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
@@ -1149,6 +1236,7 @@ function enterOperation(id) {
   replaceFieldLocation(found);
   syncTermSheet();
   recordFieldMovement(previousFocusId, found);
+  scheduleBehaviourTraceRefresh(true);
 }
 
 function fieldLocation(id) {
@@ -1617,6 +1705,99 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
 
 function debugNumber(value) {
   return Number.isFinite(value) ? Number(value).toFixed(2) : '0.00';
+}
+
+function mechanicsFormat(value) {
+  if (value == null) return '—';
+  if (typeof value === 'object') return JSON.stringify(value, null, 2);
+  return String(value);
+}
+
+function collectRuntimeOverlay() {
+  const focus = operations[focusId];
+  const local = new Set(localIds(focusId));
+  const localCount = local.size;
+  const focusProfile = focus?.profile || (focus ? computeProfile(focus) : null);
+  const structuralMass = focusProfile?.fieldStates?.structuralMass || focusProfile?.structuralMass || 0;
+  const fieldPressure = focusedFieldPressure(focus, localCount);
+  let endpointOnlyCount = 0;
+  Object.values(operations).forEach((op) => {
+    const profile = op.profile || computeProfile(op);
+    const mass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+    const gradient = pressureGradientAt(op.x, op.y);
+    const tension = fieldTensionFromGradient(gradient, mass);
+    const budget = operationAmbientBudget(local.has(op.id), op.id === focusId, mass, fieldPressure, tension);
+    if (budget.endpointOnly) endpointOnlyCount += 1;
+  });
+  const sample = relationDebugSamples[0] || null;
+  return {
+    localCount,
+    fieldPressure: +fieldPressure.toFixed(3),
+    endpointOnly: fieldPressure > 0.38,
+    endpointOnlyCount,
+    referenceFrame: currentFieldReferenceFrame || 'practice.whole-read',
+    outOfFrameAlpha: 0.08,
+    neighbourhoodInFrame: currentFieldReferenceFrame ? [...local].filter((id) => localFrameIds.has(id)).length : localCount,
+    settled: +settled.toFixed(2),
+    relationType: sample?.type || null,
+  };
+}
+
+function renderMechanicsPanel() {
+  if (!mechanicsPanelEl) return;
+  mechanicsPanelEl.classList.toggle('ready', mechanicsEnabled);
+  if (!mechanicsEnabled) return;
+  const trace = fieldBehaviourTrace;
+  if (!trace) {
+    mechanicsFocusEl.textContent = 'loading trace…';
+    mechanicsTracesEl.innerHTML = '';
+    return;
+  }
+  mechanicsFocusEl.textContent = [
+    'focus: ' + (trace.focusTitle || trace.focusId),
+    'order: ' + (trace.focusOrder || '—'),
+    'neighbourhood: ' + (trace.neighbourhood?.size ?? '—'),
+    'carriers: ' + (trace.atlasSourceSummary?.values?.carriers ?? '—'),
+    'ratio: ' + (trace.atlasSourceSummary?.values?.ratioMode ?? '—') + ' (x=' + (trace.atlasSourceSummary?.values?.ratioX ?? '—') + ')',
+  ].join('\\n');
+  mechanicsTracesEl.innerHTML = (trace.behaviours || []).map((item) => {
+    return '<article class="behaviour-trace">'
+      + '<h3>' + item.observation + '</h3>'
+      + '<dl>'
+      + '<dt>Runtime input</dt><dd>' + mechanicsFormat(item.runtimeInput) + '</dd>'
+      + '<dt>Ratio / relation state</dt><dd>' + mechanicsFormat(item.ratioRelationState) + '</dd>'
+      + '<dt>Atlas source fields</dt><dd>' + mechanicsFormat(item.atlasSource) + '</dd>'
+      + '<dt>Mechanical output</dt><dd>' + mechanicsFormat(item.mechanicalOutput) + '</dd>'
+      + '<dt>Meaning</dt><dd>' + item.meaning + '</dd>'
+      + '</dl></article>';
+  }).join('');
+}
+
+async function refreshBehaviourTrace(force = false) {
+  if (!mechanicsEnabled || !focusId) return;
+  if (!force && performance.now() - mechanicsLastRefresh < 450) {
+    mechanicsRefreshPending = true;
+    return;
+  }
+  mechanicsLastRefresh = performance.now();
+  mechanicsRefreshPending = false;
+  const runtimeOverlay = collectRuntimeOverlay();
+  try {
+    const res = await fetch('/api/field/behaviour-trace?id=' + encodeURIComponent(focusId) + '&runtime=' + encodeURIComponent(JSON.stringify(runtimeOverlay)));
+    if (!res.ok) throw new Error('behaviour trace unavailable');
+    fieldBehaviourTrace = await res.json();
+    fieldBehaviourTrace.clientRuntime = runtimeOverlay;
+    window.__fieldBehaviourTrace = fieldBehaviourTrace;
+    renderMechanicsPanel();
+  } catch (err) {
+    console.error('[field] behaviour trace failed:', err);
+    mechanicsFocusEl.textContent = 'trace unavailable';
+  }
+}
+
+function scheduleBehaviourTraceRefresh(force = false) {
+  if (!mechanicsEnabled) return;
+  refreshBehaviourTrace(force);
 }
 
 function debugRelationSample(sample) {
@@ -2290,6 +2471,8 @@ function draw() {
     Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId, fieldPressure));
   }
   renderRelationDebug();
+  if (mechanicsRefreshPending) scheduleBehaviourTraceRefresh(false);
+  else if (mechanicsEnabled && performance.now() - mechanicsLastRefresh > 900) scheduleBehaviourTraceRefresh(false);
 }
 
 let last = performance.now();
@@ -2472,6 +2655,13 @@ window.addEventListener('keydown', (event) => {
     renderRelationDebug();
     return;
   }
+  if (event.shiftKey && event.key.toLowerCase() === 'm') {
+    event.preventDefault();
+    mechanicsEnabled = !mechanicsEnabled;
+    renderMechanicsPanel();
+    if (mechanicsEnabled) scheduleBehaviourTraceRefresh(true);
+    return;
+  }
   if (!spineFlat.length) return;
   if (event.key === 'ArrowRight') {
     event.preventDefault();
@@ -2546,6 +2736,10 @@ async function bootstrap() {
   replaceFieldLocation(startId);
   if (readRegister === 'constellation') openTermSheet(startId);
   recordFieldMovement(null, startId);
+  if (mechanicsEnabled) {
+    renderMechanicsPanel();
+    scheduleBehaviourTraceRefresh(true);
+  }
   requestAnimationFrame(loop);
 }
 
@@ -2698,6 +2892,11 @@ async function handleRequest(request, env) {
 
   if (pathname === "/api/field/states")
     return handleFieldStates(env);
+
+  if (pathname === "/api/field/behaviour-trace") {
+    const focusId = new URL(request.url).searchParams.get("id") || "";
+    return handleFieldBehaviourTrace(env, focusId, request);
+  }
 
   if (pathname === "/" || pathname === "")
     return new Response(fieldPage(), { headers: HTML_HEADERS });
