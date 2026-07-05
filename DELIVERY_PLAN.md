@@ -37,7 +37,8 @@ Every commission must:
 - contribute to the mission;
 - produce a persisted deliverable;
 - remain retraceable to evidence;
-- minimise architectural drift.
+- minimise architectural drift;
+- pass the [discovery-to-implementation gate](docs/practice/DISCOVERY_TO_IMPLEMENTATION.md) when proposing Atlas, runtime, or Working Architecture changes.
 
 The Lead Architect reviews every deliverable and records one outcome:
 
@@ -146,6 +147,8 @@ The website must progressively reveal:
 
 # Current Priority
 
+**Discovery-to-implementation gate:** [`docs/practice/DISCOVERY_TO_IMPLEMENTATION.md`](docs/practice/DISCOVERY_TO_IMPLEMENTATION.md) — Observe → Document → Falsify → Compress → Align → Implement (D-016; worked example D-015A/B).
+
 Current Commission:
 
 **First-order prose calibration (D-008A)** or **Maintained Coupling prose (D-006A)**
@@ -167,6 +170,9 @@ Previous commissions completed:
 - **D-008** — Whole Atlas calibration (`docs/reports/D-008-whole-atlas-calibration.md`)
 - **D-009** — Format + layout check before D-008 commit (`docs/reports/D-009-format-layout-check.md`)
 - **D-010** — Structural Reading operations discovery; Tier 1 calibrated (`docs/reports/D-010-structural-reading-operations.md`)
+- **D-014** — Runtime principles derivation (`docs/reports/D-014-runtime-principles-derivation.md`)
+- **D-015A/B** — Derived Ratio document and falsification (`docs/runtime/DERIVED_RATIO.md`; D-015B report)
+- **D-016** — Discovery-to-implementation process (`docs/practice/DISCOVERY_TO_IMPLEMENTATION.md`)
 
 ---
 

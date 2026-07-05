@@ -225,3 +225,19 @@ It is not a style guide. It does not promote the Calculus. It produces observati
 **Backlog (D-008):** `docs/practice/STRUCTURAL_READING_BACKLOG.md` — 424 terms characterised; 67 Class A refinements; 0 ontology promotions
 
 **First evidence:** D-006 — Connection opening prose (`docs/reports/D-006-calibrated-prose-refinement.md`)
+
+---
+
+## Discovery to Implementation
+
+Architectural discoveries that may affect Atlas, runtime, or Working Architecture follow a gated process before code changes:
+
+```text
+Observe → Document → Falsify → Compress → Align → Implement
+```
+
+**Rule:** No implementation before compression. No compression before falsification. No falsification before documentation. No documentation before observation.
+
+**Process:** [`docs/practice/DISCOVERY_TO_IMPLEMENTATION.md`](DISCOVERY_TO_IMPLEMENTATION.md)
+
+**Worked example:** D-015A (document) → D-015B (falsify) → align `docs/runtime/DERIVED_RATIO.md` — implementation not commissioned.
