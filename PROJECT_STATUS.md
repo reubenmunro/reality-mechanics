@@ -17,9 +17,9 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 - **Platform:** Three active public surfaces — Field, Calibration, MCP — with GitHub Actions deployment on `main`. Retired surfaces (Garden, standalone Atlas pages, Theory, Ark) are explicitly excluded (`README.md`).
 - **Atlas:** 492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
 - **Stewardship:** Audit method stabilised in `docs/stewardship/` (2026-07-04); 17 families / ~51 terms audited; coverage incomplete.
-- **Build & deployment:** Documented paths exist; production health, D1 sync state, and pre-commit integrity tooling are **not verified from repository files alone**.
+- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004). `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
 
-**Git:** `main` working tree clean and up to date with `origin/main` (as of last local checkout).
+**Git:** `main` working tree clean and up to date with `origin/main` (as of D-004, 2026-07-05).
 
 No repository document declares a single project phase label (Discovery, Release Candidate, etc.).
 
@@ -31,7 +31,7 @@ No repository document declares a single project phase label (Discovery, Release
 | Atlas source | Canonical in GitHub — 492 files | `Reality_Mechanics/`; `README.md` |
 | Stewardship method | Stabilised — spec, case studies, audit log in place | Commits through 2026-07-04 on `main` |
 | Stewardship coverage | In progress — ~10% of Atlas files directly audited | `docs/stewardship/AUDIT_LOG.md` |
-| Live deployment & D1 sync | Unknown — requires investigation | No health snapshot or sync record in repo |
+| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004); version label `2026.07.03-i983` unchanged | `docs/reports/D-003-deployment-verification.md`; `docs/reports/D-004-d1-sync-read-model-verification.md` |
 
 ---
 
@@ -86,8 +86,8 @@ Open work recorded in repository documents — not a priority backlog.
 
 | Investigation | Status | Record |
 |---------------|--------|--------|
-| **Build & deployment verification** | Unverified — production health, D1 sync, missing `atlas-doctor.mjs` | Known Unknowns (below); Next Investigation |
-| **Maintained Coupling dependency gap** | Resolved — `[[Compatibility]]` committed to needs/holds/traces (E1) | `docs/stewardship/AUDIT_LOG.md` — Dependency Repairs (Committed); source file `Reality_Mechanics/3_Third/Fields/Relational Participation/Bearing Relations/Maintained Coupling.md` |
+| **Build & deployment verification** | **Resolved** — D-003 audit + D-004 D1 sync repair | `REPOSITORY_VERIFICATION.md` (COMPLETE); `docs/reports/D-003-…`; `docs/reports/D-004-…` |
+| **Maintained Coupling dependency gap** | Resolved — live in D1 after D-004 | `AUDIT_LOG.md`; Field/MCP verified `second.compatibility` in holds/traces |
 | **Interposed Carrier `"carrying"` language** | Open — insufficient evidence either direction | `docs/stewardship/OPEN_QUESTIONS.md`; `AUDIT_LOG.md` Confirmed Non-Repairs |
 | **Stewardship coverage gap** | ~51 of 492 Atlas files audited; no queue of remaining families | `docs/stewardship/AUDIT_LOG.md`; method in `docs/stewardship/README.md` |
 | **`structural-mechanics-migration` branch** | Remote branch exists; purpose relative to `main` undocumented | `git branch -a` |
@@ -96,26 +96,15 @@ Open work recorded in repository documents — not a priority backlog.
 
 ## Next Investigation
 
-**Repository Build & Deployment Verification**
+**D1 sync automation + version metadata (D-005)**
 
-Repository evidence shows several operational facts are documented but **not verified** from files alone:
+D-004 restored entry-level synchronisation. Remaining operational gaps:
 
-- Production Worker health (`calibration.realitymechanics.nz/api/health` documented in `member/DEPLOYMENT.md`; no stored snapshot).
-- Whether D1 (`atlas-d1`) matches current `main` Atlas source (sync is manual; no committed sync-state).
-- Whether `.githooks/pre-commit` can run — it references `.atlas-publisher/atlas-doctor.mjs`, which is **absent from the repository tree**.
-- Whether CI deploy secrets and paths cover the intended surfaces (`deploy.yml` does not run on `Reality_Mechanics/**` changes).
+- `garden_config.atlas_version` is not updated by `sync-d1-from-repo.mjs` (Field still reports `2026.07.03-i983` while entries are current).
+- D1 sync remains manual — not in `.github/workflows/deploy.yml`.
+- `.githooks/pre-commit` references missing `atlas-doctor.mjs`.
 
-Confirming build, test, sync, and deploy paths work end-to-end is higher-leverage for any new contributor than a single Atlas term investigation. Stewardship open items remain recorded above and in `docs/stewardship/`.
-
-**Suggested checks (from repository docs):**
-
-```bash
-npm --prefix .atlas-publisher test
-npm --prefix member test
-npm --prefix reality-mechanics-mcp test
-npm --prefix .atlas-publisher run sync:d1          # dry run
-npm --prefix .atlas-publisher run sync:d1 -- --apply   # apply only when intended
-```
+Stewardship open items remain in `docs/stewardship/OPEN_QUESTIONS.md`.
 
 ---
 
@@ -123,12 +112,11 @@ npm --prefix .atlas-publisher run sync:d1 -- --apply   # apply only when intende
 
 | Question | Why unknown |
 |----------|-------------|
-| Are production Workers deployed and healthy? | No deployment timestamp or health snapshot in repository |
-| Is D1 in sync with current `main`? | Sync output generated locally; no committed sync-state |
 | Where is `atlas-doctor.mjs`? | Referenced by `.githooks/pre-commit` and `atlas-core.mjs` comment; file absent |
 | Which Atlas families to audit next? | `AUDIT_LOG.md` lists completed families only |
 | Status of `origin/structural-mechanics-migration` | Not documented in root docs |
 | Whether pre-commit hooks are installed locally | Hooks in `.githooks/`; requires manual `git config core.hooksPath` |
+| Whether `garden_config.atlas_version` should track sync | Sync script does not update it; label may lag entry data |
 
 ---
 
@@ -155,11 +143,11 @@ npm --prefix .atlas-publisher run sync:d1 -- --apply   # apply only when intende
 | Component | Status | Notes |
 |-----------|--------|-------|
 | **Atlas** | Active source; 492 files | Pre-commit references missing `atlas-doctor.mjs` |
-| **Stewardship** | Method stabilised; audit partial | Zero method failures; one outstanding proposal |
-| **Field** | Active surface | D1-bound; `npm --prefix .atlas-publisher test` |
+| **Stewardship** | Method stabilised; audit partial | Zero method failures; no outstanding proposals (`AUDIT_LOG.md:86-88`) |
+| **Field** | Active surface | D1-bound; entries synced 2026-07-05 (D-004) |
 | **Calibration** | Active surface | No D1/MCP/AI; `npm --prefix member test` |
-| **MCP** | Active surface | Read-only, D1-bound; `npm --prefix reality-mechanics-mcp test` |
-| **Build / sync** | Present | `sync-d1-from-repo.mjs`; refuses dirty `Reality_Mechanics/` by default |
+| **MCP** | Active surface | Read-only, D1-bound; post-sync structure verified |
+| **Build / sync** | Verified operational | D-004 sync apply success; manual apply still required after Atlas commits |
 | **Deployment** | CI + local scripts | `deploy.yml` excludes `Reality_Mechanics/**` from triggers |
 | **Automation** | Partial | Pre-commit + GitHub Actions; atlas-doctor missing |
 | **Retired** | Excluded | Garden, standalone Atlas pages, Theory, Ark (`README.md`) |
