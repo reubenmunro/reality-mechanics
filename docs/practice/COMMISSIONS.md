@@ -88,6 +88,8 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Public navigation rename | D-021.1 | Resolved | Nav labels misaligned with public structure | `docs/reports/D-021.1-navigation.md`; Observatory · Pulse · Theory · Proof |
 | Observatory landing | D-021.2 | Resolved | Field dominated first screen without orientation | `docs/reports/D-021.2-observatory-landing.md`; instrument landing + neutral panel |
 | Pulse identity | D-021.3 | Resolved | Is Calibration already Pulse? | `docs/reports/D-021.3-pulse-identity.md`; yes — elevate Calibration as first Pulse instrument |
+| Pulse instrument contract | D-021.4 | Resolved | What must every Pulse instrument satisfy? | `docs/reports/D-021.4-pulse-instrument-contract.md`; eight-clause contract C1–C8 |
+| Observatory render blocker | D-021.4-R | Resolved | Canvas empty on first load after D-020D | `docs/reports/D-021.4-observatory-render-blocker.md`; home nodes + whole-field visibility |
 
 ---
 

@@ -565,6 +565,7 @@ const FIELD_RENDER_BUDGET = Object.freeze({
   dprVeryLargeViewport: 1.25,
   smokePuffs: 48,
   homeCurrents: 96,
+  homeNodes: 140,
   filamentSegments: 14,
   filamentSegmentsCompressed: 10,
   relationStrands: 6,
@@ -2715,11 +2716,15 @@ function homePosition(op) {
            y: cy + Math.sin(angle) * (0.18 + depth * 0.72) * maxR };
 }
 
+function neutralWholeFieldOpen() {
+  return homeMode && !focusId;
+}
+
 function buildHomeConnections() {
   homeConnections = [];
   const seen = new Set();
   Object.values(allOps).forEach((a) => {
-    ['carries', 'pairs', 'traces'].forEach((key) => {
+    ['carries', 'pairs', 'traces', 'holds'].forEach((key) => {
       (a[key] || []).forEach((bId) => {
         const b = allOps[bId];
         if (!b) return;
@@ -2732,10 +2737,55 @@ function buildHomeConnections() {
   });
 }
 
-function drawHomeField(alpha) {
-  if (!homeConnections.length) return;
+function drawHomeNode(op, alpha) {
+  const pos = homePosition(op);
+  const order = spineDisplayOrder(op);
+  const profile = op.profile || computeProfile(op);
+  const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+  const radius = 7 + profile.density * 5 + structuralMass * 3;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
+  const coreAlpha = 0.16 + structuralMass * 0.04;
+  const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, radius * 2.4);
+  if (colourMode === 'fire') {
+    grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
+    grad.addColorStop(0.42, fireColor(order, coreAlpha * 0.34 * alpha, 6));
+    grad.addColorStop(1, fireColor(order, 0, 0));
+  } else {
+    grad.addColorStop(0, 'rgba(200,96,26,' + (coreAlpha * alpha) + ')');
+    grad.addColorStop(0.42, 'rgba(120,82,54,' + (coreAlpha * 0.32 * alpha) + ')');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+  }
+  ctx.beginPath();
+  ctx.fillStyle = grad;
+  ctx.arc(pos.x, pos.y, radius * 2.4, 0, Math.PI * 2);
+  ctx.fill();
+  const edgeAlpha = 0.04 + structuralMass * 0.012;
+  ctx.beginPath();
+  ctx.strokeStyle = colourMode === 'fire'
+    ? fireColor(order, edgeAlpha * alpha, 8)
+    : 'rgba(212,197,169,' + (edgeAlpha * alpha) + ')';
+  ctx.lineWidth = 0.65;
+  ctx.arc(pos.x, pos.y, radius * 1.05, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawHomeField(alpha) {
+  const ops = Object.values(allOps);
+  if (!homeConnections.length && !ops.length) return;
+  const wholeField = neutralWholeFieldOpen();
+  const lineBoost = wholeField ? 2.6 : 1;
+  const nodeBudget = Math.min(
+    ops.length,
+    Math.max(60, Math.round(FIELD_RENDER_BUDGET.homeNodes * adaptiveAmbientScale(0.52))),
+  );
+  const sortedOps = ops.slice().sort((left, right) => hashStr(left.id) - hashStr(right.id));
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < nodeBudget; i++) drawHomeNode(sortedOps[i], alpha);
+
   const n = Math.min(homeConnections.length, Math.max(42, Math.round(FIELD_RENDER_BUDGET.homeCurrents * adaptiveAmbientScale(0.38))));
   const sorted = homeConnections
     .slice()
@@ -2751,7 +2801,7 @@ function drawHomeField(alpha) {
     ctx.beginPath();
     ctx.moveTo(pa.x, pa.y);
     ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
-    const baseA = typeKey === 'carries' ? 0.048 : typeKey === 'pairs' ? 0.032 : 0.024;
+    const baseA = (typeKey === 'carries' ? 0.048 : typeKey === 'pairs' ? 0.032 : 0.024) * lineBoost;
     const sense = relationSensibility(a.id, b.id);
     ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * alpha * sense, baseA * alpha * sense);
     ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
@@ -2913,7 +2963,7 @@ async function bootstrap() {
   const explicitTermId = (hash && allOps[hash]) ? hash : null;
 
   if (!explicitTermId) {
-    // D-020D: neutral whole-field opening until an explicit term is chosen.
+    // D-020D / D-021.4: neutral whole-field opening until an explicit term is chosen.
     homeMode = true;
     homeAlpha = 1.0;
     focusId = null;

@@ -237,14 +237,34 @@ test("D-021.2 observatory landing orients before observation", () => {
   assert.match(html, /<title>Observatory · Reality Mechanics<\/title>/);
 });
 
-test("D-020D opens whole-field home mode before explicit term selection", () => {
+test("D-021.4 neutral initial load renders whole field without Relation default", () => {
   const html = fieldPage();
-  assert.match(html, /D-020D: neutral whole-field opening/);
+  assert.match(html, /D-020D \/ D-021\.4: neutral whole-field opening/);
   assert.match(html, /const explicitTermId = \(hash && allOps\[hash\]\) \? hash : null/);
   assert.match(html, /if \(!explicitTermId\) \{/);
   assert.match(html, /homeMode = true/);
+  assert.match(html, /focusId = null/);
+  assert.match(html, /function neutralWholeFieldOpen/);
+  assert.match(html, /function drawHomeNode/);
   assert.match(html, /function nearestHomeOperation/);
   assert.match(html, /if \(homeMode\) return nearestHomeOperation/);
+  assert.match(html, /if \(!homeMode\) \{/);
+  assert.doesNotMatch(html, /op\.title === 'Relation'/);
+  assert.doesNotMatch(html, /op\.title === 'Reality Mechanics'/);
+});
+
+test("D-021.4 hash deep-link still enters focused observation", () => {
+  const html = fieldPage();
+  assert.match(html, /homeMode = false/);
+  assert.match(html, /observeTerm\(explicitTermId\)/);
+  assert.match(html, /replaceFieldLocation\(explicitTermId\)/);
+});
+
+test("D-021.4 endpointOnly path is confined to focused condensation draw", () => {
+  const html = fieldPage();
+  assert.match(html, /if \(ambientBudget\.endpointOnly\)/);
+  assert.match(html, /neutralWholeFieldOpen\(\)/);
+  assert.match(html, /wholeField = neutralWholeFieldOpen\(\)/);
 });
 
 test("/submission serves the public Submission 001 page", async () => {
