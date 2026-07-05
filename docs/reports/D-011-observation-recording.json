@@ -1,0 +1,31 @@
+{
+  "commission": "D-011",
+  "source": "https://realitymechanics.nz/api/field/states",
+  "recordedAt": "2026-07-05T09:24:25.625Z",
+  "atlasVersion": "2026.07.03-i983",
+  "stateCount": 490,
+  "ratioBands": {
+    "discrete": 299,
+    "transitional": 130,
+    "continuous": 61
+  },
+  "edgeCounts": {
+    "holds": 1738,
+    "traces": 1931,
+    "carries": 1241,
+    "pairs": 463,
+    "nests": 10
+  },
+  "focusTerms": [
+    "ground.ground",
+    "ground.seed",
+    "first.carry",
+    "first.hold",
+    "first.relation",
+    "third.branch",
+    "ground.degenerate",
+    "ground.dependency-order",
+    "practice.reality-mechanics"
+  ],
+  "note": "Structural metrics from live D1-derived payload; corroborated against runtime code paths in main-website-worker.js. No canvas capture in this pass."
+}

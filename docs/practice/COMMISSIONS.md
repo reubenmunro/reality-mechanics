@@ -67,6 +67,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Structural Reading operations discovery | D-010 | Resolved | What operations recur when prose becomes faithful? | `docs/practice/STRUCTURAL_READING_OPERATIONS.md`; Tier 1 calibrated |
 | Field runtime audit | D-010A | Resolved | How does Field behave at runtime? | `docs/reports/D-010A-runtime-audit.md` |
 | Generalise ratio mechanics | D-010B | Resolved | All relation types participate in shared ratio engine | `docs/reports/D-010B-generalise-ratio-mechanics.md` |
+| Emergent behaviour observations | D-011 | Resolved | What behaviours recur from current runtime? | `docs/reports/D-011-emergent-behaviour-observations.md` |
 
 ---
 
