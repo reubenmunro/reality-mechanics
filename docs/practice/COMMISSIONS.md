@@ -70,6 +70,9 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Emergent behaviour observations | D-011 | Resolved | What behaviours recur from current runtime? | `docs/reports/D-011-emergent-behaviour-observations.md` |
 | Behaviour retrace instrument | D-012 | Resolved | Make Field behaviour retraceable to Atlas structure | `docs/reports/D-012-behaviour-retrace-instrument.md`; `/api/field/behaviour-trace`; Mechanics panel |
 | Cloudflare surface audit | D-013 | Resolved | Are stale Cloudflare surfaces blocking current mechanics? | `docs/reports/D-013-cloudflare-surface-audit.md`; `docs/deployment/CLOUDFLARE_SURFACE_MAP.md` |
+| Runtime principles derivation | D-014 | Resolved | What runtime laws does evidence already imply? | `docs/reports/D-014-runtime-principles-derivation.md`; `docs/practice/RUNTIME_PRINCIPLES.md` |
+| Derived Ratio design document | D-015A | Resolved | Document Derived Ratio as structure–behaviour bridge | `docs/runtime/DERIVED_RATIO.md` |
+| Derived Ratio falsification | D-015B | Resolved | Falsify D-015A against Observatory evidence | `docs/reports/D-015B-derived-ratio-falsification.md` |
 
 ---
 
