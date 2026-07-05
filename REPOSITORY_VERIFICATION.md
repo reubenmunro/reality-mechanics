@@ -3,7 +3,7 @@
 Status:
 **COMPLETE** (verified 2026-07-05 via D-003 / D-004)
 
-Evidence reports: `docs/reports/D-003-deployment-verification.md`, `docs/reports/D-004-d1-sync-read-model-verification.md`, `docs/reports/D-019-atlas-website-sync-deployment.md`
+Evidence reports: `docs/reports/D-003-deployment-verification.md`, `docs/reports/D-004-d1-sync-read-model-verification.md`, `docs/reports/D-019-atlas-website-sync-deployment.md`, `docs/reports/D-020A-observatory-panel-compression.md`, `docs/reports/D-020B-mechanics-amplification.md`
 
 ---
 
@@ -88,7 +88,7 @@ Status: **Complete**
 Evidence (D-003/D-004/D-019):
 
 - D1 `atlas-d1`: sync apply succeeded (492 queries, 3431 rows written — D-019 verification re-apply).
-- Field `/api/field/states`: 200; 490 states; D-018D place → hold prose verified on five probe terms (Connection, Hold, Out, Not, Cognitive Metabolism).
+- Field `/api/field/states`: 200; 490 states; D-018D place → hold prose verified on five probe terms (Connection, Hold, Out, Not, Cognitive Metabolism). D-020A adds `place` + `atlasUrl`; removes `excerpt` from Field client payload.
 - MCP `get_entry`: place → hold → movement confirmed on same five terms.
 - Calibration `/api/health`: `{"ok":true,"runtime":"mechanical","ai":false}`.
 

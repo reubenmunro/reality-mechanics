@@ -8,6 +8,18 @@ import {
   structureCarriesEntry,
 } from "../field-maturity.mjs";
 import { buildFieldBehaviourTrace, buildTraceIndex } from "./field-behaviour-trace.mjs";
+import { atlasSourceViewUrl, observatoryPlaceDisplay } from "./observatory-panel.mjs";
+import {
+  MECHANICS_AMPLIFICATION,
+  amplifiedCondensationFocus,
+  amplifiedRhythmExpression,
+  couplingRelationSensibility,
+  couplingSensibilityTarget,
+  frameTransitionUnderlayAlpha,
+  ratioVisualScale,
+  tracePressureDecayScale,
+  tracePressureStrength,
+} from "./mechanics-amplification.mjs";
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -74,7 +86,7 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
   if (!env.ATLAS_DB) throw new Error("db_unavailable");
 
   const [entries, revisions, proposals, atlasVersion, ratioModeThresholds] = await Promise.all([
-    fieldAll(env, "SELECT id, title, entry_order, excerpt, plain_text, structure, created, updated FROM entries ORDER BY source_path, id"),
+    fieldAll(env, "SELECT id, title, entry_order, excerpt, plain_text, content, source_path, structure, created, updated FROM entries ORDER BY source_path, id"),
     fieldAll(env, "SELECT entry_id, edit_class, actor, at FROM entry_revisions"),
     fieldAll(env, "SELECT entry_id, status, light_count, shade_count, created_at, updated_at FROM proposals"),
     readFieldConfig(env, "atlas_version", null),
@@ -150,7 +162,8 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
       id: entry.id,
       title: entry.title,
       order: entry.entry_order || "operation",
-      excerpt: entry.excerpt || String(entry.plain_text || "").slice(0, 420),
+      place: observatoryPlaceDisplay({ title: entry.title, body: entry.content || "" }),
+      atlasUrl: atlasSourceViewUrl(entry.source_path),
       relations,
       ratioMode: fieldRatioMode(mass.carriers, ratioModeThresholds),
       mass,
@@ -304,12 +317,23 @@ export function fieldPage(options = {}) {
       font: 500 clamp(1.5rem, 4vw, 2.4rem)/1.1 "Iowan Old Style", Charter, Georgia, serif;
       color: #c8601a; margin-bottom: 1.15rem;
     }
-    #sheet-excerpt {
-      margin: -0.35rem 0 1.3rem;
+    #sheet-place {
+      margin: -0.35rem 0 0.85rem;
       color: rgba(212,197,169,0.74);
       font: 500 0.96rem/1.55 "Iowan Old Style", Charter, Georgia, serif;
       white-space: pre-wrap;
     }
+    #sheet-atlas-link {
+      display: inline-block;
+      margin: 0 0 1.15rem;
+      color: rgba(58,80,112,0.76);
+      font: 600 0.58rem/1 system-ui, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    #sheet-atlas-link:hover { color: rgba(200,96,26,0.82); }
+    #sheet-atlas-link[hidden] { display: none; }
     #sheet-relations {
       display: flex; flex-wrap: wrap; gap: 1.45rem 1.8rem;
       margin-bottom: 0.2rem;
@@ -404,7 +428,8 @@ export function fieldPage(options = {}) {
   <button id="sheet-close" aria-label="Close">×</button>
   <div id="sheet-order"></div>
   <div id="sheet-title"></div>
-  <div id="sheet-excerpt"></div>
+  <div id="sheet-place"></div>
+  <a id="sheet-atlas-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View Atlas Entry</a>
   <div id="sheet-relations"></div>
   <p id="sheet-empty"></p>
 </section>
@@ -429,7 +454,8 @@ const enterForm = document.getElementById('enter-form');
 const enterInput = document.getElementById('enter-input');
 const termSheetEl = document.getElementById('term-sheet');
 const sheetCloseEl = document.getElementById('sheet-close');
-const sheetExcerptEl = document.getElementById('sheet-excerpt');
+const sheetPlaceEl = document.getElementById('sheet-place');
+const sheetAtlasLinkEl = document.getElementById('sheet-atlas-link');
 const sheetRelationsEl = document.getElementById('sheet-relations');
 const sheetEmptyEl = document.getElementById('sheet-empty');
 const relationDebugEl = document.getElementById('relation-debug');
@@ -465,6 +491,7 @@ let mechanicsEnabled = new URLSearchParams(location.search).get('debug') === 'me
 let fieldBehaviourTrace = null;
 let mechanicsLastRefresh = 0;
 let mechanicsRefreshPending = false;
+let frameTransitionPulse = 0;
 window.__fieldBehaviourTrace = null;
 
 const relationTypes = [
@@ -870,12 +897,13 @@ function refreshCoupledFrame() {
 function setCurrentFieldReferenceFrame(id) {
   if (!id || id === 'practice.whole-read') currentFieldReferenceFrame = null;
   else currentFieldReferenceFrame = currentFieldReferenceFrame === id ? null : id;
+  frameTransitionPulse = 1;
   refreshCoupledFrame();
 }
 
 function coupledSensibilityTarget(id) {
   if (!currentFieldReferenceFrame) return 1;
-  return localFrameIds.has(id) ? 1 : 0.08;
+  return couplingSensibilityTarget(localFrameIds.has(id), true);
 }
 
 function sensibilityAlpha(id) {
@@ -884,7 +912,13 @@ function sensibilityAlpha(id) {
 
 function relationSensibility(aId, bId) {
   if (!currentFieldReferenceFrame) return 1;
-  return Math.max(0.08, (sensibilityAlpha(aId) + sensibilityAlpha(bId)) * 0.5);
+  return couplingRelationSensibility(
+    localFrameIds.has(aId),
+    localFrameIds.has(bId),
+    sensibilityAlpha(aId),
+    sensibilityAlpha(bId),
+    true,
+  );
 }
 
 // Returns ids of the focus term and all its direct relations from the full index
@@ -1277,16 +1311,22 @@ function renderTermSheet(id = focusId) {
   if (!op || !termSheetEl) return false;
   document.getElementById('sheet-order').textContent = op.order || '';
   document.getElementById('sheet-title').textContent = op.title || op.id;
-  sheetExcerptEl.textContent = op.excerpt || '';
-  sheetExcerptEl.style.display = op.excerpt ? 'block' : 'none';
+  sheetPlaceEl.textContent = op.place || '';
+  sheetPlaceEl.style.display = op.place ? 'block' : 'none';
+  if (op.atlasUrl) {
+    sheetAtlasLinkEl.href = op.atlasUrl;
+    sheetAtlasLinkEl.hidden = false;
+  } else {
+    sheetAtlasLinkEl.hidden = true;
+  }
   sheetRelationsEl.innerHTML = '';
   let groupCount = 0;
   [
-    ['holds', 'holds'],
-    ['traces', 'traces'],
-    ['carries', 'carries'],
-    ['pairs', 'pairs'],
-    ['nests', 'nests'],
+    ['holds', 'Holds'],
+    ['traces', 'Traces'],
+    ['carries', 'Carries'],
+    ['pairs', 'Pairs'],
+    ['nests', 'Nests'],
   ].forEach(([key, label]) => {
     const items = relationTargets(op, key);
     if (!items.length) return;
@@ -1426,28 +1466,32 @@ function buildPressureField() {
 
 function decayPressureTraces(dt) {
   if (!relationPressureTraces.length) return;
-  const decay = Math.exp(-dt * FIELD_PRESSURE_GRID.traceDecay);
   relationPressureTraces = relationPressureTraces
-    .map((trace) => ({ ...trace, strength: trace.strength * decay }))
+    .map((trace) => {
+      const decay = Math.exp(-dt * FIELD_PRESSURE_GRID.traceDecay * tracePressureDecayScale(trace.relationKey));
+      return { ...trace, strength: trace.strength * decay };
+    })
     .filter((trace) => trace.strength > 0.006)
     .slice(-FIELD_PRESSURE_GRID.traceLimit);
 }
 
-function addPressureTrace(x, y, strength) {
-  relationPressureTraces.push({ x, y, strength });
+function addPressureTrace(x, y, strength, relationKey = null) {
+  relationPressureTraces.push({ x, y, strength, relationKey });
   if (relationPressureTraces.length > FIELD_PRESSURE_GRID.traceLimit) {
     relationPressureTraces.splice(0, relationPressureTraces.length - FIELD_PRESSURE_GRID.traceLimit);
   }
 }
 
-function recordRelationPressureTrace(a, b, controlWorld, strength) {
+function recordRelationPressureTrace(a, b, controlWorld, strength, relationKey = null) {
   if (!Number.isFinite(strength) || strength <= 0) return;
+  const boosted = tracePressureStrength(strength, relationKey);
   [0.28, 0.5, 0.72].forEach((t) => {
     const mt = 1 - t;
     addPressureTrace(
       mt * mt * a.x + 2 * mt * t * controlWorld.x + t * t * b.x,
       mt * mt * a.y + 2 * mt * t * controlWorld.y + t * t * b.y,
-      strength * (t === 0.5 ? 1 : 0.62)
+      boosted * (t === 0.5 ? 1 : 0.62),
+      relationKey,
     );
   });
 }
@@ -1853,14 +1897,18 @@ function bezierPoint(a, c, b, t) {
   };
 }
 
-function drawFilament(pa, pb, control, type, source, target, offset, strand, emphasis = 1) {
+function drawFilament(pa, pb, control, type, source, target, offset, strand, emphasis = 1, ratioVisual = null) {
   const physics = source.engine?.values || enginePhysics(source).values;
   const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
   const targetMass = target.fieldStates?.structuralMass || target.structuralMass || 0;
   const relationMass = (sourceMass + targetMass) * 0.5;
+  const filamentScale = ratioVisual?.filamentScale ?? 1;
   const baseSegments = relationMass > 0.48 ? FIELD_RENDER_BUDGET.filamentSegmentsCompressed : FIELD_RENDER_BUDGET.filamentSegments;
-  const segments = Math.max(7, Math.round(baseSegments * adaptiveAmbientScale(0.62)));
-  const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * (type.wiggMult ?? 1) * (1 - sourceMass * 0.42);
+  const segments = Math.max(7, Math.round(baseSegments * filamentScale * adaptiveAmbientScale(0.62)));
+  let wiggleMult = type.wiggMult ?? 1;
+  if (type.key === 'traces') wiggleMult *= MECHANICS_AMPLIFICATION.trace.wiggleBoost;
+  if (type.key === 'carries') wiggleMult *= MECHANICS_AMPLIFICATION.carry.wiggleCut;
+  const wiggle = (8 + source.turbulence * 18 + physics.opening * 18 + physics.pressure * 14 - physics.damping * 7) * wiggleMult * (ratioVisual?.wiggleScale ?? 1) * (1 - sourceMass * 0.42);
   const split = 0.18 + (strand % 5) * 0.13;
   const alpha = (0.048 + type.strength * 0.105 + source.heat * 0.074 + sourceMass * 0.038) * emphasis;
   const sourceOrder = spineDisplayOrder(source);
@@ -1931,6 +1979,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const isPair = type.key === 'pairs';
   const isNest = type.key === 'nests';
   const ratioMode = termRatioMode(a);
+  const ratioVisual = ratioVisualScale(ratioMode);
   const ratioTransition = ratioMode.transition;
   const ratioContinuous = ratioMode.continuous;
   const carryTransition = isCarry ? ratioTransition : 0;
@@ -1952,22 +2001,22 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     ? Math.sin(time * (0.18 + rhythm.reciprocity * 0.42 - pairContinuous * 0.08) + offset + (source.phase || 0) * 0.2)
     : 0;
   const nestCycle = isNest
-    ? Math.sin(time * (0.12 + rhythm.circulation * 0.22 - nestContinuous * 0.05) + offset + (source.enclosure || 0) * Math.PI)
+    ? Math.sin(time * (0.12 + rhythm.circulation * 0.22 * MECHANICS_AMPLIFICATION.nest.circulationRate - nestContinuous * 0.05) + offset + (source.enclosure || 0) * Math.PI)
     : 0;
   const bowBase = (
     type.direction === 'return' ? -46 :
     type.direction === 'lateral' ? pairAnswer * (36 + rhythm.reciprocity * 24) * (1 + pairContinuous * 0.18) :
-    type.direction === 'enclose' ? (22 + rhythm.circulation * 26) * (0.82 + nestCycle * 0.24) * (1 + nestContinuous * 0.24) :
+    type.direction === 'enclose' ? (22 + rhythm.circulation * 26) * (0.82 + nestCycle * 0.24) * (1 + nestContinuous * 0.24) * MECHANICS_AMPLIFICATION.nest.enclosureBow :
     36
   ) * (type.bowMult ?? 1);
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
-  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24);
-  const rhythmRate = 0.16
+  const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24) * (isCarry ? MECHANICS_AMPLIFICATION.carry.bowCut : 1);
+  const rhythmRate = (0.16
     + rhythm.cadence * 1.18
     + rhythm.intermittence * 0.62
     + rhythm.reciprocity * 0.34
     + rhythm.circulation * 0.24
-    - rhythm.persistence * 0.42;
+    - rhythm.persistence * 0.42) * (isCarry ? MECHANICS_AMPLIFICATION.carry.cadenceBoost : 1);
   const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * (isPair ? 0.32 : 0.18)
     + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1
     + rhythm.circulation * Math.sin(time * (0.16 + rhythm.circulation * 0.24) + offset) * (isNest ? 0.2 : 0.08);
@@ -1982,7 +2031,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   );
   const lateralPressure = -(gradient.x * nx + gradient.y * ny);
   const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-54, Math.min(54, lateralPressure * 4200)) * (0.28 + relationMass * 0.18) * scale;
-  const containment = isNest ? dist * (0.07 + rhythm.circulation * 0.07 + relationMass * 0.03 + nestTransition * 0.018 + nestContinuous * 0.04) : 0;
+  const containment = isNest ? dist * (0.07 + rhythm.circulation * 0.07 + relationMass * 0.03 + nestTransition * 0.018 + nestContinuous * 0.04) * MECHANICS_AMPLIFICATION.nest.containmentBoost : 0;
   const targetControlWorld = {
     x: worldMidX - tx * containment + nx * ((bow + fieldBend) / Math.max(0.001, scale)),
     y: worldMidY - ty * containment + ny * ((bow + fieldBend) / Math.max(0.001, scale)),
@@ -2014,7 +2063,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
   const currentAlpha = (0.088 + type.strength * 0.19 + source.heat * 0.082 + relationMass * 0.052 - source.ash * 0.045) * emphasis * (1 + movementBoost) * (1 + carryConsequence + holdConsequence + traceConsequence + pairConsequence + nestConsequence);
-  recordRelationPressureTrace(a, b, controlWorld, Math.min(0.044, currentAlpha * (0.055 + carryContinuous * 0.026 + holdContinuous * 0.018 + traceContinuous * 0.016 + pairContinuous * 0.014 + nestContinuous * 0.018)));
+  recordRelationPressureTrace(a, b, controlWorld, Math.min(0.044, currentAlpha * (0.055 + carryContinuous * 0.026 + holdContinuous * 0.018 + traceContinuous * 0.016 + pairContinuous * 0.014 + nestContinuous * 0.018)), type.key);
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -2025,7 +2074,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, broadAlpha, broadAlpha)
     : relationColor(type, broadAlpha);
-  const relationWidth = Math.max(0.95, (0.98 + source.density * 0.62 + sourcePhysics.capacity * 0.6 + relationMass * 0.94 + (family === 'motion' ? 0.26 : 0) + movementBoost * 1.35) * (1 + carryTransition * 0.08 + carryContinuous * 0.22 + holdTransition * 0.05 + holdContinuous * 0.14 + traceTransition * 0.04 + traceContinuous * 0.1 + pairTransition * 0.04 + pairContinuous * 0.1 + nestTransition * 0.04 + nestContinuous * 0.14) * scale);
+  const relationWidth = Math.max(0.95, (0.98 + source.density * 0.62 + sourcePhysics.capacity * 0.6 + relationMass * 0.94 + (family === 'motion' ? 0.26 : 0) + movementBoost * 1.35) * (1 + carryTransition * 0.08 + carryContinuous * 0.22 + holdTransition * 0.05 + holdContinuous * 0.14 + traceTransition * 0.04 + traceContinuous * 0.1 + pairTransition * 0.04 + pairContinuous * 0.1 + nestTransition * 0.04 + nestContinuous * 0.14) * scale) * (ratioVisual.lineTightness ?? 1);
   ctx.lineWidth = relationWidth * (1.16 - relationTension * 0.28);
   ctx.stroke();
 
@@ -2039,6 +2088,22 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.lineWidth = Math.max(0.48, relationWidth * (0.34 + relationTension * 0.14));
   ctx.stroke();
 
+  if (isNest && containment > 0) {
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.quadraticCurveTo(
+      cx - nx * containment * 0.35 * scale,
+      cy - ny * containment * 0.35 * scale,
+      pb.x,
+      pb.y,
+    );
+    ctx.strokeStyle = colourMode === 'fire'
+      ? currentGradient(pa, pb, sourceOrder, targetOrder, broadAlpha * 0.42, broadAlpha * 0.42)
+      : relationColor(type, broadAlpha * 0.42);
+    ctx.lineWidth = Math.max(0.35, relationWidth * 0.32);
+    ctx.stroke();
+  }
+
   const modeDetail = isCarry
     ? Math.max(0.18, 1 - carryTransition * 0.22 - carryContinuous * 0.58)
     : isHold
@@ -2050,9 +2115,9 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
           : isNest
             ? Math.max(0.22, 1 - nestTransition * 0.26 - nestContinuous * 0.58)
             : 1;
-  const strandCeiling = Math.max(1, Math.round((FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4) * adaptiveAmbientScale(0.72) * modeDetail));
-  const strandCount = Math.min(strandCeiling, Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48) * modeDetail)));
-  for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis * (1 - carryContinuous * 0.34 - holdContinuous * 0.42 - traceContinuous * 0.3 - pairContinuous * 0.26 - nestContinuous * 0.38));
+  const strandCeiling = Math.max(1, Math.round((FIELD_RENDER_BUDGET.relationStrands - relationMass * 1.4) * adaptiveAmbientScale(0.72) * modeDetail * (ratioVisual.strandScale ?? 1)));
+  const strandCount = Math.min(strandCeiling, Math.max(1, Math.floor((2 + source.density * 4 + source.continuation * 3 + source.turbulence * 3) * (type.strandMult ?? 1) * (1 - relationMass * 0.48) * modeDetail * (ratioVisual.strandScale ?? 1))));
+  for (let i = 0; i < strandCount; i++) drawFilament(pa, pb, control, type, source, target, offset, i, emphasis * (1 - carryContinuous * 0.34 - holdContinuous * 0.42 - traceContinuous * 0.3 - pairContinuous * 0.26 - nestContinuous * 0.38), ratioVisual);
 
   if (colourMode === 'fire' && crossing) {
     const meetT = clamp01(meeting.t + Math.sin(time * (0.32 + sourcePhysics.heat * 0.22 + meeting.pressure * 0.18) + offset) * (0.025 + meeting.pressure * 0.05));
@@ -2068,7 +2133,12 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     ctx.fill();
   }
 
-  const expression = relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset);
+  const expression = amplifiedRhythmExpression(
+    type.key,
+    rhythm,
+    pulse,
+    relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset),
+  );
   const t = expression.t;
   const qx = (1-t)*(1-t)*pa.x + 2*(1-t)*t*cx + t*t*pb.x;
   const qy = (1-t)*(1-t)*pa.y + 2*(1-t)*t*cy + t*t*pb.y;
@@ -2124,8 +2194,9 @@ function compressedRelationField(focus, compressedCount, structuralMass, directi
   const p = screen(focus);
   const profile = focus.profile || computeProfile(focus);
   const physics = profile.engine?.values || enginePhysics(profile).values;
+  const ratioVisual = ratioVisualScale(termRatioMode(focus));
   const radius = (72 + structuralMass * 74 + Math.min(10, compressedCount) * 4 + physics.gravity * 24) * scale;
-  const alpha = Math.min(0.18, (0.026 + compressedCount * 0.006 + structuralMass * 0.09) * sensibilityAlpha(focus.id));
+  const alpha = Math.min(0.24, (0.026 + compressedCount * 0.006 + structuralMass * 0.09) * sensibilityAlpha(focus.id) * (ratioVisual.compressionGlow ?? 1));
   const order = spineDisplayOrder(focus);
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
@@ -2250,14 +2321,18 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const movementHeat = movementRatio ? movementRatio.frequency * 0.035 + movementRatio.tension * 0.045 + movementRatio.recurrence * 0.025 : 0;
   const pulseRate = (0.26 + physics.heat * 0.72 + physics.velocity * 0.32 + physics.pressure * 0.22 - physics.damping * 0.2) * (topFamily === 'motion' ? 1.18 : topFamily === 'settlement' ? 0.82 : 1) * movementTempo * (1 - structuralMass * 0.34);
   const motionTime = isFocus ? time : 0;
-  const pulseDepth = isFocus
+  const rawPulseDepth = isFocus
     ? (0.018 + physics.pressure * 0.05 + profile.turbulence * 0.025 + (movementRatio ? movementRatio.frequency * 0.018 + movementRatio.recurrence * 0.014 : 0)) * (1 - structuralMass * 0.46)
     : 0;
+  const focusCondensation = isFocus
+    ? amplifiedCondensationFocus(structuralMass, rawPulseDepth, 0.16, 0.38 + profile.resolution * 0.22 + fieldTension * 0.06)
+    : null;
+  const pulseDepth = focusCondensation?.pulseDepth ?? rawPulseDepth;
   const radius = (isFocus ? 34 + physics.gravity * 20 * anchorBoost + physics.capacity * 18 + structuralMass * 12 : 13 + profile.density * 8 + physics.capacity * 6 + structuralMass * 8) * scale *
     (1 + Math.sin(motionTime * pulseRate + op.phase) * pulseDepth);
 
   if (ambientBudget.endpointOnly) {
-    const endpointRadius = Math.max(2.2, radius * (0.14 + structuralMass * 0.045 + fieldTension * 0.018));
+    const endpointRadius = Math.max(2.2, radius * (0.12 + structuralMass * 0.038 + fieldTension * 0.014) * MECHANICS_AMPLIFICATION.condensation.endpointContrast);
     const mediumRadius = radius * (0.58 - fieldTension * 0.08);
     const endpointGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, Math.max(endpointRadius * 2.4, mediumRadius));
     const order = spineDisplayOrder(op);
@@ -2332,7 +2407,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
         ? fireColor(order, edgeAlpha, 14)
         : 'rgba(212,197,169,' + edgeAlpha + ')',
       Math.max(0.3, scale * (0.32 + fieldTension * 0.18)),
-      Math.max(0.05, 0.1 - fieldTension * 0.035),
+      Math.max(0.05, (focusCondensation?.irregularity ?? 0.1) - fieldTension * 0.035),
       motionTime
     );
     ctx.restore();
@@ -2357,12 +2432,14 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   ctx.restore();
 
   if (isFocus) {
-    const arrivalRadius = Math.max(1.35, radius * (0.074 - fieldTension * 0.012));
-    const arrivalGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, arrivalRadius * (2.12 - fieldTension * 0.24));
-    arrivalGlow.addColorStop(0, 'rgba(212,197,169,' + (0.38 + profile.resolution * 0.22 + fieldTension * 0.06) + ')');
-    arrivalGlow.addColorStop(0.34, 'rgba(212,197,169,' + (0.09 + fieldTension * 0.04) + ')');
+    const arrivalAlpha = focusCondensation?.arrivalAlpha ?? (0.38 + profile.resolution * 0.22 + fieldTension * 0.06);
+    const arrivalIrregularity = focusCondensation?.irregularity ?? 0.16;
+    const arrivalRadius = Math.max(1.35, radius * (0.084 - fieldTension * 0.01));
+    const arrivalGlow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, arrivalRadius * (2.28 - fieldTension * 0.2));
+    arrivalGlow.addColorStop(0, 'rgba(212,197,169,' + arrivalAlpha + ')');
+    arrivalGlow.addColorStop(0.34, 'rgba(212,197,169,' + (arrivalAlpha * 0.24 + fieldTension * 0.04) + ')');
     arrivalGlow.addColorStop(1, 'rgba(212,197,169,0)');
-    fillCondensation(p, arrivalRadius * (2.12 - fieldTension * 0.24), op.phase + time * 0.03, arrivalGlow, 0.16);
+    fillCondensation(p, arrivalRadius * (2.28 - fieldTension * 0.2), op.phase + time * 0.03, arrivalGlow, arrivalIrregularity);
   }
   ctx.restore();
 }
@@ -2383,6 +2460,7 @@ function step(dt) {
   time += dt;
   settled = Math.min(3, settled + dt);
   decayPressureTraces(dt);
+  frameTransitionPulse = Math.max(0, frameTransitionPulse - dt * MECHANICS_AMPLIFICATION.frameTransition.pulseDecay);
 
   scale += (targetScale - scale) * Math.min(1, dt * 8);
   pan.x += (targetPan.x - pan.x) * Math.min(1, dt * 7);
@@ -2392,7 +2470,7 @@ function step(dt) {
   globalFrameIds.forEach((id) => {
     const target = coupledSensibilityTarget(id);
     const current = coupledSensibility[id] ?? target;
-    coupledSensibility[id] = current + (target - current) * Math.min(1, dt * 2.5);
+    coupledSensibility[id] = current + (target - current) * Math.min(1, dt * MECHANICS_AMPLIFICATION.frameTransition.sensibilityLerp);
   });
   const focusProfile = focus?.profile || (focus ? computeProfile(focus) : null);
   const focusPhysics = focusProfile?.engine?.values || (focusProfile ? enginePhysics(focusProfile).values : null);
@@ -2440,7 +2518,9 @@ function draw() {
 
   // Home field: the field before orientation — ratios present, unread.
   // Persists as a fading underlay as the focused view resolves.
-  if (homeMode || homeAlpha > 0.01 || currentFieldReferenceFrame) drawHomeField(Math.max(homeAlpha, currentFieldReferenceFrame ? 0.58 : 0));
+  if (homeMode || homeAlpha > 0.01 || currentFieldReferenceFrame) {
+    drawHomeField(frameTransitionUnderlayAlpha(homeAlpha, !!currentFieldReferenceFrame, frameTransitionPulse));
+  }
 
   if (!homeMode) {
     drawBasinGradients();
@@ -2689,7 +2769,8 @@ function operationFromFieldState(state) {
     order: state.order || 'operation',
     entry_order: state.order || 'operation',
     behaviour: '',
-    excerpt: state.excerpt || '',
+    place: state.place || '',
+    atlasUrl: state.atlasUrl || '',
     fieldState: state,
   };
   relationTypes.forEach(({ key }) => { op[key] = relationIdsForState(state, key); });

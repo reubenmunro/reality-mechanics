@@ -151,11 +151,11 @@ The website must progressively reveal:
 
 Current Commission:
 
-**Tier 2 structural reading backlog** or **Field excerpt visibility** (hold paragraph beyond 28-word sheet excerpt)
+**Tier 2 structural reading backlog** or **D1 sync automation + version metadata**
 
-D-018A–D completed Tier 1 place + hold calibration (481 files). D-019 synced calibrated prose to production D1; Field and MCP verified live.
+D-018A–D completed Tier 1 place + hold calibration (481 files). D-019 synced calibrated prose to production D1. D-020A compressed the Observatory panel to place-only display; D-020B amplified Field mechanics rendering (Worker deploy).
 
-Governing evidence: `docs/reports/D-019-atlas-website-sync-deployment.md`; `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/practice/STRUCTURAL_READING_OPERATIONS.md`.
+Governing evidence: `docs/reports/D-020A-observatory-panel-compression.md`; `docs/reports/D-020B-mechanics-amplification.md`; `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
 
 Previous commissions completed:
 
@@ -176,6 +176,8 @@ Previous commissions completed:
 - **D-018A** — Opening place calibration (`docs/reports/D-018A-opening-place-calibration.md`)
 - **D-018B/C/D** — Hold rule assessment, falsification, corpus-wide hold calibration (`docs/reports/D-018D-tier-1-hold-calibration.md`)
 - **D-019** — Atlas website sync + deployment verification (`docs/reports/D-019-atlas-website-sync-deployment.md`)
+- **D-020A** — Observatory panel compression (`docs/reports/D-020A-observatory-panel-compression.md`)
+- **D-020B** — Mechanics amplification (`docs/reports/D-020B-mechanics-amplification.md`)
 
 ---
 

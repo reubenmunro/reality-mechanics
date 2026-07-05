@@ -7,6 +7,8 @@ const entries = [
     id: "first.carry",
     title: "Carry",
     entry_order: "first",
+    content: "# Carry\n\nDirectional availability within one relation.\n\nCarry is held by [[Connection]].\n\n## Places",
+    source_path: "Reality_Mechanics/1_First/Carry.md",
     structure: JSON.stringify({ holds: [], traces: [], carries: [], pairs: [], nests: [] }),
     created: "2026-01-01T00:00:00.000Z",
     updated: "2026-01-01T00:00:00.000Z",
@@ -15,6 +17,8 @@ const entries = [
     id: "second.held",
     title: "Held",
     entry_order: "second",
+    content: "# Held\n\nHeld prose.",
+    source_path: "Reality_Mechanics/Second/Held.md",
     structure: JSON.stringify({ holds: ["first.carry"], traces: [], carries: [], pairs: [], nests: [] }),
     created: "2026-01-01T00:00:00.000Z",
     updated: "2026-01-01T00:00:00.000Z",
@@ -23,6 +27,8 @@ const entries = [
     id: "second.traced",
     title: "Traced",
     entry_order: "second",
+    content: "# Traced\n\nTraced prose.",
+    source_path: "Reality_Mechanics/Second/Traced.md",
     structure: JSON.stringify({ holds: [], traces: ["first.carry"], carries: [], pairs: [], nests: [] }),
     created: "2026-01-01T00:00:00.000Z",
     updated: "2026-01-01T00:00:00.000Z",
@@ -31,7 +37,39 @@ const entries = [
     id: "third.not-carrier",
     title: "Not Carrier",
     entry_order: "third",
+    content: "# Not Carrier\n\nNot Carrier prose.",
+    source_path: "Reality_Mechanics/Third/Not Carrier.md",
     structure: JSON.stringify({ holds: [], traces: [], carries: ["first.carry"], pairs: ["first.carry"], nests: ["first.carry"] }),
+    created: "2026-01-01T00:00:00.000Z",
+    updated: "2026-01-01T00:00:00.000Z",
+  },
+  {
+    id: "ground.invariant",
+    title: "Invariant",
+    entry_order: "ground",
+    content: "# Invariant\n\nWhat remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility.\n\nInvariant is held by [[Root Order]].\n\n## Places",
+    source_path: "Reality_Mechanics/0_Ground/Invariant.md",
+    structure: JSON.stringify({ holds: ["second.held"], traces: [], carries: [], pairs: [], nests: [] }),
+    created: "2026-01-01T00:00:00.000Z",
+    updated: "2026-01-01T00:00:00.000Z",
+  },
+  {
+    id: "first.connection",
+    title: "Connection",
+    entry_order: "first",
+    content: "# Connection\n\nRelation holding between distinguishable conditions so that passage is available in more than one direction.\n\nConnection is held by [[Relation]].\n\n## Places",
+    source_path: "Reality_Mechanics/1_First/Connection.md",
+    structure: JSON.stringify({ holds: [], traces: [], carries: [], pairs: [], nests: [] }),
+    created: "2026-01-01T00:00:00.000Z",
+    updated: "2026-01-01T00:00:00.000Z",
+  },
+  {
+    id: "third.field-relationships",
+    title: "Field Relationships",
+    entry_order: "third",
+    content: "# Field Relationships\n\nField Relationships A working grouping of third-order fields by recurring participation emphasis.\n\nField Relationships is held by [[Third Order]].\n\n## Places",
+    source_path: "Reality_Mechanics/3_Third/Field Relationships.md",
+    structure: JSON.stringify({ holds: ["second.held"], traces: [], carries: [], pairs: [], nests: [] }),
     created: "2026-01-01T00:00:00.000Z",
     updated: "2026-01-01T00:00:00.000Z",
   },
@@ -93,6 +131,9 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
 
   const carry = payload.states.find((state) => state.id === "first.carry");
   assert.deepEqual(carry.relations, { holds: [], traces: [], carries: [], pairs: [], nests: [] });
+  assert.equal(carry.place, "Directional availability within one relation.");
+  assert.match(carry.atlasUrl, /github\.com\/reubenmunro\/reality-mechanics\/blob\/main\//);
+  assert.equal("excerpt" in carry, false);
   assert.equal(carry.mass.carriers, 2, "mass counts holds/traces in-degree only");
   assert.equal(carry.ratioMode.mode, "continuous");
   assert.equal(carry.ratioMode.x, 2);
@@ -106,6 +147,24 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
   assert.deepEqual(notCarrier.relations.pairs, ["first.carry"]);
   assert.deepEqual(notCarrier.relations.nests, ["first.carry"]);
   assert.equal(notCarrier.mass.carriers, 0);
+
+  const fieldRelationships = payload.states.find((state) => state.id === "third.field-relationships");
+  assert.equal(
+    fieldRelationships.place,
+    "A working grouping of third-order fields by recurring participation emphasis.",
+  );
+
+  const invariant = payload.states.find((state) => state.id === "ground.invariant");
+  assert.equal(
+    invariant.place,
+    "What remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility.",
+  );
+
+  const connection = payload.states.find((state) => state.id === "first.connection");
+  assert.equal(
+    connection.place,
+    "Relation holding between distinguishable conditions so that passage is available in more than one direction.",
+  );
 });
 
 test("fieldPage consumes only the derived states endpoint", () => {
@@ -128,8 +187,13 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Calibration/);
-  assert.match(html, /id="sheet-excerpt"/);
-  assert.match(html, /excerpt: state\.excerpt/);
+  assert.match(html, /id="sheet-place"/);
+  assert.match(html, /id="sheet-atlas-link"/);
+  assert.match(html, /View Atlas Entry/);
+  assert.match(html, /place: state\.place/);
+  assert.match(html, /atlasUrl: state\.atlasUrl/);
+  assert.doesNotMatch(html, /id="sheet-excerpt"/);
+  assert.doesNotMatch(html, /excerpt: state\.excerpt/);
   assert.match(html, /function openTermSheet/);
   assert.doesNotMatch(html, /THREE\\.|three\\.min\\.js|fetch\\('\/api\/enter'\\)/);
   assert.doesNotMatch(html, /fetch\('\/api\/ark/);

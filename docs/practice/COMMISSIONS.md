@@ -81,6 +81,8 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Hold rule falsification | D-018C | Resolved | Does Tier 1 hold rule survive blind sample test? | `docs/reports/D-018C-hold-rule-falsification.md`; **safe with exclusions**; not applied |
 | Tier 1 hold sentence calibration | D-018D | Resolved | Apply revised Tier 1 hold rule corpus-wide | `docs/reports/D-018D-tier-1-hold-calibration.md`; 481 files; 485/488 aligned |
 | Atlas website sync + deployment | D-019 | Resolved | Publish D-018D prose to live Observatory | `docs/reports/D-019-atlas-website-sync-deployment.md`; D1 synced; Field + MCP verified |
+| Observatory panel compression | D-020A | Resolved | Panel duplicated Atlas prose | `docs/reports/D-020A-observatory-panel-compression.md`; place-only panel + Atlas link |
+| Mechanics amplification | D-020B | Resolved | Mechanics too weak to read without legend | `docs/reports/D-020B-mechanics-amplification.md`; rendering coefficients only |
 
 ---
 

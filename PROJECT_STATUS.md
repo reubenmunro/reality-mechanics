@@ -17,10 +17,10 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 - **Platform:** Three active public surfaces — Field, Calibration, MCP — with GitHub Actions deployment on `main`. Retired surfaces (Garden, standalone Atlas pages, Theory, Ark) are explicitly excluded (`README.md`).
 - **Atlas:** 492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
 - **Stewardship:** Audit method stabilised in `docs/stewardship/` (2026-07-04); 17 families / ~51 terms audited; coverage incomplete.
-- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004, D-019). `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
-- **Structural reading:** Whole Atlas calibrated (D-008); Tier 1 place + hold prose calibrated corpus-wide (D-018A–D) and live on Field/MCP (D-019); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
+- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004, D-019). D-020A/B Field Worker changes ready for deploy. `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
+- **Structural reading:** Whole Atlas calibrated (D-008); Tier 1 place + hold prose calibrated corpus-wide (D-018A–D) and live on Field/MCP (D-019); Observatory panel compressed to place-only (D-020A); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
 
-**Git:** `main` working tree clean and up to date with `origin/main` (as of D-019, 2026-07-05).
+**Git:** D-020A/B implementation committed locally; push to `main` deploys Field Worker (2026-07-05).
 
 No repository document declares a single project phase label (Discovery, Release Candidate, etc.).
 
@@ -32,7 +32,7 @@ No repository document declares a single project phase label (Discovery, Release
 | Atlas source | Canonical in GitHub — 492 files | `Reality_Mechanics/`; `README.md` |
 | Stewardship method | Stabilised — spec, case studies, audit log in place | Commits through 2026-07-04 on `main` |
 | Stewardship coverage | In progress — ~10% of Atlas files directly audited | `docs/stewardship/AUDIT_LOG.md` |
-| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004, D-019); D-018D hold prose live; version label `2026.07.03-i983` unchanged | `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-atlas-website-sync-deployment.md` |
+| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004, D-019); D-020A/B Worker deploy on push; version label `2026.07.03-i983` unchanged | `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-…`; `docs/reports/D-020A-…`; `docs/reports/D-020B-…` |
 
 ---
 
@@ -146,7 +146,7 @@ Stewardship open items remain in `docs/stewardship/OPEN_QUESTIONS.md`.
 |-----------|--------|-------|
 | **Atlas** | Active source; 492 files | Pre-commit references missing `atlas-doctor.mjs` |
 | **Stewardship** | Method stabilised; audit partial | Zero method failures; no outstanding proposals (`AUDIT_LOG.md:86-88`) |
-| **Field** | Active surface | D1-bound; D-018D hold prose live (D-019 sync, 2026-07-05) |
+| **Field** | Active surface | D1-bound; D-018D hold prose live (D-019); D-020A place-only panel + D-020B mechanics amplification (Worker) |
 | **Calibration** | Active surface | No D1/MCP/AI; `npm --prefix member test` |
 | **MCP** | Active surface | Read-only, D1-bound; post-sync structure verified |
 | **Build / sync** | Verified operational | D-019 sync apply success (492 queries, 3431 rows); manual apply still required after Atlas commits |
