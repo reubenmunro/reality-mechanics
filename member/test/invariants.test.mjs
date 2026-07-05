@@ -74,28 +74,31 @@ t("health reports mechanical runtime", () => {
   assert.ok(src.includes("ai: false"));
 });
 
-t("structural term-test mode exists and stays mechanical", () => {
-  assert.ok(src.includes("Structural Calibration"), "structural section present");
-  assert.ok(src.includes('id="termSelect"'), "term selector present");
-  assert.ok(src.includes('id="ttRun"'), "run control present");
-  assert.ok(src.includes("var TERMS = {"), "bounded dataset embedded");
-  assert.ok(/"Relation":\s*{\s*needs:\s*\[\]/.test(src), "Relation carried as the primitive with no needs");
-  // No new input surfaces beyond a preset selector and buttons.
+t("calibration engine v1 exists with forest walk demo", () => {
+  assert.ok(src.includes("Calibration Engine v1"), "engine section present");
+  assert.ok(src.includes('id="ceWalk"'), "walk control present");
+  assert.ok(src.includes("Walk the forest"), "forest metaphor present");
+  assert.ok(src.includes("Maintained Coupling"), "demo term present");
+  assert.ok(src.includes("Compatibility"), "synchronised dependency present");
+  assert.ok(src.includes("/api/calibration/engine"), "engine API route");
+  assert.ok(src.includes("import { runCalibration"), "engine module imported");
   assert.ok(!/<textarea/.test(src) && !/<form/.test(src), "no free-text input added");
 });
 
-t("structural test separates observation, evidence, recommendation", () => {
-  for (const block of ["Observation", "Evidence", "Recommendation"]) {
-    assert.ok(src.includes(">" + block + "<"), block + " block present");
+t("engine separates observation, evidence, recommendation and steward", () => {
+  for (const id of ["ceObs", "ceEv", "ceRec"]) {
+    assert.ok(src.includes('id="' + id + '"'), id);
   }
-  assert.ok(/id="ttObs"/.test(src) && /id="ttEv"/.test(src) && /id="ttRec"/.test(src));
+  assert.ok(src.includes('id="ceAccept"') && src.includes('id="ceDefer"'));
+  assert.ok(src.includes("steward decides") || src.includes("Steward decides"));
+  assert.ok(src.includes("does not promote Calculus") || src.includes("promote Calculus claims"));
 });
 
-t("structural test characterises load-bearing / weak / unresolved", () => {
-  for (const v of ["load-bearing", "weak", "unresolved"]) {
-    assert.ok(src.includes(v), v + " characterisation present");
-  }
-  assert.ok(src.includes("calibration, not proof"), "framed as calibration, not proof");
+t("engine roles order ark steward visible without calculus promotion", () => {
+  assert.ok(src.includes("Order — read"));
+  assert.ok(src.includes("Ark — test"));
+  assert.ok(src.includes("Steward — accept"));
+  assert.ok(!/Order : Ark/.test(src), "no calculus notation promoted");
 });
 
 t("navigation reaches Field and Submission 001", () => {

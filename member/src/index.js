@@ -14,6 +14,8 @@
  * global constant, so the comparison line here stays self-referential.
  */
 
+import { runCalibration, DEFAULT_TERM, DEFAULT_PERTURB } from "./calibration-engine.mjs";
+
 const PAGE = `<!doctype html>
 <html lang="en">
 <head>
@@ -133,6 +135,42 @@ const PAGE = `<!doctype html>
     .verdict.unresolved { color:var(--lead); }
     .tt-list { color:var(--warm); }
 
+    .ce-intro { margin:0 0 16px; max-width:680px; }
+    .ce-roles { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 18px; }
+    .ce-role { font:700 10px/1 system-ui,sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:6px 10px; border-radius:6px; border:1px solid var(--line); }
+    .ce-role.order { color:var(--lead); }
+    .ce-role.ark { color:var(--ember); }
+    .ce-role.steward { color:var(--good); }
+    .forest {
+      position:relative; margin:20px 0 8px; padding:18px 12px 14px; min-height:120px;
+      border:1px solid var(--line); border-radius:8px; background:linear-gradient(180deg,rgba(12,22,18,0.5),rgba(7,9,14,0.85));
+      overflow:hidden;
+    }
+    .forest::before {
+      content:""; position:absolute; inset:0; opacity:0.35;
+      background:repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(95,156,114,0.06) 28px,rgba(95,156,114,0.06) 29px);
+    }
+    .forest-path { position:relative; display:flex; align-items:flex-end; gap:6px; min-height:72px; padding:0 4px; overflow-x:auto; }
+    .forest-node {
+      flex:0 0 auto; min-width:72px; text-align:center; font:600 10px/1.2 system-ui,sans-serif;
+      color:var(--cool); opacity:0.45; transition:opacity 0.25s,color 0.25s,transform 0.25s;
+    }
+    .forest-node.active { color:var(--warm); opacity:1; transform:translateY(-4px); }
+    .forest-node.done { color:var(--good); opacity:0.85; }
+    .forest-node .dot {
+      width:10px; height:10px; margin:0 auto 6px; border-radius:50%; background:var(--cool); opacity:0.5;
+    }
+    .forest-node.active .dot { background:var(--ember); opacity:1; box-shadow:0 0 8px rgba(200,96,26,0.55); }
+    .forest-node.done .dot { background:var(--good); opacity:0.9; }
+    .forest-cap { position:relative; color:var(--cool); font-size:11px; margin-top:10px; min-height:2.4em; }
+    .forest-cap b { color:var(--warm); }
+    .ce-step { margin-top:12px; padding:12px 14px; border:1px solid var(--line); border-radius:8px; background:rgba(7,9,14,0.55); font-size:13px; line-height:1.55; }
+    .ce-step-k { color:var(--ember); font:700 10px/1 system-ui,sans-serif; letter-spacing:0.11em; text-transform:uppercase; margin-bottom:4px; }
+    .ce-steward { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .ce-steward button { font-size:10px; padding:10px 12px; }
+    .ce-steward button:disabled { opacity:0.45; cursor:default; }
+    .ce-steward-note { margin-top:10px; color:var(--cool); font-size:12px; font-style:italic; }
+
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
       .proof { grid-template-columns:1fr; }
@@ -220,23 +258,41 @@ const PAGE = `<!doctype html>
       <p class="note"><b>Open Strain never reaches zero</b> because the target keeps drifting between pulses, and each correction closes only part of the gap — sometimes less than expected. Calibration is what the pulses do over time, not what any single one settles. There is no fixed rhythm to compare against: pulse timing is close to memoryless — each interval largely independent of the last — so the dashed line tracks the mechanism's own recent behaviour rather than an imported schedule. <b>What a pulse leaves behind is not reset to zero</b> — Carried Strain is that leftover, and it measurably (if weakly) shapes how soon the next pulse fires. The carrying is real; watch whether it stays legible or gets lost in the noise.</p>
     </section>
 
-    <section class="mech term-test" aria-live="polite">
+    <section class="mech ce-engine" aria-live="polite">
       <div class="mech-head">
-        <h2>Structural Calibration — Term Test</h2>
-        <div class="status" id="ttStatus">Idle</div>
+        <h2>Calibration Engine v1</h2>
+        <div class="status" id="ceStatus">Ready</div>
       </div>
-      <p class="tt-intro">The strain pass above shows calibration in time. This pass shows calibration in <b>structure</b>: pick one Atlas term, and the instrument reads its dependencies, simulates removing it, reports what can no longer be retraced back to <b>Relation</b>, then restores it. This is calibration, not proof — it runs on a bounded first-order subset held locally, with no Atlas change and no network.</p>
-      <div class="tt-controls">
-        <span class="tt-label">Term</span>
-        <select id="termSelect" aria-label="Atlas term to test"></select>
-        <button class="primary" id="ttRun" type="button">Run structural test</button>
+      <p class="ce-intro">Walk through a forest. <b>Forward</b> movement is a new trajectory; <b>backward</b> movement is ancestry. <b>Healthy calibration</b> keeps progress retraceable. <b>Drift</b> is progress without retrace. <b>Stasis</b> is retrace without discovery. This engine tests one Atlas term in the read-model only — nothing is written to source.</p>
+      <div class="ce-roles">
+        <span class="ce-role order">Order — read · map · retrace · preserve</span>
+        <span class="ce-role ark">Ark — test · perturb · carry · restore · observe</span>
+        <span class="ce-role steward">Steward — accept · reject · defer</span>
       </div>
-      <div class="tt-out" id="ttOut" hidden>
-        <div class="tt-block"><div class="tt-k">Observation</div><div class="tt-v" id="ttObs"></div></div>
-        <div class="tt-block"><div class="tt-k">Evidence</div><div class="tt-v" id="ttEv"></div></div>
-        <div class="tt-block"><div class="tt-k">Recommendation</div><div class="tt-v" id="ttRec"></div></div>
+      <div class="forest" aria-label="Forest walk">
+        <div class="forest-path" id="forestPath"></div>
+        <div class="forest-cap" id="forestCap">Press <b>Walk the forest</b> to run the Maintained Coupling demo.</div>
       </div>
-      <p class="note">The removal test asks one structural question: if this term were gone, which loaded terms could no longer be followed back to Relation? A term whose removal breaks others reads as <b>load-bearing</b>; one whose removal breaks nothing reads as <b>weak</b> at this scope; one whose own grounding reaches outside the loaded subset reads as <b>unresolved</b> here. What a term <i>carries</i> is not the same as what <i>depends</i> on it.</p>
+      <div class="actions">
+        <button class="primary" id="ceWalk" type="button">Walk the forest</button>
+        <button id="ceReset" type="button">Reset path</button>
+      </div>
+      <div class="ce-step" id="ceStep" hidden>
+        <div class="ce-step-k" id="ceStepK"></div>
+        <div id="ceStepV"></div>
+      </div>
+      <div class="tt-out" id="ceOut" hidden>
+        <div class="tt-block"><div class="tt-k">Observation</div><div class="tt-v" id="ceObs"></div></div>
+        <div class="tt-block"><div class="tt-k">Evidence</div><div class="tt-v" id="ceEv"></div></div>
+        <div class="tt-block"><div class="tt-k">Recommendation</div><div class="tt-v" id="ceRec"></div></div>
+      </div>
+      <div class="ce-steward" id="ceSteward" hidden>
+        <button type="button" id="ceAccept" disabled>Accept</button>
+        <button type="button" id="ceReject" disabled>Reject</button>
+        <button type="button" id="ceDefer" disabled>Defer</button>
+      </div>
+      <p class="ce-steward-note" id="ceStewardNote" hidden>The steward decides. These controls record intent only — this instrument does not apply Atlas edits or promote Calculus claims.</p>
+      <p class="note">Demo term: <b>Maintained Coupling</b> (post D-004 synchronised read-model, including Compatibility). Perturbation: simulate removing <b>Compatibility</b> from needs for one pass, then restore.</p>
     </section>
   </main>
 
@@ -419,125 +475,115 @@ const PAGE = `<!doctype html>
 
   <script>
     (function () {
-      // Bounded first-order subset, held locally. Dependencies (needs) and
-      // relation fields are read from the Atlas source; "Clear" is intentionally
-      // left out of the subset so grounding that reaches beyond it stays visible.
-      var TERMS = {
-        "Relation": { needs: [], holds: [], traces: [], pairs: ["Ground","Ratio"], carries: ["Connection","Place","Asymmetry","Clearance","Pressure","Structure","Theory","Order Trace"] },
-        "Asymmetry": { needs: ["Relation"], holds: ["Relation"], traces: ["Relation"], pairs: ["Clearance"], carries: ["Bounded Asymmetry","Emergent Condition"] },
-        "Bounded Asymmetry": { needs: ["Asymmetry"], holds: ["Asymmetry"], traces: ["Asymmetry"], pairs: ["Distinction","Strained Asymmetry"], carries: ["Distinction","Operational Condition","Adaptation"] },
-        "Distinction": { needs: ["Bounded Asymmetry"], holds: ["Bounded Asymmetry"], traces: ["Bounded Asymmetry"], pairs: ["Boundary","Difference"], carries: ["Boundary","Difference"] },
-        "Boundary": { needs: ["Distinction"], holds: ["Distinction"], traces: ["Distinction"], pairs: ["Availability"], carries: ["Availability","Closure","Enter","Threshold","Contact","Return","Check"] },
-        "Availability": { needs: ["Boundary"], holds: ["Boundary"], traces: ["Boundary"], pairs: ["Boundary"], carries: ["Strain","Attend","Notice","Intake","Sensing"] },
-        "Strain": { needs: ["Availability"], holds: ["Availability"], traces: ["Availability"], pairs: ["Bearing"], carries: ["Bearing","Threshold","Absorb","Release"] },
-        "Bearing": { needs: ["Strain"], holds: ["Strain"], traces: ["Strain"], pairs: ["Resolution"], carries: ["Resolution","Orientation","Load","Constraint","Failure"] },
-        "Clearance": { needs: ["Relation","Clear"], holds: ["Relation","Clear"], traces: ["Relation","Clear"], pairs: ["Asymmetry"], carries: ["Time","Space","Contact","Resolution"] },
-        "Resolution": { needs: ["Bearing","Clearance"], holds: [], traces: ["Bearing","Clearance"], pairs: [], carries: ["Hold","Failure","Release","Closure","Sever"] },
-        "Hold": { needs: ["Resolution"], holds: ["Resolution"], traces: ["Resolution"], pairs: ["Release"], carries: ["Carry","Trace","Carrying","Read"] },
-        "Connection": { needs: ["Relation"], holds: ["Relation"], traces: ["Relation"], pairs: ["Carry","Trace"], carries: ["Carry","Trace","First Order Crossing"] },
-        "Carry": { needs: ["Hold","Connection"], holds: ["Hold","Connection"], traces: ["Hold","Connection"], pairs: ["Trace"], carries: ["First Order Crossing","Carrying"] },
-        "Trace": { needs: ["Hold","Connection"], holds: ["Hold","Connection"], traces: ["Hold","Connection"], pairs: ["Carry"], carries: ["Read","Retracing","Order Trace","Atlas Practice","Step","Reasoning"] }
-      };
-      var ORDER = ["Relation","Connection","Carry","Trace","Hold","Boundary","Availability","Strain","Bearing","Resolution","Clearance","Distinction","Bounded Asymmetry","Asymmetry"];
-      var DEFAULT = "Connection";
+      var walkBtn = document.getElementById("ceWalk");
+      var resetBtn = document.getElementById("ceReset");
+      var pathEl = document.getElementById("forestPath");
+      var capEl = document.getElementById("forestCap");
+      var stepBox = document.getElementById("ceStep");
+      var stepK = document.getElementById("ceStepK");
+      var stepV = document.getElementById("ceStepV");
+      var out = document.getElementById("ceOut");
+      var obs = document.getElementById("ceObs");
+      var ev = document.getElementById("ceEv");
+      var rec = document.getElementById("ceRec");
+      var status = document.getElementById("ceStatus");
+      var steward = document.getElementById("ceSteward");
+      var stewardNote = document.getElementById("ceStewardNote");
+      var acceptBtn = document.getElementById("ceAccept");
+      var rejectBtn = document.getElementById("ceReject");
+      var deferBtn = document.getElementById("ceDefer");
+      if (!walkBtn || !pathEl) return;
 
-      var sel = document.getElementById("termSelect");
-      var runBtn = document.getElementById("ttRun");
-      var out = document.getElementById("ttOut");
-      var obs = document.getElementById("ttObs");
-      var ev = document.getElementById("ttEv");
-      var rec = document.getElementById("ttRec");
-      var ttStatus = document.getElementById("ttStatus");
-      if (!sel || !runBtn) return;
+      var result = null;
+      var stepIdx = 0;
+      var timer = null;
 
-      for (var i = 0; i < ORDER.length; i++) {
-        var o = document.createElement("option");
-        o.value = ORDER[i]; o.textContent = ORDER[i];
-        if (ORDER[i] === DEFAULT) o.selected = true;
-        sel.appendChild(o);
+      function renderPath(steps, active) {
+        pathEl.innerHTML = steps.map(function (s, i) {
+          var cls = "forest-node";
+          if (i < active) cls += " done";
+          if (i === active) cls += " active";
+          return '<div class="' + cls + '"><div class="dot"></div>' + s.label + "</div>";
+        }).join("");
       }
 
-      function inSet(n) { return Object.prototype.hasOwnProperty.call(TERMS, n); }
-
-      // A term is retraceable if it is Relation, is grounded outside the loaded
-      // subset, or all of its needs are retraceable. Removing "removed" drops it.
-      function reachFn(removed) {
-        var memo = {};
-        function r(name) {
-          if (name === removed) return false;
-          if (name === "Relation") return true;
-          if (!inSet(name)) return true;
-          if (memo.hasOwnProperty(name)) return memo[name];
-          memo[name] = false;
-          var needs = TERMS[name].needs;
-          var val = needs.length ? needs.every(r) : (name === "Relation");
-          memo[name] = val;
-          return val;
-        }
-        return r;
+      function showStep(i) {
+        if (!result || !result.steps[i]) return;
+        var s = result.steps[i];
+        stepBox.hidden = false;
+        stepK.textContent = s.label + " · " + s.role + " (" + s.phase + ")";
+        stepV.textContent = s.detail;
+        capEl.innerHTML = s.forest;
+        renderPath(result.steps, i);
+        status.textContent = "Step " + (i + 1) + " / " + result.steps.length;
       }
 
-      function names(list) { return list.length ? list.join(", ") : "none"; }
-
-      function run() {
-        var t = sel.value;
-        var d = TERMS[t];
-        var externalNeeds = d.needs.filter(function (n) { return !inSet(n); });
-
-        var base = reachFn(null);
-        var after = reachFn(t);
-        var lost = [];
-        for (var k = 0; k < ORDER.length; k++) {
-          var n = ORDER[k];
-          if (n === t) continue;
-          if (base(n) && !after(n)) lost.push(n);
-        }
-
-        // Observation: dependencies and what it carries/traces/holds/pairs.
-        obs.innerHTML =
-          "<b>" + t + "</b> reads on this bounded subset as:<br>" +
-          "needs (dependencies): <span class='tt-list'>" + names(d.needs) + "</span><br>" +
-          "holds: <span class='tt-list'>" + names(d.holds) + "</span> · " +
-          "traces: <span class='tt-list'>" + names(d.traces) + "</span> · " +
-          "pairs: <span class='tt-list'>" + names(d.pairs) + "</span><br>" +
-          "carries " + d.carries.length + ": <span class='tt-list'>" + names(d.carries) + "</span>";
-
-        // Evidence: the removal/restore simulation result.
-        var evHtml = "Removal simulated, then restored (no term was changed).<br>";
-        if (lost.length) {
-          evHtml += "Terms that could no longer be retraced to Relation without <b>" + t + "</b>: " +
-            "<span class='tt-list'>" + lost.join(", ") + "</span> (" + lost.length + " of " + (ORDER.length - 1) + " loaded).";
-        } else {
-          evHtml += "No loaded term lost its retrace path to Relation when <b>" + t + "</b> was removed (0 of " + (ORDER.length - 1) + ").";
-        }
-        if (externalNeeds.length) {
-          evHtml += "<br>Grounding reaches outside the loaded subset: needs <span class='tt-list'>" + externalNeeds.join(", ") + "</span>, not loaded here.";
-        }
-        ev.innerHTML = evHtml;
-
-        // Recommendation: a single characterisation.
-        var verdict, cls, meaning;
-        if (externalNeeds.length) {
-          verdict = "unresolved"; cls = "unresolved";
-          meaning = t + "'s grounding extends beyond calibration's bounded subset, so its full load cannot be characterised here.";
-        } else if (lost.length) {
-          verdict = "load-bearing"; cls = "load";
-          meaning = "Removing " + t + " breaks the retrace path for " + lost.length + " dependent term" + (lost.length === 1 ? "" : "s") + " on this subset.";
-        } else {
-          verdict = "weak"; cls = "weak";
-          meaning = "Nothing loaded depends on " + t + " for its retrace path; at this scope it reads as a leaf. (What it carries is not what depends on it.)";
-        }
-        rec.innerHTML =
-          "Characterisation: <span class='verdict " + cls + "'>" + verdict + "</span> (at this scope).<br>" +
-          meaning + "<br>" +
-          "<i>This is calibration, not proof. It runs on a bounded local subset and promotes no Calculus claim.</i>";
-
+      function finishRun() {
+        obs.textContent = result.observation;
+        ev.textContent = result.evidence;
+        rec.textContent = result.recommendation;
         out.hidden = false;
-        ttStatus.textContent = "Tested: " + t;
+        steward.hidden = false;
+        stewardNote.hidden = false;
+        acceptBtn.disabled = false;
+        rejectBtn.disabled = false;
+        deferBtn.disabled = false;
+        status.textContent = "Complete · " + result.forestMetaphor.state;
+        capEl.innerHTML = "<b>Forest read:</b> " + result.forestMetaphor.state + " — " + result.stewardNote;
       }
 
-      runBtn.addEventListener("click", run);
-      sel.addEventListener("change", function () { ttStatus.textContent = "Idle"; });
+      function resetRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        stepIdx = 0;
+        result = null;
+        pathEl.innerHTML = "";
+        capEl.innerHTML = "Press <b>Walk the forest</b> to run the Maintained Coupling demo.";
+        stepBox.hidden = true;
+        out.hidden = true;
+        steward.hidden = true;
+        stewardNote.hidden = true;
+        acceptBtn.disabled = true;
+        rejectBtn.disabled = true;
+        deferBtn.disabled = true;
+        status.textContent = "Ready";
+      }
+
+      function runWalk() {
+        resetRun();
+        status.textContent = "Walking…";
+        fetch("/api/calibration/engine")
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            result = data;
+            renderPath(result.steps, 0);
+            stepIdx = 0;
+            showStep(0);
+            timer = setInterval(function () {
+              stepIdx += 1;
+              if (stepIdx >= result.steps.length) {
+                clearInterval(timer);
+                timer = null;
+                finishRun();
+                return;
+              }
+              showStep(stepIdx);
+            }, 900);
+          })
+          .catch(function () {
+            status.textContent = "Error";
+            capEl.textContent = "Could not load calibration engine.";
+          });
+      }
+
+      walkBtn.addEventListener("click", runWalk);
+      resetBtn.addEventListener("click", resetRun);
+      [acceptBtn, rejectBtn, deferBtn].forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          capEl.innerHTML = "<b>Steward recorded:</b> " + btn.textContent + " — no Atlas edit applied.";
+          status.textContent = "Steward: " + btn.textContent;
+        });
+      });
     })();
   </script>
 </body>
@@ -566,6 +612,16 @@ export default {
       return json({ ok: true, runtime: "mechanical", ai: false });
     }
 
-    return json({ error: "not found", endpoints: ["GET /", "GET /api/health"] }, 404);
+    if (url.pathname === "/api/calibration/engine" && request.method === "GET") {
+      const term = url.searchParams.get("term") || DEFAULT_TERM;
+      const perturb = url.searchParams.get("perturb") || DEFAULT_PERTURB;
+      try {
+        return json(runCalibration(term, perturb));
+      } catch (err) {
+        return json({ error: String(err.message || err) }, 400);
+      }
+    }
+
+    return json({ error: "not found", endpoints: ["GET /", "GET /api/health", "GET /api/calibration/engine"] }, 404);
   },
 };
