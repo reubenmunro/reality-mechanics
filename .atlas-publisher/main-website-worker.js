@@ -2542,7 +2542,18 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   ctx.restore();
 }
 
+function nearestHomeOperation(x, y) {
+  let best = null, bestDist = Infinity;
+  Object.values(allOps).forEach((op) => {
+    const pos = homePosition(op);
+    const d = Math.hypot(pos.x - x, pos.y - y);
+    if (d < bestDist) { bestDist = d; best = op.id; }
+  });
+  return bestDist < 54 ? best : null;
+}
+
 function nearestOperation(x, y) {
+  if (homeMode) return nearestHomeOperation(x, y);
   let best = null, bestDist = Infinity;
   localIds(focusId).forEach((id) => {
     const op = operations[id];
@@ -2899,35 +2910,36 @@ async function bootstrap() {
   if (landingContinueEl && lastFocus) landingContinueEl.hidden = false;
 
   const hash = decodeURIComponent(location.hash.slice(1) || '');
-  const startId = (hash && allOps[hash]) ? hash
-    : Object.values(allOps).find((op) => op.title === 'Reality Mechanics')?.id
-    || Object.values(allOps).find((op) => op.title === 'Relation')?.id
-    || Object.keys(allOps)[0]
-    || null;
+  const explicitTermId = (hash && allOps[hash]) ? hash : null;
 
-  if (!startId) {
+  if (!explicitTermId) {
+    // D-020D: neutral whole-field opening until an explicit term is chosen.
+    homeMode = true;
+    homeAlpha = 1.0;
+    focusId = null;
+    targetFocusId = null;
+    operations = {};
     modeEl.textContent = 'Observatory';
     renderNeutralSheet();
     openTermSheet();
+    if (mechanicsEnabled) {
+      renderMechanicsPanel();
+      scheduleBehaviourTraceRefresh(true);
+    }
     requestAnimationFrame(loop);
     return;
   }
 
   homeMode = false;
-  focusId = startId;
-  targetFocusId = startId;
-  syncSpineToFocus(startId);
-  initOperations(startId);
-  layout(startId);
-  recordFieldMovement(null, startId);
-
-  if (hash && allOps[hash]) {
-    dismissObservatoryLanding();
-    observeTerm(hash);
-    replaceFieldLocation(hash);
-  } else {
-    renderNeutralSheet();
-  }
+  focusId = explicitTermId;
+  targetFocusId = explicitTermId;
+  syncSpineToFocus(explicitTermId);
+  initOperations(explicitTermId);
+  layout(explicitTermId);
+  recordFieldMovement(null, explicitTermId);
+  dismissObservatoryLanding();
+  observeTerm(explicitTermId);
+  replaceFieldLocation(explicitTermId);
   openTermSheet();
 
   if (mechanicsEnabled) {

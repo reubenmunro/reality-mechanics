@@ -237,6 +237,16 @@ test("D-021.2 observatory landing orients before observation", () => {
   assert.match(html, /<title>Observatory · Reality Mechanics<\/title>/);
 });
 
+test("D-020D opens whole-field home mode before explicit term selection", () => {
+  const html = fieldPage();
+  assert.match(html, /D-020D: neutral whole-field opening/);
+  assert.match(html, /const explicitTermId = \(hash && allOps\[hash\]\) \? hash : null/);
+  assert.match(html, /if \(!explicitTermId\) \{/);
+  assert.match(html, /homeMode = true/);
+  assert.match(html, /function nearestHomeOperation/);
+  assert.match(html, /if \(homeMode\) return nearestHomeOperation/);
+});
+
 test("/submission serves the public Submission 001 page", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), {});
   const html = await res.text();

@@ -5,6 +5,7 @@ import {
   observatoryPlaceDisplay,
   openingParagraphsBeforeTemplate,
   stripDuplicatedTitle,
+  stripObsidianWikilinks,
 } from "../observatory-panel.mjs";
 
 test("openingParagraphsBeforeTemplate reads pre-template body only", () => {
@@ -94,6 +95,26 @@ Example is held by [[Relation]].
 Example carries movement prose.`;
 
   assert.equal(observatoryPlaceDisplay({ title: "Example", body }), "");
+});
+
+test("stripObsidianWikilinks renders plain public text", () => {
+  assert.equal(stripObsidianWikilinks("Held by [[Relation]]."), "Held by Relation.");
+  assert.equal(stripObsidianWikilinks("[[Connection|passage]] through [[Ratio#read]]."), "passage through Ratio.");
+  assert.equal(stripObsidianWikilinks("No links here."), "No links here.");
+});
+
+test("observatoryPlaceDisplay strips Obsidian wikilinks from place text", () => {
+  const body = `# Passage
+
+Passage through [[Relation]] and [[Connection|held connection]] before hold prose.
+
+Passage is held by [[Root Order]].`;
+
+  assert.equal(
+    observatoryPlaceDisplay({ title: "Passage", body }),
+    "through Relation and held connection before hold prose.",
+  );
+  assert.doesNotMatch(observatoryPlaceDisplay({ title: "Passage", body }), /\[\[/);
 });
 
 test("atlasSourceViewUrl points to GitHub blob for source path", () => {

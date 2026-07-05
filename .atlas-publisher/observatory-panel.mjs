@@ -42,6 +42,13 @@ export function isHoldParagraph(text = "") {
   return /\bis held by\b/i.test(String(text));
 }
 
+export function stripObsidianWikilinks(text = "") {
+  return String(text)
+    .replace(/\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g, (_match, target, label) => (label || target).trim())
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function stripDuplicatedTitle(title = "", sentence = "") {
   let place = String(sentence || "").trim();
   const term = String(title || "").trim();
@@ -66,5 +73,5 @@ export function observatoryPlaceDisplay({ title = "", body = "" } = {}) {
   const [firstParagraph = ""] = openingParagraphsBeforeTemplate(body);
   if (!firstParagraph) return "";
   if (isHoldParagraph(firstParagraph)) return "";
-  return stripDuplicatedTitle(title, firstParagraph);
+  return stripObsidianWikilinks(stripDuplicatedTitle(title, firstParagraph));
 }
