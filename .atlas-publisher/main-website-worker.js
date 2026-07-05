@@ -252,23 +252,55 @@ export function fieldPage(options = {}) {
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Field · Reality Mechanics</title>
-  <meta name="description" content="An experimental operations surface for Reality Mechanics."/>
+  <title>Observatory · Reality Mechanics</title>
+  <meta name="description" content="Reality Mechanics Observatory — observe structural relationships through participation."/>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { margin: 0; width: 100%; height: 100%; overflow: hidden; overflow-x: hidden; }
     body { margin: 0; width: 100%; max-width: 100vw; height: 100%; overflow: hidden; overflow-x: hidden; background: #06080d; color: #d4c5a9; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
     canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
-    #top {
-      position: fixed; inset: 1.4rem 1.6rem auto 1.6rem; z-index: 5;
-      display: flex; align-items: center; justify-content: space-between; pointer-events: none;
+    #top { display: none; }
+    #observatory-landing {
+      position: fixed; left: 1.55rem; top: 3.45rem; z-index: 6;
+      max-width: min(21rem, calc(100vw - 2rem)); pointer-events: auto;
     }
-    #top a, #mode {
-      pointer-events: auto; text-decoration: none; color: rgba(58,80,112,0.72);
-      font: 700 0.62rem/1 system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+    #observatory-landing h1 {
+      margin: 0 0 0.35rem;
+      font: 500 1.02rem/1.25 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(212,197,169,0.88); letter-spacing: 0.01em;
     }
-    #top a:hover { color: rgba(200,96,26,0.8); }
-    #mode { color: rgba(200,96,26,0.48); }
+    #observatory-landing .landing-orientation {
+      margin: 0 0 0.7rem;
+      font: 500 0.82rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(58,80,112,0.82);
+    }
+    #observatory-landing .landing-actions {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.38rem;
+    }
+    #observatory-landing .landing-actions button,
+    #observatory-landing .landing-actions a {
+      border: 0; background: none; padding: 0; cursor: pointer;
+      color: rgba(200,96,26,0.72); text-decoration: none;
+      font: 700 0.58rem/1 system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    #observatory-landing .landing-actions button:hover,
+    #observatory-landing .landing-actions a:hover { color: rgba(200,96,26,0.92); }
+    #observatory-landing .landing-actions button[hidden] { display: none; }
+    body.landing-dismissed #observatory-landing .landing-orientation,
+    body.landing-dismissed #observatory-landing .landing-actions { display: none; }
+    body.landing-dismissed #observatory-landing h1 {
+      font: 700 0.58rem/1 system-ui, sans-serif; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(58,80,112,0.76);
+    }
+    #sheet-neutral-title {
+      font: 500 clamp(1.5rem, 4vw, 2.4rem)/1.1 "Iowan Old Style", Charter, Georgia, serif;
+      color: #c8601a; margin-bottom: 0.85rem;
+    }
+    #sheet-neutral-copy {
+      margin: 0; color: rgba(212,197,169,0.74);
+      font: 500 0.96rem/1.55 "Iowan Old Style", Charter, Georgia, serif;
+    }
+    #sheet-term[hidden], #sheet-neutral[hidden] { display: none; }
     #access-row {
       position: fixed; left: 50%; top: 1.28rem; transform: translateX(-50%);
       z-index: 8; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem 1rem;
@@ -404,7 +436,7 @@ export function fieldPage(options = {}) {
       white-space: pre-wrap;
     }
     @media (max-width: 700px) {
-      #top { inset: 1rem 1rem auto 1rem; }
+      #observatory-landing { left: 1rem; top: 3.2rem; max-width: calc(100vw - 2rem); }
       #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
       #enter-form { bottom: 1rem; }
       #term-sheet { width: min(24rem, 92vw); right: min(-24rem, -92vw); padding: 4.25rem 1.15rem 2rem; }
@@ -413,27 +445,40 @@ export function fieldPage(options = {}) {
 </head>
 <body>
 <canvas id="field"></canvas>
-<div id="top">
-  <div id="mode">Field</div>
-</div>
+<div id="top"><div id="mode">Observatory</div></div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
   <a href="/field">🔭 Observatory</a>
   <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
   <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
   <a href="/submission">✓ Proof</a>
 </nav>
+<section id="observatory-landing" aria-label="Observatory orientation">
+  <h1>Reality Mechanics Observatory</h1>
+  <p class="landing-orientation">Observe how structural relationships become visible through participation.</p>
+  <div class="landing-actions">
+    <button type="button" id="landing-observe">Observe the Field</button>
+    <button type="button" id="landing-continue" hidden>Continue where I left off</button>
+    <a id="landing-atlas" href="https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics" target="_blank" rel="noopener noreferrer">Browse the Atlas</a>
+  </div>
+</section>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false"
     placeholder="Enter a term" aria-label="Enter a term" maxlength="200"/>
 </form>
 <section id="term-sheet" aria-live="polite" aria-label="Term sheet">
   <button id="sheet-close" aria-label="Close">×</button>
-  <div id="sheet-order"></div>
-  <div id="sheet-title"></div>
-  <div id="sheet-place"></div>
-  <a id="sheet-atlas-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View Atlas Entry</a>
-  <div id="sheet-relations"></div>
-  <p id="sheet-empty"></p>
+  <div id="sheet-neutral">
+    <div id="sheet-neutral-title">Observatory</div>
+    <p id="sheet-neutral-copy">Select a place in the field to observe its structure.</p>
+  </div>
+  <div id="sheet-term" hidden>
+    <div id="sheet-order"></div>
+    <div id="sheet-title"></div>
+    <div id="sheet-place"></div>
+    <a id="sheet-atlas-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View Atlas Entry</a>
+    <div id="sheet-relations"></div>
+    <p id="sheet-empty"></p>
+  </div>
 </section>
 <pre id="relation-debug" aria-live="polite"></pre>
 <aside id="mechanics-panel" aria-live="polite" aria-label="Field mechanics trace">
@@ -460,6 +505,13 @@ const sheetPlaceEl = document.getElementById('sheet-place');
 const sheetAtlasLinkEl = document.getElementById('sheet-atlas-link');
 const sheetRelationsEl = document.getElementById('sheet-relations');
 const sheetEmptyEl = document.getElementById('sheet-empty');
+const sheetNeutralEl = document.getElementById('sheet-neutral');
+const sheetTermEl = document.getElementById('sheet-term');
+const landingObserveEl = document.getElementById('landing-observe');
+const landingContinueEl = document.getElementById('landing-continue');
+const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
+const ATLAS_TREE_URL = 'https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics';
+let selectedTermId = null;
 const relationDebugEl = document.getElementById('relation-debug');
 const mechanicsPanelEl = document.getElementById('mechanics-panel');
 const mechanicsFocusEl = document.getElementById('mechanics-focus');
@@ -1268,9 +1320,9 @@ function enterOperation(id) {
   targetPan = { x: 0, y: 0 };
   initOperations(found);
   layout(found);
-  modeEl.textContent = allOps[found].title;
   replaceFieldLocation(found);
-  syncTermSheet();
+  observeTerm(found);
+  openTermSheet();
   recordFieldMovement(previousFocusId, found);
   scheduleBehaviourTraceRefresh(true);
 }
@@ -1306,6 +1358,32 @@ function relationTargets(op, key) {
   return (op?.[key] || [])
     .map((id) => allOps[id] || { id, title: id })
     .filter((item) => item?.id);
+}
+
+function saveLastFocus(id) {
+  if (!id) return;
+  try { localStorage.setItem(OBSERVATORY_LAST_FOCUS_KEY, id); } catch (e) {}
+}
+
+function readLastFocus() {
+  try {
+    const id = localStorage.getItem(OBSERVATORY_LAST_FOCUS_KEY);
+    return id && allOps[id] ? id : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function syncSheetView() {
+  const neutral = !selectedTermId;
+  if (sheetNeutralEl) sheetNeutralEl.hidden = !neutral;
+  if (sheetTermEl) sheetTermEl.hidden = neutral;
+}
+
+function renderNeutralSheet() {
+  selectedTermId = null;
+  syncSheetView();
+  if (modeEl) modeEl.textContent = 'Observatory';
 }
 
 function renderTermSheet(id = focusId) {
@@ -1353,26 +1431,44 @@ function renderTermSheet(id = focusId) {
   return true;
 }
 
-function openTermSheet(id = focusId) {
-  if (!renderTermSheet(id)) return;
+function observeTerm(id) {
+  if (!allOps[id]) return false;
+  selectedTermId = id;
+  syncSheetView();
+  if (!renderTermSheet(id)) return false;
+  if (modeEl) modeEl.textContent = allOps[id].title || id;
+  saveLastFocus(id);
+  dismissObservatoryLanding();
+  return true;
+}
+
+function openTermSheet() {
   readRegister = 'constellation';
   document.body.classList.add('sheet-open');
   termSheetEl.classList.add('open');
 }
 
 function closeTermSheet() {
-  readRegister = 'material';
-  document.body.classList.remove('sheet-open');
-  termSheetEl.classList.remove('open');
+  renderNeutralSheet();
 }
 
 function toggleTermSheet(id = focusId) {
-  if (termSheetEl.classList.contains('open')) closeTermSheet();
-  else openTermSheet(id);
+  if (!selectedTermId || selectedTermId !== id) {
+    observeTerm(id);
+    openTermSheet();
+    return;
+  }
+  renderNeutralSheet();
 }
 
 function syncTermSheet() {
-  if (termSheetEl?.classList.contains('open')) renderTermSheet(focusId);
+  if (!termSheetEl?.classList.contains('open')) return;
+  if (selectedTermId) renderTermSheet(selectedTermId);
+  else renderNeutralSheet();
+}
+
+function dismissObservatoryLanding() {
+  document.body.classList.add('landing-dismissed');
 }
 
 function screen(op) {
@@ -2701,6 +2797,7 @@ canvas.addEventListener('pointerup', (event) => {
     const id = nearestOperation(event.clientX, event.clientY);
     if (id === focusId) toggleTermSheet(id);
     else if (id) enterOperation(id);
+    else if (!selectedTermId) openTermSheet();
   }
   activePointers.delete(event.pointerId);
   if (activePointers.size < 2) { pinchStartDist = null; pinchStartScale = null; }
@@ -2792,13 +2889,14 @@ async function bootstrap() {
     states.forEach((state) => { if (state?.id) allOps[state.id] = operationFromFieldState(state); });
     refreshCoupledFrame();
     buildSpineSequence();
-    // Pre-cache profiles for all entries before the render loop starts.
     Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
   } catch(err) {
-    modeEl.textContent = 'Field';
+    modeEl.textContent = 'Observatory';
     console.error('field bootstrap failed:', err);
-    // continue with empty index — field renders nothing until data loads
   }
+
+  const lastFocus = readLastFocus();
+  if (landingContinueEl && lastFocus) landingContinueEl.hidden = false;
 
   const hash = decodeURIComponent(location.hash.slice(1) || '');
   const startId = (hash && allOps[hash]) ? hash
@@ -2807,7 +2905,13 @@ async function bootstrap() {
     || Object.keys(allOps)[0]
     || null;
 
-  if (!startId) { modeEl.textContent = 'Field'; requestAnimationFrame(loop); return; }
+  if (!startId) {
+    modeEl.textContent = 'Observatory';
+    renderNeutralSheet();
+    openTermSheet();
+    requestAnimationFrame(loop);
+    return;
+  }
 
   homeMode = false;
   focusId = startId;
@@ -2815,15 +2919,38 @@ async function bootstrap() {
   syncSpineToFocus(startId);
   initOperations(startId);
   layout(startId);
-  modeEl.textContent = allOps[startId].title;
-  replaceFieldLocation(startId);
-  if (readRegister === 'constellation') openTermSheet(startId);
   recordFieldMovement(null, startId);
+
+  if (hash && allOps[hash]) {
+    dismissObservatoryLanding();
+    observeTerm(hash);
+    replaceFieldLocation(hash);
+  } else {
+    renderNeutralSheet();
+  }
+  openTermSheet();
+
   if (mechanicsEnabled) {
     renderMechanicsPanel();
     scheduleBehaviourTraceRefresh(true);
   }
   requestAnimationFrame(loop);
+}
+
+if (landingObserveEl) {
+  landingObserveEl.addEventListener('click', () => {
+    dismissObservatoryLanding();
+    if (!selectedTermId) renderNeutralSheet();
+    openTermSheet();
+  });
+}
+if (landingContinueEl) {
+  landingContinueEl.addEventListener('click', () => {
+    const lastFocus = readLastFocus();
+    if (!lastFocus) return;
+    dismissObservatoryLanding();
+    enterOperation(lastFocus);
+  });
 }
 
 // Colour mode toggle — fire (order-hue, brightness = burn) or heat (original ember↔ash)

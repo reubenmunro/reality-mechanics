@@ -216,6 +216,27 @@ test("Field links to Proof alongside Pulse", () => {
   assert.match(html, /Theory\.md">📖 Theory/);
 });
 
+test("D-021.2 observatory landing orients before observation", () => {
+  const html = fieldPage();
+  assert.match(html, /id="observatory-landing"/);
+  assert.match(html, /Reality Mechanics Observatory/);
+  assert.match(html, /Observe how structural relationships become visible through participation\./);
+  assert.match(html, /id="landing-observe">Observe the Field/);
+  assert.match(html, /id="landing-continue" hidden>Continue where I left off/);
+  assert.match(html, /id="landing-atlas" href="https:\/\/github\.com\/reubenmunro\/reality-mechanics\/tree\/main\/Reality_Mechanics"/);
+  assert.match(html, /Browse the Atlas/);
+  assert.match(html, /id="sheet-neutral"/);
+  assert.match(html, /id="sheet-neutral-title">Observatory/);
+  assert.match(html, /Select a place in the field to observe its structure\./);
+  assert.match(html, /id="sheet-term" hidden/);
+  assert.match(html, /observatory\.lastFocusId/);
+  assert.match(html, /function renderNeutralSheet/);
+  assert.match(html, /function observeTerm/);
+  assert.match(html, /function dismissObservatoryLanding/);
+  assert.match(html, /body\.landing-dismissed #observatory-landing/);
+  assert.match(html, /<title>Observatory · Reality Mechanics<\/title>/);
+});
+
 test("/submission serves the public Submission 001 page", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), {});
   const html = await res.text();

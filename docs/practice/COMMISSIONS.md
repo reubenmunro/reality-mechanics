@@ -85,6 +85,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Mechanics amplification | D-020B | Resolved | Mechanics too weak to read without legend | `docs/reports/D-020B-mechanics-amplification.md`; rendering coefficients only |
 | Initial render investigation | D-020C | Resolved | Field almost empty on first paint | `docs/reports/D-020C-initial-render-investigation.md`; `fieldPressure` → `endpointOnly` |
 | Public navigation rename | D-021.1 | Resolved | Nav labels misaligned with public structure | `docs/reports/D-021.1-navigation.md`; Observatory · Pulse · Theory · Proof |
+| Observatory landing | D-021.2 | Resolved | Field dominated first screen without orientation | `docs/reports/D-021.2-observatory-landing.md`; instrument landing + neutral panel |
 
 ---
 
