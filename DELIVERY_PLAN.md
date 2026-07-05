@@ -148,13 +148,11 @@ The website must progressively reveal:
 
 Current Commission:
 
-**D1 sync after Atlas prose commit**
+**First-order prose calibration (D-008A)** or **Maintained Coupling prose (D-006A)**
 
-Objective:
+D-008 whole-Atlas structural calibration and D-009 layout check are complete. Next work applies Structural Reading to Class A backlog terms.
 
-Apply D1 sync for Connection prose refinement (D-006) and keep read-model aligned with accepted Atlas source. Remaining automation gaps (version metadata, CI-gated sync) remain open from D-004.
-
-Governing evidence: `docs/reports/D-004-d1-sync-read-model-verification.md` §7–8; `docs/reports/D-006-calibrated-prose-refinement.md`.
+Governing evidence: `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/reports/D-008-whole-atlas-calibration.md`.
 
 Previous commissions completed:
 
@@ -166,6 +164,8 @@ Previous commissions completed:
 - **D-005** — Calibration Engine v1
 - **D-006** — Connection prose calibration (structural reading evidence)
 - **D-007** — Structural Reading discipline (`docs/practice/STRUCTURAL_READING.md`)
+- **D-008** — Whole Atlas calibration (`docs/reports/D-008-whole-atlas-calibration.md`)
+- **D-009** — Format + layout check before D-008 commit (`docs/reports/D-009-format-layout-check.md`)
 
 ---
 

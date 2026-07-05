@@ -222,4 +222,6 @@ It is not a style guide. It does not promote the Calculus. It produces observati
 
 **Discipline:** `docs/practice/STRUCTURAL_READING.md`
 
+**Backlog (D-008):** `docs/practice/STRUCTURAL_READING_BACKLOG.md` — 424 terms characterised; 67 Class A refinements; 0 ontology promotions
+
 **First evidence:** D-006 — Connection opening prose (`docs/reports/D-006-calibrated-prose-refinement.md`)

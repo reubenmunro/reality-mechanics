@@ -18,7 +18,7 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 - **Atlas:** 492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
 - **Stewardship:** Audit method stabilised in `docs/stewardship/` (2026-07-04); 17 families / ~51 terms audited; coverage incomplete.
 - **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004). `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
-- **Structural reading:** Practice discipline established (D-007); Connection opening prose calibrated (D-006); D1 sync pending for Connection edit.
+- **Structural reading:** Whole Atlas calibrated (D-008); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`; Connection prose refined and synced (D-006).
 
 **Git:** `main` working tree clean and up to date with `origin/main` (as of D-004, 2026-07-05).
 
@@ -88,7 +88,7 @@ Open work recorded in repository documents — not a priority backlog.
 | Investigation | Status | Record |
 |---------------|--------|--------|
 | **Build & deployment verification** | **Resolved** — D-003 audit + D-004 D1 sync repair | `REPOSITORY_VERIFICATION.md` (COMPLETE); `docs/reports/D-003-…`; `docs/reports/D-004-…` |
-| **Structural reading / Atlas prose calibration** | **Discipline established** — Connection refined (D-006); D1 sync pending | `docs/practice/STRUCTURAL_READING.md`; `docs/reports/D-006-calibrated-prose-refinement.md` |
+| **Structural reading / Atlas prose calibration** | **D-008 complete** — 424 terms characterised; 67 Class A backlog; 0 ontology promotions | `docs/practice/STRUCTURAL_READING_BACKLOG.md`; `docs/reports/D-008-whole-atlas-calibration.md`; `docs/reports/D-008-term-register.md` |
 | **Maintained Coupling dependency gap** | Resolved — live in D1 after D-004 | `AUDIT_LOG.md`; Field/MCP verified `second.compatibility` in holds/traces |
 | **Interposed Carrier `"carrying"` language** | Open — insufficient evidence either direction | `docs/stewardship/OPEN_QUESTIONS.md`; `AUDIT_LOG.md` Confirmed Non-Repairs |
 | **Stewardship coverage gap** | ~51 of 492 Atlas files audited; no queue of remaining families | `docs/stewardship/AUDIT_LOG.md`; method in `docs/stewardship/README.md` |

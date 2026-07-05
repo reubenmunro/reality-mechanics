@@ -246,9 +246,9 @@ Use D-006 as evidence, not authority.
 
 | Document | Relation |
 |---|---|
-| `DISCIPLINE_OF_STRUCTURAL_QUESTIONS.md` | Field questions inform Pass 2 (Movement) and Pass 4 (Connection) |
-| `PRACTICE.md` | Steward flow governs when calibrated prose may be applied |
-| `PRACTICE_CALCULUS.md` | Calculus remains candidate; structural reading does not promote it |
+| `docs/practice/DISCIPLINE_OF_STRUCTURAL_QUESTIONS.md` | Field questions inform Pass 2 (Movement) and Pass 4 (Connection) |
+| `docs/practice/PRACTICE.md` | Steward flow governs when calibrated prose may be applied |
+| `docs/practice/PRACTICE_CALCULUS.md` | Calculus remains candidate; structural reading does not promote it |
 | Calibration Engine v1 | Demonstrates read-model walk; structural reading extends to Atlas prose |
 
 ---
@@ -267,9 +267,11 @@ Atlas frontmatter changes require separate evidence and commission scope.
 
 ## Current Status
 
-**State:** Discipline established — under investigation.
+**State:** Discipline established — whole-Atlas calibration complete (D-008).
 
-**Structural Support:** D-006 (Connection calibrated prose); Calibration Engine v1 (movement through place).
+**Structural Support:** D-006 (Connection calibrated prose); D-008 (424-term characterisation); Calibration Engine v1 (movement through place).
+
+**Backlog:** `docs/practice/STRUCTURAL_READING_BACKLOG.md` — 67 Class A prose refinements; ontology expansion rejected (0 Class C).
 
 **Atlas Trace:** One term prose-refined (Connection opening body); frontmatter unchanged.
 
