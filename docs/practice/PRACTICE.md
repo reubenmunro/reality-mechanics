@@ -10,9 +10,33 @@ Its purpose is to establish enough evidence that the next decision becomes retra
 
 ---
 
+## Governing Investigation
+
+This document describes the current working practice.
+
+It is not the Practice Calculus.
+
+The governing architectural investigation is whether the Reality Mechanics Practice can be derived through operational transformations that preserve order into structure and structure into read.
+
+Working relation:
+
+```text
+Order
+  :
+Structure
+  :
+Read
+```
+
+The `:` marks an operation, not punctuation.
+
+The Practice described below is a working read under investigation, not an accepted invariant.
+
+---
+
 ## Core Flow
 
-Every commission begins with pressure.
+The current working flow begins with an unresolved condition presently named Pressure. That starting operation remains under architectural derivation.
 
 Every contract defines a question.
 
@@ -23,6 +47,10 @@ Every recommendation follows from evidence.
 Every steward decision either resolves or continues the pressure.
 
 Reality has the final authority.
+
+The following flow is a working practice model.
+
+It should not be interpreted as the final Practice Calculus until each transformation has been independently retraced to the Atlas.
 
 ```text
 Pressure
@@ -44,7 +72,9 @@ Resolution
 
 ## Pressure
 
-Pressure is the condition that makes work necessary.
+**Architectural status:** Under derivation.
+
+Pressure is the current name for the unresolved condition that makes work necessary. Whether Pressure is itself primitive or a read of a more fundamental Atlas relation remains under investigation.
 
 A pressure may be an uncertainty, conflict, instability, missing relation, failed test, unresolved dependency, or release risk.
 
@@ -79,7 +109,7 @@ It states:
 - the deliverable
 - the acceptance standard
 
-A contract is not an informal task. It is a bounded carrying structure for pressure.
+A contract is not an informal task. It is a bounded carrying structure for an unresolved condition.
 
 ---
 
@@ -148,6 +178,21 @@ The practice should prefer:
 - repository truth over memory
 - explicit unknowns over invented certainty
 - steward decision over AI momentum
+- operational derivation over imported methodology
+- retraceable transformations over persuasive explanation
+- explicit operations over assumed stages
+
+---
+
+## Architectural Direction
+
+The current direction of the Practice is shifting from describing stages toward deriving the operations between them.
+
+The principal architectural question is:
+
+> What operation occurs at each `:` and does that operation preserve the order being carried?
+
+Until those operations are derived from the Atlas, this document should be read as a governed working practice rather than a completed calculus.
 
 ---
 
@@ -162,3 +207,19 @@ It does not replace the Stewardship specification.
 It does not define platform architecture.
 
 It sits beside those bodies as practice governance.
+
+---
+
+## Structural Reading
+
+When calibration turns to Atlas prose, the governing question is not whether a sentence is well written.
+
+It is whether **the place can be walked**.
+
+Structural reading is the practice discipline for that work — five passes in order (Place → Movement → Retrace → Connection → Language), with rewrite permitted only in the final pass.
+
+It is not a style guide. It does not promote the Calculus. It produces observation, evidence, and recommendation for steward decision.
+
+**Discipline:** `docs/practice/STRUCTURAL_READING.md`
+
+**First evidence:** D-006 — Connection opening prose (`docs/reports/D-006-calibrated-prose-refinement.md`)

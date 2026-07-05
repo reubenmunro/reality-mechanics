@@ -50,6 +50,21 @@ These commissions use a hyphenated series distinct from the operational `C001`�
 
 ---
 
+## Register — Observatory Delivery Programme
+
+Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under `docs/reports/D-00x-*.md`.
+
+| Commission | Related Report | State | Unresolved Condition | Resolution |
+|------------|----------------|-------|----------------------|------------|
+| Observatory loop (Atlas → Calibration → Field → Submission) | D-002 | Resolved | Loop not connected | Field ↔ Calibration ↔ Submission linked |
+| Deployment verification | D-003 | Resolved | Live state unknown | Workers current; D1 stale (led to D-004) |
+| D1 sync + read-model repair | D-004 | Resolved | Compatibility absent live | D1 synced; read-model repaired |
+| Calibration Engine v1 | D-005 | Resolved | No structural walk demo | `member/src/calibration-engine.mjs` |
+| Connection prose calibration | D-006 | Resolved | Can prose be structurally refined? | Connection opening refined; evidence recorded |
+| Structural Reading discipline | D-007 | Resolved | No prose-reading discipline | `docs/practice/STRUCTURAL_READING.md` |
+
+---
+
 ## Notes
 
 A resolved commission does not mean all related work is complete.

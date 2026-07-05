@@ -148,13 +148,13 @@ The website must progressively reveal:
 
 Current Commission:
 
-**D1 sync automation + version metadata (D-005)**
+**D1 sync after Atlas prose commit**
 
 Objective:
 
-Close the remaining deployment-verification gaps after D-004: update or automate `garden_config.atlas_version` on sync, and add a documented or CI-gated Atlas → D1 apply step so accepted source edits cannot reach production structure without a planned sync.
+Apply D1 sync for Connection prose refinement (D-006) and keep read-model aligned with accepted Atlas source. Remaining automation gaps (version metadata, CI-gated sync) remain open from D-004.
 
-Governing evidence: `docs/reports/D-004-d1-sync-read-model-verification.md` §7–8.
+Governing evidence: `docs/reports/D-004-d1-sync-read-model-verification.md` §7–8; `docs/reports/D-006-calibrated-prose-refinement.md`.
 
 Previous commissions completed:
 
@@ -163,6 +163,9 @@ Previous commissions completed:
 - **D-002** — Observatory loop (Atlas → Calibration → Field → Submission)
 - **D-003** — Deployment verification audit
 - **D-004** — D1 sync + read-model repair
+- **D-005** — Calibration Engine v1
+- **D-006** — Connection prose calibration (structural reading evidence)
+- **D-007** — Structural Reading discipline (`docs/practice/STRUCTURAL_READING.md`)
 
 ---
 

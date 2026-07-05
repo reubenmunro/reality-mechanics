@@ -26,14 +26,15 @@ status: working
 ---
 # Connection
 
-Connection names relation holding between distinguishable conditions.
+Connection names relation holding between distinguishable conditions so that passage is available in more than one direction.
 
-Within its own note, connection comes before its directional reads; it is not primary to the working root. Forward, held connection offers [[Carry]]. Backward, it offers [[Trace]]. Carry and trace do not make two connections; they are directional availability within one connection.
+Connection is held by [[Relation]]. Relation must remain held before connection within relation can be read.
 
+Held connection offers [[Carry]] forward and [[Trace]] backward. Carry and trace are directional availability within one connection, not two separate connections.
 
 Connection does not require a participant to read it. A participant may enter the forward availability as [[Carrying]] or follow the backward availability through [[Retracing]], but neither act creates the connection.
 
-Where there is no connection, no carry or trace is claimed between the conditions. Absence of connection is not automatically failure, drift, or disorder.
+Where there is no connection, no carry or trace is claimed between the conditions. Absence of connection does not by itself name [[Failure]] or [[Disorder]].
 
 ## Places
 
