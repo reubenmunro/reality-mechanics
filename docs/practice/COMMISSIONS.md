@@ -83,6 +83,8 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Atlas website sync + deployment | D-019 | Resolved | Publish D-018D prose to live Observatory | `docs/reports/D-019-atlas-website-sync-deployment.md`; D1 synced; Field + MCP verified |
 | Observatory panel compression | D-020A | Resolved | Panel duplicated Atlas prose | `docs/reports/D-020A-observatory-panel-compression.md`; place-only panel + Atlas link |
 | Mechanics amplification | D-020B | Resolved | Mechanics too weak to read without legend | `docs/reports/D-020B-mechanics-amplification.md`; rendering coefficients only |
+| Initial render investigation | D-020C | Resolved | Field almost empty on first paint | `docs/reports/D-020C-initial-render-investigation.md`; `fieldPressure` → `endpointOnly` |
+| Public navigation rename | D-021.1 | Resolved | Nav labels misaligned with public structure | `docs/reports/D-021.1-navigation.md`; Observatory · Pulse · Theory · Proof |
 
 ---
 

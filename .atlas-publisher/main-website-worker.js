@@ -417,8 +417,10 @@ export function fieldPage(options = {}) {
   <div id="mode">Field</div>
 </div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
-  <a href="https://calibration.realitymechanics.nz/">Calibration</a>
-  <a href="/submission">Submission 001</a>
+  <a href="/field">🔭 Observatory</a>
+  <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
+  <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+  <a href="/submission">✓ Proof</a>
 </nav>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false"
@@ -2894,8 +2896,10 @@ export function submissionPage() {
   <header>
     <div class="brand">Reality Mechanics</div>
     <nav aria-label="Reality Mechanics areas">
-      <a href="/field">Field</a>
-      <a href="https://calibration.realitymechanics.nz/">Calibration</a>
+      <a href="/field">🔭 Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
+      <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+      <a href="/submission">✓ Proof</a>
     </nav>
   </header>
   <main>

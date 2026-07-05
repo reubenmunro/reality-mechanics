@@ -101,9 +101,11 @@ t("engine roles order ark steward visible without calculus promotion", () => {
   assert.ok(!/Order : Ark/.test(src), "no calculus notation promoted");
 });
 
-t("navigation reaches Field and Submission 001", () => {
-  assert.ok(src.includes('href="https://realitymechanics.nz/field"'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/submission"'));
+t("navigation reaches Observatory and Proof", () => {
+  assert.ok(src.includes('href="https://realitymechanics.nz/field">🔭 Observatory'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/submission">✓ Proof'));
+  assert.ok(src.includes('href="https://calibration.realitymechanics.nz/">❤️ Pulse'));
+  assert.ok(src.includes("Theory.md\">📖 Theory"));
 });
 
 console.log(`\ncalibration invariants: all ${n} assertions passed.`);

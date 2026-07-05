@@ -182,11 +182,13 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /id="enter-form"/);
   assert.match(html, /id="term-sheet"/);
   assert.match(html, /id="access-row"/);
-  assert.doesNotMatch(html, /href="\/field"/);
+  assert.match(html, /href="\/field">🔭 Observatory/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
+  assert.match(html, /Theory\.md">📖 Theory/);
+  assert.match(html, /href="\/submission">✓ Proof/);
   assert.doesNotMatch(html, /href="\/atlas"/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
-  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Calibration/);
   assert.match(html, /id="sheet-place"/);
   assert.match(html, /id="sheet-atlas-link"/);
   assert.match(html, /View Atlas Entry/);
@@ -206,10 +208,12 @@ test("drawCurrent applies shared term ratio mode to all relation types", () => {
   assert.doesNotMatch(html, /isCarry \? termRatioMode\(a\)/);
 });
 
-test("Field links to Submission 001 alongside Calibration", () => {
+test("Field links to Proof alongside Pulse", () => {
   const html = fieldPage();
-  assert.match(html, /href="\/submission">Submission 001/);
-  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Calibration/);
+  assert.match(html, /href="\/submission">✓ Proof/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
+  assert.match(html, /href="\/field">🔭 Observatory/);
+  assert.match(html, /Theory\.md">📖 Theory/);
 });
 
 test("/submission serves the public Submission 001 page", async () => {

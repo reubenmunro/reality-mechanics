@@ -181,8 +181,10 @@ const PAGE = `<!doctype html>
   <header>
     <div class="brand">Calibration</div>
     <nav aria-label="Reality Mechanics">
-      <a href="https://realitymechanics.nz/field">Field</a>
-      <a href="https://realitymechanics.nz/submission">Submission 001</a>
+      <a href="https://realitymechanics.nz/field">🔭 Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
+      <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+      <a href="https://realitymechanics.nz/submission">✓ Proof</a>
     </nav>
   </header>
   <main>
