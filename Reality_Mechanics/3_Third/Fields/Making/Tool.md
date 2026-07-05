@@ -39,6 +39,8 @@ status: stable
 
 The condition through which a made form extends a participant's carrying by translating relation into a usable resolution band — the structural node where form, function, medium, and readability combine to augment what relation can carry.
 
+Tool is held by [[Making Field]], [[Form]], [[Function]], [[Medium]], [[Making]], [[Extend]], and [[Readability]]. Form must be carried through making, extension must remain answerable to source, function must be readable through a medium, and the translated condition must enter a usable resolution band before the augmenting condition can be named as a tool.
+
 ## Places
 
 Tool places the condition through which a made form extends a participant's carrying by translating relation into a usable resolution band — the structural node where form, function, medium, and readability combine to augment what relation can carry.

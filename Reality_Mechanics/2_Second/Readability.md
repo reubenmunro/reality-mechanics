@@ -50,6 +50,8 @@ status: stable
 
 The sustained condition that makes reading possible.
 
+Readability is held by [[Read]] and [[Attend]]. Meaningful distinction must be read and attended enough to remain available for further reading.
+
 ## Places
 
 Readability places the sustained condition that makes reading possible.

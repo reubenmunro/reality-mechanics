@@ -30,6 +30,8 @@ status: stable
 
 The invariant carrier by which relation remains free from residue, drift, or false mixture before readable difference is carried onward.
 
+Clean is held by [[Relation]]. Relation must hold before anything can be cleanly read, handled, separated, or met.
+
 Clean is hidden in many successful reads because it is not always the visible operation. Clear reading and tactful contact both depend on it.
 
 ## Places

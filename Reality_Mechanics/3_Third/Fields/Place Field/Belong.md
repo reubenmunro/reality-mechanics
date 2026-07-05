@@ -37,6 +37,8 @@ status: stable
 
 Belonging places the condition through which a participant is carried within a field where participation fits — the compatibility between what a participant carries and what the field can sustain.
 
+Belonging is held by [[Place Field]], [[Being]], [[Participation]], [[Compatibility]], [[World]], and [[Placed Participation]]. Participation must be present and compatibility must hold between the participant and the field before the carried fit can be named as belonging.
+
 This note places being inside the place/domain layer as fitted participation.
 
 ## Places

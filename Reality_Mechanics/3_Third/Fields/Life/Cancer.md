@@ -34,6 +34,8 @@ status: stable
 
 The condition through which living repair becomes misdirected re-bearing — bounded cellular difference that carries harmful recursion against the living condition it belongs within.
 
+Cancer is held by [[Life Field]], [[Alive]], [[Misrepair]], and [[Bounded Asymmetry]]. The alive condition must be present and misrepair must misdirect re-bearing before bounded cellular difference can be named as cancerous.
+
 ## Places
 
 Cancer places the condition through which living repair becomes misdirected re-bearing — bounded cellular difference that carries harmful recursion against the living condition it belongs within.

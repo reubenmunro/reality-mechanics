@@ -30,6 +30,8 @@ status: stable
 
 The bearing-direction of a located distinction.
 
+Orientation is held by [[Bearing]]. Strain must be held before its direction can be read.
+
 ## Places
 
 Orientation places the bearing-direction of a located distinction.

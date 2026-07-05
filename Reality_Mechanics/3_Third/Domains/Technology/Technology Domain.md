@@ -37,6 +37,8 @@ status: stable
 
 The organised participation context through which produced arrangements extend, modify, automate, or support participation.
 
+Technology Domain is held by [[Domain]], [[Making Field]], [[Carrying]], [[Function]], [[Medium]].
+
 ## Places
 
 Technology Domain places the organised participation context through which produced arrangements extend, modify, automate, or support participation.

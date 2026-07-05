@@ -36,6 +36,8 @@ status: working
 
 The crossing where held first-order carry is entered and enacted as second-order carrying.
 
+Threshold (First → Second) is held by [[First Order]], [[Hold]], [[Connection]], [[Carry]], and [[Place]].
+
 ## Places
 
 Threshold (First → Second) places the crossing where held first-order carry is entered and enacted as second-order carrying.

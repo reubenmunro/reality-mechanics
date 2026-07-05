@@ -37,6 +37,8 @@ status: stable
 
 The boundary where constraint shifts from outside limit into inside participation.
 
+Restraint is held by [[Constraint]], [[Control]], [[Participation]], [[Closure Scope]], and [[Translation Boundary]]. A constraint must exist, control must be exercised, participation must take it up, and a scope or standard must bound it before intentional holding can be read as restraint rather than mere compliance or suppression.
+
 ## Places
 
 Restraint places the boundary where constraint shifts from outside limit into inside participation.

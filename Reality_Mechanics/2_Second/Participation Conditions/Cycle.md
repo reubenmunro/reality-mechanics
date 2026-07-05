@@ -29,6 +29,8 @@ status: stable
 
 A return bounded by a recognisable period.
 
+Cycle is held by [[Recurrence]], [[Return]], and [[Period]].
+
 ## Places
 
 Cycle places a return bounded by a recognisable period.

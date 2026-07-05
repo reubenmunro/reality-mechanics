@@ -38,6 +38,8 @@ status: stable
 
 Readable arrangement.
 
+Form is held by [[Difference]] and [[Closure Scope]].
+
 ## Places
 
 Form places readable arrangement.

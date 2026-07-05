@@ -34,6 +34,8 @@ status: stable
 
 Followable continuity through a readable length, across terms, or within an order.
 
+Thread is held by [[Term]], [[Trace]], and [[Read]].
+
 [[Fabric]] names many threads held together as woven continuity. Thread is the strand that can be followed before the fabric has to be read as a whole.
 
 A thread continues while the same read remains followable. It reaches [[Terminal]] where that continuity can no longer continue as the same read.

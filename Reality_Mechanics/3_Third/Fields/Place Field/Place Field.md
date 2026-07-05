@@ -32,6 +32,8 @@ status: stable
 
 The recurring field of participation through which location, fit, boundary, and belonging become readable as spatial, relational, and community position.
 
+Place Field is held by [[Field of Participation]], [[Organic Field]], and [[Placed Participation]]. [[Belong]] nests as a later read of compatible placed participation.
+
 ## Places
 
 Place Field places a recurring field of participation.

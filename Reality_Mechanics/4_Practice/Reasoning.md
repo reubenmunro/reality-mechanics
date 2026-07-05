@@ -42,6 +42,8 @@ aliases:
 
 The practice of carrying a ratio-read through traceable order so that a claim, action, read, or continuation remains answerable to what holds it.
 
+Reasoning is held by [[Ratio]], [[Reference Frame]], [[Read]], [[Trace]], [[Practice]], [[Order Trace]], and [[Check]]. Comparison must be readable, the reference frame must be explicit, a meaningful distinction must be read, trace must remain available, practice must keep return possible, order trace must make the movement followable, and check must keep the continuation answerable.
+
 A reason is the retraceable account of ratio. It is not only an explanation given after the fact. A reason asks how a ratio is held, from what reference frame, and whether it can be retraced.
 
 Reasoning is therefore not proof alone, logic alone, argument alone, explanation alone, or justification alone. It is the live practice of staying with relation as it enters order: read what is present, trace what holds it, carry only what can remain answerable, and check where the carrying stops.

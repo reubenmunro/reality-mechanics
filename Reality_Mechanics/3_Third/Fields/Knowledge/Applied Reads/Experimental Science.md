@@ -41,6 +41,8 @@ status: stable
 
 The applied domain through which knowledge claims are made testable by structured design — where a model is held against recurrent conditions so that compatibility or incompatibility becomes readable rather than assumed.
 
+Experimental Science is held by [[Knowledge Field]], [[Modelling]], [[Bearing Source]], [[Reality Check]], [[Competence Boundary]], [[Recurrence]], [[Observation]], and [[Readability]]. A model must carry a claim, a bearing source must ground it, and conditions must be readable across recurrence before the structured testing of knowledge can be named as experimental science.
+
 Experimental science does not produce knowledge by assertion. It produces it by making the conditions under which a claim can fail explicit before testing.
 
 ## Places

@@ -37,6 +37,8 @@ status: stable
 
 The architectural read where required bearing continues through built use without exceeding load, capacity, carrying, or compatibility.
 
+Load-Bearing is held by [[Architecture]], [[Bearing]], [[Load]], [[Capacity]], [[Carrying]], [[Compatibility]].
+
 ## Places
 
 Load-Bearing places the architectural read where required bearing continues through built use without exceeding load, capacity, carrying, or compatibility.

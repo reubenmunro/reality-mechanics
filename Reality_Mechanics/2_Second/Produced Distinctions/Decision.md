@@ -29,6 +29,8 @@ status: stable
 
 A carried sequence resolved at a choice point.
 
+Decision is held by [[Strategy]] and [[Closure]].
+
 ## Places
 
 Decision places a carried sequence resolved at a choice point.

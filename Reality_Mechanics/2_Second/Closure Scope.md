@@ -57,6 +57,8 @@ status: stable
 
 The bounded extent within which a read can be evaluated as holding.
 
+Closure Scope is held by [[Closure]], [[Scope]], and [[Extent]]. Closure bounds the read, scope locates where it can hold, and extent locates the reached range.
+
 Closure Scope protects against two opposite failures. Overclaim treats a local closure as total and stops carrying what falls outside the declared scope. Refusal of scope prevents local closure altogether, so correction has no bounded place to enter. A scope must be declared enough to evaluate, but not declared so finally that wider relation disappears.
 
 Closure Scope also protects against nominalized closure: a relation compressed into a noun can travel as if its boundary were a property of the named thing. The closure may have held locally, but it drifts where the scope that produced it is no longer carried.

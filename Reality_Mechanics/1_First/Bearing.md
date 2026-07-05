@@ -54,6 +54,8 @@ status: stable
 
 Strain held as a readable condition — sustained without collapsing or dissipating.
 
+Bearing is held by [[Strain]]. Strain must remain pressing while it is held.
+
 ## Places
 
 Bearing places strain held as a readable condition.

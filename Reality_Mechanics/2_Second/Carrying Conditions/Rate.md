@@ -37,6 +37,8 @@ status: stable
 
 Relation read against interval.
 
+Rate is held by [[Recurrence]], [[Interval]], and [[Measure]].
+
 ## Places
 
 Rate places relation read against interval.

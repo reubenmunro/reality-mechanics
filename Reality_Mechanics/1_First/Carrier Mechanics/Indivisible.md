@@ -27,6 +27,8 @@ status: stable
 
 Non-separable distinction — distinction that cannot be separated without changing the condition being read.
 
+Indivisible is held by [[Boundary]]. Distinction must be located before non-separability can be read.
+
 ## Places
 
 Indivisible places non-separable distinction.

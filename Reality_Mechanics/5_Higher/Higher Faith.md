@@ -28,6 +28,8 @@ status: stable
 
 Participation through carrying that has repeatedly resolved through higher retrace.
 
+Higher Faith is held by [[Invisible Bearing]] and [[Higher Retrace|Retrace]].
+
 ## Places
 
 Higher Faith places participation through carrying that has repeatedly resolved through higher retrace.

@@ -36,6 +36,8 @@ status: stable
 
 Resistance at coupled contact during flow.
 
+Friction is held by [[Coupled Contact]], [[Resistance]], and [[Flow]].
+
 ## Places
 
 Friction places resistance at coupled contact during flow.

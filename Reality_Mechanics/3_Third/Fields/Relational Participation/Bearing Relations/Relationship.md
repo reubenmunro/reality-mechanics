@@ -33,6 +33,8 @@ status: stable
 
 The sustained, named form of coupled participation — the shared boundary through which bearing, repair, and ongoing relation take place.
 
+Relationship is held by [[Coupled Boundary]], [[Bearing Relation]], and [[Participation]]. Coupling must be bounded, bearing must be traceable across it, and participation must recur before relation can be held as a named shared form.
+
 The "ship" read is structural rather than etymological: relationship is relation carried in a held form.
 
 ## Places

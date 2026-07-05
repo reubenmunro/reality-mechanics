@@ -40,6 +40,8 @@ status: stable
 
 Emergent load becoming locally borne through relation.
 
+Pressure is held by [[Load]], [[Relation]], [[Boundary]], [[Capacity]], and [[Compatibility]]. Load must meet a local carrying relation, and the boundary, capacity, and compatibility of that relation must be at stake, before pressure can be named.
+
 Pressure is not load alone and not the carrier alone. It appears where load meets a local carrying relation. This is why pressure can be generative: it is the active edge where carrying becomes felt, formed, adjusted, resisted, retained, released, or resolved.
 
 Where pressure generates supportable availability for carrying, it can become readable as [[Energy]].

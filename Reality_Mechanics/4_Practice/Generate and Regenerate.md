@@ -35,16 +35,13 @@ status: working
 
 The practice instrument for asking how carrying is generated, where its trace is preserved or lost, and how it can be regenerated and carried again.
 
+Generate and Regenerate is held by [[Order Generation]], [[Generative Trace]], [[Degenerative Trace]], [[Check]], and [[Recarry]].
+
 It is not the Atlas itself. It is a way to process Atlas work where the trace of generation needs to become re-enterable.
 
 The short form is:
 
-```text
-Generate leaves trace.
-Degenerate loses generative trace while carrying continues.
-Regenerate returns through trace to generative conditions.
-Recarry takes up carrying again, differently.
-```
+```text Generate leaves trace. Degenerate loses generative trace while carrying continues. Regenerate returns through trace to generative conditions. Recarry takes up carrying again, differently. ```
 
 ## Places
 

@@ -36,6 +36,8 @@ status: stable
 
 The applied read of AI Drift at the level of a single reply — where an AI answer remains fluent while losing the dependency path it claims to carry.
 
+AI Reply Drift is held by [[Applied Read]], [[AI Drift]], [[AI Atlas Grounding]], [[Surface]], and [[Closure Scope]] — it requires surface coherence and a legible dependency claim against which drift becomes readable.
+
 ## Places
 
 AI Reply Drift places the applied read of AI Drift at the level of a single reply — where an AI answer remains fluent while losing the dependency path it claims to carry.

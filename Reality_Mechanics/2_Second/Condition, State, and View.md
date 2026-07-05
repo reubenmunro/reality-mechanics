@@ -30,6 +30,8 @@ status: working
 
 The distinction between a condition, a frozen or sectioned state-read, and the view through which that state becomes visible.
 
+Condition, State, and View is held by [[Condition]], [[Readability]], and [[Closure Scope]]. A condition must be readable as holding, reading must remain possible, and the scope of evaluation must be bounded before state and view can be distinguished without becoming primitives.
+
 A condition is relation readable as holding within a [[Closure Scope]]. A state is a frozen or sectioned read of a condition. A view is the position, [[Section]], projection, or read path through which a state becomes visible.
 
 This distinction does not create State or View as new primitives. It keeps them downstream of [[Condition]], [[Readability]], [[Closure Scope]], and [[Place]]. (A view may *use* a [[Section]] — a participant's cut — but the distinction does not depend on that practice-order enactment.)

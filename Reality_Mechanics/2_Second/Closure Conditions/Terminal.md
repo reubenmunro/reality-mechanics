@@ -35,6 +35,8 @@ status: stable
 
 The boundary where a read stops because continuation crosses a closure scope the current read cannot follow.
 
+Terminal is held by [[Thread]], [[Closure Scope]], and [[Boundary]].
+
 ## Places
 
 Terminal places the boundary where a read stops because continuation crosses a closure scope the current read cannot follow.

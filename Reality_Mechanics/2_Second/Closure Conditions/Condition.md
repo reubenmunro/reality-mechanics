@@ -32,6 +32,8 @@ status: stable
 
 A read held as available within the current closure scope.
 
+Condition is held by [[Readability]] and [[Closure Scope]].
+
 ## Places
 
 Condition places a read held as available within the current closure scope.

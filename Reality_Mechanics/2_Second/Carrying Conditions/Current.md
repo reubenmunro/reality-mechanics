@@ -30,6 +30,8 @@ status: stable
 
 Directed flow through a medium.
 
+Current is held by [[Flow]], [[Orientation]], and [[Medium]].
+
 ## Places
 
 Current places directed flow through a medium.

@@ -34,6 +34,8 @@ status: stable
 
 The structural agreement between named terms and the conditions that allow those terms to serve inside the Atlas.
 
+Terms and Conditions is held by [[Term]], [[Condition]], [[Groundedness]], and [[Common Term Structure]].
+
 The ordinary phrase is useful because it already joins terms with conditions. The Atlas reads that join structurally: a named term must remain answerable to what lets it hold.
 
 ## Places

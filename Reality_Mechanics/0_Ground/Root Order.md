@@ -44,6 +44,8 @@ status: stable
 
 The governing dependency arrangement of the Atlas — what must already hold before later terms can become available, and the condition through which that arrangement becomes followable.
 
+Root Order is held by [[Ground]], because the system must acknowledge what precedes its own derivation before it can order dependency.
+
 Root Order also makes that arrangement followable: terms can be followed by what must already hold for them to remain available.
 
 ## Places

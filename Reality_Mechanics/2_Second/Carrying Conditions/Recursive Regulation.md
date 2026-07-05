@@ -29,6 +29,8 @@ status: stable
 
 Regulation occurring through recursive carrying.
 
+Recursive Regulation is held by [[Recursive]] and [[Regulation]].
+
 ## Places
 
 Recursive Regulation places regulation occurring through recursive carrying.

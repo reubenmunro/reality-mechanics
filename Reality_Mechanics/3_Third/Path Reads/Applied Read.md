@@ -42,6 +42,8 @@ status: stable
 
 Local use of a path read in a specific case.
 
+Applied Read is held by [[Path Reads]] and [[Closure Scope]].
+
 An applied read tests whether a field or domain translation still holds when it becomes local.
 
 ## Places

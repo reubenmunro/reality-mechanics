@@ -34,6 +34,8 @@ status: stable
 
 The recurring field of participation through which readable difference through medium becomes available — the field from which language, representation, and translation emerge.
 
+Language Field is held by [[Field of Participation]], [[Organic Field]], [[Readability]], [[Difference]], and [[Medium]]. Participation must structure a recurring scope; readability must be available; difference must be present through a medium before the language field can be named.
+
 Language fields are the organic bed from which language domains, branches, and applied reads grow. A language domain organises one or more language fields into a recognisable practice, vocabulary, or applied structure. The field precedes and grounds the domain.
 
 ## Places

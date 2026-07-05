@@ -31,6 +31,8 @@ status: stable
 
 Continuation evaluated as advancement.
 
+Progress is held by [[Proceed]] and [[Evaluation]].
+
 ## Places
 
 Progress places continuation evaluated as advancement.

@@ -32,6 +32,8 @@ status: stable
 
 Decrease in carrying, scale, or available participation across traversal.
 
+Decay is held by [[Change]], [[Scale]], and [[Carrying]].
+
 ## Places
 
 Decay places decrease in carrying, scale, or available participation across traversal.

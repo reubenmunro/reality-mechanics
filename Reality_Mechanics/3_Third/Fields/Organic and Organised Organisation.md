@@ -37,6 +37,8 @@ status: stable
 
 The distinction between participation that arises through Natural Order and participation that is intentionally arranged.
 
+Organic and Organised Organisation is held by [[Natural Order]], [[Participation]], and [[Field of Participation]].
+
 ## Places
 
 Organic and Organised Organisation places the distinction between participation that arises through Natural Order and participation that is intentionally arranged.

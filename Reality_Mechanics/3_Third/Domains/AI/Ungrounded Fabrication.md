@@ -37,6 +37,8 @@ status: stable
 
 The AI-domain failure condition where fabricated form appears coherent while its trace to reality is absent, broken, displaced, or unverified.
 
+Ungrounded Fabrication is held by [[AI]], [[Coherence]], [[Trace]], [[Bearing Source]], [[Reality Check]], and [[AI Drift]]. Generated output and apparent coherence must be present before fabrication can be named as ungrounded.
+
 Fabrication can mean forming, making, or producing something. That broader sense is not inherently false. In the AI domain, the failure condition is ungrounded fabrication: formed output that appears coherent while its trace to reality is absent, broken, displaced, or unverified.
 
 Ungrounded fabrication is a cleaner structural term than hallucination when no human perceptual event is being described. The issue is not that the system is seeing falsely. The issue is that an output is formed and presented as grounded without the trace that would make it answerable.

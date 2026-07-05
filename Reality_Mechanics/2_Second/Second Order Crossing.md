@@ -32,6 +32,8 @@ status: working
 
 The crossing where carrying through recurring participation begins to organise into a field.
 
+Threshold (Second → Third) is held by [[Second Order]], [[Participation]], and [[Recurrence]].
+
 ## Places
 
 Threshold (Second → Third) places the crossing where carrying through recurring participation begins to organise into a field.

@@ -33,6 +33,8 @@ status: stable
 
 Carrying maintained within condition.
 
+Regulation is held by [[Constraint]] and [[Compatibility]].
+
 ## Places
 
 Regulation places carrying maintained within condition.

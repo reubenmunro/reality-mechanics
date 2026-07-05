@@ -36,6 +36,8 @@ status: stable
 
 A bounded separation within traversal.
 
+Interval is held by [[Occur]], [[Traversal]], and [[Closure Scope]].
+
 ## Places
 
 Interval places a bounded separation within traversal.

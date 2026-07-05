@@ -33,6 +33,8 @@ status: stable
 
 Availability crossing inward through a boundary into carrying.
 
+Intake is held by [[In]], [[Availability]], and [[Carrying]].
+
 ## Places
 
 Intake places availability crossing inward through a boundary into carrying.

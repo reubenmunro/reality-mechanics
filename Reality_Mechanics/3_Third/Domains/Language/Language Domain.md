@@ -40,6 +40,8 @@ status: stable
 
 The organised participation context through which naming, translating, representing, and carrying meaning through terms become readable as shared use.
 
+Language Domain is held by [[Domain]], [[Expression Field]], [[Language Field]], [[Knowledge Field]], and [[Medium]].
+
 ## Places
 
 Language Domain places the organised participation context through which naming, translating, representing, and carrying meaning through terms become readable as shared use.

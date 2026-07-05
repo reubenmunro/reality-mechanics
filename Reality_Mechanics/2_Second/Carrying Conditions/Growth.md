@@ -31,6 +31,8 @@ status: stable
 
 Increase in carrying, scale, or available participation across traversal.
 
+Growth is held by [[Change]], [[Scale]], and [[Carrying]].
+
 Growth is not only faster output. Increase that depends on drawing down a hidden carrier may be read locally as growth while becoming extraction at a wider scope. Growth must remain answerable to what carries the increase.
 
 ## Places

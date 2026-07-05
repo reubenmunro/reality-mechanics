@@ -37,6 +37,8 @@ status: working
 
 A reference map of generative order systems used to clarify how bounded rules produce ordered continuation, construction, recurrence, and regeneration.
 
+Order Generation is held by [[Order Trace]], [[Regenerate]], [[Count]], [[Recurrence]], and [[Posture]].
+
 It does not make counting, Euclid, or Fibonacci into Atlas terms. They are exemplars that make different kinds of order generation visible.
 
 ## Places

@@ -41,6 +41,8 @@ status: stable
 
 The physical field condition at which traversal is no longer a compatible continuation — the closure scope where available carrying cannot escape the centring condition.
 
+Black Hole is held by [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], [[Boundary]], [[Availability]], [[Terminal]], and [[Closure Scope]]. Traversal must cease to be a compatible continuation and a boundary must locate the closure before the terminal condition can be named.
+
 ## Places
 
 Black Hole places the physical field condition at which traversal is no longer a compatible continuation — the closure scope where available carrying cannot escape the centring condition.

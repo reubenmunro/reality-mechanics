@@ -26,6 +26,8 @@ status: stable
 
 A name that marks without carrying traceable conditions — naming without dependency, opening, or carried relation.
 
+Label is held by [[Root Order]]. Dependency arrangement must hold before naming of any kind can occur, including marking without conditions.
+
 A label is not a failed term. Proper names, placeholders, tags, and identifiers operate legitimately as labels — marking a point without needing to carry conditions. The distinction is structural: a label marks; a term carries.
 
 ## Places

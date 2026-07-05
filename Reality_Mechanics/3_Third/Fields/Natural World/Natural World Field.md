@@ -38,6 +38,8 @@ status: stable
 
 The recurring field of participation through which physical, ecological, spatial, material, and cosmic conditions become readable as organised natural experience.
 
+Natural World Field is held by [[Field of Participation]], [[Organic Field]], [[Natural World]], [[Natural Order]], and [[Boundary]]. [[Physical]] nests within this field; it does not hold the field that carries it.
+
 ## Places
 
 Natural World Field places a recurring field of participation.

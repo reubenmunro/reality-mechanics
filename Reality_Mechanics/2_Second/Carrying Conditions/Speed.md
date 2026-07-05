@@ -34,6 +34,8 @@ status: stable
 
 Rate of traversal through a closure scope.
 
+Speed is held by [[Traversal]], [[Rate]], and [[Measure]].
+
 ## Places
 
 Speed places rate of traversal through a closure scope.

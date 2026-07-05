@@ -30,6 +30,8 @@ status: stable
 
 Resolution where bearing passes strain, load, or support into another condition.
 
+Transfer is held by [[Resolution]], [[Bearing]], and [[Boundary]]. What was borne must be determined enough to pass across a boundary.
+
 ## Places
 
 Transfer places resolution where bearing passes strain, load, or support into another condition.

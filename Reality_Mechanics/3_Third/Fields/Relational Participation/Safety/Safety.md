@@ -38,6 +38,8 @@ status: stable
 
 The condition through which available bearing is preserved from incompatible carrying — the relational condition that keeps harmful or collapsing carrying from removing required availability.
 
+Safety is held by [[Branch]], [[Relational Participation Field]], [[Availability]], [[Compatibility]], [[Collapse]], and [[Boundary]]. Availability must be at stake and incompatibility or collapse must be a readable threat before the preservation of available bearing can be named as safety.
+
 ## Places
 
 Safety places the condition through which available bearing is preserved from incompatible carrying — the relational condition that keeps harmful or collapsing carrying from removing required availability.

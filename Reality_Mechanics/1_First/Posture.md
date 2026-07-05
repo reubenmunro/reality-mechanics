@@ -29,6 +29,8 @@ status: stable
 
 Connection held with orientation — how relation is held toward relation so that order can become constructible.
 
+Posture is held by [[Connection]] and [[Asymmetry]]. Connection must remain held as a passage, and asymmetry must continue giving that passage direction, while order proceeds through the oriented holding.
+
 [[Connection]] gives a held and placeable passage. Posture names what happens when that passage is not merely present but directed — when the holding has a toward-ness that lets order begin to emerge. Without posture, connection remains available but not yet constructible. With posture, the held passage can carry as [[Structure]].
 
 A posture is not a proof and not a doctrine. It is not a position that is occupied. It is the orientation through which carrying becomes ordered enough to bear.

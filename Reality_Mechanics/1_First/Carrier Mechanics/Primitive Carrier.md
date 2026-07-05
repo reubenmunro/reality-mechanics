@@ -30,6 +30,8 @@ status: stable
 
 The first-order carrier role through which located distinction can be carried as readable relation.
 
+Primitive Carrier is held by [[Boundary]] and [[Clearance]]. Distinction must be located while relation remains readable.
+
 ## Places
 
 Primitive Carrier places the first-order carrier role through which located distinction can be carried as readable relation.

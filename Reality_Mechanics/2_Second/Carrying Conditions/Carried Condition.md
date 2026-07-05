@@ -37,11 +37,11 @@ status: working
 
 The carrying condition returned to when load has concentrated too tightly in the participant or carrier.
 
+Carried Condition is held by [[Carrying]], [[Ground]], [[Load]], [[Capacity]], and [[Overload]].
+
 The root sentence is:
 
-```text
-You are carried.
-```
+```text You are carried. ```
 
 This is not reassurance added to carrying. It names a mechanics of carrying: before a participant carries, carrying is already occurring. Ground, gravity, weight, breath, support, and interval can take part of the load before meaning, interpretation, or decision returns.
 

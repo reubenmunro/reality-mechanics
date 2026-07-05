@@ -38,6 +38,8 @@ status: stable
 
 The condition through which institutional or social carrying loses the relational depth that would make it traceable — carrying that proceeds without the structural grounding required for retrace.
 
+Thin Carrying is held by [[Carrying]], [[Society]], [[Relation]], [[Care]], and [[Destination-Led Carrying]]. Carrying must be present and relational depth must be absent or insufficient before the loss of traceable grounding can be named.
+
 ## Places
 
 Thin Carrying places the condition through which institutional or social carrying loses the relational depth that would make it traceable — carrying that proceeds without the structural grounding required for retrace.

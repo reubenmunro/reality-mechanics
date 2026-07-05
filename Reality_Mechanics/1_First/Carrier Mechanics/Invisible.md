@@ -27,6 +27,8 @@ status: stable
 
 Non-presented readability — distinction that can hold without being presented to read.
 
+Invisible is held by [[Apparent]]. A distinction can be apparent to structure without being presented to read.
+
 ## Places
 
 Invisible places non-presented readability.

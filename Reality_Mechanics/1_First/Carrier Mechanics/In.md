@@ -28,6 +28,8 @@ status: stable
 
 Interior relation within a bounded condition.
 
+In is held by [[Boundary]]. A boundary must locate distinction before interior placement can be read.
+
 ## Places
 
 In places interior relation within a bounded condition.

@@ -34,6 +34,8 @@ status: stable
 
 The boundary-surface condition through which carrying becomes answerable to read.
 
+Face is held by [[Boundary]], [[Surface]], [[Carrying]], [[Return]], and [[Readability]]. Boundary must locate distinction, surface must present, carrying must continue, and carried relation must become readable again before a face can answer back as read.
+
 Face is also where carrying becomes answerable to response. Once carrying has a face, it can be met, trusted, misread, cared for, controlled, harmed, repaired, or recognised at a local boundary.
 
 Face bridges truth and care. Truth requires carried reality to become answerable to read; care requires carried reality to become answerable to response. Face is the local exposure where both become possible.

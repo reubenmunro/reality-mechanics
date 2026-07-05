@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through reciprocal transfer or mutual availability between positions.
 
+Exchanging is held by [[Placement Mode]], [[Participation]], [[Coupling]], and [[Reciprocity]]. A mode of participation must exist, coupling must hold positions together, and reciprocity must make return possible before mutual transfer can be placed as the primary mode.
+
 ## Places
 
 Exchanging places the mode where participation is primarily carried through reciprocal transfer or mutual availability between positions.

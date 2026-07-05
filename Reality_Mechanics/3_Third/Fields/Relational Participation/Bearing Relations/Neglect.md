@@ -32,6 +32,8 @@ status: stable
 
 The failure to hold bearing that preserves availability — the condition where care-bearing becomes absent, insufficient, or discontinued.
 
+Neglect is held by [[Care]], [[Bearing]], and [[Availability]]. Care must be the relevant condition and availability must be at stake before bearing's absence or insufficiency can be named as neglect.
+
 ## Places
 
 Neglect places the failure to hold bearing that preserves availability — the condition where care-bearing becomes absent, insufficient, or discontinued.

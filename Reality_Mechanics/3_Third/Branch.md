@@ -39,6 +39,8 @@ status: stable
 
 A dependency path through participation.
 
+Branch is held by [[Field of Participation]], [[Domain]], and [[Dependency Order]].
+
 A branch often becomes visible at a [[Translation Boundary|translation joint]]: the point where a structural Atlas term becomes terminal to a field or domain.
 
 ## Places

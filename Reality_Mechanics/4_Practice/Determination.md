@@ -37,6 +37,8 @@ status: working
 
 The temporary scoped hold produced when pressure has been retraced, checked, and bounded enough for a next answerable step.
 
+Determination is held by [[Ark Run]], [[Determine]], [[Hold]], [[Trace]], [[Scope]], and [[Check]].
+
 A determination is not simply an answer. It is an answerable hold.
 
 ## Places

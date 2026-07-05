@@ -41,6 +41,8 @@ status: stable
 
 The condition through which prior carrying is passed forward through recurrence and recognition — what a field, community, or practice continues to carry from prior relation.
 
+Inheritance is held by [[Our Story Field]], [[Carrying]], [[Recurrence]], [[Recognition Read|Recognition]], [[Medium]], [[Compatibility]], [[Kind]], and [[Our Story]]. Prior carrying must be present, recurrence must sustain it, and recognition must make it available before forward-passed carrying can be named as inheritance.
+
 [[Borne and Carried]] names the human-scope condition inside inheritance: human carrying begins in received carrying.
 
 ## Places

@@ -37,6 +37,8 @@ status: stable
 
 The condition through which cognition locates a boundary that distinguishes this participant's carrying from others — the recognised closure scope through which identity becomes locally readable.
 
+Self is held by [[Cognition]], [[Boundary]], [[Identity]], [[Recognition Read|Recognition]], and [[Closure Scope]]. Cognition must be present, a boundary must distinguish this carrying scope, and recognition must make identity locally readable before the condition can be named as self.
+
 ## Places
 
 Self places the condition through which cognition locates a boundary that distinguishes this participant's carrying from others — the recognised closure scope through which identity becomes locally readable.

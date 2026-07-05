@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through readable distinction, recognition, test, or retained understanding — where what is read becomes identifiable, checkable, or teachable.
 
+Knowing is held by [[Placement Mode]], [[Readability]], [[Recognition Read|Recognition]], and [[Know]]. A mode of participation must exist, readability must produce distinct conditions, recognition must be possible, and the capacity to know must be available before retained understanding can be placed as the primary mode.
+
 ## Places
 
 Knowing places the mode where participation is primarily carried through readable distinction, recognition, test, or retained understanding — where what is read becomes identifiable, checkable, or teachable.

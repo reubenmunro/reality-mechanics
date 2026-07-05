@@ -39,6 +39,8 @@ status: stable
 
 The physical field condition through which constrained boundary conditions reduce available field modes — the natural-world read of constraint making coupled asymmetry measurable as attraction.
 
+Casimir Plates is held by [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Boundary]], [[Constraint]], [[Coupled Asymmetry]], and [[Readability]]. Boundary conditions must constrain field modes and coupled asymmetry must be readable before the measured force can be named.
+
 ## Places
 
 Casimir Plates places the physical field condition through which constrained boundary conditions reduce available field modes — the natural-world read of constraint making coupled asymmetry measurable as attraction.

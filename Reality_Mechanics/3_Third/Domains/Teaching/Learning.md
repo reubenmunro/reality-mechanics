@@ -36,6 +36,8 @@ status: stable
 
 Participation changing through compatible uptake of what becomes readable.
 
+Learning is held by [[Teaching]], [[Readability]], [[Compatibility]], [[Carrying]], and [[Memory]]. A [[Step]] may make learning answerable in practice, but is not required for learning to occur.
+
 ## Places
 
 Learning places participation changing through compatible uptake of what becomes readable.

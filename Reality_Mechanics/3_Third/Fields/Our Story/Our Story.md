@@ -31,6 +31,8 @@ status: stable
 
 The third-order field where participation carries prior relation forward through memory, inheritance, account, and retrace — the structural field for shared relational history.
 
+Our Story is held by [[Participation]] and [[Field of Participation]]. Participation must structure a field and prior carrying must be available to retrace before shared relational history can be named.
+
 ## Places
 
 Our Story places the third-order field where participation carries prior relation forward through memory, inheritance, account, and retrace — the structural field for shared relational history.

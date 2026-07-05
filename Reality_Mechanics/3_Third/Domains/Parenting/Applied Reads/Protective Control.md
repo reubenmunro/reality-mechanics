@@ -39,6 +39,8 @@ status: stable
 
 The local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing.
 
+Protective Control is held by [[Applied Read]], [[Parenting]], [[Control After Harm]], [[Control]], [[Care]], [[Compatibility]], and [[Closure Scope]]. Protective direction must remain answerable to the availability care preserves before it can be read as compatible protection.
+
 ## Places
 
 Protective Control places the local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing.

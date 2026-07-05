@@ -38,6 +38,8 @@ status: stable
 
 Carrying continuing through a medium.
 
+Flow is held by [[Carrying]], [[Medium]], and [[Process]].
+
 ## Places
 
 Flow places carrying continuing through a medium.

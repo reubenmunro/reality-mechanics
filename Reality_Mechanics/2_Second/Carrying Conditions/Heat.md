@@ -30,6 +30,8 @@ status: stable
 
 Energetic consequence made readable through friction.
 
+Heat is held by [[Friction]], [[Change]], and [[Flow]].
+
 ## Places
 
 Heat places energetic consequence made readable through friction.

@@ -31,6 +31,8 @@ status: stable
 
 Relation held inside a cleared boundary.
 
+Within is held by [[In]], [[Clearance]], and [[Boundary]].
+
 ## Places
 
 Within places relation held inside a cleared boundary.

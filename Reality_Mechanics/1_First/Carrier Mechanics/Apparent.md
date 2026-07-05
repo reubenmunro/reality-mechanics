@@ -31,6 +31,8 @@ status: stable
 
 Distinction as presented enough to become available to notice.
 
+Apparent is held by [[Boundary]], because distinction must be located enough to present.
+
 ## Places
 
 Apparent places distinction as presented enough to become available to notice.

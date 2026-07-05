@@ -35,13 +35,13 @@ status: working
 
 The trace that preserves enough of the generating order to seed continuation.
 
+Generative Trace is held by [[Trace]], [[Generic]], [[Carrying]], [[Regenerate]], and [[Order Generation]].
+
 It is not only a record of what happened. It is a trace of how carrying became possible.
 
 The core read is:
 
-```text
-A trace is generative where it can re-enter as seed.
-```
+```text A trace is generative where it can re-enter as seed. ```
 
 ## Places
 

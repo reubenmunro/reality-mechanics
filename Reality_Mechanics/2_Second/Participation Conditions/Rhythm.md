@@ -38,6 +38,8 @@ status: stable
 
 Patterned recurrence carried through interval.
 
+Rhythm is held by [[Pattern]], [[Recurrence]], [[Interval]], and [[Return]]. Recurrence must form a pattern through intervals, and carried relation must become readable again at boundaries within that pattern.
+
 ## Places
 
 Rhythm places patterned recurrence carried through interval.

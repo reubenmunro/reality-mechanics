@@ -31,6 +31,8 @@ status: stable
 
 Where built form locates relational separation.
 
+Architectural Boundary is held by [[Architecture]], [[Boundary]], [[Closure Scope]].
+
 ## Places
 
 Architectural Boundary places where built form locates relational separation.

@@ -32,6 +32,8 @@ status: stable
 
 The third-order field where recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants.
 
+Society is held by [[Participation]] and [[Field of Participation]]. Participation must structure a field and recurring relational patterns must be present before society can be named.
+
 ## Places
 
 Society places the third-order field where recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants.

@@ -31,6 +31,8 @@ status: stable
 
 Carrying re-entering its own condition.
 
+Recursive is held by [[Recurrence]] and [[Carrying]].
+
 ## Places
 
 Recursive places carrying re-entering its own condition.

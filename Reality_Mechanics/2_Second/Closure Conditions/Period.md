@@ -29,6 +29,8 @@ status: stable
 
 The interval per recurrence.
 
+Period is held by [[Interval]] and [[Recurrence]].
+
 ## Places
 
 Period places the interval per recurrence.

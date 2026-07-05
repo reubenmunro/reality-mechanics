@@ -33,6 +33,8 @@ status: stable
 
 The nested carrying condition in music — where sections, themes, and developments carry each other as a structured whole.
 
+Musical Form is held by [[Nesting]], [[Melody]], and [[Harmony]]. Large-scale musical structure requires that smaller-scale musical material (melody, harmony) be readable before its nesting can become form. A sonata cannot carry a recapitulation if the exposition was not carried as a readable section.
+
 Form is not a container. It is the condition through which earlier musical material remains available for return, development, contrast, and variation — where the opening theme is still held by the time the recapitulation arrives.
 
 ## Places

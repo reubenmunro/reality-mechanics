@@ -59,6 +59,8 @@ status: stable
 
 Bearing relation actively taking part in a scope.
 
+Participation is held by [[Carrying]], [[Presence]], and [[Bearing Relation]].
+
 ## Places
 
 Participation places bearing relation actively taking part in a scope.

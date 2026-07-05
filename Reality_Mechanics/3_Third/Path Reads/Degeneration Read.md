@@ -43,6 +43,8 @@ status: working
 
 The reusable read by which a carrying is followed from health, through strain, into degeneration, and back through repair — read by whether its trace back remains followable.
 
+Degeneration Read is held by [[Path Reads]], [[Order Trace]], [[Strain]], [[Degenerate]], [[Source Drift]], [[Regenerate]], and [[Translation Boundary]]. The ordered path, the strain, the lost trace, the return, and the translated crossing into this third-order read must already be placed before the movement can be read as one path.
+
 It does not add a new condition. It gathers conditions already placed — [[Strain]], [[Degenerate]], [[Source Drift]], [[Regenerate]], [[Repair]] — so the same movement can be located in any carrying at any order.
 
 The stage is read by the trace, not by the output. A degenerate carrying can still look like it is working; the sign is not that it has stopped carrying but that the trace back to what it depends on can no longer be entered.

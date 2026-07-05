@@ -39,6 +39,8 @@ status: stable
 
 Branch-level expression that carries a read into [[Form]].
 
+Representation is held by [[Reality]], [[Read]], [[Readability]], [[Medium]], [[Form]], [[Recognition Read]], [[Language Domain]].
+
 ## Places
 
 Representation places branch-level expression that carries a read into [[Form]].

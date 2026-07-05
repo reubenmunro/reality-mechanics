@@ -33,6 +33,8 @@ status: stable
 
 Determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation.
 
+Architectural Resolution is held by [[Architecture]], [[Resolution]], [[Carrying]], [[Compatibility]].
+
 ## Places
 
 Architectural Resolution places determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation.

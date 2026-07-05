@@ -40,6 +40,8 @@ status: stable
 
 The Atlas [[Practice]] of recovering the dependency path that produced the current read.
 
+Retrace Practice is held by [[Trace]], [[Ground]], [[Relation]], [[Reality Mechanics]], and [[Practice]].
+
 Reality Mechanics is the discipline through which retraceable dependency is mapped.
 
 This folder contains the practices, discipline notes, memory notes, runtime notes, and drift checks that keep the Atlas retraceable.

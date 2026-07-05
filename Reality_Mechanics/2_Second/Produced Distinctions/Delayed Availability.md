@@ -30,6 +30,8 @@ status: stable
 
 Uneven availability across traversal — the condition through which what should be available at one point in a sequence becomes available only later, or not at all within the current scope.
 
+Delayed Availability is held by [[Dependency Disorder]] and [[Availability]].
+
 ## Places
 
 Delayed Availability places uneven availability across traversal — the condition through which what should be available at one point in a sequence becomes available only later, or not at all within the current scope.

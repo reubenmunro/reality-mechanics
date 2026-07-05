@@ -33,6 +33,8 @@ status: stable
 
 Participation made answerable for an effect where trace returns to the coupled boundary through which that effect became actionable.
 
+Responsibility is held by [[Participation]], [[Effect]], [[Trace]], and [[Coupled Boundary]]. An effect must be present, participation must have entered the relation, and trace must recover the boundary through which that participation affected what followed before responsibility can be named.
+
 Responsibility does not automatically belong to the object, system, or medium that carries a [[Consequence]]. The carrier of an effect and the participating boundary through which that effect became actionable may be different conditions.
 
 ## Places

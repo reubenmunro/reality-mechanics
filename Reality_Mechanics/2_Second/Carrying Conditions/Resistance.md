@@ -34,6 +34,8 @@ status: stable
 
 Carrying opposed, narrowed, or slowed by a condition it must pass through.
 
+Resistance is held by [[Constraint]], [[Flow]], and [[Carrying]].
+
 ## Places
 
 Resistance places carrying opposed, narrowed, or slowed by a condition it must pass through.

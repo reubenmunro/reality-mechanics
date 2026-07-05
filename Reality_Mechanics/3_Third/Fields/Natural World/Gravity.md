@@ -40,6 +40,8 @@ status: stable
 
 The physical field condition through which mass-bearing relation makes availability structured toward a centre — the natural-world read of field bearing pulling available participation.
 
+Gravity is held by [[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Bearing]], [[Field Availability Pattern]], and [[Natural World]]. Physical field conditions must hold and field bearing must structure availability before the centring condition can be named as gravity.
+
 This note places gravity as a third-order physical-field read without making it source structure.
 
 ## Places

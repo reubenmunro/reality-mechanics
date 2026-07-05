@@ -43,6 +43,8 @@ status: stable
 
 The joint where a root structural term becomes terminal to a field or domain without losing retrace. It separates trunk/root continuation from branch-local reading.
 
+Translation Boundary is held by [[Terminal]], [[Boundary]], and [[Translation]].
+
 It is the boundary where the outside structural read reaches its terminal edge while carrying continues inside the field, domain, couple, practice, discipline, or nested participation.
 
 In the tree read, Translation Boundary is a branch joint. It is where trunk/root structure can no longer be read from outside in the same language and must be carried by the field or domain growing from that joint.

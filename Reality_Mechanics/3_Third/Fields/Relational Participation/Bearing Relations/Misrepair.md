@@ -32,6 +32,8 @@ status: stable
 
 Repair-like continuation that preserves proceeding while carrying the wrong condition — carrying that appears to repair while failing to restore compatible bearing.
 
+Misrepair is held by [[Repair]] and [[Carrying]]. The repair condition must be in view and carrying must continue before proceeding that miscarries repair can be named.
+
 ## Places
 
 Misrepair places repair-like continuation that preserves proceeding while carrying the wrong condition — carrying that appears to repair while failing to restore compatible bearing.

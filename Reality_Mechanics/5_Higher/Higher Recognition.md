@@ -29,6 +29,8 @@ status: stable
 
 The coherence of derivation and observation within the same read.
 
+Higher Recognition is held by [[Retrace Read|Retrace]] and [[Observation]].
+
 ## Places
 
 Higher Recognition places the coherence of derivation and observation within the same read.

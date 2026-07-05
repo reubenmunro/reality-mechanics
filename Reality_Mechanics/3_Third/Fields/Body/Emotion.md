@@ -38,6 +38,8 @@ status: stable
 
 The condition through which gathered pattern presses available bearing toward expression or action — the structural node where readability gathered from feeling presses on carrying.
 
+Emotion is held by [[Feeling]], [[Pattern]], [[Recognition Read|Recognition]], [[Strain]], [[Bearing]], and [[Compatibility]]. Feeling must make availability readable, pattern must gather, and strain must press bearing before the condition can be read as emotion.
+
 Emotion grows from feeling where the read gathers pattern, direction, and action-pressure.
 
 ## Places

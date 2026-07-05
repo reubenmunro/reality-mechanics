@@ -33,6 +33,8 @@ status: stable
 
 Reusable reads that become available by following a dependency path.
 
+Path Reads is held by [[Branch]] and [[Readability]].
+
 In Third Order, a path read often follows a branch through a [[Translation Boundary|translation joint]]: source term, terminal point, local domain term, applied read.
 
 ## Places

@@ -30,6 +30,8 @@ status: stable
 
 Resolution where bearing takes strain into itself and dampens or contains it.
 
+Absorb is held by [[Resolution]], [[Bearing]], and [[Strain]]. Strain must be borne before it can be taken in.
+
 ## Places
 
 Absorb places resolution where bearing takes strain into itself and dampens or contains it.

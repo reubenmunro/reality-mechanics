@@ -32,6 +32,8 @@ status: stable
 
 Change in velocity across interval.
 
+Acceleration is held by [[Velocity]], [[Change]], and [[Interval]].
+
 ## Places
 
 Acceleration places change in velocity across interval.

@@ -33,6 +33,8 @@ status: stable
 
 The located condition through which safe passage, harm-prevention, or compatible carrying is bounded — the structural edge that separates compatible from incompatible relation.
 
+Safety Boundary is held by [[Safety]], [[Boundary]], [[Compatibility]], and [[Closure Scope]]. A safety condition must be at stake, a boundary must locate the edge, and compatibility must govern what can cross before the condition can be read as a safety boundary.
+
 ## Places
 
 Safety Boundary places the located condition through which safe passage, harm-prevention, or compatible carrying is bounded — the structural edge that separates compatible from incompatible relation.

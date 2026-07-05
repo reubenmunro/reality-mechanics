@@ -26,6 +26,8 @@ status: stable
 
 Where dependency tracing stops within the system — a structural role, not a specific kind of content.
 
+Primitive is held by [[Root Order]].
+
 ## Places
 
 Primitive places the structural role where dependency tracing stops within the system. It is not identified by content but by the absence of an upstream dependency inside the system. Relation is the primitive of Reality Mechanics.

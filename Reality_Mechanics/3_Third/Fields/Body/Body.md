@@ -45,6 +45,8 @@ status: stable
 
 The third-order field where structural terms become readable as embodied conditions — where availability, strain, carrying, and compatibility take form in what a living body can bear, sustain, or recover.
 
+Body is held by [[Branch]], [[Body Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Available distinction must be present and carrying must be readable before embodied structural conditions can be named.
+
 ## Places
 
 Body places the third-order field where structural terms become readable as embodied conditions — where availability, strain, carrying, and compatibility take form in what a living body can bear, sustain, or recover.

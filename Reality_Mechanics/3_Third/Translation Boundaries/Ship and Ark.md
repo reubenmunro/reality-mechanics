@@ -37,6 +37,8 @@ status: stable
 
 The boundary where progress becomes terminal to what must remain carried through the crossing.
 
+Ship and Ark is held by [[Carrying]], [[Progress]], [[Branch]], [[Domain]], and [[Translation Boundary]].
+
 ## Places
 
 Ship and Ark places the boundary where progress becomes terminal to what must remain carried through the crossing.

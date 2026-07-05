@@ -39,6 +39,8 @@ status: stable
 
 The temporal carrying condition through which music marks time as recurrent structure.
 
+Musical Rhythm is held by [[Sound]], [[Rhythm]], [[Recurrence]], [[Boundary]], and [[Return]]. Sound must recur as patterned interval, and carried relation must become readable again at a musical boundary.
+
 Musical Rhythm is not mere regularity. It is the condition through which temporal structure becomes followable — where a beat can be felt as a place, departed from as a departure, and returned to as a return.
 
 ## Places

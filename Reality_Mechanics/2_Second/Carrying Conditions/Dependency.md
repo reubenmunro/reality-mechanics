@@ -29,6 +29,8 @@ status: stable
 
 One condition requiring another to remain available.
 
+Dependency is held by [[Dependency Order]] and [[Carrying]].
+
 ## Places
 
 Dependency places one condition requiring another to remain available.

@@ -34,6 +34,8 @@ status: stable
 
 Inward crossing that remains unresolved inside carrying.
 
+Splinter is held by [[Intake]], [[Boundary]], [[Regulation]], and [[Carrying]].
+
 ## Places
 
 Splinter places inward crossing that remains unresolved inside carrying.

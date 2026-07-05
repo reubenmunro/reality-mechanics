@@ -29,6 +29,8 @@ status: stable
 
 The condition through which cognitive carrying is extended through a medium — thought, memory, or knowing carried beyond the participant's body through tool, record, or system.
 
+Externalised Cognition is held by [[Cognition]] and [[Medium]]. Cognition must be present and a medium must be able to carry the cognitive condition before externalised extension can be named.
+
 ## Places
 
 Externalised Cognition places the condition through which cognitive carrying is extended through a medium — thought, memory, or knowing carried beyond the participant's body through tool, record, or system.

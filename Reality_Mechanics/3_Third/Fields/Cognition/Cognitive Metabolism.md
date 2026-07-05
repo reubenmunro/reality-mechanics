@@ -38,6 +38,8 @@ status: stable
 
 The cognitive resolution pathway through which strain, attention, stimulation, and available energy are converted through thought, mapping, design, language, prediction, or conceptual ordering.
 
+Cognitive Metabolism is held by [[Cognition]], [[Thought]], [[Metabolism]], [[Body]], [[Coupling]], and [[Reality Check]]. Cognition and thought must be present, and thought must remain coupled to the body that carries it, before cognitive metabolism can remain reality-bearing.
+
 The traceable question is not whether a person thinks too much. The traceable question is whether thought remains coupled to the organism that carries it.
 
 ## Places

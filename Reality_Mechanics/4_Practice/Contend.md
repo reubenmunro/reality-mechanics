@@ -34,6 +34,8 @@ status: stable
 
 Tending under strain, pressure, resistance, or competing claim.
 
+Contend is held by [[Tend]], [[Strain]], [[Pressure]], [[Resistance]], and [[Boundary]]. A relation must be tended, and that tending must meet pressure or opposition at a boundary, before contending can be named.
+
 Contending is not simply fighting. It is tending where care has to meet opposition without dropping the relation. A participant may contend with a limit, a pressure, an argument, a wound, a competing claim, or a condition that resists simple maintenance.
 
 ## Places

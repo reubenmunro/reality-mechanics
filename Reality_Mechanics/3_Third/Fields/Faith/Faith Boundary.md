@@ -37,6 +37,8 @@ status: stable
 
 The located limit at which relation is recognised but what it carries cannot yet be read — the boundary around unresolvable readability held by faith.
 
+Faith Boundary is held by [[Faith Read|Faith]], [[Relation]], [[Boundary]], [[Bearing]], [[Delayed Availability]], and [[Closure Scope]]. Faith must hold the condition and a boundary must locate the limit of current readability before the unresolvable edge can be named.
+
 It is above the current read, not above [[Relation]].
 
 ## Places

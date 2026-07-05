@@ -46,16 +46,13 @@ aliases:
 
 The bounded instrument by which a participant brings pressure to the Atlas, receives an Atlas-grounded answer, inspects the trace, and can challenge what does or does not hold.
 
+Atlas Oracle is held by [[Atlas]], [[Reasoning]], [[AI Participation]], [[Ark Run]], [[Check]], [[Generate and Regenerate]], [[Carried Condition]], and [[Oracle Carrying Conditions]].
+
 It is not a claim that AI knows the truth. It is a way for AI to answer through the Atlas while leaving enough trace for the answer to be accepted, rejected, corrected, or tended.
 
 The simple human surface is:
 
-```text
-Ask the Atlas.
-Receive an answer.
-Inspect the trace.
-If it does not hold, trace why.
-```
+```text Ask the Atlas. Receive an answer. Inspect the trace. If it does not hold, trace why. ```
 
 The answer is provisional. The trace is inspectable. Disagreement is participation.
 

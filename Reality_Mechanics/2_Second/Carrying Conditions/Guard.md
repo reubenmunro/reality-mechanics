@@ -34,6 +34,8 @@ status: stable
 
 Carrying organised around a boundary to preserve availability by regulating passage.
 
+Guard is held by [[Boundary]], [[Availability]], [[Carrying]], [[Constraint]], and [[Compatibility]]. A boundary must locate what is at stake, carrying must maintain it, constraint must regulate passage, and the guarded availability must remain supportable before guard can be named.
+
 Guard is not inherently caring or controlling. It names the maintained boundary condition first. Later reads show what the guarding serves and what effects it produces.
 
 ## Places

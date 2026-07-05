@@ -33,6 +33,8 @@ status: stable
 
 The set of path reads through which thought and memory become evaluable at a closure scope — the branch of reads that apply cognitive structural conditions to specific passages.
 
+Cognitive Reads is held by [[Cognition]], [[Read]], [[Readability]], and [[Closure Scope]]. Cognition must hold and readability must be present before cognitive path reads can be named.
+
 ## Places
 
 Cognitive Reads places the set of path reads through which thought and memory become evaluable at a closure scope — the branch of reads that apply cognitive structural conditions to specific passages.

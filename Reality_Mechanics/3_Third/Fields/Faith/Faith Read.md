@@ -37,6 +37,8 @@ status: stable
 
 The third-order field condition through which carried commitment, mystery, ritual, and sacred orientation are held without requiring full readability at the current closure scope.
 
+Faith Read is held by [[Branch]], [[Readability]], [[Delayed Availability]], [[Bearing]], and [[Closure Scope]]. Bearing must hold what cannot yet be read, and delayed availability must be the structural condition before carried commitment can be named as faith.
+
 Faith is above the current read, not above [[Relation]].
 
 ## Places

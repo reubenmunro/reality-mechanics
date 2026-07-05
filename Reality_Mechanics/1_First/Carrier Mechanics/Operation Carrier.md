@@ -25,6 +25,8 @@ status: stable
 
 The class of primitive carriers that make conditions readable across the system.
 
+Operation Carrier is held by [[Primitive Carrier]].
+
 ## Places
 
 Operation Carrier places the class of primitive carriers that make conditions readable across the system.

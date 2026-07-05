@@ -41,6 +41,8 @@ status: stable
 
 The sorting of a third-order note by primary carrying mode.
 
+Placement Mode is held by [[Third Order]], [[Branch]], and [[Dependency Order]].
+
 Placement modes are not order roots. The third-order order root is [[Nesting]]. Placement modes describe how a third-order note is primarily carried inside the Atlas.
 
 ## Places

@@ -40,6 +40,8 @@ status: stable
 
 Nested organisation returning into its own carrying.
 
+Recursion is held by [[Nesting]], [[Recursive]], and [[Higher Retrace|Retrace]].
+
 Where [[Recursive]] names carrying re-entering its own condition at second order, Recursion at higher order names a nested organisation becoming able to participate in the carrying that preserves, revises, or redirects it.
 
 Recurrence, repetition, or circularity can show recursion, but recursion is more specific: organised return into carrying while retrace remains available.

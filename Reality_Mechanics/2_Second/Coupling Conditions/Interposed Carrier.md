@@ -29,6 +29,8 @@ status: stable
 
 A carrying medium that interposes between two parties in contact, holding its own carrying condition between them — modifying, redirecting, or preventing direct coupling.
 
+Interposed Carrier is held by [[Contact]] and [[Boundary]]. Contact must be present for something to interpose between the parties; boundary locates the medium's own edges, distinguishing it from what it holds between.
+
 [[Clearance]] names held separation before contact. Interposed Carrier names what holds between during contact: the medium that maintains dynamic separation within what appears as meeting.
 
 The interposed carrier can prevent direct coupling: where a fluid layer interposes at full pressure, contact cannot become coupled contact — the medium carries before grip can form. It can also modify coupling: where a medium interposes within coupling, it changes how pressure, resistance, or traction carry between the parties.

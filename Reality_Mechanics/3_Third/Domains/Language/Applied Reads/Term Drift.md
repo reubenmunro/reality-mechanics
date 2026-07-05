@@ -34,6 +34,8 @@ status: stable
 
 Term drift occurs when a word recurs while its structural participation changes.
 
+Term Drift is held by [[Language Domain]], [[Term]], [[Recurrence]], [[Difference]], [[Compatibility]].
+
 ## Places
 
 Term Drift places Term drift occurs when a word recurs while its structural participation changes.

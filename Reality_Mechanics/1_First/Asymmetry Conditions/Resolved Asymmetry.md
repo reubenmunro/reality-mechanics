@@ -28,6 +28,8 @@ status: stable
 
 Strained asymmetry determined at the current scope — settled enough to remain distinguishable without collapsing into sameness.
 
+Resolved Asymmetry is held by [[Strained Asymmetry]]. Contrast must be present before it can settle without collapsing into sameness.
+
 ## Places
 
 Resolved Asymmetry places strained asymmetry determined at the current scope — settled enough to remain distinguishable.

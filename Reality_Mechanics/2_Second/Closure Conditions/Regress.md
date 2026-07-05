@@ -26,6 +26,8 @@ status: stable
 
 Continuation evaluated as loss of prior availability.
 
+Regress is held by [[Progress]].
+
 ## Places
 
 Regress places continuation evaluated as loss of prior availability.

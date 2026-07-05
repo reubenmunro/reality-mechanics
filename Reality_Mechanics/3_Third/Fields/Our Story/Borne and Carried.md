@@ -38,11 +38,11 @@ status: working
 
 The human-scope read that carrying becomes possible because the human first arrives borne and carried.
 
+Borne and Carried is held by [[Life]], [[Our Story Field]], [[Carrying]], [[Carried Condition]], [[Inheritance]], and [[Responsibility]].
+
 The core sentence is:
 
-```text
-We can carry because we were borne and carried.
-```
+```text We can carry because we were borne and carried. ```
 
 This is not sentiment added to the structure. It names a received condition of human participation. Human carrying does not begin as self-originating capacity. The human arrives already carried by body, relation, language, care, world, ancestry, field, and circumstance.
 

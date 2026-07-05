@@ -32,6 +32,8 @@ status: stable
 
 A working grouping of third-order fields by recurring participation emphasis.
 
+Field Relationships is held by [[Third Order]], [[Field of Participation]], and [[Organic Field]].
+
 ## Places
 
 Field Relationships places a working grouping of third-order fields by recurring participation emphasis.

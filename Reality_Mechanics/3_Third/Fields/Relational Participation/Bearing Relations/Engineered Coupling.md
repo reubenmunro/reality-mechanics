@@ -33,6 +33,8 @@ status: stable
 
 Coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability — coupling shaped by constraint and carrying rather than emergent.
 
+Engineered Coupling is held by [[Coupling]], [[Carrying]], [[Constraint]], and [[Compatibility]]. Coupling must hold, carrying must continue, a constraining structure must shape the coupling, and the imposed continuation must remain compatible before it can be read as engineered.
+
 ## Places
 
 Engineered Coupling places coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability — coupling shaped by constraint and carrying rather than emergent.

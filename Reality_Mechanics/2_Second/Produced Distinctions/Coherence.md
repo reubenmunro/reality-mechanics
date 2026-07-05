@@ -32,6 +32,8 @@ status: stable
 
 Compatible patterns holding together.
 
+Coherence is held by [[Pattern]] and [[Compatibility]].
+
 ## Places
 
 Coherence places compatible patterns holding together.

@@ -37,6 +37,8 @@ status: stable
 
 The carrying relation through which [[Earth]] holds human life, society, history, invention, and choice within material and ecological consequence.
 
+Earth Carrying is held by [[Earth]], [[Carrying]], [[Dependency]], and [[Invisible]].
+
 Earth Carrying includes protection. Earth carries by holding exposure within survivable limits: breathable atmosphere, gravity, temperature range, water cycles, food webs, shielding, and repair conditions. These are not scenery around participation; they are prior carrying conditions for participation.
 
 ## Places

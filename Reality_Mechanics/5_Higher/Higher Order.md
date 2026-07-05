@@ -29,6 +29,8 @@ status: working
 
 The register where organised carrying enters, reads, and may alter its own carrying.
 
+Higher Order is held by [[Third Order]] and [[Nesting]].
+
 In the tree read, Higher Order is whole-tree retrace. It looks back across ground, roots, trunk, branches, terminal boundaries, visible growth, and hidden carrying without collapsing them into one level.
 
 Self-modelling is an engineered form of higher-order carrying, not its source.

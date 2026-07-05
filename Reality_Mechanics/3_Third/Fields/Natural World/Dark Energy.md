@@ -39,6 +39,8 @@ status: stable
 
 The physical field condition through which field availability is expanded against gravitational carrying — the structural read of field-bearing that opposes gravitational centring at scale.
 
+Dark Energy is held by [[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], and [[Light]]. Physical field conditions must hold and field-bearing at scale must be readable before the expanding condition can be named.
+
 This note places dark energy as a third-order physical-field read without treating it as a substance or source structure.
 
 ## Places

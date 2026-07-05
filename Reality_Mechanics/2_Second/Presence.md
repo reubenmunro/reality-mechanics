@@ -33,6 +33,8 @@ status: stable
 
 Coupled relation locally available to read.
 
+Presence is held by [[Coupling]]. Coupled relation remains held while it is locally available within scope; coupling does not finish before presence begins.
+
 ## Places
 
 Presence places coupled relation locally available to read.

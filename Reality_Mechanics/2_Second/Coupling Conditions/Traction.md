@@ -32,6 +32,8 @@ status: stable
 
 Grip becoming available for carrying through coupled contact.
 
+Traction is held by [[Grip]], [[Coupled Contact]], and [[Carrying]].
+
 ## Places
 
 Traction places grip becoming available for carrying through coupled contact.

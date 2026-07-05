@@ -32,6 +32,8 @@ status: stable
 
 A connection that can carry reality through trace, read, bearing, and retrace.
 
+Reality-Bearing Connection is held by [[Atlas]], [[Bearing]], and [[Retrace Read|Retrace]].
+
 A reality-bearing connection keeps relation readable, traceable, and answerable across fields without flattening the fields into each other.
 
 Reality-bearing relation is coupled enough to participate, and nested enough to be ordered. Coupling gives connection; nesting gives dependency order. Connection without nesting becomes flat; nesting without coupling becomes detached. A reality-bearing connection requires both: connection enough to participate, and asymmetry enough to remain traceable.

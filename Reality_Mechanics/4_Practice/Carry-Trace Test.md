@@ -33,6 +33,8 @@ status: stable
 
 The Atlas practice test that distinguishes confirmed downstream carrying from projected openings by requiring a recoverable return trace.
 
+Carry-Trace Test is held by [[Common Term Structure]], [[Dependency Order]], [[Trace]], and [[Retracing]]. Term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded.
+
 It separates the order operating from the order known. Reality may carry a condition before any participant reads it. The Atlas does not create that carrying through recognition, but it grounds its own claim only where the downstream condition can be followed back through what made it available.
 
 ## Places

@@ -29,6 +29,8 @@ status: stable
 
 Continuation without interruption.
 
+Proceed is held by [[Process]].
+
 ## Places
 
 Proceed places continuation without interruption.

@@ -38,6 +38,8 @@ status: stable
 
 The recurring field of participation through which carried commitment, mystery, sacred orientation, and unavailable resolution become readable as organised experience.
 
+Faith Field is held by [[Field of Participation]], [[Organic Field]], [[Faith Read|Faith]], [[Bearing]], [[Delayed Availability]], and [[Closure Scope]]. Field of Participation must structure a recurring scope and bearing must hold what cannot yet be read before the faith field can be named.
+
 ## Places
 
 Faith Field places a recurring field of participation.

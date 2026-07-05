@@ -29,6 +29,8 @@ status: stable
 
 Bearing that carries participation without presenting as bearing.
 
+Invisible Bearing Read is held by [[Bearing]] and [[Invisible]].
+
 ## Places
 
 Invisible Bearing Read places bearing that carries participation without presenting as bearing.

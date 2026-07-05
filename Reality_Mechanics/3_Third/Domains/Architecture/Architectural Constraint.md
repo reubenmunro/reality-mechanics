@@ -33,6 +33,8 @@ status: stable
 
 Limiting conditions that shape available built resolution.
 
+Architectural Constraint is held by [[Architecture]], [[Constraint]], [[Availability]], [[Compatibility]].
+
 ## Places
 
 Architectural Constraint places limiting conditions that shape available built resolution.

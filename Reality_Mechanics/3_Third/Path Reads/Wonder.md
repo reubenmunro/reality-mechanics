@@ -32,6 +32,8 @@ status: stable
 
 The opening mode of enchantment — where altered readability expands participation into attention, inquiry, or relation rather than constraining it.
 
+Wonder is held by [[Enchantment]], [[Participation]], and [[Readability]]. Influence must alter readability, participation must be available, and readability must be heightened rather than closed before opening can be read as wonder rather than confusion or mere surprise.
+
 ## Places
 
 Wonder places the opening mode of enchantment — where altered readability expands participation into attention, inquiry, or relation rather than constraining it.

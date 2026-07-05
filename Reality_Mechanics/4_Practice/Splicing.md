@@ -30,6 +30,8 @@ status: working
 
 The structural practice of reconnecting a member to the support it actually traces, rather than the support it claimed or appeared to have.
 
+Splicing is held by [[Bearing Pass]], [[Dependency Order]], and [[Trace]]. A bearing pass must locate the member, dependency order must distinguish real support from apparent support, and trace must make the return path followable.
+
 Splicing is needed where a read has life but is attached to the wrong support. It does not make the read true by relocation. It tests whether the read can survive when placed where its trace actually returns.
 
 ## Places

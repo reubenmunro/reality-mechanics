@@ -33,6 +33,8 @@ status: stable
 
 Coupled relation bearing on coupled relation.
 
+Bearing Relation is held by [[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must remain locally available and able to bear while active participation proceeds.
+
 ## Places
 
 Bearing Relation places coupled relation bearing on coupled relation.

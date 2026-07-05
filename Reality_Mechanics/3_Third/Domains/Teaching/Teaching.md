@@ -39,6 +39,8 @@ status: stable
 
 Branch-level participation that preserves and develops available learning conditions through compatible uptake.
 
+Teaching is held by [[Branch]], [[Knowledge Field]], [[Knowledge]], [[Bearing]], [[Medium]].
+
 ## Places
 
 Teaching places branch-level participation that preserves and develops available learning conditions through compatible uptake.

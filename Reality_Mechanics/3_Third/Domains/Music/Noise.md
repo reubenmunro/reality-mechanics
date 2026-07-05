@@ -31,6 +31,8 @@ status: stable
 
 Sound not currently readable as signal, pattern, relation, or line at the relevant scope.
 
+Noise is held by [[Sound]], [[Readability]], and [[Scope]]. Sound must be present, and a scope of reading must be active, before unreadable audible carrying can be named as noise.
+
 Noise is not bad sound. It may be meaningful at another scope, with another instrument, in another domain, or for another participant. It is noise where audible carrying is present but cannot currently be read as signal, pattern, relation, melody, harmony, or rhythm.
 
 ## Places

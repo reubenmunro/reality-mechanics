@@ -36,6 +36,8 @@ status: stable
 
 How learning participation remains compatibly carried through a teaching condition without exceeding available bearing.
 
+Learning Pace is held by [[Teaching]], [[Bearing]], [[Carrying]], [[Tempo]], [[Pace]].
+
 ## Places
 
 Learning Pace places how learning participation remains compatibly carried through a teaching condition without exceeding available bearing.

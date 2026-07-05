@@ -33,6 +33,8 @@ status: stable
 
 Disorder in which the dependency path itself becomes unreadable.
 
+Dependency Disorder is held by [[Disorder]] and [[Dependency Order]].
+
 ## Places
 
 Dependency Disorder places disorder in which the dependency path itself becomes unreadable.

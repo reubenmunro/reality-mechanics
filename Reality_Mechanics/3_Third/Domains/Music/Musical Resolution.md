@@ -35,6 +35,8 @@ status: stable
 
 The domain read for RM resolution conditions — where harmonic strain is determined at the current scope.
 
+Musical Resolution is held by [[Resolution]] and [[Harmony]]. Harmonic strain must be present and coupled before it can be determined as resolved.
+
 The Atlas read of musical resolution shows that cadence is not a stylistic convention. It is the point at which harmonic bearing is determined: the coupled strain of dissonance reaching a decision about what happens to it.
 
 ## Places

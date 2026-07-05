@@ -44,6 +44,8 @@ status: stable
 
 The branch container for natural-world physical reads — the structural node through which physical, field-bearing, and constraint conditions are held as a named branch.
 
+Physical Field Conditions is held by [[Branch]], [[Natural World Field]], [[Physical]], [[Condition]], [[Constraint]], and [[Field Bearing]]. Physical and field-bearing conditions must be nameable and constrainable before they can be held as a branch.
+
 ## Places
 
 Physical Field Conditions places the branch container for natural-world physical reads — the structural node through which physical, field-bearing, and constraint conditions are held as a named branch.

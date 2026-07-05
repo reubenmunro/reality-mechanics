@@ -34,6 +34,8 @@ status: stable
 
 Learning where participation becomes able to change its own future carrying through conscious or retraceable self-correction.
 
+Higher Learning is held by [[Recursion]], [[Consciousness]], [[Higher Retrace|Retrace]], and [[Self-Regulation]].
+
 Higher Learning is a specific form of learning. Organic learning can occur wherever participation adjusts through recurrence, feedback, instinct, repair, or compatible uptake. Higher Learning becomes available where the learning condition returns into its own carrying and can alter how future learning proceeds.
 
 ## Places

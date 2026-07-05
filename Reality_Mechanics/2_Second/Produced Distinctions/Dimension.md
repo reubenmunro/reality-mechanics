@@ -29,6 +29,8 @@ status: stable
 
 A readable axis of difference.
 
+Dimension is held by [[Difference]] and [[Closure Scope]].
+
 ## Places
 
 Dimension places a readable axis of difference.

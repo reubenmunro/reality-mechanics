@@ -30,6 +30,8 @@ status: stable
 
 Flow measured through a boundary or medium at a rate.
 
+Throughput is held by [[Flow]], [[Rate]], and [[Boundary]].
+
 ## Places
 
 Throughput places flow measured through a boundary or medium at a rate.

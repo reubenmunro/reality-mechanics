@@ -31,6 +31,8 @@ status: stable
 
 Resolution where what can be determined at scope is bounded by a prior constraint — bearing settling into a determined condition within limited options.
 
+Constrained Resolution is held by [[Constraint]] and [[Resolution]]. A constraint must bound what can hold before the determination can be read as constrained.
+
 ## Places
 
 Constrained Resolution places resolution where what can be determined at scope is bounded by a prior constraint — bearing settling into a determined condition within limited options.

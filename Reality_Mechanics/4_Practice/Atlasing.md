@@ -31,6 +31,8 @@ status: stable
 
 The act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace.
 
+Atlasing is held by [[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]].
+
 Atlasing treats a term as a participation handle rather than a static definition: a placed way to enter relation without losing dependency, bearing, or return path.
 
 ## Places

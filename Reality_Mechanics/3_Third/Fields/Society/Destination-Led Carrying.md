@@ -37,6 +37,8 @@ status: stable
 
 The condition through which carrying is organised around an intended endpoint — carrying shaped by what it is moving toward rather than what it traces back to.
 
+Destination-Led Carrying is held by [[Carrying]], [[Ship and Ark]], [[Progress]], [[Society]], and [[Dependency]]. Carrying must be present and an intended endpoint must shape the direction before destination-led organisation can be named.
+
 ## Places
 
 Destination-Led Carrying places the condition through which carrying is organised around an intended endpoint — carrying shaped by what it is moving toward rather than what it traces back to.

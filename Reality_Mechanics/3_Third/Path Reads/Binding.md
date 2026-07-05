@@ -32,6 +32,8 @@ status: stable
 
 The constraining mode of enchantment — where influence narrows how participation can continue, exit, respond, or re-enter.
 
+Binding is held by [[Enchantment]], [[Constraint]], and [[Participation]]. Influence must alter readability, constraint must be operative, and participation must be present before narrowed course can be read as binding rather than as ordinary constraint.
+
 ## Places
 
 Binding places the constraining mode of enchantment — where influence narrows how participation can continue, exit, respond, or re-enter.

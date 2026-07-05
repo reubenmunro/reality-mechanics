@@ -33,6 +33,8 @@ status: stable
 
 Carrying proceeding incompatibly such that available bearing is damaged, weakened, or removed — the downstream persistence of incompatible carrying across a closure scope.
 
+Harm is held by [[Bearing]], [[Consequence]], and [[Violation]]. Available bearing must be at stake, a consequence must continue incompatibly, and a violation of compatible participation must be present before the condition can be read as harm.
+
 ## Places
 
 Harm places carrying proceeding incompatibly such that available bearing is damaged, weakened, or removed — the downstream persistence of incompatible carrying across a closure scope.

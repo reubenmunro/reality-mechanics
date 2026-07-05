@@ -32,6 +32,8 @@ status: stable
 
 The third-order field read where participation is carried by location, fit, boundary, and belonging — the structural read for spatial, relational, and community position.
 
+Placed Participation is held by [[Participation]], [[Field of Participation]], and [[Space]]. Participation must structure a field and spatial relation must be available before placed participation can be named. A [[Step]] may enter placed participation through practice, but does not hold Placed Participation.
+
 This note was separated from [[Place]] so the Atlas can distinguish the root operation from the third-order place-field read. [[Place]] names the operation by which something becomes locatable enough to enter, read, check, or correct. Placed Participation names a downstream field read in which participation becomes located within a field.
 
 ## Places

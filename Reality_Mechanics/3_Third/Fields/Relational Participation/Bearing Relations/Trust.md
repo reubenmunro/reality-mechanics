@@ -33,6 +33,8 @@ status: stable
 
 The read of ongoing supportability within a relationship — that what is held between participants can continue to bear through strain without becoming unretraceable.
 
+Trust is held by [[Relationship]], [[Bearing Relation]], and [[Recurrence]]. A relationship must exist, bearing must be traceable across it, and recurrence must show the condition holding over time before trust can be read.
+
 ## Places
 
 Trust places the read of ongoing supportability within a relationship — that what is held between participants can continue to bear through strain without becoming unretraceable.

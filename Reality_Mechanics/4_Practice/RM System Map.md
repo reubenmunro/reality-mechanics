@@ -35,6 +35,8 @@ status: working
 
 The current working map of the Reality Mechanics carriers: canonical structure, vault, Atlas, publisher, AI export, MCP, workers, field physics, Ark runtime, and archive.
 
+RM System Map is held by [[Reality Mechanics]], [[Atlas]], [[Theory]], [[AI Participation]], and [[Ark Run]].
+
 It does not replace the [[Atlas Root]]. It records how the present local and public pieces carry the work.
 
 The current correction is this: the Atlas is not stored many times. It is read many ways.

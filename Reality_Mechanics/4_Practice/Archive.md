@@ -32,11 +32,11 @@ status: working
 
 The practice of preserving a release state so that Reality Mechanics can be returned to, cited, compared, and retraced after later movement.
 
+Archive is held by [[Trace]], [[Retain]], [[Atlas Practice]], and [[RM System Map]].
+
 The current public archive reference is:
 
-```text
-https://doi.org/10.5281/zenodo.20338363
-```
+```text https://doi.org/10.5281/zenodo.20338363 ```
 
 ## Places
 

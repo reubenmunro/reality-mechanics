@@ -39,6 +39,8 @@ status: stable
 
 Compatible re-bearing where required bearing has become absent, interrupted, insufficient, or misdirected at a closure scope.
 
+Repair is held by [[Strain]], [[Harm]], [[Neglect]], [[Restraint]], [[Betrayal]], [[Violation]], and [[Regulation]]. The absence, interruption, or misdirection of required bearing must be present before compatible re-bearing can be named.
+
 ## Places
 
 Repair places compatible re-bearing where required bearing has become absent, interrupted, insufficient, or misdirected at a closure scope.

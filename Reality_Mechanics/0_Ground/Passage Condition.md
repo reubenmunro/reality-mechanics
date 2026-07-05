@@ -26,6 +26,8 @@ status: stable
 
 A structural role — terms that regulate whether order can pass, hold, close, or remain available across a boundary or scope.
 
+Passage Condition is held by [[Root Order]]. The governing arrangement must hold before regulative roles within it can be named.
+
 [[Boundary]] and [[Availability]] are the primary passage conditions of the first order. [[Allow]], [[Compatibility]], [[Scope]], and [[Closure Scope]] extend this role into later orders.
 
 ## Places

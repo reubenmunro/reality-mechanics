@@ -34,6 +34,8 @@ status: stable
 
 Higher-order carrying used to adjust, inhibit, repair, preserve, or redirect participation.
 
+Self-Regulation is held by [[Invisible Bearing]], [[Self-Modelling]], [[Regulation]], and [[Compatibility]].
+
 Self-Regulation can be organic where nested bearing adjusts participation without imposed modelling.
 
 Self-Regulation can be engineered where a self-model, rule, method, institution, or practice is used to regulate carrying.

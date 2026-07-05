@@ -45,6 +45,8 @@ status: stable
 
 The applied domain through which maintained coupling holds a body's organic asymmetry within compatible bounds — where the practitioner's recurrent, responsive bearing preserves available carrying without overriding the body's own regulatory capacity.
 
+Medicine is held by [[Body Field]], [[Life Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Competence Boundary]], [[Safety Boundary]], and [[Recovery]]. Organic asymmetry must be present and strained, nested coupling must hold the practitioner within the body's scope, and care must be recurrent and bounded by competence before the maintained holding of bodily asymmetry can be named as medicine.
+
 Medicine shares its structural form with [[Gardening]]: a practitioner coupled to a living system whose asymmetry cannot be overridden, only bounded. What medicine adds is the direction of harm — the coupling can fail not only by falling short but by exceeding compatible scope. [[Over-Treatment]] names that failure: intervention that continues past what the body's asymmetry can bear, turning care into a further source of strain.
 
 ## Places

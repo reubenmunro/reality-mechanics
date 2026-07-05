@@ -38,6 +38,8 @@ status: stable
 
 An organised participation context.
 
+Domain is held by [[Field of Participation]] and [[Organic and Organised Organisation]].
+
 A domain also names where general Atlas terms meet a [[Translation Boundary]] and become terminal to local language. The domain does not replace the source structure; it translates that structure into terms the domain can use, test, teach, and repair.
 
 Engineered can be artificial without being unreal. It names a mode of organisation where participation is intentionally, culturally, technically, institutionally, or methodically arranged.

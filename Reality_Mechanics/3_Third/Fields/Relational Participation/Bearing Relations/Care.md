@@ -40,6 +40,8 @@ status: stable
 
 Bearing that preserves availability through relation while remaining attended to the condition whose availability it preserves.
 
+Care is held by [[Bearing]], [[Availability]], [[Attend]], [[Kind]], and [[Sustenance]]. Bearing must be present, availability must be at stake, and attention to that availability must be maintained before the condition can be read as care.
+
 ## Places
 
 Care places bearing that preserves availability through relation while remaining attended to the condition whose availability it preserves.

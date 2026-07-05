@@ -36,6 +36,8 @@ status: stable
 
 The condition through which possible readability is modelled when resolution is unavailable — bearing held toward a future closure scope where what is carried might become readable.
 
+Hope is held by [[Faith Field]], [[Cognition Field]], [[Recognition Read|Recognition]], [[Delayed Availability]], and [[Second-Order Disorder Effects]]. Bearing must continue and delayed availability must hold before modelled future readability can be named as hope.
+
 Hope is mind-like where it models possible readability, but it must remain carried by bearing.
 
 ## Places

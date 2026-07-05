@@ -40,6 +40,8 @@ status: stable
 
 Incompatible carrying within the body at a closure scope — carrying that proceeds against the body's compatible conditions and damages or removes available bearing.
 
+Injury is held by [[Body]], [[Boundary]], [[Carrying]], [[Compatibility]], [[Closure Scope]], [[Harm]], and [[Splinter]]. Carrying must proceed against compatible conditions and a boundary must locate the damage before the condition can be read as injury.
+
 ## Places
 
 Injury places incompatible carrying within the body at a closure scope — carrying that proceeds against the body's compatible conditions and damages or removes available bearing.

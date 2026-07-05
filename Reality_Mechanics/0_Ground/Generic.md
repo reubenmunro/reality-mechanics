@@ -31,6 +31,8 @@ status: stable
 
 The structural condition through which a pattern generates instances of itself — the originating source from which instances arise, operative before any instance appears.
 
+Generic is held by [[Natural Order]] and [[Root Order]]. The dependency order must hold and natural order must be operative before a structural pattern can generate instances from a prior source.
+
 [[Kind]] names recurrent form recognisable across instances. Generic names the prior condition: the pattern already operative before those instances appear.
 
 Generic operates throughout the spine: each order generates instances without becoming identical with them. The danger specific to Generic is [[Degenerate]]: what was generated begins to carry as if it were the source.

@@ -38,6 +38,8 @@ status: stable
 
 The condition through which readability is modelled or named — the carrying of a recognised pattern into a form that can guide attention or action.
 
+Thought is held by [[Cognition]], [[Read]], [[Readability]], [[Recognition Read|Recognition]], [[Pattern]], and [[Medium]]. Readability must be present and pattern must be recognisable before the modelling or naming of that pattern can be carried as thought.
+
 A thought is a carried read or model. It is not automatically true, complete, or compatible.
 
 Thought does not create order by itself. It becomes readable where relation has enough [[Clearance]] and [[Readability]] for a pattern to be taken up into cognitive form.

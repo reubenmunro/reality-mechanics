@@ -33,6 +33,8 @@ status: stable
 
 A sequence being carried.
 
+Process is held by [[Sequence]] and [[Carrying]].
+
 ## Places
 
 Process places a sequence being carried.

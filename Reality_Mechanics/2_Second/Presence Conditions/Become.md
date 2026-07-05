@@ -29,6 +29,8 @@ status: stable
 
 Presence changing while remaining traceable.
 
+Become is held by [[Being]] and [[Process]].
+
 ## Places
 
 Become places presence changing while remaining traceable.

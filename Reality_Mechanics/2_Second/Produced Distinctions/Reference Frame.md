@@ -37,6 +37,8 @@ aliases:
 
 The nested placement through which a ratio, relation, scale, or relative read becomes answerable and one face of carrying becomes readable.
 
+Reference Frame is held by [[Ratio]], [[Boundary]], [[Closure Scope]], and [[Readability]]. A comparison must be readable, located, scoped, and followable before its reference frame can be named.
+
 A reference frame is not an observer added onto reality. The observer is already nested. A reference frame is the held placement that lets a comparison be checked: from what reference, against what Other, through what boundary, and within what closure scope?
 
 Without a reference frame, ratio can look like a free-floating proportion, scale can look absolute, and relative can be mistaken for arbitrary. With a reference frame, the read becomes testable: change the frame and see what remains invariant, what changes, and what no longer carries.

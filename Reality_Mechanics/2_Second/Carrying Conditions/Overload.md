@@ -35,6 +35,8 @@ status: stable
 
 Load exceeding supportable capacity.
 
+Overload is held by [[Load]], [[Pressure]], [[Capacity]], and [[Compatibility]].
+
 ## Places
 
 Overload places load exceeding supportable capacity.

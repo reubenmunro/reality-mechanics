@@ -35,6 +35,8 @@ status: stable
 
 The visible path through the Atlas orders: relation becoming readable, answerable, carryable, participatory, nested, and retraceable.
 
+Order Trace is held by [[Root Order]], [[Relation]], [[Trace]], and [[Atlas Practice]].
+
 It does not replace individual term traces. It gathers the main dependency movement so the reader can see how the orders hang together without forcing every term into one ladder.
 
 Order Trace presents the generative direction of the mapped order. Its claims are grounded in the reverse read: each downstream condition must be able to retrace the prior conditions whose carrying it confirms. The forward path opens what may follow; the return path distinguishes confirmed dependency from projected sequence.

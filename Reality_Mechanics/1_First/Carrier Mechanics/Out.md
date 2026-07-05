@@ -26,6 +26,8 @@ status: stable
 
 Exterior relation beyond a bounded condition.
 
+Out is held by [[Boundary]]. A boundary must locate distinction before exterior placement can be read.
+
 ## Places
 
 Out places exterior relation beyond a bounded condition.

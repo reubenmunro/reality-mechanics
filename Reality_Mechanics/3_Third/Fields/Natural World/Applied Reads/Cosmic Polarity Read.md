@@ -37,6 +37,8 @@ status: stable
 
 The applied comparison through which physical-field cases — gravity, dark matter, dark energy, light, and black holes — are read against Resolution Polarity.
 
+Cosmic Polarity Read is held by [[Natural World Field]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Resolution Polarity]], and [[Observation]]. Physical field conditions must hold and resolution polarity must be available as a structural lens before the applied comparison can be named.
+
 This note holds the speculative cosmic application of [[Resolution Polarity]] without making cosmology source structure.
 
 ## Places

@@ -29,6 +29,8 @@ status: stable
 
 The structural condition through which something arises from the interaction of conditions without a prior generative source — what was not already operative in any of the conditions it arises from.
 
+Emergent is held by [[Natural Order]] and [[Root Order]]. Conditions must be operative and dependency order must hold before what arises without a prior source can be named.
+
 [[Generic]] names instances generated from a prior source. Emergent names arising without such a source.
 
 Generic and Emergent name two ways something appears: from a prior generative source, or from the meeting of conditions.

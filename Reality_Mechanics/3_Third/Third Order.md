@@ -35,6 +35,8 @@ status: working
 
 Participating carrying becoming organised and nested into recurring fields, domains, branches, and applied reads.
 
+Third Order is held by [[Second Order]], [[Participation]], and [[Field of Participation]].
+
 Third Order begins where participation becomes recognisable through the organisations it repeatedly forms.
 
 In the tree read, Third Order is branching. [[Field of Participation|Fields]] are major branches of recurring participation. [[Domain|Domains]] are organised branchings within or across fields. [[Translation Boundary|Translation boundaries]] are joints where the read changes regime. [[Path Reads]] and [[Applied Read|applied reads]] are visible growth.

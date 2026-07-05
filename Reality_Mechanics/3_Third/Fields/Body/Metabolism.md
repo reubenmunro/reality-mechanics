@@ -40,6 +40,8 @@ status: stable
 
 Embodied resolution within living participation — the way intake, energy, strain, repair, waste, memory, and activity are converted into continued participation.
 
+Metabolism is held by [[Body]], [[Life]], [[Intake]], [[Energy]], [[Resolution]], [[Repair]], and [[Participation]]. Living embodied participation must be present, and intake, energy, and repair must be available, before metabolism can be named as embodied resolution.
+
 Metabolism is not only calorie-burning or digestion in this Atlas placement. It names the living resolution pattern through which intake, energy, strain, repair, waste, memory, and activity are converted into continued participation.
 
 ## Places

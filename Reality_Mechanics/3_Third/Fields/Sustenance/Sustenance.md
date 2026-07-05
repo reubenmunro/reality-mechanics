@@ -32,6 +32,8 @@ status: stable
 
 The third-order field where participation depends on renewed availability that can continue to carry life, body, place, or practice — the structural field for nourishment, renewal, and continued carrying.
 
+Sustenance is held by [[Participation]] and [[Field of Participation]]. Participation must structure a field and renewed availability must be required before the sustaining condition can be named.
+
 ## Places
 
 Sustenance places the third-order field where participation depends on renewed availability that can continue to carry life, body, place, or practice — the structural field for nourishment, renewal, and continued carrying.

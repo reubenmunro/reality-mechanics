@@ -38,6 +38,8 @@ status: stable
 
 The musical-domain branch where structural Atlas terms become readable as rhythm, timing, sound, silence, recurrence, variation, and embodied participation.
 
+Music is held by [[Branch]], [[Medium]], [[Expression]].
+
 ## Places
 
 Music places the musical-domain branch where structural Atlas terms become readable as rhythm, timing, sound, silence, recurrence, variation, and embodied participation.

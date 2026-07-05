@@ -30,6 +30,8 @@ status: stable
 
 The subdomain of relational-participation reads where coupling, bearing, and carrying become readable as held relational conditions.
 
+Bearing Relations is held by [[Relational Participation Field]], [[Bearing Relation]], and [[Coupling]]. Bearing must be traceable across coupling before relational conditions can be named as a subdomain.
+
 ## Places
 
 Bearing Relations places the subdomain of relational-participation reads where coupling, bearing, and carrying become readable as held relational conditions.

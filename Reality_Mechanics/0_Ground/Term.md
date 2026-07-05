@@ -33,6 +33,8 @@ status: stable
 
 A structurally placed interpretation — a readable point that can be carried by a word, sign, image, arrangement, action, or thought without being identical to that carrier.
 
+Term is held by [[Root Order]].
+
 A word or sign becomes a term where meaning, dependency, and opening can travel together. Different carriers may hold the same term where that structural placement remains recoverable; the same word may carry different terms where its interpretation or dependency placement changes. A term serves where its conditions remain traceable. Terminality, termination, and final closure belong to later reads of threshold, resolution, or closure.
 
 ## Places

@@ -29,6 +29,8 @@ status: stable
 
 The readable face of Clearance — relation as joined spread under a shared condition before any local asymmetry is selected.
 
+Relation Read is held by [[Clearance]] and [[Clear]]. Held separation must keep relation readable, and relation must be clear enough to be read as joined spread.
+
 ## Places
 
 Relation Read places the readable face of [[Clearance]].

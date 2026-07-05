@@ -29,6 +29,8 @@ status: stable
 
 What becomes readable within a built condition.
 
+Architectural Visibility is held by [[Architecture]], [[Visibility]].
+
 ## Places
 
 Architectural Visibility places what becomes readable within a built condition.

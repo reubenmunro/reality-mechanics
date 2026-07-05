@@ -33,6 +33,8 @@ status: stable
 
 Sustained distinguishability.
 
+Identity is held by [[Form]] and [[Recognition Read|Recognition]].
+
 ## Places
 
 Identity places sustained distinguishability.

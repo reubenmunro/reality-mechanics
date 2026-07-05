@@ -32,6 +32,8 @@ status: stable
 
 Readability becoming available within participation.
 
+Consciousness is held by [[Recursion]], [[Read]], and [[Participation]].
+
 Consciousness is not cognitive participation by itself. [[Cognitive Participation]] names relation participating in readability before awareness is required. Consciousness names the read becoming available within the participant as a read.
 
 In this register, consciousness is one way recursion becomes readable to a participant.

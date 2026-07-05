@@ -45,6 +45,8 @@ status: stable
 
 The third-order field where knowing is maintained, tested, taught, or revised through participatory carrying — the structural field for know, bearing source, modelling, competence, and reality check.
 
+Knowledge is held by [[Knowledge Field]], [[Know]], [[Carrying]], [[Recurrence]], [[Compatibility]], [[Medium]], [[Coherence]], and [[World]]. Knowing must be carried, tested against compatibility, and sustained through recurrence before knowledge can be named as a field condition.
+
 This note places [[Know]] inside the [[Knowledge Field]] as organised carried understanding.
 
 ## Places

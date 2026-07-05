@@ -27,6 +27,8 @@ status: stable
 
 The invariant condition of the organized gathered whole — by which prior organisation across all orders can carry as one force without collapsing into uniformity.
 
+Legion is held by [[Nesting]]. Prior organisation must be available within later organisation across all orders before the whole can carry as one gathered force.
+
 [[Nesting]] names prior organisation remaining available within later organisation. Legion is what becomes possible when nesting has accumulated through all orders: the whole can carry as a gathered force rather than as a sequence traced step by step.
 
 Legion is not uniformity. The gathered whole retains the distinctness of its orders while carrying as one force.

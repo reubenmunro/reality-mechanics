@@ -31,6 +31,8 @@ status: stable
 
 The applied read where reciprocal bearing within participation fails at a closure scope — where bearing no longer moves compatibly between participants.
 
+Reciprocity Breakdown is held by [[Applied Read]], [[Reciprocity]], and [[Closure Scope]].
+
 ## Places
 
 Reciprocity Breakdown places the applied read where reciprocal bearing within participation fails at a closure scope — where bearing no longer moves compatibly between participants.

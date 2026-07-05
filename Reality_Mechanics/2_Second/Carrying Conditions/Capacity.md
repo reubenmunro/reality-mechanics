@@ -36,6 +36,8 @@ status: stable
 
 Supportable carrying within a current condition.
 
+Capacity is held by [[Compatibility]], [[Threshold]], and [[Carrying]].
+
 ## Places
 
 Capacity places supportable carrying within a current condition.

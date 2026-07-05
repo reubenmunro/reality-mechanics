@@ -29,6 +29,8 @@ status: stable
 
 Bearing becoming presented.
 
+Apparent Bearing is held by [[Bearing]] and [[Apparent]].
+
 ## Places
 
 Apparent Bearing places bearing becoming presented.

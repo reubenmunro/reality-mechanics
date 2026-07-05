@@ -36,13 +36,13 @@ status: working
 
 Generated availability for carrying.
 
+Energy is held by [[Generic]], [[Carrying]], [[Capacity]], [[Pressure]], and [[Flow]].
+
 This does not replace physical, biological, or domain-specific definitions of energy. It places what energy does in the Atlas order: energy names availability generated within a condition that can carry work, movement, transformation, maintenance, attention, repair, or continuation.
 
 The core read is:
 
-```text
-Energy is generated availability for carrying.
-```
+```text Energy is generated availability for carrying. ```
 
 ## Places
 

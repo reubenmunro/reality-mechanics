@@ -44,6 +44,8 @@ status: stable
 
 The physical field condition through which invisible bearing structures field availability — carrying that shapes gravitational field conditions without becoming directly readable.
 
+Dark Matter is held by [[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], and [[Invisible Bearing]]. Field bearing must be present and structuring availability before invisible gravitational carrying can be named.
+
 This note places dark matter as a third-order case of invisible bearing without making dark matter the source of the structure.
 
 ## Places

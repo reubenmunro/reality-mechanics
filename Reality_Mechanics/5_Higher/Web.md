@@ -34,6 +34,8 @@ status: stable
 
 Woven continuity read as traceable crossing-pattern.
 
+Web is held by [[Fabric]], [[Thread]], [[Trace]], [[Field Relationships]], and [[Pattern]]. Fabric must hold as woven continuity before its crossings can be followed as web.
+
 Web is not merely a network. It is the traceable weave of [[Fabric]]: the connected crossing-pattern through which threads remain followable within held continuity.
 
 Fabric is the face of the weave. Web is the trace of the weave.

@@ -39,6 +39,8 @@ status: stable
 
 The applied domain through which maintained coupling holds organic asymmetry within a compatible boundary — where recurrent human bearing keeps a living system's inherent directedness within a scope it cannot hold alone.
 
+Gardening is held by [[Making Field]], [[Natural World Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], and [[Boundary]]. Organic asymmetry must be present, nested coupling must hold the gardener within the living system's scope, and care must be recurrent before the maintenance of bounded organic asymmetry can be named as gardening.
+
 Gardening makes care held within order visible: care is not the absence of restraint, and restraint remains compatible only where it serves the living availability care preserves.
 
 Without maintained coupling, the asymmetry does not stop. It continues — but exceeds the scope within which it was compatible. Overgrowth is not the absence of asymmetry; it is asymmetry that has outrun the boundary that made it readable and productive at the intended scope.

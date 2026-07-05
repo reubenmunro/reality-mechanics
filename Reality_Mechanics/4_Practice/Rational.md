@@ -34,6 +34,8 @@ status: working
 
 The quality of a read, action, or continuation that can remain in accountable proportion.
 
+Rational is held by [[Reasoning]], [[Ratio]], [[Reference Frame]], [[Carrying]], and [[Trace]]. A ratio must be accountably read, the frame must be explicit, carrying must remain answerable, and trace must remain available.
+
 Rational does not mean logical alone. Logic may be one carrier of rationality, but rationality is wider: the continuation must remain answerable to the relation it reads, the reference frame through which it reads, the carrying it performs, and the trace through which it can return.
 
 Where [[Reasoning]] gives the retraceable account of ratio, Rational names the condition of remaining proportionate to that account while carrying forward.

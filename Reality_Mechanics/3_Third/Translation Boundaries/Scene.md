@@ -35,6 +35,8 @@ status: stable
 
 The translation boundary where occurrence, presence, and closure scope become terminal to a locally readable happening.
 
+Scene is held by [[Occur]], [[Presence]], [[Closure Scope]], [[Field of Participation]], and [[Translation Boundary]]. Something must be occurring, presence must be available, a scope must bound it, and a field of participation must hold it before the gathering can be read as a scene rather than as mere proximity or sequence.
+
 ## Places
 
 Scene places the translation boundary where occurrence, presence, and closure scope become terminal to a locally readable happening.

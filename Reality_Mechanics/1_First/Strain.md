@@ -33,6 +33,8 @@ status: stable
 
 Available distinction under contrast — present and pressing without yet being held or resolved.
 
+Strain is held by [[Availability]]. Distinction must be present enough to enter contrast before strain can be read.
+
 ## Places
 
 Strain places available distinction under contrast.

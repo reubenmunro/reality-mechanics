@@ -29,6 +29,8 @@ status: stable
 
 The invariant condition of genuine collective participation — by which distinct participations can be genuinely together without collapsing into sameness or remaining merely co-present.
 
+Communion is held by [[Field of Participation]]. A field of participation must be established before distinct participations can be genuinely together.
+
 [[Organic Field]] names participation organising itself through natural order. Communion is the prior condition organic field requires: the participation must be genuine before it can organise into a field.
 
 [[Organised Domain]] names intentionally arranged participation. Communion is the prior condition organised arrangement requires: the participation must be genuine before arrangement can carry it rather than merely simulate it.

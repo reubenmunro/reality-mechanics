@@ -36,30 +36,15 @@ status: working
 
 A repeatable bearing pass through an Atlas member: identify it, trace what holds it, test what it carries, name occlusion, and choose the next care action.
 
+Bearing Pass is held by [[Atlas Fabric]], [[Check]], [[Carry-Trace Test]], and [[Resolution Rate]]. The fabric must provide the care frame, Check must locate the boundary of the member, Carry-Trace Test must distinguish confirmed carries from openings, and Resolution Rate must keep tending answerable to cleaner continuation rather than mere speed.
+
 The pass is deliberately ordinary. It keeps the structural read from becoming a metaphor without practice.
 
-```text
-1. Identify the member.
-2. Trace what holds it.
-3. Test what it claims to carry.
-4. Name what it occludes or what occludes it.
-5. Ask whether the member preserves generative trace or shows degenerative trace.
-6. Ask whether the pass improved resolution rate.
-7. Choose the next care action.
-```
+```text 1. Identify the member. 2. Trace what holds it. 3. Test what it claims to carry. 4. Name what it occludes or what occludes it. 5. Ask whether the member preserves generative trace or shows degenerative trace. 6. Ask whether the pass improved resolution rate. 7. Choose the next care action. ```
 
 The possible care actions are:
 
-```text
-place     place as a working read
-bear      return and adjust conditions
-relieve   remove drift or overgrowth
-splice    connect to the support it actually traces
-daylight  remove occlusion so order can be read
-decommission   keep failed material as record
-wait      leave ungrounded or working until a trace appears
-release   remove the claim without erasing what it taught
-```
+```text place     place as a working read bear      return and adjust conditions relieve   remove drift or overgrowth splice    connect to the support it actually traces daylight  remove occlusion so order can be read decommission   keep failed material as record wait      leave ungrounded or working until a trace appears release   remove the claim without erasing what it taught ```
 
 ## Places
 

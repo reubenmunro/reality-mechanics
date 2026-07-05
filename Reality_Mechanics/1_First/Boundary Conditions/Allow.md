@@ -33,6 +33,8 @@ status: stable
 
 Condition-side permission for passage, read, or carrying at a boundary or scope.
 
+Allow is held by [[Boundary]], [[Availability]], and [[Passage Condition]]. Scope must be bounded and distinction present before permission at that scope can be read.
+
 Agreement, approval, consent, or moral permission can involve allow, but allow first names what a condition permits at a boundary or scope.
 
 What is allowed is not always allowable. Allowable means able to be allowed without exceeding [[Capacity]], breaking [[Compatibility]], or extending beyond [[Scope]].

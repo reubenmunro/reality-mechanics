@@ -30,6 +30,8 @@ status: stable
 
 What a form makes available through compatible carrying.
 
+Function is held by [[Structure]] and [[Compatibility]].
+
 ## Places
 
 Function places what a form makes available through compatible carrying.

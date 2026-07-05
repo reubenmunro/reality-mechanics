@@ -37,6 +37,8 @@ status: stable
 
 The condition through which a carried read becomes returnable — a read that has been borne through thought and remains available to adjust future carrying.
 
+Memory is held by [[Cognition]], [[Thought]], [[Recurrence]], [[Carrying]], and [[Retrace Read|Retrace]]. Thought must carry a read and recurrence must make it returnable before the carried read can be named as memory.
+
 Storage can carry memory, but storage alone may preserve information without preserving the bearing path that made the read matter. Memory becomes structural where a carried read can be re-entered without losing enough of its dependency path to keep participation answerable.
 
 ## Places

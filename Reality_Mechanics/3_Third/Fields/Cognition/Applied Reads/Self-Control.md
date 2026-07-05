@@ -33,6 +33,8 @@ status: stable
 
 The condition through which self-bearing delays or governs the carrying of an impulse — available bearing that regulates what the self carries forward.
 
+Self-Control is held by [[Self-Bearing]], [[Control]], [[Delayed Availability]], and [[Compatibility]]. Self-bearing must hold and delayed availability must be readable before regulation of the self's own carrying can be named as self-control.
+
 Suppression can look like self-control, but self-control is compatible delay: feeling remains available while action becomes selectable.
 
 ## Places

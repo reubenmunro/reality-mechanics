@@ -32,6 +32,8 @@ status: working
 
 The crossing where organised and nested carrying enters its own carrying.
 
+Threshold (Third → Higher) is held by [[Third Order]], [[Nesting]], and [[Recursive]].
+
 ## Places
 
 Threshold (Third → Higher) places the crossing where organised and nested carrying enters its own carrying.

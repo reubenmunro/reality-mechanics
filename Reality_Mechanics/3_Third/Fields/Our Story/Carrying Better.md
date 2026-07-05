@@ -35,6 +35,8 @@ status: stable
 
 The condition through which inherited carrying is improved — where retrace makes prior carrying available for correction, refinement, or more compatible continuation.
 
+Carrying Better is held by [[Carrying]], [[Our Story Field]], [[Retrace Read]], [[Progress]], and [[Ship and Ark]]. Inherited carrying must be retraceable and retrace must make correction available before improved continuation can be named.
+
 ## Places
 
 Carrying Better places the condition through which inherited carrying is improved — where retrace makes prior carrying available for correction, refinement, or more compatible continuation.

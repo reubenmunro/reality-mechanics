@@ -38,6 +38,8 @@ status: stable
 
 The condition through which located distinction can present — what boundary makes possible before carrying, allowance, or resolution are decided.
 
+Availability is held by [[Boundary]]. A distinction must be located before its availability can be read.
+
 ## Places
 
 Availability places the condition through which located distinction can present.

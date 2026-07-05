@@ -34,6 +34,8 @@ status: developing
 
 The current repository convention used to encode Common Term Structure as Markdown, frontmatter, headings, and wikilinks.
 
+Current Record Convention is held by [[Common Term Structure]].
+
 This convention is operational.
 
 It is not final ontology.

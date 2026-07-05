@@ -34,6 +34,8 @@ status: stable
 
 The availability condition in music — where bearing is held without sounding.
 
+Silence is held by [[Sound]], [[Availability]], [[Bearing]], and [[Musical Rhythm]]. For silence to be musical rather than merely empty, sound must already have been present and bearing must remain available. Silence heard before music has started is not musical silence; it is mere absence. Silence within music holds bearing across the gap.
+
 In ordinary listening, silence can feel like nothing. In the Atlas read, silence names the condition where bearing remains available — where the held stop is part of the carrying structure and not its interruption.
 
 ## Places

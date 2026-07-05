@@ -34,6 +34,8 @@ status: stable
 
 The recurring field of participation through which nourishment, renewal, and continued carrying become readable as conditions for sustained life and participation.
 
+Sustenance Field is held by [[Field of Participation]], [[Organic Field]], and [[Sustenance]]. [[Nourishment]] nests as a later read; it does not hold the field that carries it.
+
 ## Places
 
 Sustenance Field places a recurring field of participation.

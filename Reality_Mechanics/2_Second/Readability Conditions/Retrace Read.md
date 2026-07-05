@@ -38,6 +38,8 @@ status: stable
 
 A produced read through which a trace can recover the dependency path.
 
+Retrace Read is held by [[Read]], [[Trace]], and [[Return]]. A dependency path must be available, and its carried relation must become readable again as the path is followed.
+
 ## Places
 
 Retrace Read places a produced read through which a trace can recover the dependency path.

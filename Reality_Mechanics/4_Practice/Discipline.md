@@ -36,6 +36,8 @@ status: stable
 
 Practice constrained by a standard, scope, and retraceable correction.
 
+Discipline is held by [[Practice]], [[Closure Scope]], [[Common Term Structure]], and [[Check]].
+
 ## Places
 
 Discipline places practice constrained by a standard, scope, and retraceable correction.

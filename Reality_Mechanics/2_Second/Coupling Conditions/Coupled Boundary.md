@@ -36,6 +36,8 @@ status: stable
 
 Boundary held through coupling.
 
+Coupled Boundary is held by [[Boundary]] and [[Coupling]].
+
 ## Places
 
 Coupled Boundary places boundary held through coupling.

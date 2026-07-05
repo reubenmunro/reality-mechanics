@@ -32,6 +32,8 @@ status: stable
 
 A returned trace whose source is not directly present.
 
+Echo is held by [[Readability]], [[Trace]], [[Recurrence]], and [[Carrying]]. A trace must be readable, recurrence must return it, and carrying must preserve enough of it for the return to be read before echo can be named.
+
 Echo is not mere repetition. Repetition can occur again without carrying a prior relation. Echo returns something of a prior relation as readable trace. It may be sound reflected, a word-form resonating, a grief returning, a cultural pattern repeating, or an AI output carrying a pattern whose bearing structure is not present in the output itself.
 
 ## Places

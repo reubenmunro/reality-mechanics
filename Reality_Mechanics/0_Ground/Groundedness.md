@@ -29,6 +29,8 @@ status: stable
 
 The condition of remaining answerable to what holds — where dependency contact is maintained rather than lost.
 
+Groundedness is held by [[Root Order]]. Dependency arrangement must hold before remaining answerable to it can be named.
+
 In the Atlas, Groundedness is also the root-contact check on a note: grounded where the note remains answerable to what holds it; ungrounded where its traces still require checking. This is not the same as permission to enter the Atlas. A placed growth may be working, planted, or tending while its groundedness is still being checked.
 
 ## Places

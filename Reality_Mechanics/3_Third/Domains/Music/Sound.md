@@ -38,6 +38,8 @@ status: stable
 
 Audible carrying through a medium.
 
+Sound is held by [[Music]], [[Medium]], [[Bearing]], and [[Availability]]. A medium must carry vibration or pressure enough for audible bearing to become available before sound can be named in the music domain.
+
 Sound is not yet melody, harmony, rhythm, or music as a whole. It is the audible carrying condition from which those music-domain reads become possible. Sound can become patterned as rhythm, carried as melody, coupled as harmony, held absent as silence, or unreadable as noise at a current scope.
 
 ## Places

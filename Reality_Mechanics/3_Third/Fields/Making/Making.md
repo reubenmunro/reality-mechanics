@@ -32,6 +32,8 @@ status: stable
 
 The third-order field where relation is carried into form through action, material, tool, method, or craft — the structural field for production, fabrication, and intentional forming.
 
+Making is held by [[Participation]] and [[Field of Participation]]. Participation must structure a field before relation carried into form can be named as making.
+
 ## Places
 
 Making places the third-order field where relation is carried into form through action, material, tool, method, or craft — the structural field for production, fabrication, and intentional forming.

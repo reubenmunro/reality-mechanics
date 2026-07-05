@@ -37,6 +37,8 @@ status: stable
 
 The recurring field of participation through which relation becomes outwardly readable — through gesture, form, affect, sound, image, or visible presentation.
 
+Expression Field is held by [[Field of Participation]], [[Organic Field]], [[Expression]], [[Relation]], and [[Medium]]. Field of Participation must structure a recurring scope and relation must be present through a medium before the expression field can be named.
+
 ## Places
 
 Expression Field places a recurring field of participation.

@@ -51,6 +51,8 @@ status: stable
 
 The condition through which what is being carried can continue through the conditions it moves into.
 
+Compatibility is held by [[Carrying]] and [[Coupling]].
+
 ## Places
 
 Compatibility places the condition through which what is being carried can continue through the conditions it moves into.

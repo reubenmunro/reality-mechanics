@@ -33,6 +33,8 @@ status: stable
 
 Coupling held within a larger coupling structure — distinct resolved conditions in mutual availability where that availability is itself carried within a containing relation.
 
+Nested Coupling is held by [[Coupling]], [[Nested Relation]], [[Carrying]], and [[Participation]]. Coupling must be present, the nested relation must carry it, carrying must continue, and that continuation must be readable as participation before the nesting of coupling can be read.
+
 ## Places
 
 Nested Coupling places coupling held within a larger coupling structure — distinct resolved conditions in mutual availability where that availability is itself carried within a containing relation.

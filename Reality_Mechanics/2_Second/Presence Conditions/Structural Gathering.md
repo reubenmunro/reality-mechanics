@@ -30,6 +30,8 @@ status: stable
 
 Multiple participating relations held as one readable arrangement.
 
+Structural Gathering is held by [[Nested Relation]] and [[Form]].
+
 ## Places
 
 Structural Gathering places multiple participating relations held as one readable arrangement.

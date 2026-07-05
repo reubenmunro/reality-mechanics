@@ -31,6 +31,8 @@ status: stable
 
 A boundary condition under strain at the point where change becomes readable — the held change-limit within the current scope.
 
+Threshold is held by [[Boundary]] and [[Strain]]. Distinction must be located and under contrast before its change-limit can be read.
+
 ## Places
 
 Threshold places a boundary condition under strain at the point where change becomes readable.

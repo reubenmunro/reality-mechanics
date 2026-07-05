@@ -31,6 +31,8 @@ status: stable
 
 A field bearing on traversal or participation.
 
+Field Bearing is held by [[Field of Participation]], [[Bearing]], and [[Traversal]].
+
 Physical gravity can show Field Bearing, but Field Bearing is broader. It names the structural read in which a coupled field bears on available movement before a participant has fully chosen, named, or resolved a path.
 
 ## Places

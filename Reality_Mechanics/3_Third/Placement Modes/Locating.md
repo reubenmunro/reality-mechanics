@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through position, boundary, or situated availability — where something is placed by where it is, where it can be entered, or what boundary situates it.
 
+Locating is held by [[Placement Mode]], [[Boundary]], [[Space]], and [[Closure Scope]]. A mode of participation must exist, space must be available, boundaries must situate position, and a scope must bound the location before situated placement can be placed as the primary mode.
+
 ## Places
 
 Locating places the mode where participation is primarily carried through position, boundary, or situated availability — where something is placed by where it is, where it can be entered, or what boundary situates it.

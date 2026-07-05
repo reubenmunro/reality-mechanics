@@ -29,6 +29,8 @@ status: stable
 
 What remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility.
 
+Invariant is held by [[Root Order]].
+
 [[Bounded Asymmetry]] is the structural invariant of Reality Mechanics: it holds across domain, scale, and application.
 
 [[Clean]], [[Union]], [[Communion]], and [[Legion]] are invisible invariants at their orders. They name what must already hold before the lateral pair at that order can split.

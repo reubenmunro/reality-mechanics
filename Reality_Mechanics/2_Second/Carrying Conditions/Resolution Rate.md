@@ -38,6 +38,8 @@ status: working
 
 The rate at which meaningful distinction can be resolved while maintaining retraceable order.
 
+Resolution Rate is held by [[Rate]], [[Resolution]], [[Clearance]], [[Coupling]], [[Carrying]], and [[Nesting Read]]. Rate must be readable, distinction must resolve, relation must retain clearance and coupling, carrying must continue, and prior order must remain retraceable within the current read.
+
 Resolution Rate is not simple speed. It is the speed at which relation can be read, resolved, and acted through without losing [[Coupling]], [[Clearance]], or trace. Speed measures movement. Resolution Rate measures resolved relation per available continuation.
 
 A system may move quickly while resolving poorly. Another may move more slowly but resolve more meaningfully because more order is already nested and available.

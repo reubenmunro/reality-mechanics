@@ -29,7 +29,7 @@ status: working
 
 Relation holding between distinguishable conditions so that passage is available in more than one direction.
 
-Connection is held by [[Relation]]. Relation must remain held before connection within relation can be read.
+Connection is held by [[Relation]]. Relation must remain held for connection within relation to be available.
 
 Held connection offers [[Carry]] forward and [[Trace]] backward. Carry and trace are directional availability within one connection, not two separate connections.
 

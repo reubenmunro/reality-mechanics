@@ -33,6 +33,8 @@ status: stable
 
 Compatible Bearing participation within built form.
 
+Architectural Carrying is held by [[Architecture]], [[Bearing]], [[Carrying]], [[Compatibility]].
+
 ## Places
 
 Architectural Carrying places compatible Bearing participation within built form.

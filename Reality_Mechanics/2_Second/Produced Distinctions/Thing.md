@@ -37,6 +37,8 @@ status: stable
 
 A scale-local stability of relation.
 
+Thing is held by [[Stability]], [[Scale]], [[Relative]], [[Closure Scope]], [[Structure]], and [[Readability]]. Relation must hold together as structure, remain stable enough at a scale, be placed through relation, close locally enough for evaluation, and become readable before it can be named or carried as a thing.
+
 A thing-read can drift where a relation compressed into a noun is treated as if the noun must contain the whole referent. The dropped conditions were dropped from the description, not from reality. The repair is not to hunt for a hidden object inside the noun, but to reopen the relation, scale, and closure scope that made the thing readable.
 
 ## Places

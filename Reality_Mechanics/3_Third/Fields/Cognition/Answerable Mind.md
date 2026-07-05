@@ -41,6 +41,8 @@ status: stable
 
 Cognitive activity ordered by answerability rather than silence, escape, or control.
 
+Answerable Mind is held by [[Cognition]], [[Thought]], [[Readability]], [[Cognitive Metabolism]], [[Body]], [[Relation]], [[Reality Check]], and [[Groundedness]]. Cognitive activity must be present, readable, metabolically carried, and grounded enough before it can answer to body, relation, task, reality, care, consequence, or truth.
+
 An answerable mind is not an empty mind, an escaped mind, or a mind controlled from outside. It is a mind able to answer.
 
 Mind is not the source of order. Mind enters order through a resolution band. Thought becomes readable where relation has enough [[Clearance]] to be taken up, modelled, checked, and returned. Learning changes what can be resolved. Tools translate what mind and body cannot directly resolve. Overload happens when too much enters too fast, too densely, or without enough support. Grounding is return to the carrying relation.

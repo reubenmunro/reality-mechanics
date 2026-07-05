@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through outward readable form — where relation becomes available to others through gesture, language, sound, image, or movement.
 
+Expressing is held by [[Placement Mode]], [[Read]], [[Form]], and [[Medium]]. A mode of participation must exist, readability must be carriable outward, form must hold the expression, and a medium must transmit it before outward form can be placed as the primary mode.
+
 ## Places
 
 Expressing places the mode where participation is primarily carried through outward readable form — where relation becomes available to others through gesture, language, sound, image, or movement.

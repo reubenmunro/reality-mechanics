@@ -31,6 +31,8 @@ status: working
 
 A participant following trace backward through connection.
 
+Retracing is held by [[Trace]] and [[Practice]]. A backward path must be available through connection, and a participant must enter it, before retracing occurs.
+
 Trace is the backward availability offered by connection. Retracing is the act of entering and following that availability. Retracing may support checking, recovery, return, or understanding, but those purposes do not define the basic movement.
 
 ## Places

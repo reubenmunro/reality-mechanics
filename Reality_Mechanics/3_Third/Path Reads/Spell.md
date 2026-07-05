@@ -31,6 +31,8 @@ status: stable
 
 Enchantment bounded into a carried form — where influence is held within a specific act, phrase, ritual, or arrangement rather than remaining open.
 
+Spell is held by [[Enchantment]], [[Closure Scope]], and [[Form]]. Influence must alter readability, a closure scope must bound it, and form must carry it before a bounded act can be read as a spell rather than as mere ritual or repetition.
+
 ## Places
 
 Spell places enchantment bounded into a carried form — where influence is held within a specific act, phrase, ritual, or arrangement rather than remaining open.

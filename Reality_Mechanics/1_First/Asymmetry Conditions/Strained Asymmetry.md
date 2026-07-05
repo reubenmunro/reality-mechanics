@@ -27,6 +27,8 @@ status: stable
 
 Bounded asymmetry under contrast — the condition through which localised unevenness becomes consequential.
 
+Strained Asymmetry is held by [[Bounded Asymmetry]]. Local unevenness must be distinguishable before it can be strained.
+
 ## Places
 
 Strained Asymmetry places bounded asymmetry under contrast.

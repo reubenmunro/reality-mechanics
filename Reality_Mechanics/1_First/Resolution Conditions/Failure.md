@@ -28,6 +28,8 @@ status: stable
 
 Resolution where bearing cannot remain supportable at the current scope.
 
+Failure is held by [[Resolution]] and [[Bearing]]. Bearing must be present and determined before its loss of support can be read as failure.
+
 ## Places
 
 Failure places resolution where bearing cannot remain supportable at the current scope.

@@ -35,6 +35,8 @@ aliases:
 
 Relation made readable between distinguishable terms — comparison held by reference, distinction, boundary, and clearance.
 
+Ratio is held by [[One]], [[Other]], and [[Clearance]]. A reference and distinction must be readable, and enough held separation must remain, before relation can be read as ratio without collapse.
+
 Ratio is not first a number. Number can formalise ratio later. Ratio is the readable form through which distinguishable terms can remain in accountable relation without collapse. It needs a held reference, a distinguishable other, and enough [[Clearance]] for their between to remain readable.
 
 Ratio does not generate [[Relation]]. Ratio is how relation becomes readable to a participant: Seed : Ground, One : Other, In : Out, Radiant : Shaded. These are not merely paired words. They are readable ratios where distinguishable terms remain answerable to the relation between them.

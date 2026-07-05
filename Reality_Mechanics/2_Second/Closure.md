@@ -31,6 +31,8 @@ status: stable
 
 A read becoming bounded enough for evaluation.
 
+Closure is held by [[Boundary]] and [[Resolution]]. A read must be bounded and determined enough to be evaluated.
+
 ## Places
 
 Closure places a read becoming bounded enough for evaluation.

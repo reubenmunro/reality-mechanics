@@ -28,6 +28,8 @@ status: working
 
 A participant's analytic cut through which part of relation becomes readable, countable, comparable, or diagnosable.
 
+Section is held by [[Practice]] and [[Readability]]. A participant must be in practice, and reading must be possible, before a cut made for reading can be named. It is not held by [[Boundary]]: a section can be cut where no boundary holds, so Boundary is what a section is answerable to, not what it requires. Section does not hold relation open; relation and connection do not require sectioning.
+
 Section is not a condition within relation. Where [[Boundary]] names located distinction that relation already holds, Section names the cut a participant makes across relation so that a part of it can be read. A boundary holds whether or not anyone reads it; a section exists in the reading. A section may follow a boundary, cross one, or hide one — and which of these it does is testable, not given.
 
 Section stands to [[Boundary]] as enactment stands to condition, in the grammar the spine already uses: [[Carry]] is enacted as [[Carrying]], [[Trace]] is followed as [[Retracing]], and Boundary is cut as Section. Section is the participant-side of located distinction. It differs from the other enactments at one decisive point: carrying continues a carry that holds and retracing follows a trace that holds, but a section can be made where no boundary holds at all. Alone among the enactments it need not find its in-relation condition — which is exactly why a section is checked rather than trusted.

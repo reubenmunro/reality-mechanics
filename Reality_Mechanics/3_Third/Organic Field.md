@@ -33,6 +33,8 @@ status: stable
 
 A recurring field of participation.
 
+Organic Field is held by [[Field of Participation]], [[Organic and Organised Organisation]], and [[Natural Order]].
+
 ## Places
 
 Organic Field places a recurring field of participation.

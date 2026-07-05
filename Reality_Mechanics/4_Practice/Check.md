@@ -39,6 +39,8 @@ status: stable
 
 The Atlas practice of testing a term from both directions to locate its boundary.
 
+Check is held by [[Practice]], [[Boundary]], [[Tracing]], and [[Retracing]].
+
 ## Places
 
 Check places the Atlas practice of testing a term from both directions to locate its boundary.

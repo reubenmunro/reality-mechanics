@@ -35,6 +35,8 @@ status: stable
 
 Produced disorder in second-order reads where availability, recognition, carrying, or closure is treated as present before it can bear.
 
+Second-Order Disorder Effects is held by [[Dependency Disorder]], [[Disorder]], [[Incoherence]], [[Delayed Availability]], and [[Closure Scope]].
+
 ## Places
 
 Second-Order Disorder Effects places produced disorder in second-order reads where availability, recognition, carrying, or closure is treated as present before it can bear.

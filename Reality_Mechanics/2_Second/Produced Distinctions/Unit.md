@@ -30,6 +30,8 @@ status: stable
 
 A bounded repeatable measure.
 
+Unit is held by [[Measure]] and [[Recurrence]].
+
 ## Places
 
 Unit places a bounded repeatable measure.

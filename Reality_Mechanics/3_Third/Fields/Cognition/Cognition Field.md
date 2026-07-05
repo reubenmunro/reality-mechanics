@@ -37,6 +37,8 @@ status: stable
 
 The recurring field of participation through which ordered readability becomes organised as thought, memory, self, knowing, and cognitive experience.
 
+Cognition Field is held by [[Field of Participation]], [[Organic Field]], [[Cognitive Participation]], [[Recognition Read|Recognition]], [[Know]], and [[Recurrence]]. Field of Participation must structure a recurring scope, cognitive participation must be available, and its organised reads must be traceable before the cognition field can be named. [[Cognition]] nests within this field; it does not hold the field that carries it.
+
 ## Places
 
 Cognition Field places a recurring field of participation.

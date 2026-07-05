@@ -31,6 +31,8 @@ status: stable
 
 Slowing resistance carried through flow.
 
+Drag is held by [[Resistance]], [[Flow]], and [[Speed]].
+
 ## Places
 
 Drag places slowing resistance carried through flow.

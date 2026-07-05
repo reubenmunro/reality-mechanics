@@ -36,6 +36,8 @@ status: stable
 
 Nested organisation carrying participation without requiring explicit retracing in the current read.
 
+Invisible Bearing is held by [[Nested Carrying]], [[Bearing]], and [[Higher Retrace|Retrace]].
+
 The carrying is not hidden. It has become non-presenting through organic accumulation — the structure just is there, active, not designed to conceal itself. Retrace remains available if sought; the dependency path is not blocked.
 
 Invisible does not mean hidden. [[Hidden Bearing]] names the engineered form of non-presenting carrying — where the carrier deliberately structures the bearing not to surface. Invisible Bearing is the organic form: non-presentation arises from the depth of nesting, not from a structural decision to withhold.

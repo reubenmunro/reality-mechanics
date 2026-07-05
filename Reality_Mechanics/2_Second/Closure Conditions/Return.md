@@ -37,6 +37,8 @@ status: stable
 
 Carried relation becoming readable again at a resolvable boundary.
 
+Return is held by [[Boundary]], [[Carrying]], and [[Readability]]. Relation must continue, a boundary must locate a distinguishable entry, and that boundary must fall within a resolution band able to read it.
+
 Return is not repetition. Repetition is the apparent occurrence of the same event again. Return requires a carried relation to remain traceable across the difference between entries. A return is not going back. It is re-entering a carrying system with new relation available.
 
 Coupling is a common form of the relation carried through Return, but it is not required in every instance. Return is also distinct from restoring a broken coupling. If coupling ceased, its restoration establishes coupling again; Return does not name that act. Return applies where carried relation becomes readable again, whether the carrying was continuously visible or only becomes visible at the returning boundary.

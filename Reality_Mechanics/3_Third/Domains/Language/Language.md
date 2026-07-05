@@ -37,6 +37,8 @@ status: stable
 
 Branch-level expression through which readable distinction is carried.
 
+Language is held by [[Branch]], [[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Expression]].
+
 ## Places
 
 Language places branch-level expression through which readable distinction is carried.

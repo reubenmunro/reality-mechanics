@@ -38,6 +38,8 @@ status: stable
 
 The use-path where made or available capacity is directed toward force, damage, threat, disabling, coercion, override, or forced resolution.
 
+Weapon is held by [[Making]], [[Tool]], [[Control]], [[Harm]], [[Violation]], and [[Compatibility]]. Capacity must be available through a made or usable form, and compatible participation must be at stake, before redirected capacity can be read as weapon.
+
 A weapon is not first a different kind of thing. It is a different carried relation. A knife, hammer, AI system, beam, vehicle, word, or law can move between tool and weapon depending on the use-path that carries it.
 
 Where [[Tool]] translates relation into a usable resolution band, weapon redirects capacity so the relation must resolve under imposed constraint, threat, harm, or consequence.

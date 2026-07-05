@@ -33,6 +33,8 @@ status: stable
 
 The structural condition where accumulated third-order carrying has rendered Ground unretraceable from within — where the dependency chain still runs to Ground but can no longer be entered from the participant's current position without disciplined practice.
 
+Opacity is held by [[Third Order]], [[Nested Carrying]], [[Invisible Bearing]], and [[Ground]]. Third-order participation must have accumulated, Invisible Bearing must have layered past available Higher Retrace, and Ground must be present but enclosed.
+
 Opacity names the point where [[Invisible Bearing]] has accumulated past the threshold at which [[Higher Retrace]] can enter without [[Higher Order Crossing|disciplined practice]]. The structure continues to carry. Ground continues to bear it. But the participant cannot reach what bears them from within what they carry.
 
 ## Places

@@ -48,6 +48,8 @@ status: stable
 
 A recurring organisation arising through participation.
 
+Field of Participation is held by [[Participation]], [[Recurrence]], and [[Natural Order]].
+
 A field can receive structural terms before they meet a [[Translation Boundary]] and become terminal to field or domain language. The field shows the recurring participation; the domain shows the local language that carries it.
 
 Fields are bounded organic beds for third-order growth. A new field is justified where participation repeatedly organises through that field across different domains or cases.

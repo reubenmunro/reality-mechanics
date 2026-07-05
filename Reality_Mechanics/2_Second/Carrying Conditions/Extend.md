@@ -35,6 +35,8 @@ status: stable
 
 Carrying outward beyond a current boundary while remaining answerable to the relation it carries from.
 
+Extend is held by [[Carrying]], [[Relation]], [[Boundary]], [[Trace]], and [[Compatibility]]. Carrying must continue beyond a current scope, cross or reach a boundary, remain traceable to the relation it carries from, and stay compatible before extension can be named.
+
 Expansion can increase scope, size, reach, or effect. Extend names the carrying movement by which a condition reaches beyond its current boundary without becoming detached from what bears it.
 
 ## Places

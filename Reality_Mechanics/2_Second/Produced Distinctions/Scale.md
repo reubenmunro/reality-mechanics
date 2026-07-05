@@ -38,6 +38,8 @@ status: stable
 
 Readable extent along a dimension within a reference frame.
 
+Scale is held by [[Dimension]] and [[Reference Frame]].
+
 Scale does not guarantee that order survives a change of scale. A scale transition remains traceable only where the operational order can be retraced across the transition. Where the apparent continuity of scale hides a substituted order, scale has become a site of drift rather than a preserved read.
 
 Order may recur across scale, but each recurrence resolves through a different band. Recurrence allows translation across scale; resolution difference prevents collapse into sameness.

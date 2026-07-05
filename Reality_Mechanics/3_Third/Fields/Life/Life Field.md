@@ -40,6 +40,8 @@ status: stable
 
 The recurring field of participation through which living carrying — recursive regulation, sustained coupling, and compatibility — becomes readable as organised experience.
 
+Life Field is held by [[Field of Participation]], [[Organic Field]], [[Life]], [[Natural Order]], [[Coupling]], [[Carrying]], and [[Recursive Regulation]]. Field of Participation must structure a recurring scope and natural-order coupling must sustain recursive regulation before the life field can be named.
+
 ## Places
 
 Life Field places a recurring field of participation.

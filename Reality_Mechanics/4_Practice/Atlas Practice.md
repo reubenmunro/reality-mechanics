@@ -53,6 +53,8 @@ status: stable
 
 The practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows.
 
+Atlas Practice is held by [[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], [[Reality-Bearing Connection]], and [[Reasoning]].
+
 It is the recursive maintenance layer that returns to every order and asks whether a term, path, correction, or connection can still be traced, checked, revised, and carried.
 
 It keeps the Atlas from becoming the thing itself. The Atlas is the worked surface; Atlas Practice keeps the relation-order-trace practice repeatable.

@@ -1,0 +1,234 @@
+{
+  "seed": "D-018C-falsification",
+  "targets": {
+    "first": 4,
+    "second": 4,
+    "third": 4,
+    "practice": 3,
+    "ground": 3,
+    "higher": 2
+  },
+  "count": 20,
+  "sample": [
+    {
+      "file": "1_First/Bearing.md",
+      "title": "Bearing",
+      "order": "first",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Bearing is held by [[Strain]]. Strain must remain pressing while it is held.",
+      "expl_para": ""
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Out.md",
+      "title": "Out",
+      "order": "first",
+      "kind": "carrier",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Out is held by [[Boundary]]. A boundary must locate distinction before exterior placement can be read.",
+      "expl_para": ""
+    },
+    {
+      "file": "1_First/Connection.md",
+      "title": "Connection",
+      "order": "first",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "hold_sentence",
+      "no_explanatory_para": false,
+      "derived_hold_sentence": "Connection is held by [[Relation]]. Relation must remain held for connection within relation to be available..",
+      "expl_para": "Connection is held by [[Relation]]. Relation must remain held before connection within relation can be read."
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Not.md",
+      "title": "Not",
+      "order": "first",
+      "kind": "carrier",
+      "classification": "D",
+      "pattern_tag": "other_explanatory",
+      "no_explanatory_para": false,
+      "derived_hold_sentence": "Not is held by [[Boundary]], [[Availability]]. Scope must be bounded and availability readable before non-availability can be marked.",
+      "expl_para": "Not marks that what cannot be reached, traced, or carried within the current structure is not available here."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Change.md",
+      "title": "Change",
+      "order": "second",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Change is held by [[Traversal]], [[Difference]].",
+      "expl_para": ""
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Dimension.md",
+      "title": "Dimension",
+      "order": "second",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Dimension is held by [[Difference]], [[Closure Scope]].",
+      "expl_para": ""
+    },
+    {
+      "file": "2_Second/Presence Conditions/Within.md",
+      "title": "Within",
+      "order": "second",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Within is held by [[In]], [[Clearance]], [[Boundary]].",
+      "expl_para": ""
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Relative.md",
+      "title": "Relative",
+      "order": "second",
+      "kind": "term",
+      "classification": "D",
+      "pattern_tag": "other_explanatory",
+      "no_explanatory_para": false,
+      "derived_hold_sentence": "Relative is held by [[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], [[Readability]]. Relation must hold, ratio must make comparison readable, the reference fr",
+      "expl_para": "Relative does not mean unreal, arbitrary, or merely subjective. It means placed. A relative read is answerable to the relation, ratio, reference frame, scope, scale, and carrying conditions through wh"
+    },
+    {
+      "file": "3_Third/Fields/Place Field/Place Field.md",
+      "title": "Place Field",
+      "order": "third",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Place Field is held by [[Field of Participation]], [[Organic Field]], [[Placed Participation]]. Field of Participation must structure a recurring scope and located participation must be evaluable befo",
+      "expl_para": ""
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Repair.md",
+      "title": "Repair",
+      "order": "third",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Repair is held by [[Strain]], [[Harm]], [[Neglect]], [[Restraint]], [[Betrayal]], [[Violation]], [[Regulation]]. The absence, interruption, or misdirection of required bearing must be present before c",
+      "expl_para": ""
+    },
+    {
+      "file": "3_Third/Path Reads/Binding.md",
+      "title": "Binding",
+      "order": "third",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Binding is held by [[Enchantment]], [[Constraint]], [[Participation]]. Influence must alter readability, constraint must be operative, and participation must be present before narrowed course can be r",
+      "expl_para": ""
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognitive Metabolism.md",
+      "title": "Cognitive Metabolism",
+      "order": "third",
+      "kind": "term",
+      "classification": "D",
+      "pattern_tag": "other_explanatory",
+      "no_explanatory_para": false,
+      "derived_hold_sentence": "Cognitive Metabolism is held by [[Cognition]], [[Thought]], [[Metabolism]], [[Body]], [[Coupling]], [[Reality Check]]. Cognition and thought must be present, and thought must remain coupled to the bod",
+      "expl_para": "The traceable question is not whether a person thinks too much. The traceable question is whether thought remains coupled to the organism that carries it."
+    },
+    {
+      "file": "4_Practice/Tracing.md",
+      "title": "Tracing",
+      "order": "practice",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Tracing is held by [[Trace]], [[Practice]].",
+      "expl_para": ""
+    },
+    {
+      "file": "4_Practice/Practice.md",
+      "title": "Practice",
+      "order": "practice",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Practice is held by [[Participation]], [[Recurrence]], [[Attend]], [[Readability]]. Participation must recur, remain attended, and stay readable enough for correction to occur..",
+      "expl_para": ""
+    },
+    {
+      "file": "4_Practice/Check.md",
+      "title": "Check",
+      "order": "practice",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Check is held by [[Practice]], [[Boundary]], [[Tracing]], [[Retracing]].",
+      "expl_para": ""
+    },
+    {
+      "file": "0_Ground/Dependency Order.md",
+      "title": "Dependency Order",
+      "order": "ground",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Dependency Order is held by [[Root Order]]. The governing arrangement must hold and be readable before structural precedence within it can be named.",
+      "expl_para": ""
+    },
+    {
+      "file": "0_Ground/Primitive.md",
+      "title": "Primitive",
+      "order": "ground",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Primitive is held by [[Root Order]]. The governing arrangement must hold before a stopping point within it can be named.",
+      "expl_para": ""
+    },
+    {
+      "file": "0_Ground/Label.md",
+      "title": "Label",
+      "order": "ground",
+      "kind": "term",
+      "classification": "D",
+      "pattern_tag": "other_explanatory",
+      "no_explanatory_para": false,
+      "derived_hold_sentence": "Label is held by [[Root Order]]. Dependency arrangement must hold before naming of any kind, including marking without conditions, can occur.",
+      "expl_para": "A label is not a failed term. Proper names, placeholders, tags, and identifiers operate legitimately as labels \u2014 marking a point without needing to carry conditions. The distinction is structural: a l"
+    },
+    {
+      "file": "5_Higher/Higher Retrace.md",
+      "title": "Higher Retrace",
+      "order": "higher",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Higher Retrace is held by [[Higher Recognition]].",
+      "expl_para": ""
+    },
+    {
+      "file": "5_Higher/Higher Faith.md",
+      "title": "Higher Faith",
+      "order": "higher",
+      "kind": "term",
+      "classification": "B",
+      "pattern_tag": "no_explanatory_para",
+      "no_explanatory_para": true,
+      "derived_hold_sentence": "Higher Faith is held by [[Invisible Bearing]], [[Higher Retrace]].",
+      "expl_para": ""
+    }
+  ]
+}

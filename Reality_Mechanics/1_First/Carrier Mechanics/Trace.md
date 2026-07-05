@@ -51,6 +51,8 @@ status: stable
 
 The backward availability of held connection.
 
+Trace is held by [[Hold]] and [[Connection]]. Connection must remain held for a backward path through it to be available — Hold does not finish before Trace begins; Trace is held support becoming available backward.
+
 Trace is not yet [[Retracing]]. Trace names the path connection offers where relation is held enough for backward availability to remain readable. Retracing names movement back through that path. A connection may offer trace whether or not a participant, process, or condition is presently retracing it. Forward, the same held connection offers [[Carry]]. Backward, it offers trace.
 
 ## Places

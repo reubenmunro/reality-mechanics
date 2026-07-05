@@ -28,6 +28,8 @@ status: stable
 
 Presented readability — distinction presented to read.
 
+Visible is held by [[Apparent]]. A distinction must be apparent before it can be presented to read.
+
 ## Places
 
 Visible places presented readability.

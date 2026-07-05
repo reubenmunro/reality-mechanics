@@ -41,6 +41,8 @@ status: stable
 
 The local teaching case where instruction continues faster than learning can be compatibly borne.
 
+Pace Mismatch is held by [[Applied Read]], [[Learning Pace]], [[Teaching Boundary]], [[Capacity]], [[Overload]], [[Closure Scope]], [[Pace]], [[Teaching]].
+
 ## Places
 
 Pace Mismatch places the local teaching case where instruction continues faster than learning can be compatibly borne.

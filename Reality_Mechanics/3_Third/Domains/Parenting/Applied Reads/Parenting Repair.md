@@ -37,6 +37,8 @@ status: stable
 
 The local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair.
 
+Parenting Repair is held by [[Applied Read]], [[Parenting]], [[Repair]], [[Harm]], [[Neglect]], [[Closure Scope]].
+
 ## Places
 
 Parenting Repair places the local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair.

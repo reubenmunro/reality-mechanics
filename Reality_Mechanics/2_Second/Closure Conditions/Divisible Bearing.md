@@ -29,6 +29,8 @@ status: stable
 
 Bearing that can be separated into distinguishable parts without losing the carrying condition.
 
+Divisible Bearing is held by [[Bearing]] and [[Divisible]].
+
 ## Places
 
 Divisible Bearing places bearing that can be separated into distinguishable parts without losing the carrying condition.

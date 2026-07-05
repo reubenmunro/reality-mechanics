@@ -42,6 +42,8 @@ status: stable
 
 Ordered participation in readability — the condition through which a participant can receive, distinguish, retain, compare, orient, and respond to difference within a resolution band.
 
+Cognition is held by [[Branch]], [[Cognition Field]], [[Cognitive Participation]], and [[Recurrence]]. Cognitive participation must be present and recurrence must make returnable comparison possible before cognition can be named as an organised field condition.
+
 It is not the source of order. It is the condition through which a participant can receive, distinguish, retain, compare, orient, and respond to difference within a resolution band.
 
 Recognition is one possible resolution of cognition: a read becomes placed as this. Cognition names the wider participatory condition through which such placing, retaining, comparing, remembering, modelling, and responding can occur.

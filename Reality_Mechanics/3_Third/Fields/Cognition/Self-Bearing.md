@@ -36,6 +36,8 @@ status: stable
 
 The condition through which the self carries its own strain — bearing held within the participant's own cognitive carrying rather than displaced or collapsed.
 
+Self-Bearing is held by [[Self]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Self must be readable and bearing must be available to the self's own carrying before the held condition can be named as self-bearing.
+
 ## Places
 
 Self-Bearing places the condition through which the self carries its own strain — bearing held within the participant's own cognitive carrying rather than displaced or collapsed.

@@ -36,6 +36,8 @@ status: stable
 
 The structured extent within which physical field conditions become measurable — the dimensional and scaled ground for locating physical distinction.
 
+Physical Space is held by [[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Dimension]], and [[Scale]]. Physical field conditions must hold and dimensional structure must be readable before measured extent can be named as physical space.
+
 Physical Space is downstream of [[Space]]. It is not the first-order source of spatial readability.
 
 ## Places

@@ -32,6 +32,8 @@ status: stable
 
 Carrying deliberately structured not to present the dependency path — where the carrier holds the bearing but does not surface it in the current read.
 
+Hidden Bearing is held by [[Bearing]] and [[Higher Retrace|Retrace]]. Bearing must be operative before it can be deliberately structured not to present, and retrace must be available in principle before its deliberate withholding can be named.
+
 Hidden Bearing is the engineered mode of non-presenting carrying.
 
 A parent stepping back to allow a child to struggle through a problem is carrying the child's development through hidden bearing: the support, the watching, the held readiness to intervene — all active, all structured, none of it surfaced. The hiding is the structurally correct move. Surfacing the bearing would undermine what the bearing is there to carry.

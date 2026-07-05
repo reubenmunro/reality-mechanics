@@ -31,6 +31,8 @@ status: stable
 
 What bears on carrying.
 
+Load is held by [[Bearing]] and [[Carrying]].
+
 ## Places
 
 Load places what bears on carrying.

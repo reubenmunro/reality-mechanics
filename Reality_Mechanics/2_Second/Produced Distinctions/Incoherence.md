@@ -31,6 +31,8 @@ status: stable
 
 Compatible pattern holding no longer remaining readable.
 
+Incoherence is held by [[Coherence]], [[Overload]], and [[Disorder]].
+
 ## Places
 
 Incoherence places compatible pattern holding no longer remaining readable.

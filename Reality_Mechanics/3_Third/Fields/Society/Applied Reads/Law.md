@@ -45,6 +45,8 @@ status: stable
 
 The applied domain through which Violation is formally bounded and Repair is structurally obligated — where the relational conditions of compatible and incompatible boundary-crossing are given explicit scope, named consequence, and institutional procedure.
 
+Law is held by [[Society Field]], [[Civil]], [[Consent]], [[Violation]], [[Repair]], [[Boundary]], [[Constrained Resolution]], [[Competence Boundary]], [[Destination-Led Carrying]], and [[Thin Carrying]]. Compatible boundary-crossing must be distinguishable from incompatible boundary-crossing, civil order must require public answerability, and a procedure for determining which occurred must be available before the formal institution of Violation and Repair can be named as Law.
+
 What Law adds to the relational conditions is not new structure but locatability at scale: Violation can be named and pursued between participants who have no continuing relational coupling; Repair can be obligated without requiring the repairing party's willingness; Consent can be established and contested without requiring the participants' own resolution of what occurred.
 
 ## Places

@@ -38,6 +38,8 @@ status: stable
 
 Bearing directing availability through relation while the directed condition remains able to affect the direction.
 
+Control is held by [[Bearing]], [[Availability]], and [[Constraint]]. Bearing must be present, availability must be at stake, and a constraining condition must be readable before direction within compatible relation can be named.
+
 ## Places
 
 Control places bearing directing availability through relation while the directed condition remains able to affect the direction.

@@ -33,6 +33,8 @@ status: stable
 
 The condition of a coupled boundary broken against compatible participation — where what was required for bearing to continue is overridden.
 
+Violation is held by [[Coupled Boundary]] and [[Compatibility]]. A boundary must be coupled and compatibility between participants must be required before a crossing can be read as violation rather than ordinary boundary change.
+
 ## Places
 
 Violation places the condition of a coupled boundary broken against compatible participation — where what was required for bearing to continue is overridden.

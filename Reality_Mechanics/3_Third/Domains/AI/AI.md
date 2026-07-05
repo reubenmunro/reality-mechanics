@@ -41,6 +41,8 @@ status: stable
 
 The third-order domain read for engineered interaction — where generated output, model interface, and human evaluation alter how dependency is carried while still requiring retraceable structural grounding.
 
+AI is held by [[Branch]], [[Engineered Coupling]], [[Technology Domain]], and [[Medium]] — it requires that engineered transformation remain testable rather than fully replace the dependency structure it mediates.
+
 AI can accelerate resolution: answers, summaries, code, images, decisions, and corrections can return faster than the human order that evaluates them. That speed is not intelligence by itself. AI remains reality-bearing only where its generated resolution can be retraced to what carries it: source work, human judgement, material infrastructure, energy, attention, and the wider conditions that make its output possible.
 
 ## Places

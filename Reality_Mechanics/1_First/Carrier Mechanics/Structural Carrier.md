@@ -27,6 +27,8 @@ status: stable
 
 The class of primitive carriers that transmit specific relational roles into later compounds through small relation-words.
 
+Structural Carrier is held by [[Primitive Carrier]] and [[Read]].
+
 ## Places
 
 Structural Carrier places the class of primitive carriers that transmit specific relational roles into later compounds.

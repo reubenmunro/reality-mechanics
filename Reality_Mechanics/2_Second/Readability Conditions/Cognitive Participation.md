@@ -31,6 +31,8 @@ status: stable
 
 Relation participating in readability — the condition through which readable difference is received, distinguished, oriented, or responded to within a participating system.
 
+Cognitive Participation is held by [[Readability]] and [[Participation]]. Difference must be available to be read, and relation must be actively taking part in a scope before cognition can be named structurally.
+
 This allows cognition to scale. A cell, body, animal, person, institution, ecology, tool-coupled system, or AI-coupled system may participate in readable difference without that participation being conscious in the higher-order sense.
 
 ## Places

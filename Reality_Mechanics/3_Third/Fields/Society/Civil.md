@@ -42,6 +42,8 @@ status: stable
 
 Shared public relation carried through restraint, recognition, boundary, and repair — the condition through which non-identical participants remain answerable within a common order without needing to be kin, identical, or intimate.
 
+Civil is held by [[Society Field]], [[Society]], [[Boundary]], [[Participation]], [[Recognition Read|Recognition]], [[Consent]], [[Restraint]], and [[Repair]]. A public field must be present, participants must remain distinct, boundaries must be recognised, and repair must remain possible before relation can be named as civil.
+
 It is not politeness first. It is the condition by which non-identical participants remain answerable to one another within a common order without needing to be kin, identical, or intimate.
 
 Civil relation allows difference to remain in shared order. It requires enough [[Boundary]] for participants not to collapse into sameness, enough [[Participation]] for them not to become detached, enough [[Restraint]] for disagreement not to become force, and enough [[Repair]] for breach not to end the field.

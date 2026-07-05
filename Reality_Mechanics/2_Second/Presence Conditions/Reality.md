@@ -29,6 +29,8 @@ status: stable
 
 Coupled relation readable as real.
 
+Reality is held by [[Real]] and [[Coupling]].
+
 ## Places
 
 Reality places coupled relation readable as real.

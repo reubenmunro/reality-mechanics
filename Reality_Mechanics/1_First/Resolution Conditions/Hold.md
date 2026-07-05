@@ -32,7 +32,7 @@ status: stable
 
 Resolution remaining supportable as the same condition.
 
-Hold is held by [[Resolution]]. Bearing must be determined at the current scope before resolution can remain supportable as the same condition.
+Hold is held by [[Resolution]]. Bearing must be determined at the current scope before it can remain supportable.
 
 Hold makes [[Carry]] possible — not a stage that finishes before carrying begins, but supportability that stays present while carrying continues.
 

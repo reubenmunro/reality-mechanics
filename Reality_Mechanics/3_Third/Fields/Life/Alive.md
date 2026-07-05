@@ -40,6 +40,8 @@ status: stable
 
 The condition through which coupled carrying is sustained through recursive regulation — a living condition that persists by continuing to regulate its own carrying.
 
+Alive is held by [[Life]], [[Live]], [[Coupling]], [[Carrying]], [[Recursive Regulation]], [[Compatibility]], and [[Adaptation]]. Coupling must hold, recursive regulation must sustain compatible carrying, and adaptation must remain possible before the condition can be named as alive.
+
 This note places [[Live]] inside [[Life]] as living continuation rather than general liveness.
 
 ## Places

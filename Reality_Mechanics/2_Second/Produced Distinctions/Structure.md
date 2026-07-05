@@ -39,6 +39,8 @@ status: stable
 
 Ordered relation that bears.
 
+Structure is held by [[Form]], [[Carrying]], and [[Relation]]. Form must become ordered enough through carrying relation to hold, constrain, or support what participates within it before structure can be named.
+
 Where [[Form]] names readable arrangement, Structure names relation ordered enough to hold, carry, constrain, support, or preserve what participates within it. Pattern, geometry, surface, or arrangement may show structure, but they are not structure in the Atlas sense unless they bear.
 
 Relation becomes structure where bearing can travel through its order. Mechanism or physical construction can show structure, but structure is broader: any ordered relation whose carrying holds enough for participation, consequence, or readability to depend on it.

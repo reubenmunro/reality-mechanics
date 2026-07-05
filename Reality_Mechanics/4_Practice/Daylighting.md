@@ -32,6 +32,8 @@ status: working
 
 The structural practice of restoring readability where order is present but occluded by crowding, residue, missing trace, misplaced support, or overgrowth.
 
+Daylighting is held by [[Bearing Pass]], [[Structural Disorder]], [[Clear]], and [[Clean]]. A bearing pass must locate the occluded member, structural disorder must name the loss of dependency readability, clear must make the path readable, and clean must keep the correction from carrying residue.
+
 Occlusion is not badness and not a rival substance. It is order under cover. Daylighting does not attack the member; it restores the conditions by which the member, its support, and its effects can be read.
 
 ## Places

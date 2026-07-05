@@ -28,6 +28,8 @@ status: stable
 
 Bounded unevenness becoming distinguishable within relation before it is located as boundary or read as difference.
 
+Distinction is held by [[Bounded Asymmetry]]. Asymmetry must be local enough for this and not-this to become distinguishable before distinction can be named.
+
 [[Asymmetry]] makes distinction possible. [[Bounded Asymmetry]] makes the unevenness local enough to distinguish. Distinction names that distinguishability itself. [[Boundary]] then locates it; [[Difference]] later names its produced read as non-sameness.
 
 ## Places

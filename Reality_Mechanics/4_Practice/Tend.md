@@ -36,6 +36,8 @@ status: stable
 
 Care applied through attended practice so a relation can keep carrying.
 
+Tend is held by [[Practice]], [[Care]], [[Attend]], [[Recurrence]], and [[Maintained Coupling]]. Practice must be attended, care must preserve availability, and return must be recurrent enough for tending to be read.
+
 To tend is to stay with a relation, notice what it requires, and adjust conditions so its carrying can continue. It is not care as feeling alone. It is care made active through return.
 
 ## Places

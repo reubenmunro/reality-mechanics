@@ -32,6 +32,8 @@ status: stable
 
 The applied read of AI Misrepair — where a correction appears to repair an error while preserving the wrong grounding.
 
+AI Confident Correction is held by [[Applied Read]], [[AI Misrepair]], and [[Closure Scope]] — it requires a visible correction event against which misrepair becomes testable.
+
 ## Places
 
 AI Confident Correction places the applied read of AI Misrepair — where a correction appears to repair an error while preserving the wrong grounding.

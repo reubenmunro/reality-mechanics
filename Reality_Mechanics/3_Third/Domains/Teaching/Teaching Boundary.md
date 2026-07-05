@@ -32,6 +32,8 @@ status: stable
 
 A branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order.
 
+Teaching Boundary is held by [[Teaching]], [[Boundary]], [[Closure Scope]].
+
 ## Places
 
 Teaching Boundary places a branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order.

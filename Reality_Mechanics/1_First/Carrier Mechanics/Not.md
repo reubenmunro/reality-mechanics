@@ -28,6 +28,8 @@ status: stable
 
 Non-availability within the current scope — relation marked as unavailable, interrupted, absent, excluded, or outside scope.
 
+Not is held by [[Boundary]] and [[Availability]]. Scope must be bounded, and availability must be readable, before non-availability can be marked.
+
 Not marks that what cannot be reached, traced, or carried within the current structure is not available here.
 
 ## Places

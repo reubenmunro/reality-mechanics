@@ -37,6 +37,8 @@ status: stable
 
 Readable recurrence.
 
+Pattern is held by [[Recurrence]] and [[Recognition Read|Recognition]].
+
 ## Places
 
 Pattern places readable recurrence.

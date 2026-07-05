@@ -35,6 +35,8 @@ status: stable
 
 The applied read where control is exercised following harm — direction of availability in the context of incompatible carrying that preceded it.
 
+Control After Harm is held by [[Applied Read]], [[Harm]], [[Control]], [[Repair]], and [[Closure Scope]].
+
 ## Places
 
 Control After Harm places the applied read where control is exercised following harm — direction of availability in the context of incompatible carrying that preceded it.

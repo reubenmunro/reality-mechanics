@@ -43,6 +43,8 @@ status: stable
 
 Embodied reduction in available carrying where continued participation requires rest, pacing, support, release, or recovery.
 
+Fatigue is held by [[Body]], [[Strain]], [[Load]], [[Capacity]], [[Availability]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Accumulated load must reduce available capacity before the limit on continued participation can be named as fatigue.
+
 ## Places
 
 Fatigue places embodied reduction in available carrying where continued participation requires rest, pacing, support, release, or recovery.

@@ -30,6 +30,8 @@ status: stable
 
 Difference that makes a read available.
 
+Information is held by [[Difference]] and [[Closure Scope]].
+
 ## Places
 
 Information places difference that makes a read available.

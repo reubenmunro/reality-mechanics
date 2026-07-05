@@ -40,6 +40,8 @@ status: stable
 
 The dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order.
 
+Atlas is held by the discipline of [[Reality Mechanics]], the governing dependency arrangement of [[Root Order]], and the working postulate named by [[Theory]].
+
 An Operating System for Reasoning may become a future-facing evolution of the Atlas as its human and AI participation surfaces mature. It is not the current claim. The current claim is simpler: the Atlas is a dependency-ordered reasoning system.
 
 The Atlas is not identical to its written notes. Writing is its present durable medium. Its reasoning may be carried through words, signs, diagrams, arrangements, actions, or thought; the Atlas remains the same mapped body only where dependency placement remains recoverable across those changes of carrier.
@@ -58,10 +60,7 @@ The Atlas is not attempting to describe reality from outside. It exists within r
 
 Generative order and reading order:
 
-```text
-Generative: Seed : Ground → Generation → Growth → Fruit → Seed
-Reading:    Fruit → Growth → Generation → Seed : Ground
-```
+```text Generative: Seed : Ground → Generation → Growth → Fruit → Seed Reading:    Fruit → Growth → Generation → Seed : Ground ```
 
 The test is not whether this sounds simpler. The test is whether the existing Atlas can support faithful retracing from readable fruit back toward generative conditions without confusing reading order for generation.
 

@@ -30,6 +30,8 @@ status: stable
 
 Presence carried.
 
+Being is held by [[Be]] and [[Carrying]].
+
 ## Places
 
 Being places presence carried.

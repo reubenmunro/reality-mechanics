@@ -32,6 +32,8 @@ status: stable
 
 Distinguishable non-sameness.
 
+Difference is held by [[Distinction]] and [[Readability]].
+
 ## Places
 
 Difference places distinguishable non-sameness.

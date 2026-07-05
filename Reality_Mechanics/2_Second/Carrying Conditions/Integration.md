@@ -33,6 +33,8 @@ status: stable
 
 Intake resolved into compatible carrying without erasing the distinction of what entered.
 
+Integration is held by [[Intake]], [[Resolution]], [[Regulation]], and [[Compatibility]]. What enters must be available within carrying, resolved enough to participate, maintainable within the receiving condition, and compatible with what carries it before integration can be named.
+
 [[Intake]] names availability crossing inward through a boundary. Integration names what happens where that intake becomes carried by the receiving order: it can participate in the condition, affect it, and be affected by it without remaining unresolved foreignness or being erased into sameness.
 
 ## Places

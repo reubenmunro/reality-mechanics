@@ -37,6 +37,8 @@ status: stable
 
 The crossing from first contact into the relation-space opened by that contact.
 
+Enter is held by [[Notice]], [[Boundary]], [[Threshold]], [[Allow]], and [[Space]].
+
 Enter is not the same as [[Allow]]. Allow names permitted passage from the condition side; Enter names taken passage from the participating side.
 
 ## Places

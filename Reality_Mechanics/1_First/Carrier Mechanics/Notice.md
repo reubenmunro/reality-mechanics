@@ -31,6 +31,8 @@ status: stable
 
 First contact with what has become apparent.
 
+Notice is held by [[Apparent]] and [[Availability]]. Something must be available enough to appear before it can be noticed.
+
 Notice comes before enter, attend, or trace. It is the first contact that makes passage, attention, and trace possible.
 
 ## Places

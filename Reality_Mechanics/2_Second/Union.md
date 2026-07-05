@@ -28,6 +28,8 @@ status: stable
 
 The invariant condition of genuine joining — by which distinct resolved conditions can be held together without collapsing into sameness or remaining merely adjacent.
 
+Union is held by [[Carrying]]. Carrying must be established before distinct conditions can be genuinely joined.
+
 [[Coupling]] names distinct resolved conditions held in mutual availability. Union is the prior condition coupling requires: the joining must be genuine before mutual availability can hold.
 
 Union is not merger. Merger ends the distinction between joined conditions. Union holds the joining while distinction remains — joined-while-distinct is the structural signature of Union.

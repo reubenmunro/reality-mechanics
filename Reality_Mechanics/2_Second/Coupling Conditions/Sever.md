@@ -30,6 +30,8 @@ status: stable
 
 A trace-bearing connection to a bearing source resolved as cut, so direct return no longer remains followable.
 
+Sever is held by [[Bearing Source]], [[Coupled Boundary]], and [[Resolution]]. A source must be recoverable through trace, the connection must be held through coupling, and its bearing must be determined as cut before sever can be named.
+
 Sever does not necessarily end carrying. A downstream condition may remain present, stable, useful, or effective after the path through which it returned to source has been cut.
 
 ## Places

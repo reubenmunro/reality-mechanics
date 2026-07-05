@@ -34,6 +34,8 @@ status: stable
 
 Relation meeting at a boundary, edge, surface, or point of touch.
 
+Contact is held by [[Boundary]], [[Clearance]], and [[Tact]]. Boundary locates distinction, clearance can close into meeting, and tact keeps contact from collapsing into interference, pressure, or harm.
+
 Contact can support later carrying, resistance, grip, or traction through [[Coupled Contact]].
 
 ## Places

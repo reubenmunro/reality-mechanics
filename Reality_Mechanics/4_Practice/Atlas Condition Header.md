@@ -32,6 +32,8 @@ status: stable
 
 Root-level Atlas practice standard.
 
+Atlas Condition Header is held by [[Terms and Conditions]], [[Term]], and [[Condition]].
+
 It allows a note to remain human-facing while giving AI and other tools a clear, stable way to locate the gathered condition information.
 
 The header does not replace the note body. The body carries the full read. The header carries the condition summary.

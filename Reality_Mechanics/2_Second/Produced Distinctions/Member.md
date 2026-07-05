@@ -34,6 +34,8 @@ status: stable
 
 A scale-local participating part in a carried body.
 
+Member is held by [[Thing]], [[Scale]], [[Structure]], [[Carrying]], and [[Participation]]. A thing must be readable at a scale, ordered enough to bear, and participating in a wider carried body before it can be read as a member.
+
 A member is not an absolute identity. It is the placed participation a thing has where it belongs to a wider structure, field, body, system, or relation. A beam is a member at the frame scale. A person is a member at the family, team, community, or civic scale. At another scale, each is also made of smaller members and participates in larger ones.
 
 Member preserves the thing-read without isolating it. A member carries itself, receives load or relation, and resolves what it carries into a wider body.

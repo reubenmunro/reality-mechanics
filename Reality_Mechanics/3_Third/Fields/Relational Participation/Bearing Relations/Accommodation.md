@@ -32,6 +32,8 @@ status: stable
 
 Compatible bearing of variability through resolution — the condition through which difference remains borne without requiring its elimination.
 
+Accommodation is held by [[Bounded Asymmetry]], [[Bearing]], and [[Resolution]]. Variability must be localised and held before it can be compatibly borne through resolution.
+
 ## Places
 
 Accommodation places compatible bearing of variability through resolution — the condition through which difference remains borne without requiring its elimination.

@@ -30,6 +30,8 @@ status: stable
 
 Reality held as a participating scope.
 
+World is held by [[Reality]] and [[Participation]].
+
 ## Places
 
 World places reality held as a participating scope.

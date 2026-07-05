@@ -30,6 +30,8 @@ status: working
 
 The structural practice of removing drift, overgrowth, or misplaced carrying without treating member correction as foundation replacement.
 
+Relief is held by [[Bearing Pass]], [[Root Resilience]], and [[Structural Disorder]]. A bearing pass must locate the member, the foundation must remain resilient enough to withstand member correction, and structural disorder must name the dependency loss being relieved.
+
 Relief is not punishment and not rejection of growth. It is care applied where a member has begun to occlude, overload, distort, or detach from the order that lets it carry.
 
 ## Places

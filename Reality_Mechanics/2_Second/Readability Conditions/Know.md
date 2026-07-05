@@ -36,6 +36,8 @@ status: stable
 
 A recognised read held as available.
 
+Know is held by [[Recognition Read|Recognition]], [[Carrying]], and [[Compatibility]].
+
 ## Places
 
 Know places a recognised read held as available.

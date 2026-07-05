@@ -33,6 +33,8 @@ status: stable
 
 The presenting face of a condition.
 
+Surface is held by [[Visible]] and [[Form]].
+
 Surface can be shallow, false, decorative, or external, but it is not defined by those reductions. The surface presents. What matters is whether the presentation remains answerable to what carries it.
 
 ## Places

@@ -39,6 +39,8 @@ status: stable
 
 The condition through which bodily form and movement make a read available — the expression of bearing through the body's shaped or directed presence.
 
+Gesture is held by [[Expression Field]], [[Body]], [[Form]], [[Medium]], [[Recognition Read|Recognition]], [[Closure Scope]], and [[Expression]]. Body must carry a form and that form must be recognisable through a medium before the bodily expression can be read as gesture.
+
 ## Places
 
 Gesture places the condition through which bodily form and movement make a read available — the expression of bearing through the body's shaped or directed presence.

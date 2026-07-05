@@ -35,6 +35,8 @@ status: stable
 
 The local case where a received term keeps its name while entering a different structural role.
 
+Inherited Term Drift is held by [[Applied Read]], [[Term Drift]], [[Translation]], [[Closure Scope]], [[Language Domain]].
+
 ## Places
 
 Inherited Term Drift places the local case where a received term keeps its name while entering a different structural role.

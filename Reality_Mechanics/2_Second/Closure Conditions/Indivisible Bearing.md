@@ -29,6 +29,8 @@ status: stable
 
 Bearing that cannot be separated without changing the carrying condition.
 
+Indivisible Bearing is held by [[Bearing]] and [[Indivisible]].
+
 ## Places
 
 Indivisible Bearing places bearing that cannot be separated without changing the carrying condition.

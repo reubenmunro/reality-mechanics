@@ -36,6 +36,8 @@ status: stable
 
 The applied read of the located limit on available carrying — the closure scope at which continued participation becomes incompatible with current capacity.
 
+Fatigue Boundary is held by [[Applied Read]], [[Fatigue]], [[Capacity]], [[Compatibility]], and [[Control]]. Fatigue must be readable and capacity must be locally evaluable before the limit on compatible carrying can be named.
+
 ## Places
 
 Fatigue Boundary places the applied read of the located limit on available carrying — the closure scope at which continued participation becomes incompatible with current capacity.

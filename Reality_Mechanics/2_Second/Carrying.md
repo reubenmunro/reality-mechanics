@@ -81,6 +81,8 @@ status: stable
 
 Held forward availability being enacted.
 
+Carrying is held by [[Hold]] and [[Carry]]. Forward passage remains held while it is enacted as carrying.
+
 [[Carry]] is the forward passage this ratio reads forward through. What carries may be resolved, strained, changing, or still being formed; [[Resolution]] can shape carrying without being a universal prerequisite for it.
 
 Carrying does not create a separate relation from trace. The same connection that carries forward offers [[Trace]] backward. [[Retracing]] is a participant following that trace.

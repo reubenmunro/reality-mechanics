@@ -38,6 +38,8 @@ status: stable
 
 The boundary where human service must be translated back to the earth carrying it.
 
+Terms of Service is held by [[Earth Carrying]], [[Carrying]], [[Term]], [[Trace]], [[Participation]], and [[Translation Boundary]].
+
 ## Places
 
 Terms of Service places the boundary where human service must be translated back to the earth carrying it.

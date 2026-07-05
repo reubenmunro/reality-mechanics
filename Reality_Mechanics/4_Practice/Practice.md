@@ -44,6 +44,8 @@ status: stable
 
 Repeated, attended participation through which action remains available, correctable, and carried through use.
 
+Practice is held by [[Participation]], [[Recurrence]], [[Attend]], and [[Readability]]. Participation must recur, remain attended, and stay readable enough for correction to occur.
+
 ## Places
 
 Practice places repeated, attended participation through which action remains available, correctable, and carried through use.

@@ -29,6 +29,8 @@ status: working
 
 The first readable distinction from a held reference — what lets One : Other express active Seed : Ground without becoming the generative condition itself.
 
+Other is held by [[One]] and [[Seed]]. A reference must remain held, and the source-side availability must remain acknowledged, while Other is read as distinct rather than mere negation.
+
 Other is not merely negation. It is not whatever One rejects. Other is the distinguishable not-same that lets One be a reference rather than an unbounded whole.
 
 Read together, [[One]] and Other form `One : Other`. One gives reference. Other gives distinction. The colon names the relational boundary, ratio, and clearance that keeps comparison from collapsing into sameness or drifting into unrelated separation.

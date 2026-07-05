@@ -50,6 +50,8 @@ status: stable
 
 Participation occurring again.
 
+Recurrence is held by [[Occur]], [[Participation]], and [[Traversal]].
+
 ## Places
 
 Recurrence places participation occurring again.

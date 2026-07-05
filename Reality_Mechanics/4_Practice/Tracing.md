@@ -30,6 +30,8 @@ status: stable
 
 The practice of locating or marking a trace so its backward availability becomes readable.
 
+Tracing is held by [[Trace]] and [[Practice]].
+
 ## Places
 
 Tracing places the practice of locating or marking a trace so its backward availability becomes readable.

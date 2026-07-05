@@ -32,6 +32,8 @@ status: stable
 
 Stability no longer holding.
 
+Disorder is held by [[Stability]] and [[Strain]].
+
 Disorder is shaded order, not a positive thing beside order. It is order under loss, occlusion, interruption, residue, or unreadability at the current scope.
 
 ## Places

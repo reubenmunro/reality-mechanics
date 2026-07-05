@@ -33,6 +33,8 @@ status: stable
 
 Harm to a relationship where trust had made continued bearing available — damage to a coupled boundary through violation of trusted bearing.
 
+Betrayal is held by [[Trust]], [[Violation]], and [[Relationship]]. Trust must have made continued bearing available and violation must have broken the coupled boundary before the damage can be read as betrayal.
+
 ## Places
 
 Betrayal places harm to a relationship where trust had made continued bearing available — damage to a coupled boundary through violation of trusted bearing.

@@ -31,6 +31,8 @@ status: stable
 
 An effect continuing into later conditions through carrying.
 
+Consequence is held by [[Effect]], [[Carrying]], and [[Trace]]. An effect must be present, its continuation must be carried, and the later condition must remain traceable to that effect before consequence can be named.
+
 [[Effect]] names change carried through coupling from one condition into another. Consequence names what happens where that effect does not end at the coupling in which it first became readable: it continues participating in what follows.
 
 ## Places

@@ -34,6 +34,8 @@ status: stable
 
 Difference coupled through a shared carrying pattern.
 
+Resonance is held by [[Frequency]], [[Coupling]], [[Pattern]], [[Compatibility]], and [[Capacity]]. Recurrence must have readable rate or pattern, distinct conditions must couple, and the carrier must have compatible capacity before resonance can be named.
+
 Resonance is not sameness. It is not difference alone. It becomes readable where distinct conditions can carry a shared frequency, rhythm, pattern, or relation strongly enough that one moves, amplifies, returns, or becomes readable through the other.
 
 ## Places

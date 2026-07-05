@@ -32,6 +32,8 @@ status: stable
 
 The specific enchantment of altered appearance — where visibility and form carry influence beyond what the underlying support would draw on its own.
 
+Glamour is held by [[Enchantment]], [[Visibility]], and [[Form]]. Influence must already alter readability, appearance must be visible, and form must carry before glamour can be read as distinct from beauty or ordinary attractiveness.
+
 ## Places
 
 Glamour places the specific enchantment of altered appearance — where visibility and form carry influence beyond what the underlying support would draw on its own.

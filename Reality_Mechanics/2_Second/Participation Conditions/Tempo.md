@@ -31,6 +31,8 @@ status: stable
 
 Rate carried as pace within rhythmic participation.
 
+Tempo is held by [[Rhythm]], [[Rate]], and [[Pace]].
+
 ## Places
 
 Tempo places rate carried as pace within rhythmic participation.

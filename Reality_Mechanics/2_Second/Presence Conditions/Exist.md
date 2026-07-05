@@ -29,6 +29,8 @@ status: stable
 
 Presence holding as real enough to be encountered or evaluated.
 
+Exist is held by [[Be]] and [[Real]].
+
 ## Places
 
 Exist places presence holding as real enough to be encountered or evaluated.

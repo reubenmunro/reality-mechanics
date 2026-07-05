@@ -77,6 +77,9 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Ember runtime model | D-017A | Resolved | Characterise ember as candidate runtime model | `docs/runtime/EMBER_RUNTIME_MODEL.md`; `docs/reports/D-017A-ember-runtime-model.md` |
 | Ember runtime falsification | D-017B | Resolved | Falsify ember as primary observable language | `docs/reports/D-017B-ember-runtime-falsification.md` |
 | Opening place calibration | D-018A | Resolved | Calibrate Atlas opening prose to place sentences | `docs/reports/D-018A-opening-place-calibration.md` |
+| Hold & movement calibration | D-018B | Resolved | Can explanatory body align from existing structure? | `docs/reports/D-018B-hold-movement-calibration.md`; Tier 1 rule from `conditions.holds`; not applied |
+| Hold rule falsification | D-018C | Resolved | Does Tier 1 hold rule survive blind sample test? | `docs/reports/D-018C-hold-rule-falsification.md`; **safe with exclusions**; not applied |
+| Tier 1 hold sentence calibration | D-018D | Resolved | Apply revised Tier 1 hold rule corpus-wide | `docs/reports/D-018D-tier-1-hold-calibration.md`; 481 files; 485/488 aligned |
 
 ---
 

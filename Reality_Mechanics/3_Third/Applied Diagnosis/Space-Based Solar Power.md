@@ -41,6 +41,8 @@ status: stable
 
 The applied RM diagnosis question for orbital energy collection — specifically whether the pathway is retraceable intake into Earth carrying or a splinter condition crossing a boundary without adequate carrying relation.
 
+Space-Based Solar Power is held by [[Applied Read]], [[Diagnosis]], [[Intake]], [[Splinter]], [[Earth Carrying]], [[Boundary]], [[Regulation]], and [[Hidden Carrying]]. The diagnostic framework, the structural carrying conditions being tested, and the risk conditions being read all must be available before this specific engineering case can be diagnosed as intake-or-splinter rather than treated as a neutral infrastructure question.
+
 ## Places
 
 Space-Based Solar Power places the applied RM diagnosis question for orbital energy collection — specifically whether the pathway is retraceable intake into Earth carrying or a splinter condition crossing a boundary without adequate carrying relation.

@@ -27,6 +27,8 @@ status: stable
 
 Traversal departing from the current scope.
 
+Digress is held by [[Traversal]].
+
 ## Places
 
 Digress places traversal departing from the current scope.

@@ -30,6 +30,8 @@ status: stable
 
 A carried sequence oriented toward a resolution.
 
+Strategy is held by [[Structure]] and [[Process]].
+
 ## Places
 
 Strategy places a carried sequence oriented toward a resolution.

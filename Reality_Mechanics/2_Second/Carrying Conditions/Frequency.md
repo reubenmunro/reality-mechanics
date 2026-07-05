@@ -32,6 +32,8 @@ status: stable
 
 Countable return as rate.
 
+Frequency is held by [[Recurrence]], [[Return]], and [[Rate]]. Recurrence must provide another occurrence, Return must make a carried condition readable enough to distinguish, and Rate must relate the count to an interval.
+
 ## Places
 
 Frequency places countable return as rate.

@@ -30,6 +30,8 @@ status: working
 
 Locatable entry into relation, so an operation can be read, checked, corrected, or carried forward.
 
+Place is held by [[Relation]]. Relation must remain available for any operation to become locatable within it — Relation does not finish before Place begins; Place is Relation's own availability made locatable, checkable, and enterable. This is the first-order Place operation identified by `first.place`, not the downstream field note of the same title.
+
 Place is not location alone. A location can be named without the operation being placed in Atlas order. Place names the availability of a locatable position through which relation, holding, carrying, and trace can become answerable, entered, and checked.
 
 ## Places

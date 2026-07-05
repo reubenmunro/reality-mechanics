@@ -33,6 +33,8 @@ status: stable
 
 The organic field where Natural Order becomes readable as physical, ecological, spatial, material, cosmic, and environmental participation.
 
+Natural World is held by [[Natural Order]] and [[Field of Participation]].
+
 ## Places
 
 Natural World places the organic field where Natural Order becomes readable as physical, ecological, spatial, material, cosmic, and environmental participation.

@@ -32,6 +32,8 @@ status: stable
 
 Loss of dependency readability in the carrying structure — where what must hold is hidden, interrupted, displaced, bypassed, or forced.
 
+Structural Disorder is held by [[Root Order]].
+
 Structural Disorder is shaded order, not a thing beside order. It names where order cannot be cleanly retraced because what must hold has become obscured, lacking, residue-bearing, or unreadable.
 
 It does not mean evil, failure, immorality, disagreement, difference, or absence of structure. A condition may be active, complex, organised, or stable at a surface level and still be structurally disordered if its dependency path cannot be read.

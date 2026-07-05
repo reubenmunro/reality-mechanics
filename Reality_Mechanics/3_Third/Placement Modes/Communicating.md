@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through readable transmission between positions — where a read is carried across a medium between distinct participants.
 
+Communicating is held by [[Placement Mode]], [[Read]], [[Medium]], and [[Allow]]. A mode of participation must exist, readability must be transmissible, a medium must carry it, and allowance must be present before transmission can be placed as the primary mode.
+
 ## Places
 
 Communicating places the mode where participation is primarily carried through readable transmission between positions — where a read is carried across a medium between distinct participants.

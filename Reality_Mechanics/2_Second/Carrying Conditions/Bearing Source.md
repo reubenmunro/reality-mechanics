@@ -36,6 +36,8 @@ status: stable
 
 The structure recovered by trace as what actually bears a carried condition.
 
+Bearing Source is held by [[Bearing]], [[Trace]], [[Carrying]], and [[Structure]]. Carrying must be present, bearing must be active, structure must be doing the holding, and a trace must be available before bearing source can be named.
+
 It is not a separate source-object behind relation. In the Atlas sense, structure is ordered relation that bears. Bearing Source names the structural role from which a carried condition receives its actual bearing.
 
 Origin, author, authority, or first cause can be relevant, but they are not automatically source. Source here means the bearing structure recovered by trace.

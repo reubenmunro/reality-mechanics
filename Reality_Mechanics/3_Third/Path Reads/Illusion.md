@@ -32,6 +32,8 @@ status: stable
 
 The readable mismatch between presented appearance and retraceable support — where what is visible carries influence that retrace cannot follow.
 
+Illusion is held by [[Enchantment]], [[Visibility]], and [[Retrace Read|Retrace]]. Influence must alter readability, something must appear visible, and retrace must be available as the check before the mismatch can be read as illusion rather than ordinary error.
+
 ## Places
 
 Illusion places the readable mismatch between presented appearance and retraceable support — where what is visible carries influence that retrace cannot follow.

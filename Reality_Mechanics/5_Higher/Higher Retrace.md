@@ -37,6 +37,8 @@ status: stable
 
 Participation through a trace to recover the dependency path.
 
+Higher Retrace is held by [[Higher Recognition|Recognition]].
+
 ## Places
 
 Higher Retrace places participation through a trace to recover the dependency path.

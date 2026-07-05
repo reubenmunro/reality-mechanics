@@ -41,6 +41,8 @@ aliases:
 
 The operational conditions that must hold for Atlas Oracle to run without drifting from bounded carrying into unbounded AI use.
 
+Oracle Carrying Conditions is held by [[Atlas Oracle]], [[AI Participation]], [[Check]], [[Care-Control Check]], [[Carried Condition]], and [[Generate and Regenerate]].
+
 Governance is not placed outside the operation. It is carried inside the operation.
 
 If the conditions do not hold, the Oracle does not run as Oracle.

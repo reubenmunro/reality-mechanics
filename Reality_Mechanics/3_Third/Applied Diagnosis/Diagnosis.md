@@ -35,6 +35,8 @@ status: stable
 
 An applied read that traces an unresolved condition back through dependency order to locate where readability, carrying, or resolution has become unavailable.
 
+Diagnosis is held by [[Applied Read]], [[Structural Disorder]], [[Dependency Order]], and [[Closure Scope]].
+
 ## Places
 
 Diagnosis places an applied read that traces an unresolved condition back through dependency order to locate where readability, carrying, or resolution has become unavailable.

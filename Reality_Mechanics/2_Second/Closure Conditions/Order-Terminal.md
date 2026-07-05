@@ -29,6 +29,8 @@ status: stable
 
 Terminality relative to an order — the point where a readable length completes within its order and cannot continue as the same read.
 
+Order-terminal is held by [[Term]], [[Thread]], and [[Terminal]]. A term carries a readable length; thread carries the continuity of the read through that length; terminal names the limit of readability at the current closure scope.
+
 A term carries a readable length of relation. [[Terminal]] names where a current read stops because continuation crosses a closure scope the read cannot follow. Order-terminal marks the term-position where a thread through an order completes enough that continuation cannot remain the same read.
 
 Order-terminal does not end relation. What continues must be re-entered, restarted, or lifted into another order.

@@ -34,6 +34,8 @@ status: stable
 
 Altered readability through influence — the condition where influence changes how something is read so that participation is drawn, constrained, heightened, or misread through that altered read.
 
+Enchantment is held by [[Influence]] and [[Readability]]. Influence must be present and readability must be alterable before enchantment can be read as distinct from ordinary influence or ordinary appearance.
+
 ## Places
 
 Enchantment places altered readability through influence — the condition where influence changes how something is read so that participation is drawn, constrained, heightened, or misread through that altered read.

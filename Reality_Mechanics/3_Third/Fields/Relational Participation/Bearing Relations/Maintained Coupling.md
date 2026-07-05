@@ -35,6 +35,8 @@ status: stable
 
 The condition through which distinct coupled relation is held stable through recurrence — coupling that sustains across encounters and strain.
 
+Maintained Coupling is held by [[Coupling]], [[Bearing]], [[Recurrence]], and [[Compatibility]]. Coupling must be present, bearing must hold it, recurrence must establish the pattern, and the coupling must remain compatible before coupling can be read as maintained.
+
 ## Places
 
 Maintained Coupling places the condition through which distinct coupled relation is held stable through recurrence — coupling that sustains across encounters and strain.

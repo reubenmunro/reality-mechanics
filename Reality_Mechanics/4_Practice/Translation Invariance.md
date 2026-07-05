@@ -36,6 +36,8 @@ status: stable
 
 The practice test by which Atlas structure is varied in expression and checked for recoverable dependency order.
 
+Translation Invariance is held by [[Atlas]], [[Root Order]], [[Term]], [[Invariant]], [[Medium]], and [[Translation Boundary]]. A mapped order, structurally placed interpretations, variation, carriers, and a crossing between forms must be available before preservation across translation can be tested.
+
 The Atlas is not identical to its words, signs, notes, or other inscriptions. These are carriers. A [[Term]] is a structurally placed interpretation carried through them. Translation Invariance tests whether that placement remains recoverable when the carrier changes.
 
 The test does not assume that every medium can preserve every feature. [[Medium]] shapes what can pass through it, and a [[Translation Boundary]] marks where carrying must enter local terms. Translation Invariance therefore asks what remains recoverable through the change, what becomes newly visible, and what is lost.

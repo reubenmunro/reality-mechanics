@@ -41,6 +41,8 @@ status: stable
 
 The located limit at which a participant, practice, or domain can distinguish what it can compatibly carry from what it cannot — the closure scope of traceable carrying.
 
+Competence Boundary is held by [[Knowledge]], [[Boundary]], [[Compatibility]], [[Reality Check]], [[Bearing Source]], [[Know]], and [[Responsibility]]. Carrying must be traceable, responsibility must remain answerable to its bearing source, and compatibility must be evaluable before the limit of competent carrying can be named.
+
 ## Places
 
 Competence Boundary places the located limit at which a participant, practice, or domain can distinguish what it can compatibly carry from what it cannot — the closure scope of traceable carrying.

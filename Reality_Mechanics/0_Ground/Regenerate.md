@@ -32,6 +32,8 @@ status: stable
 
 The structural condition of returning to generative conditions — recovering the trace to the originating source from within carrying that has lost it.
 
+Regenerate is held by [[Generic]] and [[Degenerate]]. A generative source must be operative and its loss must be nameable before the return to that source can be placed.
+
 Regenerate is recovery, not replacement. The carrying does not stop; the trace to what carries the carrying is restored.
 
 As an order-generation read, regeneration is recurrence in carrying form: prior carrying returns to generative conditions strongly enough to become a bounded rule for new carrying.

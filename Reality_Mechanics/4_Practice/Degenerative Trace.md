@@ -35,13 +35,13 @@ status: working
 
 The trace of where carrying continued while contact with its generating order was lost.
 
+Degenerative Trace is held by [[Trace]], [[Degenerate]], [[Carrying]], [[Source Drift]], and [[Regenerate]].
+
 It is not merely a missing trace. It is the readable path of trace-loss inside continuing carrying.
 
 The core read is:
 
-```text
-Degenerative Trace locates where carrying continued after losing contact with what generated it.
-```
+```text Degenerative Trace locates where carrying continued after losing contact with what generated it. ```
 
 ## Places
 

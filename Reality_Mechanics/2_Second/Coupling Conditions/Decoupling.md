@@ -30,6 +30,8 @@ status: stable
 
 Coupling no longer holding a coupled boundary as mutual availability.
 
+Decoupling is held by [[Coupled Boundary]], [[Boundary Loosening]], and [[Release]].
+
 ## Places
 
 Decoupling places coupling no longer holding a coupled boundary as mutual availability.

@@ -29,6 +29,8 @@ status: stable
 
 A read being assessed within a closure scope.
 
+Evaluation is held by [[Closure Scope]].
+
 ## Places
 
 Evaluation places a read being assessed within a closure scope.

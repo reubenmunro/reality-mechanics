@@ -36,6 +36,8 @@ status: stable
 
 The recurring field of participation through which bearing, care, harm, repair, trust, violation, and maintained coupling become readable between participants.
 
+Relational Participation Field is held by [[Field of Participation]], [[Organic Field]], [[Bearing Relation]], and [[Coupling]]. [[Bearing Relations]] and [[Safety]] nest as later field reads; they do not hold the field that carries them.
+
 ## Places
 
 Relational Participation Field places a recurring field of participation.

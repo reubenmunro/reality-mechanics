@@ -35,6 +35,8 @@ status: stable
 
 The first room relation needs to remain readable as relation — held separation before any boundary is drawn.
 
+Clearance is held by [[Relation]] and [[Clear]]: relation must hold, and it must be readable enough for separation to become clearance rather than vague absence.
+
 Space and time are not first containers. They are first reads of clearance. [[Space]] reads clearance as separation, extent, or placement. [[Time]] reads clearance as interval, continuation, or rate. [[Resolution]] reads what changes across that held difference.
 
 ## Places

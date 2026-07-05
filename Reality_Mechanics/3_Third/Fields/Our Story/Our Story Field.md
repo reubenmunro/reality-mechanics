@@ -34,6 +34,8 @@ status: stable
 
 The recurring field of participation through which prior carrying is held, passed forward, and improved — the structural field for inheritance, memory, retrace, and carried continuation.
 
+Our Story Field is held by [[Field of Participation]], [[Organic Field]], and [[Our Story]]. [[Inheritance]] and [[Carrying Better]] nest as later reads; they do not hold the field that carries them.
+
 ## Places
 
 Our Story Field places a recurring field of participation.

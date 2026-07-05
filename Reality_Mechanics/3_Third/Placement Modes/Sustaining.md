@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through continuation, maintenance, or recovery of carrying — where what matters is keeping a condition going without losing compatibility.
 
+Sustaining is held by [[Placement Mode]], [[Carrying]], [[Recurrence]], and [[Compatibility]]. A mode of participation must exist, carrying must be ongoing, recurrence must show the condition holding over time, and compatibility must be preservable before continuation can be placed as the primary mode.
+
 ## Places
 
 Sustaining places the mode where participation is primarily carried through continuation, maintenance, or recovery of carrying — where what matters is keeping a condition going without losing compatibility.

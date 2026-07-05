@@ -30,6 +30,8 @@ status: stable
 
 The forward availability of held connection.
 
+Carry is held by [[Hold]] and [[Connection]]. Connection must remain held for forward passage through it to be available — Hold does not finish before Carry begins; Carry is held support becoming available beyond itself.
+
 Carry is not yet [[Carrying]]. Carry names the passage connection offers where relation is held enough for forward availability to remain traceable. Carrying names movement through that passage. A connection may offer carry whether or not a participant, process, or condition is presently carrying through it.
 
 Carry does not require the connected condition to remain unchanged. It only names forward availability through the connection.

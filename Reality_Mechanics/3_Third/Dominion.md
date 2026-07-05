@@ -35,6 +35,8 @@ status: stable
 
 Bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain.
 
+Dominion is held by [[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named.
+
 Dominion is not domination. Dominion is authority under obligation: the domain is not merely available to be used, extracted, or directed. It must remain cared for according to the conditions that let it continue carrying.
 
 This is why dominion belongs after care rather than before it. Control has a place, but only where it serves the availability care preserves.

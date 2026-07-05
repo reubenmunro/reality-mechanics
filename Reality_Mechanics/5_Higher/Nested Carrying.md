@@ -32,6 +32,8 @@ status: stable
 
 Nesting actively carrying participation — where prior organisation bears later participation rather than merely being available within it.
 
+Nested Carrying is held by [[Recursion]] and [[Carrying]]. Recursion must be operative — the nested organisation must have developed the capacity to return into its own carrying — before that carrying can become active as bearing.
+
 The distinction matters. [[Nesting]] is the structural condition: prior is available within later. Nested Carrying is that condition becoming operative as function: the prior is not just available, it is bearing. A model represents prior organisation. Nested Carrying carries it.
 
 This is the same structural movement as [[Asymmetry]] becoming [[Bearing]]. Asymmetry names the structural difference that makes relation directional — the condition that makes bearing possible. Bearing names that asymmetry becoming operative: actually doing the carrying work. Nesting names the structural condition where prior organisation is available within later. Nested Carrying names that condition becoming operative: the prior is now bearing the later.

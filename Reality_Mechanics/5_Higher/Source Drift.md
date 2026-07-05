@@ -35,6 +35,8 @@ status: stable
 
 The higher-order disorder where nested carrying is mistaken for source.
 
+Source Drift is held by [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]].
+
 Source Drift does not occur because a structure is nested, elevated, abstract, engineered, or powerful. It occurs where the structure carrying participation is read as what ultimately bears that participation, so retrace stops at the carried structure rather than recovering what actually bears it.
 
 ## Places

@@ -46,6 +46,8 @@ status: stable
 
 Connected relation — distinct resolved conditions held in mutual availability without collapsing into sameness.
 
+Coupling is held by [[Resolved Asymmetry]] and [[Carrying]]. Distinct conditions must be determined and carried enough to become mutually available.
+
 Coupled relation connects. Contact can meet without coupling; a link can point without bearing; a category can group without participation. Coupling holds distinct resolved conditions in mutual availability so that relation can become locally present, answerable, and able to participate.
 
 ## Places

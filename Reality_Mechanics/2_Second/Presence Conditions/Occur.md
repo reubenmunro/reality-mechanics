@@ -31,6 +31,8 @@ status: stable
 
 Presence taking place within a closure scope.
 
+Occur is held by [[Presence]] and [[Closure Scope]].
+
 Occur does not name recurrence, sequence, process, or event by itself. Recurrence requires occurring again. Sequence requires ordered traversal. Process requires a carried sequence. Scene gathers occurrence into a bounded field of what is happening here.
 
 An occurrence may precede [[Notice]] in lived sequence, but the term Occur names taking-place once presence can be read within scope.

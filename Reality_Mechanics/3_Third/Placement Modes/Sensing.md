@@ -31,6 +31,8 @@ status: stable
 
 The mode where participation is primarily carried through detection of local difference — where available conditions become readable through what a body, field, or environment presents to the participant.
 
+Sensing is held by [[Placement Mode]], [[Availability]], and [[Bearing]]. A mode of participation must exist, local conditions must be available, and bearing must be present as a detectable difference before local detection can be placed as the primary mode.
+
 Where availability names what becomes present enough to participate in evaluation, sensing names the placement mode through which local differences in body, field, or environment become available as readable conditions.
 
 ## Places

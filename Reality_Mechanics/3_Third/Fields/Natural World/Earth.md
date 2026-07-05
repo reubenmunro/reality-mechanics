@@ -33,6 +33,8 @@ status: stable
 
 The natural world body within which human participation becomes materially, ecologically, atmospherically, historically, and protectively carried.
 
+Earth is held by [[Natural World]], [[World]], and [[Carrying]].
+
 Earth is not the setting of human activity. Earth is the carrying boundary that keeps human activity possible. Its atmosphere, gravity, water, soil, weather, life systems, and shielding conditions hold exposure within survivable limits. Every built shelter is nested inside this prior shelter.
 
 Historic names preserve inherited reads of Earth. Gaia reads Earth as living and generative carrier. Terra and Tellus read Earth as material ground, land-body, and mother-body. Geo preserves Earth as ground made readable through place, measure, form, and description. These names are not separate sources in the Atlas; they are language traces of how Earth has been faced and carried through human history.

@@ -31,6 +31,8 @@ status: stable
 
 The protected source condition from which the Reality Mechanics system is organised.
 
+Root System is held by [[Relation]], [[Root Order]], and [[Invariant]].
+
 It protects source structure without becoming produced content.
 
 This note defines the protected condition that keeps the system anchored to its dependency path.

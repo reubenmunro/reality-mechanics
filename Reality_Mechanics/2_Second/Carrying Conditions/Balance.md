@@ -34,6 +34,8 @@ status: stable
 
 Compatible regulation of pressure between retain and release.
 
+Balance is held by [[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named.
+
 Balance is not stillness, symmetry, equality, or equal amount. It may be dynamic, uneven, rhythmic, responsive, and continuously adjusting. A body balancing, a building carrying load, a relationship bearing strain, or a mind returning to ground all show balance where pressure remains regulated enough for relation to continue.
 
 ## Places

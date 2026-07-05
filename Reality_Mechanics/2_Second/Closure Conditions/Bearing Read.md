@@ -26,6 +26,8 @@ status: stable
 
 The class of second-order produced reads through which bearing becomes readable in specific ways — as presented, visible, invisible, divisible, or indivisible.
 
+Bearing Read is held by [[Bearing]].
+
 ## Places
 
 Bearing Read places the class of second-order produced reads through which bearing becomes readable in specific ways — as presented, visible, invisible, divisible, or indivisible.

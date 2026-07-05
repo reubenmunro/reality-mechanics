@@ -33,6 +33,8 @@ status: stable
 
 The applied read where repair is attempted but addresses the wrong scope, condition, or bearing gap — restoration that misses where it needs to land.
 
+Repair Mismatch is held by [[Applied Read]], [[Repair]], [[Misrepair]], and [[Closure Scope]].
+
 ## Places
 
 Repair Mismatch places the applied read where repair is attempted but addresses the wrong scope, condition, or bearing gap — restoration that misses where it needs to land.

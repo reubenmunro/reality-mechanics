@@ -28,6 +28,8 @@ status: stable
 
 Held clearance as interval and continuation — relation persisting without collapsing into absolute self-sameness.
 
+Time is held by [[Clearance]]. Relation must remain apart enough to continue without collapsing into static sameness.
+
 Downstream, time becomes readable as the rate and scale at which an order resolves. Different systems do not have different kinds of time first; they resolve held clearance at different rates and scales of order.
 
 Recurring relation can make time measurable without producing Time. At human scale, temporal awareness is resolution-dependent: continuity may be carrying without being distinctly noticed, while [[Return]] provides a boundary at which that continuity becomes readable again. [[Cycle]] bounds the return, and [[Frequency]] counts returns per interval. These are downstream human-scale reads of Time, not replacements for its first-order placement.

@@ -37,6 +37,8 @@ status: stable
 
 Sustained presence with what has been noticed and entered.
 
+Attend is held by [[Notice]], [[Enter]], and [[Availability]].
+
 Attend comes before judgment, closure, or explanation. It keeps contact open without forcing the condition to resolve before its difference can be read.
 
 ## Places

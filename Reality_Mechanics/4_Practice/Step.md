@@ -33,6 +33,8 @@ status: stable
 
 The smallest answerable movement opened by a read.
 
+Step is held by [[Read]], [[Trace]], [[Carrying]], and [[Practice]].
+
 Step is carrying made local as movement: the first placed movement by which a read enters practice while remaining answerable to dependency. It may support progress, but it does not require progress or completion.
 
 ## Places

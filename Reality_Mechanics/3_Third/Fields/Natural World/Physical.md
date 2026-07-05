@@ -38,6 +38,8 @@ status: stable
 
 The third-order field read where material and field conditions become readable as structural — where boundary, availability, and readability become evaluable in the natural world.
 
+Physical is held by [[Natural World Field]], [[Relation Read]], [[Boundary]], [[Availability]], [[Readability]], and [[Natural World]]. Boundary must locate material distinction and readability must be present before natural conditions can be named as physical field reads.
+
 This note defines the physical component used by compounds such as [[Physical Space]] and [[Physical Field Conditions]].
 
 ## Places

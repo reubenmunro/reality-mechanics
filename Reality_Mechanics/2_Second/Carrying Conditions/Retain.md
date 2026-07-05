@@ -34,6 +34,8 @@ status: stable
 
 Pressure kept within a carrying relation.
 
+Retain is held by [[Pressure]], [[Carrying]], [[Compatibility]], and [[Hold]]. Pressure must be locally borne, carrying must remain available, and holding must remain compatible before pressure can be read as retained.
+
 Retain is not the same as [[Hold]]. Hold is a first-order resolution mode: a resolved condition remains supportable as the same condition. Retain is second-order carrying regulation: pressure remains kept inside a carrying relation after it has become locally borne.
 
 ## Places

@@ -27,6 +27,8 @@ status: stable
 
 Resolved asymmetry held between coupled conditions.
 
+Coupled Asymmetry is held by [[Resolved Asymmetry]] and [[Coupling]]. Asymmetry must be determined, and conditions must be held in relation, before unevenness can persist through coupling.
+
 ## Places
 
 Coupled Asymmetry places resolved asymmetry held between coupled conditions.

@@ -25,6 +25,8 @@ status: stable
 
 The class of first-order conditions that act on located distinction — locating, making available, straining, bearing, and resolving.
 
+Operational Condition is held by [[Bounded Asymmetry]]. Distinction must be local enough before operations can locate, make available, strain, bear, or resolve it.
+
 ## Places
 
 Operational Condition places the class of first-order conditions that act on located distinction.

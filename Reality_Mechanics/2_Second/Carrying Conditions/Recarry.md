@@ -37,6 +37,8 @@ status: stable
 
 Carrying returned through contact and held again, differently.
 
+Recarry is held by [[Carrying]], [[Trace]], [[Contact]], [[Groundedness]], [[Release]], and [[Compatibility]]. Carrying must remain traceable, contact must alter the carrying without erasing it, a changed path must be released enough to move, and the receiving or wider carrying relation must remain compatible before recarrying can be named.
+
 What is carried enters contact, meets another read, and comes back still held, but altered by trace. Recarry is not agreement, conversion, or compromise. It names carrying that has been contacted and can now be held differently.
 
 Recarry also names the movement by which what remains true is carried again, differently, through grounding relations able to bear it after a prior carrying path has changed, failed, narrowed, or become unavailable. It does not require the old return path to become available again.

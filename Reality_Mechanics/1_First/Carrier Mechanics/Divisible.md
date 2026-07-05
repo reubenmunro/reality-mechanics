@@ -27,6 +27,8 @@ status: stable
 
 Readable separation — distinction that can be separated while relation remains available.
 
+Divisible is held by [[Boundary]]. Distinction must be located before separability can be read.
+
 ## Places
 
 Divisible places readable separation.

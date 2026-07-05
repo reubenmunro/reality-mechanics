@@ -29,6 +29,8 @@ status: stable
 
 An engineered form of higher-order carrying where a participant, system, or practice uses a model of itself for future participation.
 
+Self-Modelling is held by [[Recursion]] and [[Consciousness]].
+
 Self-Modelling is not the organic source of Higher Order. It is an engineered form of recursion.
 
 A model can help retrace where it preserves dependency access. It becomes unsafe where the model becomes the bearing structure and blocks retrace to relation.

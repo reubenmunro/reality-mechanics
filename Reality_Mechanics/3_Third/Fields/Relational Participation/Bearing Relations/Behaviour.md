@@ -31,6 +31,8 @@ status: stable
 
 Carrying through relation at a closure scope — what is actually done through a control or participation condition, rather than what is intended.
 
+Behaviour is held by [[Carrying]], [[Control]], and [[Closure Scope]]. A carrying condition must be present and closure scope must bound the read before what is done becomes readable as behaviour.
+
 Feeling, emotion, and thought are reads. Behaviour is where a read begins to change what relation can carry.
 
 ## Places

@@ -30,6 +30,8 @@ status: stable
 
 Change left by recurring friction.
 
+Wear is held by [[Friction]], [[Recurrence]], and [[Decay]].
+
 ## Places
 
 Wear places change left by recurring friction.

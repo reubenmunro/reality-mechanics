@@ -29,6 +29,8 @@ status: stable
 
 A coupled boundary becoming less tightly held while the coupling has not yet fully broken.
 
+Boundary Loosening is held by [[Coupled Boundary]] and [[Compatibility]].
+
 ## Places
 
 Boundary Loosening places a coupled boundary becoming less tightly held while the coupling has not yet fully broken.

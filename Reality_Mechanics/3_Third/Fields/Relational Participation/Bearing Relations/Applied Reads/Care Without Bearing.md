@@ -35,6 +35,8 @@ status: stable
 
 The applied read of care whose preservation of availability cannot sustain bearing at the relevant closure scope.
 
+Care Without Bearing is held by [[Applied Read]], [[Care]], [[Neglect]], [[Closure Scope]], and [[Thin Carrying]].
+
 ## Places
 
 Care Without Bearing places the applied read of care whose preservation of availability cannot sustain bearing at the relevant closure scope.

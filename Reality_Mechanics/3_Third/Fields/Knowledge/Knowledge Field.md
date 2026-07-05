@@ -41,6 +41,8 @@ status: stable
 
 The recurring field of participation through which carried knowing — modelling, testing, tracing, and competence — becomes readable as organised experience.
 
+Knowledge Field is held by [[Field of Participation]], [[Organic Field]], [[Know]], [[Carrying]], [[Recurrence]], and [[Compatibility]]. [[Knowledge]] nests within this field; it does not hold the field that carries it.
+
 ## Places
 
 Knowledge Field places a recurring field of participation.

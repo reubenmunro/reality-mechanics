@@ -40,6 +40,8 @@ status: stable
 
 The coupling condition through which simultaneously sounding tones become readable as tension or rest.
 
+Harmony is held by [[Sound]], [[Coupling]], [[Resonance]], [[Strain]], [[Bearing]], and [[Melody]]. Tones must be available as sound and carried as melody before they can couple vertically into harmony — simultaneity alone does not produce harmonic relation.
+
 Dissonance is strain held within harmonic coupling. Consonance is strain reduced to a holdable form. Neither is simply pleasant or unpleasant; both are structural conditions of how tones couple and what they bear.
 
 ## Places

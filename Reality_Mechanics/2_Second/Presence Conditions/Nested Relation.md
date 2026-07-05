@@ -30,6 +30,8 @@ status: stable
 
 Asymmetrical relation — one relation participating within, and remaining ordered by, another relation.
 
+Nested Relation is held by [[Within]] and [[Nesting Read]].
+
 Nested relation orders. It names the dependency asymmetry by which one relation is carried, bounded, conditioned, or read through a wider relation: inner/outer, carried/carrier, local/wider, prior/later, term/condition, read/read-condition. Without that asymmetry, relation becomes flat connection; without connection, nesting becomes detached hierarchy.
 
 ## Places

@@ -31,6 +31,8 @@ status: stable
 
 Speed with direction through traversal.
 
+Velocity is held by [[Speed]], [[Orientation]], and [[Traversal]].
+
 ## Places
 
 Velocity places speed with direction through traversal.

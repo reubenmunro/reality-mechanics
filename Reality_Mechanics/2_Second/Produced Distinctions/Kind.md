@@ -34,6 +34,8 @@ status: stable
 
 Recurrent form recognisable across distinct instances.
 
+Kind is held by [[Form]], [[Pattern]], and [[Recognition Read|Recognition]].
+
 Category can help read kind, but kind is more than a category. A category may sort from outside; kind remains answerable to the relation by which the instances belong together. Kind preserves enough recurrence for recognition while allowing each instance to remain locally distinct.
 
 In ordinary language, kind also names a mode of care. Structurally, this preserves the sense that relation is met according to what it is: to be kind is to meet a condition without losing its kind.

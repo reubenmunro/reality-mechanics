@@ -38,6 +38,8 @@ status: stable
 
 Branch-level participation where dependent life is carried through care, boundary, teaching, repair, and ongoing relation.
 
+Parenting is held by [[Branch]], [[Care]], [[Teaching]], [[Compatibility]], [[Recognition Read]].
+
 ## Places
 
 Parenting places branch-level participation where dependent life is carried through care, boundary, teaching, repair, and ongoing relation.

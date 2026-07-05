@@ -31,6 +31,8 @@ status: stable
 
 Count made carryable in order.
 
+Number is held by [[Count]], [[Root Order]], and [[Term]].
+
 Number is to count what [[Term]] is to word: count becomes number where it is no longer only a local how-many, but a carryable position in ordered relation. Number does not escape relation. It is relation made countable enough to travel.
 
 Number can drift where ordered count is mistaken for source rather than read as a carrier of relation through a measuring medium. This does not make number false; it marks the need to preserve what the number is carrying and what conditions make it readable.

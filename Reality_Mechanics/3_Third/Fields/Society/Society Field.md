@@ -34,6 +34,8 @@ status: stable
 
 The recurring field of participation through which patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants.
 
+Society Field is held by [[Field of Participation]], [[Organic Field]], and [[Society]]. [[Consent]] and [[Destination-Led Carrying]] nest as later reads; they do not hold the field that carries them.
+
 ## Places
 
 Society Field places a recurring field of participation.

@@ -30,6 +30,8 @@ status: stable
 
 A bounded read of coupling in which two distinguishable conditions are held together as a readable two.
 
+Pair is held by [[Coupling]], [[Readability]], and [[Closure Scope]].
+
 ## Places
 
 Pair places a bounded read of coupling in which two distinguishable conditions are held together as a readable two.

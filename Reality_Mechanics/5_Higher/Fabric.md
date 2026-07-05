@@ -40,6 +40,8 @@ status: stable
 
 Relation carried as woven continuity across fields, threads, traces, and boundaries — the face of the weave as held whole.
 
+Fabric is held by [[Thread]], [[Field Relationships]], [[Nested Carrying]], [[Invisible Bearing]], [[Surface]], and [[Trace]].
+
 Fabric is the face of the weave. [[Web]] is the trace of the weave.
 
 ## Places

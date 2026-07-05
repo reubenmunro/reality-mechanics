@@ -38,6 +38,8 @@ status: stable
 
 The musical disorder read where harmonic carrying loses retrace to the tonal centre.
 
+Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Source Drift]]. Harmonic coupling must be present and active for drift to be distinguishable from mere atonality. The structural pattern of source drift — where the carrying structure is taken as the source rather than as carried — must be recognisable.
+
 Harmonic Drift is not modulation. Modulation names a tonal move that is retraceable — where a new key is established with enough structural support to carry. Harmonic drift names the condition where the move cannot be retraced and the tonal ground is lost.
 
 ## Places

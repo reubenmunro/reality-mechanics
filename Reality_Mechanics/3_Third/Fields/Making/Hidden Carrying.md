@@ -38,6 +38,8 @@ status: stable
 
 The condition through which a made arrangement carries dependencies that are displaced, obscured, or unaccounted — carrying whose structural load is present but not surfaced.
 
+Hidden Carrying is held by [[Carrying]], [[Making Field]], [[Invisible]], [[Dependency]], and [[Terms of Service]]. Carrying must proceed and a dependency must be present but unsurfaced before the displaced structural load can be named as hidden.
+
 ## Places
 
 Hidden Carrying places the condition through which a made arrangement carries dependencies that are displaced, obscured, or unaccounted — carrying whose structural load is present but not surfaced.

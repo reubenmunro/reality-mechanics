@@ -32,6 +32,8 @@ status: stable
 
 The third-order field where living carrying — recursive regulation, sustained coupling, and renewed availability — becomes readable as a structural condition.
 
+Life is held by [[Branch]], [[Natural Order]], and [[Sustenance]]. Natural order must structure recursive availability and sustenance must renew carrying before the living condition can be named.
+
 This note places living coupling as a third-order life branch without making biological mechanism source authority.
 
 ## Places

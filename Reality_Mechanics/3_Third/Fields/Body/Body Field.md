@@ -39,6 +39,8 @@ status: stable
 
 The recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, and feeling — become readable as organised embodied experience.
 
+Body Field is held by [[Field of Participation]], [[Organic Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Field of Participation must structure a recurring scope and embodied structural conditions must be readable before the body field can be named. [[Body]] nests within this field; it does not hold the field that carries it.
+
 ## Places
 
 Body Field places a recurring field of participation.

@@ -35,6 +35,8 @@ status: stable
 
 The traceable thread of bearing carried through sequential sound.
 
+Melody is held by [[Sound]], [[Thread]], and [[Musical Rhythm]]. A followable line requires audible carrying, followable continuity, and temporal structure to carry it forward. Harmony becomes available once melody carries tones into simultaneous relation.
+
 Melody is not a list of pitches. It is a line that carries. What makes a sequence of tones a melody is that it holds bearing through movement — that each note is readable as part of the same line rather than as an isolated event.
 
 ## Places

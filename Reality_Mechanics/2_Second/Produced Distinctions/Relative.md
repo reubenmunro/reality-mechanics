@@ -39,6 +39,8 @@ status: stable
 
 A read placed through relation, ratio, and reference frame.
 
+Relative is held by [[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, ratio must make comparison readable, the reference frame must be explicit, boundary must locate the read, scope and scale must be locatable, and the condition must be readable.
+
 Relative does not mean unreal, arbitrary, or merely subjective. It means placed. A relative read is answerable to the relation, ratio, reference frame, scope, scale, and carrying conditions through which it becomes readable.
 
 The question is not whether something is only relative. The question is: relative to what, through what ratio, in what reference frame, and within what scope?

@@ -31,6 +31,8 @@ status: stable
 
 Bearing that moves compatibly across participation — the condition through which what is borne can be carried back, responded to, or returned within a participation scope.
 
+Reciprocity is held by [[Bearing]] and [[Participation]]. Bearing must be present and active participation must be in scope before bearing moving across participation can be read as reciprocal.
+
 ## Places
 
 Reciprocity places bearing that moves compatibly across participation — the condition through which what is borne can be carried back, responded to, or returned within a participation scope.

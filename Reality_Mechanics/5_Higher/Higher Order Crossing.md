@@ -34,6 +34,8 @@ status: working
 
 The threshold where organised carrying offers its trace to practice and a participant may enter it through retracing.
 
+Higher Order Crossing is held by [[Higher Order]], [[Recursion]], [[Invisible Bearing]], and [[Retrace Read|Retrace]].
+
 At [[Higher Order]], the invisible carrier at every structural level becomes readable. Cross-order patterns such as [[Generic]], [[Degenerate]], [[Regenerate]], organic/engineered organisation, [[Recursion]], [[Thread]], [[Invisible Bearing]], and [[Hidden Bearing]] become navigable from this register.
 
 Recognition that does not cross back into practice becomes the Higher Order form of [[Degenerate]]: accumulated structure carrying forward while the trace to what generated the recognition is dropped. The seeing continues; the answerability does not.

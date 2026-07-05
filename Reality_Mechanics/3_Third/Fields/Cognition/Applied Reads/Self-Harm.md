@@ -37,6 +37,8 @@ status: stable
 
 The applied read of a closure scope where self-bearing fails and carrying turns against the self's own available conditions.
 
+Self-Harm is held by [[Applied Read]], [[Self-Bearing]], [[Self-Control]], [[Harm]], [[Injury]], and [[Collapse]]. Self-bearing must have failed and the resulting carrying must proceed incompatibly before the condition can be read as self-harm.
+
 It is a lack or collapse of available self-bearing, not a moral failure.
 
 ## Places

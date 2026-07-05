@@ -31,6 +31,8 @@ status: working
 
 The distinction between recognisability, consequence, trace, and cause-read.
 
+Read and Effect is held by [[Read]], [[Effect]], and [[Trace]]. A condition must be recognisable, its consequence distinguishable, and the path back through carrying conditions traceable before a cause-read can be assigned.
+
 A read names how a condition becomes recognisable; an effect names what follows from that condition; cause-read is the traced account through which an effect becomes explainable.
 
 [[Read]] is not [[Effect]]. Read names recognisable presentation within a scope. Effect names a carried consequence: what follows when a condition operates through coupling, carrying, or contact. Cause is not the same as either read or effect, and it is not a first-order acting thing. Cause remains subordinate to [[Trace]]: it is a cause-read assigned after an effect is traced back through the carrying conditions that make it explainable.

@@ -35,6 +35,8 @@ status: stable
 
 The applied read where repair restores surface coherence without restoring compatible bearing — proceeding that appears repaired while the underlying condition remains unrestored.
 
+Surface Patch is held by [[Applied Read]], [[Surface]], [[Misrepair]], [[Repair Mismatch]], and [[Closure Scope]].
+
 ## Places
 
 Surface Patch places the applied read where repair restores surface coherence without restoring compatible bearing — proceeding that appears repaired while the underlying condition remains unrestored.

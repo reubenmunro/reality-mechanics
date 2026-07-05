@@ -35,6 +35,8 @@ status: stable
 
 The local case where parental care must locate a boundary that preserves availability without forcing dependence.
 
+Parenting Boundary is held by [[Applied Read]], [[Parenting]], [[Boundary]], [[Care]], [[Closure Scope]].
+
 ## Places
 
 Parenting Boundary places the local case where parental care must locate a boundary that preserves availability without forcing dependence.

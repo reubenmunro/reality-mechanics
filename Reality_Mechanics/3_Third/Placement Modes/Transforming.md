@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through change of form, function, condition, or arrangement — where what is carried becomes otherwise while remaining traceable through what changed.
 
+Transforming is held by [[Placement Mode]], [[Form]], [[Function]], and [[Carrying]]. A mode of participation must exist, form and function must be present, and carrying must persist through the change before alteration can be placed as the primary mode.
+
 ## Places
 
 Transforming places the mode where participation is primarily carried through change of form, function, condition, or arrangement — where what is carried becomes otherwise while remaining traceable through what changed.

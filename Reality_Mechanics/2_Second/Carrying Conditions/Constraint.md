@@ -36,6 +36,8 @@ status: stable
 
 Availability bounded through carrying.
 
+Constraint is held by [[Bearing]] and [[Carrying]].
+
 ## Places
 
 Constraint places availability bounded through carrying.

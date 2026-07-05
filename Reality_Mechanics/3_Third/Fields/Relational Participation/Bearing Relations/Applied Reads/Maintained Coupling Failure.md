@@ -33,6 +33,8 @@ status: stable
 
 The applied read where maintained coupling loses its stability at a closure scope — where the condition of held distinct relation fails to sustain.
 
+Maintained Coupling Failure is held by [[Applied Read]], [[Maintained Coupling]], [[Stability]], and [[Closure Scope]].
+
 ## Places
 
 Maintained Coupling Failure places the applied read where maintained coupling loses its stability at a closure scope — where the condition of held distinct relation fails to sustain.

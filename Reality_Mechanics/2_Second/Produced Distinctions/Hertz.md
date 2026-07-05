@@ -28,6 +28,8 @@ status: stable
 
 Frequency measured as counted returns per second.
 
+Hertz is held by [[Frequency]] and [[Unit]].
+
 This is an Atlas readability account of what makes a recurrence countable. It does not replace the physical definition or metrology of hertz.
 
 ## Places

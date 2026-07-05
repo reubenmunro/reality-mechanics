@@ -34,6 +34,8 @@ status: stable
 
 Dominion failed into control detached from care.
 
+Domination is held by [[Dominion]], [[Control]], [[Care]], [[Violation]], and [[Harm]]. Dominion must be the claimed authority, control must proceed, care must be absent or overridden, and incompatible carrying must damage available bearing before domination can be named.
+
 Domination is not authority as such. It is authority that no longer remains answerable to the domain it claims to govern. The domain, body, field, relation, or participant is treated as available for direction, extraction, or override while the carrying conditions that make it available are ignored or damaged.
 
 ## Places

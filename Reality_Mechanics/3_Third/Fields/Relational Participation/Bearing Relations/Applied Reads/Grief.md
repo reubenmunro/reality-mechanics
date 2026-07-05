@@ -53,6 +53,8 @@ status: stable
 
 The applied relational read where load concentrates as pressure because a relation continues to carry after its familiar face of return has crossed a terminal boundary.
 
+Grief is held by [[Applied Read]], [[Relation]], [[Load]], [[Pressure]], [[Retain]], [[Release]], [[Balance]], [[Capacity]], [[Carrying]], [[Trace]], [[Groundedness]], [[Return]], [[Terminal]], and [[Face]]. Relation must have carried, a face of return must have been available, terminal change must alter that return, and the resulting pressure must remain traceable before grief can be read structurally.
+
 Grief is not failed letting go, and it is not automatically ungrounded. It is often grounded in a real relation. What has changed is the return condition: the relation continues to carry, but the familiar face through which it answered back can no longer re-enter the prior scope in the same way.
 
 If grief is read as [[Load]], the structural movement is not to remove the load. It is to trace the load to the relation that grounded it, then let carrying redistribute without losing what was true.

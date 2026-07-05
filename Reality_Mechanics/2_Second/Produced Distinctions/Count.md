@@ -30,6 +30,8 @@ status: stable
 
 Recurrence held as how many through distinguishable units.
 
+Count is held by [[Recurrence]] and [[Unit]].
+
 Count is not number by itself. Number may stabilise a count as a value, but count names the relation becoming readable as how many. Count also does not name measure by itself; measure compares a read against a unit or scale. Count depends on repeatable units; it does not ground them.
 
 Count relates to [[Step]] where movement recurs as distinguishable units. A step may be counted, but step names answerable movement; count names the repeated units held as quantity.

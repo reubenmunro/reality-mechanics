@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through direction, constraint, rule, or maintained order — where a scope is organised by decisions that limit or coordinate what can happen within it.
 
+Governing is held by [[Placement Mode]], [[Constraint]], [[Closure Scope]], and [[Resolution]]. A mode of participation must exist, constraint must be operable, a scope must be bounded, and resolution must be available before direction and order can be placed as the primary mode.
+
 ## Places
 
 Governing places the mode where participation is primarily carried through direction, constraint, rule, or maintained order — where a scope is organised by decisions that limit or coordinate what can happen within it.

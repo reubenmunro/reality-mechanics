@@ -39,6 +39,8 @@ status: stable
 
 The applied read where intervention proceeds as repair but exceeds supportable capacity at the relevant closure scope — incompatible carrying in the name of restoration.
 
+Over-Treatment is held by [[Applied Read]], [[Alive]], [[Cancer]], [[Misrepair]], [[Capacity]], [[Overload]], and [[Closure Scope]]. The alive condition must be strained and intervention must exceed compatible capacity before the incompatibility can be named as over-treatment.
+
 ## Places
 
 Over-Treatment places the applied read where intervention proceeds as repair but exceeds supportable capacity at the relevant closure scope — incompatible carrying in the name of restoration.

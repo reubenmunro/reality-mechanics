@@ -32,6 +32,8 @@ status: stable
 
 The condition through which presented distinction becomes readable.
 
+Visibility is held by [[Visible]] and [[Readability]].
+
 ## Places
 
 Visibility places the condition through which presented distinction becomes readable.

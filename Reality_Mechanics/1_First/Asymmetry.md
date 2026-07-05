@@ -28,6 +28,8 @@ status: stable
 
 The first readable unevenness within Relation — what makes distinction possible before locality or order can be read.
 
+Asymmetry is held by [[Relation]]. Relation must remain held for unevenness within relation to be readable.
+
 ## Places
 
 Asymmetry places the first readable unevenness within [[Relation]].

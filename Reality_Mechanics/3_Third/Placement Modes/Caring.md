@@ -31,6 +31,8 @@ status: stable
 
 The mode where participation is primarily carried through preserving bearing or availability — keeping what must still bear, remain accessible, or be repaired enough to continue.
 
+Caring is held by [[Placement Mode]], [[Bearing]], and [[Availability]]. A mode of participation must exist, bearing must be at stake, and availability must be preservable before caring can be placed as the primary mode.
+
 ## Places
 
 Caring places the mode where participation is primarily carried through preserving bearing or availability — keeping what must still bear, remain accessible, or be repaired enough to continue.

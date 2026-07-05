@@ -31,6 +31,8 @@ status: stable
 
 Presence holding as encounterable.
 
+Real is held by [[Be]] and [[Closure Scope]].
+
 ## Places
 
 Real places presence holding as encounterable.

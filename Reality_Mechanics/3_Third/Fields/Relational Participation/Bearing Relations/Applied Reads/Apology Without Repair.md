@@ -35,6 +35,8 @@ status: stable
 
 The applied read of a closure-scope condition where acknowledgement of harm occurs without compatible re-bearing.
 
+Apology Without Repair is held by [[Applied Read]], [[Misrepair]], [[Harm]], [[Care Without Bearing]], and [[Closure Scope]].
+
 ## Places
 
 Apology Without Repair places the applied read of a closure-scope condition where acknowledgement of harm occurs without compatible re-bearing.

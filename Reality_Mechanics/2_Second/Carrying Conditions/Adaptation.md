@@ -36,6 +36,8 @@ status: stable
 
 The capacity to keep producing complete local resolutions without requiring the larger asymmetry to collapse.
 
+Adaptation is held by [[Bounded Asymmetry]], [[Resolution]], [[Shift]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Asymmetry must remain bounded, local resolution must occur, and carrying must remain compatible across changed orientation before adaptation can be named.
+
 Adaptation is not permanent openness and not refusal of resolution. Local resolutions can be complete. The click is real. What remains open is whether the resolved relation can later be re-entered, reoriented, or carried differently without treating that later movement as a threat to what currently holds.
 
 ## Places

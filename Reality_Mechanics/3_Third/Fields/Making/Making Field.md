@@ -41,6 +41,8 @@ status: stable
 
 The recurring field of participation through which relation is carried into form — through action, material, tool, method, and craft.
 
+Making Field is held by [[Field of Participation]], [[Organic Field]], [[Making]], [[Participation]], [[Form]], and [[Carrying]]. Field of Participation must structure a recurring scope and relation must be carryable into form before the making field can be named.
+
 ## Places
 
 Making Field places a recurring field of participation.

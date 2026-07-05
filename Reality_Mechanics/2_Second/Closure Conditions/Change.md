@@ -35,6 +35,8 @@ status: stable
 
 A readable difference across traversal.
 
+Change is held by [[Traversal]] and [[Difference]].
+
 ## Places
 
 Change places a readable difference across traversal.

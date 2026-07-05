@@ -48,6 +48,8 @@ status: stable
 
 The built-domain branch where structural Atlas terms become readable as occupation, shelter, access, support, construction, documentation, and use.
 
+Architecture is held by [[Branch]], [[Place Field]], [[Boundary]], [[Bearing]], [[Constraint]], [[Closure Scope]], [[Placed Participation]].
+
 ## Places
 
 Architecture places the built-domain branch where structural Atlas terms become readable as occupation, shelter, access, support, construction, documentation, and use.

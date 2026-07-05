@@ -38,6 +38,8 @@ status: stable
 
 The local architecture case where the representation no longer carries what the built condition requires.
 
+Documentation Gap is held by [[Applied Read]], [[Architectural Documentation]], [[Surface]], [[Load-Bearing]], [[Closure Scope]], [[Thin Carrying]].
+
 ## Places
 
 Documentation Gap places the local architecture case where the representation no longer carries what the built condition requires.

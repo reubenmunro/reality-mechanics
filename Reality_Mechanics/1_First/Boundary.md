@@ -61,6 +61,8 @@ status: stable
 
 Located distinction within relation — the locating act through which unevenness becomes a readable condition.
 
+Boundary is held by [[Distinction]]. Unevenness must be distinguishable before a boundary can locate it.
+
 ## Places
 
 Boundary places located distinction within relation.

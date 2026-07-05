@@ -29,6 +29,8 @@ status: stable
 
 The physical field condition through which field-bearing availability traverses medium at the maximum compatible rate — the natural-world read of electromagnetic carrying across available field.
 
+Light is held by [[Natural World Field]] and [[Physical Field Conditions]]. Physical field conditions must hold before electromagnetic traversal can be named as light.
+
 Time is held clearance. Space is located clearance. Light is apparent clearance.
 
 ## Places

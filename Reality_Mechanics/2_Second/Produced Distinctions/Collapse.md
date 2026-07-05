@@ -31,6 +31,8 @@ status: stable
 
 A bounded carrying relation read as ceasing to hold at the current closure scope.
 
+Collapse is held by [[Dependency Disorder]] and [[Bearing]].
+
 ## Places
 
 Collapse places a bounded carrying relation read as ceasing to hold at the current closure scope.

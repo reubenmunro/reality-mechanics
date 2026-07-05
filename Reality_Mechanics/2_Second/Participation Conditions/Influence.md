@@ -33,6 +33,8 @@ status: stable
 
 One participating condition altering how another condition is read, carried, or made available.
 
+Influence is held by [[Participation]], [[Effect]], and [[Readability]].
+
 ## Places
 
 Influence places one participating condition altering how another condition is read, carried, or made available.

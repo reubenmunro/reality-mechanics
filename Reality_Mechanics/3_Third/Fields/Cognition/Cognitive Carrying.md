@@ -33,6 +33,8 @@ status: stable
 
 The condition through which a cognitive state — thought, orientation, or pattern — is continued through participation rather than discharged or discarded.
 
+Cognitive Carrying is held by [[Cognition]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Cognition must be present and bearing must hold a cognitive condition before its continuation through participation can be named.
+
 ## Places
 
 Cognitive Carrying places the condition through which a cognitive state — thought, orientation, or pattern — is continued through participation rather than discharged or discarded.

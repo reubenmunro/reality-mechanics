@@ -29,6 +29,8 @@ status: stable
 
 Representational carrying for built resolution.
 
+Architectural Documentation is held by [[Architecture]], [[Medium]].
+
 ## Places
 
 Architectural Documentation places representational carrying for built resolution.

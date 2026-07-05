@@ -29,6 +29,8 @@ status: stable
 
 Carrying continuing in participation.
 
+Live is held by [[Carrying]] and [[Participation]].
+
 ## Places
 
 Live places carrying continuing in participation.

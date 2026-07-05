@@ -27,6 +27,8 @@ status: stable
 
 An ordered traversal: reads followed through a scope in a dependency-readable arrangement.
 
+Sequence is held by [[Traversal]].
+
 ## Places
 
 Sequence places an ordered traversal: reads followed through a scope in a dependency-readable arrangement.

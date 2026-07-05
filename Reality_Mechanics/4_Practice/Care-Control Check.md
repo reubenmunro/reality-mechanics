@@ -36,6 +36,8 @@ status: working
 
 The practice check that reads what kind of force a determination generates: care, compatible control, control drift, or unresolved force.
 
+Care-Control Check is held by [[Ark Run]], [[Determination]], [[Care]], [[Control]], [[Control Drift]], and [[Check]].
+
 It is not a moral label placed on a person. It is a runtime read of generated force.
 
 ## Places

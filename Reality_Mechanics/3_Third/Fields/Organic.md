@@ -31,6 +31,8 @@ status: stable
 
 Natural Order participating.
 
+Organic is held by [[Natural Order]] and [[Participation]].
+
 ## Places
 
 Organic places Natural Order participating.

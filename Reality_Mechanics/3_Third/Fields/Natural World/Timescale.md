@@ -42,6 +42,8 @@ status: stable
 
 The condition through which carrying is evaluable across different orders of temporal extent and resolution capacity — the structural read of how carrying, life, and natural conditions become readable at different scales.
 
+Timescale is held by [[Time]], [[Readability]], [[Scale]], [[Rate]], [[Carrying]], [[Body]], [[Life Field]], and [[Natural World Field]]. Time must remain available as interval and continuation, while carrying, scale, rate, and resolution capacity make that continuation locally readable.
+
 Different organisms, bodies, cells, and ecosystems are different local readings of held clearance, not different kinds of time. Each has a native resolution capacity: a rate and scale at which order can be distinguished, integrated, carried, and responded to.
 
 Resolution is band-limited. A participant does not resolve all order; it resolves a band of order — the range of scale, rate, intensity, difference, and interval it can receive, integrate, and carry.

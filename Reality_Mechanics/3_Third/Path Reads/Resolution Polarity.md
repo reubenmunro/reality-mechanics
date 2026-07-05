@@ -34,6 +34,8 @@ status: stable
 
 The comparative read of resolution — where different conditions within a scope can be compared by how availability resolves, constrains, opens, carries invisibly, or collapses.
 
+Resolution Polarity is held by [[Resolution]], [[Polarity]], [[Availability]], and [[Closure Scope]]. Resolution must be available to read, polarity must make direction readable, availability must vary across cases, and a scope must hold them together before the comparison can be read as resolution polarity rather than thematic contrast.
+
 ## Places
 
 Resolution Polarity places the comparative read of resolution — where different conditions within a scope can be compared by how availability resolves, constrains, opens, carries invisibly, or collapses.

@@ -33,6 +33,8 @@ status: stable
 
 The structural condition where carrying continues while the generative trace is lost — where a term, pattern, or practice carries forward without remaining answerable to the source that generated it.
 
+Degenerate is held by [[Generic]] and [[Structural Disorder]]. A generative source must be operative before it can be lost, and loss of dependency readability must be nameable before its specific form as generative trace loss can be placed.
+
 Degenerate is a specific form of [[Structural Disorder]]: the structure may still function, but it carries as if its source no longer matters. What was generated begins behaving as generator.
 
 This is why [[Practice]] cannot be once-only. Every carried term, pattern, or procedure risks letting its trace become formal rather than live.

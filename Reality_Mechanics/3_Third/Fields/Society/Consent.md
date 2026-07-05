@@ -39,6 +39,8 @@ status: stable
 
 The condition through which participation is made available within a recognised boundary — the structural node where recognition, participation, and compatibility hold as permission for carrying to proceed.
 
+Consent is held by [[Society Field]], [[Boundary]], [[Recognition Read|Recognition]], [[Participation]], [[Compatibility]], [[Closure Scope]], and [[Society]]. A boundary must locate what is at stake, recognition must make it available, and compatibility must hold before permission for carrying can be named as consent.
+
 ## Places
 
 Consent places the condition through which participation is made available within a recognised boundary — the structural node where recognition, participation, and compatibility hold as permission for carrying to proceed.

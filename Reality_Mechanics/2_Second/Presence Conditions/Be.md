@@ -30,6 +30,8 @@ status: stable
 
 Presence holding.
 
+Be is held by [[Presence]].
+
 ## Places
 
 Be places presence holding.

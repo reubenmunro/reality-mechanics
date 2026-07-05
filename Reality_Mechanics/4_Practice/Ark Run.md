@@ -38,6 +38,8 @@ status: working
 
 The runtime practice by which pressure is carried through retrace, check, determination, and step without losing dependency order.
 
+Ark Run is held by [[Pressure]], [[Retrace Practice]], [[Check]], [[Determine]], [[Step]], and [[AI Participation]].
+
 It is not a replacement for the [[Atlas]]. The Atlas holds the dependency-ordered surface. Ark Run is a movement through that surface.
 
 In the [[Order Generation]] read, Ark Run is bounded carrying through dependency order: pressure moves only as far as trace, scope, and warrant can hold.
@@ -46,20 +48,11 @@ In the [[Generative Trace]] read, an Ark Run should leave enough trace for anoth
 
 The small runtime is:
 
-```text
-Pressure -> Trace -> Check -> Determine -> Step
-```
+```text Pressure -> Trace -> Check -> Determine -> Step ```
 
 As carrying postures:
 
-```text
-current posture
--> pressure unresolved
--> dependency visible
--> scope bounded
--> determination held
--> next posture
-```
+```text current posture -> pressure unresolved -> dependency visible -> scope bounded -> determination held -> next posture ```
 
 ## Places
 

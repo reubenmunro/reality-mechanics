@@ -37,6 +37,8 @@ status: stable
 
 What carrying occurs through.
 
+Medium is held by [[Carrying]], [[Participation]], and [[Allow]].
+
 A medium allows some reads while thinning or blocking others. A phone call may allow voice, tone, and timing while not allowing enough behaviour read for some relational repair.
 
 ## Places

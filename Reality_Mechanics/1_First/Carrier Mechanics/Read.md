@@ -37,6 +37,8 @@ status: stable
 
 Recognition of meaningful distinction at the current scope.
 
+Read is held by [[Trace]]. The distinction must remain followable for it to be taken up as meaningful — trace does not finish before read begins; a read may widen or recur without exhausting the trace it draws on.
+
 Read enters order; it does not create order. Once entered, read participates in what it traces: it can clarify, distort, repair, accelerate, name, measure, or alter the relation it has entered. The question is whether the read remains traceable and compatible with what carries it.
 
 ## Places

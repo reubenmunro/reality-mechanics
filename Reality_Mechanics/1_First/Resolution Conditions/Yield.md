@@ -28,6 +28,8 @@ status: stable
 
 Resolution where bearing gives under strain without fully failing.
 
+Yield is held by [[Resolution]] and [[Bearing]]. Bearing must be determined under strain before give can be read.
+
 ## Places
 
 Yield places resolution where bearing gives under strain without fully failing.

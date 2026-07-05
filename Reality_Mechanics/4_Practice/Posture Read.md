@@ -34,29 +34,19 @@ status: working
 
 A versioned order experiment that reads postulate as posture: an act of relation through which connection can become structure, clear, and clean.
 
+Posture Read is held by [[Posture]] and [[Atlas Practice]]. Posture must be available as the orientating condition, and Atlas Practice must hold the discipline that lets the experiment be traced, tested, revised, or rejected.
+
 A posture is not a proof and not a doctrine. It is how relation is held toward relation so that an order can become constructible. In this read, Euclid is useful as an exemplar because his postulates show relation entering a constructible order. Reality Mechanics does not copy geometry; it asks what kind of relational posture lets an order become traceable, comparable, correctable, and re-enterable.
 
 Posture Read is planted rather than rooted. It gives the Atlas a tended place to grow, compare, test, fail, splice, or decommission postulate experiments without mistaking the experiment for the root system.
 
 The current experimental sequence is:
 
-```text
-Connection
-Posture
-Structure
-Clear
-Clean
-```
+```text Connection Posture Structure Clear Clean ```
 
 This does not replace [[Hold]], [[Carry]], and [[Place]]. It tests whether those operations are better understood as what a posture of relation does when it begins to generate order:
 
-```text
-relation holds as connection
-connection is oriented as posture
-posture carries as structure
-structure becomes clear where it can be followed
-clear structure becomes clean where it carries without residue
-```
+```text relation holds as connection connection is oriented as posture posture carries as structure structure becomes clear where it can be followed clear structure becomes clean where it carries without residue ```
 
 ## Places
 

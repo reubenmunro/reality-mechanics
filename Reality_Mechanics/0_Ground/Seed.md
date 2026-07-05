@@ -27,6 +27,8 @@ status: stable
 
 The Ground-level relation-to-Ground: the source condition held before the dependency spine begins and recoverable in Fabric.
 
+Seed is held by [[Ground]] — present before the chain begins, requiring only the acknowledged prior in order to hold.
+
 Seed may exist without generating. Ground may exist without producing Seed. Generation begins when Seed : Ground becomes active relation.
 
 In reading order, Seed is usually recognised last. A participant begins with fruit, growth, or some completed cycle, then retraces toward the generative condition that had to already be true. [[One]] : [[Other]] is the first readable expression of that condition, not its replacement.

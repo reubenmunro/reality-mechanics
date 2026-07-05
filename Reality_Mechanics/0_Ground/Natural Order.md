@@ -34,6 +34,8 @@ status: stable
 
 Order already available within the governing arrangement — dependency readability that holds without being imposed by the read that enters it.
 
+Natural Order is held by [[Root Order]].
+
 Natural Order does not require entry by read in order to hold. A read may enter Natural Order, trace it, name it, measure it, act within it, or alter the relation it joins, but the read does not create the order it enters.
 
 ## Places

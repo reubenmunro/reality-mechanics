@@ -31,6 +31,8 @@ status: stable
 
 The closure-scope condition inside AI interaction — what the current exchange opens as usable without outrunning the participant's ability to test, carry, or retrace it.
 
+AI Availability is held by [[AI]], [[Availability]], and [[Closure Scope]] — it requires that generated possibility remain within the scope the participant can bear and evaluate.
+
 ## Places
 
 AI Availability places the closure-scope condition inside AI interaction — what the current exchange opens as usable without outrunning the participant's ability to test, carry, or retrace it.

@@ -34,6 +34,8 @@ status: stable
 
 Structural precedence within Root Order — what must already hold before another term can become available.
 
+Dependency Order is held by [[Root Order]].
+
 ## Places
 
 Dependency Order places structural precedence within Root Order. It names what the governing arrangement reveals: one term must already hold before another can become available.

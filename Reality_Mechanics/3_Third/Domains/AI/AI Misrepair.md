@@ -32,6 +32,8 @@ status: stable
 
 The disorder condition through which generated continuation preserves interaction while failing to restore compatible structural grounding — the specifically generated form of Misrepair.
 
+AI Misrepair is held by [[AI]], [[Misrepair]], and [[Disorder]] — it requires that the interaction surface remain intact while the dependency path fails to restore.
+
 ## Places
 
 AI Misrepair places the disorder condition through which generated continuation preserves interaction while failing to restore compatible structural grounding — the specifically generated form of Misrepair.

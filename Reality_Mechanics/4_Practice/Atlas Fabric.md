@@ -34,6 +34,8 @@ status: working
 
 The maintained structural read of the Atlas: foundation held, members relieved, postures placed, occlusion daylighted, and re-entry preserved.
 
+Atlas Fabric is held by [[Atlas Practice]], [[Tend]], [[Root Resilience]], and [[Posture Read]]. Atlas Practice must hold the discipline, tending must return with care, the foundation must withstand member-level work, and posture experiments must be placeable without becoming doctrine.
+
 The fabric is not decoration. It is a practice container for maintaining the Atlas as a living reasoning system rather than finished text. A structure is not kept sound by preserving every member equally. It stays sound through care, return, relief, support, decommissioning, spacing, waiting, splicing, and attention to what lets the foundation keep carrying.
 
 In the Atlas, a new read is a placement. A foundation repair is not a member edit. A member can grow, fail, occlude another member, or become useful record without rewriting the backbone. A failed posture can still teach what the order could not carry.

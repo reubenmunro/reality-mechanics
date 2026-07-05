@@ -36,6 +36,8 @@ status: stable
 
 Participated readability held in evaluation.
 
+Observation is held by [[Cognitive Participation]], [[Visibility]], [[Attend]], and [[Evaluation]]. Readable difference must be participated in, presented enough to evaluate, and attended before observation can be named.
+
 Observation can occur before recognition. A condition may be observed as difference, signal, movement, pressure, or change before it is recognised as this. Observation does not determine what is observed; it names the condition through which participated readability becomes evaluable.
 
 ## Places

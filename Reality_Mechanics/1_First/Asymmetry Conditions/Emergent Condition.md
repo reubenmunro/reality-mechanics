@@ -27,6 +27,8 @@ status: stable
 
 The class of first-order conditions that arise from within relation through asymmetry — prior to operation, arising without external cause.
 
+Emergent Condition is held by [[Asymmetry]]. Uneven relation must be readable before emergence through asymmetry can be named.
+
 ## Places
 
 Emergent Condition places the class of first-order conditions that arise from within relation through asymmetry.

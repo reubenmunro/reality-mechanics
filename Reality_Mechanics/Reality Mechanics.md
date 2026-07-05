@@ -34,6 +34,8 @@ status: stable
 
 The discipline of keeping relation traceable as order through a working postulate, grounded retrace, accumulated carrying, and answerable placement.
 
+Reality Mechanics is held by [[Ground]] and the working root named by [[Theory]]: it begins from what is acknowledged before the system derives its own terms.
+
 It begins from a working postulate: relation holds, order carries, trace places. Order becomes answerable where relation can hold, what holds can carry, and what carries can be traced back.
 
 It is the practice through which relation becomes readable, readability becomes traceable, traceability becomes answerable, and answerability returns to practice. Terms, experiences, corrections, and contributions are placed, checked, revised, and grounded according to immediate support, readable condition, and available openings.

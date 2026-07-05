@@ -33,6 +33,8 @@ status: stable
 
 The mode where participation is primarily carried through traversal, change of position, or directional proceeding — where what is carried moves through a route rather than staying situated.
 
+Moving is held by [[Placement Mode]], [[Traversal]], [[Proceed]], and [[Carrying]]. A mode of participation must exist, traversal must be available, a direction of proceeding must be readable, and carrying must persist before change of position can be placed as the primary mode.
+
 ## Places
 
 Moving places the mode where participation is primarily carried through traversal, change of position, or directional proceeding — where what is carried moves through a route rather than staying situated.

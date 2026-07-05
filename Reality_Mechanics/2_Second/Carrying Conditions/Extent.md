@@ -34,6 +34,8 @@ status: stable
 
 The reached range of carrying.
 
+Extent is held by [[Extend]], [[Carrying]], [[Boundary]], and [[Trace]]. Carrying must reach outward, the reach must be locatable, and trace must remain available before extent can be named.
+
 Where [[Extend]] names carrying outward beyond a current boundary, Extent names the range that carrying has reached. Extent does not mean universal completion. It asks how far carrying reaches before [[Scope]] bounds that reach for a read, test, or evaluation.
 
 ## Places

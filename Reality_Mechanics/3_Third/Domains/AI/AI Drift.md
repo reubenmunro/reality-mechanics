@@ -46,6 +46,8 @@ status: stable
 
 The disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence — the specifically generated form of Source Drift.
 
+AI Drift is held by [[AI]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]].
+
 ## Places
 
 AI Drift places the disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence — the specifically generated form of Source Drift.

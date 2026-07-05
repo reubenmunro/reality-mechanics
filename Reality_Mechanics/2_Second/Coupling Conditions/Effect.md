@@ -35,6 +35,8 @@ status: stable
 
 Change in one condition carried through coupling from another condition.
 
+Effect is held by [[Coupling]], [[Carrying]], and [[Change]]. Conditions must be coupled, carrying must pass through the relation, and a readable change must occur before effect can be named.
+
 Change alone does not establish effect. Two conditions may change together without one change being carried through their relation. Effect becomes available where the change remains traceable through coupling: what one condition carries alters what the other can hold, do, present, or continue.
 
 ## Places

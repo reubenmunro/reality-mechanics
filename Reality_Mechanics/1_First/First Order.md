@@ -27,6 +27,8 @@ status: working
 
 The register where relation becomes connectable, orientable as posture, and placeable enough for carry and trace to become available.
 
+First Order is held by [[Root Order]]. Its terms follow dependency arrangement rather than topic sequence.
+
 In the tree read, First Order is root structure becoming readable. It is rooted in [[Ground]] and grows toward the trunk; its work is to make later carrying possible.
 
 ## Places

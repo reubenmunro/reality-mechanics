@@ -35,6 +35,8 @@ status: stable
 
 The condition through which intake of compatible material renews available carrying — the structural read of compatible intake sustaining the body's or field's continued carrying.
 
+Nourishment is held by [[Sustenance Field]], [[Live]], [[Integration]], [[Medium]], and [[Sustenance]]. Live conditions must be present, intake must become compatibly carried through a medium, and sustenance must require renewal before nourishment can be named.
+
 ## Places
 
 Nourishment places the condition through which intake of compatible material renews available carrying — the structural read of compatible intake sustaining the body's or field's continued carrying.

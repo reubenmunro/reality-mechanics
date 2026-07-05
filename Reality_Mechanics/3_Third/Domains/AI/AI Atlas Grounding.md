@@ -37,6 +37,8 @@ status: stable
 
 The grounding practice through which current Atlas structure is used to preserve compatible proceeding and retraceable uptake during AI interaction.
 
+AI Atlas Grounding is held by [[AI]], [[AI Coupling]], and [[Retrace Practice]] — it requires maintained coupling and a retrace-capable practice to preserve compatible proceeding.
+
 ## Places
 
 AI Atlas Grounding places the grounding practice through which current Atlas structure is used to preserve compatible proceeding and retraceable uptake during AI interaction.

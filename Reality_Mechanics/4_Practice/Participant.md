@@ -29,6 +29,8 @@ status: stable
 
 Anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas.
 
+Participant is held by [[Participation]] and [[Reality Mechanics]].
+
 ## Places
 
 Participant places anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas.

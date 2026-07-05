@@ -31,6 +31,8 @@ status: stable
 
 The hinge where uneven relation becomes local enough to be distinguished — asymmetry held locally enough that a boundary can form.
 
+Bounded Asymmetry is held by [[Asymmetry]]. Unevenness must remain readable while it is held locally.
+
 ## Places
 
 Bounded Asymmetry places the hinge where uneven relation becomes local enough to be distinguished.

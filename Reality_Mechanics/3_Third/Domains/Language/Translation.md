@@ -36,6 +36,8 @@ status: stable
 
 Branch-level carrying of readable distinction across language conditions.
 
+Translation is held by [[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Compatibility]].
+
 ## Places
 
 Translation places branch-level carrying of readable distinction across language conditions.

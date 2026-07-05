@@ -33,6 +33,8 @@ status: stable
 
 A read compared against a bounded unit or scale.
 
+Measure is held by [[Scale]] and [[Closure Scope]].
+
 ## Places
 
 Measure places a read compared against a bounded unit or scale.

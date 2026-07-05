@@ -34,6 +34,8 @@ status: stable
 
 Supportable rate through carrying.
 
+Pace is held by [[Rate]], [[Carrying]], and [[Compatibility]].
+
 ## Places
 
 Pace places supportable rate through carrying.

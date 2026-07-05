@@ -34,6 +34,8 @@ status: stable
 
 The coupling condition specific to AI interaction — where human read, generated output, Atlas structure, and evaluative proceeding remain compatibly joined so that the output can be tested and retraced.
 
+AI Coupling is held by [[AI]], [[Engineered Coupling]], [[Carrying]], and [[Hidden Carrying]] — it requires that the four-way joining remain compatible through the interaction.
+
 ## Places
 
 AI Coupling places the coupling condition specific to AI interaction — where human read, generated output, Atlas structure, and evaluative proceeding remain compatibly joined so that the output can be tested and retraced.

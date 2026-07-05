@@ -29,6 +29,8 @@ status: stable
 
 The bounded extent within which a read can hold.
 
+Scope is held by [[Closure]] and [[Extent]]. Closure must bound a read, and extent must locate the reached range, before scope can name where the read holds.
+
 ## Places
 
 Scope places the bounded extent within which a read can hold.

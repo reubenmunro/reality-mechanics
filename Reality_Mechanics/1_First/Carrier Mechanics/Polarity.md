@@ -27,6 +27,8 @@ status: stable
 
 Opposed direction — distinction presented as bearing in opposing directions within relation.
 
+Polarity is held by [[Orientation]]. Direction must be readable before opposition of direction can be read.
+
 ## Places
 
 Polarity places opposed direction within relation.

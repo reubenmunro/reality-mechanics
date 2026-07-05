@@ -35,6 +35,8 @@ status: stable
 
 Contact maintained strongly enough for carrying, resistance, pressure, grip, traction, or effect to pass between conditions.
 
+Coupled Contact is held by [[Contact]], [[Coupling]], and [[Presence]]. Contact must remain locally available and held in relation while it carries effect.
+
 A tyre touching the road is [[Contact]]. A tyre gripping the road so that braking and steering effects can pass through the tyre-road relation is Coupled Contact.
 
 Coupled Contact keeps the simple word contact from carrying too much. Contact names meeting. Coupled Contact names meeting that carries effect.

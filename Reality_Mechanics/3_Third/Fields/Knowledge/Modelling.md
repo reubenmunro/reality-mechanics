@@ -38,6 +38,8 @@ status: stable
 
 The condition through which a read, pattern, or form is carried in a medium as a representation — carrying that makes what is read available to recognition without requiring its direct presence.
 
+Modelling is held by [[Knowledge Field]], [[Read]], [[Recognition Read|Recognition]], [[Pattern]], [[Medium]], and [[Form]]. A read must be present, a pattern must be recognisable, and a medium must carry the form before representation as modelling can be named.
+
 This note places modelling inside the [[Knowledge Field]] as a path read.
 
 ## Places

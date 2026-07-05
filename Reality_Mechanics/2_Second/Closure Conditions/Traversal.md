@@ -36,6 +36,8 @@ status: stable
 
 A read being followed through a closure scope.
 
+Traversal is held by [[Closure Scope]].
+
 ## Places
 
 Traversal places a read being followed through a closure scope.

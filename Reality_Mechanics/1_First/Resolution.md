@@ -43,6 +43,8 @@ status: stable
 
 Bearing determined at the current scope of evaluation — held strain settling into a readable condition without terminating relation.
 
+Resolution is held by [[Bearing]] and [[Clearance]]. Strain must be held, and relation must remain apart enough for change across the difference to become readable as a determined condition.
+
 Resolution traces from [[Clearance]] because change can only resolve where relation remains held apart enough for difference to be readable. [[Space]] reads that clearance as separation or extent. [[Time]] reads it as interval or continuation. Resolution reads what changes across the held difference.
 
 ## Places

@@ -34,6 +34,8 @@ status: stable
 
 The musical read where carrying proceeds without pre-determined structure — where bearing is carried forward through immediate response to what the moment holds.
 
+Improvisation is held by [[Applied Read]], [[Carrying]], and [[Bearing]]. Bearing must be present — the structural context must hold — for improvisation to be distinguishable from noise. Carrying must be active: improvisation is not the absence of structure but the carrying forward of it without a map.
+
 Improvisation is not formlessness. It is carrying forward under structural constraint — harmonic, rhythmic, or relational — without a predetermined path through that constraint. The jazz musician improvising over chord changes is carrying within a structure; what is not predetermined is the path through it.
 
 ## Places

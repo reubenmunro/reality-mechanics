@@ -30,6 +30,8 @@ status: stable
 
 Held clearance as separation and extent — relation readable as position, distance, here/there, co-presence, and placement.
 
+Space is held by [[Clearance]]. Relation must remain held apart enough to become locatable.
+
 ## Places
 
 Space places held clearance as separation and extent.

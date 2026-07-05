@@ -47,6 +47,8 @@ status: stable
 
 The applied domain through which maintained coupling holds a child's developmental asymmetry within compatible bounds — where the parent's recurrent, responsive bearing preserves available carrying while the child's own capacity to hold their asymmetry progressively grows toward autonomy.
 
+Parenting is held by [[Relational Participation Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Neglect]], [[Control]], [[Safety Boundary]], [[Trust]], and [[Betrayal]]. A developmental asymmetry must be present, nested coupling must hold the parent within the child's scope, and care must be recurrent and responsive before the maintained holding of developmental asymmetry can be named as parenting.
+
 Parenting shares its structural form with [[Gardening]] and [[Medicine]]: a practitioner coupled to a living system whose asymmetry cannot be overridden, only bounded. What parenting adds is that the asymmetry develops toward autonomy. The parent's maintained coupling must progressively release as the child's own capacity to hold their asymmetry grows. The goal of parenting is to make the maintained coupling unnecessary — to carry the child toward the point where they no longer require that carrying.
 
 ## Places

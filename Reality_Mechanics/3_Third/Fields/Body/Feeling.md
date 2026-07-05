@@ -38,6 +38,8 @@ status: stable
 
 The condition through which the body makes change in availability detectable — the structural node where bodily sensing becomes a readable boundary condition.
 
+Feeling is held by [[Body]], [[Sensing]], [[Availability]], [[Boundary]], [[Strain]], and [[Readability]]. Bodily change must locate a detectable boundary before the availability of strain can be read as feeling.
+
 A feeling is real as a read, but it does not decide cause, meaning, or action by itself. It shows that relation has become locally available.
 
 ## Places

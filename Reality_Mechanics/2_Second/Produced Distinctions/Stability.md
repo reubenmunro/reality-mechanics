@@ -35,6 +35,8 @@ status: stable
 
 Identity and coherence holding across scope.
 
+Stability is held by [[Identity]] and [[Coherence]].
+
 ## Places
 
 Stability places identity and coherence holding across scope.

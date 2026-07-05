@@ -33,6 +33,8 @@ status: stable
 
 A presented or attributed structure taken as source where trace does not recover it as what actually bears the carrying.
 
+Apparent Source is held by [[Apparent]], [[Trace]], [[Carrying]], and [[Structure]]. A structure must be presented, carrying must be active, and trace must be available to test whether the presented source actually bears it before apparent source can be named.
+
 A structure may be visible, proximal, authoritative, fluent, stable, or powerful enough to appear as source. Apparent Source does not mean the structure is unreal or carries nothing. It means the structure does not bear the carrying in the source-role attributed to it.
 
 ## Places

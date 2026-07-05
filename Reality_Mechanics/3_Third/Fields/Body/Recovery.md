@@ -43,6 +43,8 @@ status: stable
 
 Compatible re-bearing within the body following fatigue or injury — the restoration of carrying capacity through rest, repair, or sustained support.
 
+Recovery is held by [[Body]], [[Fatigue]], [[Injury]], [[Repair]], [[Recarry]], [[Carrying]], [[Energy]], [[Compatibility]], and [[Carried Condition]]. Prior carrying reduction or damage must be present before compatible re-bearing can be named as recovery.
+
 ## Places
 
 Recovery places compatible re-bearing within the body following fatigue or injury — the restoration of carrying capacity through rest, repair, or sustained support.

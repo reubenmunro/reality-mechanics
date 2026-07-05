@@ -28,6 +28,8 @@ status: working
 
 The register where carry is enacted as carrying and connection enters coupling, presence, bearing relation, and participation.
 
+Second Order is held by [[First Order]]. First-order connection and carry must remain available for carrying to proceed as participation; first order does not finish before second order begins.
+
 In the tree read, Second Order is the trunk. It is the stable carrying body through which root conditions become able to support branching participation.
 
 ## Places

@@ -33,6 +33,8 @@ status: stable
 
 The applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding.
 
+Control Drift is held by [[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]].
+
 ## Places
 
 Control Drift places the applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding.

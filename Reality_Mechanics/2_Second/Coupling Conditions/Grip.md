@@ -33,6 +33,8 @@ status: stable
 
 Useful friction at coupled contact.
 
+Grip is held by [[Coupled Contact]], [[Friction]], and [[Compatibility]].
+
 ## Places
 
 Grip places useful friction at coupled contact.

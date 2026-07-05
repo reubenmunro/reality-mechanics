@@ -35,6 +35,8 @@ status: stable
 
 The physical field condition through which a traversal proceeds with minimal coupling — field participation that passes through medium with scarce interaction.
 
+Neutrino is held by [[Physical Field Conditions]], [[Field Availability Pattern]], [[Traversal]], [[Medium]], and [[Coupling]]. Field conditions must hold and traversal must be readable before minimal-coupling field participation can be named.
+
 ## Places
 
 Neutrino places the physical field condition through which a traversal proceeds with minimal coupling — field participation that passes through medium with scarce interaction.
