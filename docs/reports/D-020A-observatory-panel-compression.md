@@ -209,7 +209,7 @@ Never the reverse.
 
 ## Unresolved / follow-on
 
-1. **Deploy required** — Worker change in `.atlas-publisher/`; GitHub Actions deploy on push to `main`. No D1 re-sync required (uses existing `content` + `source_path` columns).
+1. **Deploy** — **Complete** (2026-07-05). Commit `83170b8`; GitHub Actions run `28739752060` (Field, Calibration, MCP all success). Live `/api/field/states` verified: `place` + `atlasUrl`; no `excerpt`; Invariant, Field Relationships, Connection place sentences correct.
 2. **Empty place edge case** — Notes whose opening paragraph is hold-shaped only show title + relations until prose structure is corrected in Atlas (none required for this commission).
 3. **Future public Atlas reader** — If a dedicated read surface is added, `atlasUrl` can point there without changing panel compression logic.
 

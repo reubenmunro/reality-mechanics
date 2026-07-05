@@ -170,7 +170,7 @@ npm --prefix reality-mechanics-mcp test
 
 ## Unresolved
 
-1. **Deploy required** — `.atlas-publisher/` Worker change; GitHub Actions on push to `main`.
+1. **Deploy** — **Complete** (2026-07-05). Commit `83170b8`; GitHub Actions run `28739752060`.
 2. **Before/after recordings** — not stored in repository; capture post-deploy using protocol § Recording.
 3. **Mechanics panel** (`Shift+M`) remains available for verification but is not required for the success criterion.
 
@@ -178,6 +178,6 @@ npm --prefix reality-mechanics-mcp test
 
 ## Commission closure
 
-**Status:** D-020B implementation complete. Live perceptual confirmation awaits deploy and screen recordings.
+**Status:** D-020B deployed. Live perceptual confirmation awaits screen recordings per protocol § Recording.
 
 **Commission D-020B closed** (implementation); recording deliverable noted as post-deploy steward action.

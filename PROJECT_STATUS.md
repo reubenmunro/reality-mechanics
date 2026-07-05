@@ -20,7 +20,7 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 - **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004, D-019). D-020A/B Field Worker changes ready for deploy. `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
 - **Structural reading:** Whole Atlas calibrated (D-008); Tier 1 place + hold prose calibrated corpus-wide (D-018A–D) and live on Field/MCP (D-019); Observatory panel compressed to place-only (D-020A); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
 
-**Git:** D-020A/B implementation committed locally; push to `main` deploys Field Worker (2026-07-05).
+**Git:** `main` @ `83170b8` pushed to `origin/main`; D-020A/B Field Worker live (2026-07-05).
 
 No repository document declares a single project phase label (Discovery, Release Candidate, etc.).
 
