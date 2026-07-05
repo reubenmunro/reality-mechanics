@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -43,7 +44,7 @@ status: stable
 ---
 # Reality Check
 
-Reality check names branch-level evaluation of whether a read remains structurally compatible with its bearing source.
+The evaluative read through which a claim, representation, or local model is checked for compatibility with what bears it — the closure-scope test of whether a read remains traceable.
 
 ## Places
 

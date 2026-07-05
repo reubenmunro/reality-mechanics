@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Carry-Trace Test
 
-Carry-Trace Test names the Atlas practice test that distinguishes confirmed downstream carrying from projected openings by requiring a recoverable return trace.
+The Atlas practice test that distinguishes confirmed downstream carrying from projected openings by requiring a recoverable return trace.
 
 It separates the order operating from the order known. Reality may carry a condition before any participant reads it. The Atlas does not create that carrying through recognition, but it grounds its own claim only where the downstream condition can be followed back through what made it available.
 

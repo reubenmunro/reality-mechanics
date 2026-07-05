@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Wonder
 
-Wonder names participation opened through heightened read. Wonder is not confusion by itself; it is an altered readability that expands attention, relation, or inquiry rather than closing it. Wonder is not openness without support; it is opening that remains able to carry participation.
+The opening mode of enchantment — where altered readability expands participation into attention, inquiry, or relation rather than constraining it.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Structural Gathering
 
-Structural gathering names multiple participating relations held as one readable arrangement. Where nested relation names relation participating within relation, structural gathering names the condition through which multiple such relations can be read together — held as one arrangement rather than as separate nested conditions. Structural gathering does not name aggregation or collection; it names the readable condition of multiple relations holding together as an arrangement.
+Multiple participating relations held as one readable arrangement.
 
 ## Places
 

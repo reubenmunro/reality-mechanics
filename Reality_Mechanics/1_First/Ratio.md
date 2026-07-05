@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -32,7 +33,7 @@ aliases:
 ---
 # Ratio
 
-Ratio names relation made readable between distinguishable terms.
+Relation made readable between distinguishable terms — comparison held by reference, distinction, boundary, and clearance.
 
 Ratio is not first a number. Number can formalise ratio later. Ratio is the readable form through which distinguishable terms can remain in accountable relation without collapse. It needs a held reference, a distinguishable other, and enough [[Clearance]] for their between to remain readable.
 

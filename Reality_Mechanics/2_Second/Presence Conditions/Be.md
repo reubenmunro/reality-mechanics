@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Be
 
-Be names presence holding. Where presence names coupled relation locally available, be names that availability sustained: something continues to be present rather than only having been present. Permanence can be a later read, but be names presence held without requiring re-establishment.
+Presence holding.
 
 ## Places
 

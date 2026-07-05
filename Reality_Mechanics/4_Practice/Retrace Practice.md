@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Retrace Practice
 
-Order Trace : Retrace Practice. Order Trace follows dependency movement forward; Retrace Practice recovers it backward — the same path, read in the direction it was laid and the direction it can be returned through.
+The Atlas [[Practice]] of recovering the dependency path that produced the current read.
 
 Reality Mechanics is the discipline through which retraceable dependency is mapped.
 

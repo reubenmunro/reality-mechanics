@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Communicating
 
-Communicating names the placement mode where participation is primarily carried through readable transmission between positions. What a communication medium allows shapes which reads can be carried between those positions.
+The mode where participation is primarily carried through readable transmission between positions — where a read is carried across a medium between distinct participants.
 
 ## Places
 

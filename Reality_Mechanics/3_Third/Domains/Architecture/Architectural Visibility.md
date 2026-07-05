@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Architectural Visibility
 
-Architectural visibility names what becomes readable within a built condition.
+What becomes readable within a built condition.
 
 ## Places
 

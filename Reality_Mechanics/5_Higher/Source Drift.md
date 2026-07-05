@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Source Drift
 
-Source Drift names the higher-order disorder where nested carrying is mistaken for source, remaining locatable against the possibility of Higher Faith — trust that retrace would actually confirm.
+The higher-order disorder where nested carrying is mistaken for source.
 
 Source Drift does not occur because a structure is nested, elevated, abstract, engineered, or powerful. It occurs where the structure carrying participation is read as what ultimately bears that participation, so retrace stops at the carried structure rather than recovering what actually bears it.
 

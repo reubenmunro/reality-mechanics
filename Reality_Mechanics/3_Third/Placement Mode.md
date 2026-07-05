@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: class
@@ -38,7 +39,7 @@ status: stable
 ---
 # Placement Mode
 
-Placement Mode names the sorting of a third-order note by primary carrying mode.
+The sorting of a third-order note by primary carrying mode.
 
 Placement modes are not order roots. The third-order order root is [[Nesting]]. Placement modes describe how a third-order note is primarily carried inside the Atlas.
 

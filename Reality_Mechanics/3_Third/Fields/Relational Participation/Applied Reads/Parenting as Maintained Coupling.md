@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -44,7 +45,7 @@ status: stable
 ---
 # Parenting as Maintained Coupling
 
-Parenting as Maintained Coupling names the applied domain through which maintained coupling holds a child's developmental asymmetry within compatible bounds. It is the [[Relational Participation Field]] read of [[Parenting]]: the domain note holds the branch-level placement; this read translates it into the field's vocabulary. The child brings their own asymmetry — their developmental directedness, their growing capacity, their inherent becoming. The parent does not produce this asymmetry; they hold the conditions within which it can proceed.
+The applied domain through which maintained coupling holds a child's developmental asymmetry within compatible bounds — where the parent's recurrent, responsive bearing preserves available carrying while the child's own capacity to hold their asymmetry progressively grows toward autonomy.
 
 Parenting shares its structural form with [[Gardening]] and [[Medicine]]: a practitioner coupled to a living system whose asymmetry cannot be overridden, only bounded. What parenting adds is that the asymmetry develops toward autonomy. The parent's maintained coupling must progressively release as the child's own capacity to hold their asymmetry grows. The goal of parenting is to make the maintained coupling unnecessary — to carry the child toward the point where they no longer require that carrying.
 

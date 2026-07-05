@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Union
 
-Union names the invariant condition of genuine joining: distinct resolved conditions held together without collapsing into sameness.
+The invariant condition of genuine joining — by which distinct resolved conditions can be held together without collapsing into sameness or remaining merely adjacent.
 
 [[Coupling]] names distinct resolved conditions held in mutual availability. Union is the prior condition coupling requires: the joining must be genuine before mutual availability can hold.
 

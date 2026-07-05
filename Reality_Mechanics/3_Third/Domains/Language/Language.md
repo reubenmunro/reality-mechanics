@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Language
 
-Language names branch-level expression through which readable distinction is carried.
+Branch-level expression through which readable distinction is carried.
 
 ## Places
 

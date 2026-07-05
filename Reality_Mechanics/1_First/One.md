@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: primitive
@@ -25,7 +26,7 @@ status: working
 ---
 # One
 
-One names the first readable reference.
+The first readable reference — the first readable expression of Seed : Ground becoming active.
 
 One is not an isolated object, a counted unit, or a self-originating substance. It is the first held reference through which a read can begin. Without One, there is no place from which comparison can be made. Without Other, One collapses into the whole or becomes an untested assertion.
 

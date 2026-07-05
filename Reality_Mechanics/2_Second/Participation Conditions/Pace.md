@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Pace
 
-Pace names supportable rate through carrying. Where rate names occurrence per interval, pace names that rate as carried through participation at a speed that can still be borne within scope.
+Supportable rate through carrying.
 
 ## Places
 

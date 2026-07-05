@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Competence Boundary
 
-Competence Boundary names the boundary at which a participant's knowledge, ability, responsibility, and action remain truthfully traceable to their bearing source. It is not a status boundary or a claim of worth; it is the readable edge where knowing, doing, and responsibility must remain compatible with what actually bears them.
+The located limit at which a participant, practice, or domain can distinguish what it can compatibly carry from what it cannot — the closure scope of traceable carrying.
 
 ## Places
 

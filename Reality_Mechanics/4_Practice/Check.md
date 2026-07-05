@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Check
 
-Check names the Atlas practice of testing a term from both directions to locate its boundary. It does not prove a term as an object; it asks where the relation begins to hold, where it stops holding, and whether the term carries the strain that makes it worth preserving.
+The Atlas practice of testing a term from both directions to locate its boundary.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Tool
 
-Tool names a making path read where form is made available to extend function through compatible use.
+The condition through which a made form extends a participant's carrying by translating relation into a usable resolution band — the structural node where form, function, medium, and readability combine to augment what relation can carry.
 
 ## Places
 

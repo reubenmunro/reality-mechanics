@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Restraint
 
-Restraint names the translation boundary where constraint becomes terminal to participation from within. Carrying is intentionally held within a boundary, scope, or standard so it does not exceed what can bear, be checked, or be repaired. Restraint is not constraint in general; it is constraint taken up through participation and control.
+The boundary where constraint shifts from outside limit into inside participation.
 
 ## Places
 

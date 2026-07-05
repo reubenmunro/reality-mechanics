@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Self-Harm
 
-Self-harm names self-directed harm where self-bearing, self-control, or safety becomes unavailable under strain.
+The applied read of a closure scope where self-bearing fails and carrying turns against the self's own available conditions.
 
 It is a lack or collapse of available self-bearing, not a moral failure.
 

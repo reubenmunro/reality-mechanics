@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Earth Carrying
 
-Earth Carrying names the carrying relation through which [[Earth]] holds human life, society, history, invention, and choice within material and ecological consequence. Earth is not only a setting around human systems; Earth Carrying names the condition by which those systems are carried too.
+The carrying relation through which [[Earth]] holds human life, society, history, invention, and choice within material and ecological consequence.
 
 Earth Carrying includes protection. Earth carries by holding exposure within survivable limits: breathable atmosphere, gravity, temperature range, water cycles, food webs, shielding, and repair conditions. These are not scenery around participation; they are prior carrying conditions for participation.
 

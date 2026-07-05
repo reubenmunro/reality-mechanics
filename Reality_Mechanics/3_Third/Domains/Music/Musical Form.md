@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Musical Form
 
-Musical Form names the nested carrying condition in music — where sections, themes, and developments carry each other as a structured whole. Where [[Nesting]] names prior organisation remaining available within a later one, musical form names that nesting made audible: the large-scale structure through which a piece carries its parts without flattening them into each other.
+The nested carrying condition in music — where sections, themes, and developments carry each other as a structured whole.
 
 Form is not a container. It is the condition through which earlier musical material remains available for return, development, contrast, and variation — where the opening theme is still held by the time the recapitulation arrives.
 

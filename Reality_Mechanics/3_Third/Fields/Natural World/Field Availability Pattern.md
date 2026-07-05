@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Field Availability Pattern
 
-Field Availability Pattern names recurring physical-field reads where availability changes through boundary, constraint, traversal, visibility, bearing, or scale.
+The structural pattern through which field-bearing conditions make availability readable — the recurrent structural shape of how fields present their carrying to readability.
 
 Field Availability Pattern names that availability changes. [[Field Bearing]] names where changed field availability bears on traversal, escape, attraction, closure, visibility, or measurable path.
 

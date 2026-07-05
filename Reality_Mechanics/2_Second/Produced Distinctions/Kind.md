@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Kind
 
-Kind names recurrent form recognisable across distinct instances. Where [[Form]] names readable arrangement and [[Pattern]] names readable recurrence, kind names the condition through which different instances can be read as belonging to the same relational sort without being collapsed into sameness.
+Recurrent form recognisable across distinct instances.
 
 Category can help read kind, but kind is more than a category. A category may sort from outside; kind remains answerable to the relation by which the instances belong together. Kind preserves enough recurrence for recognition while allowing each instance to remain locally distinct.
 

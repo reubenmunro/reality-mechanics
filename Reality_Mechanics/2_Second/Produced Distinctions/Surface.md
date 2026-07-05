@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Surface
 
-Surface names the presenting face of a condition. Where [[Visible]] carries presented readability and [[Form]] names readable arrangement, Surface names the face through which that presentation is met, followed, trusted, patched, or mistaken as holding.
+The presenting face of a condition.
 
 Surface can be shallow, false, decorative, or external, but it is not defined by those reductions. The surface presents. What matters is whether the presentation remains answerable to what carries it.
 

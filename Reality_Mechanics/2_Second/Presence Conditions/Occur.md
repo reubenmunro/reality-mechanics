@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Occur
 
-Occur names presence taking place within a closure scope. Where [[Presence]] names coupled relation locally available to read, occur names that availability as a readable happening — not merely present, implied, remembered, or possible, but taking place within the current scope.
+Presence taking place within a closure scope.
 
 Occur does not name recurrence, sequence, process, or event by itself. Recurrence requires occurring again. Sequence requires ordered traversal. Process requires a carried sequence. Scene gathers occurrence into a bounded field of what is happening here.
 

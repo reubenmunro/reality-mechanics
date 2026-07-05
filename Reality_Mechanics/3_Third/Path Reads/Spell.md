@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Spell
 
-Spell names a bounded act, form, or arrangement carrying enchantment. A spell is not source power by itself; it is enchantment given a closure scope through which its influence can be carried.
+Enchantment bounded into a carried form — where influence is held within a specific act, phrase, ritual, or arrangement rather than remaining open.
 
 ## Places
 

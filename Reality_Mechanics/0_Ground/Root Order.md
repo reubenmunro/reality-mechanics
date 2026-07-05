@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -41,7 +42,7 @@ status: stable
 ---
 # Root Order
 
-Root Order names the governing dependency arrangement of the Atlas: what must already hold before later terms can become available. It does not establish terms, branches, or domains by command; it holds the precedence through which all terms remain traceable. Chronology, hierarchy, sequence, preference, or navigation may display dependency, but dependency is what must already hold.
+The governing dependency arrangement of the Atlas — what must already hold before later terms can become available, and the condition through which that arrangement becomes followable.
 
 Root Order also makes that arrangement followable: terms can be followed by what must already hold for them to remain available.
 

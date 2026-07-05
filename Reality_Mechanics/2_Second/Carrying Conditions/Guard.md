@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Guard
 
-Guard names carrying organised around a boundary to preserve availability by regulating passage.
+Carrying organised around a boundary to preserve availability by regulating passage.
 
 Guard is not inherently caring or controlling. It names the maintained boundary condition first. Later reads show what the guarding serves and what effects it produces.
 

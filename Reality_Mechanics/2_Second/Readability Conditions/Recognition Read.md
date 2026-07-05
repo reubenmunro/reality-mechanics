@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Recognition Read
 
-Recognition Read names a read becoming identifiable as this again. Where readability names the condition that makes reading possible, and [[Cognitive Participation]] names relation participating in readability, recognition read names the produced read through which something is identified as the same condition encountered before — this participant, this pattern, this state. Recognition read does not require perfect repetition; it names the condition through which a read can be held as identifiable across instances.
+A read becoming identifiable as this again.
 
 In cognitive fields, recognition is cognition becoming placed: what is received and distinguished is resolved as this within a boundary and closure scope. Recognition is therefore not the first availability of difference; it is a read becoming identifiable enough to be carried, checked, or returned to.
 

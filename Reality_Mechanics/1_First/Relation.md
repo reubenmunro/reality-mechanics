@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: primitive
@@ -37,7 +38,7 @@ status: stable
 ---
 # Relation
 
-Relation names active relation within the Atlas.
+Active relation within the Atlas — the primitive condition through which generation can occur and from which tracing begins.
 
 Relation remains primitive inside the system: relation relates, and no prior term inside the system produces it.
 

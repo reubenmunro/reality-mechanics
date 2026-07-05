@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: map
@@ -34,7 +35,7 @@ status: working
 ---
 # Order Generation
 
-Order Generation names a reference map of generative order systems: simple bounded beginnings or rules through which an ordered field, sequence, or continuation can unfold.
+A reference map of generative order systems used to clarify how bounded rules produce ordered continuation, construction, recurrence, and regeneration.
 
 It does not make counting, Euclid, or Fibonacci into Atlas terms. They are exemplars that make different kinds of order generation visible.
 

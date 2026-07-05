@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Absorb
 
-Absorb names resolution where bearing takes strain into itself and dampens or contains it. Absorb is not simple hold; it names strain being taken in and dampened, contained, or spread inside the bearing condition.
+Resolution where bearing takes strain into itself and dampens or contains it.
 
 ## Places
 

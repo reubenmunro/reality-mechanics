@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Shift
 
-Shift names resolution where bearing relocates orientation without yielding, failing, transferring, or being lost.
+Resolution where bearing relocates orientation without yielding, failing, transferring, or being lost.
 
 Shift is held by [[Resolution]] and [[Orientation]]. Bearing must be determined, and orientation must be available, before reorientation can be read.
 

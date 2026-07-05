@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Documentation Gap
 
-Documentation Gap reads a local architecture case where the representation no longer carries what the built condition requires.
+The local architecture case where the representation no longer carries what the built condition requires.
 
 ## Places
 

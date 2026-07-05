@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Music
 
-Music names the third-order domain branch where relation is carried through rhythm, timing, sound, silence, recurrence, variation, and embodied participation.
+The musical-domain branch where structural Atlas terms become readable as rhythm, timing, sound, silence, recurrence, variation, and embodied participation.
 
 ## Places
 

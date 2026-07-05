@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Contend
 
-Contend names tending under strain, pressure, resistance, or competing claim.
+Tending under strain, pressure, resistance, or competing claim.
 
 Contending is not simply fighting. It is tending where care has to meet opposition without dropping the relation. A participant may contend with a limit, a pressure, an argument, a wound, a competing claim, or a condition that resists simple maintenance.
 

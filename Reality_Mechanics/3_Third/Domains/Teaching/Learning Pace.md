@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Learning Pace
 
-Learning pace names how learning participation remains compatibly carried through a teaching condition without exceeding available bearing.
+How learning participation remains compatibly carried through a teaching condition without exceeding available bearing.
 
 ## Places
 

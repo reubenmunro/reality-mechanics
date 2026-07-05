@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Harmony
 
-Harmony names the coupling condition through which simultaneously sounding tones become readable as tension or rest. Where [[Resonance]] names difference coupled through a shared carrying pattern, harmony names that resonance made musical: tones that sound together and bear a relation between them that is readable as tense or settled.
+The coupling condition through which simultaneously sounding tones become readable as tension or rest.
 
 Dissonance is strain held within harmonic coupling. Consonance is strain reduced to a holdable form. Neither is simply pleasant or unpleasant; both are structural conditions of how tones couple and what they bear.
 

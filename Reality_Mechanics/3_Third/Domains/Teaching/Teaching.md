@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Teaching
 
-Teaching names branch-level participation that preserves and develops available learning conditions through compatible uptake.
+Branch-level participation that preserves and develops available learning conditions through compatible uptake.
 
 ## Places
 

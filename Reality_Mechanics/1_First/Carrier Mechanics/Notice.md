@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -28,7 +29,7 @@ status: stable
 ---
 # Notice
 
-Notice names first contact with what has become apparent. Where [[Apparent]] names distinction present enough to be available, Notice names the move through which that availability is met before it is entered, attended, followed, held, explained, or placed.
+First contact with what has become apparent.
 
 Notice comes before enter, attend, or trace. It is the first contact that makes passage, attention, and trace possible.
 

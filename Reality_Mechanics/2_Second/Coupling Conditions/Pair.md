@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Pair
 
-Pair names a bounded read of coupling in which two distinguishable conditions are held together as a readable two. A pair may be equal or unequal, temporary or stable. It reads two conditions within scope without claiming the wider participation field contains only two conditions.
+A bounded read of coupling in which two distinguishable conditions are held together as a readable two.
 
 ## Places
 

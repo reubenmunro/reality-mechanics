@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Expression
 
-Expression names the organic field where relation becomes outwardly readable without requiring intention or communication.
+The third-order field where relation, strain, affect, movement, or form becomes readable through how it appears — where the carried condition becomes available to recognition through a medium.
 
 ## Places
 

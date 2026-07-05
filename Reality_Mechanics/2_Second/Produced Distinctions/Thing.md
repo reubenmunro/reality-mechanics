@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Thing
 
-Thing names a scale-local stability of relation: held together by smaller relations, participating in larger relations, and readable at the scale where it can be named, used, or carried.
+A scale-local stability of relation.
 
 A thing-read can drift where a relation compressed into a noun is treated as if the noun must contain the whole referent. The dropped conditions were dropped from the description, not from reality. The repair is not to hunt for a hidden object inside the noun, but to reopen the relation, scale, and closure scope that made the thing readable.
 

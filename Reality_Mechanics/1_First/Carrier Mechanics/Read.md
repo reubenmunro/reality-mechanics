@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -34,7 +35,7 @@ status: stable
 ---
 # Read
 
-Read names recognition of meaningful distinction. [[Trace]] makes a distinction followable; read takes that distinction up as meaningful within the current scope. A trace may exist before it is read, and a read may widen or recur without exhausting the trace.
+Recognition of meaningful distinction at the current scope.
 
 Read enters order; it does not create order. Once entered, read participates in what it traces: it can clarify, distort, repair, accelerate, name, measure, or alter the relation it has entered. The question is whether the read remains traceable and compatible with what carries it.
 

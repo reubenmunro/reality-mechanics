@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Yield
 
-Yield names resolution where bearing gives under strain without fully failing. Yield is not stable hold and not total collapse; it is a determined give in the condition that bears.
+Resolution where bearing gives under strain without fully failing.
 
 ## Places
 

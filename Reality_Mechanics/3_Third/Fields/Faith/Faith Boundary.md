@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Faith Boundary
 
-Faith Boundary names a carried boundary around relation whose content is not yet structurally readable.
+The located limit at which relation is recognised but what it carries cannot yet be read — the boundary around unresolvable readability held by faith.
 
 It is above the current read, not above [[Relation]].
 

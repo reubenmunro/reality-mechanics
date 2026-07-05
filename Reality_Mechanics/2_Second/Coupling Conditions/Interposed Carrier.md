@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Interposed Carrier
 
-Interposed Carrier names the carrying medium that stands between two parties in contact, holding its own carrying condition between them. It does not merely block; it carries. It holds its own pressure or dynamic carrying between the parties, transforming what contact makes available.
+A carrying medium that interposes between two parties in contact, holding its own carrying condition between them — modifying, redirecting, or preventing direct coupling.
 
 [[Clearance]] names held separation before contact. Interposed Carrier names what holds between during contact: the medium that maintains dynamic separation within what appears as meeting.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Condition
 
-Condition names a read held as available within the current closure scope. Where readability names the sustained condition that makes reading possible, condition names the produced read: the state under which participation, carrying, or change holds at the current scope. A condition may persist, but condition first names what is readable as holding now.
+A read held as available within the current closure scope.
 
 ## Places
 

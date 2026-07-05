@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Hertz
 
-Hertz names frequency measured as counted returns per second. Hertz is not frequency itself and does not create the return condition; it is the unit through which readable returns are counted within the standard interval of one second.
+Frequency measured as counted returns per second.
 
 This is an Atlas readability account of what makes a recurrence countable. It does not replace the physical definition or metrology of hertz.
 

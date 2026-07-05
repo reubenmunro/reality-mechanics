@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Over-Treatment
 
-Over-Treatment reads a local life case where repair-like intervention exceeds compatible bearing and worsens the condition it means to support.
+The applied read where intervention proceeds as repair but exceeds supportable capacity at the relevant closure scope — incompatible carrying in the name of restoration.
 
 ## Places
 

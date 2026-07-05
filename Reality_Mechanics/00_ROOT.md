@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: meta
@@ -29,7 +30,7 @@ status: working
 ---
 # Atlas Root
 
-Reality Mechanics is the discipline of keeping relation traceable as order. Generative order and reading order are distinct: generation occurs through active relation, while the Atlas works by recognising what has become readable and retracing what had to already be true.
+The root entrance to Reality Mechanics and the Atlas: the working postulate, dependency spine, posture read, order crossing map, and entry practice.
 
 The working postulate remains:
 

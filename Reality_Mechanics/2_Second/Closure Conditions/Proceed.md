@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Proceed
 
-Proceed names continuation without interruption. Where process names a carried sequence, proceed names that sequence continuing: moving forward through the current scope without departure or cessation. Progress or direction can be read later; proceed first names continuation as available.
+Continuation without interruption.
 
 ## Places
 

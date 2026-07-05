@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Answerable Mind
 
-Answerable Mind names cognitive metabolism made answerable.
+Cognitive activity ordered by answerability rather than silence, escape, or control.
 
 An answerable mind is not an empty mind, an escaped mind, or a mind controlled from outside. It is a mind able to answer.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -27,7 +28,7 @@ status: working
 ---
 # Splicing
 
-Splicing names the structural practice of reconnecting a member to the support it actually traces, rather than the support it claimed or appeared to have.
+The structural practice of reconnecting a member to the support it actually traces, rather than the support it claimed or appeared to have.
 
 Splicing is needed where a read has life but is attached to the wrong support. It does not make the read true by relocation. It tests whether the read can survive when placed where its trace actually returns.
 

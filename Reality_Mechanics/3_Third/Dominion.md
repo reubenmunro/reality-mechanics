@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Dominion
 
-Dominion names bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain.
+Bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain.
 
 Dominion is not domination. Dominion is authority under obligation: the domain is not merely available to be used, extracted, or directed. It must remain cared for according to the conditions that let it continue carrying.
 

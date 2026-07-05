@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Ship and Ark
 
-Ship and Ark names a translation boundary in carrying. The metaphor distinguishes destination-oriented carrying from preservation-oriented carrying. A ship is ordered primarily by where it is going. An ark is ordered primarily by what must be carried. In ship orientation, carrying is subordinated to arrival. In ark orientation, arrival matters because something reality-bearing survives the crossing.
+The boundary where progress becomes terminal to what must remain carried through the crossing.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: working
 ---
 # Resolution Rate
 
-Resolution Rate names the rate at which a system can resolve meaningful distinction while maintaining retraceable order.
+The rate at which meaningful distinction can be resolved while maintaining retraceable order.
 
 Resolution Rate is not simple speed. It is the speed at which relation can be read, resolved, and acted through without losing [[Coupling]], [[Clearance]], or trace. Speed measures movement. Resolution Rate measures resolved relation per available continuation.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -27,7 +28,7 @@ status: stable
 ---
 # Orientation
 
-Orientation names the bearing-direction of a located distinction. Where bearing names strain held as a readable condition, orientation names the direction in which that condition bears: this way rather than that way within relation. Preference, aim, intention, or outcome can involve orientation, but orientation itself names directionality before determination.
+The bearing-direction of a located distinction.
 
 ## Places
 

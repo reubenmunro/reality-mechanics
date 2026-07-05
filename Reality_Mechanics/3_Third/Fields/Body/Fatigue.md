@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -40,7 +41,7 @@ status: stable
 ---
 # Fatigue
 
-Fatigue names embodied reduction in available carrying where continued participation requires rest, pacing, support, release, or recovery.
+Embodied reduction in available carrying where continued participation requires rest, pacing, support, release, or recovery.
 
 ## Places
 

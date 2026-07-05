@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Period
 
-Period names the interval per recurrence. Where frequency reads countable returns per interval, period reads the interval required for one recurrence.
+The interval per recurrence.
 
 ## Places
 

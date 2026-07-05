@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Field Bearing
 
-Field Bearing names a field bearing on traversal or participation. Where field of participation names recurring organisation arising through participation and bearing names strain held as readable, field bearing names the condition through which the field itself already affects what can move, enter, continue, escape, or participate within it.
+A field bearing on traversal or participation.
 
 Physical gravity can show Field Bearing, but Field Bearing is broader. It names the structural read in which a coupled field bears on available movement before a participant has fully chosen, named, or resolved a path.
 

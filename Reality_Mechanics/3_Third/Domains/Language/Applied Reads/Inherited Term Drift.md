@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Inherited Term Drift
 
-Inherited Term Drift reads a local case where a received term keeps its name while entering a different structural role.
+The local case where a received term keeps its name while entering a different structural role.
 
 ## Places
 

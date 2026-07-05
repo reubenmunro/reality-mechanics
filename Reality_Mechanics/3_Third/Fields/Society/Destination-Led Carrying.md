@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Destination-Led Carrying
 
-Destination-Led Carrying names a social orientation problem where movement, progress, growth, productivity, freedom, or expansion becomes more readable than the relations being carried. A destination-led system may still carry people, institutions, memory, and life, but the carrying relation becomes thin or hidden when destination becomes the steering value.
+The condition through which carrying is organised around an intended endpoint — carrying shaped by what it is moving toward rather than what it traces back to.
 
 ## Places
 

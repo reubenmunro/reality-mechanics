@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Reciprocity Breakdown
 
-Reciprocity Breakdown reads a local case where mutual participation no longer remains compatibly borne.
+The applied read where reciprocal bearing within participation fails at a closure scope — where bearing no longer moves compatibly between participants.
 
 ## Places
 

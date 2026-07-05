@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Physical Space
 
-Physical Space names [[Space]] read through [[Physical]] natural-world conditions as measurable extent, position, distance, field condition, or traversable physical relation.
+The structured extent within which physical field conditions become measurable — the dimensional and scaled ground for locating physical distinction.
 
 Physical Space is downstream of [[Space]]. It is not the first-order source of spatial readability.
 

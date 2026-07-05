@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Incoherence
 
-Incoherence names compatible pattern holding no longer remaining readable. Where coherence names multiple patterns holding together without losing their individual readability, incoherence names the condition where those patterns no longer hold together compatibly within the current scope. Incoherence is not chaos or contradiction in general; it names the loss of readable compatibility between patterns that were expected to carry together.
+Compatible pattern holding no longer remaining readable.
 
 ## Places
 

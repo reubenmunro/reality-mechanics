@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -27,7 +28,7 @@ status: working
 ---
 # Relief
 
-Relief names the structural practice of removing drift, overgrowth, or misplaced carrying without treating member correction as foundation replacement.
+The structural practice of removing drift, overgrowth, or misplaced carrying without treating member correction as foundation replacement.
 
 Relief is not punishment and not rejection of growth. It is care applied where a member has begun to occlude, overload, distort, or detach from the order that lets it carry.
 

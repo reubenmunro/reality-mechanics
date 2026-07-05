@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: crossing
@@ -29,7 +30,7 @@ status: working
 ---
 # Threshold (Third → Higher)
 
-This threshold names the crossing from Third Order into Higher Order.
+The crossing where organised and nested carrying enters its own carrying.
 
 ## Places
 

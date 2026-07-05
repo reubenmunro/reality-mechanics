@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -27,7 +28,7 @@ status: working
 ---
 # Decommissioning
 
-Decommissioning names the structural practice of releasing failed or relieved material as doctrine while keeping what it taught available to the order.
+The structural practice of releasing failed or relieved material as doctrine while keeping what it taught available to the order.
 
 Decommissioning is not deletion. It is the practice of letting a claim stop carrying authority without erasing the trace of its failure. A failed posture can show what the order could not hold, what became occluded, where re-entry collapsed, or which dependency was missing.
 

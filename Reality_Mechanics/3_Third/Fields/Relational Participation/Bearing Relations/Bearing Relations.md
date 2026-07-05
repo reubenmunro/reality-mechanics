@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: class
@@ -27,7 +28,7 @@ status: stable
 ---
 # Bearing Relations
 
-Bearing relations name the third-order relation family where [[Bearing Relation]] is read through downstream carrying relations.
+The subdomain of relational-participation reads where coupling, bearing, and carrying become readable as held relational conditions.
 
 ## Places
 

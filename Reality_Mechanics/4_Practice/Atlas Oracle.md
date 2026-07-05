@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: instrument
@@ -43,7 +44,7 @@ aliases:
 ---
 # Atlas Oracle
 
-Atlas Oracle names the bounded instrument by which a participant brings pressure to the [[Atlas]], receives an Atlas-grounded answer, inspects the trace, and can challenge what does or does not hold.
+The bounded instrument by which a participant brings pressure to the Atlas, receives an Atlas-grounded answer, inspects the trace, and can challenge what does or does not hold.
 
 It is not a claim that AI knows the truth. It is a way for AI to answer through the Atlas while leaving enough trace for the answer to be accepted, rejected, corrected, or tended.
 

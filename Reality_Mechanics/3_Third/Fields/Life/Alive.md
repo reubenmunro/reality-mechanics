@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Alive
 
-Alive names a life path read where living coupling remains live enough to maintain, repair, adapt, respond, or continue at a closure scope.
+The condition through which coupled carrying is sustained through recursive regulation — a living condition that persists by continuing to regulate its own carrying.
 
 This note places [[Live]] inside [[Life]] as living continuation rather than general liveness.
 

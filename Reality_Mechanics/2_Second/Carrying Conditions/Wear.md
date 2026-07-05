@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Wear
 
-Wear names change left by recurring friction. Decay can involve wear, but wear first names reduction or alteration made readable where contact and resistance continue across recurrence.
+Change left by recurring friction.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: map
@@ -32,7 +33,7 @@ status: working
 ---
 # RM System Map
 
-RM System Map names the current working map of the Reality Mechanics carriers.
+The current working map of the Reality Mechanics carriers: canonical structure, vault, Atlas, publisher, AI export, MCP, workers, field physics, Ark runtime, and archive.
 
 It does not replace the [[Atlas Root]]. It records how the present local and public pieces carry the work.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Sensing
 
-Sensing names the placement mode where participation is primarily carried through detection of local difference.
+The mode where participation is primarily carried through detection of local difference — where available conditions become readable through what a body, field, or environment presents to the participant.
 
 Where availability names what becomes present enough to participate in evaluation, sensing names the placement mode through which local differences in body, field, or environment become available as readable conditions.
 

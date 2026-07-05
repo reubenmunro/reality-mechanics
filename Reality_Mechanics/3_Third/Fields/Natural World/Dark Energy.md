@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Dark Energy
 
-Dark Energy names an inferred natural-world physical-field condition where large-scale located clearance continues to open beyond ordinary gravitational closure.
+The physical field condition through which field availability is expanded against gravitational carrying — the structural read of field-bearing that opposes gravitational centring at scale.
 
 This note places dark energy as a third-order physical-field read without treating it as a substance or source structure.
 

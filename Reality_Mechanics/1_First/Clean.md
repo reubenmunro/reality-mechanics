@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Clean
 
-Clean names the invariant carrier by which relation remains free from residue, drift, or false mixture before readable difference is carried onward. It is the condition in which relation does not carry what prevents its own readability, handling, separation, or meeting.
+The invariant carrier by which relation remains free from residue, drift, or false mixture before readable difference is carried onward.
 
 Clean is hidden in many successful reads because it is not always the visible operation. Clear reading and tactful contact both depend on it.
 

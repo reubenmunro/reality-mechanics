@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Faith Read
 
-Faith Read names the field-level read of carried commitment toward higher order, unavailable resolution, or relation that exceeds the current boundary of structural readability.
+The third-order field condition through which carried commitment, mystery, ritual, and sacred orientation are held without requiring full readability at the current closure scope.
 
 Faith is above the current read, not above [[Relation]].
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Safety
 
-Safety names branch-level conditions through which participation remains protected from incompatible collapse.
+The condition through which available bearing is preserved from incompatible carrying — the relational condition that keeps harmful or collapsing carrying from removing required availability.
 
 ## Places
 

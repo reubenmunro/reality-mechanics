@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Technology Domain
 
-Technology Domain names the organised participation context through which produced arrangements extend, modify, automate, or support participation.
+The organised participation context through which produced arrangements extend, modify, automate, or support participation.
 
 ## Places
 

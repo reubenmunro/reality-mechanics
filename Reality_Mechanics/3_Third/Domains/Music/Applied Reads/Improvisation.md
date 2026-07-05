@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Improvisation
 
-Improvisation names the musical read where carrying proceeds without pre-determined structure. Where [[Musical Form]] names the nested structure of a composed piece, improvisation names the condition where carrying continues through immediate response — where the next movement is determined by what the current moment bears rather than by what was written before it.
+The musical read where carrying proceeds without pre-determined structure — where bearing is carried forward through immediate response to what the moment holds.
 
 Improvisation is not formlessness. It is carrying forward under structural constraint — harmonic, rhythmic, or relational — without a predetermined path through that constraint. The jazz musician improvising over chord changes is carrying within a structure; what is not predetermined is the path through it.
 

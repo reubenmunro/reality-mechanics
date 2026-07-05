@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Recarry
 
-Recarry names carrying returned through contact and held again, differently.
+Carrying returned through contact and held again, differently.
 
 What is carried enters contact, meets another read, and comes back still held, but altered by trace. Recarry is not agreement, conversion, or compromise. It names carrying that has been contacted and can now be held differently.
 

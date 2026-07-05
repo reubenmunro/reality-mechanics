@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Cognitive Metabolism
 
-Cognitive Metabolism names a resolution pathway where energy, strain, attention, and stimulation are converted primarily through thought, mapping, design, language, prediction, or conceptual ordering.
+The cognitive resolution pathway through which strain, attention, stimulation, and available energy are converted through thought, mapping, design, language, prediction, or conceptual ordering.
 
 The traceable question is not whether a person thinks too much. The traceable question is whether thought remains coupled to the organism that carries it.
 

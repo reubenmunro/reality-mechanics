@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Stability
 
-Stability names identity and coherence holding across scope. Where identity names sustained distinguishability and coherence names compatible patterns holding together, stability names the condition through which both hold across a wider scope without requiring constant re-establishment. Stability does not name permanence or unchangeability; it names the condition through which what holds continues to hold without strain exceeding bearing.
+Identity and coherence holding across scope.
 
 ## Places
 

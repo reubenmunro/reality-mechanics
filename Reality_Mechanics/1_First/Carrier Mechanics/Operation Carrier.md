@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: class
@@ -22,7 +23,7 @@ status: stable
 ---
 # Operation Carrier
 
-Operation carrier names the class of primitive carriers that carry the reading operation across the system. Where operational conditions act on distinction at specific points in the dependency spine, operation carriers run through the whole system — making distinction apparent, followable, held, and recognisable at any point. Apparent, trace, read, and orientation are operation carriers; hold is now placed as a resolution condition rather than an operation carrier.
+The class of primitive carriers that make conditions readable across the system.
 
 ## Places
 

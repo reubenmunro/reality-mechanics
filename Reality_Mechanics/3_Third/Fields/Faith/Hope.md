@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Hope
 
-Hope names anticipated availability: relation is still borne while possible resolution, recognition, or readable return remains unavailable.
+The condition through which possible readability is modelled when resolution is unavailable — bearing held toward a future closure scope where what is carried might become readable.
 
 Hope is mind-like where it models possible readability, but it must remain carried by bearing.
 

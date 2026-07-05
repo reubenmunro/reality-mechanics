@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Coupled Contact
 
-Coupled Contact names contact maintained strongly enough for carrying, resistance, pressure, grip, traction, or effect to pass between conditions.
+Contact maintained strongly enough for carrying, resistance, pressure, grip, traction, or effect to pass between conditions.
 
 A tyre touching the road is [[Contact]]. A tyre gripping the road so that braking and steering effects can pass through the tyre-road relation is Coupled Contact.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Teaching Boundary
 
-Teaching boundary names a branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order.
+A branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order.
 
 ## Places
 

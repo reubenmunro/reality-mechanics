@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Digress
 
-Digress names traversal departing from the current scope. Where proceed names continuation within scope, digress names departure: traversal moves outside the current scope while relation remains available. Error or failure can involve digression, but digress first names readable departure.
+Traversal departing from the current scope.
 
 ## Places
 

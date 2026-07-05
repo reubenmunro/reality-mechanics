@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Our Story Field
 
-Our Story Field names the recurring field of participation through which shared inheritance, collective history, and intergenerational carrying become readable as organised experience.
+The recurring field of participation through which prior carrying is held, passed forward, and improved — the structural field for inheritance, memory, retrace, and carried continuation.
 
 ## Places
 

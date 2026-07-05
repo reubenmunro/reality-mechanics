@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Observation
 
-Observation names participated readability held in evaluation. Where visibility names the condition through which presented distinction becomes readable, and attend names sustained contact with what has been noticed, observation names the act of taking that readable distinction into evaluation at the current scope.
+Participated readability held in evaluation.
 
 Observation can occur before recognition. A condition may be observed as difference, signal, movement, pressure, or change before it is recognised as this. Observation does not determine what is observed; it names the condition through which participated readability becomes evaluable.
 

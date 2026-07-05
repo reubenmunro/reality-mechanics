@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Sound
 
-Sound names audible carrying through a medium.
+Audible carrying through a medium.
 
 Sound is not yet melody, harmony, rhythm, or music as a whole. It is the audible carrying condition from which those music-domain reads become possible. Sound can become patterned as rhythm, carried as melody, coupled as harmony, held absent as silence, or unreadable as noise at a current scope.
 

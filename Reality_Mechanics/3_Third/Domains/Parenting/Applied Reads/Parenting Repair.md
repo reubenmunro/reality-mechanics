@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Parenting Repair
 
-Parenting Repair reads a local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair.
+The local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair.
 
 ## Places
 

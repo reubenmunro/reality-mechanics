@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Learning
 
-Learning names participation changing through compatible uptake of what becomes readable.
+Participation changing through compatible uptake of what becomes readable.
 
 ## Places
 

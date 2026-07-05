@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -45,7 +46,7 @@ status: stable
 ---
 # Field of Participation
 
-A Field of Participation names a recurring organisation arising through participation. It becomes available where participation repeatedly organises through the same recognisable field. A field may later be organised into domains, branches, methods, practices, or applied reads, but those organised forms are not the field itself.
+A recurring organisation arising through participation.
 
 A field can receive structural terms before they meet a [[Translation Boundary]] and become terminal to field or domain language. The field shows the recurring participation; the domain shows the local language that carries it.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Ungrounded Fabrication
 
-Ungrounded Fabrication names formed output with a coherent surface but no grounded trace.
+The AI-domain failure condition where fabricated form appears coherent while its trace to reality is absent, broken, displaced, or unverified.
 
 Fabrication can mean forming, making, or producing something. That broader sense is not inherently false. In the AI domain, the failure condition is ungrounded fabrication: formed output that appears coherent while its trace to reality is absent, broken, displaced, or unverified.
 

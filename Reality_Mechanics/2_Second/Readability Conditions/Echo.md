@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Echo
 
-Echo names a returned trace whose source is not directly present.
+A returned trace whose source is not directly present.
 
 Echo is not mere repetition. Repetition can occur again without carrying a prior relation. Echo returns something of a prior relation as readable trace. It may be sound reflected, a word-form resonating, a grief returning, a cultural pattern repeating, or an AI output carrying a pattern whose bearing structure is not present in the output itself.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -26,7 +27,7 @@ status: working
 ---
 # Connection
 
-Connection names relation holding between distinguishable conditions so that passage is available in more than one direction.
+Relation holding between distinguishable conditions so that passage is available in more than one direction.
 
 Connection is held by [[Relation]]. Relation must remain held before connection within relation can be read.
 

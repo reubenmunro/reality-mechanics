@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Release
 
-Release names resolution where held strain exits, discharges, or is no longer retained by the bearing condition.
+Resolution where held strain exits, discharges, or is no longer retained by the bearing condition.
 
 Release is held by [[Resolution]], [[Bearing]], and [[Strain]]. Strain must be present, borne, and determined as leaving the bearing condition.
 

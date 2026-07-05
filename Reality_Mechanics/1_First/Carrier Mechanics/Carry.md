@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -27,7 +28,7 @@ status: stable
 ---
 # Carry
 
-Carry names the forward availability of held [[Connection]].
+The forward availability of held connection.
 
 Carry is not yet [[Carrying]]. Carry names the passage connection offers where relation is held enough for forward availability to remain traceable. Carrying names movement through that passage. A connection may offer carry whether or not a participant, process, or condition is presently carrying through it.
 

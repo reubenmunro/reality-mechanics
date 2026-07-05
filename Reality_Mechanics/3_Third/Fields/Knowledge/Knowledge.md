@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -42,7 +43,7 @@ status: stable
 ---
 # Knowledge
 
-Knowledge names organised carried knowing that can be retained, tested, taught, revised, inherited, or challenged within a field of participation.
+The third-order field where knowing is maintained, tested, taught, or revised through participatory carrying — the structural field for know, bearing source, modelling, competence, and reality check.
 
 This note places [[Know]] inside the [[Knowledge Field]] as organised carried understanding.
 

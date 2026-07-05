@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Physical
 
-Physical names natural-world readability where relation is met as material or field condition.
+The third-order field read where material and field conditions become readable as structural — where boundary, availability, and readability become evaluable in the natural world.
 
 This note defines the physical component used by compounds such as [[Physical Space]] and [[Physical Field Conditions]].
 

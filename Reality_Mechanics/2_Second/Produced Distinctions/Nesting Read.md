@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Nesting Read
 
-Nesting Read names the produced read through which a prior organisation remains available within a later organisation. Where stability names identity and coherence holding across scope, nesting read names the condition through which a prior stable organisation is not replaced but carried within a later one — remaining available through retrace without requiring explicit acknowledgement.
+The produced read through which a prior organisation remains available within a later organisation.
 
 ## Places
 

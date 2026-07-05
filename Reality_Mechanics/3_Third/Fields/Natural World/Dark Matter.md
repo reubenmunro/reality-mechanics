@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -41,7 +42,7 @@ status: stable
 ---
 # Dark Matter
 
-Dark Matter names an inferred natural-world physical-field case where gravitational [[Field Bearing]] remains readable while ordinary electromagnetic visibility remains unavailable.
+The physical field condition through which invisible bearing structures field availability — carrying that shapes gravitational field conditions without becoming directly readable.
 
 This note places dark matter as a third-order case of invisible bearing without making dark matter the source of the structure.
 

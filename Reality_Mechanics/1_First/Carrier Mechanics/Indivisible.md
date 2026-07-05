@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -24,7 +25,7 @@ status: stable
 ---
 # Indivisible
 
-Indivisible carries non-separable distinction: distinction that cannot be separated without changing the condition being read. Fusion or sameness can involve indivisibility, but indivisible itself carries non-separability. What is indivisible may still contain relation; non-separability is not sameness.
+Non-separable distinction — distinction that cannot be separated without changing the condition being read.
 
 ## Places
 

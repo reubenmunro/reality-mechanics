@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Acceleration
 
-Acceleration names change in velocity across interval. It does not by itself identify what bears or produces the change; it names the readable alteration of directed speed through traversal.
+Change in velocity across interval.
 
 ## Places
 

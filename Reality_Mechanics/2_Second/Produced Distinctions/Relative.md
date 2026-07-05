@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Relative
 
-Relative names a read placed through relation, ratio, and reference frame.
+A read placed through relation, ratio, and reference frame.
 
 Relative does not mean unreal, arbitrary, or merely subjective. It means placed. A relative read is answerable to the relation, ratio, reference frame, scope, scale, and carrying conditions through which it becomes readable.
 

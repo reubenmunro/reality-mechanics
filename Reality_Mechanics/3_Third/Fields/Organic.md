@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Organic
 
-Organic names Natural Order participating. Where Natural Order names the available order and participation names a carried, present relation actively taking part, organic names participation that arises through Natural Order rather than through intentional organisation: organisation grows from the available order without being imposed on it. Organic and engineered are not opposites; both participate within Natural Order. The distinction is whether organisation arises through relation or is intentionally arranged through participation.
+Natural Order participating.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Casimir Plates
 
-Casimir Plates names an arranged physical-field case where closely placed material boundaries constrain vacuum-field availability enough for a measurable attraction to become readable. This note places the Casimir effect as a third-order physical-field read without making it source structure.
+The physical field condition through which constrained boundary conditions reduce available field modes — the natural-world read of constraint making coupled asymmetry measurable as attraction.
 
 ## Places
 

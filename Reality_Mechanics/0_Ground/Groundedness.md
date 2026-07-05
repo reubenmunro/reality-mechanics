@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -24,10 +25,9 @@ conditions:
 publish: true
 status: stable
 ---
-
 # Groundedness
 
-Groundedness names the condition of remaining answerable to what holds. A term, read, path, or practice is grounded where it can be traced back through its conditions without losing contact with the dependency that makes it readable.
+The condition of remaining answerable to what holds — where dependency contact is maintained rather than lost.
 
 In the Atlas, Groundedness is also the root-contact check on a note: grounded where the note remains answerable to what holds it; ungrounded where its traces still require checking. This is not the same as permission to enter the Atlas. A placed growth may be working, planted, or tending while its groundedness is still being checked.
 

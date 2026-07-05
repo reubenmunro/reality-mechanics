@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: order
@@ -50,7 +51,7 @@ status: stable
 ---
 # Atlas Practice
 
-Atlas Practice names the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows.
+The practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows.
 
 It is the recursive maintenance layer that returns to every order and asks whether a term, path, correction, or connection can still be traced, checked, revised, and carried.
 

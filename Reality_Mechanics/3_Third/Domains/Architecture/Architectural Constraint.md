@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Architectural Constraint
 
-Architectural constraint names limiting conditions that shape available built resolution.
+Limiting conditions that shape available built resolution.
 
 ## Places
 

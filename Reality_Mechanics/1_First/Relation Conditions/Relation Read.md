@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Relation Read
 
-Relation Read names what becomes readable through clearance: relation as joined spread under a shared condition. Where [[Clearance]] names held separation, relation read names what that separation makes available before any local asymmetry is selected.
+The readable face of Clearance — relation as joined spread under a shared condition before any local asymmetry is selected.
 
 ## Places
 

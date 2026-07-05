@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Maintained Coupling Failure
 
-Maintained Coupling Failure reads a local case where coupling persists as relation while the supportive or corrective bearing required to maintain it fails.
+The applied read where maintained coupling loses its stability at a closure scope — where the condition of held distinct relation fails to sustain.
 
 ## Places
 

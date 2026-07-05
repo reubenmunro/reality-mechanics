@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Cosmic Polarity Read
 
-Cosmic Polarity Read applies [[Resolution Polarity]] to natural-world physical-field reads, comparing [[Light]], [[Gravity]], [[Dark Matter]], [[Dark Energy]], and [[Black Hole]] as apparent clearance, constraint, invisible bearing, opening clearance, and collapse-boundary conditions.
+The applied comparison through which physical-field cases — gravity, dark matter, dark energy, light, and black holes — are read against Resolution Polarity.
 
 This note holds the speculative cosmic application of [[Resolution Polarity]] without making cosmology source structure.
 

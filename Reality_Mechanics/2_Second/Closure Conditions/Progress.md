@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Progress
 
-Progress names continuation evaluated as advancement. Where proceed names continuation, progress names that continuation assessed as moving toward the evaluated condition rather than away from it. Improvement can be one read of progress, but progress first names evaluated movement toward a readable condition.
+Continuation evaluated as advancement.
 
 ## Places
 

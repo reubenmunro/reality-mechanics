@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Know
 
-Know names a recognised read held as available. Where recognition names a read becoming identifiable as this again, know names the condition through which that recognised read is sustained: carried, usable, checkable, and revisable within the current scope. Certainty or truth can involve knowing, but know names a recognised read that continues to be available for use.
+A recognised read held as available.
 
 ## Places
 

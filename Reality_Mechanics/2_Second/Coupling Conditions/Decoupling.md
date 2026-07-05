@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Decoupling
 
-Decoupling names coupling no longer holding a coupled boundary as mutual availability. Distance or difference can follow decoupling, but decoupling names the condition where what had been coupled no longer remains coupled at the boundary through which it was held together.
+Coupling no longer holding a coupled boundary as mutual availability.
 
 ## Places
 

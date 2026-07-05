@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -23,7 +24,7 @@ status: stable
 ---
 # Regress
 
-Regress names continuation evaluated as loss of prior availability. Where progress names evaluated advancement, regress names continuation assessed as less available than a previously held condition. Failure can follow regress, but regress first names evaluated movement away from a readable condition.
+Continuation evaluated as loss of prior availability.
 
 ## Places
 

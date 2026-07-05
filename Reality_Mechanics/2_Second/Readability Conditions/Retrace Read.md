@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Retrace Read
 
-Retrace Read names a produced read through which a trace can recover the dependency path. Where trace names the direct path through which the apparent becomes followable, retrace read names the act of following that path back through its prior conditions — not repetition, not going backwards in time, but recovering what must have held for the current condition to be available. Retrace read is how a read returns to its ground at second order.
+A produced read through which a trace can recover the dependency path.
 
 ## Places
 

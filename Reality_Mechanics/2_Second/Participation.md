@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -56,7 +57,7 @@ status: stable
 ---
 # Participation
 
-Participation names the condition through which a bearing relation actively takes part in a scope. [[Carrying]] continues a resolved condition. [[Presence]] makes coupled relation locally available. [[Bearing Relation]] names coupled relation bearing on coupled relation. Participation is that relation actively entering the conditions it moves through.
+Bearing relation actively taking part in a scope.
 
 ## Places
 

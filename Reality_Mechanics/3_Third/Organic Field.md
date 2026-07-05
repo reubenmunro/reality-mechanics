@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Organic Field
 
-An Organic Field names a recurring field of participation that arises through Natural Order participating. Biological life can show organic organisation, but organic is broader than biological, pure, unmade, or opposed to engineered arrangement. It names organisation arising through relations already carrying it.
+A recurring field of participation.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Rate
 
-Rate names relation read against interval. Where recurrence names participation occurring again and interval names bounded separation within traversal, rate names the produced read of how recurrence, change, or carrying relates to that interval.
+Relation read against interval.
 
 ## Places
 

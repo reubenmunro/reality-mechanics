@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Opacity
 
-Opacity names the structural condition where accumulated third-order carrying has rendered Ground unretraceable from within, remaining locatable against the possibility of Higher Order — the register available once that enclosure has been retraced through. Ground is not absent; the dependency chain still runs to it. But the accumulated structure has become the available world for the participant, and Ground is enclosed within it.
+The structural condition where accumulated third-order carrying has rendered Ground unretraceable from within — where the dependency chain still runs to Ground but can no longer be entered from the participant's current position without disciplined practice.
 
 Opacity names the point where [[Invisible Bearing]] has accumulated past the threshold at which [[Higher Retrace]] can enter without [[Higher Order Crossing|disciplined practice]]. The structure continues to carry. Ground continues to bear it. But the participant cannot reach what bears them from within what they carry.
 

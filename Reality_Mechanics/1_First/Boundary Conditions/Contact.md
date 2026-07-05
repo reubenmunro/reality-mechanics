@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Contact
 
-Contact names relation meeting at a boundary, edge, surface, or point of touch. Contact is carried by [[Tact]]: relation can meet without collapsing into interference, pressure, collision, or harm. It names the meeting condition itself, where clearance has closed enough for relation to touch, meet, or bear locally against another condition.
+Relation meeting at a boundary, edge, surface, or point of touch.
 
 Contact can support later carrying, resistance, grip, or traction through [[Coupled Contact]].
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Clear
 
-Clear names the readable side of clean relation — where relation is unobstructed enough for clearance to be held.
+The readable side of clean relation — where relation is unobstructed enough for clearance to be held.
 
 Clear is held by [[Clean]] and [[Relation]]. Relation must remain free from residue or drift before it can be read without obstruction.
 

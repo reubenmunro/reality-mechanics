@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Difference
 
-Difference names distinguishable non-sameness. Where [[Distinction]] names bounded unevenness becoming distinguishable, Difference names the produced read of that distinction as this rather than that. Opposition or conflict can show difference, but difference is broader: two things can be read as not the same while remaining related.
+Distinguishable non-sameness.
 
 ## Places
 

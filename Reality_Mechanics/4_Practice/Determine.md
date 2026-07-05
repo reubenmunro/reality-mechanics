@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: operation
@@ -32,7 +33,7 @@ status: working
 ---
 # Determine
 
-Determine names the [[Ark Run]] operation that carries pressure into a temporary bounded hold.
+The Ark operation that carries pressure into a temporary bounded hold.
 
 It is not the act of producing an absolute answer. It is the act of allowing a determination to hold at the present scope because enough dependency has been retraced for that scope of read.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Coupled Asymmetry
 
-Coupled asymmetry names resolved asymmetry held between coupled conditions. Where resolved asymmetry names a determined condition and coupling names resolved conditions held in relation, coupled asymmetry names the condition through which unevenness persists inside that coupling: each remains distinct while held together. Imbalance can show coupled asymmetry, but coupled asymmetry names difference remaining available within coupling, not failure of coupling.
+Resolved asymmetry held between coupled conditions.
 
 ## Places
 

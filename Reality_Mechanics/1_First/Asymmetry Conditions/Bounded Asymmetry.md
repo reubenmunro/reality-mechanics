@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Bounded Asymmetry
 
-Bounded asymmetry names asymmetry localised enough to become distinguishable. Where [[Asymmetry]] names unevenness within relation before it is located, bounded asymmetry names that unevenness held locally enough that a boundary can form.
+The hinge where uneven relation becomes local enough to be distinguished — asymmetry held locally enough that a boundary can form.
 
 ## Places
 

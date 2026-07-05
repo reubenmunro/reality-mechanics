@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Legion
 
-Legion names the invariant condition of the organized gathered whole: prior organisation across all orders carrying as one force without collapsing into uniformity.
+The invariant condition of the organized gathered whole — by which prior organisation across all orders can carry as one force without collapsing into uniformity.
 
 [[Nesting]] names prior organisation remaining available within later organisation. Legion is what becomes possible when nesting has accumulated through all orders: the whole can carry as a gathered force rather than as a sequence traced step by step.
 

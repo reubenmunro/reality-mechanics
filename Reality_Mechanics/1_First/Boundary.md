@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -58,7 +59,7 @@ status: stable
 ---
 # Boundary
 
-Boundary names the located distinction through which relation becomes locally distinguishable. Where [[Distinction]] names bounded unevenness becoming distinguishable, boundary names the locating act itself — the operation through which that distinction becomes a local condition. Boundary does not separate relation absolutely; it locates distinction within relation.
+Located distinction within relation — the locating act through which unevenness becomes a readable condition.
 
 ## Places
 

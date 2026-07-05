@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Light
 
-Light names the apparent read of clearance: relation readable as outward traversal or separation.
+The physical field condition through which field-bearing availability traverses medium at the maximum compatible rate — the natural-world read of electromagnetic carrying across available field.
 
 Time is held clearance. Space is located clearance. Light is apparent clearance.
 

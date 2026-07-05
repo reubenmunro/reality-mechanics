@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -31,7 +32,7 @@ status: working
 ---
 # Atlas Fabric
 
-Atlas Fabric names the maintained structural read of the [[Atlas]]: foundation held, members relieved, postures placed, occlusion daylighted, and re-entry preserved.
+The maintained structural read of the Atlas: foundation held, members relieved, postures placed, occlusion daylighted, and re-entry preserved.
 
 The fabric is not decoration. It is a practice container for maintaining the Atlas as a living reasoning system rather than finished text. A structure is not kept sound by preserving every member equally. It stays sound through care, return, relief, support, decommissioning, spacing, waiting, splicing, and attention to what lets the foundation keep carrying.
 

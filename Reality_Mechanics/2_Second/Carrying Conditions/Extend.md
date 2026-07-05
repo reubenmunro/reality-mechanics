@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Extend
 
-Extend names carrying outward beyond a current boundary while remaining answerable to the relation it carries from.
+Carrying outward beyond a current boundary while remaining answerable to the relation it carries from.
 
 Expansion can increase scope, size, reach, or effect. Extend names the carrying movement by which a condition reaches beyond its current boundary without becoming detached from what bears it.
 

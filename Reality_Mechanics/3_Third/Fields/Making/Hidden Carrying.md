@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Hidden Carrying
 
-Hidden Carrying names the distortion in which invention appears to remove dependency while relocating dependency beyond ordinary readability. The invention seems to bypass the carrying relation, while actually extending carrying into less visible domains: extraction, infrastructure, energy, waste, labour, risk, governance, atmosphere, orbit, or future repair.
+The condition through which a made arrangement carries dependencies that are displaced, obscured, or unaccounted — carrying whose structural load is present but not surfaced.
 
 ## Places
 

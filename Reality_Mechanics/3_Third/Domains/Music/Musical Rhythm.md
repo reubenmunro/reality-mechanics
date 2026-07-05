@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Musical Rhythm
 
-Musical Rhythm names the temporal carrying condition through which music marks time as recurrent structure. Where [[Recurrence]] names participation occurring again, rhythm names that recurrence made audible as a pattern of sounding and silence whose returns make temporal carrying readable.
+The temporal carrying condition through which music marks time as recurrent structure.
 
 Musical Rhythm is not mere regularity. It is the condition through which temporal structure becomes followable — where a beat can be felt as a place, departed from as a departure, and returned to as a return.
 

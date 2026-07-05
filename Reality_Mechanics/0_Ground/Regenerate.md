@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Regenerate
 
-Regenerate names the structural condition of returning to generative conditions. Where [[Degenerate]] names the loss of the generative trace while carrying continues, Regenerate names the recovery of that trace from within the carrying — returning to the originating source from which what has been carried was generated.
+The structural condition of returning to generative conditions — recovering the trace to the originating source from within carrying that has lost it.
 
 Regenerate is recovery, not replacement. The carrying does not stop; the trace to what carries the carrying is restored.
 

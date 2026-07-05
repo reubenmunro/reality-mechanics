@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Parenting Boundary
 
-Parenting Boundary reads a local case where parental care must locate a boundary that preserves availability without forcing dependence.
+The local case where parental care must locate a boundary that preserves availability without forcing dependence.
 
 ## Places
 

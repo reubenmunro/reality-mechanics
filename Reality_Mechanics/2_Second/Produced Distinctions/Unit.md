@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Unit
 
-Unit names a bounded repeatable measure. A unit is not the thing measured; it is the stable measure-condition through which comparison can remain readable across instances.
+A bounded repeatable measure.
 
 ## Places
 

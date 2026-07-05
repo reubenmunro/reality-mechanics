@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Invariant
 
-Invariant names what remains stable across traversal, revision, application, or scale. Where dependency order names structural precedence, an invariant names what that precedence preserves — the condition that continues to hold despite changes in how the system is read, applied, or extended. An invariant is not permanent or immobile; it names preserved structure.
+What remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility.
 
 [[Bounded Asymmetry]] is the structural invariant of Reality Mechanics: it holds across domain, scale, and application.
 

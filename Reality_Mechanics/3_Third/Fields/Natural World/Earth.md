@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Earth
 
-Earth names the natural world body within which human participation becomes materially, ecologically, atmospherically, historically, and protectively carried. Earth is not only a location or object; it is the local carrying body through which life, society, sustenance, invention, memory, and choice remain possible.
+The natural world body within which human participation becomes materially, ecologically, atmospherically, historically, and protectively carried.
 
 Earth is not the setting of human activity. Earth is the carrying boundary that keeps human activity possible. Its atmosphere, gravity, water, soil, weather, life systems, and shielding conditions hold exposure within survivable limits. Every built shelter is nested inside this prior shelter.
 

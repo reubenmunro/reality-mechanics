@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -39,7 +40,7 @@ status: stable
 ---
 # Civil
 
-Civil names shared public relation carried through restraint, recognition, boundary, and repair.
+Shared public relation carried through restraint, recognition, boundary, and repair — the condition through which non-identical participants remain answerable within a common order without needing to be kin, identical, or intimate.
 
 It is not politeness first. It is the condition by which non-identical participants remain answerable to one another within a common order without needing to be kin, identical, or intimate.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # AI Coupling
 
-AI coupling names maintained Engineered Coupling between human read, machine output, Atlas structure, and evaluative proceeding.
+The coupling condition specific to AI interaction — where human read, generated output, Atlas structure, and evaluative proceeding remain compatibly joined so that the output can be tested and retraced.
 
 ## Places
 

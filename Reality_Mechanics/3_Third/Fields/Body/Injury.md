@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Injury
 
-Injury names embodied damage to available carrying where ordinary movement, pressure, or participation becomes locally incompatible.
+Incompatible carrying within the body at a closure scope — carrying that proceeds against the body's compatible conditions and damages or removes available bearing.
 
 ## Places
 

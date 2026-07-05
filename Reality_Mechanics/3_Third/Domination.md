@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Domination
 
-Domination names dominion failed into control detached from care.
+Dominion failed into control detached from care.
 
 Domination is not authority as such. It is authority that no longer remains answerable to the domain it claims to govern. The domain, body, field, relation, or participant is treated as available for direction, extraction, or override while the carrying conditions that make it available are ignored or damaged.
 

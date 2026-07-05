@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # AI Availability
 
-AI availability names what becomes usable within an AI interaction at the current closure scope.
+The closure-scope condition inside AI interaction — what the current exchange opens as usable without outrunning the participant's ability to test, carry, or retrace it.
 
 ## Places
 

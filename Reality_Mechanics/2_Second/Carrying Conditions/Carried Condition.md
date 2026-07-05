@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: working
 ---
 # Carried Condition
 
-Carried Condition names the carrying condition returned to when load has concentrated too tightly in the participant or carrier.
+The carrying condition returned to when load has concentrated too tightly in the participant or carrier.
 
 The root sentence is:
 

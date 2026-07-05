@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Sustenance Field
 
-Sustenance Field names the recurring field of participation through which nourishment, sustaining conditions, and what keeps participation going become readable as organised experience.
+The recurring field of participation through which nourishment, renewal, and continued carrying become readable as conditions for sustained life and participation.
 
 ## Places
 

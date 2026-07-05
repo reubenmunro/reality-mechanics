@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -41,7 +42,7 @@ status: stable
 ---
 # Physical Field Conditions
 
-Physical Field Conditions names [[Physical]] natural-world reads where [[Relation Read]] conditions become readable through boundary, constraint, and measurable effect.
+The branch container for natural-world physical reads — the structural node through which physical, field-bearing, and constraint conditions are held as a named branch.
 
 ## Places
 

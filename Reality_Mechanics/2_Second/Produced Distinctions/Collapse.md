@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Collapse
 
-Collapse names a bounded carrying relation read as ceasing to hold at the current closure scope. Where disorder names stability no longer holding, collapse names the specific read where the bounded condition can no longer be followed — strain has exceeded what the read can trace as bearing. Collapse is scope-relative: it names where carrying crosses a [[Terminal]] the current scale cannot follow, read as an end. Over a wider closure scope, what reads as collapse may be carrying continuing past the available scale. Collapse does not name destruction, non-relation, or finality; it names loss of the readable bounded condition at this scope.
+A bounded carrying relation read as ceasing to hold at the current closure scope.
 
 ## Places
 

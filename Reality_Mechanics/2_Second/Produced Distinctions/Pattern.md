@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Pattern
 
-Pattern names readable recurrence. Where recurrence names participation occurring again, pattern names that recurrence held as a distinguishable arrangement — recurring conditions readable together as one thing rather than as isolated returns. A pattern may appear as decoration or design, but the structural read is broader: any recurrence that can be read as an arranged whole.
+Readable recurrence.
 
 ## Places
 

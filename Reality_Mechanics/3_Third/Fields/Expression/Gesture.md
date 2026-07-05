@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Gesture
 
-Gesture names an expression path read where embodied movement carries readable affective, symbolic, or relational form.
+The condition through which bodily form and movement make a read available — the expression of bearing through the body's shaped or directed presence.
 
 ## Places
 

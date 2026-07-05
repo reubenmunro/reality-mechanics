@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -78,7 +79,7 @@ status: stable
 ---
 # Carrying
 
-Carrying : Retracing. Carrying enacts held forward availability; Retracing follows the backward availability of the same held connection — one connection, read in the direction it opens and the direction it returns.
+Held forward availability being enacted.
 
 [[Carry]] is the forward passage this ratio reads forward through. What carries may be resolved, strained, changing, or still being formed; [[Resolution]] can shape carrying without being a universal prerequisite for it.
 

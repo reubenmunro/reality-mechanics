@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Dimension
 
-Dimension names a readable axis of difference. Where difference names distinguishable non-sameness, dimension names that difference held as an axis: a direction along which distinctions can be read, compared, and ordered. Spatial axes are dimensions, but dimension is broader: any readable direction of difference within a closure scope.
+A readable axis of difference.
 
 ## Places
 

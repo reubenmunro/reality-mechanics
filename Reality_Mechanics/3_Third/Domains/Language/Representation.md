@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Representation
 
-Representation names branch-level expression that carries a read into [[Form]].
+Branch-level expression that carries a read into [[Form]].
 
 ## Places
 

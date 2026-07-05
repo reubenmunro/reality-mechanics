@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Violation
 
-Violation names a coupled boundary being crossed, overridden, or made unavailable without compatible participation. Boundary change becomes violation where it is carried against the support that the relationship or bearing relation requires.
+The condition of a coupled boundary broken against compatible participation — where what was required for bearing to continue is overridden.
 
 ## Places
 

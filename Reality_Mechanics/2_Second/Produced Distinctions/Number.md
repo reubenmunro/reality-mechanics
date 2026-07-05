@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Number
 
-Number names count made carryable in order. Where [[Count]] names recurrence held as how many, and [[Root Order]] names dependency readability, number names count placed within ordered relation so it can be carried, compared, combined, divided, scaled, and retraced. A count becomes number where a carrier forms beneath it strongly enough for quantity, order, and relation to travel together.
+Count made carryable in order.
 
 Number is to count what [[Term]] is to word: count becomes number where it is no longer only a local how-many, but a carryable position in ordered relation. Number does not escape relation. It is relation made countable enough to travel.
 

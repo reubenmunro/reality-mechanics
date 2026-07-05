@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Atlas
 
-Atlas names the dependency-ordered reasoning system produced through [[Reality Mechanics]]: the worked and tended surface where terms, traces, reads, openings, and corrections are held in retraceable order.
+The dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order.
 
 An Operating System for Reasoning may become a future-facing evolution of the Atlas as its human and AI participation surfaces mature. It is not the current claim. The current claim is simpler: the Atlas is a dependency-ordered reasoning system.
 

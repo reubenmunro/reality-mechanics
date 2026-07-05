@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Generic
 
-Generic names the structural condition through which a pattern generates instances of itself. It is the originating source from which instances arise, operative before any instance appears.
+The structural condition through which a pattern generates instances of itself — the originating source from which instances arise, operative before any instance appears.
 
 [[Kind]] names recurrent form recognisable across instances. Generic names the prior condition: the pattern already operative before those instances appear.
 

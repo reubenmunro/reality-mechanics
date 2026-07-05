@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Frequency
 
-Frequency names countable return as rate. Where recurrence names participation occurring again and Return names carried relation becoming readable again, frequency counts those readable returns within a measured interval.
+Countable return as rate.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Speed
 
-Speed names rate of traversal through a closure scope. It does not name direction by itself; it names how fast traversal proceeds relative to interval and measure.
+Rate of traversal through a closure scope.
 
 ## Places
 

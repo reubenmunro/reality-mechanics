@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: primitive
@@ -26,7 +27,7 @@ status: working
 ---
 # Other
 
-Other names the first readable distinction from a held reference.
+The first readable distinction from a held reference — what lets One : Other express active Seed : Ground without becoming the generative condition itself.
 
 Other is not merely negation. It is not whatever One rejects. Other is the distinguishable not-same that lets One be a reference rather than an unbounded whole.
 

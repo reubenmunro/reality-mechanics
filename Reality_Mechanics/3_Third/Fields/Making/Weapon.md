@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Weapon
 
-Weapon names capacity redirected toward force, harm, threat, disabling, coercion, override, or forced resolution.
+The use-path where made or available capacity is directed toward force, damage, threat, disabling, coercion, override, or forced resolution.
 
 A weapon is not first a different kind of thing. It is a different carried relation. A knife, hammer, AI system, beam, vehicle, word, or law can move between tool and weapon depending on the use-path that carries it.
 

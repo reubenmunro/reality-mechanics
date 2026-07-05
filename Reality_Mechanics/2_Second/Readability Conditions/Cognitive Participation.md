@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Cognitive Participation
 
-Cognitive Participation names relation participating in readability: the condition through which readable difference is received, distinguished, oriented, or responded to within a participating system.
+Relation participating in readability — the condition through which readable difference is received, distinguished, oriented, or responded to within a participating system.
 
 This allows cognition to scale. A cell, body, animal, person, institution, ecology, tool-coupled system, or AI-coupled system may participate in readable difference without that participation being conscious in the higher-order sense.
 

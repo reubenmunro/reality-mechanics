@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Tracing
 
-Tracing names the practice of locating or marking a [[Trace]] so its backward availability becomes readable. Trace is offered by connection whether or not it is marked. Tracing makes that availability explicit enough for a participant to follow through [[Retracing]].
+The practice of locating or marking a trace so its backward availability becomes readable.
 
 ## Places
 

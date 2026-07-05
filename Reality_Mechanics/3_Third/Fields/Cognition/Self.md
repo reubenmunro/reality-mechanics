@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Self
 
-Self names a cognition path read of relation becoming recursively distinguishable as a participant.
+The condition through which cognition locates a boundary that distinguishes this participant's carrying from others — the recognised closure scope through which identity becomes locally readable.
 
 ## Places
 

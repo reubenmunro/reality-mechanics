@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -25,7 +26,7 @@ status: stable
 ---
 # Visible
 
-Visible carries presented readability: distinction presented to read. Truth, explanation, or understanding can involve visibility, but visible itself carries presentation. What is visible may remain unresolved; presentation is not interpretation.
+Presented readability — distinction presented to read.
 
 ## Places
 

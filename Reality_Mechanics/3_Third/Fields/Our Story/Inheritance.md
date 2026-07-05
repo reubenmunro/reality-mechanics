@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Inheritance
 
-Inheritance names an our-story path read where memory, practice, term, place, obligation, or relation is carried into later participation.
+The condition through which prior carrying is passed forward through recurrence and recognition — what a field, community, or practice continues to carry from prior relation.
 
 [[Borne and Carried]] names the human-scope condition inside inheritance: human carrying begins in received carrying.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Consent
 
-Consent names a society path read where participation becomes allowed by recognised boundary and communicated agreement.
+The condition through which participation is made available within a recognised boundary — the structural node where recognition, participation, and compatibility hold as permission for carrying to proceed.
 
 ## Places
 

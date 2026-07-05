@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Traction
 
-Traction names grip becoming available for carrying through coupled contact. It is the condition through which carrying can proceed without slipping away from the support it needs. Connection and resistance can support traction, but traction names enough resistance to let carrying hold.
+Grip becoming available for carrying through coupled contact.
 
 ## Places
 

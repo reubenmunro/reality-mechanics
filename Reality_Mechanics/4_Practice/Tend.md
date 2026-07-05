@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Tend
 
-Tend names care applied through attended practice so a relation can keep carrying.
+Care applied through attended practice so a relation can keep carrying.
 
 To tend is to stay with a relation, notice what it requires, and adjust conditions so its carrying can continue. It is not care as feeling alone. It is care made active through return.
 

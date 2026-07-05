@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Balance
 
-Balance names pressure regulated between retain and release so relation remains compatible.
+Compatible regulation of pressure between retain and release.
 
 Balance is not stillness, symmetry, equality, or equal amount. It may be dynamic, uneven, rhythmic, responsive, and continuously adjusting. A body balancing, a building carrying load, a relationship bearing strain, or a mind returning to ground all show balance where pressure remains regulated enough for relation to continue.
 

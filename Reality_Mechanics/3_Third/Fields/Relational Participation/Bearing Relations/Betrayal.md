@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Betrayal
 
-Betrayal names trust damaged through violation of a relationship's coupled boundary or bearing relation. It is harm to a relationship where trust had made continued bearing available.
+Harm to a relationship where trust had made continued bearing available — damage to a coupled boundary through violation of trusted bearing.
 
 ## Places
 

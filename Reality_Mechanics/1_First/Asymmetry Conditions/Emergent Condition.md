@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: class
@@ -24,7 +25,7 @@ status: stable
 ---
 # Emergent Condition
 
-Emergent condition names the class of first-order conditions that arise from within relation through asymmetry rather than being imposed from outside it or established by operations. Where operations act on distinction, emergent conditions name what becomes available prior to those acts — the conditions that make operations possible, arising without external cause. Asymmetry, bounded asymmetry, strained asymmetry, and resolved asymmetry are emergent conditions.
+The class of first-order conditions that arise from within relation through asymmetry — prior to operation, arising without external cause.
 
 ## Places
 

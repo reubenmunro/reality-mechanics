@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Neutrino
 
-Neutrino names a natural-world field condition where traversal remains highly available while ordinary interaction, capture, and direct visibility remain scarce. This note places the neutrino as a third-order physical-field read without making it source structure.
+The physical field condition through which a traversal proceeds with minimal coupling — field participation that passes through medium with scarce interaction.
 
 ## Places
 

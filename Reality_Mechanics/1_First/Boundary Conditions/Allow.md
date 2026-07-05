@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Allow
 
-Allow names condition-side permission for passage, read, or carrying at a boundary or scope. Where [[Availability]] names what is present enough to be met, Allow names what the condition lets pass, enter, become readable, or continue without being blocked at that scope.
+Condition-side permission for passage, read, or carrying at a boundary or scope.
 
 Agreement, approval, consent, or moral permission can involve allow, but allow first names what a condition permits at a boundary or scope.
 

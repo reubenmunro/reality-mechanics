@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Boundary Loosening
 
-Boundary Loosening names a coupled boundary becoming less tightly held while the coupling has not yet fully broken. It can lead to decoupling, but it first names the readable weakening, widening, softening, or loss of tightness in the boundary that coupling has been holding.
+A coupled boundary becoming less tightly held while the coupling has not yet fully broken.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Harmonic Drift
 
-Harmonic Drift names the musical disorder read where harmonic carrying loses retrace to the tonal centre. Where [[Source Drift]] names the higher-order condition in which nested carrying is mistaken for source, harmonic drift names that same condition applied to tonal music: the key — the ground of harmonic bearing — becomes unretraceable because the progression has moved too far from it without a recoverable path.
+The musical disorder read where harmonic carrying loses retrace to the tonal centre.
 
 Harmonic Drift is not modulation. Modulation names a tonal move that is retraceable — where a new key is established with enough structural support to carry. Harmonic drift names the condition where the move cannot be retraced and the tonal ground is lost.
 

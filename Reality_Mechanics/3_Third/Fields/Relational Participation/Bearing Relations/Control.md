@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Control
 
-Control names bearing directing availability through relation while the directed condition remains able to affect the direction. The reciprocity is definitional: where the directed condition loses the ability to affect the direction, carrying becomes one-way and incompatible, and control passes into [[Harm]]. Control names directed availability that stays within compatible relation, not direction imposed by removing participation. Control remains reality-bearing where direction stays answerable to [[Care]] — the preserving bearing that keeps availability from being consumed by direction.
+Bearing directing availability through relation while the directed condition remains able to affect the direction.
 
 ## Places
 

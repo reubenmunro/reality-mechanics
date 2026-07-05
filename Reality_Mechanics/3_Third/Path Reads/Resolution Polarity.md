@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Resolution Polarity
 
-Resolution Polarity names a path read where resolution is compared by how availability opens, constrains, carries, or collapses within scope. It is not a single outcome; it is a comparative read of how polar resolution conditions differ within the same structural vocabulary.
+The comparative read of resolution — where different conditions within a scope can be compared by how availability resolves, constrains, opens, carries invisibly, or collapses.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Thought
 
-Thought names carried read inside cognition: readable relation modelled, named, interpreted, projected, questioned, or rehearsed.
+The condition through which readability is modelled or named — the carrying of a recognised pattern into a form that can guide attention or action.
 
 A thought is a carried read or model. It is not automatically true, complete, or compatible.
 

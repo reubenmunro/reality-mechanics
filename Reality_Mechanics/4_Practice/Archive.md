@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -29,7 +30,7 @@ status: working
 ---
 # Archive
 
-Archive names the practice of preserving a release state so that Reality Mechanics can be returned to, cited, compared, and retraced after later movement.
+The practice of preserving a release state so that Reality Mechanics can be returned to, cited, compared, and retraced after later movement.
 
 The current public archive reference is:
 

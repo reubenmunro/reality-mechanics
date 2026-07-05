@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Safety Boundary
 
-Safety boundary names a branch-level boundary condition that preserves compatible participation.
+The located condition through which safe passage, harm-prevention, or compatible carrying is bounded — the structural edge that separates compatible from incompatible relation.
 
 ## Places
 

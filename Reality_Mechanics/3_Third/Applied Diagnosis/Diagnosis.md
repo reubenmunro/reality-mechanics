@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Diagnosis
 
-Diagnosis names an applied read that traces an unresolved condition back through dependency order to locate where readability, carrying, or resolution has become unavailable.
+An applied read that traces an unresolved condition back through dependency order to locate where readability, carrying, or resolution has become unavailable.
 
 ## Places
 

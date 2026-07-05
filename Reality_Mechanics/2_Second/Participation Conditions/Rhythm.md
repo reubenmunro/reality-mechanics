@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Rhythm
 
-Rhythm names patterned recurrence carried through interval. Where frequency names how often recurrence occurs and period names interval per recurrence, rhythm names recurrence becoming readable as a carried pattern.
+Patterned recurrence carried through interval.
 
 ## Places
 

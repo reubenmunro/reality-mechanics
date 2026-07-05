@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -25,7 +26,7 @@ status: stable
 ---
 # In
 
-In carries interior placement: relation readable as within a bounded condition. Possession or enclosure can involve in, but in itself carries inward placement into later compounds such as within, inside, input, inhabit, and in-relation.
+Interior relation within a bounded condition.
 
 ## Places
 

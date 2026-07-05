@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Place Field
 
-Place Field names the recurring field of participation through which location, belonging, and situated presence become readable as organised experience.
+The recurring field of participation through which location, fit, boundary, and belonging become readable as spatial, relational, and community position.
 
 ## Places
 

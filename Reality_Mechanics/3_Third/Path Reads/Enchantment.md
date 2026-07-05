@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Enchantment
 
-Enchantment names altered readability carried through influence. It does not require a supernatural claim; it names the path read where influence changes how something appears, attracts, binds, or opens participation.
+Altered readability through influence — the condition where influence changes how something is read so that participation is drawn, constrained, heightened, or misread through that altered read.
 
 ## Places
 

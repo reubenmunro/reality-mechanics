@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Reciprocity
 
-Reciprocity names mutual participation within Bearing relation.
+Bearing that moves compatibly across participation — the condition through which what is borne can be carried back, responded to, or returned within a participation scope.
 
 ## Places
 

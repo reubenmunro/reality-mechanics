@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: meta
@@ -32,7 +33,7 @@ status: working
 ---
 # Invariants
 
-Statements demonstrated repeatedly across the grounded Atlas. Extracted, not invented — each is cited to its source and should be confirmed there before grounding.
+The current invariant read extracted from the Atlas so repeated structural constraints can be checked without being mistaken for new primitives.
 
 - Relation is primitive. No prior term within the system produces it. ([[Relation]])
 - The current working postulate is: relation holds, order carries, trace places. Order becomes answerable where relation can hold, what holds can carry, and what carries can be traced back. ([[Theory|The Working Postulate]])

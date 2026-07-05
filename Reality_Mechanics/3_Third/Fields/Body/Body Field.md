@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Body Field
 
-Body Field names the recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, feeling — become readable as organised experience.
+The recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, and feeling — become readable as organised embodied experience.
 
 ## Places
 

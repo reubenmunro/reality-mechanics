@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: order
@@ -25,7 +26,7 @@ status: working
 ---
 # Second Order
 
-Second Order names the register where [[Carry]] is enacted as [[Carrying]] and connection enters coupling, presence, bearing relation, and participation. First Order makes connection directionally available; Second Order is the active forward movement through it.
+The register where carry is enacted as carrying and connection enters coupling, presence, bearing relation, and participation.
 
 In the tree read, Second Order is the trunk. It is the stable carrying body through which root conditions become able to support branching participation.
 

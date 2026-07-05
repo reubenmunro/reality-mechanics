@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Externalised Cognition
 
-Externalised cognition names branch-level carrying where cognitive participation is distributed into external structure.
+The condition through which cognitive carrying is extended through a medium — thought, memory, or knowing carried beyond the participant's body through tool, record, or system.
 
 ## Places
 

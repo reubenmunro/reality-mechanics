@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Neglect
 
-Neglect names required bearing not supplied, not entered, or not maintained where availability depends on it.
+The failure to hold bearing that preserves availability — the condition where care-bearing becomes absent, insufficient, or discontinued.
 
 ## Places
 

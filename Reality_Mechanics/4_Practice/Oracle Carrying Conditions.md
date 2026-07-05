@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: condition
@@ -38,7 +39,7 @@ aliases:
 ---
 # Oracle Carrying Conditions
 
-Oracle Carrying Conditions names the operational conditions that must hold for [[Atlas Oracle]] to run without drifting from bounded carrying into unbounded AI use.
+The operational conditions that must hold for Atlas Oracle to run without drifting from bounded carrying into unbounded AI use.
 
 Governance is not placed outside the operation. It is carried inside the operation.
 

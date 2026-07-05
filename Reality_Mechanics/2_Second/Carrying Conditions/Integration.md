@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Integration
 
-Integration names intake resolved into compatible carrying without erasing the distinction of what entered.
+Intake resolved into compatible carrying without erasing the distinction of what entered.
 
 [[Intake]] names availability crossing inward through a boundary. Integration names what happens where that intake becomes carried by the receiving order: it can participate in the condition, affect it, and be affected by it without remaining unresolved foreignness or being erased into sameness.
 

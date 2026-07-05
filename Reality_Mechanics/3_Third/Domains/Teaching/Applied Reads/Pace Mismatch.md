@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Pace Mismatch
 
-Pace Mismatch reads a local teaching case where instruction continues faster than learning can be compatibly borne.
+The local teaching case where instruction continues faster than learning can be compatibly borne.
 
 ## Places
 

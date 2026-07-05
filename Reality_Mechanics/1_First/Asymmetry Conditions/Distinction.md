@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Distinction
 
-Distinction names bounded unevenness becoming distinguishable within relation before it is located as boundary or read as difference.
+Bounded unevenness becoming distinguishable within relation before it is located as boundary or read as difference.
 
 [[Asymmetry]] makes distinction possible. [[Bounded Asymmetry]] makes the unevenness local enough to distinguish. Distinction names that distinguishability itself. [[Boundary]] then locates it; [[Difference]] later names its produced read as non-sameness.
 

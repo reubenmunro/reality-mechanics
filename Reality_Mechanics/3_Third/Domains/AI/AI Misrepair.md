@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # AI Misrepair
 
-AI misrepair names repair-like generated continuation that preserves interaction without restoring compatible grounding.
+The disorder condition through which generated continuation preserves interaction while failing to restore compatible structural grounding — the specifically generated form of Misrepair.
 
 ## Places
 

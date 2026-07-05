@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Black Hole
 
-Black Hole names a natural-world field condition where gravitational field bearing reaches a boundary at which clearance polarity inverts: the located (space) and continuation (time) arms of clearance exchange direction, so inward continuation becomes unavoidable and outward return becomes unavailable. It is a [[Terminal]] — a read-stop where outside readability ends while field bearing continues unread past the available scale. Read from our closure scope it appears as collapse; structurally the bounded condition holds, inverted, rather than failing. This note places the black hole as a third-order physical-field read without making it source structure.
+The physical field condition at which traversal is no longer a compatible continuation — the closure scope where available carrying cannot escape the centring condition.
 
 ## Places
 

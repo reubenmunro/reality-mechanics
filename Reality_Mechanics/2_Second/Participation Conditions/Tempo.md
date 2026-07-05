@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Tempo
 
-Tempo names rate carried as pace within rhythmic participation. Tempo does not name rhythm itself; it names how fast or slow the carried rhythm proceeds within a closure scope.
+Rate carried as pace within rhythmic participation.
 
 ## Places
 

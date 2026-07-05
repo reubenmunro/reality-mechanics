@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Consequence
 
-Consequence names an effect continuing into later conditions through carrying.
+An effect continuing into later conditions through carrying.
 
 [[Effect]] names change carried through coupling from one condition into another. Consequence names what happens where that effect does not end at the coupling in which it first became readable: it continues participating in what follows.
 

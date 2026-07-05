@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Identity
 
-Identity names sustained distinguishability. Where form names readable arrangement and recognition names a read becoming identifiable as this again, identity names the condition through which a formed distinction remains recognisable as itself across encounters — readable as the same condition held. Identity does not name essence or permanence; it names what holds as distinguishable across instances.
+Sustained distinguishability.
 
 ## Places
 

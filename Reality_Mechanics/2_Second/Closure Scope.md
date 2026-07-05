@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -54,7 +55,7 @@ status: stable
 ---
 # Closure Scope
 
-Closure scope names the bounded extent within which a read can be evaluated as holding. [[Closure]] names a read becoming bounded enough for evaluation; closure scope names the extent at which that read holds, fails, or changes.
+The bounded extent within which a read can be evaluated as holding.
 
 Closure Scope protects against two opposite failures. Overclaim treats a local closure as total and stops carrying what falls outside the declared scope. Refusal of scope prevents local closure altogether, so correction has no bounded place to enter. A scope must be declared enough to evaluate, but not declared so finally that wider relation disappears.
 

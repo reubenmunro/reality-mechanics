@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: crossing
@@ -29,7 +30,7 @@ status: working
 ---
 # Threshold (Second → Third)
 
-This threshold names the crossing from Second Order into Third Order.
+The crossing where carrying through recurring participation begins to organise into a field.
 
 ## Places
 

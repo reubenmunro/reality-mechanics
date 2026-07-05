@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -23,7 +24,7 @@ status: stable
 ---
 # Out
 
-Out carries exterior placement: relation readable as beyond a bounded condition. Absence, rejection, or destruction can involve out, but out itself carries outward placement into later compounds such as outside, output, outward, and out-of-relation. What is out may remain related; exteriority is not non-relation.
+Exterior relation beyond a bounded condition.
 
 ## Places
 

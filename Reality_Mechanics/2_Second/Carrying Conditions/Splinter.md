@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Splinter
 
-Splinter names inward crossing that remains unresolved inside carrying. Where [[Intake]] names availability crossing inward through a boundary, splinter names the condition where what crosses cannot yet be received, regulated, or carried by the order it has entered. A splinter is not defined by being external; it is defined by unresolved foreignness within a body, system, or scope.
+Inward crossing that remains unresolved inside carrying.
 
 ## Places
 

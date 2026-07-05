@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Life Field
 
-Life Field names the recurring field of participation through which living, biological continuation, growth, and death become readable as organised experience.
+The recurring field of participation through which living carrying — recursive regulation, sustained coupling, and compatibility — becomes readable as organised experience.
 
 ## Places
 

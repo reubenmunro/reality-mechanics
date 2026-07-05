@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -24,7 +25,7 @@ status: stable
 ---
 # Divisible
 
-Divisible carries readable separation: distinction that can be separated while relation remains available. Destruction or disappearance can involve division, but divisible itself carries separability. What is divisible may remain related; separation is not non-relation.
+Readable separation — distinction that can be separated while relation remains available.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Decision
 
-Decision names a carried sequence resolved at a choice point. Where strategy names a carried sequence oriented toward a resolution, decision names the condition through which that orientation reaches a point of determination — where one path is taken over others within the current closure scope. Decision does not name finality or correctness; it names the readable condition through which a strategy reaches its closure point.
+A carried sequence resolved at a choice point.
 
 ## Places
 

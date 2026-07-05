@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Expressing
 
-Expressing names the placement mode where participation is primarily carried through outward readable form.
+The mode where participation is primarily carried through outward readable form — where relation becomes available to others through gesture, language, sound, image, or movement.
 
 ## Places
 

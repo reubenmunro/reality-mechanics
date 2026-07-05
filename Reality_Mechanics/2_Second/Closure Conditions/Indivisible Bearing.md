@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Indivisible Bearing
 
-Indivisible bearing names bearing that cannot be separated without changing the carrying condition. Where divisible bearing names holding across divisions, indivisible bearing names holding that must remain whole to continue carrying — the carrying condition changes if the bearing is divided.
+Bearing that cannot be separated without changing the carrying condition.
 
 ## Places
 

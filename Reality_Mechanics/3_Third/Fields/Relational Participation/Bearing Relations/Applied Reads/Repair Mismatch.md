@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Repair Mismatch
 
-Repair Mismatch reads a local case where repair is attempted but does not re-enter the lost bearing into compatible carrying.
+The applied read where repair is attempted but addresses the wrong scope, condition, or bearing gap — restoration that misses where it needs to land.
 
 ## Places
 

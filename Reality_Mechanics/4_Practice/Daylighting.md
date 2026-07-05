@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -29,7 +30,7 @@ status: working
 ---
 # Daylighting
 
-Daylighting names the structural practice of restoring readability where order is present but occluded by crowding, residue, missing trace, misplaced support, or overgrowth.
+The structural practice of restoring readability where order is present but occluded by crowding, residue, missing trace, misplaced support, or overgrowth.
 
 Occlusion is not badness and not a rival substance. It is order under cover. Daylighting does not attack the member; it restores the conditions by which the member, its support, and its effects can be read.
 

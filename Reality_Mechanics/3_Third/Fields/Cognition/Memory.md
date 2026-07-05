@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Memory
 
-Memory names returnable carried read inside cognition.
+The condition through which a carried read becomes returnable — a read that has been borne through thought and remains available to adjust future carrying.
 
 Storage can carry memory, but storage alone may preserve information without preserving the bearing path that made the read matter. Memory becomes structural where a carried read can be re-entered without losing enough of its dependency path to keep participation answerable.
 

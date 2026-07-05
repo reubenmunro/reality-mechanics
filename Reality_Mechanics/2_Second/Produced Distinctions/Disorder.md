@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Disorder
 
-Disorder names stability no longer holding. Where stability names identity and coherence sustained across scope, disorder names the condition through which that holding becomes unreadable — strain exceeding bearing, patterns no longer compatible, identity no longer recognisable as the same. Disorder does not name chaos or non-relation; it names the readable loss of a previously held stability within the current scope.
+Stability no longer holding.
 
 Disorder is shaded order, not a positive thing beside order. It is order under loss, occlusion, interruption, residue, or unreadability at the current scope.
 

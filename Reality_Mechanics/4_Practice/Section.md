@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -25,7 +26,7 @@ status: working
 ---
 # Section
 
-Section names a participant's analytic cut through which part of relation becomes readable, countable, comparable, or diagnosable.
+A participant's analytic cut through which part of relation becomes readable, countable, comparable, or diagnosable.
 
 Section is not a condition within relation. Where [[Boundary]] names located distinction that relation already holds, Section names the cut a participant makes across relation so that a part of it can be read. A boundary holds whether or not anyone reads it; a section exists in the reading. A section may follow a boundary, cross one, or hide one — and which of these it does is testable, not given.
 

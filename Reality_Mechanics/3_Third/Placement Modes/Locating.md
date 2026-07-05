@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Locating
 
-Locating names the placement mode where participation is primarily carried through position, boundary, place, or situated availability.
+The mode where participation is primarily carried through position, boundary, or situated availability — where something is placed by where it is, where it can be entered, or what boundary situates it.
 
 ## Places
 

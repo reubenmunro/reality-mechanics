@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Gravity
 
-Gravity names a natural-world physical-field read of field bearing where located clearance is constrained by mass-energy relation, altering availability of traversal, bearing, escape, and measurable path.
+The physical field condition through which mass-bearing relation makes availability structured toward a centre — the natural-world read of field bearing pulling available participation.
 
 This note places gravity as a third-order physical-field read without making it source structure.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Coherence
 
-Coherence names compatible patterns holding together. Where pattern names readable recurrence and compatibility names the condition through which carrying remains supportable, coherence names the condition through which multiple patterns hold together without losing their individual readability. Agreement, unity, or sameness may show coherence, but coherence names compatibility across a scope.
+Compatible patterns holding together.
 
 ## Places
 

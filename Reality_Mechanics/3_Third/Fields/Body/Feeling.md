@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Feeling
 
-Feeling names embodied availability becoming readable to a participant.
+The condition through which the body makes change in availability detectable — the structural node where bodily sensing becomes a readable boundary condition.
 
 A feeling is real as a read, but it does not decide cause, meaning, or action by itself. It shows that relation has become locally available.
 

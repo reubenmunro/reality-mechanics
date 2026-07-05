@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -40,7 +41,7 @@ status: stable
 ---
 # Resolution
 
-Resolution names bearing determined at the current scope of evaluation. Where [[Bearing]] names strain held as readable, resolution names that held strain settling into a readable condition. What is resolved may remain open to wider trace; resolution closes one condition without ending relation.
+Bearing determined at the current scope of evaluation — held strain settling into a readable condition without terminating relation.
 
 Resolution traces from [[Clearance]] because change can only resolve where relation remains held apart enough for difference to be readable. [[Space]] reads that clearance as separation or extent. [[Time]] reads it as interval or continuation. Resolution reads what changes across the held difference.
 

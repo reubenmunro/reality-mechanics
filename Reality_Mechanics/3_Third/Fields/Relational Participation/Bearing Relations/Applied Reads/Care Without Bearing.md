@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Care Without Bearing
 
-Care Without Bearing reads a local case where care-language is present while the required bearing is absent or unavailable.
+The applied read of care whose preservation of availability cannot sustain bearing at the relevant closure scope.
 
 ## Places
 

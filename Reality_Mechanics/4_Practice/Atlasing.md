@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Atlasing
 
-Atlasing names the act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace. It is more than collecting notes: it is the disciplined placement act through which a possible connection is tested for reality-bearing fit.
+The act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace.
 
 Atlasing treats a term as a participation handle rather than a static definition: a placed way to enter relation without losing dependency, bearing, or return path.
 

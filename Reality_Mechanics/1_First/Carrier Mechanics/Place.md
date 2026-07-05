@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 id: first.place
@@ -27,7 +28,7 @@ status: working
 ---
 # Place
 
-Place names locatable entry into relation: the first-order operation by which something becomes enterable, readable, checkable, correctable, or carryable within relation.
+Locatable entry into relation, so an operation can be read, checked, corrected, or carried forward.
 
 Place is not location alone. A location can be named without the operation being placed in Atlas order. Place names the availability of a locatable position through which relation, holding, carrying, and trace can become answerable, entered, and checked.
 

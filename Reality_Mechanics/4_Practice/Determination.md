@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: state
@@ -34,7 +35,7 @@ status: working
 ---
 # Determination
 
-Determination names the temporary scoped hold produced when pressure has been retraced, checked, and bounded enough for a next answerable step.
+The temporary scoped hold produced when pressure has been retraced, checked, and bounded enough for a next answerable step.
 
 A determination is not simply an answer. It is an answerable hold.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -42,7 +43,7 @@ status: stable
 ---
 # Medicine
 
-Medicine names the applied domain through which maintained coupling holds a body's organic asymmetry within compatible bounds. The body brings its own asymmetry — its regulatory capacity, its healing trajectory, its inherent directedness toward function. The practitioner does not produce this asymmetry; they hold the conditions within which it can proceed.
+The applied domain through which maintained coupling holds a body's organic asymmetry within compatible bounds — where the practitioner's recurrent, responsive bearing preserves available carrying without overriding the body's own regulatory capacity.
 
 Medicine shares its structural form with [[Gardening]]: a practitioner coupled to a living system whose asymmetry cannot be overridden, only bounded. What medicine adds is the direction of harm — the coupling can fail not only by falling short but by exceeding compatible scope. [[Over-Treatment]] names that failure: intervention that continues past what the body's asymmetry can bear, turning care into a further source of strain.
 

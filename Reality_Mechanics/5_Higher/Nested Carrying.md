@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Nested Carrying
 
-Nested Carrying names nesting actively carrying participation. Where [[Nesting]] names prior organisation remaining available within later organisation, Nested Carrying names that prior organisation doing the work of carrying — actively sustaining participation without requiring explicit retracing each time.
+Nesting actively carrying participation — where prior organisation bears later participation rather than merely being available within it.
 
 The distinction matters. [[Nesting]] is the structural condition: prior is available within later. Nested Carrying is that condition becoming operative as function: the prior is not just available, it is bearing. A model represents prior organisation. Nested Carrying carries it.
 

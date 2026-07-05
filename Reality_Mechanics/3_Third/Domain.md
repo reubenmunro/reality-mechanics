@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Domain
 
-A Domain names an organised participation context. A domain organises one or more fields into a recognisable context, practice, discipline, institution, method, tool, technology, or applied arrangement. Domains remain valid where they preserve access back to the fields and traces they organise.
+An organised participation context.
 
 A domain also names where general Atlas terms meet a [[Translation Boundary]] and become terminal to local language. The domain does not replace the source structure; it translates that structure into terms the domain can use, test, teach, and repair.
 

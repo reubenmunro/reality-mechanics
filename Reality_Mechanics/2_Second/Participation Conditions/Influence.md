@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Influence
 
-Influence names one participating condition altering how another condition is read, carried, or made available. Where [[Effect]] names change carried through coupling, Influence names that effect entering participation strongly enough to alter another condition's readability or continuation. Influence is not control by itself.
+One participating condition altering how another condition is read, carried, or made available.
 
 ## Places
 

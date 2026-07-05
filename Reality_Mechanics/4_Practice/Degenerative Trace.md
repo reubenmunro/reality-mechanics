@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -32,7 +33,7 @@ status: working
 ---
 # Degenerative Trace
 
-Degenerative Trace names the trace of where carrying continued while contact with its generating order was lost.
+The trace of where carrying continued while contact with its generating order was lost.
 
 It is not merely a missing trace. It is the readable path of trace-loss inside continuing carrying.
 

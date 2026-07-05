@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Hold
 
-Hold names resolution remaining supportable as the same condition.
+Resolution remaining supportable as the same condition.
 
 Hold is held by [[Resolution]]. Bearing must be determined at the current scope before resolution can remain supportable as the same condition.
 

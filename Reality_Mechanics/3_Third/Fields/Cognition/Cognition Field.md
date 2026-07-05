@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Cognition Field
 
-Cognition Field names the recurring field of participation through which ordered readability becomes organised as thought, memory, self, knowing, and cognitive experience.
+The recurring field of participation through which ordered readability becomes organised as thought, memory, self, knowing, and cognitive experience.
 
 ## Places
 

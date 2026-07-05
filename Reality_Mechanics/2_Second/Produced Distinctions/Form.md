@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Form
 
-Form names readable arrangement. Where difference names distinguishable non-sameness, form names difference held as an arrangement — multiple distinctions readable together as one organised condition. Physical shape can be a form, but form is not limited to shape; it names any arrangement of differences that can be read as one thing.
+Readable arrangement.
 
 ## Places
 

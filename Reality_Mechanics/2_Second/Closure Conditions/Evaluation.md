@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Evaluation
 
-Evaluation names a read being assessed within a closure scope. Where readability names the condition that makes reading possible and closure scope names the bounded extent within which a read holds, evaluation names the act of taking a read up into assessment — checking whether it holds, comparing it against other reads, or determining its status within the current scope.
+A read being assessed within a closure scope.
 
 ## Places
 

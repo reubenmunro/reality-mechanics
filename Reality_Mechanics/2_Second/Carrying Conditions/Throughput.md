@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Throughput
 
-Throughput names flow measured through a boundary or medium at a rate. It does not name the value of what passes; it names how much carrying passes through a condition within an interval.
+Flow measured through a boundary or medium at a rate.
 
 ## Places
 

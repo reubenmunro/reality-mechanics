@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Surface Patch
 
-Surface Patch reads a local case where visible repair allows proceeding while the bearing condition that required repair remains unrestored.
+The applied read where repair restores surface coherence without restoring compatible bearing — proceeding that appears repaired while the underlying condition remains unrestored.
 
 ## Places
 

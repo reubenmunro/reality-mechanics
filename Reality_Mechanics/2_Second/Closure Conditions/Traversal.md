@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Traversal
 
-Traversal names a read being followed through a closure scope. Where closure scope names the bounded extent within which a read holds, traversal names the movement through that extent: following reads, conditions, and traces within the current scope. Progress or direction can appear during traversal, but traversal first names following through what is available within scope.
+A read being followed through a closure scope.
 
 ## Places
 

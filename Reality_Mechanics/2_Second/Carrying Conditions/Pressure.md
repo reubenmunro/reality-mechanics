@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Pressure
 
-Pressure names the emergent condition where load becomes locally borne through relation.
+Emergent load becoming locally borne through relation.
 
 Pressure is not load alone and not the carrier alone. It appears where load meets a local carrying relation. This is why pressure can be generative: it is the active edge where carrying becomes felt, formed, adjusted, resisted, retained, released, or resolved.
 

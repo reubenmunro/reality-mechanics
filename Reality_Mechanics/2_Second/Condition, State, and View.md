@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: distinction
@@ -27,7 +28,7 @@ status: working
 ---
 # Condition, State, and View
 
-Condition, State, and View names the distinction between a condition, a frozen or sectioned read of that condition, and the view through which that read becomes visible.
+The distinction between a condition, a frozen or sectioned state-read, and the view through which that state becomes visible.
 
 A condition is relation readable as holding within a [[Closure Scope]]. A state is a frozen or sectioned read of a condition. A view is the position, [[Section]], projection, or read path through which a state becomes visible.
 

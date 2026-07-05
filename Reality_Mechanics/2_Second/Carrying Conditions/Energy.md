@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: working
 ---
 # Energy
 
-Energy names generated availability for carrying.
+Generated availability for carrying.
 
 This does not replace physical, biological, or domain-specific definitions of energy. It places what energy does in the Atlas order: energy names availability generated within a condition that can carry work, movement, transformation, maintenance, attention, repair, or continuation.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Resonance
 
-Resonance names difference coupled through a shared carrying pattern.
+Difference coupled through a shared carrying pattern.
 
 Resonance is not sameness. It is not difference alone. It becomes readable where distinct conditions can carry a shared frequency, rhythm, pattern, or relation strongly enough that one moves, amplifies, returns, or becomes readable through the other.
 

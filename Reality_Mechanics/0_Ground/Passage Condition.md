@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: class
@@ -21,10 +22,9 @@ conditions:
 publish: true
 status: stable
 ---
-
 # Passage Condition
 
-Passage Condition names a structural role: a term whose function is to regulate whether order can pass, hold, close, or remain available across a boundary or scope. A passage condition is not an order root — it does not make an order emerge by itself. It may be highly connected because many later terms must pass through it, but its role is regulative rather than root-emergent. High linkage alone does not make a term a root.
+A structural role — terms that regulate whether order can pass, hold, close, or remain available across a boundary or scope.
 
 [[Boundary]] and [[Availability]] are the primary passage conditions of the first order. [[Allow]], [[Compatibility]], [[Scope]], and [[Closure Scope]] extend this role into later orders.
 

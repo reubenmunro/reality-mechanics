@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Scale
 
-Scale names readable extent along a dimension within a [[Reference Frame]]. Where [[Dimension]] names a readable axis of difference, scale names how far along that axis a condition extends from the chosen reference.
+Readable extent along a dimension within a reference frame.
 
 Scale does not guarantee that order survives a change of scale. A scale transition remains traceable only where the operational order can be retraced across the transition. Where the apparent continuity of scale hides a substituted order, scale has become a site of drift rather than a preserved read.
 

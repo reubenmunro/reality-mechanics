@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Knowledge Field
 
-Knowledge Field names the recurring field of participation through which knowing, modelling, and carrying what has been retraced become readable as organised experience.
+The recurring field of participation through which carried knowing — modelling, testing, tracing, and competence — becomes readable as organised experience.
 
 ## Places
 

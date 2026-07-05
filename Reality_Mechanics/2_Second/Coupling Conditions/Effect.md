@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Effect
 
-Effect names change in one condition carried through coupling from another condition.
+Change in one condition carried through coupling from another condition.
 
 Change alone does not establish effect. Two conditions may change together without one change being carried through their relation. Effect becomes available where the change remains traceable through coupling: what one condition carries alters what the other can hold, do, present, or continue.
 

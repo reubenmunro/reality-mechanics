@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Invisible Bearing Read
 
-Invisible Bearing Read names bearing that carries participation without presenting as bearing. Where bearing names strain held as a readable condition, invisible bearing read names the condition through which that holding continues without being visible as holding. It is not hidden bearing — invisible bearing remains retraceable; what carries is not presented but can be recovered through retrace.
+Bearing that carries participation without presenting as bearing.
 
 ## Places
 

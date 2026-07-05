@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: class
@@ -29,7 +30,7 @@ status: stable
 ---
 # Field Relationships
 
-Field Relationships names a working grouping of third-order fields by recurring participation emphasis.
+A working grouping of third-order fields by recurring participation emphasis.
 
 ## Places
 

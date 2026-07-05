@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Life
 
-Life names coupled natural order in which relation remains available to continue through bearing, repair, memory, and constrained maintenance of living coupling.
+The third-order field where living carrying — recursive regulation, sustained coupling, and renewed availability — becomes readable as a structural condition.
 
 This note places living coupling as a third-order life branch without making biological mechanism source authority.
 

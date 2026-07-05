@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Web
 
-Web names woven continuity read as traceable crossing-pattern.
+Woven continuity read as traceable crossing-pattern.
 
 Web is not merely a network. It is the traceable weave of [[Fabric]]: the connected crossing-pattern through which threads remain followable within held continuity.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Binding
 
-Binding names constrained participation through carried influence. Binding is not constraint in general; it is influence holding participation within a narrowed course.
+The constraining mode of enchantment — where influence narrows how participation can continue, exit, respond, or re-enter.
 
 ## Places
 

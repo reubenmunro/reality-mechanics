@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Face
 
-Face names the boundary-surface condition through which carrying becomes answerable to read. It is continuity becoming locally answerable.
+The boundary-surface condition through which carrying becomes answerable to read.
 
 Face is also where carrying becomes answerable to response. Once carrying has a face, it can be met, trusted, misread, cared for, controlled, harmed, repaired, or recognised at a local boundary.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: instrument
@@ -32,7 +33,7 @@ status: working
 ---
 # Generate and Regenerate
 
-Generate and Regenerate names the practice instrument for asking how carrying is generated, where its trace is preserved or lost, and how it can be regenerated and carried again.
+The practice instrument for asking how carrying is generated, where its trace is preserved or lost, and how it can be regenerated and carried again.
 
 It is not the Atlas itself. It is a way to process Atlas work where the trace of generation needs to become re-enterable.
 

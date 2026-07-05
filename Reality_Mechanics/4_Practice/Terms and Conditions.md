@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Terms and Conditions
 
-Terms and Conditions names the Atlas standard by which a word becomes a [[Term]] and remains grounded through traceable [[Condition|conditions]]. A term serves where its conditions remain traceable.
+The structural agreement between named terms and the conditions that allow those terms to serve inside the Atlas.
 
 The ordinary phrase is useful because it already joins terms with conditions. The Atlas reads that join structurally: a named term must remain answerable to what lets it hold.
 

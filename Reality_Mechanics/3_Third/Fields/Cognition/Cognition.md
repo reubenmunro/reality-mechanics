@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -39,7 +40,7 @@ status: stable
 ---
 # Cognition
 
-Cognition names ordered participation in readability.
+Ordered participation in readability — the condition through which a participant can receive, distinguish, retain, compare, orient, and respond to difference within a resolution band.
 
 It is not the source of order. It is the condition through which a participant can receive, distinguish, retain, compare, orient, and respond to difference within a resolution band.
 

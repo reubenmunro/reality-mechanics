@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Load
 
-Load names what bears on carrying. Where bearing names strain held as readable and carrying names held and placeable forward availability being enacted, load names the carried demand, weight, or pressure that must remain supportable for carrying to continue. Load becomes [[Pressure]] where it becomes locally borne through relation. Load becomes burden where it strains carrying beyond supportable condition.
+What bears on carrying.
 
 ## Places
 

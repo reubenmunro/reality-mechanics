@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -32,7 +33,7 @@ status: working
 ---
 # Generative Trace
 
-Generative Trace names the trace that preserves enough of the generating order to seed continuation.
+The trace that preserves enough of the generating order to seed continuation.
 
 It is not only a record of what happened. It is a trace of how carrying became possible.
 

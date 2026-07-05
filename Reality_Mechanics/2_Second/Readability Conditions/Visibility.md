@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Visibility
 
-Visibility names the condition through which presented distinction becomes readable. Where visible carries the relational role of presented distinction, visibility names the produced read: what is presented can be taken up into evaluation. Presence may be visible, but visibility names presence held enough to be read within the current scope.
+The condition through which presented distinction becomes readable.
 
 ## Places
 

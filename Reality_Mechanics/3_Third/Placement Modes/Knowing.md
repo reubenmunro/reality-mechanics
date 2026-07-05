@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Knowing
 
-Knowing names the placement mode where participation is primarily carried through readable distinction, recognition, test, or retained understanding.
+The mode where participation is primarily carried through readable distinction, recognition, test, or retained understanding — where what is read becomes identifiable, checkable, or teachable.
 
 ## Places
 

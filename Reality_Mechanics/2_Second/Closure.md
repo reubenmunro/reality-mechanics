@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Closure
 
-Closure names a read becoming bounded enough for evaluation. [[Boundary]] locates distinction, and [[Resolution]] determines bearing. Closure is the condition that lets a read be evaluated as holding within a scope. It does not require finality, completion, or an exhaustive read.
+A read becoming bounded enough for evaluation.
 
 ## Places
 

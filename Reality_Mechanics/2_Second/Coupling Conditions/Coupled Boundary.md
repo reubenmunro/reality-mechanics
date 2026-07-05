@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Coupled Boundary
 
-Coupled Boundary names boundary held through coupling. Where boundary locates distinction and coupling holds resolved conditions in relation, coupled boundary names the condition through which distinct boundaries remain mutually available without collapsing into sameness or separating into unrelatedness.
+Boundary held through coupling.
 
 ## Places
 

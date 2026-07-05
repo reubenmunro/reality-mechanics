@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Dependency
 
-Dependency names one condition requiring another to remain available. Where carrying names held and placeable forward availability being enacted, dependency names the structural condition through which one carried condition cannot hold without another also holding. Weakness or subordination can involve dependency, but dependency first names the readable requirement that carrying preserves.
+One condition requiring another to remain available.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Recursive Regulation
 
-Recursive regulation names regulation occurring through recursive carrying. Where regulation names carrying maintained within condition and recursive names carrying re-entering its own condition, recursive regulation names the condition through which a system maintains its carrying conditions through the very carrying it is regulating: what is maintained contributes to maintaining itself. It does not require perfect self-sufficiency; it names regulation becoming self-sustaining within a scope.
+Regulation occurring through recursive carrying.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Harm
 
-Harm names carrying proceeding incompatibly such that available bearing is damaged, weakened, or removed. Where failure names bearing not sustained at the point of resolution, harm names a carrying condition downstream of resolution: carrying continuing in a way that makes required bearing less available or incompatible. It is not a single resolution event but a condition that persists across carrying.
+Carrying proceeding incompatibly such that available bearing is damaged, weakened, or removed — the downstream persistence of incompatible carrying across a closure scope.
 
 ## Places
 

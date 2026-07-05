@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -24,7 +25,7 @@ status: stable
 ---
 # Invisible
 
-Invisible carries non-presented readability: distinction that can hold without being presented to read. Absence, hiding, or destruction can involve invisibility, but invisible itself carries non-presentation. What is invisible may remain structurally active; non-presentation is not non-relation.
+Non-presented readability — distinction that can hold without being presented to read.
 
 ## Places
 

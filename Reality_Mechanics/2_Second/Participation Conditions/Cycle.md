@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Cycle
 
-Cycle names a return bounded by a recognisable period. Repetition can show a cycle, but does not define one: the recurrence must remain traceable as a carried condition, and the return must be bounded as one complete passage through a period.
+A return bounded by a recognisable period.
 
 ## Places
 

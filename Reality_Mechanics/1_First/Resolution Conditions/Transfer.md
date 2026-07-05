@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Transfer
 
-Transfer names resolution where bearing passes strain, load, or support into another condition. Transfer is not carrying in the second-order sense; it is the first-order determination that what was borne is now borne elsewhere.
+Resolution where bearing passes strain, load, or support into another condition.
 
 ## Places
 

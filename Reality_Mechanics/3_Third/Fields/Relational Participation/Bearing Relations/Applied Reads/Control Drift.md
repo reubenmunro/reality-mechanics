@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Control Drift
 
-Control Drift reads a local case where directed availability stops receiving the bearing condition it directs and begins forcing proceeding.
+The applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding.
 
 ## Places
 

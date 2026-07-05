@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Organised Domain
 
-An Organised Domain names an intentionally arranged participation context. An Organised Domain is not the same as an Organic Field. It organises one or more fields into a recognisable practice, discipline, institution, method, model, framework, or applied arrangement. Organised domains can remain healthy where they preserve retraceability to the fields and relations they organise. They become structurally unsafe where their organisation carries participation while blocking retrace.
+An intentionally arranged participation context where one or more fields become organised into practice, discipline, institution, method, model, framework, or applied arrangement.
 
 An Organised Domain is also where structural terms often become terminal to disciplined language. The domain term carries the branch forward only while the source relation remains retraceable.
 

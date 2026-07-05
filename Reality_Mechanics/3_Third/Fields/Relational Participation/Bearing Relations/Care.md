@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Care
 
-Care names Bearing preserving Availability through relation. Care remains responsive by attending to the condition whose availability it preserves.
+Bearing that preserves availability through relation while remaining attended to the condition whose availability it preserves.
 
 ## Places
 

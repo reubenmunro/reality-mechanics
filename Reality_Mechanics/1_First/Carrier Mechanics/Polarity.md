@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -24,7 +25,7 @@ status: stable
 ---
 # Polarity
 
-Polarity carries opposed direction: distinction presented as bearing in opposing directions within relation. Conflict or hierarchy can show polarity, but polarity names directional opposition before it names conflict. What is polar may remain related; opposition is not separation.
+Opposed direction — distinction presented as bearing in opposing directions within relation.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Cognitive Carrying
 
-Cognitive carrying names the Bearing participation required to keep information available for use.
+The condition through which a cognitive state — thought, orientation, or pattern — is continued through participation rather than discharged or discarded.
 
 ## Places
 

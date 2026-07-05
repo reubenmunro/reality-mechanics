@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Presence
 
-Presence names coupled relation locally available to read. [[Coupling]] holds two resolved conditions in relation. Presence is where that coupling becomes available within the current scope: this rather than not-this, here rather than not-here. Appearance can show presence, but presence names the condition of coupled relation being available to encounter, evaluate, and read.
+Coupled relation locally available to read.
 
 ## Places
 

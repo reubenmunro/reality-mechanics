@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Reality Mechanics
 
-Reality Mechanics names the [[Discipline]] of keeping relation traceable as order. It maps terms by retraceable dependency: what holds them, what they carry, what they pair with, where they trace, how they read, and where they can be corrected.
+The discipline of keeping relation traceable as order through a working postulate, grounded retrace, accumulated carrying, and answerable placement.
 
 It begins from a working postulate: relation holds, order carries, trace places. Order becomes answerable where relation can hold, what holds can carry, and what carries can be traced back.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Order Trace
 
-Order Trace names the reusable path by which the Atlas can follow relation from root availability into field-scale participation and higher-order nesting.
+The visible path through the Atlas orders: relation becoming readable, answerable, carryable, participatory, nested, and retraceable.
 
 It does not replace individual term traces. It gathers the main dependency movement so the reader can see how the orders hang together without forcing every term into one ladder.
 

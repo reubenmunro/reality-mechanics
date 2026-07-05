@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Strain
 
-Strain names available distinction under contrast. Where availability names the condition under which distinction can present, strain names the same distinction pressing under contrast — present and pressured without yet being held or resolved. Strain does not yet name bearing, carrying, or outcome. It names the contrasted condition that can become held, resolved, remembered, or checked.
+Available distinction under contrast — present and pressing without yet being held or resolved.
 
 ## Places
 

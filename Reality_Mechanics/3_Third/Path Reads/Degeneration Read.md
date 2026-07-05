@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -40,7 +41,7 @@ status: working
 ---
 # Degeneration Read
 
-Degeneration Read names the reusable read by which a carrying is followed from health, through strain, into degeneration, and back through repair.
+The reusable read by which a carrying is followed from health, through strain, into degeneration, and back through repair — read by whether its trace back remains followable.
 
 It does not add a new condition. It gathers conditions already placed — [[Strain]], [[Degenerate]], [[Source Drift]], [[Regenerate]], [[Repair]] — so the same movement can be located in any carrying at any order.
 

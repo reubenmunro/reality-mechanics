@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Real
 
-Real names presence holding as encounterable. Where be names presence held, real names that presence holding within the current closure scope as something that can be encountered, affected, constrained, or evaluated. Metaphysical claims can use real, but this note names the condition through which presence becomes available to engagement within scope.
+Presence holding as encounterable.
 
 ## Places
 

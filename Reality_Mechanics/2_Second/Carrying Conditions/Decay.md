@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Decay
 
-Decay names decrease in carrying, scale, or available participation across traversal. Failure can follow decay, but decay first names change read as loss or reduction within a closure scope.
+Decrease in carrying, scale, or available participation across traversal.
 
 ## Places
 

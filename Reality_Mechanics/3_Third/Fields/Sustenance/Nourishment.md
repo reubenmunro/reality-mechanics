@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Nourishment
 
-Nourishment names a sustenance path read where living participation receives and carries availability enough to continue.
+The condition through which intake of compatible material renews available carrying — the structural read of compatible intake sustaining the body's or field's continued carrying.
 
 ## Places
 

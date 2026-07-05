@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Recursion
 
-Recursion names nested organisation returning into its own carrying.
+Nested organisation returning into its own carrying.
 
 Where [[Recursive]] names carrying re-entering its own condition at second order, Recursion at higher order names a nested organisation becoming able to participate in the carrying that preserves, revises, or redirects it.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Communion
 
-Communion names the invariant condition of genuine collective participation: distinct participations genuinely together without collapsing into sameness.
+The invariant condition of genuine collective participation — by which distinct participations can be genuinely together without collapsing into sameness or remaining merely co-present.
 
 [[Organic Field]] names participation organising itself through natural order. Communion is the prior condition organic field requires: the participation must be genuine before it can organise into a field.
 

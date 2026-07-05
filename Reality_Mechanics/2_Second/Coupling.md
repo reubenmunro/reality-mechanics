@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -43,7 +44,7 @@ status: stable
 ---
 # Coupling
 
-Coupling names connected relation: two or more resolved conditions held in relation to each other. Where [[Resolved Asymmetry]] names a single determined condition, coupling names the condition through which determined conditions become mutually available while remaining distinct. Coupling is the second-order precondition for presence, reality, and identity.
+Connected relation — distinct resolved conditions held in mutual availability without collapsing into sameness.
 
 Coupled relation connects. Contact can meet without coupling; a link can point without bearing; a category can group without participation. Coupling holds distinct resolved conditions in mutual availability so that relation can become locally present, answerable, and able to participate.
 

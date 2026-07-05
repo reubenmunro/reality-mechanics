@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Constraint
 
-Constraint names availability bounded through carrying. Where bearing names strain held and carrying names held and placeable forward availability being enacted, constraint names the condition through which carrying limits, directs, or narrows what is available: the bounded availability that carrying produces. Blockage, failure, or structure can involve constraint, but constraint first names the readable narrowing through which structure can form where relation aligns.
+Availability bounded through carrying.
 
 ## Places
 

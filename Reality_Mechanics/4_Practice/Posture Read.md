@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: read
@@ -31,7 +32,7 @@ status: working
 ---
 # Posture Read
 
-Posture Read names a versioned order experiment: a postulate can be read as a posture of relation.
+A versioned order experiment that reads postulate as posture: an act of relation through which connection can become structure, clear, and clean.
 
 A posture is not a proof and not a doctrine. It is how relation is held toward relation so that an order can become constructible. In this read, Euclid is useful as an exemplar because his postulates show relation entering a constructible order. Reality Mechanics does not copy geometry; it asks what kind of relational posture lets an order become traceable, comparable, correctable, and re-enterable.
 

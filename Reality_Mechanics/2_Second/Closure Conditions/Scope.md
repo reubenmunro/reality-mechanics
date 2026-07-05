@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Scope
 
-Scope names the bounded extent within which a read can hold. Where [[Extent]] names the reached range of carrying, and closure names a read becoming sufficiently bounded for evaluation, scope names that extent as a readable condition: the range within which a read participates without extending beyond what holds at the current boundary. Scope is the extent of validity, not the read itself.
+The bounded extent within which a read can hold.
 
 ## Places
 

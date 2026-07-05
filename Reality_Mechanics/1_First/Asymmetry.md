@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Asymmetry
 
-Asymmetry names uneven relation. It is the first readable condition that makes distinction possible, and it is not produced by a prior term beyond relation itself. Before boundary, locality, or order can be read, relation must be uneven enough for distinction to begin.
+The first readable unevenness within Relation — what makes distinction possible before locality or order can be read.
 
 ## Places
 

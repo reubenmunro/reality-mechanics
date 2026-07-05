@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Relationship
 
-Relationship names relation held as carried, coupled participation. It is relation given a shared boundary-form through which participants can bear on each other, maintain contact, repair, loosen, or decouple.
+The sustained, named form of coupled participation — the shared boundary through which bearing, repair, and ongoing relation take place.
 
 The "ship" read is structural rather than etymological: relationship is relation carried in a held form.
 

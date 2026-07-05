@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Structural Disorder
 
-Structural Disorder names loss of dependency readability in the carrying structure. [[Root Order]] names the governing arrangement, and [[Dependency Order]] names structural precedence within it. Structural Disorder names the condition where that precedence can no longer be followed: dependency is hidden, interrupted, displaced, bypassed, inverted, or forced.
+Loss of dependency readability in the carrying structure — where what must hold is hidden, interrupted, displaced, bypassed, or forced.
 
 Structural Disorder is shaded order, not a thing beside order. It names where order cannot be cleanly retraced because what must hold has become obscured, lacking, residue-bearing, or unreadable.
 

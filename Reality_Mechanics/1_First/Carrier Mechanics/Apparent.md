@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -28,7 +29,7 @@ status: stable
 ---
 # Apparent
 
-Apparent names what is presented as available distinction. It does not need trace, holding, or recognition before it can appear; it names what becomes available to enter them. Apparent may become visible or known, but first it is distinction present enough to be noticed.
+Distinction as presented enough to become available to notice.
 
 ## Places
 

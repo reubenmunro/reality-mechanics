@@ -1,4 +1,5 @@
 ---
+
 grounded: false
 order: foundation
 kind: convention
@@ -31,7 +32,7 @@ status: developing
 ---
 # Current Record Convention
 
-Records the current repository convention used to encode [[Common Term Structure]].
+The current repository convention used to encode Common Term Structure as Markdown, frontmatter, headings, and wikilinks.
 
 This convention is operational.
 

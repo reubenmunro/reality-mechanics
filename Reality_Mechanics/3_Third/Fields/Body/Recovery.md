@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -40,7 +41,7 @@ status: stable
 ---
 # Recovery
 
-Recovery names embodied re-bearing where reduced or damaged availability becomes compatibly carried again.
+Compatible re-bearing within the body following fatigue or injury — the restoration of carrying capacity through rest, repair, or sustained support.
 
 ## Places
 

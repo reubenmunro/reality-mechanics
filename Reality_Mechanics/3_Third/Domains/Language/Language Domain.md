@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Language Domain
 
-Language Domain names the organised participation context through which naming, translating, representing, and carrying meaning through terms become readable as shared use.
+The organised participation context through which naming, translating, representing, and carrying meaning through terms become readable as shared use.
 
 ## Places
 

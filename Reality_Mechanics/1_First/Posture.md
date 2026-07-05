@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Posture
 
-Posture names connection held with orientation: how relation is held toward relation so that order can become constructible.
+Connection held with orientation — how relation is held toward relation so that order can become constructible.
 
 [[Connection]] gives a held and placeable passage. Posture names what happens when that passage is not merely present but directed — when the holding has a toward-ness that lets order begin to emerge. Without posture, connection remains available but not yet constructible. With posture, the held passage can carry as [[Structure]].
 

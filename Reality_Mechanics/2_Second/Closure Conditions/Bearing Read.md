@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: class
@@ -23,7 +24,7 @@ status: stable
 ---
 # Bearing Read
 
-Bearing read names the class of second-order produced reads through which bearing becomes readable in specific ways — as presented, visible, invisible, divisible, or indivisible. Where bearing names strain held as a readable condition, bearing reads name the different ways that holding condition can be taken up and read. A bearing read does not change the bearing; it names how the bearing becomes available to evaluation.
+The class of second-order produced reads through which bearing becomes readable in specific ways — as presented, visible, invisible, divisible, or indivisible.
 
 ## Places
 

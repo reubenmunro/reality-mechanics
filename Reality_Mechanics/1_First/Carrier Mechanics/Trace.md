@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -48,7 +49,7 @@ status: stable
 ---
 # Trace
 
-Trace names the backward availability of held [[Connection]].
+The backward availability of held connection.
 
 Trace is not yet [[Retracing]]. Trace names the path connection offers where relation is held enough for backward availability to remain readable. Retracing names movement back through that path. A connection may offer trace whether or not a participant, process, or condition is presently retracing it. Forward, the same held connection offers [[Carry]]. Backward, it offers trace.
 

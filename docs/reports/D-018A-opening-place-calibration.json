@@ -1,0 +1,2217 @@
+{
+  "calibrated": [
+    {
+      "file": "00_ROOT.md",
+      "title": "Atlas Root",
+      "reason": "aligned to places",
+      "before": "Reality Mechanics is the discipline of keeping relation traceable as order. Generative order and reading order are distinct: generation occurs through active re",
+      "after": "The root entrance to Reality Mechanics and the Atlas: the working postulate, dependency spine, posture read, order crossing map, and entry practice."
+    },
+    {
+      "file": "1_First/Asymmetry Conditions/Bounded Asymmetry.md",
+      "title": "Bounded Asymmetry",
+      "reason": "self-reference removed",
+      "before": "Bounded asymmetry names asymmetry localised enough to become distinguishable. Where [[Asymmetry]] names unevenness within relation before it is located, bounded",
+      "after": "The hinge where uneven relation becomes local enough to be distinguished \u2014 asymmetry held locally enough that a boundary can form."
+    },
+    {
+      "file": "1_First/Asymmetry Conditions/Emergent Condition.md",
+      "title": "Emergent Condition",
+      "reason": "self-reference removed",
+      "before": "Emergent condition names the class of first-order conditions that arise from within relation through asymmetry rather than being imposed from outside it or esta",
+      "after": "The class of first-order conditions that arise from within relation through asymmetry \u2014 prior to operation, arising without external cause."
+    },
+    {
+      "file": "1_First/Asymmetry Conditions/Resolved Asymmetry.md",
+      "title": "Resolved Asymmetry",
+      "reason": "self-reference removed",
+      "before": "Resolved asymmetry names strained asymmetry determined at the current scope: settled enough to remain distinguishable without collapsing into sameness. Where [[",
+      "after": "Strained asymmetry determined at the current scope \u2014 settled enough to remain distinguishable without collapsing into sameness."
+    },
+    {
+      "file": "1_First/Asymmetry Conditions/Strained Asymmetry.md",
+      "title": "Strained Asymmetry",
+      "reason": "self-reference removed",
+      "before": "Strained asymmetry names bounded asymmetry under contrast. Where bounded asymmetry names localised unevenness available for distinction, strained asymmetry name",
+      "after": "Bounded asymmetry under contrast \u2014 the condition through which localised unevenness becomes consequential."
+    },
+    {
+      "file": "1_First/Boundary Conditions/Operational Condition.md",
+      "title": "Operational Condition",
+      "reason": "self-reference removed",
+      "before": "Operational condition names the class of first-order conditions through which located distinction becomes available, contrasted, held, and determined. Where eme",
+      "after": "The class of first-order conditions that act on located distinction \u2014 locating, making available, straining, bearing, and resolving."
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Operation Carrier.md",
+      "title": "Operation Carrier",
+      "reason": "self-reference removed",
+      "before": "Operation carrier names the class of primitive carriers that carry the reading operation across the system. Where operational conditions act on distinction at s",
+      "after": "The class of primitive carriers that make conditions readable across the system."
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Structural Carrier.md",
+      "title": "Structural Carrier",
+      "reason": "self-reference removed",
+      "before": "Structural carrier names the class of primitive carriers that carry relation into later structural compounds through small relation-words. Where operation carri",
+      "after": "The class of primitive carriers that transmit specific relational roles into later compounds through small relation-words."
+    },
+    {
+      "file": "1_First/First Order Crossing.md",
+      "title": "Threshold (First \u2192 Second)",
+      "reason": "self-reference removed",
+      "before": "This threshold names the crossing from First Order into Second Order.",
+      "after": "The crossing where held first-order carry is entered and enacted as second-order carrying."
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Recursive Regulation.md",
+      "title": "Recursive Regulation",
+      "reason": "self-reference removed",
+      "before": "Recursive regulation names regulation occurring through recursive carrying. Where regulation names carrying maintained within condition and recursive names carr",
+      "after": "Regulation occurring through recursive carrying."
+    },
+    {
+      "file": "2_Second/Carrying.md",
+      "title": "Carrying",
+      "reason": "aligned to places",
+      "before": "Carrying : Retracing. Carrying enacts held forward availability; Retracing follows the backward availability of the same held connection \u2014 one connection, read ",
+      "after": "Held forward availability being enacted."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Apparent Bearing.md",
+      "title": "Apparent Bearing",
+      "reason": "self-reference removed",
+      "before": "Apparent bearing names bearing becoming presented. Where bearing names strain held as a readable condition, apparent bearing names the condition through which t",
+      "after": "Bearing becoming presented."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Bearing Read.md",
+      "title": "Bearing Read",
+      "reason": "self-reference removed",
+      "before": "Bearing read names the class of second-order produced reads through which bearing becomes readable in specific ways \u2014 as presented, visible, invisible, divisibl",
+      "after": "The class of second-order produced reads through which bearing becomes readable in specific ways \u2014 as presented, visible, invisible, divisible, or indivisible."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Divisible Bearing.md",
+      "title": "Divisible Bearing",
+      "reason": "self-reference removed",
+      "before": "Divisible bearing names bearing that can be separated into distinguishable parts without losing the carrying condition. Where bearing names strain held, divisib",
+      "after": "Bearing that can be separated into distinguishable parts without losing the carrying condition."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Indivisible Bearing.md",
+      "title": "Indivisible Bearing",
+      "reason": "self-reference removed",
+      "before": "Indivisible bearing names bearing that cannot be separated without changing the carrying condition. Where divisible bearing names holding across divisions, indi",
+      "after": "Bearing that cannot be separated without changing the carrying condition."
+    },
+    {
+      "file": "2_Second/Closure Conditions/Order-Terminal.md",
+      "title": "Order-Terminal",
+      "reason": "self-reference removed",
+      "before": "Order-terminal names terminality relative to an order: the condition of a term when that term completes the readable length of its order.",
+      "after": "Terminality relative to an order \u2014 the point where a readable length completes within its order and cannot continue as the same read."
+    },
+    {
+      "file": "2_Second/Closure Scope.md",
+      "title": "Closure Scope",
+      "reason": "self-reference removed",
+      "before": "Closure scope names the bounded extent within which a read can be evaluated as holding. [[Closure]] names a read becoming bounded enough for evaluation; closure",
+      "after": "The bounded extent within which a read can be evaluated as holding."
+    },
+    {
+      "file": "2_Second/Presence Conditions/Coupled Asymmetry.md",
+      "title": "Coupled Asymmetry",
+      "reason": "self-reference removed",
+      "before": "Coupled asymmetry names resolved asymmetry held between coupled conditions. Where resolved asymmetry names a determined condition and coupling names resolved co",
+      "after": "Resolved asymmetry held between coupled conditions."
+    },
+    {
+      "file": "2_Second/Presence Conditions/Nested Relation.md",
+      "title": "Nested Relation",
+      "reason": "self-reference removed",
+      "before": "Nested relation names asymmetrical relation: relation participating within relation. Where within names relation held with inside placement and nesting names a ",
+      "after": "Asymmetrical relation \u2014 one relation participating within, and remaining ordered by, another relation."
+    },
+    {
+      "file": "2_Second/Presence Conditions/Structural Gathering.md",
+      "title": "Structural Gathering",
+      "reason": "self-reference removed",
+      "before": "Structural gathering names multiple participating relations held as one readable arrangement. Where nested relation names relation participating within relation",
+      "after": "Multiple participating relations held as one readable arrangement."
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Delayed Availability.md",
+      "title": "Delayed Availability",
+      "reason": "self-reference removed",
+      "before": "Delayed availability names uneven availability across traversal \u2014 the condition through which what should be available at one point in a sequence becomes availa",
+      "after": "Uneven availability across traversal \u2014 the condition through which what should be available at one point in a sequence becomes available only later, or not at all within the current scope."
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Dependency Disorder.md",
+      "title": "Dependency Disorder",
+      "reason": "self-reference removed",
+      "before": "Dependency disorder names disorder in which the dependency path itself becomes unreadable. Where disorder names stability no longer holding, dependency disorder",
+      "after": "Disorder in which the dependency path itself becomes unreadable."
+    },
+    {
+      "file": "2_Second/Second Order Crossing.md",
+      "title": "Threshold (Second \u2192 Third)",
+      "reason": "self-reference removed",
+      "before": "This threshold names the crossing from Second Order into Third Order.",
+      "after": "The crossing where carrying through recurring participation begins to organise into a field."
+    },
+    {
+      "file": "3_Third/Branch.md",
+      "title": "Branch",
+      "reason": "aligned to places",
+      "before": "A Branch names a dependency path through participation. It is a traceable path through what a field or domain depends on, carries, and opens. Branches can occur",
+      "after": "A dependency path through participation."
+    },
+    {
+      "file": "3_Third/Domain.md",
+      "title": "Domain",
+      "reason": "aligned to places",
+      "before": "A Domain names an organised participation context. A domain organises one or more fields into a recognisable context, practice, discipline, institution, method,",
+      "after": "An organised participation context."
+    },
+    {
+      "file": "3_Third/Domains/AI/AI Availability.md",
+      "title": "AI Availability",
+      "reason": "self-reference removed",
+      "before": "AI availability names what becomes usable within an AI interaction at the current closure scope.",
+      "after": "The closure-scope condition inside AI interaction \u2014 what the current exchange opens as usable without outrunning the participant's ability to test, carry, or retrace it."
+    },
+    {
+      "file": "3_Third/Domains/AI/AI Coupling.md",
+      "title": "AI Coupling",
+      "reason": "self-reference removed",
+      "before": "AI coupling names maintained Engineered Coupling between human read, machine output, Atlas structure, and evaluative proceeding.",
+      "after": "The coupling condition specific to AI interaction \u2014 where human read, generated output, Atlas structure, and evaluative proceeding remain compatibly joined so that the output can be tested and retraced."
+    },
+    {
+      "file": "3_Third/Domains/AI/AI Drift.md",
+      "title": "AI Drift",
+      "reason": "aligned to places",
+      "before": "AI drift occurs when generated output departs from Atlas-derived structure while preserving surface coherence.",
+      "after": "The disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence \u2014 the specifically generated form of Source Drift."
+    },
+    {
+      "file": "3_Third/Domains/AI/AI Misrepair.md",
+      "title": "AI Misrepair",
+      "reason": "self-reference removed",
+      "before": "AI misrepair names repair-like generated continuation that preserves interaction without restoring compatible grounding.",
+      "after": "The disorder condition through which generated continuation preserves interaction while failing to restore compatible structural grounding \u2014 the specifically generated form of Misrepair."
+    },
+    {
+      "file": "3_Third/Domains/AI/Applied Reads/AI Confident Correction.md",
+      "title": "AI Confident Correction",
+      "reason": "aligned to places",
+      "before": "AI Confident Correction reads a local case where an AI answer appears to repair an error while preserving the wrong grounding.",
+      "after": "The applied read of AI Misrepair \u2014 where a correction appears to repair an error while preserving the wrong grounding."
+    },
+    {
+      "file": "3_Third/Domains/AI/Applied Reads/AI Reply Drift.md",
+      "title": "AI Reply Drift",
+      "reason": "aligned to places",
+      "before": "AI Reply Drift reads a local case where an AI answer remains fluent while losing the dependency path it claims to carry.",
+      "after": "The applied read of AI Drift at the level of a single reply \u2014 where an AI answer remains fluent while losing the dependency path it claims to carry."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Applied Reads/Documentation Gap.md",
+      "title": "Documentation Gap",
+      "reason": "aligned to places",
+      "before": "Documentation Gap reads a local architecture case where the representation no longer carries what the built condition requires.",
+      "after": "The local architecture case where the representation no longer carries what the built condition requires."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Boundary.md",
+      "title": "Architectural Boundary",
+      "reason": "self-reference removed",
+      "before": "Architectural boundary names where built form locates relational separation.",
+      "after": "Where built form locates relational separation."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Carrying.md",
+      "title": "Architectural Carrying",
+      "reason": "self-reference removed",
+      "before": "Architectural carrying names compatible Bearing participation within built form.",
+      "after": "Compatible Bearing participation within built form."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Constraint.md",
+      "title": "Architectural Constraint",
+      "reason": "self-reference removed",
+      "before": "Architectural constraint names limiting conditions that shape available built resolution.",
+      "after": "Limiting conditions that shape available built resolution."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Documentation.md",
+      "title": "Architectural Documentation",
+      "reason": "self-reference removed",
+      "before": "Architectural documentation names representational carrying for built resolution.",
+      "after": "Representational carrying for built resolution."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Resolution.md",
+      "title": "Architectural Resolution",
+      "reason": "self-reference removed",
+      "before": "Architectural resolution names determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation.",
+      "after": "Determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architectural Visibility.md",
+      "title": "Architectural Visibility",
+      "reason": "self-reference removed",
+      "before": "Architectural visibility names what becomes readable within a built condition.",
+      "after": "What becomes readable within a built condition."
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Load-Bearing.md",
+      "title": "Load-Bearing",
+      "reason": "self-reference removed",
+      "before": "Load-bearing is an architectural and applied carrying read. It names participation that carries required Bearing for compatible Coupling within a Domain conditi",
+      "after": "The architectural read where required bearing continues through built use without exceeding load, capacity, carrying, or compatibility."
+    },
+    {
+      "file": "3_Third/Domains/Language/Applied Reads/Inherited Term Drift.md",
+      "title": "Inherited Term Drift",
+      "reason": "aligned to places",
+      "before": "Inherited Term Drift reads a local case where a received term keeps its name while entering a different structural role.",
+      "after": "The local case where a received term keeps its name while entering a different structural role."
+    },
+    {
+      "file": "3_Third/Domains/Organised Domain.md",
+      "title": "Organised Domain",
+      "reason": "aligned to places",
+      "before": "An Organised Domain names an intentionally arranged participation context. An Organised Domain is not the same as an Organic Field. It organises one or more fie",
+      "after": "An intentionally arranged participation context where one or more fields become organised into practice, discipline, institution, method, model, framework, or applied arrangement."
+    },
+    {
+      "file": "3_Third/Domains/Parenting/Applied Reads/Parenting Boundary.md",
+      "title": "Parenting Boundary",
+      "reason": "aligned to places",
+      "before": "Parenting Boundary reads a local case where parental care must locate a boundary that preserves availability without forcing dependence.",
+      "after": "The local case where parental care must locate a boundary that preserves availability without forcing dependence."
+    },
+    {
+      "file": "3_Third/Domains/Parenting/Applied Reads/Parenting Repair.md",
+      "title": "Parenting Repair",
+      "reason": "aligned to places",
+      "before": "Parenting Repair reads a local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair.",
+      "after": "The local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair."
+    },
+    {
+      "file": "3_Third/Domains/Parenting/Applied Reads/Protective Control.md",
+      "title": "Protective Control",
+      "reason": "aligned to places",
+      "before": "Protective Control reads a local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing. It remains pro",
+      "after": "The local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing."
+    },
+    {
+      "file": "3_Third/Domains/Teaching/Applied Reads/Pace Mismatch.md",
+      "title": "Pace Mismatch",
+      "reason": "aligned to places",
+      "before": "Pace Mismatch reads a local teaching case where instruction continues faster than learning can be compatibly borne.",
+      "after": "The local teaching case where instruction continues faster than learning can be compatibly borne."
+    },
+    {
+      "file": "3_Third/Domains/Teaching/Learning Pace.md",
+      "title": "Learning Pace",
+      "reason": "self-reference removed",
+      "before": "Learning pace names how learning participation remains compatibly carried through a teaching condition without exceeding available bearing.",
+      "after": "How learning participation remains compatibly carried through a teaching condition without exceeding available bearing."
+    },
+    {
+      "file": "3_Third/Domains/Teaching/Teaching Boundary.md",
+      "title": "Teaching Boundary",
+      "reason": "self-reference removed",
+      "before": "Teaching boundary names a branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order.",
+      "after": "A branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order."
+    },
+    {
+      "file": "3_Third/Field of Participation.md",
+      "title": "Field of Participation",
+      "reason": "aligned to places",
+      "before": "A Field of Participation names a recurring organisation arising through participation. It becomes available where participation repeatedly organises through the",
+      "after": "A recurring organisation arising through participation."
+    },
+    {
+      "file": "3_Third/Fields/Body/Applied Reads/Fatigue Boundary.md",
+      "title": "Fatigue Boundary",
+      "reason": "aligned to places",
+      "before": "Fatigue Boundary reads a local body case where fatigue marks the limit of available effort and asks whether action should pause, reduce, continue, or receive su",
+      "after": "The applied read of the located limit on available carrying \u2014 the closure scope at which continued participation becomes incompatible with current capacity."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Applied Reads/Self-Control.md",
+      "title": "Self-Control",
+      "reason": "self-reference removed",
+      "before": "Self-control names self-bearing directing availability under strain so feeling, emotion, thought, or impulse does not become incompatible action.",
+      "after": "The condition through which self-bearing delays or governs the carrying of an impulse \u2014 available bearing that regulates what the self carries forward."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Applied Reads/Self-Harm.md",
+      "title": "Self-Harm",
+      "reason": "self-reference removed",
+      "before": "Self-harm names self-directed harm where self-bearing, self-control, or safety becomes unavailable under strain.",
+      "after": "The applied read of a closure scope where self-bearing fails and carrying turns against the self's own available conditions."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognitive Carrying.md",
+      "title": "Cognitive Carrying",
+      "reason": "self-reference removed",
+      "before": "Cognitive carrying names the Bearing participation required to keep information available for use.",
+      "after": "The condition through which a cognitive state \u2014 thought, orientation, or pattern \u2014 is continued through participation rather than discharged or discarded."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognitive Reads.md",
+      "title": "Cognitive Reads",
+      "reason": "aligned to places",
+      "before": "Cognitive reads name branch-level reads concerned with pre-explicit availability, memory, retained readability, operation on readable order, discernment, wisdom",
+      "after": "The set of path reads through which thought and memory become evaluable at a closure scope \u2014 the branch of reads that apply cognitive structural conditions to specific passages."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Externalised Cognition.md",
+      "title": "Externalised Cognition",
+      "reason": "self-reference removed",
+      "before": "Externalised cognition names branch-level carrying where cognitive participation is distributed into external structure.",
+      "after": "The condition through which cognitive carrying is extended through a medium \u2014 thought, memory, or knowing carried beyond the participant's body through tool, record, or system."
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Self-Bearing.md",
+      "title": "Self-Bearing",
+      "reason": "self-reference removed",
+      "before": "Self-bearing is a constrained compound read linking Self and Bearing.",
+      "after": "The condition through which the self carries its own strain \u2014 bearing held within the participant's own cognitive carrying rather than displaced or collapsed."
+    },
+    {
+      "file": "3_Third/Fields/Expression/Language Field.md",
+      "title": "Language Field",
+      "reason": "aligned to places",
+      "before": "A Language Field names a recurring field of participation through which readable difference through medium becomes available. A language field is not defined by",
+      "after": "The recurring field of participation through which readable difference through medium becomes available \u2014 the field from which language, representation, and translation emerge."
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Reality Check.md",
+      "title": "Reality Check",
+      "reason": "self-reference removed",
+      "before": "Reality check names branch-level evaluation of whether a read remains structurally compatible with its bearing source.",
+      "after": "The evaluative read through which a claim, representation, or local model is checked for compatibility with what bears it \u2014 the closure-scope test of whether a read remains traceable."
+    },
+    {
+      "file": "3_Third/Fields/Life/Applied Reads/Over-Treatment.md",
+      "title": "Over-Treatment",
+      "reason": "aligned to places",
+      "before": "Over-Treatment reads a local life case where repair-like intervention exceeds compatible bearing and worsens the condition it means to support.",
+      "after": "The applied read where intervention proceeds as repair but exceeds supportable capacity at the relevant closure scope \u2014 incompatible carrying in the name of restoration."
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Applied Reads/Cosmic Polarity Read.md",
+      "title": "Cosmic Polarity Read",
+      "reason": "aligned to places",
+      "before": "Cosmic Polarity Read applies [[Resolution Polarity]] to natural-world physical-field reads, comparing [[Light]], [[Gravity]], [[Dark Matter]], [[Dark Energy]], ",
+      "after": "The applied comparison through which physical-field cases \u2014 gravity, dark matter, dark energy, light, and black holes \u2014 are read against Resolution Polarity."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Apology Without Repair.md",
+      "title": "Apology Without Repair",
+      "reason": "aligned to places",
+      "before": "Apology Without Repair reads a local relation case where repair-language preserves proceeding without restoring the bearing that was broken.",
+      "after": "The applied read of a closure-scope condition where acknowledgement of harm occurs without compatible re-bearing."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Care Without Bearing.md",
+      "title": "Care Without Bearing",
+      "reason": "aligned to places",
+      "before": "Care Without Bearing reads a local case where care-language is present while the required bearing is absent or unavailable.",
+      "after": "The applied read of care whose preservation of availability cannot sustain bearing at the relevant closure scope."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Control After Harm.md",
+      "title": "Control After Harm",
+      "reason": "aligned to places",
+      "before": "Control After Harm reads a local case where control enters after damaged bearing and must be checked for protection, repair, or further harm.",
+      "after": "The applied read where control is exercised following harm \u2014 direction of availability in the context of incompatible carrying that preceded it."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Control Drift.md",
+      "title": "Control Drift",
+      "reason": "aligned to places",
+      "before": "Control Drift reads a local case where directed availability stops receiving the bearing condition it directs and begins forcing proceeding.",
+      "after": "The applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Maintained Coupling Failure.md",
+      "title": "Maintained Coupling Failure",
+      "reason": "aligned to places",
+      "before": "Maintained Coupling Failure reads a local case where coupling persists as relation while the supportive or corrective bearing required to maintain it fails.",
+      "after": "The applied read where maintained coupling loses its stability at a closure scope \u2014 where the condition of held distinct relation fails to sustain."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Reciprocity Breakdown.md",
+      "title": "Reciprocity Breakdown",
+      "reason": "aligned to places",
+      "before": "Reciprocity Breakdown reads a local case where mutual participation no longer remains compatibly borne.",
+      "after": "The applied read where reciprocal bearing within participation fails at a closure scope \u2014 where bearing no longer moves compatibly between participants."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Repair Mismatch.md",
+      "title": "Repair Mismatch",
+      "reason": "aligned to places",
+      "before": "Repair Mismatch reads a local case where repair is attempted but does not re-enter the lost bearing into compatible carrying.",
+      "after": "The applied read where repair is attempted but addresses the wrong scope, condition, or bearing gap \u2014 restoration that misses where it needs to land."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Surface Patch.md",
+      "title": "Surface Patch",
+      "reason": "aligned to places",
+      "before": "Surface Patch reads a local case where visible repair allows proceeding while the bearing condition that required repair remains unrestored.",
+      "after": "The applied read where repair restores surface coherence without restoring compatible bearing \u2014 proceeding that appears repaired while the underlying condition remains unrestored."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Bearing Relations.md",
+      "title": "Bearing Relations",
+      "reason": "aligned to places",
+      "before": "Bearing relations name the third-order relation family where [[Bearing Relation]] is read through downstream carrying relations.",
+      "after": "The subdomain of relational-participation reads where coupling, bearing, and carrying become readable as held relational conditions."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Constrained Resolution.md",
+      "title": "Constrained Resolution",
+      "reason": "self-reference removed",
+      "before": "Constrained resolution names compatible Resolution sustained under limiting Constraint conditions.",
+      "after": "Resolution where what can be determined at scope is bounded by a prior constraint \u2014 bearing settling into a determined condition within limited options."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Engineered Coupling.md",
+      "title": "Engineered Coupling",
+      "reason": "self-reference removed",
+      "before": "Engineered coupling is compatible Coupling carried through imposed, constructed, corrected, intentionally arranged, or externally maintained carrying conditions",
+      "after": "Coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability \u2014 coupling shaped by constraint and carrying rather than emergent."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Maintained Coupling.md",
+      "title": "Maintained Coupling",
+      "reason": "self-reference removed",
+      "before": "Maintained coupling is compatible Coupling sustained through corrective or supportive Bearing.",
+      "after": "The condition through which distinct coupled relation is held stable through recurrence \u2014 coupling that sustains across encounters and strain."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Nested Coupling.md",
+      "title": "Nested Coupling",
+      "reason": "self-reference removed",
+      "before": "Nested coupling names Coupling that becomes available as participation in further coupling.",
+      "after": "Coupling held within a larger coupling structure \u2014 distinct resolved conditions in mutual availability where that availability is itself carried within a containing relation."
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Safety/Safety Boundary.md",
+      "title": "Safety Boundary",
+      "reason": "self-reference removed",
+      "before": "Safety boundary names a branch-level boundary condition that preserves compatible participation.",
+      "after": "The located condition through which safe passage, harm-prevention, or compatible carrying is bounded \u2014 the structural edge that separates compatible from incompatible relation."
+    },
+    {
+      "file": "3_Third/Organic Field.md",
+      "title": "Organic Field",
+      "reason": "aligned to places",
+      "before": "An Organic Field names a recurring field of participation that arises through Natural Order participating. Biological life can show organic organisation, but or",
+      "after": "A recurring field of participation."
+    },
+    {
+      "file": "3_Third/Path Reads/Path Reads.md",
+      "title": "Path Reads",
+      "reason": "aligned to places",
+      "before": "Path Reads name reusable reads that become available by following a dependency path.",
+      "after": "Reusable reads that become available by following a dependency path."
+    },
+    {
+      "file": "3_Third/Third Order Crossing.md",
+      "title": "Threshold (Third \u2192 Higher)",
+      "reason": "self-reference removed",
+      "before": "This threshold names the crossing from Third Order into Higher Order.",
+      "after": "The crossing where organised and nested carrying enters its own carrying."
+    },
+    {
+      "file": "4_Practice/Retrace Practice.md",
+      "title": "Retrace Practice",
+      "reason": "aligned to places",
+      "before": "Order Trace : Retrace Practice. Order Trace follows dependency movement forward; Retrace Practice recovers it backward \u2014 the same path, read in the direction it",
+      "after": "The Atlas [[Practice]] of recovering the dependency path that produced the current read."
+    },
+    {
+      "file": "AI_PARTICIPATION.md",
+      "title": "AI Participation",
+      "reason": "aligned to places",
+      "before": "How an AI participates inside the Atlas without inventing theory. The Atlas is a reasoning system, so AI participates by tracing structure rather than answering",
+      "after": "The participation rule for AI working inside the Atlas without inventing theory, grounding notes, or collapsing dependency order."
+    },
+    {
+      "file": "Current Record Convention.md",
+      "title": "Current Record Convention",
+      "reason": "aligned to places",
+      "before": "Records the current repository convention used to encode [[Common Term Structure]].",
+      "after": "The current repository convention used to encode Common Term Structure as Markdown, frontmatter, headings, and wikilinks."
+    },
+    {
+      "file": "INVARIANTS.md",
+      "title": "Invariants",
+      "reason": "aligned to places",
+      "before": "Statements demonstrated repeatedly across the grounded Atlas. Extracted, not invented \u2014 each is cited to its source and should be confirmed there before groundi",
+      "after": "The current invariant read extracted from the Atlas so repeated structural constraints can be checked without being mistaken for new primitives."
+    }
+  ],
+  "unchanged": [
+    {
+      "file": "0_Ground/Degenerate.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Dependency Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Emergent.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Generic.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Ground.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Groundedness.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Invariant.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Label.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Natural Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Passage Condition.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Primitive.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Regenerate.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Root Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Seed.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Structural Disorder.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "0_Ground/Term.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Asymmetry Conditions/Distinction.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Asymmetry.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Availability.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Bearing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Boundary Conditions/Allow.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Boundary Conditions/Contact.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Boundary Conditions/Tact.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Boundary Conditions/Threshold.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Boundary.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Apparent.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Attend.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Carry.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Divisible.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Enter.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/In.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Indivisible.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Invisible.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Not.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Notice.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Orientation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Out.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Place.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Polarity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Primitive Carrier.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Thread.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Trace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Carrier Mechanics/Visible.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Clean.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Connection.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/First Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/One.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Other.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Posture.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Ratio.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation Conditions/Clear.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation Conditions/Clearance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation Conditions/Relation Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation Conditions/Space.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation Conditions/Time.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Relation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Absorb.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Failure.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Hold.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Release.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Shift.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Transfer.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution Conditions/Yield.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Resolution.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "1_First/Strain.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Acceleration.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Adaptation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Apparent Source.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Balance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Bearing Source.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Capacity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Carried Condition.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Compatibility.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Consequence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Constraint.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Current.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Decay.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Dependency.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Drag.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Energy.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Extend.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Extent.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Flow.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Frequency.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Function.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Growth.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Guard.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Heat.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Intake.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Integration.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Live.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Load.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Medium.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Overload.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Pressure.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Rate.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Recarry.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Recursive.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Regulation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Resistance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Resolution Rate.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Resonance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Retain.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Speed.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Splinter.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Throughput.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Velocity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Carrying Conditions/Wear.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Change.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Condition.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Digress.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Evaluation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Interval.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Invisible Bearing Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Period.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Proceed.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Process.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Progress.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Regress.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Return.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Scope.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Sequence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Terminal.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure Conditions/Traversal.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Closure.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Condition, State, and View.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Bearing Relation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Boundary Loosening.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Coupled Boundary.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Coupled Contact.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Decoupling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Effect.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Friction.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Grip.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Interposed Carrier.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Pair.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Responsibility.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Sever.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling Conditions/Traction.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Coupling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Cycle.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Influence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Pace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Recurrence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Rhythm.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation Conditions/Tempo.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Participation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Be.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Become.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Being.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Exist.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Occur.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Real.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Reality.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/Within.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence Conditions/World.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Presence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Coherence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Collapse.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Count.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Decision.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Difference.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Dimension.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Disorder.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Face.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Form.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Hertz.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Identity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Incoherence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Information.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Kind.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Measure.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Member.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Nesting Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Number.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Pattern.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Reference Frame.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Relative.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Scale.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Second-Order Disorder Effects.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Stability.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Strategy.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Structure.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Surface.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Thing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Produced Distinctions/Unit.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Read and Effect.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Cognitive Participation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Echo.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Know.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Observation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Recognition Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Retrace Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability Conditions/Visibility.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Readability.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Second Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "2_Second/Union.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Applied Diagnosis/Diagnosis.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Applied Diagnosis/Extractive Acceleration.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Applied Diagnosis/Space-Based Solar Power.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Communion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/AI/AI Atlas Grounding.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/AI/AI.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/AI/Ungrounded Fabrication.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Architecture/Architecture.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Language/Applied Reads/Term Drift.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Language/Language Domain.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Language/Language.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Language/Representation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Language/Translation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Applied Reads/Harmonic Drift.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Applied Reads/Improvisation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Harmony.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Melody.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Music.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Musical Form.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Musical Resolution.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Musical Rhythm.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Noise.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Silence.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Music/Sound.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Parenting/Parenting.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Teaching/Learning.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Teaching/Teaching.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domains/Technology/Technology Domain.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Domination.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Dominion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Field Bearing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Field Relationships.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Applied Reads/Medicine.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Body Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Body.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Emotion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Fatigue.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Feeling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Injury.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Metabolism.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Body/Recovery.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Answerable Mind.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognition Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognition.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Cognitive Metabolism.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Memory.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Self.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Cognition/Thought.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Expression/Expression Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Expression/Expression.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Expression/Gesture.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Faith/Faith Boundary.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Faith/Faith Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Faith/Faith Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Faith/Hope.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Applied Reads/Experimental Science.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Competence Boundary.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Knowledge Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Knowledge.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Knowledge/Modelling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Life/Alive.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Life/Cancer.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Life/Life Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Life/Life.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Applied Reads/Gardening.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Hidden Carrying.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Making Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Making.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Tool.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Making/Weapon.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Black Hole.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Casimir Plates.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Dark Energy.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Dark Matter.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Earth Carrying.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Earth.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Field Availability Pattern.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Gravity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Light.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Natural World Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Natural World.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Neutrino.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Physical Field Conditions.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Physical Space.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Physical.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Natural World/Timescale.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Organic and Organised Organisation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Organic.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Our Story/Borne and Carried.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Our Story/Carrying Better.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Our Story/Inheritance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Our Story/Our Story Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Our Story/Our Story.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Place Field/Belong.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Place Field/Place Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Place Field/Placed Participation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Applied Reads/Parenting as Maintained Coupling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Accommodation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Applied Reads/Grief.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Behaviour.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Betrayal.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Care.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Control.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Harm.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Misrepair.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Neglect.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Reciprocity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Relationship.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Repair.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Trust.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Bearing Relations/Violation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Relational Participation Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Relational Participation/Safety/Safety.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Applied Reads/Law.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Civil.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Consent.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Destination-Led Carrying.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Society Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Society.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Society/Thin Carrying.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Sustenance/Nourishment.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Sustenance/Sustenance Field.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Fields/Sustenance/Sustenance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Nesting.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Applied Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Binding.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Degeneration Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Enchantment.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Glamour.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Illusion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Resolution Polarity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Spell.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Path Reads/Wonder.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Mode.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Caring.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Communicating.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Exchanging.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Expressing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Governing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Knowing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Locating.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Moving.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Sensing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Sustaining.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Placement Modes/Transforming.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Third Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Translation Boundaries/Restraint.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Translation Boundaries/Scene.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Translation Boundaries/Ship and Ark.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Translation Boundaries/Terms of Service.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "3_Third/Translation Boundary.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Archive.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Ark Run.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Atlas Condition Header.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Atlas Fabric.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Atlas Oracle.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Atlas Practice.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Atlasing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Bearing Pass.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Care-Control Check.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Carry-Trace Test.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Check.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Contend.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Daylighting.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Decommissioning.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Degenerative Trace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Determination.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Determine.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Discipline.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Generate and Regenerate.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Generative Trace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Oracle Carrying Conditions.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Order Generation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Order Trace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Participant.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Posture Read.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Practice.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/RM System Map.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Rational.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Reality-Bearing Connection.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Reasoning.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Relief.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Retracing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Root Resilience.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Root System.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Section.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Splicing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Step.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Tend.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Terms and Conditions.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Tracing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "4_Practice/Translation Invariance.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Consciousness.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Fabric.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Hidden Bearing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Faith.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Learning.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Order Crossing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Order.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Recognition.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Higher Retrace.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Invisible Bearing.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Legion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Nested Carrying.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Opacity.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Recursion.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Self-Modelling.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Self-Regulation.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Source Drift.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "5_Higher/Web.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "Atlas.md",
+      "reason": "already place sentence"
+    },
+    {
+      "file": "Reality Mechanics.md",
+      "reason": "already place sentence"
+    }
+  ],
+  "skipped": [
+    {
+      "file": "Common Term Structure.md",
+      "reason": "no title/opening paragraph"
+    },
+    {
+      "file": "Theory.md",
+      "reason": "excluded document (narrative opening)"
+    }
+  ],
+  "errors": []
+}

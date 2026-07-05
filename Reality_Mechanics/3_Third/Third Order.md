@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: order
@@ -32,7 +33,7 @@ status: working
 ---
 # Third Order
 
-Third Order names participating carrying becoming organised and nested into recurring fields, domains, branches, and applied reads.
+Participating carrying becoming organised and nested into recurring fields, domains, branches, and applied reads.
 
 Third Order begins where participation becomes recognisable through the organisations it repeatedly forms.
 

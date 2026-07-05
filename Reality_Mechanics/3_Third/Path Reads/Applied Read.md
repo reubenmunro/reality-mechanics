@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: class
@@ -39,7 +40,7 @@ status: stable
 ---
 # Applied Read
 
-Applied Read names local use of a path read in a specific case.
+Local use of a path read in a specific case.
 
 An applied read tests whether a field or domain translation still holds when it becomes local.
 

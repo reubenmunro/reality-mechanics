@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Time
 
-Time names held clearance read as interval and continuation: relation persisting without collapsing into absolute self-sameness. Chronology, sequence, process, progression, and causation are later traversal reads. Time is clearance read as interval before any boundary marks it as sequence.
+Held clearance as interval and continuation — relation persisting without collapsing into absolute self-sameness.
 
 Downstream, time becomes readable as the rate and scale at which an order resolves. Different systems do not have different kinds of time first; they resolve held clearance at different rates and scales of order.
 

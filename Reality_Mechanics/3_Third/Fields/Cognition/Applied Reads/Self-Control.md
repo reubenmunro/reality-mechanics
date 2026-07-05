@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Self-Control
 
-Self-control names self-bearing directing availability under strain so feeling, emotion, thought, or impulse does not become incompatible action.
+The condition through which self-bearing delays or governs the carrying of an impulse — available bearing that regulates what the self carries forward.
 
 Suppression can look like self-control, but self-control is compatible delay: feeling remains available while action becomes selectable.
 

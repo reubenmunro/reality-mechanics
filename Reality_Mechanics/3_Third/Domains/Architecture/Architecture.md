@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -45,7 +46,7 @@ status: stable
 ---
 # Architecture
 
-Architecture names the third-order domain branch where built conditions translate boundary, bearing, constraint, place, and visibility into local architectural language.
+The built-domain branch where structural Atlas terms become readable as occupation, shelter, access, support, construction, documentation, and use.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -43,7 +44,7 @@ status: stable
 ---
 # AI Drift
 
-AI drift occurs when generated output departs from Atlas-derived structure while preserving surface coherence.
+The disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence — the specifically generated form of Source Drift.
 
 ## Places
 

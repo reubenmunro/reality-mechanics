@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Architectural Resolution
 
-Architectural resolution names determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation.
+Determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation.
 
 ## Places
 

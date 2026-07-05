@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Root System
 
-Root System names the protected source condition from which the Reality Mechanics system is organised.
+The protected source condition from which the Reality Mechanics system is organised.
 
 It protects source structure without becoming produced content.
 

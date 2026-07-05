@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -33,7 +34,7 @@ status: working
 ---
 # Bearing Pass
 
-Bearing Pass names a repeatable bearing pass through an Atlas member: identify it, trace what holds it, test what it carries, name occlusion, test whether resolution rate improved, and choose the next care action.
+A repeatable bearing pass through an Atlas member: identify it, trace what holds it, test what it carries, name occlusion, and choose the next care action.
 
 The pass is deliberately ordinary. It keeps the structural read from becoming a metaphor without practice.
 

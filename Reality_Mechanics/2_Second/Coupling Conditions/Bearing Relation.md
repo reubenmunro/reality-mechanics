@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Bearing Relation
 
-Bearing Relation names coupled relation bearing on coupled relation. Where coupling names distinct resolved conditions held in relation and presence makes that coupling locally available, bearing relation names those coupled conditions beginning to bear on each other within a scope.
+Coupled relation bearing on coupled relation.
 
 ## Places
 

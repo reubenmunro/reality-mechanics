@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Live
 
-Live names carrying continuing in participation. Where carrying names held and placeable forward availability being enacted and participation names a carried, present relation actively taking part, live names their combination held: carrying and participation are both continuing rather than remembered, predicted, or represented. A property can point to liveness, but live first names active continuing participation.
+Carrying continuing in participation.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Sustaining
 
-Sustaining names the placement mode where participation is primarily carried through continuation, maintenance, recovery, or preservation of carrying.
+The mode where participation is primarily carried through continuation, maintenance, or recovery of carrying — where what matters is keeping a condition going without losing compatibility.
 
 ## Places
 

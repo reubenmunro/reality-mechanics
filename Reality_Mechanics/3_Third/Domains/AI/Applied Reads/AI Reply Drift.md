@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # AI Reply Drift
 
-AI Reply Drift reads a local case where an AI answer remains fluent while losing the dependency path it claims to carry.
+The applied read of AI Drift at the level of a single reply — where an AI answer remains fluent while losing the dependency path it claims to carry.
 
 ## Places
 

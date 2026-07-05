@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Modelling
 
-Modelling names a knowledge path read where a condition is carried as a usable representation for evaluation or future participation.
+The condition through which a read, pattern, or form is carried in a medium as a representation — carrying that makes what is read available to recognition without requiring its direct presence.
 
 This note places modelling inside the [[Knowledge Field]] as a path read.
 

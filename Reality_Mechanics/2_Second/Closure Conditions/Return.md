@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Return
 
-Return names carried relation becoming readable again at a resolvable boundary. It does not claim that continuity ceased while unread, that a departure was required, or that the returning event is identical to an earlier event.
+Carried relation becoming readable again at a resolvable boundary.
 
 Return is not repetition. Repetition is the apparent occurrence of the same event again. Return requires a carried relation to remain traceable across the difference between entries. A return is not going back. It is re-entering a carrying system with new relation available.
 

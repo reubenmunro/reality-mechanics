@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Divisible Bearing
 
-Divisible bearing names bearing that can be separated into distinguishable parts without losing the carrying condition. Where bearing names strain held, divisible bearing names that holding as readable across distinguishable divisions — carrying that continues through separable parts.
+Bearing that can be separated into distinguishable parts without losing the carrying condition.
 
 ## Places
 

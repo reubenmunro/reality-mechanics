@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: crossing
@@ -31,7 +32,7 @@ status: working
 ---
 # Higher Order Crossing
 
-Higher Order Crossing names the threshold where organised carrying offers its trace to practice and a participant may enter it through retracing.
+The threshold where organised carrying offers its trace to practice and a participant may enter it through retracing.
 
 At [[Higher Order]], the invisible carrier at every structural level becomes readable. Cross-order patterns such as [[Generic]], [[Degenerate]], [[Regenerate]], organic/engineered organisation, [[Recursion]], [[Thread]], [[Invisible Bearing]], and [[Hidden Bearing]] become navigable from this register.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Apology Without Repair
 
-Apology Without Repair reads a local relation case where repair-language preserves proceeding without restoring the bearing that was broken.
+The applied read of a closure-scope condition where acknowledgement of harm occurs without compatible re-bearing.
 
 ## Places
 

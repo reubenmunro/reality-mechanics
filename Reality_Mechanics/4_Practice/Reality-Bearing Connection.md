@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Reality-Bearing Connection
 
-Reality-Bearing Connection names a connection that can carry reality through trace, read, bearing, and retrace. It may link information, but it must also remain returnable to what supports it. This is the value held by the Atlas: not the mapped body as an object, but the connection that can still answer to reality.
+A connection that can carry reality through trace, read, bearing, and retrace.
 
 A reality-bearing connection keeps relation readable, traceable, and answerable across fields without flattening the fields into each other.
 

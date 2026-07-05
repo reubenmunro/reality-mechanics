@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Measure
 
-Measure names a read compared against a bounded unit or scale. Truth can use measure, but measure first names the produced read through which extent, recurrence, interval, or change can be evaluated within a scope.
+A read compared against a bounded unit or scale.
 
 ## Places
 

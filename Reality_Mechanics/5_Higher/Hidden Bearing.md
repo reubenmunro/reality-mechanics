@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Hidden Bearing
 
-Hidden Bearing names carrying deliberately structured not to present the dependency path. The carrier holds what is operative but does not surface it in the current read.
+Carrying deliberately structured not to present the dependency path — where the carrier holds the bearing but does not surface it in the current read.
 
 Hidden Bearing is the engineered mode of non-presenting carrying.
 

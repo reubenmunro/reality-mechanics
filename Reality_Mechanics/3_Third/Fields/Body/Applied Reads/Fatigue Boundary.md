@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Fatigue Boundary
 
-Fatigue Boundary reads a local body case where fatigue marks the limit of available effort and asks whether action should pause, reduce, continue, or receive support.
+The applied read of the located limit on available carrying — the closure scope at which continued participation becomes incompatible with current capacity.
 
 ## Places
 

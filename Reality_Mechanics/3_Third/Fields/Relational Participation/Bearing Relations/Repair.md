@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Repair
 
-Repair names compatible re-bearing where required bearing has become absent, interrupted, insufficient, or misdirected at a closure scope.
+Compatible re-bearing where required bearing has become absent, interrupted, insufficient, or misdirected at a closure scope.
 
 ## Places
 

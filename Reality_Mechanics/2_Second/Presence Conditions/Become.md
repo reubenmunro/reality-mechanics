@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Become
 
-Become names presence changing while remaining traceable. Where being names presence carried, become names that carrying moving through resolution: presence participates through change without losing the dependency path through which the change can be followed. Replacement can be one kind of becoming, but become names traceable change.
+Presence changing while remaining traceable.
 
 ## Places
 

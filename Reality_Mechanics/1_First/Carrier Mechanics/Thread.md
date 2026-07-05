@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -31,7 +32,7 @@ status: stable
 ---
 # Thread
 
-Thread names the continuity by which a read can be followed through a term, across terms, or within an order. [[Trace]] names the followable path; thread names the continuity of following through that path while the same read remains followable.
+Followable continuity through a readable length, across terms, or within an order.
 
 [[Fabric]] names many threads held together as woven continuity. Thread is the strand that can be followed before the fabric has to be read as a whole.
 

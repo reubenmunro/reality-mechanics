@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Interval
 
-Interval names a bounded separation within traversal. Where traversal names movement through a closure scope, interval names the readable between-condition that lets one occurrence, position, pause, or read be distinguished from another without losing the carried relation.
+A bounded separation within traversal.
 
 ## Places
 

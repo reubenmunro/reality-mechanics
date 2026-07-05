@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Self-Bearing
 
-Self-bearing is a constrained compound read linking Self and Bearing.
+The condition through which the self carries its own strain — bearing held within the participant's own cognitive carrying rather than displaced or collapsed.
 
 ## Places
 

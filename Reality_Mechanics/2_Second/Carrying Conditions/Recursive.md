@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Recursive
 
-Recursive names carrying re-entering its own condition. Where recurrence names participation occurring again and carrying names held and placeable forward availability being enacted, recursive names carrying returning to and re-entering the condition it is carrying: the condition both depends on and contributes to its own carrying. Circularity can show recursion, but recursive first names carrying re-entering itself.
+Carrying re-entering its own condition.
 
 ## Places
 

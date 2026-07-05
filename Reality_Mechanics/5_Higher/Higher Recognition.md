@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Higher Recognition
 
-Higher Recognition names the coherence of derivation and observation within the same read. Where recognition read at second order names a read becoming identifiable as this again, higher recognition names the condition through which a traced path and a direct observation arrive at the same read: what the dependency structure produces and what is actually encountered hold together without forcing. Recognition at this register is more than identifying recurrence; it lets participation know what it is participating in.
+The coherence of derivation and observation within the same read.
 
 ## Places
 

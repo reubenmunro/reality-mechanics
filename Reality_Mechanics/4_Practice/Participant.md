@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Participant
 
-Participant names anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas. Participation becomes practice where the participant repeats the work with enough attention for correction to remain available.
+Anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas.
 
 ## Places
 

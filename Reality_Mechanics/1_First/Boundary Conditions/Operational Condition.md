@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: class
@@ -22,7 +23,7 @@ status: stable
 ---
 # Operational Condition
 
-Operational condition names the class of first-order conditions through which located distinction becomes available, contrasted, held, and determined. Where emergent conditions arise from within relation through asymmetry, operational conditions act on distinction — locating it, making it available, straining it, bearing it, and resolving it. Boundary, availability, strain, bearing, resolution, and threshold are all operational conditions.
+The class of first-order conditions that act on located distinction — locating, making available, straining, bearing, and resolving.
 
 ## Places
 

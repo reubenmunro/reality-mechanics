@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Emergent
 
-Emergent names the structural condition through which something arises from the interaction of conditions without a prior generative source. What appears was not already operative in any one condition; it arises through their meeting.
+The structural condition through which something arises from the interaction of conditions without a prior generative source — what was not already operative in any of the conditions it arises from.
 
 [[Generic]] names instances generated from a prior source. Emergent names arising without such a source.
 

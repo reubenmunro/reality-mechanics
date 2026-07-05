@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Misrepair
 
-Misrepair names repair-like continuation that preserves proceeding while carrying the wrong condition.
+Repair-like continuation that preserves proceeding while carrying the wrong condition — carrying that appears to repair while failing to restore compatible bearing.
 
 ## Places
 

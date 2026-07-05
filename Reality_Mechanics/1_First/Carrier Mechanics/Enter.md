@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -34,7 +35,7 @@ status: stable
 ---
 # Enter
 
-Enter names the passage by which a noticed distinction opens into a field of relation. Where [[Notice]] names first contact, Enter names crossing from contact with a boundary or threshold into the relation-space where what has been noticed can widen, disclose, and become available to attend.
+The crossing from first contact into the relation-space opened by that contact.
 
 Enter is not the same as [[Allow]]. Allow names permitted passage from the condition side; Enter names taken passage from the participating side.
 

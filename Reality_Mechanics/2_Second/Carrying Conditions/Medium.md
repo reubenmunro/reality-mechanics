@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Medium
 
-Medium names what carrying occurs through. Where carrying names held and placeable forward availability being enacted, medium names the condition that carrying moves through. Substance can be a medium, but medium first names the through-condition of carrying.
+What carrying occurs through.
 
 A medium allows some reads while thinning or blocking others. A phone call may allow voice, tone, and timing while not allowing enough behaviour read for some relational repair.
 

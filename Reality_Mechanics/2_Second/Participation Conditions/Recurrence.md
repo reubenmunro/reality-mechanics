@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -47,7 +48,7 @@ status: stable
 ---
 # Recurrence
 
-Recurrence names participation occurring again. Where [[Occur]] names presence taking place within scope and participation names a carried, present relation actively taking part, recurrence names another occurrence identifiable as the same participating condition across traversal. Recurrence does not by itself establish [[Return]]: the recurring condition must also remain carried and become readable again at a resolvable boundary.
+Participation occurring again.
 
 ## Places
 

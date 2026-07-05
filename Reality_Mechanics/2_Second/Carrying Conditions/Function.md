@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Function
 
-Function names what a form makes available through compatible carrying. Where structure names form held as a carrying arrangement, function names the specific availability that arrangement produces: what can occur, be used, or participate through the structural arrangement. Purpose or intention can guide function, but function names the available participation a form makes possible through compatible carrying.
+What a form makes available through compatible carrying.
 
 ## Places
 

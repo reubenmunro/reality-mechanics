@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Second-Order Disorder Effects
 
-Second-Order Disorder Effects names produced disorder in second-order reads where availability, recognition, carrying, or closure is treated as present before it can bear.
+Produced disorder in second-order reads where availability, recognition, carrying, or closure is treated as present before it can bear.
 
 ## Places
 

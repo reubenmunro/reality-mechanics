@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Language Field
 
-A Language Field names a recurring field of participation through which readable difference through medium becomes available. A language field is not defined by a grammar, vocabulary, culture, or encoding system. It becomes available where participation repeatedly organises through the same recurring capacity to name, distinguish, and trace difference through a medium.
+The recurring field of participation through which readable difference through medium becomes available — the field from which language, representation, and translation emerge.
 
 Language fields are the organic bed from which language domains, branches, and applied reads grow. A language domain organises one or more language fields into a recognisable practice, vocabulary, or applied structure. The field precedes and grounds the domain.
 

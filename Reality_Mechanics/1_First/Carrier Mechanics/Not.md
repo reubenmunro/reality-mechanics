@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -25,7 +26,7 @@ status: stable
 ---
 # Not
 
-Not carries non-availability: relation marked as unavailable, interrupted, absent, excluded, or outside the current scope. Refusal or destruction can involve not, but not first marks non-availability rather than active barring. What is marked by not may remain related.
+Non-availability within the current scope — relation marked as unavailable, interrupted, absent, excluded, or outside scope.
 
 Not marks that what cannot be reached, traced, or carried within the current structure is not available here.
 

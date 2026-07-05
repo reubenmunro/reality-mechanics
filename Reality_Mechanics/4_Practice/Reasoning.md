@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -39,7 +40,7 @@ aliases:
 ---
 # Reasoning
 
-Reasoning names the practice of carrying a ratio-read through traceable order so that a claim, action, read, or continuation remains answerable to what holds it.
+The practice of carrying a ratio-read through traceable order so that a claim, action, read, or continuation remains answerable to what holds it.
 
 A reason is the retraceable account of ratio. It is not only an explanation given after the fact. A reason asks how a ratio is held, from what reference frame, and whether it can be retraced.
 

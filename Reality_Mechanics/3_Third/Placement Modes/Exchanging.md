@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Exchanging
 
-Exchanging names the placement mode where participation is primarily carried through reciprocal transfer, mutual availability, or return between positions.
+The mode where participation is primarily carried through reciprocal transfer or mutual availability between positions.
 
 ## Places
 

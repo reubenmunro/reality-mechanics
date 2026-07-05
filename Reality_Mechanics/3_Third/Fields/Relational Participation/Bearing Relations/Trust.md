@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Trust
 
-Trust names confidence in a relationship's coupled boundary and bearing relation remaining supportable through recurrence, strain, loosening, repair, and participation. Belief can be part of trust, but trust is a relational read that a shared condition can continue to hold, be checked, and be repaired without becoming unretraceable.
+The read of ongoing supportability within a relationship — that what is held between participants can continue to bear through strain without becoming unretraceable.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Relational Participation Field
 
-Relational Participation Field names the recurring field of participation through which relations between participants — coupling, caring, sustaining, protecting, and repairing — become readable as organised experience.
+The recurring field of participation through which bearing, care, harm, repair, trust, violation, and maintained coupling become readable between participants.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Sever
 
-Sever names a trace-bearing connection to a [[Bearing Source]] resolved as cut, so direct return no longer remains followable.
+A trace-bearing connection to a bearing source resolved as cut, so direct return no longer remains followable.
 
 Sever does not necessarily end carrying. A downstream condition may remain present, stable, useful, or effective after the path through which it returned to source has been cut.
 

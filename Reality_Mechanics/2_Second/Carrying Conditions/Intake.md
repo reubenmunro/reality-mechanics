@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Intake
 
-Intake names availability crossing inward through a boundary into carrying. Where in carries inward placement and carrying names held and placeable forward availability being enacted, intake names the condition through which what was outside becomes available within a body, system, or scope. Intake does not determine whether what enters supports, disrupts, alters, or overloads carrying; it names the inward crossing that makes those later reads possible.
+Availability crossing inward through a boundary into carrying.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Terminal
 
-Terminal names the boundary where a read stops because continuation crosses a closure scope the current read cannot follow. Where threshold names a located condition that can hold or shift while reading continues, and a crossing hands a read off into the next register, terminal names where reading ends while bearing continues unread beyond the available scale. A terminal is not an end: what is carried continues past it. It names the limit of readability at the current closure scope, not the limit of carrying.
+The boundary where a read stops because continuation crosses a closure scope the current read cannot follow.
 
 ## Places
 

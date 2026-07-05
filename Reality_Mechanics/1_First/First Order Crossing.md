@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: crossing
@@ -33,7 +34,7 @@ status: working
 ---
 # Threshold (First → Second)
 
-This threshold names the crossing from First Order into Second Order.
+The crossing where held first-order carry is entered and enacted as second-order carrying.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -47,7 +48,7 @@ status: stable
 ---
 # Readability
 
-Readability names the condition through which a distinction becomes available to be read. [[Read]] names recognition of meaningful distinction at a point. Readability names the sustained condition that makes reading possible: distinction is present, traceable, attended, and held enough to enter evaluation. It is not the read itself; it is what makes reading available.
+The sustained condition that makes reading possible.
 
 ## Places
 

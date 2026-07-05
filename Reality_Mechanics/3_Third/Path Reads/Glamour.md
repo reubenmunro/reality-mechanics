@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Glamour
 
-Glamour names enchantment altering appearance or attraction. It is not beauty by itself; it is altered readability through which what is visible or presented draws participation beyond what direct support alone would carry.
+The specific enchantment of altered appearance — where visibility and form carry influence beyond what the underlying support would draw on its own.
 
 ## Places
 

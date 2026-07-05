@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Clearance
 
-Clearance names held separation through which relation remains readable. Clearance is carried by [[Clear]]: relation must be unobstructed enough for separation to be read as clearance rather than absence, confusion, or unrelated distance. Clearance keeps relation from collapsing into sameness while remaining relation rather than unrelated difference.
+The first room relation needs to remain readable as relation — held separation before any boundary is drawn.
 
 Space and time are not first containers. They are first reads of clearance. [[Space]] reads clearance as separation, extent, or placement. [[Time]] reads clearance as interval, continuation, or rate. [[Resolution]] reads what changes across that held difference.
 

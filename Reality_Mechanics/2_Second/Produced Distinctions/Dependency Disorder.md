@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Dependency Disorder
 
-Dependency disorder names disorder in which the dependency path itself becomes unreadable. Where disorder names stability no longer holding, dependency disorder names the specific condition where the dependency trace through which a read could be re-established is obscured, bypassed, displaced, reversed, or forced. Dependency disorder is not mere instability; it names the loss of retraceability.
+Disorder in which the dependency path itself becomes unreadable.
 
 ## Places
 

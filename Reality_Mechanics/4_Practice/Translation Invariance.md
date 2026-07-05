@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Translation Invariance
 
-Translation Invariance names the practice test by which Atlas structure is varied in expression and checked for recoverable dependency order.
+The practice test by which Atlas structure is varied in expression and checked for recoverable dependency order.
 
 The Atlas is not identical to its words, signs, notes, or other inscriptions. These are carriers. A [[Term]] is a structurally placed interpretation carried through them. Translation Invariance tests whether that placement remains recoverable when the carrier changes.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Fabric
 
-Fabric names relation carried as woven continuity across multiple threads, fields, traces, and boundaries. Where [[Field Relationships]] names how fields can be grouped by recurring participation emphasis, Fabric names the higher-order condition through which those relations hold together as an interwoven carrying [[Surface|surface]]. Fabric is more than vague connection: it is continuity held through crossing, tension, pattern, and retraceable thread.
+Relation carried as woven continuity across fields, threads, traces, and boundaries — the face of the weave as held whole.
 
 Fabric is the face of the weave. [[Web]] is the trace of the weave.
 

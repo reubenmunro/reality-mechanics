@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # AI Confident Correction
 
-AI Confident Correction reads a local case where an AI answer appears to repair an error while preserving the wrong grounding.
+The applied read of AI Misrepair — where a correction appears to repair an error while preserving the wrong grounding.
 
 ## Places
 

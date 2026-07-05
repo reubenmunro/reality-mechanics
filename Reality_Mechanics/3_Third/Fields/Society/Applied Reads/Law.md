@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -42,7 +43,7 @@ status: stable
 ---
 # Law
 
-Law names the applied domain through which Violation is formally bounded and Repair is structurally obligated. The relational conditions that Law formalises — [[Civil]], [[Consent]] and [[Violation]], [[Boundary]] and [[Repair]] — exist before Law names them. Law gives them explicit scope, named consequence, and institutional procedure.
+The applied domain through which Violation is formally bounded and Repair is structurally obligated — where the relational conditions of compatible and incompatible boundary-crossing are given explicit scope, named consequence, and institutional procedure.
 
 What Law adds to the relational conditions is not new structure but locatability at scale: Violation can be named and pursued between participants who have no continuing relational coupling; Repair can be obligated without requiring the repairing party's willingness; Consent can be established and contested without requiring the participants' own resolution of what occurred.
 

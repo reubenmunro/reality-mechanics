@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Architectural Boundary
 
-Architectural boundary names where built form locates relational separation.
+Where built form locates relational separation.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -31,7 +32,7 @@ status: working
 ---
 # Rational
 
-Rational names the quality of a read, action, or continuation that can remain in accountable proportion.
+The quality of a read, action, or continuation that can remain in accountable proportion.
 
 Rational does not mean logical alone. Logic may be one carrier of rationality, but rationality is wider: the continuation must remain answerable to the relation it reads, the reference frame through which it reads, the carrying it performs, and the trace through which it can return.
 

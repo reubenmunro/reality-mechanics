@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Sustenance
 
-Sustenance names the organic field where participation is carried through nourishment, continuation, replenishment, and maintained availability.
+The third-order field where participation depends on renewed availability that can continue to carry life, body, place, or practice — the structural field for nourishment, renewal, and continued carrying.
 
 ## Places
 

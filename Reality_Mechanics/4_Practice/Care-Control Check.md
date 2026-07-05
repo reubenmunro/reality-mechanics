@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: check
@@ -33,7 +34,7 @@ status: working
 ---
 # Care-Control Check
 
-Care-Control Check names the practice check that reads what kind of force a [[Determination]] generates: care, compatible control, control drift, or unresolved force.
+The practice check that reads what kind of force a determination generates: care, compatible control, control drift, or unresolved force.
 
 It is not a moral label placed on a person. It is a runtime read of generated force.
 

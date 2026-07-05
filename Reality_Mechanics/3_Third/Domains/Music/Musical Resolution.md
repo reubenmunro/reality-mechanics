@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Musical Resolution
 
-Musical Resolution names the domain read for RM resolution conditions — where harmonic strain is determined at the current scope. The resolution conditions of the first order (hold, yield, release, transfer, absorb, failure, shift) each appear in musical form as recognisable cadence types.
+The domain read for RM resolution conditions — where harmonic strain is determined at the current scope.
 
 The Atlas read of musical resolution shows that cadence is not a stylistic convention. It is the point at which harmonic bearing is determined: the coupled strain of dissonance reaching a decision about what happens to it.
 

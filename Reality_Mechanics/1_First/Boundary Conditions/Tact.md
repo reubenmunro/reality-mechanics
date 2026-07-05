@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Tact
 
-Tact names the handling side of clean relation — where relation can meet or be touched without collapsing into interference, pressure, or harm.
+The handling side of clean relation — where relation can meet or be touched without collapsing into interference, pressure, or harm.
 
 Tact is held by [[Clean]] and [[Relation]]. Relation must remain free from residue or drift before contact can be handled without distortion.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Structure
 
-Structure names ordered relation that bears.
+Ordered relation that bears.
 
 Where [[Form]] names readable arrangement, Structure names relation ordered enough to hold, carry, constrain, support, or preserve what participates within it. Pattern, geometry, surface, or arrangement may show structure, but they are not structure in the Atlas sense unless they bear.
 

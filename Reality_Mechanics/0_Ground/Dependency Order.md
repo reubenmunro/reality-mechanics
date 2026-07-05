@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Dependency Order
 
-Dependency Order names structural precedence within [[Root Order]]: one term must already hold before another can become available. Root Order holds the governing arrangement and makes it followable; Dependency Order names what that followability reveals — the precedence within the arrangement. Chronology, command, hierarchy, sequence, preference, or navigation can display dependency order, but they do not create or govern it.
+Structural precedence within Root Order — what must already hold before another term can become available.
 
 ## Places
 

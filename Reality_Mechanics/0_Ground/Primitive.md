@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -23,7 +24,7 @@ status: stable
 ---
 # Primitive
 
-Primitive names where dependency tracing stops within the system. A primitive is not identified by its content, but by the absence of an upstream dependency inside the system. It is a structural role, not a specific kind of content. Relation is the primitive of Reality Mechanics.
+Where dependency tracing stops within the system — a structural role, not a specific kind of content.
 
 ## Places
 

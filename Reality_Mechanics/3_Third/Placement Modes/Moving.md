@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Moving
 
-Moving names the placement mode where participation is primarily carried through traversal, change of position, action, or directional proceeding.
+The mode where participation is primarily carried through traversal, change of position, or directional proceeding — where what is carried moves through a route rather than staying situated.
 
 ## Places
 

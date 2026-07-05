@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Emotion
 
-Emotion names patterned feeling that evaluates relation and pressures action, expression, care, protection, or repair.
+The condition through which gathered pattern presses available bearing toward expression or action — the structural node where readability gathered from feeling presses on carrying.
 
 Emotion grows from feeling where the read gathers pattern, direction, and action-pressure.
 

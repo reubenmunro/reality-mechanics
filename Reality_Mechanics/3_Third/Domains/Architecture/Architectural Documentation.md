@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Architectural Documentation
 
-Architectural documentation names representational carrying for built resolution.
+Representational carrying for built resolution.
 
 ## Places
 

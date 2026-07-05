@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Branch
 
-A Branch names a dependency path through participation. It is a traceable path through what a field or domain depends on, carries, and opens. Branches can occur within Organic Fields, within Organised Domains, or across the relation between them.
+A dependency path through participation.
 
 A branch often becomes visible at a [[Translation Boundary|translation joint]]: the point where a structural Atlas term becomes terminal to a field or domain.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Availability
 
-Availability names the condition through which a located distinction can present. Where boundary names the locating act, availability names what that act makes possible — the condition under which distinction can enter participation. Availability does not yet require trace, holding, recognition, resolution, or allowance; it names the condition under which distinction can become present enough to enter them.
+The condition through which located distinction can present — what boundary makes possible before carrying, allowance, or resolution are decided.
 
 ## Places
 

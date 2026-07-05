@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Scene
 
-Scene names a bounded field of presence where participation becomes terminal to what is happening here. A place, image, moment, or backdrop can help form a scene, but scene names participation gathered within a scope so that its conditions, relations, and movement become locally readable.
+The translation boundary where occurrence, presence, and closure scope become terminal to a locally readable happening.
 
 ## Places
 

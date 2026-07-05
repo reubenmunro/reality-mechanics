@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Discipline
 
-Discipline names practice constrained by a standard, scope, and retraceable correction. In Reality Mechanics, discipline is what keeps practice from becoming mere preference, fluency, or accumulation.
+Practice constrained by a standard, scope, and retraceable correction.
 
 ## Places
 

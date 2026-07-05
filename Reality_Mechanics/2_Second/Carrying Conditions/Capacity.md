@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Capacity
 
-Capacity names supportable carrying within a current condition. Where compatibility names the condition under which carrying can proceed and threshold names a located condition under strain where change becomes readable, capacity names how much load can remain supportable before carrying must [[Shift|shift]], reduce, fail, or re-resolve. Container size can show capacity, but capacity first names carrying evaluated within scope, support, condition, and compatibility.
+Supportable carrying within a current condition.
 
 ## Places
 

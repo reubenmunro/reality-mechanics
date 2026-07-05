@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Belong
 
-Belong names being placed within a field where participation fits and can remain compatibly carried.
+Belonging places the condition through which a participant is carried within a field where participation fits — the compatibility between what a participant carries and what the field can sustain.
 
 This note places being inside the place/domain layer as fitted participation.
 

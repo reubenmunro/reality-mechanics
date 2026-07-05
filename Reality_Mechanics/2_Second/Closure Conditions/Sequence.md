@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Sequence
 
-Sequence names an ordered traversal: reads followed through a scope in a dependency-readable arrangement. Where traversal names following through available conditions, sequence names that following as ordered: one read after another through an arrangement that can be traced. Time or causation can appear as sequence, but sequence first names readable order within traversal.
+An ordered traversal: reads followed through a scope in a dependency-readable arrangement.
 
 ## Places
 

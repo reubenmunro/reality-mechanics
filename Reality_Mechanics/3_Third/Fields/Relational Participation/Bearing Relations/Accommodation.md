@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Accommodation
 
-Accommodation is compatible bearing of variability through resolution.
+Compatible bearing of variability through resolution — the condition through which difference remains borne without requiring its elimination.
 
 ## Places
 

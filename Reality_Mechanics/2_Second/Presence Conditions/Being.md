@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Being
 
-Being names presence carried. Where be names presence held, being names that holding sustained through carrying: presence continuing to participate rather than only holding in place. Substance or essence can be later reads of being, but here being names presence moving forward through carrying.
+Presence carried.
 
 ## Places
 

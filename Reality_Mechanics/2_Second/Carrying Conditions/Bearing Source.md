@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Bearing Source
 
-Bearing Source names structure recovered by trace as what actually bears a carried condition.
+The structure recovered by trace as what actually bears a carried condition.
 
 It is not a separate source-object behind relation. In the Atlas sense, structure is ordered relation that bears. Bearing Source names the structural role from which a carried condition receives its actual bearing.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Engineered Coupling
 
-Engineered coupling is compatible Coupling carried through imposed, constructed, corrected, intentionally arranged, or externally maintained carrying conditions.
+Coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability — coupling shaped by constraint and carrying rather than emergent.
 
 ## Places
 

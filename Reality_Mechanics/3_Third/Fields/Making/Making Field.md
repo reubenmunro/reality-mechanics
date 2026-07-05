@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Making Field
 
-Making Field names the recurring field of participation through which producing, building, tool use, and bringing form into existence become readable as organised experience.
+The recurring field of participation through which relation is carried into form — through action, material, tool, method, and craft.
 
 ## Places
 

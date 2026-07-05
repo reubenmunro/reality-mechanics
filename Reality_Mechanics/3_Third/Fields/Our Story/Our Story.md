@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Our Story
 
-Our Story names the organic field where participation becomes readable through inherited, remembered, narrated, and retraced continuity.
+The third-order field where participation carries prior relation forward through memory, inheritance, account, and retrace — the structural field for shared relational history.
 
 ## Places
 

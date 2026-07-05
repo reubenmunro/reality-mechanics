@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Carrying Better
 
-Carrying Better names the deeper purpose behind preservation, history, invention, and discovery. These practices are distorted when treated as comfort, novelty, conquest, production, or progress for their own sake. In natural order, they serve the ongoing carrying of life in relation.
+The condition through which inherited carrying is improved — where retrace makes prior carrying available for correction, refinement, or more compatible continuation.
 
 ## Places
 

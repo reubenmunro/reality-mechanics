@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 domain: atlas-practice
@@ -27,10 +28,9 @@ conditions:
 publish: true
 status: stable
 ---
-
 # Atlas Condition Header
 
-Atlas Condition Header names the compact condition summary placed at the top of an Atlas note.
+Root-level Atlas practice standard.
 
 It allows a note to remain human-facing while giving AI and other tools a clear, stable way to locate the gathered condition information.
 

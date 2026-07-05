@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Extent
 
-Extent names the reached range of carrying.
+The reached range of carrying.
 
 Where [[Extend]] names carrying outward beyond a current boundary, Extent names the range that carrying has reached. Extent does not mean universal completion. It asks how far carrying reaches before [[Scope]] bounds that reach for a read, test, or evaluation.
 

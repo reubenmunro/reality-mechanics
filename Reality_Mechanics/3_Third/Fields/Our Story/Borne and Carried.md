@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: working
 ---
 # Borne and Carried
 
-Borne and Carried names the human-scope read that carrying becomes possible because the human first arrives borne and carried.
+The human-scope read that carrying becomes possible because the human first arrives borne and carried.
 
 The core sentence is:
 

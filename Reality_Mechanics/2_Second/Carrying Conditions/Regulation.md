@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Regulation
 
-Regulation names carrying maintained within condition. Where constraint names the bounded availability that carrying produces, regulation names the condition through which carrying continues within those bounds: participation is maintained without losing the conditions required for carrying to hold. Control or enforcement can regulate, but regulation first names sustained carrying within condition.
+Carrying maintained within condition.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Cancer
 
-Cancer is a biological path read within Life, through Repair, especially Misrepair.
+The condition through which living repair becomes misdirected re-bearing — bounded cellular difference that carries harmful recursion against the living condition it belongs within.
 
 ## Places
 

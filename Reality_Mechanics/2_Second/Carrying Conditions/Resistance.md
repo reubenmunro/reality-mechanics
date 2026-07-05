@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Resistance
 
-Resistance names carrying opposed, narrowed, or slowed by a condition it must pass through. Failure can follow resistance, but resistance first names the opposition through which carrying changes how it continues.
+Carrying opposed, narrowed, or slowed by a condition it must pass through.
 
 ## Places
 

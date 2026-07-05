@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: distinction
@@ -28,7 +29,7 @@ status: working
 ---
 # Read and Effect
 
-Read and Effect names the distinction between how a condition becomes recognisable, what follows from a condition operating, and the traced account through which an effect becomes explainable.
+The distinction between recognisability, consequence, trace, and cause-read.
 
 A read names how a condition becomes recognisable; an effect names what follows from that condition; cause-read is the traced account through which an effect becomes explainable.
 

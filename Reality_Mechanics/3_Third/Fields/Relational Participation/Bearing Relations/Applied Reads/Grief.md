@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -50,7 +51,7 @@ status: stable
 ---
 # Grief
 
-Grief names concentrated carrying after a relation's familiar face of return has crossed a terminal boundary.
+The applied relational read where load concentrates as pressure because a relation continues to carry after its familiar face of return has crossed a terminal boundary.
 
 Grief is not failed letting go, and it is not automatically ungrounded. It is often grounded in a real relation. What has changed is the return condition: the relation continues to carry, but the familiar face through which it answered back can no longer re-enter the prior scope in the same way.
 

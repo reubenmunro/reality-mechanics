@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -37,7 +38,7 @@ status: stable
 ---
 # Metabolism
 
-Metabolism names embodied resolution: the way a living system carries change without losing continuity.
+Embodied resolution within living participation — the way intake, energy, strain, repair, waste, memory, and activity are converted into continued participation.
 
 Metabolism is not only calorie-burning or digestion in this Atlas placement. It names the living resolution pattern through which intake, energy, strain, repair, waste, memory, and activity are converted into continued participation.
 

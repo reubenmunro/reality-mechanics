@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Illusion
 
-Illusion names altered read where appearance does not match support. Error can be involved, but illusion names a readable mismatch between what is presented and what retrace can bear.
+The readable mismatch between presented appearance and retraceable support — where what is visible carries influence that retrace cannot follow.
 
 ## Places
 

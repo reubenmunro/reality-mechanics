@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Control After Harm
 
-Control After Harm reads a local case where control enters after damaged bearing and must be checked for protection, repair, or further harm.
+The applied read where control is exercised following harm — direction of availability in the context of incompatible carrying that preceded it.
 
 ## Places
 

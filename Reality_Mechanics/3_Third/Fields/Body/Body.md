@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -42,7 +43,7 @@ status: stable
 ---
 # Body
 
-Body names branch-level participation where relation is read through sensation, feeling, emotion, movement, fatigue, injury, recovery, and embodied availability.
+The third-order field where structural terms become readable as embodied conditions — where availability, strain, carrying, and compatibility take form in what a living body can bear, sustain, or recover.
 
 ## Places
 

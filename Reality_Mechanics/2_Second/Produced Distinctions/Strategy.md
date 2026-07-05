@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Strategy
 
-Strategy names a carried sequence oriented toward a resolution. Where process names a carried sequence and structure names form held as a carrying arrangement, strategy names the condition through which a carried sequence is oriented toward a particular resolution within the current scope. Strategy does not name plan, intention, or outcome by itself; it names the orientation of a carried sequence toward a readable determination.
+A carried sequence oriented toward a resolution.
 
 ## Places
 

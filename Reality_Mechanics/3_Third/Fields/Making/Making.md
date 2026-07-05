@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Making
 
-Making names the organic field where participation brings form, tool, work, or arrangement into availability.
+The third-order field where relation is carried into form through action, material, tool, method, or craft — the structural field for production, fabrication, and intentional forming.
 
 ## Places
 

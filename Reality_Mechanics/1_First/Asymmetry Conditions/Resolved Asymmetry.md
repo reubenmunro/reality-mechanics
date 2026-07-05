@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Resolved Asymmetry
 
-Resolved asymmetry names strained asymmetry determined at the current scope: settled enough to remain distinguishable without collapsing into sameness. Where [[Strained Asymmetry]] names the condition under contrast, resolved asymmetry names that condition after determination. It establishes the determined condition through which carrying and coupling can become available.
+Strained asymmetry determined at the current scope — settled enough to remain distinguishable without collapsing into sameness.
 
 ## Places
 

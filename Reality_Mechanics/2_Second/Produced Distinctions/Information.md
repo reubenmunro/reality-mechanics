@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Information
 
-Information names difference that makes a read available. Where difference names distinguishable non-sameness, information names the specific difference that changes what can be read — the difference that matters at the current scope. Data, content, or quantity can carry information, but information is the produced read through which a distinction becomes available to alter evaluation.
+Difference that makes a read available.
 
 ## Places
 

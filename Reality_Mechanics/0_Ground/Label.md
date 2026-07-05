@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -23,7 +24,7 @@ status: stable
 ---
 # Label
 
-Label names a name that marks without carrying traceable conditions. Where a [[Term]] gives relation a placed opening that can be entered, traced, read, and carried forward, a Label marks without that dependency structure: it names something without carrying what it depends on, what it opens, or what becomes readable through it.
+A name that marks without carrying traceable conditions — naming without dependency, opening, or carried relation.
 
 A label is not a failed term. Proper names, placeholders, tags, and identifiers operate legitimately as labels — marking a point without needing to carry conditions. The distinction is structural: a label marks; a term carries.
 

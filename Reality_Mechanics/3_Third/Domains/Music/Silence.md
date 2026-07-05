@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Silence
 
-Silence names the availability condition in music — where bearing is held without sounding. Silence is not the absence of music; it is the musical condition through which sound's absence becomes readable as held rather than lost.
+The availability condition in music — where bearing is held without sounding.
 
 In ordinary listening, silence can feel like nothing. In the Atlas read, silence names the condition where bearing remains available — where the held stop is part of the carrying structure and not its interruption.
 

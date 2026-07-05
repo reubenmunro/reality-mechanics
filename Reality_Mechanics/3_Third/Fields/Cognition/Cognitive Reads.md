@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Cognitive Reads
 
-Cognitive reads name branch-level reads concerned with pre-explicit availability, memory, retained readability, operation on readable order, discernment, wisdom, and recursive self-readability.
+The set of path reads through which thought and memory become evaluable at a closure scope — the branch of reads that apply cognitive structural conditions to specific passages.
 
 ## Places
 

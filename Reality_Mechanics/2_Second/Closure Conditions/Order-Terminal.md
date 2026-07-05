@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Order-Terminal
 
-Order-terminal names terminality relative to an order: the condition of a term when that term completes the readable length of its order.
+Terminality relative to an order — the point where a readable length completes within its order and cannot continue as the same read.
 
 A term carries a readable length of relation. [[Terminal]] names where a current read stops because continuation crosses a closure scope the read cannot follow. Order-terminal marks the term-position where a thread through an order completes enough that continuation cannot remain the same read.
 

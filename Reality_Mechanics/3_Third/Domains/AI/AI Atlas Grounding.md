@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # AI Atlas Grounding
 
-AI Atlas Grounding names the use of current Atlas structure to preserve compatible proceeding and retraceable uptake during AI interaction.
+The grounding practice through which current Atlas structure is used to preserve compatible proceeding and retraceable uptake during AI interaction.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Experimental Science
 
-Experimental Science names the applied domain through which knowledge claims are made testable by structured design. A researcher constructs a model that carries a claim about how conditions relate, grounds it in a bearing source, and then designs conditions under which the model meets what it claims to represent. The experimental result either confirms compatible carrying or produces a Reality Check — a structured encounter with incompatibility that makes the model's limits readable.
+The applied domain through which knowledge claims are made testable by structured design — where a model is held against recurrent conditions so that compatibility or incompatibility becomes readable rather than assumed.
 
 Experimental science does not produce knowledge by assertion. It produces it by making the conditions under which a claim can fail explicit before testing.
 

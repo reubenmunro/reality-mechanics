@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Reality
 
-Reality names coupled relation readable as real. Where real names presence holding as encounterable and coupling names two resolved conditions held in relation, reality names the condition through which coupled presence holds as the readable real — what is actually there within the current scope. Reality is not named by belief or representation; it names the produced read through which coupled presence becomes available as the actual.
+Coupled relation readable as real.
 
 ## Places
 

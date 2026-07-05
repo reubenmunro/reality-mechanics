@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -28,7 +29,7 @@ status: working
 ---
 # Retracing
 
-Retracing names a participant following [[Trace]] backward through [[Connection]].
+A participant following trace backward through connection.
 
 Trace is the backward availability offered by connection. Retracing is the act of entering and following that availability. Retracing may support checking, recovery, return, or understanding, but those purposes do not define the basic movement.
 

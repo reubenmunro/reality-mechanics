@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Gardening
 
-Gardening names the applied domain through which maintained coupling holds organic asymmetry within a compatible boundary. The living system brings its own asymmetry — its inherent directedness toward particular growth, its dependency order, its seasonal recurrence. The gardener does not produce this asymmetry; they hold its boundary.
+The applied domain through which maintained coupling holds organic asymmetry within a compatible boundary — where recurrent human bearing keeps a living system's inherent directedness within a scope it cannot hold alone.
 
 Gardening makes care held within order visible: care is not the absence of restraint, and restraint remains compatible only where it serves the living availability care preserves.
 

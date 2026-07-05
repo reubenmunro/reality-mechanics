@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Terms of Service
 
-Terms of Service names the translation boundary where human service becomes terminal to the reality terms under which participation remains carried by the earth. In ordinary use, the phrase names contractual conditions for using a platform. In the Atlas, it can be read more basically: the first service is [[Earth Carrying]], and its terms are the conditions under which human participation remains possible, grounded, corrected, and retraceable.
+The boundary where human service must be translated back to the earth carrying it.
 
 ## Places
 

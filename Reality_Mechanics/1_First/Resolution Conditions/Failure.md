@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -25,7 +26,7 @@ status: stable
 ---
 # Failure
 
-Failure names resolution where bearing cannot remain supportable at the current scope. Absence can follow failure, but failure first names the determined condition in which what bears strain no longer holds as the same supportable condition.
+Resolution where bearing cannot remain supportable at the current scope.
 
 ## Places
 

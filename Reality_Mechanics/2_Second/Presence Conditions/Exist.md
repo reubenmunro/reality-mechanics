@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Exist
 
-Exist names presence holding as real enough to be encountered or evaluated. Where real names presence holding as encounterable, exist names that condition sustained: what is real continues to be available for encounter, constraint, or evaluation within the current scope. Proof of existence can test this, but exist names continued real availability.
+Presence holding as real enough to be encountered or evaluated.
 
 ## Places
 

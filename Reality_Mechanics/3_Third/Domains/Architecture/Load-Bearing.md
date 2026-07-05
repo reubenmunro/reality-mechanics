@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Load-Bearing
 
-Load-bearing is an architectural and applied carrying read. It names participation that carries required Bearing for compatible Coupling within a Domain condition.
+The architectural read where required bearing continues through built use without exceeding load, capacity, carrying, or compatibility.
 
 ## Places
 

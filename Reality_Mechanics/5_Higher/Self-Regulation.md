@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Self-Regulation
 
-Self-Regulation names higher-order carrying used to adjust, inhibit, repair, preserve, or redirect participation.
+Higher-order carrying used to adjust, inhibit, repair, preserve, or redirect participation.
 
 Self-Regulation can be organic where nested bearing adjusts participation without imposed modelling.
 

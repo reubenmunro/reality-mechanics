@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Change
 
-Change names a readable difference across traversal. Where traversal lets a read be followed through a closure scope and difference names readable non-sameness, change names non-sameness becoming readable between one condition and another through traversal.
+A readable difference across traversal.
 
 ## Places
 

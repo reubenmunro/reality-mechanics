@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: order
@@ -24,7 +25,7 @@ status: working
 ---
 # First Order
 
-First Order names the register where relation becomes connectable, orientable as [[Posture]], and placeable enough for carry and trace to become available. It establishes [[Connection]] before the forward direction is enacted as [[Carrying]] or the backward direction is followed through [[Retracing]].
+The register where relation becomes connectable, orientable as posture, and placeable enough for carry and trace to become available.
 
 In the tree read, First Order is root structure becoming readable. It is rooted in [[Ground]] and grows toward the trunk; its work is to make later carrying possible.
 

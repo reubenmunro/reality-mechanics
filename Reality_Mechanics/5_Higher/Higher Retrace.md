@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Higher Retrace
 
-Higher Retrace names participation through a trace to recover the dependency path. Where retrace read at second order names a produced read through which a prior path can be followed back, higher retrace names participation actively moving through that path: the organic process through which what has become available is returned to its source. Repetition, reversal, or time travel can resemble retrace, but retrace is the recovery of access. Reality Mechanics is the discipline through which retraceable dependency is mapped.
+Participation through a trace to recover the dependency path.
 
 ## Places
 

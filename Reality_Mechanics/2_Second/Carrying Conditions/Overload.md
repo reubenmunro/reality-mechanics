@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Overload
 
-Overload names load or pressure exceeding supportable capacity. Where load names what bears on carrying, pressure names load locally borne through relation, and capacity names supportable carrying within a current condition, overload names the condition where carrying is strained beyond what can remain compatible at that scope. Overload does not name weakness or failure by itself; it names the excess condition that makes reduction, release, return to [[Carried Condition]], re-resolution, disorder, or collapse likely unless support or scope changes.
+Load exceeding supportable capacity.
 
 ## Places
 

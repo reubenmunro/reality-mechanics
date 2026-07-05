@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Grip
 
-Grip names useful friction at coupled contact. Where friction can slow or oppose movement, grip names the coupled contact condition through which resistance becomes support for carrying.
+Useful friction at coupled contact.
 
 ## Places
 

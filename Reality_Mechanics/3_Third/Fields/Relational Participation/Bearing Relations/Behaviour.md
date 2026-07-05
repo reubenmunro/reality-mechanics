@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Behaviour
 
-Behaviour names carrying becoming action at a closure scope.
+Carrying through relation at a closure scope — what is actually done through a control or participation condition, rather than what is intended.
 
 Feeling, emotion, and thought are reads. Behaviour is where a read begins to change what relation can carry.
 

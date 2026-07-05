@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Threshold
 
-Threshold names a boundary condition under strain where change becomes readable. It is not a measurement, line, or quantitative cutoff — it names the held change-limit within the current scope of evaluation. Threshold sits between boundary, strain, and bearing: distinction is located, strain is present, and something is at the point where it can either hold or [[Shift|shift]] without yet being determined either way.
+A boundary condition under strain at the point where change becomes readable — the held change-limit within the current scope.
 
 ## Places
 

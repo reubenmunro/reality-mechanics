@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Responsibility
 
-Responsibility names participation made answerable for an effect where trace returns to the coupled boundary through which that effect became actionable.
+Participation made answerable for an effect where trace returns to the coupled boundary through which that effect became actionable.
 
 Responsibility does not automatically belong to the object, system, or medium that carries a [[Consequence]]. The carrier of an effect and the participating boundary through which that effect became actionable may be different conditions.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Count
 
-Count names recurrence held as how many through distinguishable units. Where [[Recurrence]] names participation occurring again and [[Unit]] names a bounded repeatable measure, count names the produced read through which repeated units can be held as quantity.
+Recurrence held as how many through distinguishable units.
 
 Count is not number by itself. Number may stabilise a count as a value, but count names the relation becoming readable as how many. Count also does not name measure by itself; measure compares a read against a unit or scale. Count depends on repeatable units; it does not ground them.
 

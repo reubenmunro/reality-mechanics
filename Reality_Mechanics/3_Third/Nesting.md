@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Nesting
 
-Nesting names ordered participation: prior organisation remaining available within later organisation.
+Ordered participation — prior organisation remaining available within later organisation.
 
 Nesting carries; modelling represents.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Heat
 
-Heat names energetic consequence made readable through friction. In this atlas position, heat is not a full account of thermodynamics; it is the readable availability that appears where resistance in carrying becomes energetic change.
+Energetic consequence made readable through friction.
 
 ## Places
 

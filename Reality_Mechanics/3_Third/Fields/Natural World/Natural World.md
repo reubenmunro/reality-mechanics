@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Natural World
 
-Natural World names the organic field where Natural Order becomes readable as physical, ecological, spatial, material, cosmic, and environmental participation.
+The organic field where Natural Order becomes readable as physical, ecological, spatial, material, cosmic, and environmental participation.
 
 ## Places
 

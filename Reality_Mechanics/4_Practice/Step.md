@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Step
 
-Step names the smallest answerable movement opened by a read. Where [[Read]] makes a traced distinction meaningful, Step names the nearest placed movement through which the read is carried without exceeding what the trace supports.
+The smallest answerable movement opened by a read.
 
 Step is carrying made local as movement: the first placed movement by which a read enters practice while remaining answerable to dependency. It may support progress, but it does not require progress or completion.
 

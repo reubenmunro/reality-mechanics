@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Transforming
 
-Transforming names the placement mode where participation is primarily carried through change of form, function, condition, or arrangement.
+The mode where participation is primarily carried through change of form, function, condition, or arrangement — where what is carried becomes otherwise while remaining traceable through what changed.
 
 ## Places
 

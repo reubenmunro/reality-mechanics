@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -26,7 +27,7 @@ status: stable
 ---
 # Apparent Bearing
 
-Apparent bearing names bearing becoming presented. Where bearing names strain held as a readable condition, apparent bearing names the condition through which that holding becomes available to be noticed — bearing that presents itself as bearing.
+Bearing becoming presented.
 
 ## Places
 

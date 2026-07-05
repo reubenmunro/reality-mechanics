@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -36,7 +37,7 @@ status: stable
 ---
 # Protective Control
 
-Protective Control reads a local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing. It remains protective only where direction stays answerable to [[Care]] — the preserving bearing that makes the dependent availability worth protecting.
+The local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Strained Asymmetry
 
-Strained asymmetry names bounded asymmetry under contrast. Where bounded asymmetry names localised unevenness available for distinction, strained asymmetry names that same condition pressing at a boundary where contrast is present but not yet resolved. It does not yet name bearing, carrying, or outcome. It names the condition through which bounded asymmetry becomes consequential.
+Bounded asymmetry under contrast — the condition through which localised unevenness becomes consequential.
 
 ## Places
 

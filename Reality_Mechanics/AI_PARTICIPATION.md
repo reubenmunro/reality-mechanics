@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: meta
@@ -42,7 +43,7 @@ status: working
 ---
 # AI Participation
 
-How an AI participates inside the Atlas without inventing theory. The Atlas is a reasoning system, so AI participates by tracing structure rather than answering from definitions. These rules distil the Atlas's own practice layer — [[Check]], [[Step]], [[Groundedness]], [[Source Drift]], [[Ark Run]], and the [[Common Term Structure]]. They constrain AI behaviour; they do not add to Reality Mechanics.
+The participation rule for AI working inside the Atlas without inventing theory, grounding notes, or collapsing dependency order.
 
 For AI systems, the primary doorway is the Reality Mechanics MCP. Public pages may be read by people, and the public AI export may be inspected, but Atlas-assisted AI should use the MCP protocol so search, entry reading, relation traversal, and the AI entry protocol remain available as tools rather than background memory.
 

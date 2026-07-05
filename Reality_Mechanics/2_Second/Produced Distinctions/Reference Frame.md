@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -34,7 +35,7 @@ aliases:
 ---
 # Reference Frame
 
-Reference Frame names the nested placement through which a ratio, relation, scale, or relative read becomes answerable.
+The nested placement through which a ratio, relation, scale, or relative read becomes answerable and one face of carrying becomes readable.
 
 A reference frame is not an observer added onto reality. The observer is already nested. A reference frame is the held placement that lets a comparison be checked: from what reference, against what Other, through what boundary, and within what closure scope?
 

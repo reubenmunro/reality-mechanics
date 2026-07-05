@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Delayed Availability
 
-Delayed availability names uneven availability across traversal — the condition through which what should be available at one point in a sequence becomes available only later, or not at all within the current scope. Where dependency disorder names the loss of retraceability, delayed availability names a specific effect: participation continues but the conditions required for compatible carrying are not yet present at the point where they are needed.
+Uneven availability across traversal — the condition through which what should be available at one point in a sequence becomes available only later, or not at all within the current scope.
 
 ## Places
 

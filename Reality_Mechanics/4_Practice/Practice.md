@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -41,7 +42,7 @@ status: stable
 ---
 # Practice
 
-Practice names repeated, attended participation through which action remains available, correctable, and carried through use. Repetition becomes practice where return is readable enough for correction, tending, and retrace to occur.
+Repeated, attended participation through which action remains available, correctable, and carried through use.
 
 ## Places
 

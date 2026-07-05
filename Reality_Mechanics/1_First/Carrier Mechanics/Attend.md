@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: carrier
@@ -34,7 +35,7 @@ status: stable
 ---
 # Attend
 
-Attend names sustained presence with what has been noticed. Where [[Notice]] names first contact with what has become apparent, and [[Enter]] names passage into the relation opened by that contact, Attend names the chosen staying-with through which relation remains available long enough to become followable, readable, or cared for.
+Sustained presence with what has been noticed and entered.
 
 Attend comes before judgment, closure, or explanation. It keeps contact open without forcing the condition to resolve before its difference can be read.
 

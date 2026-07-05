@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Parenting
 
-Parenting names branch-level participation where dependent life is carried through care, boundary, teaching, repair, and ongoing relation.
+Branch-level participation where dependent life is carried through care, boundary, teaching, repair, and ongoing relation.
 
 ## Places
 

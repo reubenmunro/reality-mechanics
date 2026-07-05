@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Natural World Field
 
-Natural World Field names the recurring field of participation through which physical conditions, forces, fields, and natural phenomena become readable as organised experience.
+The recurring field of participation through which physical, ecological, spatial, material, and cosmic conditions become readable as organised natural experience.
 
 ## Places
 

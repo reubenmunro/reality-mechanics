@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Space
 
-Space names clearance becoming locatable: relation readable as separation, extent, position, distance, inside/outside, here/there, and co-presence. Where time names held clearance as interval and continuation, space names the same clearance as separation and placement. Empty container or absolute extension can be later reads of space, but here space names clearance oriented enough for relation to be read as placed rather than only persisting.
+Held clearance as separation and extent — relation readable as position, distance, here/there, co-presence, and placement.
 
 ## Places
 

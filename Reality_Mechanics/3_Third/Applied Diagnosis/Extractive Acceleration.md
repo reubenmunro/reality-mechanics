@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -45,7 +46,7 @@ status: stable
 ---
 # Extractive Acceleration
 
-Extractive Acceleration names an applied diagnosis where long-order carrying is converted into short-order resolution. The human read may appear as time speeding up, but the structural change is more specific: the coupled system is resolving faster because it is drawing from carrying orders that formed more slowly than the fast order can restore.
+The applied diagnosis of acceleration produced by converting long-order Earth carrying into short-order resolution.
 
 Earth carries long-order sequence: geological formation, ecological renewal, stored energy, soils, water cycles, inherited trust, bodies, attention, and repair conditions. Extractive systems draw those slow orders into fast activity. The fast order then appears efficient, productive, or inevitable while the slower carrier is treated as background.
 

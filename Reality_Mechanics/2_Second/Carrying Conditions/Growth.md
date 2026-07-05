@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Growth
 
-Growth names increase in carrying, scale, or available participation across traversal. Improvement can be one read of growth, but growth first names change read as increase within a closure scope.
+Increase in carrying, scale, or available participation across traversal.
 
 Growth is not only faster output. Increase that depends on drawing down a hidden carrier may be read locally as growth while becoming extraction at a wider scope. Growth must remain answerable to what carries the increase.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Faith Field
 
-Faith Field names the recurring field of participation through which carried commitment toward unavailable resolution, mystery, and sacred orientation become readable as organised experience.
+The recurring field of participation through which carried commitment, mystery, sacred orientation, and unavailable resolution become readable as organised experience.
 
 ## Places
 

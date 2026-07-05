@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Nested Coupling
 
-Nested coupling names Coupling that becomes available as participation in further coupling.
+Coupling held within a larger coupling structure — distinct resolved conditions in mutual availability where that availability is itself carried within a containing relation.
 
 ## Places
 

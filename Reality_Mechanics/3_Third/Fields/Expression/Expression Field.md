@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Expression Field
 
-Expression Field names the recurring field of participation through which gesture, making visible, and communicating through form become readable as organised experience.
+The recurring field of participation through which relation becomes outwardly readable — through gesture, form, affect, sound, image, or visible presentation.
 
 ## Places
 

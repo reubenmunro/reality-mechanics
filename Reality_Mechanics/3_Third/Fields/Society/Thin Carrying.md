@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Thin Carrying
 
-Thin Carrying names carrying that remains functional while losing depth of relation. A thin carrying system may move, house, count, employ, educate, process, or manage people while failing to read what must be carried for life, relation, memory, responsibility, and repair to remain whole.
+The condition through which institutional or social carrying loses the relational depth that would make it traceable — carrying that proceeds without the structural grounding required for retrace.
 
 ## Places
 

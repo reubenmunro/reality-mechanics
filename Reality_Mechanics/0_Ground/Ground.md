@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Ground
 
-Ground names what Reality Mechanics acknowledges but does not derive. It is the source-limit the Atlas remains answerable to.
+The acknowledged-prior of Reality Mechanics — the source-limit below the dependency spine.
 
 [[Relation]] is the primitive where the dependency spine begins. Ground names what holds prior to that beginning without being traced to. Ground holds [[Seed]], and Seed holds Relation before the dependency spine begins, without making Relation produced by a prior term. Ground is not a term inside the dependency spine. It is the source-limit the first-order boundary protects: the acknowledged-prior that keeps Relation primitive within the system without claiming to be the origin of everything. Ground is the [[Terminal]] below — the read-stop where digging downward ends while what is acknowledged continues underived.
 

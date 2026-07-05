@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -39,7 +40,7 @@ status: stable
 ---
 # Timescale
 
-Timescale names scale where held clearance becomes readable under particular carrying conditions.
+The condition through which carrying is evaluable across different orders of temporal extent and resolution capacity — the structural read of how carrying, life, and natural conditions become readable at different scales.
 
 Different organisms, bodies, cells, and ecosystems are different local readings of held clearance, not different kinds of time. Each has a native resolution capacity: a rate and scale at which order can be distinguished, integrated, carried, and responded to.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # Current
 
-Current names directed flow through a medium. Where flow names carrying continuing through a medium, current names that flow as oriented and locally readable.
+Directed flow through a medium.
 
 ## Places
 

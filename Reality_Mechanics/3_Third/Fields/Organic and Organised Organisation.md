@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -34,7 +35,7 @@ status: stable
 ---
 # Organic and Organised Organisation
 
-Organic and Organised Organisation names the distinction between participation that arises through Natural Order and participation that is intentionally arranged. Natural Order is the available order. Organic is Natural Order participating. Engineered is participation organising intentionally. Engineering is a form of participation within Natural Order. The difference is not natural versus unnatural; it is whether organisation arises through relation or is intentionally organised through participation.
+The distinction between participation that arises through Natural Order and participation that is intentionally arranged.
 
 ## Places
 

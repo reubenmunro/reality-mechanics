@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Melody
 
-Melody names the traceable thread of bearing carried through sequential sound. Where [[Thread]] names followable continuity through a readable length, melody names that thread made audible: a line of tones carried through time that can be followed, recognised, departed from, and returned to.
+The traceable thread of bearing carried through sequential sound.
 
 Melody is not a list of pitches. It is a line that carries. What makes a sequence of tones a melody is that it holds bearing through movement — that each note is readable as part of the same line rather than as an isolated event.
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -48,7 +49,7 @@ status: stable
 ---
 # Compatibility
 
-Compatibility names the condition through which what is being carried can continue through the conditions it moves into. Where carrying names held and placeable forward availability being enacted, compatibility names the check that the continuation remains supportable — that what is carried and what it moves through can hold together without one destroying the other. Compatibility does not guarantee resolution; it names the condition under which carrying can proceed.
+The condition through which what is being carried can continue through the conditions it moves into.
 
 ## Places
 

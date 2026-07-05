@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Caring
 
-Caring names the placement mode where participation is primarily carried through preserving bearing or availability.
+The mode where participation is primarily carried through preserving bearing or availability — keeping what must still bear, remain accessible, or be repaired enough to continue.
 
 ## Places
 

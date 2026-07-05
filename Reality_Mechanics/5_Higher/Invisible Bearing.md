@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: higher
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Invisible Bearing
 
-Invisible Bearing names nested organisation carrying participation without requiring explicit retracing in the current read.
+Nested organisation carrying participation without requiring explicit retracing in the current read.
 
 The carrying is not hidden. It has become non-presenting through organic accumulation — the structure just is there, active, not designed to conceal itself. Retrace remains available if sought; the dependency path is not blocked.
 

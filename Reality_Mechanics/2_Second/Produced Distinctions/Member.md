@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Member
 
-Member names a scale-local participating part in a carried body.
+A scale-local participating part in a carried body.
 
 A member is not an absolute identity. It is the placed participation a thing has where it belongs to a wider structure, field, body, system, or relation. A beam is a member at the frame scale. A person is a member at the family, team, community, or civic scale. At another scale, each is also made of smaller members and participates in larger ones.
 

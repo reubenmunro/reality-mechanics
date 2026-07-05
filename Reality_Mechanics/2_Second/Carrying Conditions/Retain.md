@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Retain
 
-Retain names pressure kept within a carrying relation.
+Pressure kept within a carrying relation.
 
 Retain is not the same as [[Hold]]. Hold is a first-order resolution mode: a resolved condition remains supportable as the same condition. Retain is second-order carrying regulation: pressure remains kept inside a carrying relation after it has become locally borne.
 

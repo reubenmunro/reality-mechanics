@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Translation
 
-Translation names branch-level carrying of readable distinction across language conditions.
+Branch-level carrying of readable distinction across language conditions.
 
 ## Places
 

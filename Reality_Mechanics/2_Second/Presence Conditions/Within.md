@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Within
 
-Within names relation held inside a cleared boundary. Where in carries interior placement and clearance opens the relational space that allows alongside-ness, within names their compound: relation that is both inside and available within a bounded condition. Enclosure can show within, but within names interior placement under available clearance.
+Relation held inside a cleared boundary.
 
 ## Places
 

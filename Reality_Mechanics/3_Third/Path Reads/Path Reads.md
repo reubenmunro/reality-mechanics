@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: class
@@ -30,7 +31,7 @@ status: stable
 ---
 # Path Reads
 
-Path Reads name reusable reads that become available by following a dependency path.
+Reusable reads that become available by following a dependency path.
 
 In Third Order, a path read often follows a branch through a [[Translation Boundary|translation joint]]: source term, terminal point, local domain term, applied read.
 

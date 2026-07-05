@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -31,7 +32,7 @@ status: stable
 ---
 # Society Field
 
-Society Field names the recurring field of participation through which collective organisation, consent, and social structures become readable as organised experience.
+The recurring field of participation through which patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants.
 
 ## Places
 

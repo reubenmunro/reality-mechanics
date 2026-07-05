@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Root Resilience
 
-Root Resilience names the capacity of a grounded root system to withstand branch-level disruption without losing dependency order.
+The capacity of a grounded root system to withstand branch-level disruption without losing dependency order.
 
 It is not an immune system, policing layer, or governance framework. Root Resilience arises where the root system remains grounded enough that branch-level drift, overgrowth, misplaced terms, or ungrounded material can be relieved, remapped, or left ungrounded without corrupting the root order.
 

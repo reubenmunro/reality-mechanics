@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Constrained Resolution
 
-Constrained resolution names compatible Resolution sustained under limiting Constraint conditions.
+Resolution where what can be determined at scope is bounded by a prior constraint — bearing settling into a determined condition within limited options.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Noise
 
-Noise names sound not currently readable as signal, pattern, relation, or line at the relevant scope.
+Sound not currently readable as signal, pattern, relation, or line at the relevant scope.
 
 Noise is not bad sound. It may be meaningful at another scope, with another instrument, in another domain, or for another participant. It is noise where audible carrying is present but cannot currently be read as signal, pattern, relation, melody, harmony, or rhythm.
 

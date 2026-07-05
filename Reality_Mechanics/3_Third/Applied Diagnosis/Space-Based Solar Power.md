@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # Space-Based Solar Power
 
-Space-Based Solar Power names an applied read of engineered external energy intake. The concern is not that energy comes from outside Earth; ordinary sunlight already arrives through atmosphere, day and night, season, cloud, ocean, plant, soil, and heat exchange. The applied question is whether orbital collection and directed beaming create an intake pathway whose receiving relation is readable, bounded, regulated, and repairable.
+The applied RM diagnosis question for orbital energy collection — specifically whether the pathway is retraceable intake into Earth carrying or a splinter condition crossing a boundary without adequate carrying relation.
 
 ## Places
 

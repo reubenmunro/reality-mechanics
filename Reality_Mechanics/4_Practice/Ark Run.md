@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: practice
 kind: practice
@@ -35,7 +36,7 @@ status: working
 ---
 # Ark Run
 
-Ark Run names the runtime practice by which pressure is carried through retrace, check, determination, and step without losing dependency order.
+The runtime practice by which pressure is carried through retrace, check, determination, and step without losing dependency order.
 
 It is not a replacement for the [[Atlas]]. The Atlas holds the dependency-ordered surface. Ark Run is a movement through that surface.
 

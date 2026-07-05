@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: class
@@ -24,7 +25,7 @@ status: stable
 ---
 # Structural Carrier
 
-Structural carrier names the class of primitive carriers that carry relation into later structural compounds through small relation-words. Where operation carriers make any condition readable across the system, structural carriers transmit specific relational roles — placement, direction, and polarity — into language and downstream compounds. A structural carrier does not make structure; it preserves and transmits relations already available to read.
+The class of primitive carriers that transmit specific relational roles into later compounds through small relation-words.
 
 ## Places
 

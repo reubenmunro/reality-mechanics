@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -32,7 +33,7 @@ status: stable
 ---
 # Maintained Coupling
 
-Maintained coupling is compatible Coupling sustained through corrective or supportive Bearing.
+The condition through which distinct coupled relation is held stable through recurrence — coupling that sustains across encounters and strain.
 
 ## Places
 

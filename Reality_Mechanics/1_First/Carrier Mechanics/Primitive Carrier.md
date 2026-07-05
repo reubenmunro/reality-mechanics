@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: class
@@ -27,7 +28,7 @@ status: stable
 ---
 # Primitive Carrier
 
-Primitive Carrier names the first-order carrier role through which located distinction can be carried as readable relation. Primitive carriers do not engineer or produce distinction. They emerge where bounded asymmetry has become local enough for boundary, placement, presentation, trace, holding, refusal, separation, contrast, or direction to matter.
+The first-order carrier role through which located distinction can be carried as readable relation.
 
 ## Places
 

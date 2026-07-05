@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Governing
 
-Governing names the placement mode where participation is primarily carried through direction, constraint, rule, decision, or maintained order.
+The mode where participation is primarily carried through direction, constraint, rule, or maintained order — where a scope is organised by decisions that limit or coordinate what can happen within it.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Process
 
-Process names a sequence being carried. Where sequence names an ordered traversal, process names that sequence sustained through carrying: continuing as participation rather than only being readable as order. Mechanism or causation can show process, but process names the carried sequence available for participation.
+A sequence being carried.
 
 ## Places
 

@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -29,7 +30,7 @@ status: stable
 ---
 # Society
 
-Society names the organic field where participation becomes organised between participants.
+The third-order field where recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants.
 
 ## Places
 

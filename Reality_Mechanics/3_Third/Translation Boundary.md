@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -40,7 +41,7 @@ status: stable
 ---
 # Translation Boundary
 
-Translation Boundary names the terminal branch joint where a structural Atlas read becomes terminal to a field or domain and must be carried in the local terms of that participation. It marks a regime shift in the read.
+The joint where a root structural term becomes terminal to a field or domain without losing retrace. It separates trunk/root continuation from branch-local reading.
 
 It is the boundary where the outside structural read reaches its terminal edge while carrying continues inside the field, domain, couple, practice, discipline, or nested participation.
 

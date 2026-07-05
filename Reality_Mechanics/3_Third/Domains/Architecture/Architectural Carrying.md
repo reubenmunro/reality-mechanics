@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -30,7 +31,7 @@ status: stable
 ---
 # Architectural Carrying
 
-Architectural carrying names compatible Bearing participation within built form.
+Compatible Bearing participation within built form.
 
 ## Places
 

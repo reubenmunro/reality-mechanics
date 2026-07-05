@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: ground
 kind: term
@@ -24,7 +25,7 @@ status: stable
 ---
 # Seed
 
-Seed names Ground as relation-to-Ground becomes carryable and recoverable within what begins. It is the Ground-level condition that can become generative when Seed : Ground becomes active.
+The Ground-level relation-to-Ground: the source condition held before the dependency spine begins and recoverable in Fabric.
 
 Seed may exist without generating. Ground may exist without producing Seed. Generation begins when Seed : Ground becomes active relation.
 

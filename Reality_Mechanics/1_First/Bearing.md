@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: first
 kind: term
@@ -51,7 +52,7 @@ status: stable
 ---
 # Bearing
 
-Bearing names strain held as a readable condition. Where strain names available distinction under contrast, bearing names that same contrast held — sustained without collapsing or dissipating. Bearing does not yet name carrying, coupling, or outcome. It names the held strain through which resolution becomes available.
+Strain held as a readable condition — sustained without collapsing or dissipating.
 
 ## Places
 

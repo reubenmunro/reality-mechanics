@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -27,7 +28,7 @@ status: stable
 ---
 # World
 
-World names reality held as a participating scope. Where reality names coupled relation readable as real, world names that reality sustained as the scope within which participation occurs: the readable condition within which encounter, constraint, and relation continue to take place. Contents can show a world, but world names the participating scope itself.
+Reality held as a participating scope.
 
 ## Places
 

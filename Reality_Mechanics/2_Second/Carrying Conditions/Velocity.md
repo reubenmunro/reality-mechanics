@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Velocity
 
-Velocity names speed with direction through traversal. Where speed names rate of traversal, velocity names that rate as oriented along a readable direction.
+Speed with direction through traversal.
 
 ## Places
 

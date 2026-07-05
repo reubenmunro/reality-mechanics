@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -28,7 +29,7 @@ status: stable
 ---
 # Drag
 
-Drag names slowing resistance carried through flow. Drag is not blockage; it is resistance carried with flow as a reducing condition.
+Slowing resistance carried through flow.
 
 ## Places
 

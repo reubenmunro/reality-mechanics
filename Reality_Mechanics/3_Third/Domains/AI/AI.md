@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: third
 kind: term
@@ -38,7 +39,7 @@ status: stable
 ---
 # AI
 
-AI names the third-order domain where engineered coupling between generated output, model interface, and human evaluation mediates relation while requiring retraceable dependency.
+The third-order domain read for engineered interaction — where generated output, model interface, and human evaluation alter how dependency is carried while still requiring retraceable structural grounding.
 
 AI can accelerate resolution: answers, summaries, code, images, decisions, and corrections can return faster than the human order that evaluates them. That speed is not intelligence by itself. AI remains reality-bearing only where its generated resolution can be retraced to what carries it: source work, human judgement, material infrastructure, energy, attention, and the wider conditions that make its output possible.
 

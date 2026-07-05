@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -35,7 +36,7 @@ status: stable
 ---
 # Flow
 
-Flow names carrying continuing through a medium. Movement can show flow, but flow first names carrying that remains readable as passing through a through-condition without losing continuity.
+Carrying continuing through a medium.
 
 ## Places
 

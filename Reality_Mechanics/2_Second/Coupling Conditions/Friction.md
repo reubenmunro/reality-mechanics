@@ -1,4 +1,5 @@
 ---
+
 grounded: true
 order: second
 kind: term
@@ -33,7 +34,7 @@ status: stable
 ---
 # Friction
 
-Friction names resistance at coupled contact during flow. Resistance becomes friction where contact is coupled enough to bear against carrying as it continues.
+Resistance at coupled contact during flow.
 
 ## Places
 
