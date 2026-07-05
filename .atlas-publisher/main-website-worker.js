@@ -1615,16 +1615,6 @@ function relationRhythmExpression(type, rhythm, pulse, rhythmPhase, offset) {
   };
 }
 
-function discreteRatioMode(x = 1) {
-  return {
-    mode: 'discrete',
-    x,
-    transition: 0,
-    continuous: 0,
-    compression: 0,
-  };
-}
-
 function debugNumber(value) {
   return Number.isFinite(value) ? Number(value).toFixed(2) : '0.00';
 }
@@ -1757,24 +1747,26 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const isCarry = type.key === 'carries';
   const isHold = type.key === 'holds';
   const isTrace = type.key === 'traces';
-  const ratioMode = isCarry ? termRatioMode(a) : discreteRatioMode();
-  const carryTransition = isCarry ? ratioMode.transition : 0;
-  const carryContinuous = isCarry ? ratioMode.continuous : 0;
-  const carryConsequence = carryTransition * 0.18 + carryContinuous * 0.42;
-  const holdTransition = 0;
-  const holdContinuous = 0;
-  const holdConsequence = 0;
-  const traceTransition = 0;
-  const traceContinuous = 0;
-  const traceConsequence = 0;
   const isPair = type.key === 'pairs';
   const isNest = type.key === 'nests';
-  const pairTransition = 0;
-  const pairContinuous = 0;
-  const pairConsequence = 0;
-  const nestTransition = 0;
-  const nestContinuous = 0;
-  const nestConsequence = 0;
+  const ratioMode = termRatioMode(a);
+  const ratioTransition = ratioMode.transition;
+  const ratioContinuous = ratioMode.continuous;
+  const carryTransition = isCarry ? ratioTransition : 0;
+  const carryContinuous = isCarry ? ratioContinuous : 0;
+  const carryConsequence = carryTransition * 0.18 + carryContinuous * 0.42;
+  const holdTransition = isHold ? ratioTransition : 0;
+  const holdContinuous = isHold ? ratioContinuous : 0;
+  const holdConsequence = holdTransition * 0.28 + holdContinuous * 0.62;
+  const traceTransition = isTrace ? ratioTransition : 0;
+  const traceContinuous = isTrace ? ratioContinuous : 0;
+  const traceConsequence = traceTransition * 0.18 + traceContinuous * 0.5;
+  const pairTransition = isPair ? ratioTransition : 0;
+  const pairContinuous = isPair ? ratioContinuous : 0;
+  const pairConsequence = pairTransition * 0.2 + pairContinuous * 0.48;
+  const nestTransition = isNest ? ratioTransition : 0;
+  const nestContinuous = isNest ? ratioContinuous : 0;
+  const nestConsequence = nestTransition * 0.26 + nestContinuous * 0.58;
   const pairAnswer = isPair
     ? Math.sin(time * (0.18 + rhythm.reciprocity * 0.42 - pairContinuous * 0.08) + offset + (source.phase || 0) * 0.2)
     : 0;
@@ -1907,7 +1899,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     to: b.title || b.id,
     rhythm,
     expression,
-    ratioMode: isCarry ? ratioMode : null,
+    ratioMode,
     glow: { radius: beadRadius, alpha: rhythmAlpha },
   });
   const glow = ctx.createRadialGradient(qx, qy, 1, qx, qy, beadRadius);

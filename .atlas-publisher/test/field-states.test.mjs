@@ -135,6 +135,13 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.doesNotMatch(html, /fetch\('\/api\/ark/);
 });
 
+test("drawCurrent applies shared term ratio mode to all relation types", () => {
+  const html = fieldPage();
+  assert.match(html, /const ratioMode = termRatioMode\(a\)/);
+  assert.doesNotMatch(html, /discreteRatioMode/);
+  assert.doesNotMatch(html, /isCarry \? termRatioMode\(a\)/);
+});
+
 test("Field links to Submission 001 alongside Calibration", () => {
   const html = fieldPage();
   assert.match(html, /href="\/submission">Submission 001/);
