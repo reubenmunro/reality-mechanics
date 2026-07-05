@@ -10,15 +10,17 @@ needs:
   - "[[Coupling]]"
   - "[[Bearing]]"
   - "[[Recurrence]]"
+  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which distinct coupled relation is held stable through recurrence — coupling that sustains across encounters and strain."
-  holds: "[[Coupling]], [[Bearing]], and [[Recurrence]]. Coupling must be present, bearing must hold it, and recurrence must establish the pattern before coupling can be read as maintained."
+  holds: "[[Coupling]], [[Bearing]], [[Recurrence]], and [[Compatibility]]. Coupling must be present, bearing must hold it, recurrence must establish the pattern, and the coupling must remain compatible before coupling can be read as maintained."
   pairs: "[[Maintained Coupling Failure]]. Maintained Coupling names the held condition; Maintained Coupling Failure names its loss at scope."
   traces:
     - "[[Coupling]]"
     - "[[Bearing]]"
     - "[[Recurrence]]"
+    - "[[Compatibility]]"
   nests: "within Relational Participation as the condition through which coupling is held as a recurring structural feature of relation."
   reads: "Maintained coupling becomes readable where compatible recurrence depends on corrective or supportive bearing."
   carries:
@@ -38,7 +40,7 @@ Maintained Coupling places the condition through which distinct coupled relation
 
 ## Holds
 
-Maintained Coupling is held by [[Coupling]], [[Bearing]], and [[Recurrence]]. Coupling must be present, bearing must hold it, and recurrence must establish the pattern before coupling can be read as maintained.
+Maintained Coupling is held by [[Coupling]], [[Bearing]], [[Recurrence]], and [[Compatibility]]. Coupling must be present, bearing must hold it, recurrence must establish the pattern, and the coupling must remain compatible before coupling can be read as maintained.
 
 ## Pairs
 
@@ -49,6 +51,7 @@ Maintained Coupling pairs with [[Maintained Coupling Failure]]. Maintained Coupl
 - [[Coupling]]
 - [[Bearing]]
 - [[Recurrence]]
+- [[Compatibility]]
 
 ## Nests
 

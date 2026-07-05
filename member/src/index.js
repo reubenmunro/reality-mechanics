@@ -114,6 +114,25 @@ const PAGE = `<!doctype html>
     .note { margin-top:18px; color:var(--cool); font-size:13px; max-width:640px; }
     .note b { color:var(--ember); }
 
+    .tt-intro { margin:0 0 18px; color:var(--warm-dim); max-width:680px; }
+    .tt-intro b { color:var(--warm); }
+    .tt-controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:6px 0 4px; }
+    .tt-label { color:var(--ember); font-size:10px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; }
+    select#termSelect {
+      border:1px solid var(--line); border-radius:8px; background:rgba(7,9,14,0.6); color:var(--warm);
+      font:500 15px/1.3 Georgia, Charter, serif; padding:10px 12px; cursor:pointer; min-width:200px;
+    }
+    .tt-out { margin-top:20px; display:grid; gap:10px; }
+    .tt-block { border:1px solid var(--line); border-radius:8px; padding:14px 16px; background:rgba(7,9,14,0.6); }
+    .tt-k { color:var(--ember); font-size:10px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; margin-bottom:6px; }
+    .tt-v { color:var(--warm-dim); font-size:14px; line-height:1.6; }
+    .tt-v b { color:var(--warm); }
+    .verdict { font-weight:700; letter-spacing:0.04em; }
+    .verdict.load { color:var(--ember); }
+    .verdict.weak { color:var(--cool); }
+    .verdict.unresolved { color:var(--lead); }
+    .tt-list { color:var(--warm); }
+
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
       .proof { grid-template-columns:1fr; }
@@ -125,6 +144,7 @@ const PAGE = `<!doctype html>
     <div class="brand">Calibration</div>
     <nav aria-label="Reality Mechanics">
       <a href="https://realitymechanics.nz/field">Field</a>
+      <a href="https://realitymechanics.nz/submission">Submission 001</a>
     </nav>
   </header>
   <main>
@@ -198,6 +218,25 @@ const PAGE = `<!doctype html>
       </div>
 
       <p class="note"><b>Open Strain never reaches zero</b> because the target keeps drifting between pulses, and each correction closes only part of the gap — sometimes less than expected. Calibration is what the pulses do over time, not what any single one settles. There is no fixed rhythm to compare against: pulse timing is close to memoryless — each interval largely independent of the last — so the dashed line tracks the mechanism's own recent behaviour rather than an imported schedule. <b>What a pulse leaves behind is not reset to zero</b> — Carried Strain is that leftover, and it measurably (if weakly) shapes how soon the next pulse fires. The carrying is real; watch whether it stays legible or gets lost in the noise.</p>
+    </section>
+
+    <section class="mech term-test" aria-live="polite">
+      <div class="mech-head">
+        <h2>Structural Calibration — Term Test</h2>
+        <div class="status" id="ttStatus">Idle</div>
+      </div>
+      <p class="tt-intro">The strain pass above shows calibration in time. This pass shows calibration in <b>structure</b>: pick one Atlas term, and the instrument reads its dependencies, simulates removing it, reports what can no longer be retraced back to <b>Relation</b>, then restores it. This is calibration, not proof — it runs on a bounded first-order subset held locally, with no Atlas change and no network.</p>
+      <div class="tt-controls">
+        <span class="tt-label">Term</span>
+        <select id="termSelect" aria-label="Atlas term to test"></select>
+        <button class="primary" id="ttRun" type="button">Run structural test</button>
+      </div>
+      <div class="tt-out" id="ttOut" hidden>
+        <div class="tt-block"><div class="tt-k">Observation</div><div class="tt-v" id="ttObs"></div></div>
+        <div class="tt-block"><div class="tt-k">Evidence</div><div class="tt-v" id="ttEv"></div></div>
+        <div class="tt-block"><div class="tt-k">Recommendation</div><div class="tt-v" id="ttRec"></div></div>
+      </div>
+      <p class="note">The removal test asks one structural question: if this term were gone, which loaded terms could no longer be followed back to Relation? A term whose removal breaks others reads as <b>load-bearing</b>; one whose removal breaks nothing reads as <b>weak</b> at this scope; one whose own grounding reaches outside the loaded subset reads as <b>unresolved</b> here. What a term <i>carries</i> is not the same as what <i>depends</i> on it.</p>
     </section>
   </main>
 
@@ -375,6 +414,130 @@ const PAGE = `<!doctype html>
       els.reset.addEventListener("click", reset);
 
       render(0);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Bounded first-order subset, held locally. Dependencies (needs) and
+      // relation fields are read from the Atlas source; "Clear" is intentionally
+      // left out of the subset so grounding that reaches beyond it stays visible.
+      var TERMS = {
+        "Relation": { needs: [], holds: [], traces: [], pairs: ["Ground","Ratio"], carries: ["Connection","Place","Asymmetry","Clearance","Pressure","Structure","Theory","Order Trace"] },
+        "Asymmetry": { needs: ["Relation"], holds: ["Relation"], traces: ["Relation"], pairs: ["Clearance"], carries: ["Bounded Asymmetry","Emergent Condition"] },
+        "Bounded Asymmetry": { needs: ["Asymmetry"], holds: ["Asymmetry"], traces: ["Asymmetry"], pairs: ["Distinction","Strained Asymmetry"], carries: ["Distinction","Operational Condition","Adaptation"] },
+        "Distinction": { needs: ["Bounded Asymmetry"], holds: ["Bounded Asymmetry"], traces: ["Bounded Asymmetry"], pairs: ["Boundary","Difference"], carries: ["Boundary","Difference"] },
+        "Boundary": { needs: ["Distinction"], holds: ["Distinction"], traces: ["Distinction"], pairs: ["Availability"], carries: ["Availability","Closure","Enter","Threshold","Contact","Return","Check"] },
+        "Availability": { needs: ["Boundary"], holds: ["Boundary"], traces: ["Boundary"], pairs: ["Boundary"], carries: ["Strain","Attend","Notice","Intake","Sensing"] },
+        "Strain": { needs: ["Availability"], holds: ["Availability"], traces: ["Availability"], pairs: ["Bearing"], carries: ["Bearing","Threshold","Absorb","Release"] },
+        "Bearing": { needs: ["Strain"], holds: ["Strain"], traces: ["Strain"], pairs: ["Resolution"], carries: ["Resolution","Orientation","Load","Constraint","Failure"] },
+        "Clearance": { needs: ["Relation","Clear"], holds: ["Relation","Clear"], traces: ["Relation","Clear"], pairs: ["Asymmetry"], carries: ["Time","Space","Contact","Resolution"] },
+        "Resolution": { needs: ["Bearing","Clearance"], holds: [], traces: ["Bearing","Clearance"], pairs: [], carries: ["Hold","Failure","Release","Closure","Sever"] },
+        "Hold": { needs: ["Resolution"], holds: ["Resolution"], traces: ["Resolution"], pairs: ["Release"], carries: ["Carry","Trace","Carrying","Read"] },
+        "Connection": { needs: ["Relation"], holds: ["Relation"], traces: ["Relation"], pairs: ["Carry","Trace"], carries: ["Carry","Trace","First Order Crossing"] },
+        "Carry": { needs: ["Hold","Connection"], holds: ["Hold","Connection"], traces: ["Hold","Connection"], pairs: ["Trace"], carries: ["First Order Crossing","Carrying"] },
+        "Trace": { needs: ["Hold","Connection"], holds: ["Hold","Connection"], traces: ["Hold","Connection"], pairs: ["Carry"], carries: ["Read","Retracing","Order Trace","Atlas Practice","Step","Reasoning"] }
+      };
+      var ORDER = ["Relation","Connection","Carry","Trace","Hold","Boundary","Availability","Strain","Bearing","Resolution","Clearance","Distinction","Bounded Asymmetry","Asymmetry"];
+      var DEFAULT = "Connection";
+
+      var sel = document.getElementById("termSelect");
+      var runBtn = document.getElementById("ttRun");
+      var out = document.getElementById("ttOut");
+      var obs = document.getElementById("ttObs");
+      var ev = document.getElementById("ttEv");
+      var rec = document.getElementById("ttRec");
+      var ttStatus = document.getElementById("ttStatus");
+      if (!sel || !runBtn) return;
+
+      for (var i = 0; i < ORDER.length; i++) {
+        var o = document.createElement("option");
+        o.value = ORDER[i]; o.textContent = ORDER[i];
+        if (ORDER[i] === DEFAULT) o.selected = true;
+        sel.appendChild(o);
+      }
+
+      function inSet(n) { return Object.prototype.hasOwnProperty.call(TERMS, n); }
+
+      // A term is retraceable if it is Relation, is grounded outside the loaded
+      // subset, or all of its needs are retraceable. Removing "removed" drops it.
+      function reachFn(removed) {
+        var memo = {};
+        function r(name) {
+          if (name === removed) return false;
+          if (name === "Relation") return true;
+          if (!inSet(name)) return true;
+          if (memo.hasOwnProperty(name)) return memo[name];
+          memo[name] = false;
+          var needs = TERMS[name].needs;
+          var val = needs.length ? needs.every(r) : (name === "Relation");
+          memo[name] = val;
+          return val;
+        }
+        return r;
+      }
+
+      function names(list) { return list.length ? list.join(", ") : "none"; }
+
+      function run() {
+        var t = sel.value;
+        var d = TERMS[t];
+        var externalNeeds = d.needs.filter(function (n) { return !inSet(n); });
+
+        var base = reachFn(null);
+        var after = reachFn(t);
+        var lost = [];
+        for (var k = 0; k < ORDER.length; k++) {
+          var n = ORDER[k];
+          if (n === t) continue;
+          if (base(n) && !after(n)) lost.push(n);
+        }
+
+        // Observation: dependencies and what it carries/traces/holds/pairs.
+        obs.innerHTML =
+          "<b>" + t + "</b> reads on this bounded subset as:<br>" +
+          "needs (dependencies): <span class='tt-list'>" + names(d.needs) + "</span><br>" +
+          "holds: <span class='tt-list'>" + names(d.holds) + "</span> · " +
+          "traces: <span class='tt-list'>" + names(d.traces) + "</span> · " +
+          "pairs: <span class='tt-list'>" + names(d.pairs) + "</span><br>" +
+          "carries " + d.carries.length + ": <span class='tt-list'>" + names(d.carries) + "</span>";
+
+        // Evidence: the removal/restore simulation result.
+        var evHtml = "Removal simulated, then restored (no term was changed).<br>";
+        if (lost.length) {
+          evHtml += "Terms that could no longer be retraced to Relation without <b>" + t + "</b>: " +
+            "<span class='tt-list'>" + lost.join(", ") + "</span> (" + lost.length + " of " + (ORDER.length - 1) + " loaded).";
+        } else {
+          evHtml += "No loaded term lost its retrace path to Relation when <b>" + t + "</b> was removed (0 of " + (ORDER.length - 1) + ").";
+        }
+        if (externalNeeds.length) {
+          evHtml += "<br>Grounding reaches outside the loaded subset: needs <span class='tt-list'>" + externalNeeds.join(", ") + "</span>, not loaded here.";
+        }
+        ev.innerHTML = evHtml;
+
+        // Recommendation: a single characterisation.
+        var verdict, cls, meaning;
+        if (externalNeeds.length) {
+          verdict = "unresolved"; cls = "unresolved";
+          meaning = t + "'s grounding extends beyond calibration's bounded subset, so its full load cannot be characterised here.";
+        } else if (lost.length) {
+          verdict = "load-bearing"; cls = "load";
+          meaning = "Removing " + t + " breaks the retrace path for " + lost.length + " dependent term" + (lost.length === 1 ? "" : "s") + " on this subset.";
+        } else {
+          verdict = "weak"; cls = "weak";
+          meaning = "Nothing loaded depends on " + t + " for its retrace path; at this scope it reads as a leaf. (What it carries is not what depends on it.)";
+        }
+        rec.innerHTML =
+          "Characterisation: <span class='verdict " + cls + "'>" + verdict + "</span> (at this scope).<br>" +
+          meaning + "<br>" +
+          "<i>This is calibration, not proof. It runs on a bounded local subset and promotes no Calculus claim.</i>";
+
+        out.hidden = false;
+        ttStatus.textContent = "Tested: " + t;
+      }
+
+      runBtn.addEventListener("click", run);
+      sel.addEventListener("change", function () { ttStatus.textContent = "Idle"; });
     })();
   </script>
 </body>

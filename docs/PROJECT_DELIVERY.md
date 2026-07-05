@@ -1,6 +1,6 @@
 # Reality Mechanics — Project Delivery
 
-**Delivery control sheet.** This document tracks repository work as work packages so AI effort can be managed like a project budget. It is not Atlas content, not Stewardship specification, and not platform architecture.
+**Delivery control sheet.** This document tracks repository work as contracts so AI effort can be managed like a project budget. It is not Atlas content, not Stewardship specification, and not platform architecture.
 
 ---
 
@@ -8,25 +8,31 @@
 
 This document records how repository work is scoped, assigned, reviewed, and measured. Its job is to show whether AI effort is delivering useful outcomes, reducing risk, and moving the repository toward a stable release.
 
-Use it like a quantity survey: define the package, assign the right consultant, record the deliverable, and review the value returned.
+Use it like a quantity survey: define the contract, assign the right consultant, record the deliverable, and review the value returned.
 
 ---
 
 ## Delivery Model
 
-Reality Mechanics repository work is managed through work packages.
+Reality Mechanics repository work is administered through commissions and contracts.
 
-Each package should have:
+The Project Steward commissions work. The Architect prepares the contract. The Contractor fulfils the contract and returns evidence. The Architect reviews the evidence and recommends a decision. The Project Steward accepts, rejects, or continues the commission.
 
-- one objective
-- one lead consultant/model
-- a defined deliverable
-- clear evidence requirements
-- an estimated effort
-- an actual effort record
-- a review outcome
+```text
+Commission
+↓
+Contract
+↓
+Evidence
+↓
+Architect Review
+↓
+Steward Decision
+↓
+Resolution
+```
 
-Do not combine unrelated objectives into one package.
+Do not treat repository work as informal tasks. Each piece of work should have one governing question, one defined scope, and one evidence standard.
 
 ---
 
@@ -34,14 +40,14 @@ Do not combine unrelated objectives into one package.
 
 | Role | Responsibility |
 |------|----------------|
-| **Project Steward** | Owns direction, approves priorities, accepts or rejects work |
-| **ChatGPT** | Architectural reviewer, critic, workflow designer, next-prompt writer |
-| **Cursor** | Repository investigator, implementer, tester, verifier |
+| **Project Steward** | Commissions work, owns direction, accepts or rejects recommendations |
+| **Architect / ChatGPT** | Prepares contracts, reviews evidence, challenges assumptions, recommends decisions |
+| **Contractor / Cursor** | Investigates the repository, implements approved work, runs tests, returns evidence |
 | **Opus-class model** | High-value repository investigation, architectural tracing, audits |
 | **Sonnet-class model** | Implementation, refactoring, test repair, platform stabilisation |
 | **GPT-class model** | Fast edits, repetitive changes, formatting, lightweight implementation |
 
-The model is selected for the package, not for preference.
+The model is selected for the contract, not for preference.
 
 ---
 
@@ -60,52 +66,81 @@ Effort is not only token cost. It includes human review time, risk, and downstre
 
 ## Value Measures
 
-Each completed package should be reviewed against three measures.
+Each completed contract should be reviewed by relation, not invented percentage.
 
-| Measure | Question |
-|---------|----------|
-| **Risk Reduction** | Did this reduce uncertainty, breakage risk, or release risk? |
-| **Knowledge Gain** | Did this make the repository easier to understand or maintain? |
-| **Delivery Progress** | Did this move the project measurably closer to stability or release? |
+Use ratios where the repository provides counts, totals, passes, failures, or coverage. Use qualitative relation where the work cannot be honestly counted.
 
-Possible ratings:
+| Measure | Question | Preferred Relation |
+|---------|----------|--------------------|
+| **Risk Reduction** | What known uncertainty, breakage risk, or release risk did this reduce? | Open risk : reduced risk |
+| **Knowledge Gain** | What became more traceable after the contract? | Unknown : known |
+| **Delivery Progress** | What moved closer to stable release? | Blocked : unblocked, pending : complete |
+| **Verification Coverage** | What portion of the relevant surface has been checked? | Checked : total |
+| **Rework Avoidance** | What future review, repair, or investigation did this prevent? | Rework avoided : work performed |
+
+Ratings may be used only when a ratio cannot be honestly formed:
 
 - Low
 - Medium
 - High
 - Very High
 
----
-
-## Work Package Register
-
-| ID | Work Package | Lead | Effort Estimate | Actual Effort | Deliverable | Status | Value Review |
-|----|--------------|------|----------------|---------------|-------------|--------|--------------|
-| WP001 | Repository cover sheet | Cursor + ChatGPT | Low | 2 review cycles | `PROJECT_STATUS.md` | Complete | High risk reduction; high knowledge gain |
-| WP002 | Workflow contract | Cursor + ChatGPT | Low | Pending | `docs/WORKFLOW.md` | Pending | Pending |
-| WP003 | Repository build & deployment verification | Cursor / Opus-class | Medium | Pending | Verification report | Pending | Pending |
-| WP004 | Platform stability audit | Cursor / Sonnet-class | Medium | Pending | Platform audit report | Pending | Pending |
-| WP005 | Stewardship audit continuation | Cursor / Opus-class | High | Pending | Family audit reports | Pending | Pending |
-| WP006 | Release candidate preparation | Cursor + ChatGPT | High | Pending | Release candidate notes and verification | Pending | Pending |
-
-Keep this register concise. Detailed reports should live in package-specific notes or linked pull requests.
+Do not invent percentages. If a relation cannot be counted from repository evidence, describe it qualitatively and mark the count as unknown.
 
 ---
 
-## Package Template
+## Contract Register
 
-Use this template when opening or reviewing a package.
+| ID | Contract | Type | Lead | Effort Estimate | Actual Effort | Deliverable | Status | Value Review |
+|----|----------|------|------|----------------|---------------|-------------|--------|--------------|
+| C001 | Repository cover sheet | Governance | Cursor + ChatGPT | Low | 2 review cycles | `PROJECT_STATUS.md` | Resolved | High risk reduction; high knowledge gain |
+| C002 | Delivery framework | Governance | ChatGPT + GitHub connector | Low | 1 creation cycle | `docs/PROJECT_DELIVERY.md` | Resolved | Established contract control |
+| C003 | Repository reproducibility | Verification | Cursor / Opus-class | Medium | 1 Opus investigation cycle | Reproducibility evidence report (`docs/reports/C003-repository-reproducibility.md`) | Resolved | Development reproducible : canonical deployment blocked |
+| C004 | Platform stability audit | Stabilisation | Cursor / Sonnet-class | Medium | Pending | Platform audit report | Pending | Pending |
+| C005 | Stewardship audit continuation | Audit | Cursor / Opus-class | High | Pending | Family audit reports | Pending | Pending |
+| C006 | Release candidate preparation | Release | Cursor + ChatGPT | High | Pending | Release candidate notes and verification | Pending | Pending |
+
+Keep this register concise. Detailed evidence should live in contract-specific notes, reports, pull requests, or commits.
+
+---
+
+## Contract Types
+
+| Type | Purpose |
+|------|---------|
+| **Governance** | Establish project control, orientation, or operating method |
+| **Discovery** | Learn repository truth without changing files |
+| **Audit** | Check Atlas, Stewardship, or platform material against an accepted standard |
+| **Coordination** | Resolve inconsistencies between already-authoritative sources |
+| **Implementation** | Make approved repository changes |
+| **Verification** | Prove that a claim, build, test, deployment, or fix holds |
+| **Stabilisation** | Reduce operational, security, or release risk |
+| **Release** | Package, freeze, document, and sign off a release candidate |
+
+---
+
+## Contract Template
+
+Use this template when issuing or reviewing a contract.
 
 ```markdown
-## WP### — Package Name
+## C### — Contract Name
 
-**Objective**
+**Commission**
 
-One clear outcome.
+The Project Steward's request, expressed as a clear commission.
+
+**Governing Question**
+
+The single question this contract must answer.
 
 **Lead**
 
 Cursor / model / ChatGPT / Project Steward.
+
+**Type**
+
+Governance / Discovery / Audit / Coordination / Implementation / Verification / Stabilisation / Release.
 
 **Scope**
 
@@ -117,7 +152,7 @@ Explicit exclusions.
 
 **Evidence Required**
 
-Files, commands, tests, citations, or reports required to prove the work.
+Files, commands, tests, citations, reports, or repository facts required to satisfy the contract.
 
 **Estimated Effort**
 
@@ -133,21 +168,27 @@ Concrete output.
 
 **Status**
 
-Pending / In Progress / Blocked / Complete / Rejected.
+Pending / In Progress / Blocked / Resolved / Rejected.
 
-**Review**
+**Architect Review**
 
-Risk reduction:
-Knowledge gain:
-Delivery progress:
-Decision:
+Evidence sufficient:
+Risk reduction relation:
+Knowledge gain relation:
+Delivery progress relation:
+Verification coverage, if countable:
+Recommendation:
+
+**Steward Decision**
+
+Accepted / Rejected / Continue.
 ```
 
 ---
 
 ## Consultant Selection Guide
 
-| Work Type | Preferred Lead | Reason |
+| Contract Type | Preferred Lead | Reason |
 |-----------|----------------|--------|
 | Repository discovery | Opus-class in Cursor | Best use of broad context and relationship tracing |
 | Atlas family audit | Opus-class in Cursor | Requires structural reading and evidence discipline |
@@ -163,18 +204,18 @@ Use the cheapest competent consultant. Do not use high-cost reasoning for low-ri
 
 ## Budget Discipline
 
-Before starting work, ask:
+Before issuing a contract, ask:
 
-1. What is the objective?
-2. What risk does this reduce?
+1. What is the commission?
+2. What relation does this improve or clarify?
 3. What deliverable proves completion?
 4. Which consultant is the cheapest competent lead?
-5. What would make this package complete?
+5. What would make this contract complete?
 
-After completing work, ask:
+After reviewing evidence, ask:
 
 1. Was the estimate accurate?
-2. Did the package reduce risk?
+2. Did the contract improve or clarify the stated relation?
 3. Did it create reusable knowledge?
 4. Did it expose a new unknown?
 5. Should the workflow change?
@@ -183,14 +224,16 @@ After completing work, ask:
 
 ## Current Delivery Focus
 
-**Next package:** WP003 — Repository build & deployment verification.
+**Next contract:** C004 — Platform stability audit.
 
-Reason: the platform layer must be trusted before wider Atlas coordination and release preparation. Build, test, sync, deploy, and health checks are higher-leverage than auditing a single Atlas term while repository mechanics remain unverified.
+**Commission:** Audit the operational stability of the active platform surfaces (Field, Calibration, MCP) and their supporting build, sync, and deployment paths.
+
+Reason: C003 confirmed the repository is reproducible for development but not for canonical deployment without external Cloudflare provisioning. Platform stability is the next risk to characterise before release preparation. See `docs/reports/C003-repository-reproducibility.md`.
 
 ---
 
 ## Maintenance
 
-Update this document when a work package is opened, completed, rejected, or materially re-scoped.
+Update this document when a contract is issued, resolved, rejected, or materially re-scoped.
 
 Keep it operational. Do not let it become a roadmap, essay, or backlog of unpriced intentions.

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import worker, { deriveFieldStatesPayload, fieldPage } from "../main-website-worker.js";
+import worker, { deriveFieldStatesPayload, fieldPage, submissionPage } from "../main-website-worker.js";
 
 const entries = [
   {
@@ -133,6 +133,35 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /function openTermSheet/);
   assert.doesNotMatch(html, /THREE\\.|three\\.min\\.js|fetch\\('\/api\/enter'\\)/);
   assert.doesNotMatch(html, /fetch\('\/api\/ark/);
+});
+
+test("Field links to Submission 001 alongside Calibration", () => {
+  const html = fieldPage();
+  assert.match(html, /href="\/submission">Submission 001/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Calibration/);
+});
+
+test("/submission serves the public Submission 001 page", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /Submission 001/);
+  assert.match(html, /Accepted/);
+  assert.match(html, /Candidate/);
+  assert.match(html, /Unresolved/);
+  // Reachable back to the other surfaces.
+  assert.match(html, /href="\/field"/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\//);
+  // No unaccepted Calculus claim promoted: the ":" operator stays unaccepted.
+  assert.match(html, /operator is not accepted/);
+});
+
+test("submissionPage renders accepted/candidate/unresolved without promoting the calculus", () => {
+  const html = submissionPage();
+  assert.match(html, /Relation<\/b> as the sole primitive|Relation<\/b> as the sole/);
+  assert.match(html, /not minimal/);
+  assert.match(html, /explicitly unpromoted/);
 });
 
 test("/atlas is no longer a public surface", async () => {

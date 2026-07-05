@@ -40,7 +40,7 @@ Factual record. No narrative, no explanation of method — see `STEWARDSHIP_V1.m
 | Field of Participation | Recurrence | E3 | Committed |
 | Engineered Coupling | Compatibility | E1 | Committed |
 | Nested Coupling | Participation | E1 | Committed |
-| Maintained Coupling | Compatibility | E1 | **Proposed, not yet committed as of this log entry** |
+| Maintained Coupling | Compatibility | E1 | Committed |
 
 ## Language Repairs (Pairs-field "becomes" → persistence correction)
 
@@ -85,4 +85,4 @@ Zero. No case where the six-layer calculus or any of the four object-level tests
 
 ## Outstanding Proposals
 
-1. Maintained Coupling — add `[[Compatibility]]` to needs/holds/traces. Evidence E1, fully specified, not yet committed as of this log entry.
+None. Maintained Coupling — `[[Compatibility]]` added to needs/holds/traces (Evidence E1) — is now committed (see Dependency Repairs above).

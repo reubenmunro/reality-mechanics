@@ -321,6 +321,7 @@ export function fieldPage(options = {}) {
 </div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
   <a href="https://calibration.realitymechanics.nz/">Calibration</a>
+  <a href="/submission">Submission 001</a>
 </nav>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false"
@@ -2578,6 +2579,122 @@ bootstrap();
 
 // ── Router ────────────────────────────────────────────────────────────────────
 
+export function submissionPage() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Submission 001 · Reality Mechanics</title>
+  <meta name="description" content="Reality Mechanics — first public submission: what is accepted, candidate, and unresolved."/>
+  <style>
+    :root {
+      --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72);
+      --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; --line:rgba(255,255,255,0.08);
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at 50% 0%, #111925 0, #06080d 54%, #040509 100%); color:var(--warm-dim); font:16px/1.65 Georgia, Charter, serif; }
+    header { position:sticky; top:0; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(6,8,13,0.82); border-bottom:1px solid var(--line); backdrop-filter:blur(16px); }
+    .brand { color:var(--ember); font:700 12px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    nav { display:flex; gap:16px; }
+    nav a { color:var(--cool); text-decoration:none; font:700 12px/1 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
+    nav a:hover { color:var(--ember); }
+    main { width:min(820px, calc(100vw - 32px)); margin:0 auto; padding:52px 0 72px; }
+    .eyebrow { color:var(--ember); font:700 11px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    h1 { margin:10px 0 8px; color:var(--warm); font:500 clamp(32px,6vw,56px)/1.05 Georgia, Charter, serif; }
+    .lede { color:var(--warm-dim); font-size:18px; max-width:680px; }
+    h2 { color:var(--warm); font:500 24px/1.2 Georgia, Charter, serif; margin:44px 0 6px; }
+    p { max-width:700px; }
+    ul { max-width:700px; padding-left:20px; }
+    li { margin:6px 0; }
+    a { color:var(--lead); }
+    .cols { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-top:14px; }
+    .card { border:1px solid var(--line); border-radius:10px; padding:16px; background:rgba(12,16,25,0.6); }
+    .card h3 { margin:0 0 8px; font:700 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    .card.accepted h3 { color:var(--ember); }
+    .card.candidate h3 { color:var(--lead); }
+    .card.unresolved h3 { color:var(--cool); }
+    .card ul { padding-left:18px; font-size:14px; }
+    .exhibits { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
+    .exhibit { flex:1 1 200px; border:1px solid var(--line); border-radius:10px; padding:16px; background:rgba(12,16,25,0.6); text-decoration:none; color:var(--warm-dim); }
+    .exhibit:hover { border-color:rgba(200,96,26,0.4); }
+    .exhibit b { display:block; color:var(--warm); font-size:16px; margin-bottom:4px; }
+    .status-line { margin-top:40px; padding-top:18px; border-top:1px solid var(--line); color:var(--cool); font-size:14px; }
+    @media (max-width:640px) { .cols { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Reality Mechanics</div>
+    <nav aria-label="Reality Mechanics areas">
+      <a href="/field">Field</a>
+      <a href="https://calibration.realitymechanics.nz/">Calibration</a>
+    </nav>
+  </header>
+  <main>
+    <div class="eyebrow">First public submission</div>
+    <h1>Submission 001</h1>
+    <p class="lede">A coordinated submission for review — not a claim of final certainty. It exposes what Reality Mechanics currently holds as <b>accepted</b>, what it is still <b>investigating</b>, and what remains <b>unresolved</b>, so independent participants can review, challenge, and retrace it.</p>
+
+    <h2>What it is</h2>
+    <p>Reality Mechanics exists to increase structural perception. Reality already carries order; participation becomes more faithful when the questions asked, the operations performed, and the answers preserved stay <b>retraceable</b>. The programme builds instruments to perceive and preserve structure that is already there — it does not claim to invent it.</p>
+
+    <h2>Three-layer architecture</h2>
+    <p>Atlas (source) → Stewardship (verification) → Platform (public surfaces). The Atlas is the editable, dependency-ordered record; Stewardship is a recovered audit method that verifies existing structure and authors nothing new; the Platform reads the Atlas through a generated D1 read-model. Authority flows down; evidence flows up.</p>
+
+    <h2>Working architecture</h2>
+    <p>Presented honestly: the accepted body is small and conservative; the investigated body is large. That is by design — derivation before promotion.</p>
+    <div class="cols">
+      <div class="card accepted">
+        <h3>Accepted</h3>
+        <ul>
+          <li>Constitution (C001–C014) as governing constraints.</li>
+          <li>Atlas as canonical source; D1 as a generated read-model.</li>
+          <li><b>Relation</b> as the sole primitive.</li>
+          <li>Working Postulate v0.6 — "relation holds, order carries, trace places."</li>
+          <li>Stewardship method v1 — eight invariants, evidence grading E1–E5.</li>
+          <li>Public surfaces: Field, Calibration, MCP.</li>
+        </ul>
+      </div>
+      <div class="card candidate">
+        <h3>Candidate</h3>
+        <ul>
+          <li>A candidate practice runtime, <b>Ark Run</b>.</li>
+          <li>A candidate calculus relating Order and Ark — tested, found <b>not minimal</b>; minimal seat is Relation → Connection.</li>
+          <li>Hypothesis: frontmatter fields are calibrated structural questions.</li>
+        </ul>
+      </div>
+      <div class="card unresolved">
+        <h3>Unresolved</h3>
+        <ul>
+          <li>The Calculus has no accepted operation; the <b>:</b> operator is not accepted.</li>
+          <li><b>Pressure</b> is not yet derived.</li>
+          <li>"operation" is used inconsistently across the repository.</li>
+          <li>Second Order terminal-marker gap, left unfilled.</li>
+          <li>Production deployment / D1-sync not yet file-verified.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Public exhibits</h2>
+    <div class="exhibits">
+      <a class="exhibit" href="/field"><b>Field</b>The dependency-ordered structural field. The Atlas, served publicly.</a>
+      <a class="exhibit" href="https://calibration.realitymechanics.nz/"><b>Calibration</b>A live reasoning instrument — and a structural term test you can run.</a>
+    </div>
+
+    <h2>What this asks of reviewers</h2>
+    <ul>
+      <li>Test the accepted body for retraceability. If an accepted claim cannot be retraced, it should fall back to provisional.</li>
+      <li>Challenge the candidates by evidence, not preference. The candidate calculus is explicitly unpromoted.</li>
+      <li>Treat unresolved items as genuinely open — they are the programme's live frontier.</li>
+    </ul>
+
+    <p class="status-line">Submission 001 — coordinated from accepted repository evidence. Nothing here is promoted beyond its stated status; the Calculus is presented as an open investigation. Prepared under the Constitution's standard of care.</p>
+  </main>
+</body>
+</html>`;
+}
+
 async function handleRequest(request, env) {
   const { pathname } = new URL(request.url);
 
@@ -2595,6 +2712,9 @@ async function handleRequest(request, env) {
 
   if (pathname === "/field")
     return new Response(fieldPage(), { headers: HTML_HEADERS });
+
+  if (pathname === "/submission" || pathname === "/submission-001")
+    return new Response(submissionPage(), { headers: HTML_HEADERS });
 
   return new Response("Reality Mechanics now exposes Field and Calibration only.", {
     status: 410,

@@ -74,4 +74,33 @@ t("health reports mechanical runtime", () => {
   assert.ok(src.includes("ai: false"));
 });
 
+t("structural term-test mode exists and stays mechanical", () => {
+  assert.ok(src.includes("Structural Calibration"), "structural section present");
+  assert.ok(src.includes('id="termSelect"'), "term selector present");
+  assert.ok(src.includes('id="ttRun"'), "run control present");
+  assert.ok(src.includes("var TERMS = {"), "bounded dataset embedded");
+  assert.ok(/"Relation":\s*{\s*needs:\s*\[\]/.test(src), "Relation carried as the primitive with no needs");
+  // No new input surfaces beyond a preset selector and buttons.
+  assert.ok(!/<textarea/.test(src) && !/<form/.test(src), "no free-text input added");
+});
+
+t("structural test separates observation, evidence, recommendation", () => {
+  for (const block of ["Observation", "Evidence", "Recommendation"]) {
+    assert.ok(src.includes(">" + block + "<"), block + " block present");
+  }
+  assert.ok(/id="ttObs"/.test(src) && /id="ttEv"/.test(src) && /id="ttRec"/.test(src));
+});
+
+t("structural test characterises load-bearing / weak / unresolved", () => {
+  for (const v of ["load-bearing", "weak", "unresolved"]) {
+    assert.ok(src.includes(v), v + " characterisation present");
+  }
+  assert.ok(src.includes("calibration, not proof"), "framed as calibration, not proof");
+});
+
+t("navigation reaches Field and Submission 001", () => {
+  assert.ok(src.includes('href="https://realitymechanics.nz/field"'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/submission"'));
+});
+
 console.log(`\ncalibration invariants: all ${n} assertions passed.`);
