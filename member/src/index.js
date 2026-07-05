@@ -1,27 +1,17 @@
 /**
- * Calibration — a public Reality Mechanics reasoning instrument.
+ * Pulse — public surface for observable behaviour through time.
  *
- * Calibration is deliberately not AI. It is a small mechanical pass that
- * shows what calibration is, structurally: strain rises on its own, and a
- * pulse corrects the approximation only once threshold is crossed. Open
- * Strain never closes for good. Nothing to type. Press start and watch
- * the trace.
- *
- * The waveform is read against its own recent local average — a rolling
- * baseline the mechanism sets for itself — rather than any fixed external
- * sequence. Reality Mechanics treats Rate/Frequency as a local read (how a
- * participant reads its own changing ratio from within relation), not a
- * global constant, so the comparison line here stays self-referential.
+ * Calibration is the first Pulse instrument: a mechanical cardiogram —
+ * strain rises, threshold crosses, pulse fires, carried strain remains.
+ * Not AI. No input required. Press start and watch.
  */
-
-import { runCalibration, DEFAULT_TERM, DEFAULT_PERTURB } from "./calibration-engine.mjs";
 
 const PAGE = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Calibration · Reality Mechanics</title>
+  <title>Pulse · Reality Mechanics</title>
   <style>
     :root {
       --void:#07090e; --deep:#0c1019; --ember:#c8601a; --warm:#d4c5a9;
@@ -116,61 +106,6 @@ const PAGE = `<!doctype html>
     .note { margin-top:18px; color:var(--cool); font-size:13px; max-width:640px; }
     .note b { color:var(--ember); }
 
-    .tt-intro { margin:0 0 18px; color:var(--warm-dim); max-width:680px; }
-    .tt-intro b { color:var(--warm); }
-    .tt-controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:6px 0 4px; }
-    .tt-label { color:var(--ember); font-size:10px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; }
-    select#termSelect {
-      border:1px solid var(--line); border-radius:8px; background:rgba(7,9,14,0.6); color:var(--warm);
-      font:500 15px/1.3 Georgia, Charter, serif; padding:10px 12px; cursor:pointer; min-width:200px;
-    }
-    .tt-out { margin-top:20px; display:grid; gap:10px; }
-    .tt-block { border:1px solid var(--line); border-radius:8px; padding:14px 16px; background:rgba(7,9,14,0.6); }
-    .tt-k { color:var(--ember); font-size:10px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; margin-bottom:6px; }
-    .tt-v { color:var(--warm-dim); font-size:14px; line-height:1.6; }
-    .tt-v b { color:var(--warm); }
-    .verdict { font-weight:700; letter-spacing:0.04em; }
-    .verdict.load { color:var(--ember); }
-    .verdict.weak { color:var(--cool); }
-    .verdict.unresolved { color:var(--lead); }
-    .tt-list { color:var(--warm); }
-
-    .ce-intro { margin:0 0 16px; max-width:680px; }
-    .ce-roles { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 18px; }
-    .ce-role { font:700 10px/1 system-ui,sans-serif; letter-spacing:0.1em; text-transform:uppercase; padding:6px 10px; border-radius:6px; border:1px solid var(--line); }
-    .ce-role.order { color:var(--lead); }
-    .ce-role.ark { color:var(--ember); }
-    .ce-role.steward { color:var(--good); }
-    .forest {
-      position:relative; margin:20px 0 8px; padding:18px 12px 14px; min-height:120px;
-      border:1px solid var(--line); border-radius:8px; background:linear-gradient(180deg,rgba(12,22,18,0.5),rgba(7,9,14,0.85));
-      overflow:hidden;
-    }
-    .forest::before {
-      content:""; position:absolute; inset:0; opacity:0.35;
-      background:repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(95,156,114,0.06) 28px,rgba(95,156,114,0.06) 29px);
-    }
-    .forest-path { position:relative; display:flex; align-items:flex-end; gap:6px; min-height:72px; padding:0 4px; overflow-x:auto; }
-    .forest-node {
-      flex:0 0 auto; min-width:72px; text-align:center; font:600 10px/1.2 system-ui,sans-serif;
-      color:var(--cool); opacity:0.45; transition:opacity 0.25s,color 0.25s,transform 0.25s;
-    }
-    .forest-node.active { color:var(--warm); opacity:1; transform:translateY(-4px); }
-    .forest-node.done { color:var(--good); opacity:0.85; }
-    .forest-node .dot {
-      width:10px; height:10px; margin:0 auto 6px; border-radius:50%; background:var(--cool); opacity:0.5;
-    }
-    .forest-node.active .dot { background:var(--ember); opacity:1; box-shadow:0 0 8px rgba(200,96,26,0.55); }
-    .forest-node.done .dot { background:var(--good); opacity:0.9; }
-    .forest-cap { position:relative; color:var(--cool); font-size:11px; margin-top:10px; min-height:2.4em; }
-    .forest-cap b { color:var(--warm); }
-    .ce-step { margin-top:12px; padding:12px 14px; border:1px solid var(--line); border-radius:8px; background:rgba(7,9,14,0.55); font-size:13px; line-height:1.55; }
-    .ce-step-k { color:var(--ember); font:700 10px/1 system-ui,sans-serif; letter-spacing:0.11em; text-transform:uppercase; margin-bottom:4px; }
-    .ce-steward { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
-    .ce-steward button { font-size:10px; padding:10px 12px; }
-    .ce-steward button:disabled { opacity:0.45; cursor:default; }
-    .ce-steward-note { margin-top:10px; color:var(--cool); font-size:12px; font-style:italic; }
-
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
       .proof { grid-template-columns:1fr; }
@@ -179,19 +114,19 @@ const PAGE = `<!doctype html>
 </head>
 <body>
   <header>
-    <div class="brand">Calibration</div>
+    <div class="brand">Pulse</div>
     <nav aria-label="Reality Mechanics">
       <a href="https://realitymechanics.nz/field">🔭 Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-      <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+      <a href="https://realitymechanics.nz/theory">📖 Theory</a>
       <a href="https://realitymechanics.nz/submission">✓ Proof</a>
     </nav>
   </header>
   <main>
     <section class="intro">
-      <div class="eyebrow">Reasoning Calibration</div>
-      <h1>Reasoning has mechanics.</h1>
-      <p>This is not a worksheet. It does not answer for you, and it does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
+      <div class="eyebrow">Pulse</div>
+      <h1>Behaviour through time.</h1>
+      <p>Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
       <div class="proof">
         <div><b>Drift</b>Strain builds on its own. Nothing holds it still.</div>
         <div><b>Pulse</b>A correction fires only once threshold is crossed.</div>
@@ -201,7 +136,7 @@ const PAGE = `<!doctype html>
 
     <section class="mech" aria-live="polite">
       <div class="mech-head">
-        <h2>Calibrated Approximation</h2>
+        <h2>Calibration</h2>
         <div class="status" id="status">Paused</div>
       </div>
 
@@ -257,44 +192,7 @@ const PAGE = `<!doctype html>
         <button id="reset" type="button">Reset</button>
       </div>
 
-      <p class="note"><b>Open Strain never reaches zero</b> because the target keeps drifting between pulses, and each correction closes only part of the gap — sometimes less than expected. Calibration is what the pulses do over time, not what any single one settles. There is no fixed rhythm to compare against: pulse timing is close to memoryless — each interval largely independent of the last — so the dashed line tracks the mechanism's own recent behaviour rather than an imported schedule. <b>What a pulse leaves behind is not reset to zero</b> — Carried Strain is that leftover, and it measurably (if weakly) shapes how soon the next pulse fires. The carrying is real; watch whether it stays legible or gets lost in the noise.</p>
-    </section>
-
-    <section class="mech ce-engine" aria-live="polite">
-      <div class="mech-head">
-        <h2>Calibration Engine v1</h2>
-        <div class="status" id="ceStatus">Ready</div>
-      </div>
-      <p class="ce-intro">Walk through a forest. <b>Forward</b> movement is a new trajectory; <b>backward</b> movement is ancestry. <b>Healthy calibration</b> keeps progress retraceable. <b>Drift</b> is progress without retrace. <b>Stasis</b> is retrace without discovery. This engine tests one Atlas term in the read-model only — nothing is written to source.</p>
-      <div class="ce-roles">
-        <span class="ce-role order">Order — read · map · retrace · preserve</span>
-        <span class="ce-role ark">Ark — test · perturb · carry · restore · observe</span>
-        <span class="ce-role steward">Steward — accept · reject · defer</span>
-      </div>
-      <div class="forest" aria-label="Forest walk">
-        <div class="forest-path" id="forestPath"></div>
-        <div class="forest-cap" id="forestCap">Press <b>Walk the forest</b> to run the Maintained Coupling demo.</div>
-      </div>
-      <div class="actions">
-        <button class="primary" id="ceWalk" type="button">Walk the forest</button>
-        <button id="ceReset" type="button">Reset path</button>
-      </div>
-      <div class="ce-step" id="ceStep" hidden>
-        <div class="ce-step-k" id="ceStepK"></div>
-        <div id="ceStepV"></div>
-      </div>
-      <div class="tt-out" id="ceOut" hidden>
-        <div class="tt-block"><div class="tt-k">Observation</div><div class="tt-v" id="ceObs"></div></div>
-        <div class="tt-block"><div class="tt-k">Evidence</div><div class="tt-v" id="ceEv"></div></div>
-        <div class="tt-block"><div class="tt-k">Recommendation</div><div class="tt-v" id="ceRec"></div></div>
-      </div>
-      <div class="ce-steward" id="ceSteward" hidden>
-        <button type="button" id="ceAccept" disabled>Accept</button>
-        <button type="button" id="ceReject" disabled>Reject</button>
-        <button type="button" id="ceDefer" disabled>Defer</button>
-      </div>
-      <p class="ce-steward-note" id="ceStewardNote" hidden>The steward decides. These controls record intent only — this instrument does not apply Atlas edits or promote Calculus claims.</p>
-      <p class="note">Demo term: <b>Maintained Coupling</b> (post D-004 synchronised read-model, including Compatibility). Perturbation: simulate removing <b>Compatibility</b> from needs for one pass, then restore.</p>
+      <p class="note"><b>Open Strain never reaches zero</b> because the target keeps drifting between pulses, and each correction closes only part of the gap. Carried Strain is what the next climb starts from.</p>
     </section>
   </main>
 
@@ -474,120 +372,6 @@ const PAGE = `<!doctype html>
       render(0);
     })();
   </script>
-
-  <script>
-    (function () {
-      var walkBtn = document.getElementById("ceWalk");
-      var resetBtn = document.getElementById("ceReset");
-      var pathEl = document.getElementById("forestPath");
-      var capEl = document.getElementById("forestCap");
-      var stepBox = document.getElementById("ceStep");
-      var stepK = document.getElementById("ceStepK");
-      var stepV = document.getElementById("ceStepV");
-      var out = document.getElementById("ceOut");
-      var obs = document.getElementById("ceObs");
-      var ev = document.getElementById("ceEv");
-      var rec = document.getElementById("ceRec");
-      var status = document.getElementById("ceStatus");
-      var steward = document.getElementById("ceSteward");
-      var stewardNote = document.getElementById("ceStewardNote");
-      var acceptBtn = document.getElementById("ceAccept");
-      var rejectBtn = document.getElementById("ceReject");
-      var deferBtn = document.getElementById("ceDefer");
-      if (!walkBtn || !pathEl) return;
-
-      var result = null;
-      var stepIdx = 0;
-      var timer = null;
-
-      function renderPath(steps, active) {
-        pathEl.innerHTML = steps.map(function (s, i) {
-          var cls = "forest-node";
-          if (i < active) cls += " done";
-          if (i === active) cls += " active";
-          return '<div class="' + cls + '"><div class="dot"></div>' + s.label + "</div>";
-        }).join("");
-      }
-
-      function showStep(i) {
-        if (!result || !result.steps[i]) return;
-        var s = result.steps[i];
-        stepBox.hidden = false;
-        stepK.textContent = s.label + " · " + s.role + " (" + s.phase + ")";
-        stepV.textContent = s.detail;
-        capEl.innerHTML = s.forest;
-        renderPath(result.steps, i);
-        status.textContent = "Step " + (i + 1) + " / " + result.steps.length;
-      }
-
-      function finishRun() {
-        obs.textContent = result.observation;
-        ev.textContent = result.evidence;
-        rec.textContent = result.recommendation;
-        out.hidden = false;
-        steward.hidden = false;
-        stewardNote.hidden = false;
-        acceptBtn.disabled = false;
-        rejectBtn.disabled = false;
-        deferBtn.disabled = false;
-        status.textContent = "Complete · " + result.forestMetaphor.state;
-        capEl.innerHTML = "<b>Forest read:</b> " + result.forestMetaphor.state + " — " + result.stewardNote;
-      }
-
-      function resetRun() {
-        if (timer) clearInterval(timer);
-        timer = null;
-        stepIdx = 0;
-        result = null;
-        pathEl.innerHTML = "";
-        capEl.innerHTML = "Press <b>Walk the forest</b> to run the Maintained Coupling demo.";
-        stepBox.hidden = true;
-        out.hidden = true;
-        steward.hidden = true;
-        stewardNote.hidden = true;
-        acceptBtn.disabled = true;
-        rejectBtn.disabled = true;
-        deferBtn.disabled = true;
-        status.textContent = "Ready";
-      }
-
-      function runWalk() {
-        resetRun();
-        status.textContent = "Walking…";
-        fetch("/api/calibration/engine")
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            result = data;
-            renderPath(result.steps, 0);
-            stepIdx = 0;
-            showStep(0);
-            timer = setInterval(function () {
-              stepIdx += 1;
-              if (stepIdx >= result.steps.length) {
-                clearInterval(timer);
-                timer = null;
-                finishRun();
-                return;
-              }
-              showStep(stepIdx);
-            }, 900);
-          })
-          .catch(function () {
-            status.textContent = "Error";
-            capEl.textContent = "Could not load calibration engine.";
-          });
-      }
-
-      walkBtn.addEventListener("click", runWalk);
-      resetBtn.addEventListener("click", resetRun);
-      [acceptBtn, rejectBtn, deferBtn].forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          capEl.innerHTML = "<b>Steward recorded:</b> " + btn.textContent + " — no Atlas edit applied.";
-          status.textContent = "Steward: " + btn.textContent;
-        });
-      });
-    })();
-  </script>
 </body>
 </html>`;
 
@@ -614,16 +398,6 @@ export default {
       return json({ ok: true, runtime: "mechanical", ai: false });
     }
 
-    if (url.pathname === "/api/calibration/engine" && request.method === "GET") {
-      const term = url.searchParams.get("term") || DEFAULT_TERM;
-      const perturb = url.searchParams.get("perturb") || DEFAULT_PERTURB;
-      try {
-        return json(runCalibration(term, perturb));
-      } catch (err) {
-        return json({ error: String(err.message || err) }, 400);
-      }
-    }
-
-    return json({ error: "not found", endpoints: ["GET /", "GET /api/health", "GET /api/calibration/engine"] }, 404);
+    return json({ error: "not found", endpoints: ["GET /", "GET /api/health"] }, 404);
   },
 };

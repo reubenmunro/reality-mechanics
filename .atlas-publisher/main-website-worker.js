@@ -449,7 +449,7 @@ export function fieldPage(options = {}) {
 <nav id="access-row" aria-label="Reality Mechanics areas">
   <a href="/field">🔭 Observatory</a>
   <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-  <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+  <a href="/theory">📖 Theory</a>
   <a href="/submission">✓ Proof</a>
 </nav>
 <section id="observatory-landing" aria-label="Observatory orientation">
@@ -3037,14 +3037,77 @@ bootstrap();
 
 // ── Router ────────────────────────────────────────────────────────────────────
 
+const GITHUB_DOC = "https://github.com/reubenmunro/reality-mechanics/blob/main";
+
+export function theoryPage() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Theory · Reality Mechanics</title>
+  <meta name="description" content="Why Reality Mechanics works — concise public Theory with links to canonical documents."/>
+  <style>
+    :root { --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72); --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; --line:rgba(255,255,255,0.08); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(circle at 50% 0%, #111925 0, #06080d 54%, #040509 100%); color:var(--warm-dim); font:16px/1.65 Georgia, Charter, serif; }
+    header { position:sticky; top:0; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(6,8,13,0.82); border-bottom:1px solid var(--line); backdrop-filter:blur(16px); }
+    .brand { color:var(--ember); font:700 12px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    nav { display:flex; gap:16px; flex-wrap:wrap; }
+    nav a { color:var(--cool); text-decoration:none; font:700 12px/1 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
+    nav a:hover { color:var(--ember); }
+    main { width:min(720px, calc(100vw - 32px)); margin:0 auto; padding:52px 0 72px; }
+    .eyebrow { color:var(--ember); font:700 11px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    h1 { margin:10px 0 8px; color:var(--warm); font:500 clamp(32px,6vw,52px)/1.05 Georgia, Charter, serif; }
+    .lede { color:var(--warm-dim); font-size:18px; max-width:640px; }
+    h2 { color:var(--warm); font:500 22px/1.2 Georgia, Charter, serif; margin:36px 0 8px; }
+    ul { padding-left:20px; max-width:640px; }
+    li { margin:8px 0; }
+    a { color:var(--lead); }
+    p { max-width:640px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Theory</div>
+    <nav aria-label="Reality Mechanics">
+      <a href="/field">🔭 Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
+      <a href="/theory">📖 Theory</a>
+      <a href="/submission">✓ Proof</a>
+    </nav>
+  </header>
+  <main>
+    <div class="eyebrow">Theory</div>
+    <h1>Why the discipline works.</h1>
+    <p class="lede">Theory explains. It is not duplicated here. The Observatory demonstrates structure; Pulse demonstrates behaviour through time; Proof packages retraceable evidence.</p>
+
+    <h2>Canonical documents</h2>
+    <ul>
+      <li><a href="${GITHUB_DOC}/Reality_Mechanics/Theory.md">Theory</a> — canonical discipline explanation in the Atlas.</li>
+      <li><a href="${GITHUB_DOC}/MISSION.md">Mission</a> — purpose and compass.</li>
+      <li><a href="${GITHUB_DOC}/docs/CONSTITUTION.md">Constitution</a> — governing constraints.</li>
+      <li><a href="${GITHUB_DOC}/docs/practice/RUNTIME_PRINCIPLES.md">Runtime principles</a> — what the live runtime already implies.</li>
+    </ul>
+
+    <h2>Governance and practice</h2>
+    <ul>
+      <li><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read (unpromoted).</li>
+      <li><a href="${GITHUB_DOC}/docs/practice/COMMISSIONS.md">Commissions register</a> — resolved programme work.</li>
+    </ul>
+  </main>
+</body>
+</html>`;
+}
+
 export function submissionPage() {
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Submission 001 · Reality Mechanics</title>
-  <meta name="description" content="Reality Mechanics — first public submission: what is accepted, candidate, and unresolved."/>
+  <title>Proof · Reality Mechanics</title>
+  <meta name="description" content="Reality Mechanics Proof — retrace pathway through accepted evidence, candidates, and unresolved questions."/>
   <style>
     :root {
       --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72);
@@ -3083,18 +3146,21 @@ export function submissionPage() {
 </head>
 <body>
   <header>
-    <div class="brand">Reality Mechanics</div>
+    <div class="brand">Proof</div>
     <nav aria-label="Reality Mechanics areas">
       <a href="/field">🔭 Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-      <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/Theory.md">📖 Theory</a>
+      <a href="/theory">📖 Theory</a>
       <a href="/submission">✓ Proof</a>
     </nav>
   </header>
   <main>
-    <div class="eyebrow">First public submission</div>
-    <h1>Submission 001</h1>
-    <p class="lede">A coordinated submission for review — not a claim of final certainty. It exposes what Reality Mechanics currently holds as <b>accepted</b>, what it is still <b>investigating</b>, and what remains <b>unresolved</b>, so independent participants can review, challenge, and retrace it.</p>
+    <div class="eyebrow">Proof</div>
+    <h1>Retrace pathway</h1>
+    <p class="lede">Proof packages what the programme currently holds as <b>accepted</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b> — so independent participants can review, challenge, and retrace it. Nothing here is promoted beyond its stated status.</p>
+
+    <h2>Submission 001</h2>
+    <p>The first public submission coordinates repository evidence under the Constitution's standard of care.</p>
 
     <h2>What it is</h2>
     <p>Reality Mechanics exists to increase structural perception. Reality already carries order; participation becomes more faithful when the questions asked, the operations performed, and the answers preserved stay <b>retraceable</b>. The programme builds instruments to perceive and preserve structure that is already there — it does not claim to invent it.</p>
@@ -3113,7 +3179,7 @@ export function submissionPage() {
           <li><b>Relation</b> as the sole primitive.</li>
           <li>Working Postulate v0.6 — "relation holds, order carries, trace places."</li>
           <li>Stewardship method v1 — eight invariants, evidence grading E1–E5.</li>
-          <li>Public surfaces: Field, Calibration, MCP.</li>
+          <li>Public surfaces: Observatory, Pulse, MCP.</li>
         </ul>
       </div>
       <div class="card candidate">
@@ -3136,11 +3202,18 @@ export function submissionPage() {
       </div>
     </div>
 
-    <h2>Public exhibits</h2>
+    <h2>Public instruments</h2>
     <div class="exhibits">
-      <a class="exhibit" href="/field"><b>Field</b>The dependency-ordered structural field. The Atlas, served publicly.</a>
-      <a class="exhibit" href="https://calibration.realitymechanics.nz/"><b>Calibration</b>A live reasoning instrument — and a structural term test you can run.</a>
+      <a class="exhibit" href="/field"><b>Observatory</b>Observe structural relationships in the field.</a>
+      <a class="exhibit" href="https://calibration.realitymechanics.nz/"><b>Pulse</b>Calibration — behaviour through time.</a>
     </div>
+
+    <h2>Evidence reports</h2>
+    <ul>
+      <li><a href="${GITHUB_DOC}/docs/submissions/SUBMISSION-001-first-public-submission.md">Submission 001 source</a></li>
+      <li><a href="${GITHUB_DOC}/docs/practice/COMMISSIONS.md">Commissions register</a></li>
+      <li><a href="${GITHUB_DOC}/docs/reports/D-021.4-pulse-instrument-contract.md">Pulse instrument contract (D-021.4)</a></li>
+    </ul>
 
     <h2>What this asks of reviewers</h2>
     <ul>
@@ -3149,7 +3222,7 @@ export function submissionPage() {
       <li>Treat unresolved items as genuinely open — they are the programme's live frontier.</li>
     </ul>
 
-    <p class="status-line">Submission 001 — coordinated from accepted repository evidence. Nothing here is promoted beyond its stated status; the Calculus is presented as an open investigation. Prepared under the Constitution's standard of care.</p>
+    <p class="status-line">Proof — coordinated from accepted repository evidence. The Calculus remains an open investigation; nothing here promotes it.</p>
   </main>
 </body>
 </html>`;
@@ -3178,10 +3251,13 @@ async function handleRequest(request, env) {
   if (pathname === "/field")
     return new Response(fieldPage(), { headers: HTML_HEADERS });
 
-  if (pathname === "/submission" || pathname === "/submission-001")
+  if (pathname === "/theory")
+    return new Response(theoryPage(), { headers: HTML_HEADERS });
+
+  if (pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001")
     return new Response(submissionPage(), { headers: HTML_HEADERS });
 
-  return new Response("Reality Mechanics now exposes Field and Calibration only.", {
+  return new Response("Reality Mechanics exposes Observatory, Pulse, Theory, and Proof only.", {
     status: 410,
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });

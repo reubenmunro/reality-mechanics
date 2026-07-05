@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import worker, { deriveFieldStatesPayload, fieldPage, submissionPage } from "../main-website-worker.js";
+import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage } from "../main-website-worker.js";
 
 const entries = [
   {
@@ -184,7 +184,8 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /id="access-row"/);
   assert.match(html, /href="\/field">🔭 Observatory/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
-  assert.match(html, /Theory\.md">📖 Theory/);
+  assert.match(html, /href="\/theory">📖 Theory/);
+  assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
   assert.match(html, /href="\/submission">✓ Proof/);
   assert.doesNotMatch(html, /href="\/atlas"/);
   assert.doesNotMatch(html, /href="\/garden"/);
@@ -213,7 +214,8 @@ test("Field links to Proof alongside Pulse", () => {
   assert.match(html, /href="\/submission">✓ Proof/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
   assert.match(html, /href="\/field">🔭 Observatory/);
-  assert.match(html, /Theory\.md">📖 Theory/);
+  assert.match(html, /href="\/theory">📖 Theory/);
+  assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
 });
 
 test("D-021.2 observatory landing orients before observation", () => {
@@ -267,20 +269,57 @@ test("D-021.4 endpointOnly path is confined to focused condensation draw", () =>
   assert.match(html, /wholeField = neutralWholeFieldOpen\(\)/);
 });
 
+test("/theory serves concise public Theory page", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /Why the discipline works/);
+  assert.match(html, /Theory\.md/);
+  assert.match(html, /Runtime principles/);
+  assert.doesNotMatch(html, /^# Invariant/m);
+});
+
+test("/proof serves the retrace pathway page", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /Retrace pathway/);
+  assert.match(html, /Observatory/);
+  assert.match(html, /Pulse/);
+});
+
 test("/submission serves the public Submission 001 page", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), {});
   const html = await res.text();
 
   assert.equal(res.status, 200);
+  assert.match(html, /Retrace pathway/);
   assert.match(html, /Submission 001/);
   assert.match(html, /Accepted/);
   assert.match(html, /Candidate/);
   assert.match(html, /Unresolved/);
-  // Reachable back to the other surfaces.
   assert.match(html, /href="\/field"/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\//);
-  // No unaccepted Calculus claim promoted: the ":" operator stays unaccepted.
   assert.match(html, /operator is not accepted/);
+  assert.doesNotMatch(html, /Walk the forest/);
+  assert.doesNotMatch(html, /structural term test/i);
+});
+
+test("D-021.5 public structure is Observatory Pulse Theory Proof only", () => {
+  const fieldHtml = fieldPage();
+  const proofHtml = submissionPage();
+  const theoryHtml = theoryPage();
+
+  for (const html of [fieldHtml, proofHtml, theoryHtml]) {
+    assert.match(html, /🔭 Observatory/);
+    assert.match(html, /❤️ Pulse/);
+    assert.match(html, /📖 Theory/);
+    assert.match(html, /✓ Proof/);
+  }
+  assert.doesNotMatch(fieldHtml, /href="\/atlas"/);
+  assert.doesNotMatch(fieldHtml, /href="\/garden"/);
 });
 
 test("submissionPage renders accepted/candidate/unresolved without promoting the calculus", () => {
@@ -295,7 +334,7 @@ test("/atlas is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Field and Calibration only/);
+  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
 });
 
 test("/member is a compatibility doorway to Calibration", async () => {
@@ -310,7 +349,7 @@ test("/api/enter is retired as a renderer placement mechanism", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Field and Calibration only/);
+  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
 });
 
 test("Ark movement API is retired as a second renderer state path", async () => {
@@ -319,7 +358,7 @@ test("Ark movement API is retired as a second renderer state path", async () => 
     const body = await res.text();
 
     assert.equal(res.status, 410, path);
-    assert.match(body, /Field and Calibration only/, path);
+    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, path);
   }
 });
 
@@ -328,7 +367,7 @@ test("/ark is retired as a standalone doorway", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Field and Calibration only/);
+  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
 });
 
 test("/api/field/entries is retired in favour of derived field states", async () => {
@@ -336,7 +375,7 @@ test("/api/field/entries is retired in favour of derived field states", async ()
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Field and Calibration only/);
+  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
 });
 
 test("Garden routes are no longer public surfaces", async () => {
@@ -353,7 +392,7 @@ test("Garden routes are no longer public surfaces", async () => {
     const res = await worker.fetch(new Request(url, init), {});
     const body = await res.text();
     assert.equal(res.status, 410, url);
-    assert.match(body, /Field and Calibration only/, url);
+    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, url);
   }
 });
 
@@ -362,7 +401,7 @@ test("/garden is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Field and Calibration only/);
+  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
 });
 
 test("Theory shortcuts are no longer public surfaces", async () => {
@@ -370,5 +409,5 @@ test("Theory shortcuts are no longer public surfaces", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Field and Calibration only/);
+  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
 });

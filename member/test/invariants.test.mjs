@@ -35,14 +35,13 @@ t("no participant text input required", () => {
   assert.ok(!/addEventListener\("submit"/.test(src), "no submit handler");
 });
 
-t("public page presents Calibration as mechanical, not a worksheet", () => {
-  assert.ok(/Reasoning has mechanics/.test(src));
-  assert.ok(/It does not answer for you/.test(src));
+t("public page presents Pulse as mechanical, not a worksheet", () => {
+  assert.ok(/Behaviour through time/.test(src));
   assert.ok(/does not need your input/.test(src));
 });
 
 t("mechanism grammar is visible", () => {
-  for (const label of ["Open Strain", "Pulses", "Threshold", "Approximation", "Local average", "Carried Strain"]) {
+  for (const label of ["Open Strain", "Pulses", "Threshold", "Local average", "Carried Strain"]) {
     assert.ok(src.includes(label), label);
   }
 });
@@ -74,38 +73,27 @@ t("health reports mechanical runtime", () => {
   assert.ok(src.includes("ai: false"));
 });
 
-t("calibration engine v1 exists with forest walk demo", () => {
-  assert.ok(src.includes("Calibration Engine v1"), "engine section present");
-  assert.ok(src.includes('id="ceWalk"'), "walk control present");
-  assert.ok(src.includes("Walk the forest"), "forest metaphor present");
-  assert.ok(src.includes("Maintained Coupling"), "demo term present");
-  assert.ok(src.includes("Compatibility"), "synchronised dependency present");
-  assert.ok(src.includes("/api/calibration/engine"), "engine API route");
-  assert.ok(src.includes("import { runCalibration"), "engine module imported");
-  assert.ok(!/<textarea/.test(src) && !/<form/.test(src), "no free-text input added");
+t("D-021.5 forest demo and calibration engine removed from public Pulse", () => {
+  assert.doesNotMatch(src, /Walk the forest/);
+  assert.doesNotMatch(src, /Calibration Engine v1/);
+  assert.doesNotMatch(src, /id="ceWalk"/);
+  assert.doesNotMatch(src, /forest-path/);
+  assert.doesNotMatch(src, /\/api\/calibration\/engine/);
+  assert.doesNotMatch(src, /import \{ runCalibration/);
 });
 
-t("engine separates observation, evidence, recommendation and steward", () => {
-  for (const id of ["ceObs", "ceEv", "ceRec"]) {
-    assert.ok(src.includes('id="' + id + '"'), id);
-  }
-  assert.ok(src.includes('id="ceAccept"') && src.includes('id="ceDefer"'));
-  assert.ok(src.includes("steward decides") || src.includes("Steward decides"));
-  assert.ok(src.includes("does not promote Calculus") || src.includes("promote Calculus claims"));
+t("Pulse presents Calibration as the first instrument only", () => {
+  assert.ok(src.includes('class="brand">Pulse</'));
+  assert.ok(src.includes("Behaviour through time."));
+  assert.ok(src.includes("<h2>Calibration</h2>"));
+  assert.ok(src.includes("Open Strain"));
 });
 
-t("engine roles order ark steward visible without calculus promotion", () => {
-  assert.ok(src.includes("Order — read"));
-  assert.ok(src.includes("Ark — test"));
-  assert.ok(src.includes("Steward — accept"));
-  assert.ok(!/Order : Ark/.test(src), "no calculus notation promoted");
-});
-
-t("navigation reaches Observatory and Proof", () => {
+t("navigation reaches Observatory, Theory, and Proof", () => {
   assert.ok(src.includes('href="https://realitymechanics.nz/field">🔭 Observatory'));
   assert.ok(src.includes('href="https://realitymechanics.nz/submission">✓ Proof'));
   assert.ok(src.includes('href="https://calibration.realitymechanics.nz/">❤️ Pulse'));
-  assert.ok(src.includes("Theory.md\">📖 Theory"));
+  assert.ok(src.includes('href="https://realitymechanics.nz/theory">📖 Theory'));
 });
 
 console.log(`\ncalibration invariants: all ${n} assertions passed.`);
