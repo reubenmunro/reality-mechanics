@@ -91,6 +91,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Pulse instrument contract | D-021.4 | Resolved | What must every Pulse instrument satisfy? | `docs/reports/D-021.4-pulse-instrument-contract.md`; eight-clause contract C1–C8 |
 | Observatory render blocker | D-021.4-R | Resolved | Canvas empty on first load after D-020D | `docs/reports/D-021.4-observatory-render-blocker.md`; home nodes + whole-field visibility |
 | Public website strip-back | D-021.5 | Resolved | Public site beyond four surfaces | `docs/reports/D-021.5-public-website-strip-back.md`; Pulse-only + /theory + Proof reframe |
+| Observatory legibility | D-022 | Resolved | Field carried no language; visitor could not position | `docs/reports/D-022-observatory-legibility.md`; canvas term labels + order legend + term suggestions + Theory postulate; render-layer audit continued as D-023 recommendation |
 
 ---
 

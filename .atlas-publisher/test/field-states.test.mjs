@@ -411,3 +411,44 @@ test("Theory shortcuts are no longer public surfaces", async () => {
   assert.equal(res.status, 410);
   assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
 });
+
+test("D-022 language enters the field: canvas term labels", () => {
+  const html = fieldPage();
+  assert.match(html, /function drawTermLabel/);
+  assert.match(html, /ctx\.fillText\(text, x, y\)/);
+  assert.match(html, /HOME_LABELS_PER_ORDER/);
+  assert.match(html, /LOCAL_LABEL_BUDGET/);
+  assert.match(html, /homeLabelIds/);
+  assert.match(html, /drawTermLabel\(focus, pf\.x, pf\.y \+ 30, 0\.92, 14, true\)/);
+});
+
+test("D-022 term entry offers the Atlas index", () => {
+  const html = fieldPage();
+  assert.match(html, /<datalist id="term-suggestions">/);
+  assert.match(html, /list="term-suggestions"/);
+  assert.match(html, /function populateTermSuggestions/);
+});
+
+test("D-022 dependency order is named in the field palette", () => {
+  const html = fieldPage();
+  assert.match(html, /id="order-legend"/);
+  assert.match(html, /function buildOrderLegend/);
+});
+
+test("D-022 decorative machinery removed from Observatory draw", () => {
+  const html = fieldPage();
+  assert.doesNotMatch(html, /smokePuffs \* adaptiveAmbientScale/);
+  assert.doesNotMatch(html, /wrinkleCount/);
+});
+
+test("D-022 Theory states the working postulate without inventing theory", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /Relation holds\./);
+  assert.match(html, /Order carries\./);
+  assert.match(html, /Trace places\./);
+  assert.match(html, /Reality already carries order/);
+  assert.match(html, /working claim, corrected by failure, not a doctrine/);
+});

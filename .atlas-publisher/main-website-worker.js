@@ -435,10 +435,19 @@ export function fieldPage(options = {}) {
       font: 500 0.72rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
       white-space: pre-wrap;
     }
+    #order-legend {
+      position: fixed; left: 1.4rem; bottom: 1.3rem; z-index: 5;
+      display: flex; flex-direction: column; gap: 0.28rem; pointer-events: none;
+      font: 600 0.56rem/1 system-ui, sans-serif; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(212,197,169,0.62);
+    }
+    #order-legend .legend-row { display: flex; align-items: center; gap: 0.45rem; }
+    #order-legend .legend-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; }
     @media (max-width: 700px) {
       #observatory-landing { left: 1rem; top: 3.2rem; max-width: calc(100vw - 2rem); }
       #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
       #enter-form { bottom: 1rem; }
+      #order-legend { display: none; }
       #term-sheet { width: min(24rem, 92vw); right: min(-24rem, -92vw); padding: 4.25rem 1.15rem 2rem; }
     }
   </style>
@@ -462,9 +471,11 @@ export function fieldPage(options = {}) {
   </div>
 </section>
 <form id="enter-form" role="search">
-  <input id="enter-input" type="text" autocomplete="off" spellcheck="false"
+  <input id="enter-input" type="text" autocomplete="off" spellcheck="false" list="term-suggestions"
     placeholder="Enter a term" aria-label="Enter a term" maxlength="200"/>
+  <datalist id="term-suggestions"></datalist>
 </form>
+<div id="order-legend" aria-label="Dependency order"></div>
 <section id="term-sheet" aria-live="polite" aria-label="Term sheet">
   <button id="sheet-close" aria-label="Close">×</button>
   <div id="sheet-neutral">
@@ -509,6 +520,8 @@ const sheetNeutralEl = document.getElementById('sheet-neutral');
 const sheetTermEl = document.getElementById('sheet-term');
 const landingObserveEl = document.getElementById('landing-observe');
 const landingContinueEl = document.getElementById('landing-continue');
+const termSuggestionsEl = document.getElementById('term-suggestions');
+const orderLegendEl = document.getElementById('order-legend');
 const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
 const ATLAS_TREE_URL = 'https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics';
 let selectedTermId = null;
@@ -1630,42 +1643,15 @@ function fieldTensionFromGradient(gradient, structuralWeight = 0) {
 }
 
 function drawSmoke() {
+  // D-022: backdrop only. Ambient smoke puffs removed — they carried no
+  // ratio/order information a visitor could retrace to Atlas structure.
   const cx = innerWidth / 2, cy = innerHeight / 2;
-  const focus = operations[focusId];
-  const focusProfile = focus?.profile || null;
-  const family = focusProfile ? familyComposition(focusProfile)[0]?.key : 'anchor';
   const grad = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.max(innerWidth, innerHeight) * 0.88);
   grad.addColorStop(0, '#0b1018');
   grad.addColorStop(0.56, '#07090e');
   grad.addColorStop(1, '#05070b');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, innerWidth, innerHeight);
-
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.scale(scale, scale);
-  ctx.translate(pan.x, pan.y);
-  const drift = family === 'motion' ? 0.14 : family === 'settlement' ? 0.045 : family === 'strain' ? 0.075 : 0.06;
-  const compression = family === 'strain' ? 0.56 : family === 'anchor' ? 0.68 : 0.82;
-  const smokePuffs = Math.max(18, Math.round(FIELD_RENDER_BUDGET.smokePuffs * adaptiveAmbientScale(0.42)));
-  for (let i = 0; i < smokePuffs; i++) {
-    const a = i * 0.42 + time * (drift + (i % 7) * 0.004);
-    const r = 36 + i * 6.3 + Math.sin(time * 0.35 + i) * 18;
-    const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
-    const y = Math.sin(a * 0.82) * r * compression;
-    const puffR = 24 + (i % 9) * 7;
-    const puffA = 0.009 + (i % 5) * 0.0025 + (focusProfile?.ash || 0) * 0.008;
-    const puffGrad = ctx.createRadialGradient(x, y, 0, x, y, puffR * 1.38);
-    puffGrad.addColorStop(0, 'rgba(58,80,112,' + puffA + ')');
-    puffGrad.addColorStop(0.46, 'rgba(58,80,112,' + (puffA * 0.28) + ')');
-    puffGrad.addColorStop(0.78, 'rgba(58,80,112,0)');
-    puffGrad.addColorStop(1, 'rgba(58,80,112,0)');
-    ctx.beginPath();
-    ctx.fillStyle = puffGrad;
-    ctx.arc(x, y, puffR * 1.38, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
 }
 
 function basinVector(profile, amount = 1) {
@@ -2411,7 +2397,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const families = familyComposition(profile);
   const topFamily = families[0]?.key || 'anchor';
   const resolving = Math.min(1, settled / 1.8);
-  const baseAlpha = local ? 0.55 : 0.07;
+  const baseAlpha = local ? 0.55 : 0.11; // D-022 legibility floor
   const motionBoost = topFamily === 'motion' ? 1.18 : 1;
   const anchorBoost = topFamily === 'anchor' ? 1.16 : 1;
   const movementRatio = isFocus ? movementRatioSignature(fieldMovementEvent) : null;
@@ -2512,23 +2498,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     ctx.restore();
   }
 
-  const wrinkleCount = Math.min(ambientBudget.wrinkleMax, Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58)));
-  ctx.save();
-  ctx.translate(p.x, p.y);
-  ctx.rotate(op.phase * 0.2 + motionTime * (0.018 + profile.airflow * 0.012));
-  for (let i = 0; i < wrinkleCount; i++) {
-    const a = i * 2.399 + op.phase;
-    const inner = radius * (0.35 + (i % 5) * 0.07);
-    const outer = radius * (0.72 + (i % 7) * 0.045) * (1 + (motionBoost - 1) * (1 - structuralMass * 0.5));
-    const curl = Math.sin(motionTime * (0.16 + physics.velocity * 0.18) + i + op.phase) * radius * (0.04 + physics.pressure * 0.08 + physics.opening * 0.04 + (topFamily === 'strain' ? 0.04 : 0)) * (1 - structuralMass * 0.62);
-    ctx.beginPath();
-    ctx.moveTo(Math.cos(a) * inner, Math.sin(a) * inner);
-    ctx.quadraticCurveTo(Math.cos(a + 0.35) * (inner + outer) * 0.5 + curl, Math.sin(a + 0.35) * (inner + outer) * 0.5 - curl, Math.cos(a + 0.7) * outer, Math.sin(a + 0.7) * outer);
-    ctx.strokeStyle = 'rgba(212,197,169,' + (0.025 + profile.maturity * 0.045 + structuralMass * 0.025 - profile.ash * 0.018) + ')';
-    ctx.lineWidth = Math.max(0.35, scale * (0.35 + profile.density * 0.42 + structuralMass * 0.32));
-    ctx.stroke();
-  }
-  ctx.restore();
+  // D-022: decorative wrinkle curls removed — texture without structural meaning.
 
   if (isFocus) {
     const arrivalAlpha = focusCondensation?.arrivalAlpha ?? (0.38 + profile.resolution * 0.22 + fieldTension * 0.06);
@@ -2659,6 +2629,22 @@ function draw() {
       drawFieldMovementWake(focus);
     }
     Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId, fieldPressure));
+
+    // D-022: label the focused term and its nearest structural neighbours so
+    // relation and order remain readable without opening the term sheet.
+    if (focus) {
+      const labelled = [...local]
+        .filter((id) => id !== focusId && operations[id])
+        .map((id) => operations[id])
+        .sort((a, b) => termDegree(b) - termDegree(a))
+        .slice(0, LOCAL_LABEL_BUDGET);
+      labelled.forEach((op) => {
+        const p = screen(op);
+        drawTermLabel(op, p.x, p.y + 16, 0.6 * sensibilityAlpha(op.id), 11);
+      });
+      const pf = screen(focus);
+      drawTermLabel(focus, pf.x, pf.y + 30, 0.92, 14, true);
+    }
   }
   renderRelationDebug();
   if (mechanicsRefreshPending) scheduleBehaviourTraceRefresh(false);
@@ -2686,6 +2672,7 @@ let spineCurrentIdx = -1; // index into spineFlat
 
 function buildSpineSequence() {
   spineFlat = [];
+  homeLabelIds = [];
   SPINE_ORDERS.forEach((order) => {
     const terms = Object.values(allOps)
       .filter((op) => String(op.order || '').toLowerCase() === order)
@@ -2694,8 +2681,32 @@ function buildSpineSequence() {
         return score(b) - score(a);
       });
     spineFlat.push(...terms.map((t) => t.id));
+    // D-022: language enters the field. The highest-degree terms of each order
+    // are labelled in the whole-field view — structural entry points, not decoration.
+    homeLabelIds.push(...terms.slice(0, HOME_LABELS_PER_ORDER).map((t) => t.id));
   });
   buildHomeConnections();
+}
+
+// D-022 Observatory legibility: term labels on the canvas.
+// A label is language doing structural work — it positions participation
+// (Common Term Structure: "Language positions participation.").
+const HOME_LABELS_PER_ORDER = 4;
+const LOCAL_LABEL_BUDGET = 14;
+let homeLabelIds = [];
+
+function drawTermLabel(op, x, y, alpha, size = 11, emphasized = false) {
+  const text = op.title || op.id;
+  if (!text || alpha <= 0.02) return;
+  ctx.save();
+  ctx.font = (emphasized ? '600 ' : '500 ') + size + 'px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.shadowColor = 'rgba(4,6,10,0.9)';
+  ctx.shadowBlur = 4;
+  ctx.fillStyle = 'rgba(212,197,169,' + Math.min(1, alpha) + ')';
+  ctx.fillText(text, x, y);
+  ctx.restore();
 }
 
 // ── Static home field ───────────────────────────────────────────────────────
@@ -2745,7 +2756,7 @@ function drawHomeNode(op, alpha) {
   const radius = 7 + profile.density * 5 + structuralMass * 3;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const coreAlpha = 0.16 + structuralMass * 0.04;
+  const coreAlpha = 0.3 + structuralMass * 0.06; // D-022 legibility floor
   const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, radius * 2.4);
   if (colourMode === 'fire') {
     grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
@@ -2760,7 +2771,7 @@ function drawHomeNode(op, alpha) {
   ctx.fillStyle = grad;
   ctx.arc(pos.x, pos.y, radius * 2.4, 0, Math.PI * 2);
   ctx.fill();
-  const edgeAlpha = 0.04 + structuralMass * 0.012;
+  const edgeAlpha = 0.1 + structuralMass * 0.02; // D-022 legibility floor
   ctx.beginPath();
   ctx.strokeStyle = colourMode === 'fire'
     ? fireColor(order, edgeAlpha * alpha, 8)
@@ -2801,13 +2812,21 @@ function drawHomeField(alpha) {
     ctx.beginPath();
     ctx.moveTo(pa.x, pa.y);
     ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
-    const baseA = (typeKey === 'carries' ? 0.048 : typeKey === 'pairs' ? 0.032 : 0.024) * lineBoost;
+    const baseA = (typeKey === 'carries' ? 0.085 : typeKey === 'pairs' ? 0.055 : 0.045) * lineBoost; // D-022 legibility floor
     const sense = relationSensibility(a.id, b.id);
     ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * alpha * sense, baseA * alpha * sense);
     ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
     ctx.stroke();
   }
   ctx.restore();
+
+  // D-022: label the structural entry points of each order.
+  homeLabelIds.forEach((id) => {
+    const op = allOps[id];
+    if (!op) return;
+    const pos = homePosition(op);
+    drawTermLabel(op, pos.x, pos.y + 14, 0.62 * alpha, 11);
+  });
 }
 
 function spineDisplayOrder(opOrId) {
@@ -2937,6 +2956,41 @@ function operationFromFieldState(state) {
   return op;
 }
 
+// D-022: the enter form offers the Atlas index itself — a visitor does not
+// need to already know term names to enter the field.
+function populateTermSuggestions() {
+  if (!termSuggestionsEl) return;
+  termSuggestionsEl.innerHTML = '';
+  Object.values(allOps)
+    .map((op) => op.title || op.id)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach((title) => {
+      const option = document.createElement('option');
+      option.value = title;
+      termSuggestionsEl.appendChild(option);
+    });
+}
+
+// D-022: name the dependency order in the field's own palette.
+// "Order carries" (Theory, working postulate) — the legend makes the ring
+// arrangement readable as dependency order, not decoration.
+function buildOrderLegend() {
+  if (!orderLegendEl) return;
+  orderLegendEl.innerHTML = '';
+  SPINE_ORDERS.forEach((order) => {
+    const fr = FIRE_ORDERS[order];
+    if (!fr) return;
+    const row = document.createElement('div');
+    row.className = 'legend-row';
+    const dot = document.createElement('span');
+    dot.className = 'legend-dot';
+    dot.style.background = 'hsl(' + fr.h + ',' + fr.s + '%,' + fr.l + '%)';
+    row.appendChild(dot);
+    row.appendChild(document.createTextNode(order));
+    orderLegendEl.appendChild(row);
+  });
+}
+
 async function bootstrap() {
   modeEl.textContent = 'loading';
   try {
@@ -2950,6 +3004,8 @@ async function bootstrap() {
     states.forEach((state) => { if (state?.id) allOps[state.id] = operationFromFieldState(state); });
     refreshCoupledFrame();
     buildSpineSequence();
+    populateTermSuggestions();
+    buildOrderLegend();
     Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
   } catch(err) {
     modeEl.textContent = 'Observatory';
@@ -3065,6 +3121,8 @@ export function theoryPage() {
     li { margin:8px 0; }
     a { color:var(--lead); }
     p { max-width:640px; }
+    blockquote.postulate { margin:18px 0; padding:14px 22px; border-left:2px solid var(--ember); }
+    blockquote.postulate p { margin:0; color:var(--warm); font-size:22px; line-height:1.5; }
   </style>
 </head>
 <body>
@@ -3080,7 +3138,16 @@ export function theoryPage() {
   <main>
     <div class="eyebrow">Theory</div>
     <h1>Why the discipline works.</h1>
-    <p class="lede">Theory explains. It is not duplicated here. The Observatory demonstrates structure; Pulse demonstrates behaviour through time; Proof packages retraceable evidence.</p>
+    <p class="lede">Reality already carries order. Reality Mechanics does not invent structure — it observes structural relations already carried in reality, and keeps every observation retraceable.</p>
+
+    <h2>The working postulate</h2>
+    <blockquote class="postulate">
+      <p>Relation holds.<br/>Order carries.<br/>Trace places.</p>
+    </blockquote>
+    <p>This is the ordinary-language test of whether a term has entered order: things relate; relation holds where it can remain available; order carries where what holds can continue; trace places where what carries can be followed back. The postulate is versioned (v0.6) and answerable to the Atlas — it is a working claim, corrected by failure, not a doctrine.</p>
+
+    <h2>How the surfaces demonstrate it</h2>
+    <p>Theory explains; it is not duplicated here. The <a href="/field">Observatory</a> demonstrates structure — relation and order made visible. <a href="https://calibration.realitymechanics.nz/">Pulse</a> demonstrates behaviour through time. <a href="/proof">Proof</a> packages retraceable evidence — what is accepted, what is candidate, what remains unresolved.</p>
 
     <h2>Canonical documents</h2>
     <ul>
