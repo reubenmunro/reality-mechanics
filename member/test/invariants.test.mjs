@@ -96,6 +96,10 @@ t("navigation reaches Observatory, Theory, and Proof", () => {
   assert.ok(src.includes('href="https://realitymechanics.nz/theory">📖 Theory'));
 });
 
+t("D-024 navigation reaches Calculus", () => {
+  assert.ok(src.includes('href="https://realitymechanics.nz/calculus">∴ Calculus'));
+});
+
 t("D-023 Pulse declares its honest runtime character", () => {
   assert.ok(src.includes("Mechanical runtime · no AI · no Atlas mutation"));
   assert.ok(src.includes('href="/api/health"'));

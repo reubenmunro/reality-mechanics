@@ -123,6 +123,7 @@ const PAGE = `<!doctype html>
       <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
       <a href="https://realitymechanics.nz/theory">📖 Theory</a>
       <a href="https://realitymechanics.nz/proof">✓ Proof</a>
+      <a href="https://realitymechanics.nz/calculus">∴ Calculus</a>
     </nav>
   </header>
   <main>

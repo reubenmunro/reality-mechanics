@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage } from "../main-website-worker.js";
+import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage, calculusPage } from "../main-website-worker.js";
 
 const entries = [
   {
@@ -334,7 +334,7 @@ test("/atlas is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("/member is a compatibility doorway to Calibration", async () => {
@@ -349,7 +349,7 @@ test("/api/enter is retired as a renderer placement mechanism", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Ark movement API is retired as a second renderer state path", async () => {
@@ -358,7 +358,7 @@ test("Ark movement API is retired as a second renderer state path", async () => 
     const body = await res.text();
 
     assert.equal(res.status, 410, path);
-    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, path);
+    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, path);
   }
 });
 
@@ -367,7 +367,7 @@ test("/ark is retired as a standalone doorway", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("/api/field/entries is retired in favour of derived field states", async () => {
@@ -375,7 +375,7 @@ test("/api/field/entries is retired in favour of derived field states", async ()
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Garden routes are no longer public surfaces", async () => {
@@ -392,7 +392,7 @@ test("Garden routes are no longer public surfaces", async () => {
     const res = await worker.fetch(new Request(url, init), {});
     const body = await res.text();
     assert.equal(res.status, 410, url);
-    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, url);
+    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, url);
   }
 });
 
@@ -401,7 +401,7 @@ test("/garden is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Theory shortcuts are no longer public surfaces", async () => {
@@ -409,7 +409,7 @@ test("Theory shortcuts are no longer public surfaces", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("D-022 language enters the field: canvas term labels", () => {
@@ -508,4 +508,63 @@ test("D-023 Proof shows the retrace pathway and visible humility", async () => {
   assert.match(html, /commission C005, open/);
   assert.doesNotMatch(html, /Production deployment \/ D1-sync not yet file-verified/);
   assert.match(html, /REPOSITORY_VERIFICATION\.md/);
+});
+
+test("D-024 /calculus serves the derivation surface", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /<title>Calculus · Reality Mechanics<\/title>/);
+  assert.match(html, /Derive the structure\./);
+  assert.match(html, /Nothing on this page is promoted/);
+  assert.match(html, /operator is not accepted/);
+});
+
+test("D-024 Calculus distinguishes derived, calibrated, heuristic, unresolved", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  for (const status of ["derived", "calibrated", "heuristic", "unresolved"]) {
+    assert.match(html, new RegExp('class="inv ' + status + '"'));
+    assert.match(html, new RegExp('<b>' + status + '</b>'));
+  }
+  assert.match(html, /gap is preserved deliberately/);
+});
+
+test("D-024 implied mathematics is explicit and honest", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.match(html, /mass\(t\) = \|\{ s ≠ t : t ∈ holds\(s\) ∪ traces\(s\) \}\|/);
+  assert.match(html, /continuous if x ≥ 8 · transitional if x ≥ 3 · else discrete/);
+  assert.match(html, /not<\/b> Atlas Ratio/);
+  assert.match(html, /rendering only, no new mechanics|Rendering only — no new mechanics/i);
+});
+
+test("D-024 candidate calculus presented without promotion", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.match(html, /Order : Structure : Read/);
+  assert.match(html, /Pressure → Trace → Check → Determine → Step/);
+  assert.match(html, /not minimal/);
+  assert.match(html, /Relation → Connection/);
+  assert.match(html, /promotes nothing/);
+});
+
+test("D-024 five public surfaces reachable from every page", () => {
+  const pages = [fieldPage(), theoryPage(), submissionPage(), calculusPage()];
+  for (const html of pages) {
+    assert.match(html, /href="\/calculus">∴ Calculus/);
+    assert.match(html, /✓ Proof/);
+    assert.match(html, /🔭 Observatory/);
+  }
+});
+
+test("D-024 retired routes name five surfaces", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
+  const body = await res.text();
+  assert.equal(res.status, 410);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
