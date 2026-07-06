@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage } from "../main-website-worker.js";
+import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage, calculusPage } from "../main-website-worker.js";
 
 const entries = [
   {
@@ -186,7 +186,8 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
   assert.match(html, /href="\/theory">Theory/);
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
-  assert.match(html, /href="\/submission">Proof/);
+  assert.match(html, /href="\/proof">Proof/);
+  assert.match(html, /href="\/calculus">Calculus/);
   assert.doesNotMatch(html, /href="\/atlas"/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
@@ -211,10 +212,11 @@ test("drawCurrent applies shared term ratio mode to all relation types", () => {
 
 test("Field links to Proof alongside Pulse", () => {
   const html = fieldPage();
-  assert.match(html, /href="\/submission">Proof/);
+  assert.match(html, /href="\/proof">Proof/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
   assert.match(html, /href="\/field"[^>]*>Observatory/);
   assert.match(html, /href="\/theory">Theory/);
+  assert.match(html, /href="\/calculus">Calculus/);
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
 });
 
@@ -287,13 +289,15 @@ test("D-026 visual refinement removes nav icons and card chrome", () => {
   const fieldHtml = fieldPage();
   const proofHtml = submissionPage();
   const theoryHtml = theoryPage();
+  const calculusHtml = calculusPage();
 
-  for (const html of [fieldHtml, proofHtml, theoryHtml]) {
-    assert.doesNotMatch(html, /🔭|❤️|📖|✓/);
+  for (const html of [fieldHtml, proofHtml, theoryHtml, calculusHtml]) {
+    assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
   }
   assert.doesNotMatch(proofHtml, /class="card/);
   assert.match(proofHtml, /record-section accepted/);
-  assert.match(theoryHtml, /Laboratory notebook/);
+  assert.match(theoryHtml, /postulate/);
+  assert.match(calculusHtml, /chain-step/);
   assert.match(fieldHtml, /homeMode && !focusId/);
 });
 
@@ -324,17 +328,19 @@ test("/submission serves the public Submission 001 page", async () => {
   assert.doesNotMatch(html, /structural term test/i);
 });
 
-test("D-021.5 public structure is Observatory Pulse Theory Proof only", () => {
+test("D-021.5 public structure is Observatory Pulse Theory Proof Calculus", () => {
   const fieldHtml = fieldPage();
   const proofHtml = submissionPage();
   const theoryHtml = theoryPage();
+  const calculusHtml = calculusPage();
 
-  for (const html of [fieldHtml, proofHtml, theoryHtml]) {
+  for (const html of [fieldHtml, proofHtml, theoryHtml, calculusHtml]) {
     assert.match(html, />Observatory</);
     assert.match(html, />Pulse</);
     assert.match(html, />Theory</);
     assert.match(html, />Proof</);
-    assert.doesNotMatch(html, /🔭|❤️|📖|✓/);
+    assert.match(html, />Calculus</);
+    assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
   }
   assert.doesNotMatch(fieldHtml, /href="\/atlas"/);
   assert.doesNotMatch(fieldHtml, /href="\/garden"/);
@@ -352,7 +358,7 @@ test("/atlas is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("/member is a compatibility doorway to Calibration", async () => {
@@ -367,7 +373,7 @@ test("/api/enter is retired as a renderer placement mechanism", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Ark movement API is retired as a second renderer state path", async () => {
@@ -376,7 +382,7 @@ test("Ark movement API is retired as a second renderer state path", async () => 
     const body = await res.text();
 
     assert.equal(res.status, 410, path);
-    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, path);
+    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, path);
   }
 });
 
@@ -385,7 +391,7 @@ test("/ark is retired as a standalone doorway", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("/api/field/entries is retired in favour of derived field states", async () => {
@@ -393,7 +399,7 @@ test("/api/field/entries is retired in favour of derived field states", async ()
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Garden routes are no longer public surfaces", async () => {
@@ -410,7 +416,7 @@ test("Garden routes are no longer public surfaces", async () => {
     const res = await worker.fetch(new Request(url, init), {});
     const body = await res.text();
     assert.equal(res.status, 410, url);
-    assert.match(body, /Observatory, Pulse, Theory, and Proof only/, url);
+    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, url);
   }
 });
 
@@ -419,7 +425,7 @@ test("/garden is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
 test("Theory shortcuts are no longer public surfaces", async () => {
@@ -427,5 +433,163 @@ test("Theory shortcuts are no longer public surfaces", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, and Proof only/);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+});
+
+test("D-022 language enters the field: canvas term labels", () => {
+  const html = fieldPage();
+  assert.match(html, /function drawTermLabel/);
+  assert.match(html, /ctx\.fillText\(text, x, y\)/);
+  assert.match(html, /HOME_LABELS_PER_ORDER/);
+  assert.match(html, /LOCAL_LABEL_BUDGET/);
+  assert.match(html, /homeLabelIds/);
+  assert.match(html, /drawTermLabel\(focus, pf\.x, pf\.y \+ 30, 0\.92, 14, true\)/);
+});
+
+test("D-022 term entry offers the Atlas index", () => {
+  const html = fieldPage();
+  assert.match(html, /<datalist id="term-suggestions">/);
+  assert.match(html, /list="term-suggestions"/);
+  assert.match(html, /function populateTermSuggestions/);
+});
+
+test("D-022 dependency order is named in the field palette", () => {
+  const html = fieldPage();
+  assert.match(html, /id="order-legend"/);
+  assert.match(html, /function buildOrderLegend/);
+});
+
+test("D-022 decorative machinery removed from Observatory draw", () => {
+  const html = fieldPage();
+  assert.doesNotMatch(html, /smokePuffs \* adaptiveAmbientScale/);
+  assert.doesNotMatch(html, /wrinkleCount/);
+});
+
+test("D-022 Theory states the working postulate without inventing theory", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /Relation holds\./);
+  assert.match(html, /Order carries\./);
+  assert.match(html, /Trace places\./);
+  assert.match(html, /Reality already carries order/);
+  assert.match(html, /corrected by failure\. Not a doctrine/);
+});
+
+test("D-023 placement derives from declared structure only", () => {
+  const html = fieldPage();
+  assert.match(html, /function buildHomeAngles/);
+  assert.match(html, /circular mean of the bearings/);
+  assert.match(html, /declaredRelationIds/);
+  assert.match(html, /homeAngles\.get\(op\.id\)/);
+});
+
+test("D-023 the cursor is a probe and the instrument declares its reading", () => {
+  const html = fieldPage();
+  assert.match(html, /canvas\.style\.cursor = hoverId \? 'pointer' : ''/);
+  assert.match(html, /id="field-status"/);
+  assert.match(html, /generated read-model/);
+  assert.match(html, /terms · /);
+});
+
+test("D-023 the strands are named in renderer colours", () => {
+  const html = fieldPage();
+  assert.match(html, /legend-stroke/);
+  assert.match(html, /relationColor\(type, 0\.9\)/);
+});
+
+test("D-023 landing opens with the working postulate", () => {
+  const html = fieldPage();
+  assert.match(html, /landing-postulate">Relation holds\. Order carries\. Trace places\./);
+  assert.match(html, /every strand a declared relation/);
+});
+
+test("D-023 Theory leads with the claim and cites sparingly", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /<h1>Reality already carries order\.<\/h1>/);
+  assert.match(html, /Why the discipline works\./);
+  assert.match(html, /Working Postulate v0\.6/);
+  assert.match(html, /independently reviewable/);
+  assert.match(html, /independently retraceable/);
+  assert.match(html, /Constitution — constitutional aim/);
+});
+
+test("D-023 Proof shows the retrace pathway and visible humility", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /The retrace pathway/);
+  assert.match(html, /<b>Claim<\/b>/);
+  assert.match(html, /<b>Source<\/b>/);
+  assert.match(html, /<b>Method<\/b>/);
+  assert.match(html, /<b>Record<\/b>/);
+  assert.match(html, /What this does not claim/);
+  assert.match(html, /commission C005, open/);
+  assert.doesNotMatch(html, /Production deployment \/ D1-sync not yet file-verified/);
+  assert.match(html, /REPOSITORY_VERIFICATION\.md/);
+});
+
+test("D-024 /calculus serves the derivation surface", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /<title>Calculus · Reality Mechanics<\/title>/);
+  assert.match(html, /Derive the structure\./);
+  assert.match(html, /Nothing on this page is promoted/);
+  assert.match(html, /operator is not accepted/);
+});
+
+test("D-024 Calculus distinguishes derived, calibrated, heuristic, unresolved", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  for (const status of ["derived", "calibrated", "heuristic", "unresolved"]) {
+    assert.match(html, new RegExp('class="inv ' + status + '"'));
+    assert.match(html, new RegExp('<b>' + status + '</b>'));
+  }
+  assert.match(html, /gap is preserved deliberately/);
+});
+
+test("D-024 implied mathematics is explicit and honest", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.match(html, /mass\(t\) = \|\{ s ≠ t : t ∈ holds\(s\) ∪ traces\(s\) \}\|/);
+  assert.match(html, /continuous if x ≥ 8 · transitional if x ≥ 3 · else discrete/);
+  assert.match(html, /not<\/b> Atlas Ratio/);
+  assert.match(html, /rendering only, no new mechanics|Rendering only — no new mechanics/i);
+});
+
+test("D-024 candidate calculus presented without promotion", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const html = await res.text();
+
+  assert.match(html, /Order : Structure : Read/);
+  assert.match(html, /Pressure → Trace → Check → Determine → Step/);
+  assert.match(html, /not minimal/);
+  assert.match(html, /Relation → Connection/);
+  assert.match(html, /promotes nothing/);
+});
+
+test("D-024 five public surfaces reachable from every page", () => {
+  const pages = [fieldPage(), theoryPage(), submissionPage(), calculusPage()];
+  for (const html of pages) {
+    assert.match(html, /href="\/calculus"[^>]*>Calculus/);
+    assert.match(html, /href="\/proof"[^>]*>Proof/);
+    assert.match(html, /href="\/field"[^>]*>Observatory/);
+    assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
+  }
+});
+
+test("D-024 retired routes name five surfaces", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
+  const body = await res.text();
+  assert.equal(res.status, 410);
+  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });

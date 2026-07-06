@@ -97,10 +97,21 @@ t("D-026 Pulse visual refinement removes card chrome", () => {
 
 t("navigation reaches Observatory, Theory, and Proof", () => {
   assert.ok(src.includes('href="https://realitymechanics.nz/field">Observatory'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/submission">Proof'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/proof">Proof'));
   assert.ok(src.includes('href="https://calibration.realitymechanics.nz/" aria-current="page">Pulse'));
   assert.ok(src.includes('href="https://realitymechanics.nz/theory">Theory'));
-  assert.ok(!/🔭|❤️|📖|✓/.test(src));
+  assert.ok(!/🔭|❤️|📖|✓|∴/.test(src));
+});
+
+t("D-024 navigation reaches Calculus", () => {
+  assert.ok(src.includes('href="https://realitymechanics.nz/calculus">Calculus'));
+});
+
+t("D-023 Pulse declares its honest runtime character", () => {
+  assert.ok(src.includes("Mechanical runtime · no AI · no Atlas mutation"));
+  assert.ok(src.includes('href="/api/health"'));
+  assert.ok(src.includes("D-021.4-pulse-instrument-contract.md"));
+  assert.ok(src.includes("Pulse shows what structure does under time"));
 });
 
 console.log(`\ncalibration invariants: all ${n} assertions passed.`);

@@ -269,11 +269,17 @@ export function fieldPage(options = {}) {
       font: 500 clamp(1.35rem, 3.2vw, 1.85rem)/1.18 "Iowan Old Style", Charter, Georgia, serif;
       color: rgba(212,197,169,0.9); letter-spacing: 0.012em;
     }
+    #observatory-landing .landing-postulate {
+      margin: 0 0 0.45rem;
+      font: 500 0.94rem/1.4 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(200,96,26,0.78); letter-spacing: 0.01em;
+    }
     #observatory-landing .landing-orientation {
       margin: 0 0 1.1rem;
       font: 500 0.9rem/1.6 "Iowan Old Style", Charter, Georgia, serif;
       color: rgba(58,80,112,0.74);
     }
+    body.landing-dismissed #observatory-landing .landing-postulate { display: none; }
     #observatory-landing .landing-actions {
       display: flex; flex-direction: column; align-items: flex-start; gap: 0.38rem;
     }
@@ -436,10 +442,27 @@ export function fieldPage(options = {}) {
       font: 500 0.72rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
       white-space: pre-wrap;
     }
+    #order-legend {
+      position: fixed; left: 1.4rem; bottom: 1.3rem; z-index: 5;
+      display: flex; flex-direction: column; gap: 0.28rem; pointer-events: none;
+      font: 600 0.56rem/1 system-ui, sans-serif; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(212,197,169,0.62);
+    }
+    #order-legend .legend-row { display: flex; align-items: center; gap: 0.45rem; }
+    #order-legend .legend-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+    #order-legend .legend-stroke { width: 0.85rem; height: 2px; border-radius: 1px; }
+    #order-legend .legend-divider { height: 0.4rem; }
+    #field-status {
+      position: fixed; right: 1.4rem; bottom: 1.3rem; z-index: 5; pointer-events: none;
+      font: 600 0.56rem/1 system-ui, sans-serif; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(58,80,112,0.85); text-align: right;
+    }
+    body.sheet-open #field-status { display: none; }
     @media (max-width: 700px) {
       #observatory-landing { left: 1rem; top: 3.2rem; max-width: calc(100vw - 2rem); }
       #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
       #enter-form { bottom: 1rem; }
+      #order-legend { display: none; }
       #term-sheet { width: min(24rem, 92vw); right: min(-24rem, -92vw); padding: 4.25rem 1.15rem 2rem; }
     }
   </style>
@@ -451,11 +474,13 @@ export function fieldPage(options = {}) {
   <a href="/field" aria-current="page">Observatory</a>
   <a href="https://calibration.realitymechanics.nz/">Pulse</a>
   <a href="/theory">Theory</a>
-  <a href="/submission">Proof</a>
+  <a href="/proof">Proof</a>
+  <a href="/calculus">Calculus</a>
 </nav>
 <section id="observatory-landing" aria-label="Observatory orientation">
   <h1>Reality Mechanics Observatory</h1>
-  <p class="landing-orientation">Observe how structural relationships become visible through participation.</p>
+  <p class="landing-postulate">Relation holds. Order carries. Trace places.</p>
+  <p class="landing-orientation">Observe how structural relationships become visible through participation. Every point is an Atlas term; every strand a declared relation. Selecting a term changes the read.</p>
   <div class="landing-actions">
     <button type="button" id="landing-observe">Observe the Field</button>
     <button type="button" id="landing-continue" hidden>Continue where I left off</button>
@@ -463,9 +488,12 @@ export function fieldPage(options = {}) {
   </div>
 </section>
 <form id="enter-form" role="search">
-  <input id="enter-input" type="text" autocomplete="off" spellcheck="false"
+  <input id="enter-input" type="text" autocomplete="off" spellcheck="false" list="term-suggestions"
     placeholder="Enter a term" aria-label="Enter a term" maxlength="200"/>
+  <datalist id="term-suggestions"></datalist>
 </form>
+<div id="order-legend" aria-label="Dependency order and relation types"></div>
+<div id="field-status" aria-label="Field reading"></div>
 <section id="term-sheet" aria-live="polite" aria-label="Term sheet">
   <button id="sheet-close" aria-label="Close">×</button>
   <div id="sheet-neutral">
@@ -510,6 +538,9 @@ const sheetNeutralEl = document.getElementById('sheet-neutral');
 const sheetTermEl = document.getElementById('sheet-term');
 const landingObserveEl = document.getElementById('landing-observe');
 const landingContinueEl = document.getElementById('landing-continue');
+const termSuggestionsEl = document.getElementById('term-suggestions');
+const orderLegendEl = document.getElementById('order-legend');
+const fieldStatusEl = document.getElementById('field-status');
 const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
 const ATLAS_TREE_URL = 'https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics';
 let selectedTermId = null;
@@ -1631,10 +1662,9 @@ function fieldTensionFromGradient(gradient, structuralWeight = 0) {
 }
 
 function drawSmoke() {
+  // D-022: backdrop only. Ambient smoke puffs removed — they carried no
+  // ratio/order information a visitor could retrace to Atlas structure.
   const cx = innerWidth / 2, cy = innerHeight / 2;
-  const focus = operations[focusId];
-  const focusProfile = focus?.profile || null;
-  const family = focusProfile ? familyComposition(focusProfile)[0]?.key : 'anchor';
   const grad = ctx.createRadialGradient(cx, cy, 20, cx, cy, Math.max(innerWidth, innerHeight) * 0.88);
   grad.addColorStop(0, '#0b1018');
   grad.addColorStop(0.56, '#07090e');
@@ -1650,32 +1680,6 @@ function drawSmoke() {
     ctx.fillStyle = warm;
     ctx.fillRect(0, 0, innerWidth, innerHeight);
   }
-
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.scale(scale, scale);
-  ctx.translate(pan.x, pan.y);
-  const drift = family === 'motion' ? 0.14 : family === 'settlement' ? 0.045 : family === 'strain' ? 0.075 : 0.06;
-  const compression = family === 'strain' ? 0.56 : family === 'anchor' ? 0.68 : 0.82;
-  const smokePuffs = Math.max(18, Math.round(FIELD_RENDER_BUDGET.smokePuffs * adaptiveAmbientScale(0.42)));
-  for (let i = 0; i < smokePuffs; i++) {
-    const a = i * 0.42 + time * (drift + (i % 7) * 0.004);
-    const r = 36 + i * 6.3 + Math.sin(time * 0.35 + i) * 18;
-    const x = Math.cos(a) * r * (family === 'motion' ? 1.5 : 1.18);
-    const y = Math.sin(a * 0.82) * r * compression;
-    const puffR = 24 + (i % 9) * 7;
-    const puffA = 0.009 + (i % 5) * 0.0025 + (focusProfile?.ash || 0) * 0.008;
-    const puffGrad = ctx.createRadialGradient(x, y, 0, x, y, puffR * 1.38);
-    puffGrad.addColorStop(0, 'rgba(58,80,112,' + puffA + ')');
-    puffGrad.addColorStop(0.46, 'rgba(58,80,112,' + (puffA * 0.28) + ')');
-    puffGrad.addColorStop(0.78, 'rgba(58,80,112,0)');
-    puffGrad.addColorStop(1, 'rgba(58,80,112,0)');
-    ctx.beginPath();
-    ctx.fillStyle = puffGrad;
-    ctx.arc(x, y, puffR * 1.38, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  ctx.restore();
 }
 
 function basinVector(profile, amount = 1) {
@@ -2421,7 +2425,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
   const families = familyComposition(profile);
   const topFamily = families[0]?.key || 'anchor';
   const resolving = Math.min(1, settled / 1.8);
-  const baseAlpha = local ? 0.55 : 0.07;
+  const baseAlpha = local ? 0.55 : 0.11; // D-022 legibility floor
   const motionBoost = topFamily === 'motion' ? 1.18 : 1;
   const anchorBoost = topFamily === 'anchor' ? 1.16 : 1;
   const movementRatio = isFocus ? movementRatioSignature(fieldMovementEvent) : null;
@@ -2522,23 +2526,7 @@ function drawOperation(op, local, isFocus, fieldPressure = 0) {
     ctx.restore();
   }
 
-  const wrinkleCount = Math.min(ambientBudget.wrinkleMax, Math.floor((4 + profile.maturity * 12 + profile.density * 8 + physics.pressure * 8 + physics.friction * 6 + (topFamily === 'strain' ? 8 : 0)) * (1 - structuralMass * 0.58)));
-  ctx.save();
-  ctx.translate(p.x, p.y);
-  ctx.rotate(op.phase * 0.2 + motionTime * (0.018 + profile.airflow * 0.012));
-  for (let i = 0; i < wrinkleCount; i++) {
-    const a = i * 2.399 + op.phase;
-    const inner = radius * (0.35 + (i % 5) * 0.07);
-    const outer = radius * (0.72 + (i % 7) * 0.045) * (1 + (motionBoost - 1) * (1 - structuralMass * 0.5));
-    const curl = Math.sin(motionTime * (0.16 + physics.velocity * 0.18) + i + op.phase) * radius * (0.04 + physics.pressure * 0.08 + physics.opening * 0.04 + (topFamily === 'strain' ? 0.04 : 0)) * (1 - structuralMass * 0.62);
-    ctx.beginPath();
-    ctx.moveTo(Math.cos(a) * inner, Math.sin(a) * inner);
-    ctx.quadraticCurveTo(Math.cos(a + 0.35) * (inner + outer) * 0.5 + curl, Math.sin(a + 0.35) * (inner + outer) * 0.5 - curl, Math.cos(a + 0.7) * outer, Math.sin(a + 0.7) * outer);
-    ctx.strokeStyle = 'rgba(212,197,169,' + (0.025 + profile.maturity * 0.045 + structuralMass * 0.025 - profile.ash * 0.018) + ')';
-    ctx.lineWidth = Math.max(0.35, scale * (0.35 + profile.density * 0.42 + structuralMass * 0.32));
-    ctx.stroke();
-  }
-  ctx.restore();
+  // D-022: decorative wrinkle curls removed — texture without structural meaning.
 
   if (isFocus) {
     const arrivalAlpha = focusCondensation?.arrivalAlpha ?? (0.38 + profile.resolution * 0.22 + fieldTension * 0.06);
@@ -2669,6 +2657,28 @@ function draw() {
       drawFieldMovementWake(focus);
     }
     Object.values(operations).forEach((op) => drawOperation(op, local.has(op.id), op.id === focusId, fieldPressure));
+
+    // D-022: label the focused term and its nearest structural neighbours so
+    // relation and order remain readable without opening the term sheet.
+    if (focus) {
+      const labelled = [...local]
+        .filter((id) => id !== focusId && operations[id])
+        .map((id) => operations[id])
+        .sort((a, b) => termDegree(b) - termDegree(a))
+        .slice(0, LOCAL_LABEL_BUDGET);
+      labelled.forEach((op) => {
+        const p = screen(op);
+        drawTermLabel(op, p.x, p.y + 16, 0.6 * sensibilityAlpha(op.id), 11);
+      });
+      const pf = screen(focus);
+      drawTermLabel(focus, pf.x, pf.y + 30, 0.92, 14, true);
+      // D-023 hover probe in the focused read.
+      if (hoverId && hoverId !== focusId && operations[hoverId]) {
+        const hop = operations[hoverId];
+        const hp = screen(hop);
+        drawTermLabel(hop, hp.x, hp.y + 16, 0.92, 12, true);
+      }
+    }
   }
   renderRelationDebug();
   if (mechanicsRefreshPending) scheduleBehaviourTraceRefresh(false);
@@ -2696,6 +2706,7 @@ let spineCurrentIdx = -1; // index into spineFlat
 
 function buildSpineSequence() {
   spineFlat = [];
+  homeLabelIds = [];
   SPINE_ORDERS.forEach((order) => {
     const terms = Object.values(allOps)
       .filter((op) => String(op.order || '').toLowerCase() === order)
@@ -2704,8 +2715,33 @@ function buildSpineSequence() {
         return score(b) - score(a);
       });
     spineFlat.push(...terms.map((t) => t.id));
+    // D-022: language enters the field. The highest-degree terms of each order
+    // are labelled in the whole-field view — structural entry points, not decoration.
+    homeLabelIds.push(...terms.slice(0, HOME_LABELS_PER_ORDER).map((t) => t.id));
   });
+  buildHomeAngles();
   buildHomeConnections();
+}
+
+// D-022 Observatory legibility: term labels on the canvas.
+// A label is language doing structural work — it positions participation
+// (Common Term Structure: "Language positions participation.").
+const HOME_LABELS_PER_ORDER = 4;
+const LOCAL_LABEL_BUDGET = 14;
+let homeLabelIds = [];
+
+function drawTermLabel(op, x, y, alpha, size = 11, emphasized = false) {
+  const text = op.title || op.id;
+  if (!text || alpha <= 0.02) return;
+  ctx.save();
+  ctx.font = (emphasized ? '600 ' : '500 ') + size + 'px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.shadowColor = 'rgba(4,6,10,0.9)';
+  ctx.shadowBlur = 4;
+  ctx.fillStyle = 'rgba(212,197,169,' + Math.min(1, alpha) + ')';
+  ctx.fillText(text, x, y);
+  ctx.restore();
 }
 
 // ── Static home field ───────────────────────────────────────────────────────
@@ -2715,11 +2751,47 @@ function buildSpineSequence() {
 let homeConnections = [];   // { a, b, typeKey } — structural edges for drawing
 let homeAlpha = 1.0;        // fades 1→0 when entering a term; home field underlays focused view
 
+// D-023: dependency-bearing placement. A term's angular position is the
+// circular mean of the bearings of its declared relation targets placed in
+// earlier orders, so dependency families align along radial corridors from
+// the ground ring outward. Position derives from declared structure only —
+// order ring × relation bearings — nothing invented, everything retraceable
+// to the term's own holds/traces/carries/pairs/nests.
+let homeAngles = new Map();
+
+function declaredRelationIds(op) {
+  return ['holds','traces','carries','pairs','nests'].flatMap((key) => op[key] || []);
+}
+
+function buildHomeAngles() {
+  homeAngles = new Map();
+  SPINE_ORDERS.forEach((order, orderIndex) => {
+    const terms = Object.values(allOps)
+      .filter((op) => (spineDisplayOrder(op) || String(op.order || '').toLowerCase() || 'ground') === order)
+      .sort((a, b) => a.id.localeCompare(b.id));
+    terms.forEach((op, i) => {
+      if (orderIndex === 0) {
+        homeAngles.set(op.id, (i / Math.max(1, terms.length)) * Math.PI * 2);
+        return;
+      }
+      let sx = 0, sy = 0, n = 0;
+      declaredRelationIds(op).forEach((id) => {
+        const bearing = homeAngles.get(id);
+        if (bearing === undefined) return;
+        sx += Math.cos(bearing); sy += Math.sin(bearing); n++;
+      });
+      const jitter = ((hashStr(op.id) % 997) / 997 - 0.5) * 0.42;
+      homeAngles.set(op.id, n
+        ? Math.atan2(sy, sx) + jitter
+        : (hashStr(op.id) % 997) / 997 * Math.PI * 2);
+    });
+  });
+}
+
 function homePosition(op) {
   const order = spineDisplayOrder(op) || op.order || 'ground';
   const depth = ORDER_DEPTHS[order] ?? 0.4;
-  const hash = hashStr(op.id);
-  const angle = (hash % 997) / 997 * Math.PI * 2;
+  const angle = homeAngles.get(op.id) ?? (hashStr(op.id) % 997) / 997 * Math.PI * 2;
   const cx = innerWidth / 2, cy = innerHeight * 0.44;
   const maxR = Math.min(cx * 0.82, cy * 0.90);
   return { x: cx + Math.cos(angle) * (0.18 + depth * 0.72) * maxR,
@@ -2756,7 +2828,7 @@ function drawHomeNode(op, alpha) {
   const glow = radius * 2.85;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const coreAlpha = 0.19 + structuralMass * 0.045;
+  const coreAlpha = 0.3 + structuralMass * 0.06;
   const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, glow);
   if (colourMode === 'fire') {
     grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
@@ -2771,7 +2843,7 @@ function drawHomeNode(op, alpha) {
   ctx.fillStyle = grad;
   ctx.arc(pos.x, pos.y, glow, 0, Math.PI * 2);
   ctx.fill();
-  const edgeAlpha = 0.04 + structuralMass * 0.012;
+  const edgeAlpha = 0.1 + structuralMass * 0.02; // D-022 legibility floor
   ctx.beginPath();
   ctx.strokeStyle = colourMode === 'fire'
     ? fireColor(order, edgeAlpha * alpha, 8)
@@ -2812,13 +2884,28 @@ function drawHomeField(alpha) {
     ctx.beginPath();
     ctx.moveTo(pa.x, pa.y);
     ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
-    const baseA = (typeKey === 'carries' ? 0.048 : typeKey === 'pairs' ? 0.032 : 0.024) * lineBoost;
+    const baseA = (typeKey === 'carries' ? 0.085 : typeKey === 'pairs' ? 0.055 : 0.045) * lineBoost; // D-022 legibility floor
     const sense = relationSensibility(a.id, b.id);
     ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * alpha * sense, baseA * alpha * sense);
     ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
     ctx.stroke();
   }
   ctx.restore();
+
+  // D-022: label the structural entry points of each order.
+  homeLabelIds.forEach((id) => {
+    const op = allOps[id];
+    if (!op) return;
+    const pos = homePosition(op);
+    drawTermLabel(op, pos.x, pos.y + 14, 0.62 * alpha, 11);
+  });
+
+  // D-023: the cursor is a probe — sweeping the field surfaces the term under it.
+  if (hoverId && allOps[hoverId] && !homeLabelIds.includes(hoverId)) {
+    const op = allOps[hoverId];
+    const pos = homePosition(op);
+    drawTermLabel(op, pos.x, pos.y + 14, 0.92 * alpha, 12, true);
+  }
 }
 
 function spineDisplayOrder(opOrId) {
@@ -2849,6 +2936,7 @@ canvas.addEventListener('pointerdown', (event) => {
 });
 canvas.addEventListener('pointermove', (event) => {
   hoverId = nearestOperation(event.clientX, event.clientY);
+  canvas.style.cursor = hoverId ? 'pointer' : '';
   activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
   if (activePointers.size === 2 && pinchStartDist) {
     const pts = [...activePointers.values()];
@@ -2948,6 +3036,56 @@ function operationFromFieldState(state) {
   return op;
 }
 
+// D-022: the enter form offers the Atlas index itself — a visitor does not
+// need to already know term names to enter the field.
+function populateTermSuggestions() {
+  if (!termSuggestionsEl) return;
+  termSuggestionsEl.innerHTML = '';
+  Object.values(allOps)
+    .map((op) => op.title || op.id)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach((title) => {
+      const option = document.createElement('option');
+      option.value = title;
+      termSuggestionsEl.appendChild(option);
+    });
+}
+
+// D-022: name the dependency order in the field's own palette.
+// "Order carries" (Theory, working postulate) — the legend makes the ring
+// arrangement readable as dependency order, not decoration.
+function buildOrderLegend() {
+  if (!orderLegendEl) return;
+  orderLegendEl.innerHTML = '';
+  SPINE_ORDERS.forEach((order) => {
+    const fr = FIRE_ORDERS[order];
+    if (!fr) return;
+    const row = document.createElement('div');
+    row.className = 'legend-row';
+    const dot = document.createElement('span');
+    dot.className = 'legend-dot';
+    dot.style.background = 'hsl(' + fr.h + ',' + fr.s + '%,' + fr.l + '%)';
+    row.appendChild(dot);
+    row.appendChild(document.createTextNode(order));
+    orderLegendEl.appendChild(row);
+  });
+  // D-023: name the strands. Each relation type is shown in the exact colour
+  // the renderer draws it with — the legend reads the field, it does not decorate it.
+  const divider = document.createElement('div');
+  divider.className = 'legend-divider';
+  orderLegendEl.appendChild(divider);
+  relationTypes.forEach((type) => {
+    const row = document.createElement('div');
+    row.className = 'legend-row';
+    const stroke = document.createElement('span');
+    stroke.className = 'legend-stroke';
+    stroke.style.background = relationColor(type, 0.9);
+    row.appendChild(stroke);
+    row.appendChild(document.createTextNode(type.key));
+    orderLegendEl.appendChild(row);
+  });
+}
+
 async function bootstrap() {
   modeEl.textContent = 'loading';
   try {
@@ -2961,6 +3099,15 @@ async function bootstrap() {
     states.forEach((state) => { if (state?.id) allOps[state.id] = operationFromFieldState(state); });
     refreshCoupledFrame();
     buildSpineSequence();
+    populateTermSuggestions();
+    buildOrderLegend();
+    // D-023: the instrument declares its reading — how many terms, which
+    // generated Atlas read-model, and that the read path is one-way.
+    if (fieldStatusEl) {
+      const orderCount = new Set(states.map((s) => String(s.order || '').toLowerCase()).filter(Boolean)).size;
+      const version = payload.atlasVersion ? 'atlas ' + payload.atlasVersion : 'atlas version unrecorded';
+      fieldStatusEl.textContent = states.length + ' terms · ' + orderCount + ' orders · ' + version + ' · generated read-model';
+    }
     Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
   } catch(err) {
     modeEl.textContent = 'Observatory';
@@ -3069,7 +3216,7 @@ export function theoryPage() {
     nav a:hover, nav a[aria-current="page"] { color:rgba(200,96,26,0.78); }
     main { width:min(680px, calc(100vw - 48px)); margin:0 auto; padding:108px 0 96px; }
     h1 { margin:0 0 20px; color:var(--warm); font:500 clamp(36px,6.5vw,58px)/1.06 "Iowan Old Style", Charter, Georgia, serif; letter-spacing:0.01em; }
-    .lede { color:var(--warm-dim); font-size:20px; line-height:1.62; max-width:600px; margin:0 0 52px; }
+    .lede { color:var(--warm-dim); font-size:20px; line-height:1.62; max-width:600px; margin:0 0 40px; }
     h2 { color:rgba(212,197,169,0.88); font:500 20px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin:48px 0 14px; }
     ul { padding-left:0; list-style:none; max-width:600px; margin:0; }
     li { margin:14px 0; padding-left:1.1rem; position:relative; }
@@ -3077,6 +3224,16 @@ export function theoryPage() {
     a { color:var(--lead); text-decoration:none; border-bottom:1px solid rgba(77,142,166,0.22); }
     a:hover { color:rgba(200,96,26,0.88); border-bottom-color:rgba(200,96,26,0.32); }
     p { max-width:600px; }
+    blockquote.postulate { margin:22px 0; padding:0 0 0 1.25rem; border-left:1px solid rgba(200,96,26,0.32); }
+    blockquote.postulate p { margin:0; color:var(--warm); font-size:clamp(22px,4vw,28px); line-height:1.55; }
+    blockquote.postulate cite { display:block; margin-top:14px; font-style:normal; color:rgba(77,94,114,0.82); font:500 10px/1.4 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
+    blockquote.postulate.quiet { border-left-color:rgba(77,94,114,0.45); }
+    blockquote.postulate.quiet p { font-size:19px; }
+    .surfaces { margin:18px 0 12px; max-width:600px; }
+    .surface { display:block; margin:16px 0; padding:0; text-decoration:none; color:inherit; border:0; }
+    .surface:hover .surface-name { color:rgba(200,96,26,0.88); }
+    .surface-name { display:block; color:var(--warm); font:500 18px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin-bottom:4px; transition:color 0.2s ease; }
+    .surface-desc { color:var(--cool); font-size:15px; }
     .calculus-notebook { margin:18px 0 0; padding:22px 0 4px 1.35rem; border-left:1px solid rgba(200,96,26,0.2); max-width:600px; }
     .calculus-notebook .notebook-kicker { margin:0 0 10px; color:rgba(77,94,114,0.82); font:500 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.14em; text-transform:uppercase; }
     .calculus-notebook p { margin:0; font:15px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.78); }
@@ -3090,12 +3247,35 @@ export function theoryPage() {
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
       <a href="/theory" aria-current="page">Theory</a>
-      <a href="/submission">Proof</a>
+      <a href="/proof">Proof</a>
+      <a href="/calculus">Calculus</a>
     </nav>
   </header>
   <main>
-    <h1>Why the discipline works.</h1>
-    <p class="lede">Theory explains. It is not duplicated here. The Observatory demonstrates structure; Pulse demonstrates behaviour through time; Proof packages retraceable evidence.</p>
+    <h1>Reality already carries order.</h1>
+    <p class="lede">Reality Mechanics does not invent structure. It observes structural relations already carried in reality — and keeps every observation retraceable to its source.</p>
+
+    <h2>Why the discipline works.</h2>
+    <blockquote class="postulate">
+      <p>Relation holds.<br/>Order carries.<br/>Trace places.</p>
+      <cite>Working Postulate v0.6 — versioned, answerable to the Atlas, corrected by failure. Not a doctrine.</cite>
+    </blockquote>
+    <p>This is the ordinary-language test of whether a term has entered order: things relate; relation holds where it can remain available; order carries where what holds can continue; trace places where what carries can be followed back.</p>
+
+    <h2>The standard every claim answers to</h2>
+    <blockquote class="postulate quiet">
+      <p>Every accepted claim should be independently reviewable.<br/>Every accepted decision should be independently retraceable.</p>
+      <cite>Constitution — constitutional aim.</cite>
+    </blockquote>
+
+    <h2>How the surfaces demonstrate it</h2>
+    <div class="surfaces">
+      <a class="surface" href="/field"><span class="surface-name">Observatory</span><span class="surface-desc">Structure made visible — terms as places, relations as strands, order as depth.</span></a>
+      <a class="surface" href="https://calibration.realitymechanics.nz/"><span class="surface-name">Pulse</span><span class="surface-desc">Behaviour through time — strain, threshold, correction.</span></a>
+      <a class="surface" href="/proof"><span class="surface-name">Proof</span><span class="surface-desc">The retrace pathway — accepted, candidate, unresolved, with evidence.</span></a>
+      <a class="surface" href="/calculus"><span class="surface-name">Calculus</span><span class="surface-desc">The derivation surface — what is derived, calibrated, heuristic, and still unresolved.</span></a>
+    </div>
+    <p>Theory explains; it is not duplicated here. Each surface reads the same repository record.</p>
 
     <h2>Canonical documents</h2>
     <ul>
@@ -3115,6 +3295,199 @@ export function theoryPage() {
       <p class="notebook-kicker">Laboratory notebook · unpromoted</p>
       <p><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read. Precision without decoration.</p>
     </section>
+  </main>
+</body>
+</html>`;
+}
+
+export function calculusPage() {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Calculus · Reality Mechanics</title>
+  <meta name="description" content="Reality Mechanics Calculus — the derivation surface: what is derived, what is calibrated, what is heuristic, and what remains unresolved."/>
+  <style>
+    :root { --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72); --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; --line:rgba(255,255,255,0.08); --amber:#b08d3e; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(ellipse 110% 70% at 50% -6%, #101620 0, #06080d 54%, #040509 100%); color:rgba(212,197,169,0.7); font:16px/1.72 "Iowan Old Style", Charter, Georgia, serif; }
+    header { position:fixed; inset:0 0 auto; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 28px; background:linear-gradient(180deg, rgba(6,8,13,0.72) 0%, rgba(6,8,13,0) 100%); }
+    .brand { color:rgba(200,96,26,0.62); font:500 11px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; }
+    nav a { color:rgba(77,94,114,0.72); text-decoration:none; font:500 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    nav a:hover, nav a[aria-current="page"] { color:rgba(200,96,26,0.78); }
+    main { width:min(720px, calc(100vw - 48px)); margin:0 auto; padding:108px 0 96px; }
+    h1 { margin:0 0 18px; color:var(--warm); font:500 clamp(34px,6vw,54px)/1.05 "Iowan Old Style", Charter, Georgia, serif; }
+    .lede { color:rgba(212,197,169,0.72); font-size:19px; line-height:1.62; max-width:640px; margin:0 0 28px; }
+    h2 { color:rgba(212,197,169,0.9); font:500 22px/1.28 "Iowan Old Style", Charter, Georgia, serif; margin:48px 0 10px; }
+    h3 { color:rgba(212,197,169,0.86); font:500 17px/1.32 "Iowan Old Style", Charter, Georgia, serif; margin:28px 0 8px; }
+    p { max-width:640px; margin:0 0 12px; }
+    ul { max-width:640px; padding-left:0; list-style:none; margin:0; }
+    li { margin:10px 0; padding-left:1.1rem; position:relative; }
+    li::before { content:""; position:absolute; left:0; top:0.72em; width:4px; height:4px; border-radius:50%; background:rgba(77,94,114,0.45); }
+    a { color:var(--lead); text-decoration:none; border-bottom:1px solid rgba(77,142,166,0.2); }
+    a:hover { color:rgba(200,96,26,0.86); }
+    code { color:var(--lead); font:500 0.92em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .notice { margin:24px 0 0; padding:0 0 0 1.2rem; border-left:1px solid rgba(200,96,26,0.28); color:rgba(212,197,169,0.74); font-size:15px; max-width:640px; }
+    .chip { display:inline-block; vertical-align:middle; margin-left:8px; padding:0; border:0; font:500 9px/1.4 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    .chip.derived { color:rgba(224,138,74,0.78); }
+    .chip.calibrated { color:rgba(111,167,189,0.78); }
+    .chip.heuristic { color:rgba(196,164,94,0.78); }
+    .chip.unresolved { color:rgba(128,147,168,0.82); }
+    .vocab { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:24px 32px; margin-top:18px; max-width:640px; }
+    .vocab div { padding:0; font-size:14px; line-height:1.62; }
+    .vocab b { display:block; margin-bottom:6px; font:500 10px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    .vocab .derived b { color:rgba(224,138,74,0.72); } .vocab .calibrated b { color:rgba(111,167,189,0.72); }
+    .vocab .heuristic b { color:rgba(196,164,94,0.72); } .vocab .unresolved b { color:rgba(128,147,168,0.78); }
+    .chain { margin-top:18px; max-width:640px; }
+    .chain-step { position:relative; border-left:1px solid rgba(200,96,26,0.28); padding:0 0 22px 1.25rem; }
+    .chain-step:last-child { padding-bottom:0; }
+    .chain-step b { color:var(--warm); font:500 16px/1.3 "Iowan Old Style", Charter, Georgia, serif; }
+    .chain-step .rule { display:block; margin:6px 0 4px; color:var(--lead); font:500 13px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space:pre-wrap; }
+    .chain-step .why { font-size:14px; color:rgba(212,197,169,0.68); }
+    .caveat { margin-top:16px; padding:0 0 0 1.2rem; border-left:1px solid rgba(77,94,114,0.45); color:rgba(212,197,169,0.68); font-size:14px; max-width:640px; }
+    .flow { margin:14px 0; color:var(--warm); font:500 17px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .inventory { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px 36px; margin-top:18px; max-width:640px; }
+    .inv { padding:0; }
+    .inv h3 { margin:0 0 10px; font:500 10px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    .inv.derived h3 { color:rgba(224,138,74,0.68); } .inv.calibrated h3 { color:rgba(111,167,189,0.72); }
+    .inv.heuristic h3 { color:rgba(196,164,94,0.72); } .inv.unresolved h3 { color:rgba(128,147,168,0.78); }
+    .inv ul { padding-left:0; font-size:14px; margin:0; list-style:none; }
+    .inv li { margin:8px 0; padding-left:1rem; position:relative; }
+    .inv li::before { content:""; position:absolute; left:0; top:0.7em; width:3px; height:3px; border-radius:50%; background:rgba(77,94,114,0.4); }
+    .status-line { margin-top:52px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
+    @media (max-width:640px) { .vocab, .inventory { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Calculus</div>
+    <nav aria-label="Reality Mechanics areas">
+      <a href="/field">Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">Pulse</a>
+      <a href="/theory">Theory</a>
+      <a href="/proof">Proof</a>
+      <a href="/calculus" aria-current="page">Calculus</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Derive the structure.</h1>
+    <p class="lede">The Calculus is the derivation surface. It records how Reality Mechanics moves from relation, order, trace, and carrying toward explicit derivation — and preserves every gap it has not yet closed.</p>
+    <p class="notice"><b>Nothing on this page is promoted.</b> The Calculus has no accepted operation; the <code>:</code> operator is not accepted. Statuses below are exact — where derivation is incomplete, the gap is shown, not papered over.</p>
+
+    <h2>The status vocabulary</h2>
+    <p>Every claim on this surface carries one of four statuses. They are not interchangeable.</p>
+    <div class="vocab">
+      <div class="derived"><b>derived</b>Forced by repository evidence through a named test or locked definition. Independently retraceable to source and report.</div>
+      <div class="calibrated"><b>calibrated</b>Aligned to existing structure by a tested rule or configured threshold. Faithful — but chosen, not forced from first principles.</div>
+      <div class="heuristic"><b>heuristic</b>A working number or rendering choice made for legibility. Carries no structural claim and can change without a derivation event.</div>
+      <div class="unresolved"><b>unresolved</b>Insufficient evidence in either direction. The gap is preserved deliberately.</div>
+    </div>
+
+    <h2>The live derivation chain</h2>
+    <p>This chain runs on the Observatory today. Each step names its exact rule and its status — mathematics already implied by the runtime, made explicit.</p>
+    <div class="chain">
+      <div class="chain-step">
+        <b>Declared relation</b><span class="chip derived">canonical source</span>
+        <span class="rule">holds · traces · carries · pairs · nests</span>
+        <span class="why">Every edge is declared in Atlas frontmatter, in GitHub. Nothing downstream may invent an edge.</span>
+      </div>
+      <div class="chain-step">
+        <b>Structural mass</b><span class="chip derived">derived</span>
+        <span class="rule">mass(t) = |{ s ≠ t : t ∈ holds(s) ∪ traces(s) }|</span>
+        <span class="why">Carrier in-degree over <code>holds</code> and <code>traces</code> only. <code>needs</code>, <code>carries</code>, <code>pairs</code>, <code>nests</code> are excluded by locked definition (<a href="${GITHUB_DOC}/docs/reports/D-010B-generalise-ratio-mechanics.md">D-010B</a>).</span>
+      </div>
+      <div class="chain-step">
+        <b>Ratio mode</b><span class="chip calibrated">calibrated</span>
+        <span class="rule">mode(x) = continuous if x ≥ 8 · transitional if x ≥ 3 · else discrete</span>
+        <span class="why">Threshold bands are configured operational values, not derived constants. They translate mass into a render register.</span>
+      </div>
+      <div class="chain-step">
+        <b>Render behaviour</b><span class="chip heuristic">heuristic</span>
+        <span class="rule">amplification coefficients × what the runtime already computes</span>
+        <span class="why">Rendering only — no new mechanics (<a href="${GITHUB_DOC}/docs/reports/D-020B-mechanics-amplification.md">D-020B</a>). Legibility floors and placement jitter are likewise heuristic (D-022, D-023).</span>
+      </div>
+      <div class="chain-step">
+        <b>Retrace</b><span class="chip derived">derived</span>
+        <span class="rule">GET /api/field/behaviour-trace?id=… recomputes the chain for any term</span>
+        <span class="why">The read back is mechanical (<a href="${GITHUB_DOC}/docs/reports/D-012-behaviour-retrace-instrument.md">D-012</a>). If a rendered behaviour cannot be retraced to a declared relation, it is marked, not bonded.</span>
+      </div>
+    </div>
+    <p class="caveat">This scalar chain is a narrower Field read. It is <b>not</b> Atlas Ratio — falsification found it <i>viable with constraints</i>, and a richer structural signature remains a future unknown (<a href="${GITHUB_DOC}/docs/reports/D-015B-derived-ratio-falsification.md">D-015B</a>, <a href="${GITHUB_DOC}/docs/runtime/DERIVED_RATIO.md">DERIVED_RATIO</a>).</p>
+
+    <h3>Maturity, derived at read time<span class="chip calibrated">calibrated</span></h3>
+    <p>Each term's maturity band — <code>placed → fresh → settling → established → mature</code> — is computed from revision history, carrier count, and proposal record every time the field is read. It is never stored. Band thresholds (48 h, 7 d / 30 d / 90 d, carrier minimums) are configured values.</p>
+
+    <h2>The candidate calculus</h2>
+    <p>The working relation under investigation, recorded in <a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice Calculus</a>:</p>
+    <p class="flow">Order : Structure : Read</p>
+    <p>The <code>:</code> marks an operation, not punctuation — and that operator is precisely what is not yet accepted. The burden of proof rests on the operations, not on the names of the stages.</p>
+
+    <h3>Candidate runtime — Ark Run<span class="chip unresolved">candidate</span></h3>
+    <p class="flow">Pressure → Trace → Check → Determine → Step</p>
+    <p>Seven proposed practice stages compress into this runtime already present in the Atlas — none of its operations required invention (<a href="${GITHUB_DOC}/docs/reports/C-001-practice-calculus-derivation.md">C-001</a>). It remains a candidate, not the Practice Calculus.</p>
+
+    <h3>Minimum support — a negative result, kept<span class="chip derived">derived</span></h3>
+    <p class="flow">Relation → Connection</p>
+    <p>The candidate Order/Ark calculus was tested for minimality and found <b>not minimal</b> (<a href="${GITHUB_DOC}/docs/reports/C-003-minimum-support-test.md">C-003</a>). A single held Connection — which needs only Relation — already offers forward availability (the Carry direction) and backward availability (the Trace direction). The candidate's apparent size comes from <code>Hold</code>, which pulls in nearly the whole first order. The negative result is preserved; the candidate is not promoted.</p>
+
+    <h3>Standing constraints before any promotion</h3>
+    <ul>
+      <li>Resolve the <code>:</code> operator — a named sequence is not enough; the transformation must be retraceable (C010).</li>
+      <li>Resolve the operation-consistency split — "operation" currently carries six senses across two incompatible categories (<a href="${GITHUB_DOC}/docs/reports/C-C000A-operation-consistency-audit.md">C-C000A</a>).</li>
+      <li>Declare the calculus grain — minimal <code>Connection</code> seat versus held <code>Carry</code>/<code>Trace</code> — and name <code>Hold</code> explicitly (C-003).</li>
+    </ul>
+
+    <h2>The full inventory</h2>
+    <div class="inventory">
+      <div class="inv derived">
+        <h3>Derived</h3>
+        <ul>
+          <li>Relation is the sole internal root of first-order dependency (<a href="${GITHUB_DOC}/docs/reports/C-R001-first-order-dependency-topology.md">C-R001</a>).</li>
+          <li>Carry and Trace are one condition, carved into two terms by direction (<a href="${GITHUB_DOC}/docs/stewardship/STEWARDSHIP_V1.md">Stewardship V1</a>).</li>
+          <li>Structural mass rule — holds/traces in-degree, locked (D-010B).</li>
+          <li>Behaviour retrace — the scalar chain is mechanically recomputable for any term (D-012; D-015B).</li>
+          <li>Runtime principles — statements of what the current runtime already implies, no more (<a href="${GITHUB_DOC}/docs/practice/RUNTIME_PRINCIPLES.md">D-014</a>).</li>
+          <li>Minimum support: the tested candidate is not minimal; minimal seat <code>Relation → Connection</code> (C-003).</li>
+        </ul>
+      </div>
+      <div class="inv calibrated">
+        <h3>Calibrated</h3>
+        <ul>
+          <li>Tier-1 place sentences — Atlas opening prose calibrated corpus-wide (<a href="${GITHUB_DOC}/docs/reports/D-018A-opening-place-calibration.md">D-018A</a>).</li>
+          <li>Tier-1 hold sentences — 481 files, 485/488 aligned (<a href="${GITHUB_DOC}/docs/reports/D-018D-tier-1-hold-calibration.md">D-018D</a>).</li>
+          <li>Whole-Atlas calibration classes (<a href="${GITHUB_DOC}/docs/reports/D-008-whole-atlas-calibration.md">D-008</a>).</li>
+          <li>Ratio-mode thresholds (3 / 8) and maturity bands — configured, revisable.</li>
+        </ul>
+      </div>
+      <div class="inv heuristic">
+        <h3>Heuristic</h3>
+        <ul>
+          <li>Mechanics amplification coefficients — rendering only, no new mechanics (D-020B).</li>
+          <li>Observatory legibility floors — perceptual alphas (D-022).</li>
+          <li>Dependency-bearing placement jitter and label budgets (D-023).</li>
+          <li>Adaptive render-quality budgets.</li>
+        </ul>
+      </div>
+      <div class="inv unresolved">
+        <h3>Unresolved</h3>
+        <ul>
+          <li><b>Pressure</b> is not derived — three senses distinguished, derivation open (<a href="${GITHUB_DOC}/docs/reports/C-A001-pressure-derivation-evidence.md">C-A001</a>).</li>
+          <li>The <code>:</code> operator is not accepted (C010).</li>
+          <li>"operation" carries six senses across two incompatible categories (C-C000A).</li>
+          <li>The calculus grain is undeclared (C-003).</li>
+          <li>Second Order has no terminal marker — confirmed gap, deliberately unfilled (<a href="${GITHUB_DOC}/docs/stewardship/OPEN_QUESTIONS.md">Open Questions</a>).</li>
+          <li>D1 schema and non-entries recovery path uncharacterised (commission C005).</li>
+          <li>A structural signature richer than the scalar ratio — future unknown (D-015B).</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>How this surface relates to the others</h2>
+    <p>The <a href="/field">Observatory</a> shows structure; <a href="https://calibration.realitymechanics.nz/">Pulse</a> shows behaviour through time; <a href="/theory">Theory</a> states the claim; <a href="/proof">Proof</a> retraces the evidence. The Calculus shows how far the claims have actually been derived — and exactly where derivation stops.</p>
+
+    <p class="status-line">Calculus — the derivation surface. The Calculus remains an open investigation; this page records its state and promotes nothing.</p>
   </main>
 </body>
 </html>`;
@@ -3158,8 +3531,15 @@ export function submissionPage() {
     .instrument:hover .instrument-name { color:rgba(200,96,26,0.88); }
     .instrument-name { display:block; color:var(--warm); font:500 18px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin-bottom:4px; transition:color 0.2s ease; }
     .instrument-desc { color:var(--cool); font-size:15px; }
+    .pathway { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:24px 20px; margin:20px 0 0; }
+    .step { display:block; padding:0; text-decoration:none; color:var(--cool); font-size:14px; line-height:1.55; border:0; }
+    .step:hover .step-title { color:rgba(200,96,26,0.88); }
+    .step-n { display:block; color:rgba(200,96,26,0.58); font:500 10px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:6px; }
+    .step-title, .step b { display:block; color:var(--warm); font:500 16px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin-bottom:4px; transition:color 0.2s ease; }
+    .step:hover b, .step:hover .step-title { color:rgba(200,96,26,0.88); }
+    .step code { color:var(--lead); font-size:12px; }
     .status-line { margin-top:56px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
-    @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } }
+    @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } .pathway { grid-template-columns:1fr 1fr; } }
   </style>
 </head>
 <body>
@@ -3169,12 +3549,22 @@ export function submissionPage() {
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
       <a href="/theory">Theory</a>
-      <a href="/submission" aria-current="page">Proof</a>
+      <a href="/proof" aria-current="page">Proof</a>
+      <a href="/calculus">Calculus</a>
     </nav>
   </header>
   <main>
     <h1>Retrace pathway</h1>
     <p class="lede">Proof packages what the programme currently holds as <b>accepted</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b> — so independent participants can review, challenge, and retrace it. Nothing here is promoted beyond its stated status.</p>
+
+    <h2>The retrace pathway</h2>
+    <p>Every claim on this site can be walked back to its source. The pathway has four steps:</p>
+    <div class="pathway">
+      <div class="step"><span class="step-n">1</span><b>Claim</b>A statement with a named status — accepted, candidate, or unresolved. Never more than its status.</div>
+      <a class="step" href="${GITHUB_DOC}/Reality_Mechanics"><span class="step-n">2</span><b>Source</b>The Atlas term or repository document the claim reads from. GitHub is canonical.</a>
+      <a class="step" href="${GITHUB_DOC}/docs/stewardship/STEWARDSHIP_V1.md"><span class="step-n">3</span><b>Method</b>The stewardship tests or commission that examined it. The burden of proof sits on every proposed change, never on existing structure.</a>
+      <a class="step" href="${GITHUB_DOC}/docs/reports"><span class="step-n">4</span><b>Record</b>The evidence report that preserved the examination, in <code>docs/reports/</code>.</a>
+    </div>
 
     <h2>Submission 001</h2>
     <p>The first public submission coordinates repository evidence under the Constitution's standard of care.</p>
@@ -3214,7 +3604,7 @@ export function submissionPage() {
           <li><b>Pressure</b> is not yet derived.</li>
           <li>"operation" is used inconsistently across the repository.</li>
           <li>Second Order terminal-marker gap, left unfilled.</li>
-          <li>Production deployment / D1-sync not yet file-verified.</li>
+          <li>D1 schema and non-entries recovery path uncharacterised (commission C005, open).</li>
         </ul>
       </section>
     </div>
@@ -3229,7 +3619,16 @@ export function submissionPage() {
     <ul>
       <li><a href="${GITHUB_DOC}/docs/submissions/SUBMISSION-001-first-public-submission.md">Submission 001 source</a></li>
       <li><a href="${GITHUB_DOC}/docs/practice/COMMISSIONS.md">Commissions register</a></li>
+      <li><a href="${GITHUB_DOC}/REPOSITORY_VERIFICATION.md">Delivery pipeline verification (D-003 / D-004 / D-019)</a></li>
       <li><a href="${GITHUB_DOC}/docs/reports/D-021.4-pulse-instrument-contract.md">Pulse instrument contract (D-021.4)</a></li>
+    </ul>
+
+    <h2>What this does not claim</h2>
+    <ul>
+      <li>It does not claim to invent structure. The purpose is to increase structural perception of order reality already carries.</li>
+      <li>It does not promote the candidate calculus. The <b>:</b> operator is not accepted; the tested candidate was found not minimal.</li>
+      <li>It does not treat prose as authority. Language answers to structure, never the reverse.</li>
+      <li>It does not presume its own soundness. The burden of proof sits on every proposed change — and every accepted claim stands only while it remains retraceable.</li>
     </ul>
 
     <h2>What this asks of reviewers</h2>
@@ -3271,10 +3670,13 @@ async function handleRequest(request, env) {
   if (pathname === "/theory")
     return new Response(theoryPage(), { headers: HTML_HEADERS });
 
+  if (pathname === "/calculus")
+    return new Response(calculusPage(), { headers: HTML_HEADERS });
+
   if (pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001")
     return new Response(submissionPage(), { headers: HTML_HEADERS });
 
-  return new Response("Reality Mechanics exposes Observatory, Pulse, Theory, and Proof only.", {
+  return new Response("Reality Mechanics exposes Observatory, Pulse, Theory, Proof, and Calculus only.", {
     status: 410,
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });

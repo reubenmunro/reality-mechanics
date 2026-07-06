@@ -96,6 +96,9 @@ const PAGE = `<!doctype html>
 
     .note { margin-top:28px; color:rgba(77,94,114,0.78); font-size:14px; line-height:1.62; max-width:560px; }
     .note b { color:rgba(200,96,26,0.72); font-weight:500; }
+    .runtime-line { color:rgba(77,94,114,0.72); font:500 10px/1.6 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
+    .runtime-line a { color:rgba(77,94,114,0.72); text-decoration:none; border-bottom:1px solid rgba(77,142,166,0.18); }
+    .runtime-line a:hover { color:rgba(200,96,26,0.78); }
 
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
@@ -110,13 +113,15 @@ const PAGE = `<!doctype html>
       <a href="https://realitymechanics.nz/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/" aria-current="page">Pulse</a>
       <a href="https://realitymechanics.nz/theory">Theory</a>
-      <a href="https://realitymechanics.nz/submission">Proof</a>
+      <a href="https://realitymechanics.nz/proof">Proof</a>
+      <a href="https://realitymechanics.nz/calculus">Calculus</a>
     </nav>
   </header>
   <main>
     <section class="intro">
       <h1>Behaviour through time.</h1>
-      <p>Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
+      <p>The Observatory shows structure; Pulse shows what structure does under time. Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
+      <p class="runtime-line">Mechanical runtime · no AI · no Atlas mutation · <a href="/api/health">live health</a> · <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/docs/reports/D-021.4-pulse-instrument-contract.md">instrument contract</a></p>
       <div class="proof">
         <div><b>Drift</b>Strain builds on its own. Nothing holds it still.</div>
         <div><b>Pulse</b>A correction fires only once threshold is crossed.</div>

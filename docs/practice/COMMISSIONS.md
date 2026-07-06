@@ -92,6 +92,9 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Observatory render blocker | D-021.4-R | Resolved | Canvas empty on first load after D-020D | `docs/reports/D-021.4-observatory-render-blocker.md`; home nodes + whole-field visibility |
 | Public website strip-back | D-021.5 | Resolved | Public site beyond four surfaces | `docs/reports/D-021.5-public-website-strip-back.md`; Pulse-only + /theory + Proof reframe |
 | Visual refinement | D-026 | Resolved | Site structurally correct but visually literal | `docs/reports/D-026-visual-refinement.md`; typography, radiance, icon-free nav |
+| Observatory legibility | D-022 | Resolved | Field carried no language; visitor could not position | `docs/reports/D-022-observatory-legibility.md`; canvas term labels + order legend + term suggestions + Theory postulate; render-layer audit continued as D-023 recommendation |
+| Public website creative instrument pass | D-023 | Resolved | Surfaces did not compose into a public instrument | `docs/reports/D-023-public-website-creative-instrument-pass.md`; dependency-bearing placement + hover probe + field readout + relation legend + Theory/Proof recomposition + Pulse honest readout; render-layer audit deferred |
+| Calculus public surface | D-024 | Resolved | Derivation programme publicly invisible | `docs/reports/D-024-calculus-public-surface.md`; `/calculus` derivation surface — live chain with explicit rules, four-status vocabulary (derived/calibrated/heuristic/unresolved), candidate calculus unpromoted; five public surfaces |
 
 ---
 

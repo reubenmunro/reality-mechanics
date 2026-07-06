@@ -84,16 +84,13 @@ Content unchanged.
 
 ## Calculus
 
-No new route. Calculus presented on Theory as a **laboratory notebook** section:
-
-- Monospace treatment
-- Left rule in ember
-- “Laboratory notebook · unpromoted” kicker
-- Link to `PRACTICE_CALCULUS.md` only
+Presented on Theory as a laboratory notebook section and on `/calculus` as the full derivation surface (D-024). D-026 refines both for notebook precision — monospace rules, left guides, no card chrome.
 
 ---
 
 ## Navigation (all surfaces)
+
+Five surfaces: Observatory · Pulse · Theory · Proof · Calculus.
 
 | Before | After |
 |---|---|
@@ -101,6 +98,7 @@ No new route. Calculus presented on Theory as a **laboratory notebook** section:
 | ❤️ Pulse | Pulse |
 | 📖 Theory | Theory |
 | ✓ Proof | Proof |
+| ∴ Calculus | Calculus |
 
 Sticky bordered headers → fixed gradient fades.
 
