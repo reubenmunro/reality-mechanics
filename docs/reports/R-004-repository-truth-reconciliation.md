@@ -1,5 +1,7 @@
 # R-004 — Repository Truth Reconciliation
 
+> **Supersession (M-001):** Phase 0 reconciliation @ `a094565` remains valid for D-025 manifest. **Extended** by P/O programme @ `1e0b526` — see [`R-006-operation-reconciliation.md`](R-006-operation-reconciliation.md).
+
 **Programme:** Release  
 **Type:** Phase 0 reconciliation (governed by R-003)  
 **Date:** 2026-07-06 (UTC+12)  

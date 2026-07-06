@@ -1,6 +1,8 @@
 # Reality Mechanics — Project Status
 
-**Repository cover sheet.** Read this first before working in the tree. This document is not Atlas content and not part of the Stewardship specification.
+**Repository cover sheet.** Read [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md) first for current programme truth.
+
+This document is not Atlas content and not part of the Stewardship specification.
 
 ---
 
@@ -14,37 +16,35 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 
 **At a glance**
 
-- **Platform:** Three active public surfaces — Field, Calibration, MCP — with GitHub Actions deployment on `main`. Retired surfaces (Garden, standalone Atlas pages, Theory, Ark) are explicitly excluded (`README.md`).
-- **Atlas:** 492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
-- **Stewardship:** Audit method stabilised in `docs/stewardship/` (2026-07-04); 17 families / ~51 terms audited; coverage incomplete.
-- **Build & deployment:** Workers verified live (D-003); D1 entry read-model synchronised (D-004, D-019). D-020A/B Field Worker changes ready for deploy. `garden_config.atlas_version` label still stale; `atlas-doctor.mjs` missing.
-- **Structural reading:** Whole Atlas calibrated (D-008); Tier 1 place + hold prose calibrated corpus-wide (D-018A–D) and live on Field/MCP (D-019); Observatory panel compressed to place-only (D-020A); backlog `docs/practice/STRUCTURAL_READING_BACKLOG.md`.
+- **Platform:** Five public surfaces — Observatory · Pulse · Theory · Proof · Calculus — plus MCP. Canonical description: `public-surface-manifest.mjs`.
+- **Atlas:** ~492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
+- **Observatory runtime:** Mechanics → Read Engine → Renderer (P-013, O-006). Layer contract: `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`.
+- **Stewardship:** Audit method in `docs/stewardship/`; coverage incomplete.
+- **Build & deployment:** Workers on Cloudflare; D1 sync **manual**; `garden_config.atlas_version` label may lag entries.
 
-**Git:** `main` @ `83170b8` pushed to `origin/main`; D-020A/B Field Worker live (2026-07-05).
+**Git:** `main` @ `1e0b526` — Observatory mechanics pipeline + P/O research programme (2026-07-07).
 
-No repository document declares a single project phase label (Discovery, Release Candidate, etc.).
+**Synthesis:** `docs/reports/R-005-programme-synthesis.md` · **Operations:** `docs/reports/R-006-operation-reconciliation.md`
 
 ### Supporting detail
 
 | Area | Characterisation | Evidence |
 |------|----------------|----------|
-| Public surfaces | Operational — intentionally small product set | `README.md` |
-| Atlas source | Canonical in GitHub — 492 files | `Reality_Mechanics/`; `README.md` |
-| Stewardship method | Stabilised — spec, case studies, audit log in place | Commits through 2026-07-04 on `main` |
-| Stewardship coverage | In progress — ~10% of Atlas files directly audited | `docs/stewardship/AUDIT_LOG.md` |
-| Live deployment & D1 sync | **Verified** — Workers current (D-003); D1 entries synced 2026-07-05 (D-004, D-019); D-020A/B Worker deploy on push; version label `2026.07.03-i983` unchanged | `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-…`; `docs/reports/D-020A-…`; `docs/reports/D-020B-…` |
+| Public surfaces | Five surfaces + MCP — manifest is source of truth | `public-surface-manifest.mjs`; R-005 |
+| Atlas source | Canonical in GitHub | `Reality_Mechanics/`; `README.md` |
+| Observatory code | Read Engine + TMS modules | `.atlas-publisher/read-engine.mjs`; O-006 |
+| Tests | 110 + 18 + 42 = **170** passing | R-006 |
+| Live deployment | CI on `main` for worker paths | `.github/workflows/deploy.yml` |
 
 ---
 
 ## Operational Model
 
-The repository has three layers. They are related but distinct — do not edit one layer as if it were another.
-
 ```
 Atlas (source)  →  Stewardship (verification)  →  Platform (translation & surfaces)
      │                        │                              │
  GitHub markdown         audit method                  Cloudflare Workers
- Reality_Mechanics/      docs/stewardship/             Field · Calibration · MCP
+ Reality_Mechanics/      docs/stewardship/             Observatory · Pulse · MCP
                               │                              │
                               └──────── same Atlas ──────────┘
                                          │
@@ -54,59 +54,40 @@ Atlas (source)  →  Stewardship (verification)  →  Platform (translation & su
 
 ### 1. Atlas — structural memory (source)
 
-- **What it is:** The editable record of Reality Mechanics terms — markdown and frontmatter in `Reality_Mechanics/`.
-- **Authority:** GitHub is canonical. Structure is defined in `atlas-structure-contract.mjs`; authoring constraints in `Reality_Mechanics/Common Term Structure.md`.
-- **Edit path:** Change files in `Reality_Mechanics/` → commit → generate and sync D1 → platform surfaces read the generated record (`README.md`, `.atlas-publisher/LOCAL_SOURCE_POLICY.md`).
-- **Do not:** Treat D1, Field display, or MCP responses as editing surfaces for Atlas terms.
+- **What it is:** Editable record in `Reality_Mechanics/`.
+- **Authority:** GitHub canonical; `atlas-structure-contract.mjs`.
+- **Do not:** Treat D1 or canvas display as editing surfaces.
 
 ### 2. Stewardship — structural verification (method)
 
-- **What it is:** A recovered audit method that verifies existing Atlas structure against itself. It does not author new terms or mechanics.
-- **Authority:** `docs/stewardship/STEWARDSHIP_V1.md`. AI stewards read `docs/stewardship/CURSOR.md` first.
-- **Scope:** Family-by-family audits; two repair types only (dependency supplementation, Pairs-field language correction). History in `docs/stewardship/AUDIT_LOG.md`; open items in `docs/stewardship/OPEN_QUESTIONS.md`.
-- **Do not:** Confuse stewardship invariants (`docs/stewardship/ATLAS_INVARIANTS.md`) with Atlas Practice content (`Reality_Mechanics/INVARIANTS.md`).
+- **Entry:** `docs/stewardship/STEWARDSHIP_V1.md`; AI: `docs/stewardship/CURSOR.md`.
+- **Do not:** Confuse stewardship invariants with Atlas Practice content.
 
 ### 3. Platform — public translation (surfaces)
 
-- **What it is:** Workers that **read** Atlas structure through generated D1 (or, for Calibration, demonstrate mechanics without Atlas mutation).
-- **Active surfaces:**
+| Surface | URL | Code | Reads Atlas? |
+|---------|-----|------|--------------|
+| **Observatory** | `realitymechanics.nz`, `/field` | `.atlas-publisher/` | Yes — D1 |
+| **Pulse** | `calibration.realitymechanics.nz` | `member/` | No |
+| **Theory** | `/theory` | `.atlas-publisher/` | Links only |
+| **Proof** | `/proof`, `/submission` | `.atlas-publisher/` | Evidence only |
+| **Calculus** | `/calculus` | `.atlas-publisher/` | Manifest render |
+| **MCP** | `mcp.realitymechanics.nz` | `reality-mechanics-mcp/` | Yes — read-only |
 
-  | Surface | URL | Code | Reads Atlas? |
-  |---------|-----|------|--------------|
-  | **Field** | `realitymechanics.nz` | `.atlas-publisher/` | Yes — D1-bound |
-  | **Calibration** | `calibration.realitymechanics.nz` | `member/` | No — standalone mechanical demo |
-  | **MCP** | `mcp.realitymechanics.nz` | `reality-mechanics-mcp/` | Yes — read-only, D1-bound |
-
-- **Deploy:** GitHub Actions (`.github/workflows/deploy.yml`) on push to `main` for worker paths; local `.command` scripts at repository root. Atlas file changes do **not** trigger CI deploy or D1 sync.
+**Deploy:** `.github/workflows/deploy.yml` on push to `main` for worker paths. Atlas file changes do **not** trigger D1 sync.
 
 ---
 
 ## Active Investigations
 
-Open work recorded in repository documents — not a priority backlog.
-
 | Investigation | Status | Record |
 |---------------|--------|--------|
-| **Build & deployment verification** | **Resolved** — D-003 audit + D-004/D-019 D1 sync | `REPOSITORY_VERIFICATION.md` (COMPLETE); `docs/reports/D-003-…`; `docs/reports/D-004-…`; `docs/reports/D-019-…` |
-| **Structural reading / Atlas prose calibration** | **Tier 1 live** — D-018A place + D-018D hold corpus-wide; D-019 synced to Field/MCP; Tier 2 backlog open | `docs/reports/D-018D-tier-1-hold-calibration.md`; `docs/reports/D-019-atlas-website-sync-deployment.md`; `docs/practice/STRUCTURAL_READING_BACKLOG.md` |
-| **Maintained Coupling dependency gap** | Resolved — live in D1 after D-004 | `AUDIT_LOG.md`; Field/MCP verified `second.compatibility` in holds/traces |
-| **Interposed Carrier `"carrying"` language** | Open — insufficient evidence either direction | `docs/stewardship/OPEN_QUESTIONS.md`; `AUDIT_LOG.md` Confirmed Non-Repairs |
-| **Stewardship coverage gap** | ~51 of 492 Atlas files audited; no queue of remaining families | `docs/stewardship/AUDIT_LOG.md`; method in `docs/stewardship/README.md` |
-| **`structural-mechanics-migration` branch** | Remote branch exists; purpose relative to `main` undocumented | `git branch -a` |
-
----
-
-## Next Investigation
-
-**D1 sync automation + version metadata**
-
-D-004 restored entry-level synchronisation. Remaining operational gaps:
-
-- `garden_config.atlas_version` is not updated by `sync-d1-from-repo.mjs` (Field still reports `2026.07.03-i983` while entries are current).
-- D1 sync remains manual — not in `.github/workflows/deploy.yml`.
-- `.githooks/pre-commit` references missing `atlas-doctor.mjs`.
-
-Stewardship open items remain in `docs/stewardship/OPEN_QUESTIONS.md`.
+| Programme synthesis | **Current** | R-005, `docs/PROGRAMME_INDEX.md` |
+| Operation reconciliation | **Current** | R-006 @ `1e0b526` |
+| Read Engine / thread mechanics | **Implemented** | O-004–O-006; P-011–P-013 |
+| Participation / fabric reads | **Research only** | P-009, P-012 |
+| D1 sync automation | **Open** | Manual apply; not in CI |
+| Stewardship coverage | **In progress** | `docs/stewardship/AUDIT_LOG.md` |
 
 ---
 
@@ -114,48 +95,29 @@ Stewardship open items remain in `docs/stewardship/OPEN_QUESTIONS.md`.
 
 | Question | Why unknown |
 |----------|-------------|
-| Where is `atlas-doctor.mjs`? | Referenced by `.githooks/pre-commit` and `atlas-core.mjs` comment; file absent |
-| Which Atlas families to audit next? | `AUDIT_LOG.md` lists completed families only |
-| Status of `origin/structural-mechanics-migration` | Not documented in root docs |
-| Whether pre-commit hooks are installed locally | Hooks in `.githooks/`; requires manual `git config core.hooksPath` |
-| Whether `garden_config.atlas_version` should track sync | Sync script does not update it; label may lag entry data |
+| D1 sync in CI? | Not in deploy workflow |
+| `garden_config.atlas_version` lag | Sync script does not update label |
+| `atlas-doctor.mjs` | Referenced by pre-commit; file absent |
+| Client weave-state bundle | O-006 documents mirror drift risk |
 
 ---
 
 ## Canonical Sources
 
-| Domain | Location | Notes |
-|--------|----------|-------|
-| Atlas (editable) | `Reality_Mechanics/` | GitHub canonical (`README.md`, `atlas-structure-contract.mjs`) |
-| Atlas (authoring constraint) | `Reality_Mechanics/Common Term Structure.md` | |
-| Atlas (runtime contract) | `atlas-structure-contract.mjs` | Version `2026-06-30.ratio-reading-order` |
-| Stewardship | `docs/stewardship/STEWARDSHIP_V1.md` | Entry: `docs/stewardship/README.md`; AI: `docs/stewardship/CURSOR.md` |
-| Field | `.atlas-publisher/main-website-worker.js` | Worker `super-frost-d434`; `realitymechanics.nz` |
-| Calibration | `member/src/index.js` | `member/README.md`, `member/DEPLOYMENT.md` |
-| MCP | `reality-mechanics-mcp/src/index.js` | Read-only traversal |
-| Deployment (CI) | `.github/workflows/deploy.yml` | Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` |
-| Deployment (local) | `Deploy Main Website.command`, `Deploy MCP Worker.command`, `Sync Atlas D1 from GitHub.command`, `Backup to GitHub.command` | Root-level macOS scripts |
-| Generated (D1) | `.atlas-publisher/sync-d1-from-repo.mjs` → `.atlas-publisher/generated/atlas-d1-sync.sql` | Policy: `.atlas-publisher/LOCAL_SOURCE_POLICY.md` |
-| Field maturity | `field-maturity.mjs` | Derived at read time from D1 |
-
----
-
-## Repository Components
-
-| Component | Status | Notes |
-|-----------|--------|-------|
-| **Atlas** | Active source; 492 files | Pre-commit references missing `atlas-doctor.mjs` |
-| **Stewardship** | Method stabilised; audit partial | Zero method failures; no outstanding proposals (`AUDIT_LOG.md:86-88`) |
-| **Field** | Active surface | D1-bound; D-018D hold prose live (D-019); D-020A place-only panel + D-020B mechanics amplification (Worker) |
-| **Calibration** | Active surface | No D1/MCP/AI; `npm --prefix member test` |
-| **MCP** | Active surface | Read-only, D1-bound; post-sync structure verified |
-| **Build / sync** | Verified operational | D-019 sync apply success (492 queries, 3431 rows); manual apply still required after Atlas commits |
-| **Deployment** | CI + local scripts | `deploy.yml` excludes `Reality_Mechanics/**` from triggers |
-| **Automation** | Partial | Pre-commit + GitHub Actions; atlas-doctor missing |
-| **Retired** | Excluded | Garden, standalone Atlas pages, Theory, Ark (`README.md`) |
+| Domain | Location |
+|--------|----------|
+| Programme entry | `docs/PROGRAMME_INDEX.md` |
+| Product truth | `public-surface-manifest.mjs` |
+| Runtime layers | `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md` |
+| Read Engine | `docs/runtime/READ_ENGINE.md` |
+| Commissions | `docs/practice/COMMISSIONS.md` |
+| Superseded reports | `docs/reports/SUPERSESSION_INDEX.md` |
+| Atlas (editable) | `Reality_Mechanics/` |
+| Observatory worker | `.atlas-publisher/main-website-worker.js` |
+| Deploy (CI) | `.github/workflows/deploy.yml` |
 
 ---
 
 ## Maintenance
 
-Update this document when operational facts change. Keep it factual — never a roadmap or planning backlog.
+Update when operational facts change. Superseded narratives: see `docs/reports/SUPERSESSION_INDEX.md`. Never a roadmap.

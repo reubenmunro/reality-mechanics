@@ -1,5 +1,7 @@
 # R-002 — Release Blocker Remediation
 
+> **Supersession (M-001):** MCP `get_public_programme` / `programme-orientation.mjs` were **discarded** in R-004 (D-025 manifest). Observatory first-load fixes **were preserved**. Root doc updates here may be **superseded** by M-001. Current entry: [`docs/PROGRAMME_INDEX.md`](../PROGRAMME_INDEX.md).
+
 **Programme:** Release  
 **Type:** Remediation (governed by R-001)  
 **Date:** 2026-07-06 (UTC+12)  

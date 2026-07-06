@@ -1,5 +1,7 @@
 # FABLE — Repository State Finding
 
+> **Supersession (M-001):** Point-in-time snapshot @ `bf772fa` (pre–P/O mechanics, pre–`1e0b526`). **Not current truth.** See [`docs/reports/R-006-operation-reconciliation.md`](R-006-operation-reconciliation.md) and [`docs/PROGRAMME_INDEX.md`](../PROGRAMME_INDEX.md). MCP now 17 tools; Read Engine modules added (O-006).
+
 **Programme:** Stewardship / Documentation
 **Type:** Repository investigation (read-only)
 **Date:** 2026-07-06 (UTC+12)

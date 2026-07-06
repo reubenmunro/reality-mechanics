@@ -1,5 +1,7 @@
 # S-001 — Programme Characterisation for First Public Submission
 
+> **Supersession (M-001):** Product map (Field/Calibration/MCP, pre-Calculus) is **historical**. Governance and authority-order sections remain useful. Current synthesis: [`docs/reports/R-005-programme-synthesis.md`](../reports/R-005-programme-synthesis.md).
+
 **Programme:** First Public Submission · **Commission:** S-001 · **Role:** Programme Characterisation Lead (architectural coordination, not research, theory, or editing).
 
 **Mode:** Read-only characterisation. No repository files were modified except the creation of this report. Nothing is promoted, derived, or implemented. Every claim is cited to a repository path.

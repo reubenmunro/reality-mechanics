@@ -100,6 +100,8 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Release blocker remediation | R-002 | Resolved | R-001 top blockers block public release integrity | `docs/reports/R-002-release-blocker-remediation.md`; doc truth, Observatory first impression; MCP orientation superseded by D-025 |
 | Programme coherence audit | R-003 | Resolved | Programme internally forked despite public release | `docs/reports/R-003-programme-coherence.md`; reconcile to D-025 manifest; Phase 0 roadmap |
 | Repository truth reconciliation | R-004 | Resolved | Parallel truths between origin, local, and R-002 MCP fork | `docs/reports/R-004-repository-truth-reconciliation.md`; HEAD = origin/main @ D-025; R-002 Observatory fixes preserved; R-002 programme-orientation discarded |
+| Programme synthesis | R-005 | Resolved | Post–P/O architecture unclear for new workers | `docs/reports/R-005-programme-synthesis.md`; five surfaces; Mechanics→Read→Renderer |
+| Operation reconciliation | R-006 | Resolved | Operational truth after P/O @ 1e0b526 | `docs/reports/R-006-operation-reconciliation.md`; test counts; read-engine inventory |
 | Observatory field renderer architecture | O-001 | Resolved | Observatory still behaved as graph renderer (nodes, labels, edges) | `docs/reports/O-001-observatory-field-renderer-architecture.md`; home membrane + pressure currents + mass condensation MVP |
 | Fabric renderer architecture | O-002 | Resolved | Generic membrane field ignored carry∧trace weave rule | `docs/reports/O-002-fabric-renderer-architecture.md`; fabric gating, drift/archive modes, thread/web edges |
 | Order-terminal Observatory annotation | O-003 | Resolved | Order-terminal threshold invisible to participants | `docs/reports/O-003-order-terminal-observatory-annotation.md`; term sheet + mechanics panel; registry without D1 edit |
@@ -119,6 +121,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Thread mechanics investigation | P-011 | Resolved | What are the invariant mechanics of a single declared relation / thread? | `docs/reports/P-011-thread-mechanics-investigation.md`; TMS spec; leg ratios partial; parallel resolvers mandatory |
 | Structural gathering mechanics investigation | P-012 | Resolved | Does SG bridge thread pairs to coherent networks and Fabric? | `docs/reports/P-012-structural-gathering-mechanics.md`; partial — downstream convergence; parallel to Participation |
 | Read engine architecture investigation | P-013 | Resolved | Does Observatory need formal Read Engine between mechanics and renderer? | `docs/reports/P-013-read-engine-architecture.md`; partial formalise module pattern; reject new P-003 layer |
+| Programme sorting pass | M-001 | Resolved | Repository doc entropy after P/O programme | `docs/reports/M-001-programme-sorting-pass.md`; PROGRAMME_INDEX; R-005/R-006; supersession banners |
 
 ---
 
