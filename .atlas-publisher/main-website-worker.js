@@ -1779,7 +1779,7 @@ function accumulateHomePressure(values, cols, rows, cellW, cellH, px, py, influe
 }
 
 function homePairKey(idA, idB) {
-  return threadPairKey(idA, idB);
+  return RMMechanics.pairKey(idA, idB);
 }
 
 function homeConnectionWeaveMode(conn) {
