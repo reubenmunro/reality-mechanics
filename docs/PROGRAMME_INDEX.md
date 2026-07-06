@@ -92,6 +92,7 @@ Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
 | O-001–O-002 | Field/fabric renderer | O-002 fabric gating |
 | O-003–O-006 | Reads + read engine | O-006 formalisation |
 | O-008 | Renderer reconstruction | `docs/reports/O-008-observatory-renderer-reconstruction.md` — client `RMMechanics` activation |
+| W-001 | Public experience polish — wayfinding, MCP orientation, accessibility | `docs/reports/W-001-public-experience-polish.md` |
 
 Full register: `docs/practice/COMMISSIONS.md`
 

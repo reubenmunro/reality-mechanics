@@ -528,6 +528,10 @@ export function fieldPage(options = {}) {
       text-transform: uppercase; color: rgba(58,80,112,0.85); text-align: right;
     }
     body.sheet-open #field-status { display: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid rgba(200,96,26,0.85); outline-offset: 3px; }
+    #observatory-landing .landing-meta { margin: 0.85rem 0 0; max-width: 21rem; color: rgba(120,135,155,0.85); font: 400 12.5px/1.6 system-ui, sans-serif; }
+    #observatory-landing .landing-meta a { color: rgba(77,142,166,0.9); text-decoration: none; border-bottom: 1px solid rgba(77,142,166,0.25); }
+    #observatory-landing .landing-meta a:hover { color: rgba(200,96,26,0.9); }
     @media (max-width: 700px) {
       #observatory-landing { left: 1rem; top: 3.2rem; max-width: calc(100vw - 2rem); }
       #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
@@ -538,7 +542,7 @@ export function fieldPage(options = {}) {
   </style>
 </head>
 <body>
-<canvas id="field"></canvas>
+<canvas id="field" aria-label="Woven field of Atlas terms. Carrying and tracing are drawn as threads; select a place to observe its structure."></canvas>
 <div id="top"><div id="mode">Observatory</div></div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
   <a href="/field" aria-current="page">Observatory</a>
@@ -556,6 +560,7 @@ export function fieldPage(options = {}) {
     <button type="button" id="landing-continue" hidden>Continue where I left off</button>
     <a id="landing-atlas" href="https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics" target="_blank" rel="noopener noreferrer">Browse the Atlas</a>
   </div>
+  <p class="landing-meta">Every claim retraces to the <a href="https://github.com/reubenmunro/reality-mechanics" target="_blank" rel="noopener noreferrer">public repository</a>. AI workers enter through the read-only <a href="/proof#ways-in">MCP</a>.</p>
 </section>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false" list="term-suggestions"
@@ -563,7 +568,7 @@ export function fieldPage(options = {}) {
   <datalist id="term-suggestions"></datalist>
 </form>
 <div id="order-legend" aria-label="Dependency order and relation types"></div>
-<div id="field-status" aria-label="Field reading"></div>
+<div id="field-status" role="status" aria-label="Field reading"></div>
 <section id="term-sheet" aria-live="polite" aria-label="Term sheet">
   <button id="sheet-close" aria-label="Close">×</button>
   <div id="sheet-neutral">
@@ -3634,6 +3639,50 @@ bootstrap();
 // ── Router ────────────────────────────────────────────────────────────────────
 
 const GITHUB_DOC = "https://github.com/reubenmunro/reality-mechanics/blob/main";
+const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
+const MCP_ENDPOINT = "https://mcp.realitymechanics.nz/mcp";
+
+// W-001 — shared wayfinding for the document surfaces. Two ways into one
+// record: observing (human) and MCP traversal (AI). Neither is primary; both
+// end in the repository, where the record is canonical.
+const WAYS_IN_CSS = `
+    .skip-link { position:absolute; left:-999px; top:0; z-index:9; background:#0b1018; color:#d4c5a9; padding:10px 16px; font:500 12px/1 system-ui, sans-serif; letter-spacing:0.08em; }
+    .skip-link:focus { left:12px; top:12px; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid rgba(200,96,26,0.85); outline-offset:3px; border-radius:2px; }
+    .ways-in { margin-top:72px; padding-top:38px; border-top:1px solid rgba(77,94,114,0.28); }
+    .ways-in h2 { margin-top:0; }
+    .ways { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:28px; max-width:640px; }
+    .way h3 { margin:0 0 6px; color:rgba(212,197,169,0.88); font:500 16px/1.3 "Iowan Old Style", Charter, Georgia, serif; }
+    .way-path { margin:0 0 10px; color:rgba(77,94,114,0.85); font:500 10.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.08em; text-transform:uppercase; }
+    .way p { font-size:15px; line-height:1.66; margin:10px 0; }
+    .way code { font:13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.85); }
+    .endpoint { margin:12px 0 0; }
+    .endpoint code { display:inline-block; padding:7px 10px; border:1px solid rgba(77,94,114,0.35); border-radius:3px; background:rgba(11,16,24,0.6); }
+    .evidence-ladder { margin-top:30px; max-width:640px; color:rgba(140,155,175,0.9); font-size:14px; line-height:1.7; }
+`;
+
+function waysInHtml() {
+  return `
+    <section id="ways-in" class="ways-in" aria-label="Two ways into the programme">
+      <h2>Two ways in</h2>
+      <div class="ways">
+        <div class="way">
+          <h3>Observing</h3>
+          <p class="way-path">Observe &rarr; Theory &rarr; Proof &rarr; Calculus &rarr; Repository</p>
+          <p>Begin in the <a href="/field">Observatory</a> and watch the structure before reading about it. <a href="/theory">Theory</a> explains why the discipline works, <a href="/proof">Proof</a> retraces the evidence, and <a href="/calculus">Calculus</a> shows what is derived &mdash; and what is not.</p>
+        </div>
+        <div class="way">
+          <h3>AI participation</h3>
+          <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index &rarr; Repository</p>
+          <p>The MCP is the read-only doorway for AI workers: the same canonical structure, served as traversal tools instead of pages. It exists so AI participants read structure rather than infer it. No write tools are exposed.</p>
+          <p>Begin with <code>begin_atlas_session</code>, then <code>get_public_surfaces</code>. Orientation: <a href="${GITHUB_DOC}/docs/PROGRAMME_INDEX.md">programme index</a> &middot; <a href="${GITHUB_DOC}/Reality_Mechanics/AI_PARTICIPATION.md">AI participation</a>.</p>
+          <p class="endpoint"><code>${MCP_ENDPOINT}</code></p>
+        </div>
+      </div>
+      <p class="evidence-ladder">One record, one path: this site reads from <a href="${GITHUB_REPO_URL}">GitHub</a>, where the <a href="${GITHUB_REPO_URL}/tree/main/Reality_Mechanics">Atlas</a> is canonical, <a href="${GITHUB_DOC}/docs/reports">reports</a> preserve the evidence, and <a href="${GITHUB_REPO_URL}/tree/main/docs/runtime">runtime contracts</a> govern what the instruments may claim. Every public claim retraces along that path.</p>
+    </section>
+`;
+}
 
 export function theoryPage() {
   return `<!doctype html>
@@ -3676,9 +3725,11 @@ export function theoryPage() {
     .calculus-notebook .notebook-kicker { margin:0 0 10px; color:rgba(77,94,114,0.82); font:500 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.14em; text-transform:uppercase; }
     .calculus-notebook p { margin:0; font:15px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.78); }
     .calculus-notebook a { border-bottom-color:rgba(77,142,166,0.18); }
+  ${WAYS_IN_CSS}
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="brand">Theory</div>
     <nav aria-label="Reality Mechanics">
@@ -3689,7 +3740,7 @@ export function theoryPage() {
       <a href="/calculus">Calculus</a>
     </nav>
   </header>
-  <main>
+  <main id="main">
     <h1>Reality already carries order.</h1>
     <p class="lede">Reality Mechanics does not invent structure. It observes structural relations already carried in reality — and keeps every observation retraceable to its source.</p>
 
@@ -3733,6 +3784,7 @@ export function theoryPage() {
       <p class="notebook-kicker">Laboratory notebook · unpromoted</p>
       <p><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read. Precision without decoration.</p>
     </section>
+  ${waysInHtml()}
   </main>
 </body>
 </html>`;
@@ -3835,9 +3887,11 @@ export function calculusPage() {
     .inv li::before { content:""; position:absolute; left:0; top:0.7em; width:3px; height:3px; border-radius:50%; background:rgba(77,94,114,0.4); }
     .status-line { margin-top:52px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:640px) { .vocab, .inventory { grid-template-columns:1fr; } }
+  ${WAYS_IN_CSS}
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="brand">Calculus</div>
     <nav aria-label="Reality Mechanics areas">
@@ -3848,7 +3902,7 @@ export function calculusPage() {
       <a href="/calculus" aria-current="page">Calculus</a>
     </nav>
   </header>
-  <main>
+  <main id="main">
     <h1>Derive the structure.</h1>
     <p class="lede">The Calculus is the derivation surface. It records how Reality Mechanics moves from relation, order, trace, and carrying toward explicit derivation — and preserves every gap it has not yet closed.</p>
     <p class="notice"><b>Nothing on this page is promoted.</b> The Calculus has no accepted operation; the <code>:</code> operator is not accepted. Statuses below are exact — where derivation is incomplete, the gap is shown, not papered over.</p>
@@ -3896,6 +3950,7 @@ export function calculusPage() {
     <p>The <a href="/field">Observatory</a> shows structure; <a href="https://calibration.realitymechanics.nz/">Pulse</a> shows behaviour through time; <a href="/theory">Theory</a> states the claim; <a href="/proof">Proof</a> retraces the evidence. The Calculus shows how far the claims have actually been derived — and exactly where derivation stops.</p>
 
     <p class="status-line">Calculus — the derivation surface. The Calculus remains an open investigation; this page records its state and promotes nothing.</p>
+  ${waysInHtml()}
   </main>
 </body>
 </html>`;
@@ -3948,9 +4003,11 @@ export function submissionPage() {
     .step code { color:var(--lead); font-size:12px; }
     .status-line { margin-top:56px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } .pathway { grid-template-columns:1fr 1fr; } }
+  ${WAYS_IN_CSS}
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <div class="brand">Proof</div>
     <nav aria-label="Reality Mechanics areas">
@@ -3961,7 +4018,7 @@ export function submissionPage() {
       <a href="/calculus">Calculus</a>
     </nav>
   </header>
-  <main>
+  <main id="main">
     <h1>Retrace pathway</h1>
     <p class="lede">Proof packages what the programme currently holds as <b>accepted</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b> — so independent participants can review, challenge, and retrace it. Nothing here is promoted beyond its stated status.</p>
 
@@ -4047,6 +4104,7 @@ export function submissionPage() {
     </ul>
 
     <p class="status-line">Proof — coordinated from accepted repository evidence. The Calculus remains an open investigation; nothing here promotes it.</p>
+  ${waysInHtml()}
   </main>
 </body>
 </html>`;

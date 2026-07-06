@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --check src/index.js && node --check src/calibration-engine.mjs && node test/calibration-engine.test.mjs && node test/invariants.test.mjs",
+    "test": "node --check src/index.js && node --check src/calibration-engine.mjs && node test/calibration-engine.test.mjs && node test/invariants.test.mjs && node test/w-001-ways-in.test.mjs",
     "deploy": "npm test && wrangler deploy"
   },
   "devDependencies": {

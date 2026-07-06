@@ -104,6 +104,10 @@ const PAGE = `<!doctype html>
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
       .proof { grid-template-columns:1fr; }
     }
+    a:focus-visible, button:focus-visible { outline:2px solid rgba(200,96,26,0.85); outline-offset:3px; border-radius:2px; }
+    .ways-in { margin-top:64px; padding-top:30px; border-top:1px solid rgba(77,94,114,0.28); max-width:640px; }
+    .ways-in p { margin:0; color:rgba(140,155,175,0.9); font-size:14.5px; line-height:1.7; }
+    .ways-in code { font:12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.85); }
   </style>
 </head>
 <body>
@@ -188,6 +192,10 @@ const PAGE = `<!doctype html>
       </div>
 
       <p class="note"><b>Open Strain never reaches zero</b> because the target keeps drifting between pulses, and each correction closes only part of the gap. Carried Strain is what the next climb starts from.</p>
+    </section>
+
+    <section class="ways-in" aria-label="Ways into the programme">
+      <p>Pulse is one instrument of Reality Mechanics. Observe the structure itself in the <a href="https://realitymechanics.nz/field">Observatory</a>, read why the discipline works in <a href="https://realitymechanics.nz/theory">Theory</a>, and retrace the evidence in <a href="https://realitymechanics.nz/proof">Proof</a>. AI workers enter through the read-only MCP &mdash; see <a href="https://realitymechanics.nz/proof#ways-in">two ways in</a>.</p>
     </section>
   </main>
 
