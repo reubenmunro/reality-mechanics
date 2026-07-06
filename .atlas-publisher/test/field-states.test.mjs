@@ -64,6 +64,16 @@ const entries = [
     updated: "2026-01-01T00:00:00.000Z",
   },
   {
+    id: "first.resolution",
+    title: "Resolution",
+    entry_order: "first",
+    content: "# Resolution\n\nBearing determined at the current scope of evaluation.\n\nResolution is held by [[Bearing]].\n\n## Places",
+    source_path: "Reality_Mechanics/1_First/Resolution.md",
+    structure: JSON.stringify({ holds: [], traces: [], carries: [], pairs: [], nests: [] }),
+    created: "2026-01-01T00:00:00.000Z",
+    updated: "2026-01-01T00:00:00.000Z",
+  },
+  {
     id: "third.field-relationships",
     title: "Field Relationships",
     entry_order: "third",
@@ -165,6 +175,15 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
     connection.place,
     "Relation holding between distinguishable conditions so that passage is available in more than one direction.",
   );
+
+  const resolution = payload.states.find((state) => state.id === "first.resolution");
+  assert.equal(resolution.orderTerminal.terminal_of, "first_order");
+  assert.equal(resolution.orderTerminalAnnotation.terminalOfLabel, "First Order");
+  assert.match(resolution.orderTerminalAnnotation.frameTransition, /reference-frame transition/i);
+
+  const carryNoTerminal = payload.states.find((state) => state.id === "first.carry");
+  assert.equal(carryNoTerminal.orderTerminal, null);
+  assert.equal(carryNoTerminal.orderTerminalAnnotation, null);
 });
 
 test("fieldPage consumes only the derived states endpoint", () => {
@@ -224,7 +243,7 @@ test("D-021.2 observatory landing orients before observation", () => {
   const html = fieldPage();
   assert.match(html, /id="observatory-landing"/);
   assert.match(html, /Reality Mechanics Observatory/);
-  assert.match(html, /Observe how structural relationships become visible through participation\./);
+  assert.match(html, /Observe how declared carrying and tracing weave into thread, fabric, and web\./);
   assert.match(html, /id="landing-observe">Observe the Field/);
   assert.match(html, /id="landing-continue" hidden>Continue where I left off/);
   assert.match(html, /id="landing-atlas" href="https:\/\/github\.com\/reubenmunro\/reality-mechanics\/tree\/main\/Reality_Mechanics"/);
@@ -249,7 +268,9 @@ test("D-021.4 neutral initial load renders whole field without Relation default"
   assert.match(html, /homeMode = true/);
   assert.match(html, /focusId = null/);
   assert.match(html, /function neutralWholeFieldOpen/);
-  assert.match(html, /function drawHomeNode/);
+  assert.match(html, /function drawHomeCondensation/);
+  assert.match(html, /function drawHomeFabricFace/);
+  assert.match(html, /function buildHomePressureField/);
   assert.match(html, /function nearestHomeOperation/);
   assert.match(html, /if \(homeMode\) return nearestHomeOperation/);
   assert.match(html, /if \(!homeMode\) \{/);
@@ -502,7 +523,7 @@ test("D-023 the strands are named in renderer colours", () => {
 test("D-023 landing opens with the working postulate", () => {
   const html = fieldPage();
   assert.match(html, /landing-postulate">Relation holds\. Order carries\. Trace places\./);
-  assert.match(html, /every strand a declared relation/);
+  assert.match(html, /Continuation and recoverability read before any term is chosen/);
 });
 
 test("D-023 Theory leads with the claim and cites sparingly", async () => {
@@ -634,4 +655,115 @@ test("R-004 landing observe dismisses without opening term sheet", () => {
   const html = fieldPage();
   assert.match(html, /landingObserveEl\.addEventListener\('click'/);
   assert.match(html, /dismissObservatoryLanding\(\);\s*closeTermSheet\(\)/);
+});
+
+test("O-001 field-first home renderer: fabric weave before condensation, labels on hover", () => {
+  const html = fieldPage();
+  assert.match(html, /O-002: fabric-first home renderer/);
+  assert.match(html, /function drawHomeRelationCurrent/);
+  assert.match(html, /function homePressureGradientAt/);
+  assert.match(html, /HOME_PRESSURE_GRID/);
+  assert.match(html, /buildHomePressureField\(\)/);
+  assert.match(html, /drawHomeFabricFace\(alpha\)/);
+  assert.doesNotMatch(html, /function drawHomeNode/);
+  assert.doesNotMatch(html, /homeLabelIds\.forEach\(\(id\)/);
+  assert.match(html, /Continuation and recoverability read before any term is chosen/);
+});
+
+test("O-002 fabric renderer: carry+trace weave rules and drift/archive modes", () => {
+  const html = fieldPage();
+  assert.match(html, /function buildHomeWeaveState/);
+  assert.match(html, /function resolveHomeLeg/);
+  assert.match(html, /function opInThreadNetwork/);
+  assert.match(html, /function fabricEligibleConnection/);
+  assert.match(html, /function drawHomeFabricFace/);
+  assert.match(html, /function drawHomeFabricWeaveCurrents/);
+  assert.doesNotMatch(html, /function drawHomeMembrane/);
+  assert.match(html, /'nests'/);
+});
+
+test("O-003 order-terminal annotation: term sheet and mechanics panel", () => {
+  const html = fieldPage();
+  assert.match(html, /id="sheet-order-terminal"/);
+  assert.match(html, /id="mechanics-order-terminal"/);
+  assert.match(html, /function orderTerminalAnnotationMarkup/);
+  assert.match(html, /function renderOrderTerminalAnnotation/);
+  assert.match(html, /Terminally resolves/);
+  assert.match(html, /annotation\.frameTransition/);
+  assert.match(html, /annotation\.continuationRule/);
+  assert.match(html, /annotation\.structureInvariant/);
+});
+
+test("O-005 gathering read annotation: mechanics panel only", () => {
+  const html = fieldPage();
+  assert.match(html, /id="mechanics-gathering-read"/);
+  assert.match(html, /function gatheringReadAnnotationMarkup/);
+  assert.match(html, /function renderGatheringReadAnnotation/);
+  assert.match(html, /Structural Gathering read/);
+  assert.match(html, /trace\.gatheringReadAnnotation/);
+  assert.doesNotMatch(html, /sheet-gathering-read/);
+});
+
+test("O-006 read engine: behaviour trace exposes readEngine bundle", async () => {
+  const entries = [
+    {
+      id: "first.relation",
+      title: "Relation",
+      entry_order: "first",
+      structure: JSON.stringify({ holds: [], traces: [], carries: ["first.carry"], pairs: [], nests: [] }),
+      created: "2026-01-01T00:00:00.000Z",
+      updated: "2026-01-01T00:00:00.000Z",
+    },
+    {
+      id: "first.carry",
+      title: "Carry",
+      entry_order: "first",
+      structure: JSON.stringify({ holds: ["first.relation"], traces: [], carries: [], pairs: [], nests: [] }),
+      created: "2026-01-01T00:00:00.000Z",
+      updated: "2026-01-01T00:00:00.000Z",
+    },
+  ];
+  const env = {
+    ATLAS_DB: {
+      prepare(sql) {
+        return {
+          params: [],
+          bind(...params) { this.params = params; return this; },
+          async all() {
+            if (/FROM entries\b/.test(sql)) return { results: entries };
+            return { results: [] };
+          },
+          async first() {
+            if (/FROM garden_config\b/.test(sql)) {
+              const key = this.params[0];
+              if (key === "atlas_version") return { value: "test-atlas-version" };
+              if (key === "field_ratio_mode_thresholds") {
+                return { value: JSON.stringify({ transitional_min_mass: 3, continuous_min_mass: 8 }) };
+              }
+            }
+            return null;
+          },
+        };
+      },
+    },
+  };
+  const res = await worker.fetch(
+    new Request("https://realitymechanics.nz/api/field/behaviour-trace?id=first.relation"),
+    env,
+  );
+  const body = await res.json();
+  assert.equal(res.status, 200);
+  assert.equal(body.readEngine.version, "read-engine.v1");
+  assert.ok(body.readEngine.reads.maturity);
+  assert.ok(body.readEngine.sourceOfTruthRules.length >= 6);
+});
+
+test("O-004 thread mechanics renderer: shared resolveLeg path", () => {
+  const html = fieldPage();
+  assert.match(html, /function resolveHomeLeg/);
+  assert.match(html, /buildPairStateFromOps/);
+  assert.match(html, /legStrokeAppearance/);
+  assert.match(html, /legFocusedAppearance/);
+  assert.match(html, /tmsLeg/);
+  assert.match(html, /resolveLeg/);
 });

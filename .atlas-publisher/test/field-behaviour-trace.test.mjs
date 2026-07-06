@@ -8,6 +8,28 @@ import {
 } from "../field-behaviour-trace.mjs";
 import worker, { fieldPage } from "../main-website-worker.js";
 
+const resolutionFocusState = {
+  id: "first.resolution",
+  title: "Resolution",
+  order: "first",
+  orderTerminal: {
+    is_terminal: true,
+    terminal_of: "first_order",
+    terminal_mode: "resolves_current_asymmetry",
+  },
+  relations: {
+    holds: [],
+    traces: [],
+    carries: [],
+    pairs: [],
+    nests: [],
+  },
+  ratioMode: { mode: "transitional", x: 5 },
+  mass: { carriers: 5 },
+  maturityBand: "established",
+  settledness: { score: 0.5 },
+};
+
 const relationFocusState = {
   id: "first.relation",
   title: "Relation",
@@ -44,6 +66,23 @@ const neighbourStates = [
     mass: { carriers: 2 },
   },
 ];
+
+test("buildFieldBehaviourTrace includes order-terminal annotation when focus is order-terminal", () => {
+  const statesById = buildTraceIndex([resolutionFocusState]);
+  const trace = buildFieldBehaviourTrace({
+    focusId: "first.resolution",
+    focusState: resolutionFocusState,
+    statesById,
+    thresholds: { ratioMode: { transitionalMinMass: 3, continuousMinMass: 8 } },
+    runtimeOverlay: {},
+  });
+  assert.ok(trace.orderTerminal);
+  assert.equal(trace.orderTerminal.terminalOfLabel, "First Order");
+  assert.match(trace.orderTerminal.structureInvariant, /remains invariant/i);
+  assert.match(trace.orderTerminal.frameTransition, /reference-frame transition/i);
+  assert.equal(trace.gatheringRead?.status, "none");
+  assert.equal(trace.gatheringReadAnnotation, null);
+});
 
 test("buildFieldBehaviourTrace exposes five D-011 behaviours with atlas source fields", () => {
   const statesById = buildTraceIndex(neighbourStates);
@@ -82,6 +121,11 @@ test("relationCompressionLimit tightens as structural mass rises", () => {
 test("fieldPage includes mechanics panel and behaviour trace API client", () => {
   const html = fieldPage();
   assert.match(html, /id="mechanics-panel"/);
+  assert.match(html, /id="mechanics-order-terminal"/);
+  assert.match(html, /id="mechanics-gathering-read"/);
+  assert.match(html, /id="sheet-order-terminal"/);
+  assert.match(html, /orderTerminalAnnotationMarkup/);
+  assert.match(html, /Order-terminal/);
   assert.match(html, /Shift\+M toggles/i);
   assert.match(html, /fetch\('\/api\/field\/behaviour-trace/);
   assert.match(html, /window\.__fieldBehaviourTrace/);

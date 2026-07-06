@@ -15,6 +15,19 @@ import {
   structureCarriesEntry,
 } from "../field-maturity.mjs";
 import { buildFieldBehaviourTrace, buildTraceIndex } from "./field-behaviour-trace.mjs";
+import { buildOrderTerminalAnnotation, orderTerminalForEntryId } from "./order-terminal.mjs";
+import {
+  buildPairStateFromOps,
+  emptyPairState,
+  endpointRatioFromFieldState,
+  fabricEligibleWeaveMode,
+  legFocusedAppearance,
+  legStrokeAppearance,
+  mergePairState,
+  pairKey as threadPairKey,
+  resolveLeg,
+  weaveModeForLeg,
+} from "./thread-mechanics.mjs";
 import { atlasSourceViewUrl, observatoryPlaceDisplay } from "./observatory-panel.mjs";
 import {
   MECHANICS_AMPLIFICATION,
@@ -165,12 +178,19 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
       agitationScore * 0.12
     );
 
+    const orderTerminalMeta = orderTerminalForEntryId(entry.id);
+    const orderTerminalAnnotation = orderTerminalMeta
+      ? buildOrderTerminalAnnotation(orderTerminalMeta)
+      : null;
+
     return {
       id: entry.id,
       title: entry.title,
       order: entry.entry_order || "operation",
       place: observatoryPlaceDisplay({ title: entry.title, body: entry.content || "" }),
       atlasUrl: atlasSourceViewUrl(entry.source_path),
+      orderTerminal: orderTerminalMeta,
+      orderTerminalAnnotation,
       relations,
       ratioMode: fieldRatioMode(mass.carriers, ratioModeThresholds),
       mass,
@@ -368,6 +388,32 @@ export function fieldPage(options = {}) {
       font: 500 1rem/1.62 "Iowan Old Style", Charter, Georgia, serif;
       white-space: pre-wrap;
     }
+    .order-terminal-annotation, #sheet-order-terminal {
+      margin: 0 0 1.15rem;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(200,96,26,0.18);
+      background: rgba(200,96,26,0.04);
+    }
+    .order-terminal-annotation h4, #sheet-order-terminal h4 {
+      margin: 0 0 0.45rem;
+      font: 700 0.58rem/1 system-ui, sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(200,96,26,0.62);
+    }
+    .order-terminal-annotation dl, #sheet-order-terminal dl { margin: 0; }
+    .order-terminal-annotation dt, #sheet-order-terminal dt {
+      margin: 0.4rem 0 0.06rem;
+      font: 700 0.52rem/1 system-ui, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(58,80,112,0.88);
+    }
+    .order-terminal-annotation dd, #sheet-order-terminal dd {
+      margin: 0;
+      color: rgba(212,197,169,0.82);
+      font: 500 0.78rem/1.5 "Iowan Old Style", Charter, Georgia, serif;
+    }
     #sheet-atlas-link {
       display: inline-block;
       margin: 0 0 1.15rem;
@@ -439,6 +485,22 @@ export function fieldPage(options = {}) {
       margin: 0 0 0.35rem; font: 700 0.58rem/1.2 system-ui, sans-serif;
       letter-spacing: 0.08em; text-transform: uppercase; color: rgba(200,96,26,0.58);
     }
+    #mechanics-order-terminal .order-terminal-annotation {
+      margin: 0 0 0.85rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(200,96,26,0.16);
+      background: rgba(200,96,26,0.03);
+    }
+    #mechanics-gathering-read .gathering-read-annotation {
+      margin: 0 0 0.85rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(58,80,112,0.22);
+      background: rgba(58,80,112,0.04);
+    }
+    #mechanics-gathering-read .gathering-read-annotation.approximates {
+      border-color: rgba(58,80,112,0.32);
+      background: rgba(58,80,112,0.07);
+    }
     #mechanics-panel dl { margin: 0; }
     #mechanics-panel dt {
       margin: 0.35rem 0 0.08rem; font: 700 0.52rem/1 system-ui, sans-serif;
@@ -487,7 +549,7 @@ export function fieldPage(options = {}) {
 <section id="observatory-landing" aria-label="Observatory orientation">
   <h1>Reality Mechanics Observatory</h1>
   <p class="landing-postulate">Relation holds. Order carries. Trace places.</p>
-  <p class="landing-orientation">Observe how structural relationships become visible through participation. Every point is an Atlas term; every strand a declared relation. Selecting a term changes the read.</p>
+  <p class="landing-orientation">Observe how declared carrying and tracing weave into thread, fabric, and web. Continuation and recoverability read before any term is chosen; interaction reveals where structure holds.</p>
   <div class="landing-actions">
     <button type="button" id="landing-observe">Observe the Field</button>
     <button type="button" id="landing-continue" hidden>Continue where I left off</button>
@@ -511,6 +573,7 @@ export function fieldPage(options = {}) {
     <div id="sheet-order"></div>
     <div id="sheet-title"></div>
     <div id="sheet-place"></div>
+    <div id="sheet-order-terminal" class="sheet-order-terminal" hidden></div>
     <a id="sheet-atlas-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View Atlas Entry</a>
     <div id="sheet-relations"></div>
     <p id="sheet-empty"></p>
@@ -521,6 +584,8 @@ export function fieldPage(options = {}) {
   <h2>Field Mechanics</h2>
   <p class="mechanics-hint">Shift+M toggles. URL: ?debug=mechanics</p>
   <div id="mechanics-focus" class="mechanics-focus"></div>
+  <div id="mechanics-order-terminal"></div>
+  <div id="mechanics-gathering-read"></div>
   <div id="mechanics-traces"></div>
 </aside>
 <script>
@@ -538,6 +603,7 @@ const enterInput = document.getElementById('enter-input');
 const termSheetEl = document.getElementById('term-sheet');
 const sheetCloseEl = document.getElementById('sheet-close');
 const sheetPlaceEl = document.getElementById('sheet-place');
+const sheetOrderTerminalEl = document.getElementById('sheet-order-terminal');
 const sheetAtlasLinkEl = document.getElementById('sheet-atlas-link');
 const sheetRelationsEl = document.getElementById('sheet-relations');
 const sheetEmptyEl = document.getElementById('sheet-empty');
@@ -554,6 +620,8 @@ let selectedTermId = null;
 const relationDebugEl = document.getElementById('relation-debug');
 const mechanicsPanelEl = document.getElementById('mechanics-panel');
 const mechanicsFocusEl = document.getElementById('mechanics-focus');
+const mechanicsOrderTerminalEl = document.getElementById('mechanics-order-terminal');
+const mechanicsGatheringReadEl = document.getElementById('mechanics-gathering-read');
 const mechanicsTracesEl = document.getElementById('mechanics-traces');
 const INITIAL_REGISTER = ${JSON.stringify(initialRegister)};
 let readRegister = INITIAL_REGISTER;
@@ -574,6 +642,7 @@ let fieldMovementAt = 0;
 let traversalMap = {};   // "fromId:toId" -> { count, lastAt }
 let lastTraversalKey = null;
 let pressureField = null;
+let homePressureField = null;
 let relationPressureTraces = [];
 let relationTrajectoryMemory = new Map();
 let fieldMediumDt = 1 / 60;
@@ -623,6 +692,23 @@ const FIELD_PRESSURE_GRID = Object.freeze({
   boundsRelax: 1.8,
   pressureRelax: 3.2,
   trajectoryRelax: 5.2,
+});
+
+// O-002: screen-space fabric lattice for the neutral whole-field view.
+// Fabric face deposits only where carry+trace thread, web crossings, and ratio-readable mass cohere.
+const HOME_PRESSURE_GRID = Object.freeze({
+  cols: 36,
+  rows: 24,
+  influence: 0.11,
+  condenseThreshold: 0.24,
+  fabricMassMin: 0.12,
+  relationMidWeight: {
+    carries: 0.14,
+    holds: 0.1,
+    traces: 0.12,
+    pairs: 0.08,
+    nests: 0.06,
+  },
 });
 
 let adaptiveFrameMs = 16.7;
@@ -1433,6 +1519,7 @@ function renderTermSheet(id = focusId) {
   document.getElementById('sheet-title').textContent = op.title || op.id;
   sheetPlaceEl.textContent = op.place || '';
   sheetPlaceEl.style.display = op.place ? 'block' : 'none';
+  renderOrderTerminalAnnotation(op.fieldState?.orderTerminalAnnotation || null, sheetOrderTerminalEl);
   if (op.atlasUrl) {
     sheetAtlasLinkEl.href = op.atlasUrl;
     sheetAtlasLinkEl.hidden = false;
@@ -1670,6 +1757,203 @@ function fieldTensionFromGradient(gradient, structuralWeight = 0) {
   return clamp01(gradientTension + pressureTension + structuralWeight * 0.42);
 }
 
+function accumulateHomePressure(values, cols, rows, cellW, cellH, px, py, influence, strength) {
+  const denom = Math.max(1, influence * influence);
+  const minX = Math.max(0, Math.floor((px - influence) / cellW));
+  const maxX = Math.min(cols - 1, Math.ceil((px + influence) / cellW));
+  const minY = Math.max(0, Math.floor((py - influence) / cellH));
+  const maxY = Math.min(rows - 1, Math.ceil((py + influence) / cellH));
+  for (let y = minY; y <= maxY; y++) {
+    const gy = (y + 0.5) * cellH;
+    for (let x = minX; x <= maxX; x++) {
+      const gx = (x + 0.5) * cellW;
+      const d2 = (gx - px) * (gx - px) + (gy - py) * (gy - py);
+      values[y * cols + x] += strength * Math.exp(-d2 / denom);
+    }
+  }
+}
+
+function homePairKey(idA, idB) {
+  return threadPairKey(idA, idB);
+}
+
+function homeConnectionWeaveMode(conn) {
+  const key = homePairKey(conn.a.id, conn.b.id);
+  const pairState = homePairWeave.get(key) || emptyPairState();
+  return weaveModeForLeg(conn.typeKey, pairState);
+}
+
+function opInThreadNetwork(opId) {
+  return homeThreadTermIds.has(opId);
+}
+
+function ratioReadableProfile(profile) {
+  const mass = profile?.fieldStates?.structuralMass ?? profile?.structuralMass ?? 0;
+  return mass >= HOME_PRESSURE_GRID.fabricMassMin;
+}
+
+function buildHomeWeaveState() {
+  // Mechanics substrate — mirrors weave-state.mjs (server/read path source of truth).
+  homePairWeave = new Map();
+  homeThreadTermIds = new Set();
+  homeConnections.forEach(({ a, b, typeKey }) => {
+    const key = homePairKey(a.id, b.id);
+    const entry = homePairWeave.get(key) || emptyPairState();
+    mergePairState(entry, typeKey);
+    homePairWeave.set(key, entry);
+  });
+  homePairWeave.forEach((entry, key) => {
+    if (!entry.carries || !entry.traces) return;
+    const [idA, idB] = key.split('\x00');
+    homeThreadTermIds.add(idA);
+    homeThreadTermIds.add(idB);
+  });
+}
+
+function resolveHomeLeg(conn) {
+  const pairState = homePairWeave.get(homePairKey(conn.a.id, conn.b.id)) || emptyPairState();
+  const srcState = stateFor(conn.a.id);
+  const tgtState = stateFor(conn.b.id);
+  const thresholds = fieldStatesPayload?.thresholds?.ratioMode || {};
+  return resolveLeg({
+    typeKey: conn.typeKey,
+    pairState,
+    srcRatio: endpointRatioFromFieldState(srcState, thresholds),
+    tgtRatio: endpointRatioFromFieldState(tgtState, thresholds),
+    overlay: { frameSensibility: relationSensibility(conn.a.id, conn.b.id) },
+  });
+}
+
+function fabricEligibleConnection(conn) {
+  return fabricEligibleWeaveMode(homeConnectionWeaveMode(conn));
+}
+
+function buildHomePressureField() {
+  const cols = HOME_PRESSURE_GRID.cols;
+  const rows = HOME_PRESSURE_GRID.rows;
+  const ops = Object.values(allOps);
+  if (!ops.length || !innerWidth || !innerHeight) {
+    homePressureField = null;
+    return;
+  }
+  buildHomeWeaveState();
+  const cellW = innerWidth / cols;
+  const cellH = innerHeight / rows;
+  const influenceBase = Math.min(innerWidth, innerHeight) * HOME_PRESSURE_GRID.influence;
+  const targetValues = new Float32Array(cols * rows);
+  ops.forEach((op) => {
+    if (!opInThreadNetwork(op.id)) return;
+    const pos = homePosition(op);
+    const profile = op.profile || computeProfile(op);
+    if (!ratioReadableProfile(profile)) return;
+    const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+    const influence = influenceBase * (0.58 + structuralMass * 0.82);
+    const strength = 0.18 + structuralMass * 0.72 + profile.density * 0.12;
+    accumulateHomePressure(targetValues, cols, rows, cellW, cellH, pos.x, pos.y, influence, strength);
+  });
+  homeConnections.forEach((conn) => {
+    if (!fabricEligibleConnection(conn)) return;
+    const { a, b, typeKey } = conn;
+    const pa = homePosition(a);
+    const pb = homePosition(b);
+    const type = relationTypes.find((t) => t.key === typeKey);
+    const weight = HOME_PRESSURE_GRID.relationMidWeight[typeKey] || 0.08;
+    const influence = influenceBase * 0.42;
+    const strength = weight * (type?.strength || 0.5);
+    accumulateHomePressure(
+      targetValues, cols, rows, cellW, cellH,
+      (pa.x + pb.x) * 0.5, (pa.y + pb.y) * 0.5,
+      influence, strength,
+    );
+  });
+  homePressureField = { cols, rows, cellW, cellH, values: targetValues };
+}
+
+function homePressureAt(x, y) {
+  if (!homePressureField) return 0;
+  const { cols, rows, cellW, cellH, values } = homePressureField;
+  const gx = Math.max(0, Math.min(cols - 1.001, x / cellW - 0.5));
+  const gy = Math.max(0, Math.min(rows - 1.001, y / cellH - 0.5));
+  const x0 = Math.floor(gx), y0 = Math.floor(gy);
+  const x1 = Math.min(cols - 1, x0 + 1), y1 = Math.min(rows - 1, y0 + 1);
+  const tx = gx - x0, ty = gy - y0;
+  const a = values[y0 * cols + x0], b = values[y0 * cols + x1];
+  const c = values[y1 * cols + x0], d = values[y1 * cols + x1];
+  return (a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty;
+}
+
+function homePressureGradientAt(x, y) {
+  if (!homePressureField) return { x: 0, y: 0, pressure: 0 };
+  const stepX = homePressureField.cellW;
+  const stepY = homePressureField.cellH;
+  const left = homePressureAt(x - stepX, y);
+  const right = homePressureAt(x + stepX, y);
+  const up = homePressureAt(x, y - stepY);
+  const down = homePressureAt(x, y + stepY);
+  return {
+    x: (right - left) / Math.max(1, stepX * 2),
+    y: (down - up) / Math.max(1, stepY * 2),
+    pressure: homePressureAt(x, y),
+  };
+}
+
+function drawHomeFabricWeaveCurrents(alpha) {
+  // Heuristic: sparse streamlines on fabric lattice — only where thread/web deposited pressure.
+  if (!homePressureField || alpha <= 0.02 || homeThreadTermIds.size === 0) return;
+  const { cols, rows, cellW, cellH } = homePressureField;
+  const stride = ambientQuality > 0.75 ? 5 : 7;
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.lineWidth = 0.38;
+  for (let y = 1; y < rows - 1; y += stride) {
+    for (let x = 1; x < cols - 1; x += stride) {
+      const cx = (x + 0.5) * cellW;
+      const cy = (y + 0.5) * cellH;
+      const gradient = homePressureGradientAt(cx, cy);
+      if (gradient.pressure < 0.08) continue;
+      const mag = Math.hypot(gradient.x, gradient.y);
+      if (mag < 0.0004) continue;
+      const len = Math.min(cellW, cellH) * (0.42 + gradient.pressure * 0.18);
+      const ux = gradient.x / mag;
+      const uy = gradient.y / mag;
+      const flowAlpha = Math.min(0.09, gradient.pressure * 0.04) * alpha;
+      ctx.strokeStyle = 'rgba(94,132,170,' + flowAlpha + ')';
+      ctx.beginPath();
+      ctx.moveTo(cx - ux * len * 0.5, cy - uy * len * 0.5);
+      ctx.lineTo(cx + ux * len * 0.5, cy + uy * len * 0.5);
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+function drawHomeFabricFace(alpha) {
+  if (!homePressureField || homeThreadTermIds.size === 0) return;
+  const { cols, rows, cellW, cellH, values } = homePressureField;
+  let maxP = 0;
+  for (let i = 0; i < values.length; i++) if (values[i] > maxP) maxP = values[i];
+  const norm = Math.max(0.38, maxP);
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const p = values[y * cols + x] / norm;
+      if (p < 0.035) continue;
+      const cx = (x + 0.5) * cellW;
+      const cy = (y + 0.5) * cellH;
+      const cellAlpha = Math.min(0.13, p * 0.1) * alpha;
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(cellW, cellH) * 0.74);
+      grad.addColorStop(0, 'rgba(58,80,112,' + cellAlpha + ')');
+      grad.addColorStop(0.52, 'rgba(200,96,26,' + (cellAlpha * 0.28) + ')');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x * cellW - cellW * 0.18, y * cellH - cellH * 0.18, cellW * 1.36, cellH * 1.36);
+    }
+  }
+  drawHomeFabricWeaveCurrents(alpha);
+  ctx.restore();
+}
+
 function drawSmoke() {
   // D-022: backdrop only. Ambient smoke puffs removed — they carried no
   // ratio/order information a visitor could retrace to Atlas structure.
@@ -1879,6 +2163,42 @@ function mechanicsFormat(value) {
   return String(value);
 }
 
+function orderTerminalAnnotationMarkup(annotation) {
+  if (!annotation) return '';
+  const rows = [
+    ['Terminally resolves', annotation.terminalOfLabel],
+    ['Passage limit', annotation.passageRule],
+    ['Continuation', annotation.continuationRule],
+    ['Structure', annotation.structureInvariant],
+    ['Frame / behaviour', annotation.behaviourNote],
+    ['Read as', annotation.frameTransition],
+  ];
+  return '<article class="order-terminal-annotation">'
+    + '<h4>Order-terminal</h4><dl>'
+    + rows.map(([label, text]) => '<dt>' + label + '</dt><dd>' + text + '</dd>').join('')
+    + '</dl></article>';
+}
+
+function renderOrderTerminalAnnotation(annotation, targetEl) {
+  if (!targetEl) return;
+  targetEl.innerHTML = annotation ? orderTerminalAnnotationMarkup(annotation) : '';
+  if (targetEl.id === 'sheet-order-terminal') targetEl.hidden = !annotation;
+}
+
+function gatheringReadAnnotationMarkup(annotation) {
+  if (!annotation) return '';
+  const cls = annotation.approximatesGathering ? 'gathering-read-annotation approximates' : 'gathering-read-annotation';
+  return '<article class="' + cls + '">'
+    + '<h4>Structural Gathering read</h4><dl>'
+    + (annotation.rows || []).map(([label, text]) => '<dt>' + label + '</dt><dd>' + text + '</dd>').join('')
+    + '</dl></article>';
+}
+
+function renderGatheringReadAnnotation(annotation, targetEl) {
+  if (!targetEl) return;
+  targetEl.innerHTML = annotation ? gatheringReadAnnotationMarkup(annotation) : '';
+}
+
 function collectRuntimeOverlay() {
   const focus = operations[focusId];
   const local = new Set(localIds(focusId));
@@ -1916,6 +2236,8 @@ function renderMechanicsPanel() {
   const trace = fieldBehaviourTrace;
   if (!trace) {
     mechanicsFocusEl.textContent = 'loading trace…';
+    if (mechanicsOrderTerminalEl) mechanicsOrderTerminalEl.innerHTML = '';
+    if (mechanicsGatheringReadEl) mechanicsGatheringReadEl.innerHTML = '';
     mechanicsTracesEl.innerHTML = '';
     return;
   }
@@ -1926,6 +2248,8 @@ function renderMechanicsPanel() {
     'carriers: ' + (trace.atlasSourceSummary?.values?.carriers ?? '—'),
     'ratio: ' + (trace.atlasSourceSummary?.values?.ratioMode ?? '—') + ' (x=' + (trace.atlasSourceSummary?.values?.ratioX ?? '—') + ')',
   ].join('\\n');
+  renderOrderTerminalAnnotation(trace.orderTerminal || null, mechanicsOrderTerminalEl);
+  renderGatheringReadAnnotation(trace.gatheringReadAnnotation || null, mechanicsGatheringReadEl);
   mechanicsTracesEl.innerHTML = (trace.behaviours || []).map((item) => {
     return '<article class="behaviour-trace">'
       + '<h3>' + item.observation + '</h3>'
@@ -2083,6 +2407,15 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const sourceMass = source.fieldStates?.structuralMass || source.structuralMass || 0;
   const targetMass = target.fieldStates?.structuralMass || target.structuralMass || 0;
   const relationMass = (sourceMass + targetMass) * 0.5;
+  const pairState = buildPairStateFromOps(a, b);
+  const tmsThresholds = fieldStatesPayload?.thresholds?.ratioMode || {};
+  const tmsLeg = resolveLeg({
+    typeKey: type.key,
+    pairState,
+    srcRatio: endpointRatioFromFieldState(stateFor(a.id), tmsThresholds),
+    tgtRatio: endpointRatioFromFieldState(stateFor(b.id), tmsThresholds),
+    overlay: { frameSensibility: relationSensibility(a.id, b.id) },
+  });
   const isLastPath = lastTraversalKey === a.id + ':' + b.id;
   const movementAge = isLastPath ? fieldMovementAge() : 0;
   const movementRatio = movementAge > 0.03 ? movementRatioSignature(fieldMovementEvent) : null;
@@ -2102,23 +2435,24 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const isNest = type.key === 'nests';
   const ratioMode = termRatioMode(a);
   const ratioVisual = ratioVisualScale(ratioMode);
+  const tmsAppear = legFocusedAppearance(tmsLeg, { emphasis, scale, ratioVisual });
   const ratioTransition = ratioMode.transition;
   const ratioContinuous = ratioMode.continuous;
   const carryTransition = isCarry ? ratioTransition : 0;
   const carryContinuous = isCarry ? ratioContinuous : 0;
-  const carryConsequence = carryTransition * 0.18 + carryContinuous * 0.42;
+  const carryConsequence = isCarry ? tmsLeg.ratioConsequence : 0;
   const holdTransition = isHold ? ratioTransition : 0;
   const holdContinuous = isHold ? ratioContinuous : 0;
-  const holdConsequence = holdTransition * 0.28 + holdContinuous * 0.62;
+  const holdConsequence = isHold ? tmsLeg.ratioConsequence : 0;
   const traceTransition = isTrace ? ratioTransition : 0;
   const traceContinuous = isTrace ? ratioContinuous : 0;
-  const traceConsequence = traceTransition * 0.18 + traceContinuous * 0.5;
+  const traceConsequence = isTrace ? tmsLeg.ratioConsequence : 0;
   const pairTransition = isPair ? ratioTransition : 0;
   const pairContinuous = isPair ? ratioContinuous : 0;
-  const pairConsequence = pairTransition * 0.2 + pairContinuous * 0.48;
+  const pairConsequence = isPair ? tmsLeg.ratioConsequence : 0;
   const nestTransition = isNest ? ratioTransition : 0;
   const nestContinuous = isNest ? ratioContinuous : 0;
-  const nestConsequence = nestTransition * 0.26 + nestContinuous * 0.58;
+  const nestConsequence = isNest ? tmsLeg.ratioConsequence : 0;
   const pairAnswer = isPair
     ? Math.sin(time * (0.18 + rhythm.reciprocity * 0.42 - pairContinuous * 0.08) + offset + (source.phase || 0) * 0.2)
     : 0;
@@ -2126,19 +2460,19 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
     ? Math.sin(time * (0.12 + rhythm.circulation * 0.22 * MECHANICS_AMPLIFICATION.nest.circulationRate - nestContinuous * 0.05) + offset + (source.enclosure || 0) * Math.PI)
     : 0;
   const bowBase = (
-    type.direction === 'return' ? -46 :
+    type.direction === 'return' ? tmsLeg.pathCurvature :
     type.direction === 'lateral' ? pairAnswer * (36 + rhythm.reciprocity * 24) * (1 + pairContinuous * 0.18) :
     type.direction === 'enclose' ? (22 + rhythm.circulation * 26) * (0.82 + nestCycle * 0.24) * (1 + nestContinuous * 0.24) * MECHANICS_AMPLIFICATION.nest.enclosureBow :
-    36
-  ) * (type.bowMult ?? 1);
+    tmsLeg.pathCurvature
+  ) * (type.bowMult ?? 1) * tmsAppear.pathCurvatureScale;
   const ratioBow = movementRatio ? 1 + movementAge * (movementRatio.asymmetry * 0.5 + movementRatio.openness * 0.24 + movementRatio.tension * 0.34) : 1;
   const bow = bowBase * (1 + sourcePhysics.pressure * 0.28 + sourcePhysics.opening * 0.18 - targetPhysics.damping * 0.18) * ratioBow * (1 - relationMass * 0.24) * (isCarry ? MECHANICS_AMPLIFICATION.carry.bowCut : 1);
-  const rhythmRate = (0.16
-    + rhythm.cadence * 1.18
-    + rhythm.intermittence * 0.62
-    + rhythm.reciprocity * 0.34
-    + rhythm.circulation * 0.24
-    - rhythm.persistence * 0.42) * (isCarry ? MECHANICS_AMPLIFICATION.carry.cadenceBoost : 1);
+  const rhythmRate = (tmsAppear.cadenceScale
+    + rhythm.cadence * 0.72
+    + rhythm.intermittence * 0.42
+    + rhythm.reciprocity * 0.22
+    + rhythm.circulation * 0.16
+    - rhythm.persistence * 0.28) * (isCarry ? MECHANICS_AMPLIFICATION.carry.cadenceBoost : 1);
   const rhythmPhase = rhythm.reciprocity * Math.sin(time * (0.22 + rhythm.circulation * 0.34) + offset) * (isPair ? 0.32 : 0.18)
     + rhythm.intermittence * Math.sin(time * (0.36 + rhythm.cadence * 0.22) + a.phase) * 0.1
     + rhythm.circulation * Math.sin(time * (0.16 + rhythm.circulation * 0.24) + offset) * (isNest ? 0.2 : 0.08);
@@ -2184,11 +2518,12 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   const crossing = sourceOrder !== targetOrder;
   const meeting = relationMeeting(source, target, type);
   const movementBoost = movementRatio ? movementAge * (0.42 + movementRatio.contact * 0.32 + movementRatio.tension * 0.34 + movementRatio.recurrence * 0.22) : 0;
-  const currentAlpha = (0.088 + type.strength * 0.19 + source.heat * 0.082 + relationMass * 0.052 - source.ash * 0.045) * emphasis * (1 + movementBoost) * (1 + carryConsequence + holdConsequence + traceConsequence + pairConsequence + nestConsequence);
+  const currentAlpha = (0.088 + type.strength * 0.19 + source.heat * 0.082 + tmsLeg.legMass * 0.052 - source.ash * 0.045) * emphasis * tmsAppear.alphaBoost * (1 + movementBoost) * (1 + carryConsequence + holdConsequence + traceConsequence + pairConsequence + nestConsequence);
   recordRelationPressureTrace(a, b, controlWorld, Math.min(0.044, currentAlpha * (0.055 + carryContinuous * 0.026 + holdContinuous * 0.018 + traceContinuous * 0.016 + pairContinuous * 0.014 + nestContinuous * 0.018)), type.key);
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
+  if (tmsAppear.dash.length) ctx.setLineDash(tmsAppear.dash);
   ctx.beginPath();
   ctx.moveTo(pa.x, pa.y);
   ctx.quadraticCurveTo(cx, cy, pb.x, pb.y);
@@ -2196,7 +2531,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.strokeStyle = colourMode === 'fire'
     ? currentGradient(pa, pb, sourceOrder, targetOrder, broadAlpha, broadAlpha)
     : relationColor(type, broadAlpha);
-  const relationWidth = Math.max(0.95, (0.98 + source.density * 0.62 + sourcePhysics.capacity * 0.6 + relationMass * 0.94 + (family === 'motion' ? 0.26 : 0) + movementBoost * 1.35) * (1 + carryTransition * 0.08 + carryContinuous * 0.22 + holdTransition * 0.05 + holdContinuous * 0.14 + traceTransition * 0.04 + traceContinuous * 0.1 + pairTransition * 0.04 + pairContinuous * 0.1 + nestTransition * 0.04 + nestContinuous * 0.14) * scale) * (ratioVisual.lineTightness ?? 1);
+  const relationWidth = Math.max(0.95, (0.98 + source.density * 0.62 + sourcePhysics.capacity * 0.6 + tmsLeg.legMass * 0.94 + (family === 'motion' ? 0.26 : 0) + movementBoost * 1.35) * (1 + carryTransition * 0.08 + carryContinuous * 0.22 + holdTransition * 0.05 + holdContinuous * 0.14 + traceTransition * 0.04 + traceContinuous * 0.1 + pairTransition * 0.04 + pairContinuous * 0.1 + nestTransition * 0.04 + nestContinuous * 0.14) * scale * tmsAppear.widthScale) * (ratioVisual.lineTightness ?? 1);
   ctx.lineWidth = relationWidth * (1.16 - relationTension * 0.28);
   ctx.stroke();
 
@@ -2289,6 +2624,7 @@ function drawCurrent(a, b, type, offset = 0, emphasis = 1) {
   ctx.beginPath();
   ctx.arc(qx, qy, beadRadius, 0, Math.PI * 2);
   ctx.fill();
+  ctx.setLineDash([]);
   ctx.restore();
 }
 
@@ -2757,7 +3093,9 @@ function drawTermLabel(op, x, y, alpha, size = 11, emphasized = false) {
 // The unfocused field is a deterministic structural placement, not a live
 // background animation. Movement belongs to the reference and relation events.
 
-let homeConnections = [];   // { a, b, typeKey } — structural edges for drawing
+let homeConnections = [];   // { a, b, typeKey } — declared structural edges for drawing
+let homePairWeave = new Map(); // pairKey -> { carries, traces, pairs, nests, holds }
+let homeThreadTermIds = new Set(); // terms on at least one carry+trace declared pair
 let homeAlpha = 1.0;        // fades 1→0 when entering a term; home field underlays focused view
 
 // D-023: dependency-bearing placement. A term's angular position is the
@@ -2815,7 +3153,7 @@ function buildHomeConnections() {
   homeConnections = [];
   const seen = new Set();
   Object.values(allOps).forEach((a) => {
-    ['carries', 'pairs', 'traces', 'holds'].forEach((key) => {
+    ['carries', 'pairs', 'traces', 'holds', 'nests'].forEach((key) => {
       (a[key] || []).forEach((bId) => {
         const b = allOps[bId];
         if (!b) return;
@@ -2828,89 +3166,127 @@ function buildHomeConnections() {
   });
 }
 
-function drawHomeNode(op, alpha) {
+function drawHomeCondensation(op, alpha) {
   const pos = homePosition(op);
-  const order = spineDisplayOrder(op);
   const profile = op.profile || computeProfile(op);
   const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
-  const radius = 7 + profile.density * 5 + structuralMass * 3;
-  const glow = radius * 2.85;
+  const gradient = homePressureGradientAt(pos.x, pos.y);
+  const fieldTension = fieldTensionFromGradient(gradient, structuralMass);
+  const order = spineDisplayOrder(op);
+  const radius = (4.5 + structuralMass * 7.5 + profile.density * 2.8) * (0.84 + fieldTension * 0.1);
+  const phase = op.phase ?? (hashStr(op.id) % 997) / 997 * Math.PI * 2;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const coreAlpha = 0.36 + structuralMass * 0.06;
-  const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, glow);
+  const coreGlow = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, radius * 2.2);
   if (colourMode === 'fire') {
-    grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
-    grad.addColorStop(0.42, fireColor(order, coreAlpha * 0.34 * alpha, 6));
-    grad.addColorStop(1, fireColor(order, 0, 0));
+    coreGlow.addColorStop(0, fireColor(order, (0.22 + structuralMass * 0.05) * alpha, 12));
+    coreGlow.addColorStop(0.38, fireColor(order, (0.04 + fieldTension * 0.02) * alpha, 4));
+    coreGlow.addColorStop(1, fireColor(order, 0, 0));
   } else {
-    grad.addColorStop(0, 'rgba(200,96,26,' + (coreAlpha * alpha) + ')');
-    grad.addColorStop(0.42, 'rgba(120,82,54,' + (coreAlpha * 0.32 * alpha) + ')');
-    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    coreGlow.addColorStop(0, 'rgba(200,96,26,' + ((0.2 + structuralMass * 0.04) * alpha) + ')');
+    coreGlow.addColorStop(0.38, 'rgba(120,82,54,' + ((0.038 + fieldTension * 0.012) * alpha) + ')');
+    coreGlow.addColorStop(1, 'rgba(0,0,0,0)');
   }
-  ctx.beginPath();
-  ctx.fillStyle = grad;
-  ctx.arc(pos.x, pos.y, glow, 0, Math.PI * 2);
-  ctx.fill();
-  const edgeAlpha = 0.1 + structuralMass * 0.02; // D-022 legibility floor
-  ctx.beginPath();
-  ctx.strokeStyle = colourMode === 'fire'
-    ? fireColor(order, edgeAlpha * alpha, 8)
-    : 'rgba(212,197,169,' + (edgeAlpha * alpha) + ')';
-  ctx.lineWidth = 0.65;
-  ctx.arc(pos.x, pos.y, radius * 1.05, 0, Math.PI * 2);
-  ctx.stroke();
+  fillCondensation(pos, radius, phase, coreGlow, 0.13 - fieldTension * 0.035, 9, 0);
+  if (structuralMass >= 0.36) {
+    const edgeAlpha = (0.07 + fieldTension * 0.02) * alpha;
+    strokeCondensation(
+      pos, radius * 0.9, phase,
+      colourMode === 'fire' ? fireColor(order, edgeAlpha, 6) : 'rgba(212,197,169,' + edgeAlpha + ')',
+      0.48, 0.1, 0,
+    );
+  }
   ctx.restore();
 }
 
+function drawHomeRelationCurrent(conn, alpha, lineBoost) {
+  const { a, b, typeKey } = conn;
+  const leg = resolveHomeLeg(conn);
+  const stroke = legStrokeAppearance(leg, {
+    typeStrength: (relationTypes.find((t) => t.key === typeKey) || relationTypes[2]).strength,
+    alpha,
+    sense: relationSensibility(a.id, b.id),
+    lineBoost,
+    relationTension: 0,
+  });
+  const pa = homePosition(a);
+  const pb = homePosition(b);
+  const type = relationTypes.find((t) => t.key === typeKey) || relationTypes[2];
+  const midX = (pa.x + pb.x) * 0.5;
+  const midY = (pa.y + pb.y) * 0.5;
+  const gradient = homePressureGradientAt(midX, midY);
+  const sourceMass = leg.legMass;
+  const relationTension = fieldTensionFromGradient(gradient, sourceMass);
+  stroke.baseAlpha *= (0.7 + relationTension * 0.3);
+  const dx = pb.x - pa.x;
+  const dy = pb.y - pa.y;
+  const dist = Math.max(1, Math.hypot(dx, dy));
+  const nx = -dy / dist;
+  const ny = dx / dist;
+  const lateralPressure = -(gradient.x * nx + gradient.y * ny);
+  const fieldBend = clamp01(gradient.pressure / 3.2) * Math.max(-48, Math.min(48, lateralPressure * 3800)) * (0.26 + sourceMass * 0.16);
+  const bow = leg.pathCurvature * (type.bowMult ?? 1) * (0.82 + (hashStr(a.id + b.id + typeKey) % 100) / 500);
+  const cx = midX + nx * (bow + fieldBend);
+  const cy = midY + ny * (bow + fieldBend);
+  ctx.beginPath();
+  ctx.moveTo(pa.x, pa.y);
+  ctx.quadraticCurveTo(cx, cy, pb.x, pb.y);
+  ctx.setLineDash(stroke.dash);
+  if (colourMode === 'fire') {
+    ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), stroke.baseAlpha, stroke.baseAlpha);
+  } else if (stroke.tint === 'archive') {
+    ctx.strokeStyle = relationColor(type, stroke.baseAlpha * (0.55 + relationTension * 0.2));
+  } else if (stroke.tint === 'drift') {
+    ctx.strokeStyle = relationColor({ ...type, color: [212, 118, 48] }, stroke.baseAlpha * (0.75 + relationTension * 0.25));
+  } else {
+    ctx.strokeStyle = relationColor(type, stroke.baseAlpha);
+  }
+  ctx.lineWidth = stroke.lineWidth;
+  ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+// O-002: fabric-first home renderer — weave currents → thread/web edges → fabric face → condensation.
 function drawHomeField(alpha) {
   const ops = Object.values(allOps);
   if (!homeConnections.length && !ops.length) return;
   const wholeField = neutralWholeFieldOpen();
-  const lineBoost = wholeField ? 2.6 : 1;
-  const nodeBudget = Math.min(
-    ops.length,
-    Math.max(60, Math.round(FIELD_RENDER_BUDGET.homeNodes * adaptiveAmbientScale(0.52))),
-  );
-  const sortedOps = ops.slice().sort((left, right) => hashStr(left.id) - hashStr(right.id));
+  const lineBoost = wholeField ? 2.4 : 1;
+
+  buildHomePressureField();
 
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  for (let i = 0; i < nodeBudget; i++) drawHomeNode(sortedOps[i], alpha);
-
   const n = Math.min(homeConnections.length, Math.max(42, Math.round(FIELD_RENDER_BUDGET.homeCurrents * adaptiveAmbientScale(0.38))));
   const sorted = homeConnections
     .slice()
     .sort((left, right) => hashStr(left.a.id + left.typeKey + left.b.id) - hashStr(right.a.id + right.typeKey + right.b.id));
-  for (let i = 0; i < n; i++) {
-    const { a, b, typeKey } = sorted[i];
-    const pa = homePosition(a), pb = homePosition(b);
-    const dx = pb.x - pa.x, dy = pb.y - pa.y;
-    const dist = Math.max(1, Math.hypot(dx, dy));
-    const nx = -dy / dist, ny = dx / dist;
-    const bowAmt = typeKey === 'carries' ? 26 : typeKey === 'pairs' ? 11 : 18;
-    const bow = bowAmt * (0.82 + (hashStr(a.id + b.id + typeKey) % 100) / 420);
-    ctx.beginPath();
-    ctx.moveTo(pa.x, pa.y);
-    ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
-    const baseA = (typeKey === 'carries' ? 0.098 : typeKey === 'pairs' ? 0.063 : 0.052) * lineBoost; // D-022 legibility floor; R-002 home read
-    const sense = relationSensibility(a.id, b.id);
-    ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * alpha * sense, baseA * alpha * sense);
-    ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
-    ctx.stroke();
-  }
+  for (let i = 0; i < n; i++) drawHomeRelationCurrent(sorted[i], alpha, lineBoost);
   ctx.restore();
 
-  // D-022: label the structural entry points of each order.
-  homeLabelIds.forEach((id) => {
-    const op = allOps[id];
-    if (!op) return;
-    const pos = homePosition(op);
-    drawTermLabel(op, pos.x, pos.y + 14, 0.72 * alpha, 11);
-  });
+  drawHomeFabricFace(alpha);
 
-  // D-023: the cursor is a probe — sweeping the field surfaces the term under it.
-  if (hoverId && allOps[hoverId] && !homeLabelIds.includes(hoverId)) {
+  const condenseBudget = Math.min(
+    ops.length,
+    Math.max(48, Math.round(FIELD_RENDER_BUDGET.homeNodes * adaptiveAmbientScale(0.42))),
+  );
+  const condensing = ops
+    .filter((op) => {
+      if (!opInThreadNetwork(op.id)) return false;
+      const profile = op.profile || computeProfile(op);
+      const mass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+      return mass >= HOME_PRESSURE_GRID.condenseThreshold || homeLabelIds.includes(op.id);
+    })
+    .sort((left, right) => {
+      const lm = (left.profile || computeProfile(left)).fieldStates?.structuralMass || (left.profile || computeProfile(left)).structuralMass || 0;
+      const rm = (right.profile || computeProfile(right)).fieldStates?.structuralMass || (right.profile || computeProfile(right)).structuralMass || 0;
+      return rm - lm;
+    });
+  for (let i = 0; i < Math.min(condenseBudget, condensing.length); i++) {
+    drawHomeCondensation(condensing[i], alpha);
+  }
+
+  if (hoverId && allOps[hoverId]) {
     const op = allOps[hoverId];
     const pos = homePosition(op);
     drawTermLabel(op, pos.x, pos.y + 14, 0.92 * alpha, 12, true);

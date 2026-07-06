@@ -8,6 +8,8 @@ These principles describe what the **current** Observatory runtime and accepted 
 
 **Field bridge (D-015A):** [`docs/runtime/DERIVED_RATIO.md`](../runtime/DERIVED_RATIO.md) — structure → derived ratio → behaviour chain; descriptive, not authoritative.
 
+**Layer contract (P-003):** [`docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`](../runtime/INVARIANT_RUNTIME_CONTRACT.md) — separates invariant substrate (L0–L4), frame visibility, participant overlay (L5), and appearance (L6).
+
 **Steward decides** whether any principle becomes load-bearing beyond runtime interpretation.
 
 ---

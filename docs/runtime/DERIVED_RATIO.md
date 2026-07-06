@@ -11,7 +11,7 @@
 **Purpose:** Characterise whether **Derived Ratio** is a bridge between Atlas structure and observable runtime behaviour — without introducing additional mechanics.
 
 **Required evidence:** D-014, D-010B, D-011, D-012, D-015B  
-**Related:** [`docs/practice/RUNTIME_PRINCIPLES.md`](../practice/RUNTIME_PRINCIPLES.md)
+**Related:** [`docs/practice/RUNTIME_PRINCIPLES.md`](../practice/RUNTIME_PRINCIPLES.md), [`docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`](INVARIANT_RUNTIME_CONTRACT.md) (P-003 layer contract)
 
 ---
 
