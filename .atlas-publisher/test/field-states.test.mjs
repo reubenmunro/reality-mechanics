@@ -620,3 +620,18 @@ test("D-025 Calculus page and MCP render from one manifest — no drift possible
     }
   }
 });
+
+test("R-004 Observatory first impression: readiness before API and sheet closed on neutral open", () => {
+  const html = fieldPage();
+  assert.match(html, /Reading field…/);
+  assert.match(html, /requestAnimationFrame\(loop\);\s*bootstrap\(\)/);
+  assert.match(html, /classList\.remove\('sheet-open'\)/);
+  assert.doesNotMatch(html, /renderNeutralSheet\(\);\s*openTermSheet\(\);\s*if \(mechanicsEnabled\)/);
+  assert.match(html, /Field unavailable/);
+});
+
+test("R-004 landing observe dismisses without opening term sheet", () => {
+  const html = fieldPage();
+  assert.match(html, /landingObserveEl\.addEventListener\('click'/);
+  assert.match(html, /dismissObservatoryLanding\(\);\s*closeTermSheet\(\)/);
+});

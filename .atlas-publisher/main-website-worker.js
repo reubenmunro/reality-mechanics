@@ -1489,6 +1489,8 @@ function openTermSheet() {
 }
 
 function closeTermSheet() {
+  document.body.classList.remove('sheet-open');
+  termSheetEl.classList.remove('open');
   renderNeutralSheet();
 }
 
@@ -1498,7 +1500,7 @@ function toggleTermSheet(id = focusId) {
     openTermSheet();
     return;
   }
-  renderNeutralSheet();
+  closeTermSheet();
 }
 
 function syncTermSheet() {
@@ -2835,7 +2837,7 @@ function drawHomeNode(op, alpha) {
   const glow = radius * 2.85;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const coreAlpha = 0.3 + structuralMass * 0.06;
+  const coreAlpha = 0.36 + structuralMass * 0.06;
   const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, glow);
   if (colourMode === 'fire') {
     grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
@@ -2891,7 +2893,7 @@ function drawHomeField(alpha) {
     ctx.beginPath();
     ctx.moveTo(pa.x, pa.y);
     ctx.quadraticCurveTo((pa.x + pb.x) / 2 + nx * bow, (pa.y + pb.y) / 2 + ny * bow, pb.x, pb.y);
-    const baseA = (typeKey === 'carries' ? 0.085 : typeKey === 'pairs' ? 0.055 : 0.045) * lineBoost; // D-022 legibility floor
+    const baseA = (typeKey === 'carries' ? 0.098 : typeKey === 'pairs' ? 0.063 : 0.052) * lineBoost; // D-022 legibility floor; R-002 home read
     const sense = relationSensibility(a.id, b.id);
     ctx.strokeStyle = currentGradient(pa, pb, spineDisplayOrder(a), spineDisplayOrder(b), baseA * alpha * sense, baseA * alpha * sense);
     ctx.lineWidth = typeKey === 'carries' ? 0.72 : 0.48;
@@ -2904,7 +2906,7 @@ function drawHomeField(alpha) {
     const op = allOps[id];
     if (!op) return;
     const pos = homePosition(op);
-    drawTermLabel(op, pos.x, pos.y + 14, 0.62 * alpha, 11);
+    drawTermLabel(op, pos.x, pos.y + 14, 0.72 * alpha, 11);
   });
 
   // D-023: the cursor is a probe — sweeping the field surfaces the term under it.
@@ -3095,6 +3097,7 @@ function buildOrderLegend() {
 
 async function bootstrap() {
   modeEl.textContent = 'loading';
+  if (fieldStatusEl) fieldStatusEl.textContent = 'Reading field…';
   try {
     const statesRes = await fetch('/api/field/states');
     if (!statesRes.ok) throw new Error('field states unavailable');
@@ -3118,6 +3121,7 @@ async function bootstrap() {
     Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
   } catch(err) {
     modeEl.textContent = 'Observatory';
+    if (fieldStatusEl) fieldStatusEl.textContent = 'Field unavailable';
     console.error('field bootstrap failed:', err);
   }
 
@@ -3136,12 +3140,10 @@ async function bootstrap() {
     operations = {};
     modeEl.textContent = 'Observatory';
     renderNeutralSheet();
-    openTermSheet();
     if (mechanicsEnabled) {
       renderMechanicsPanel();
       scheduleBehaviourTraceRefresh(true);
     }
-    requestAnimationFrame(loop);
     return;
   }
 
@@ -3161,14 +3163,12 @@ async function bootstrap() {
     renderMechanicsPanel();
     scheduleBehaviourTraceRefresh(true);
   }
-  requestAnimationFrame(loop);
 }
 
 if (landingObserveEl) {
   landingObserveEl.addEventListener('click', () => {
     dismissObservatoryLanding();
-    if (!selectedTermId) renderNeutralSheet();
-    openTermSheet();
+    closeTermSheet();
   });
 }
 if (landingContinueEl) {
@@ -3194,6 +3194,7 @@ if (landingContinueEl) {
 })();
 
 resize();
+requestAnimationFrame(loop);
 bootstrap();
 </script>
 </body>

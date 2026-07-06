@@ -96,6 +96,10 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Public website creative instrument pass | D-023 | Resolved | Surfaces did not compose into a public instrument | `docs/reports/D-023-public-website-creative-instrument-pass.md`; dependency-bearing placement + hover probe + field readout + relation legend + Theory/Proof recomposition + Pulse honest readout; render-layer audit deferred |
 | Calculus public surface | D-024 | Resolved | Derivation programme publicly invisible | `docs/reports/D-024-calculus-public-surface.md`; `/calculus` derivation surface — live chain with explicit rules, four-status vocabulary (derived/calibrated/heuristic/unresolved), candidate calculus unpromoted; five public surfaces |
 | MCP read surface alignment | D-025 | Resolved | AI readers could not read the public structure | `docs/reports/D-025-mcp-read-surface-alignment.md`; `public-surface-manifest.mjs` shared by website + MCP; `get_public_surfaces` + `get_derivation_status`; real version label with lag honesty; MCP v2.4.0, 17 read-only tools |
+| Release audit | R-001 | Resolved | Programme readiness before further development | `docs/reports/R-001-release-audit.md`; NOT READY — GitHub private, doc drift, Observatory first-load |
+| Release blocker remediation | R-002 | Resolved | R-001 top blockers block public release integrity | `docs/reports/R-002-release-blocker-remediation.md`; doc truth, Observatory first impression; MCP orientation superseded by D-025 |
+| Programme coherence audit | R-003 | Resolved | Programme internally forked despite public release | `docs/reports/R-003-programme-coherence.md`; reconcile to D-025 manifest; Phase 0 roadmap |
+| Repository truth reconciliation | R-004 | Resolved | Parallel truths between origin, local, and R-002 MCP fork | `docs/reports/R-004-repository-truth-reconciliation.md`; HEAD = origin/main @ D-025; R-002 Observatory fixes preserved; R-002 programme-orientation discarded |
 
 ---
 
