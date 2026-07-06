@@ -29,6 +29,8 @@ This was not a polish pass. The woven-field mechanics were derived in repository
 
 **Verdict:** O-007 was never built. O-008 fixes **activation first**, then **visibility tuning**.
 
+**Post-deploy (2026-07-07):** Initial push `3e00067` activated `RMMechanics` but `draw()` still failed on missing client helpers. Hotfixes `30f11ce` (amplification bundle) and `e0041a1` (`homePairKey` → `RMMechanics.pairKey`) required before woven-field draw succeeded live. Current renderer version: **o-008.v2** @ `e0041a1`.
+
 ---
 
 ## Implementation
@@ -104,7 +106,7 @@ Expect:
 ### Browser console
 
 ```javascript
-RMMechanics.version          // "o-008.v1"
+RMMechanics.version          // "o-008.v2"
 RMMechanics.resolveLeg       // function
 RMMechanics.classifyHomeWeaveLegs  // function
 RMMechanics.HOME_WOVEN_VISIBILITY.minLegAlpha  // 0.14
