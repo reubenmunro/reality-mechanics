@@ -1,81 +1,103 @@
 # Reality Mechanics
 
-Reality Mechanics is a **five-surface public programme**. Canonical product description: [`public-surface-manifest.mjs`](public-surface-manifest.mjs). Contributor entry: [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md).
+Reality Mechanics observes structural relations already carried in reality and keeps every observation retraceable.
 
-## Public surfaces
+The public programme is five surfaces on [realitymechanics.nz](https://realitymechanics.nz) plus a read-only MCP for AI traversal. **Atlas is source; the website is translation.** Term content lives in `Reality_Mechanics/` in this repository. Observatory and MCP read a generated D1 cache — not an editing surface.
+
+**Contributor entry:** [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md) · **Product truth:** [`public-surface-manifest.mjs`](public-surface-manifest.mjs)
+
+---
+
+## Start here
+
+| If you are… | Read |
+|---|---|
+| Landing on GitHub for the first time | This README → [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md) |
+| Checking what the public site claims | [`public-surface-manifest.mjs`](public-surface-manifest.mjs) |
+| Understanding the architecture | [`docs/reports/R-005-programme-synthesis.md`](docs/reports/R-005-programme-synthesis.md) |
+| Operational truth at current HEAD | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) |
+| Distinguishing current vs superseded reports | [`docs/reports/SUPERSESSION_INDEX.md`](docs/reports/SUPERSESSION_INDEX.md) |
+
+---
+
+## Five public surfaces (+ MCP)
 
 | Surface | URL | Role |
 |---|---|---|
-| **Observatory** | [realitymechanics.nz](https://realitymechanics.nz), `/field` | See structure — the structural field instrument |
+| **Observatory** | [realitymechanics.nz](https://realitymechanics.nz), `/field` | See structure — woven-field instrument |
 | **Pulse** | [calibration.realitymechanics.nz](https://calibration.realitymechanics.nz) | Sense behaviour through time |
 | **Theory** | `/theory` | Understand the claim |
 | **Proof** | `/proof`, `/submission` | Retrace the evidence |
-| **Calculus** | `/calculus` | Derivation surface (nothing promoted) |
-| **MCP** | `mcp.realitymechanics.nz` | Read-only Atlas + programme traversal for AI |
+| **Calculus** | `/calculus` | Derivation surface — nothing promoted |
+| **MCP** | `mcp.realitymechanics.nz` | Read-only Atlas + programme traversal (17 tools) |
 
-**Infrastructure names** in code (Field, Calibration, `/api/field/*`) are legacy aliases — public vocabulary is Observatory · Pulse · Theory · Proof · Calculus.
+Infrastructure names in code (Field, Calibration, `/api/field/*`) are legacy aliases. Retired routes (Garden, standalone Atlas, Ark) return **410**.
 
-Retired routes (Garden, standalone Atlas pages, Ark, old proposal workflows) return **410**. Theory at `/theory` is **live**.
+---
 
-## Architecture entry points
+## Accepted · candidate · unresolved
 
-Start future work from:
+Claim status is **not** decided in prose on the website alone.
 
-- [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md)
-- [`docs/reports/R-005-programme-synthesis.md`](docs/reports/R-005-programme-synthesis.md)
-- [`docs/reports/R-006-operation-reconciliation.md`](docs/reports/R-006-operation-reconciliation.md)
-- [`docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`](docs/runtime/INVARIANT_RUNTIME_CONTRACT.md)
-- [`docs/runtime/READ_ENGINE.md`](docs/runtime/READ_ENGINE.md)
-- [`docs/practice/COMMISSIONS.md`](docs/practice/COMMISSIONS.md)
+| Status | Meaning | Where recorded |
+|---|---|---|
+| **Accepted** | Carried far enough to stand in the public record | `public-surface-manifest.mjs` → `/calculus` |
+| **Candidate** | Examined; not promoted | Same manifest + source reports |
+| **Unresolved** | Gap preserved deliberately | Same manifest + `docs/reports/` |
 
-## Atlas source of truth
+Commission reports under `docs/reports/` are **evidence**, not steward decisions. Register: [`docs/practice/COMMISSIONS.md`](docs/practice/COMMISSIONS.md).
 
-GitHub is canonical for Atlas term content and structure.
+---
 
-Atlas term edits start in the repository, inside `Reality_Mechanics/`. The markdown note and its front matter are the editable record. Observatory states, MCP reads, and D1 tables are generated translations of that repository record.
+## Evidence and retrace
 
-D1 is generated. It is not an editing surface for Atlas terms.
+Proof fails if the evidence path fails. The website links to GitHub sources; every Calculus claim carries a repo-relative `source` path in the manifest.
 
-D1 can be wiped and rebuilt from the repository with the repo-to-D1 sync command. Direct D1 edits to `entries`, including section edits, grounding changes, new terms, and structure changes, are not part of the workflow.
-
-The intended path is:
-
-1. Edit Atlas terms in `Reality_Mechanics/`.
-2. Commit and push those edits to GitHub.
-3. Generate the Atlas D1 sync data from the repository.
-4. Sync the generated data into D1.
-5. Let Observatory and the read-only MCP read D1 as a generated cache.
-
-Before syncing, recover any term data that exists only in D1 into markdown files and commit it. The sync command is allowed to replace D1 because D1 is only a generated read model.
-
-## Local commands
-
-- `npm --prefix .atlas-publisher test`
-- `npm --prefix .atlas-publisher run sync:d1`
-- `npm --prefix member test`
-- `npm --prefix reality-mechanics-mcp test`
-
-To apply the generated D1 sync locally, run:
-
-```bash
-npm --prefix .atlas-publisher run sync:d1 -- --apply
+```text
+Atlas (Reality_Mechanics/)  →  commit on GitHub  →  D1 sync (manual)  →  Observatory / MCP read model
 ```
 
-The sync refuses dirty `Reality_Mechanics/` changes by default so GitHub remains canonical.
+Workflow for Atlas changes:
 
-## GitHub deployment
+1. Edit terms in `Reality_Mechanics/`.
+2. Commit and push to GitHub.
+3. Run `npm --prefix .atlas-publisher run sync:d1 -- --apply`.
+4. Observatory and MCP read the updated D1 cache.
 
-GitHub Actions deploys Observatory (Field worker), Pulse (Calibration worker), and MCP from `.github/workflows/deploy.yml`.
+D1 is generated and may be rebuilt from the repository. Do not edit D1 directly for Atlas terms.
 
-Required repository secrets:
+---
 
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
+## MCP
 
-Pull requests run tests only and do not deploy. Pushes to `main` and manual **Run workflow** runs deploy the active surfaces after a Cloudflare secret preflight.
+The MCP worker shares [`public-surface-manifest.mjs`](public-surface-manifest.mjs) with the website (D-025). It reads Atlas structure from D1; it does not write Atlas, D1, or public pages.
 
-If deploy fails before a Worker uploads, check:
+---
 
-1. GitHub repository **Settings → Secrets and variables → Actions**.
-2. `CLOUDFLARE_API_TOKEN` exists and has Workers/D1 deploy permissions.
-3. `CLOUDFLARE_ACCOUNT_ID` matches the Cloudflare account that owns the routes and `atlas-d1`.
+## Tests
+
+```bash
+npm --prefix .atlas-publisher test    # 116 tests
+npm --prefix member test              # 18 tests
+npm --prefix reality-mechanics-mcp test  # 42 tests
+```
+
+**176 tests** at HEAD. GitHub Actions deploys Observatory, Pulse, and MCP on push to `main`.
+
+---
+
+## Deploy
+
+See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Required repository secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (not in tree).
+
+Surface map: [`docs/deployment/CLOUDFLARE_SURFACE_MAP.md`](docs/deployment/CLOUDFLARE_SURFACE_MAP.md)
+
+---
+
+## Unresolved (steward)
+
+| Item | Status |
+|---|---|
+| **Licence** | No root `LICENSE` file — choice pending |
+| **D1 sync in CI** | Manual apply only |
+| **GitHub About panel** | See checklist in [`docs/reports/M-003-public-github-final-cleanup.md`](docs/reports/M-003-public-github-final-cleanup.md) |

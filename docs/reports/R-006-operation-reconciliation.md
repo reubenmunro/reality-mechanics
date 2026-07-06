@@ -1,5 +1,7 @@
 # R-006 — Operation Reconciliation
 
+> **Partial supersession (M-003):** Operational inventory remains valid. **HEAD commit, test counts, and Observatory renderer status** in this report are pre-O-008 (`1e0b526`). Current HEAD: `333773c`; tests: **176**; live renderer: O-008 @ `o-008.v2`.
+
 **Programme:** Maintenance  
 **Type:** Operational reconciliation (extends R-004)  
 **Date:** 2026-07-07 (UTC+12)  

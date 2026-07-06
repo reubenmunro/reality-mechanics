@@ -1,5 +1,7 @@
 # Public Release Checklist
 
+> **Supersession (M-003):** Repository visibility item **resolved** — GitHub is public; anonymous links return HTTP 200 (verified 2026-07-07). Licence item remains open.
+
 **Commission:** R-002 (blocker 1 — public retrace)  
 **Governing audit:** `docs/reports/R-001-release-audit.md`  
 **Date:** 2026-07-06

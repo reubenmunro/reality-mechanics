@@ -1,7 +1,7 @@
 # Reality Mechanics — Programme Index
 
 **Canonical entry document for contributors and AI workers.**  
-**Last reconciled:** M-001 @ `1e0b526` (2026-07-07)
+**Last reconciled:** M-003 @ `333773c` (2026-07-07)
 
 > Sort the programme before extending it.
 
@@ -118,7 +118,7 @@ Full register: `docs/practice/COMMISSIONS.md`
 | D-021.5 four-surface framing | D-024 + D-025 five surfaces |
 | R-002 MCP `get_public_programme` | D-025 `get_public_surfaces` |
 | S-001 Field/Calibration product map | R-005 five-surface synthesis |
-| FABLE snapshot @ `bf772fa` | R-006 @ `1e0b526` |
+| FABLE snapshot @ `bf772fa` | R-006, M-003 @ `333773c` |
 | Root docs Field-only | This index + manifest |
 
 ---
@@ -145,7 +145,7 @@ Full register: `docs/practice/COMMISSIONS.md`
 ## 11. Quick commands
 
 ```bash
-npm --prefix .atlas-publisher test    # 110 tests
+npm --prefix .atlas-publisher test    # 116 tests
 npm --prefix member test              # 18 tests
 npm --prefix reality-mechanics-mcp test # 42 tests
 npm --prefix .atlas-publisher run sync:d1 -- --apply  # after Atlas edits
@@ -153,4 +153,4 @@ npm --prefix .atlas-publisher run sync:d1 -- --apply  # after Atlas edits
 
 ---
 
-*Maintained by M-001. Update when operational facts or synthesis reports change.*
+*Maintained by M-001, M-003. Update when operational facts or synthesis reports change.*

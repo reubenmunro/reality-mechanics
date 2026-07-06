@@ -1,8 +1,8 @@
 # Cloudflare Surface Map
 
 **Canonical map of Reality Mechanics Cloudflare deployment.**  
-**Last verified:** M-001 (2026-07-07)  
-**Repository HEAD:** `1e0b526`  
+**Last verified:** M-003 (2026-07-07)  
+**Repository HEAD:** `333773c` (O-008 woven-field renderer live @ `o-008.v2`)  
 **Product truth:** [`public-surface-manifest.mjs`](../public-surface-manifest.mjs) — link here for surface roles, not this table alone.
 
 ---
@@ -75,6 +75,7 @@ curl -s "https://realitymechanics.nz/theory" | head -5
 curl -s "https://realitymechanics.nz/calculus" | head -5
 curl -s "https://realitymechanics.nz/api/field/behaviour-trace?id=first.relation" | jq '.readEngine.version'
 curl -s https://realitymechanics.nz/api/field/states | jq '{atlasVersion, count: (.states|length)}'
+curl -s https://realitymechanics.nz/field | rg 'RMMechanics|drawWovenHomeField|o-008'
 curl -s https://calibration.realitymechanics.nz/api/health
 ```
 

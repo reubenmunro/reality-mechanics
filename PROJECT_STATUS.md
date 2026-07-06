@@ -18,13 +18,14 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 
 - **Platform:** Five public surfaces — Observatory · Pulse · Theory · Proof · Calculus — plus MCP. Canonical description: `public-surface-manifest.mjs`.
 - **Atlas:** ~492 markdown files in `Reality_Mechanics/`; GitHub is the editable canonical source; D1 is generated from it.
-- **Observatory runtime:** Mechanics → Read Engine → Renderer (P-013, O-006). Layer contract: `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`.
+- **Observatory runtime:** Mechanics → Read Engine → Renderer. Woven-field client activation: O-008 (`RMMechanics` @ `o-008.v2`). Layer contract: `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`.
+- **GitHub:** Repository **public** — anonymous evidence links return HTTP 200 (verified M-003).
 - **Stewardship:** Audit method in `docs/stewardship/`; coverage incomplete.
 - **Build & deployment:** Workers on Cloudflare; D1 sync **manual**; `garden_config.atlas_version` label may lag entries.
 
-**Git:** `main` @ `1e0b526` — Observatory mechanics pipeline + P/O research programme (2026-07-07).
+**Git:** `main` @ `333773c` — O-008 woven-field renderer + activation hotfixes (2026-07-07).
 
-**Synthesis:** `docs/reports/R-005-programme-synthesis.md` · **Operations:** `docs/reports/R-006-operation-reconciliation.md`
+**Synthesis:** `docs/reports/R-005-programme-synthesis.md` · **Operations:** `docs/reports/R-006-operation-reconciliation.md` (extended by O-008; commit refs in R-006 body are pre-O-008)
 
 ### Supporting detail
 
@@ -32,9 +33,9 @@ Tracks what the repository **is**, what is **active**, and what remains **open o
 |------|----------------|----------|
 | Public surfaces | Five surfaces + MCP — manifest is source of truth | `public-surface-manifest.mjs`; R-005 |
 | Atlas source | Canonical in GitHub | `Reality_Mechanics/`; `README.md` |
-| Observatory code | Read Engine + TMS modules | `.atlas-publisher/read-engine.mjs`; O-006 |
-| Tests | 110 + 18 + 42 = **170** passing | R-006 |
-| Live deployment | CI on `main` for worker paths | `.github/workflows/deploy.yml` |
+| Observatory code | Read Engine + TMS + woven-field renderer | `woven-field-renderer.mjs`; O-006, O-008 |
+| Tests | 116 + 18 + 42 = **176** passing | M-003 |
+| Live deployment | CI on `main` for worker paths | `.github/workflows/deploy.yml`; O-008 live @ `o-008.v2` |
 
 ---
 
@@ -83,8 +84,8 @@ Atlas (source)  →  Stewardship (verification)  →  Platform (translation & su
 | Investigation | Status | Record |
 |---------------|--------|--------|
 | Programme synthesis | **Current** | R-005, `docs/PROGRAMME_INDEX.md` |
-| Operation reconciliation | **Current** | R-006 @ `1e0b526` |
-| Read Engine / thread mechanics | **Implemented** | O-004–O-006; P-011–P-013 |
+| Operation reconciliation | **Current** (partially stale HEAD) | R-006; O-008 extends Observatory ops |
+| Read Engine / thread mechanics | **Implemented** | O-004–O-008; P-011–P-013 |
 | Participation / fabric reads | **Research only** | P-009, P-012 |
 | D1 sync automation | **Open** | Manual apply; not in CI |
 | Stewardship coverage | **In progress** | `docs/stewardship/AUDIT_LOG.md` |
@@ -98,7 +99,8 @@ Atlas (source)  →  Stewardship (verification)  →  Platform (translation & su
 | D1 sync in CI? | Not in deploy workflow |
 | `garden_config.atlas_version` lag | Sync script does not update label |
 | `atlas-doctor.mjs` | Referenced by pre-commit; file absent |
-| Client weave-state bundle | O-006 documents mirror drift risk |
+| Root licence | No `LICENSE` file |
+| Client weave-state read bundle | O-006 documents mirror drift risk; thread resolver now in `RMMechanics` |
 
 ---
 
@@ -114,6 +116,7 @@ Atlas (source)  →  Stewardship (verification)  →  Platform (translation & su
 | Superseded reports | `docs/reports/SUPERSESSION_INDEX.md` |
 | Atlas (editable) | `Reality_Mechanics/` |
 | Observatory worker | `.atlas-publisher/main-website-worker.js` |
+| Woven-field renderer | `.atlas-publisher/woven-field-renderer.mjs` |
 | Deploy (CI) | `.github/workflows/deploy.yml` |
 
 ---

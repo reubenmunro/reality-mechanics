@@ -17,6 +17,7 @@
 | `weave-read.mjs` | R-WM / R-FE weave and fabric-eligibility reads |
 | `maturity-read.mjs` | R-MAT maturity / settledness read |
 | `weave-state.mjs` | Shared mechanics substrate (not a read) |
+| `woven-field-renderer.mjs` | L6 woven-field home renderer (O-008) |
 | `field-behaviour-trace.mjs` | R-BT meta-instrument |
 
 ## Source-of-truth rules

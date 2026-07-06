@@ -1,7 +1,7 @@
 # Supersession Index
 
 **Purpose:** Mark reports that remain as **evidence** but are **not current programme truth**.  
-**Maintained:** M-001 (2026-07-07)
+**Maintained:** M-003 (2026-07-07)
 
 Do not delete reports. Read supersession notes before citing.
 
@@ -23,6 +23,7 @@ Do not delete reports. Read supersession notes before citing.
 
 | Document | Role |
 |---|---|
+| `README.md` | Public GitHub landing |
 | `docs/PROGRAMME_INDEX.md` | Contributor entry |
 | `public-surface-manifest.mjs` | Product truth |
 | `docs/reports/R-005-programme-synthesis.md` | Architecture synthesis |
@@ -41,7 +42,9 @@ Do not delete reports. Read supersession notes before citing.
 | **FABLE-REPO-STATE-FINDING-2026-07-06** | R-006, M-001 | Snapshot @ `bf772fa`; pre–P/O mechanics. MCP 15 tools → 17. |
 | **R-002** Release Blocker Remediation | R-004, D-025 | MCP `get_public_programme` **discarded**; doc claims partially reversed. Observatory fixes **landed** via R-004. |
 | **S-001** Programme Characterisation | R-005, manifest | Field/Calibration/MCP map; pre-Calculus public surface. Governance sections still useful. |
-| **R-004** @ `a094565` only | R-006 | Extended by P/O programme; test counts stale. |
+| **R-004** @ `a094565` only | R-006, M-003 | Extended by P/O programme and O-008; test counts stale in R-004/R-006 bodies. |
+| **R-006** Operation Reconciliation | M-003, O-008 | HEAD/test counts in report body @ `1e0b526`; extended @ `333773c`. |
+| **O-001–O-004** Observatory renderer reports | **O-008** | Architecture/TMS evidence retained; **live client activation** and draw order superseded by `woven-field-renderer.mjs`. |
 
 ---
 

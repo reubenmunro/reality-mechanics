@@ -1,5 +1,7 @@
 # O-002 — Fabric Renderer Architecture
 
+> **Supersession (M-003):** Fabric gating and weave-mode rules remain valid evidence. **Live renderer order and client activation** superseded by **O-008**. See [`O-008-observatory-renderer-reconstruction.md`](O-008-observatory-renderer-reconstruction.md).
+
 **Programme:** Observatory  
 **Type:** Architecture commission (smallest coherent fabric/weave step)  
 **Date:** 2026-07-07 (UTC+12)  

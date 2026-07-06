@@ -1,5 +1,7 @@
 # O-001 — Observatory Field Renderer Architecture
 
+> **Supersession (M-003):** Home renderer architecture superseded for **live activation** by **O-008** (`woven-field-renderer.mjs`, `RMMechanics`, `drawWovenHomeField`). O-001 membrane model remains historical evidence; do not cite as current draw path.
+
 **Programme:** Observatory  
 **Type:** Architecture commission (field instrument, not visual polish)  
 **Date:** 2026-07-06 (UTC+12)  

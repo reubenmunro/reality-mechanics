@@ -1,5 +1,7 @@
 # O-004 — Thread Mechanics Renderer Pass
 
+> **Supersession (M-003):** `thread-mechanics.mjs` and TMS resolver remain current server-side evidence. **Client-side activation** (`resolveLeg` in browser) was not complete until **O-008**. Do not cite O-004 alone as live renderer status.
+
 **Programme:** Observatory  
 **Type:** Implementation commission  
 **Date:** 2026-07-07 (UTC+12)  
