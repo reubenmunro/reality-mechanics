@@ -89,11 +89,18 @@ t("Pulse presents Calibration as the first instrument only", () => {
   assert.ok(src.includes("Open Strain"));
 });
 
+t("D-026 Pulse visual refinement removes card chrome", () => {
+  assert.ok(!src.includes("border:1px solid var(--line)"));
+  assert.ok(!src.includes('class="eyebrow"'));
+  assert.ok(src.includes("Iowan Old Style"));
+});
+
 t("navigation reaches Observatory, Theory, and Proof", () => {
-  assert.ok(src.includes('href="https://realitymechanics.nz/field">🔭 Observatory'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/submission">✓ Proof'));
-  assert.ok(src.includes('href="https://calibration.realitymechanics.nz/">❤️ Pulse'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/theory">📖 Theory'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/field">Observatory'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/submission">Proof'));
+  assert.ok(src.includes('href="https://calibration.realitymechanics.nz/" aria-current="page">Pulse'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/theory">Theory'));
+  assert.ok(!/🔭|❤️|📖|✓/.test(src));
 });
 
 console.log(`\ncalibration invariants: all ${n} assertions passed.`);

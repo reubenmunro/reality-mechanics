@@ -257,22 +257,22 @@ export function fieldPage(options = {}) {
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { margin: 0; width: 100%; height: 100%; overflow: hidden; overflow-x: hidden; }
-    body { margin: 0; width: 100%; max-width: 100vw; height: 100%; overflow: hidden; overflow-x: hidden; background: #06080d; color: #d4c5a9; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+    body { margin: 0; width: 100%; max-width: 100vw; height: 100%; overflow: hidden; overflow-x: hidden; background: radial-gradient(ellipse 120% 80% at 50% -8%, #111925 0, #06080d 48%, #040509 100%); color: #d4c5a9; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
     canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
     #top { display: none; }
     #observatory-landing {
-      position: fixed; left: 1.55rem; top: 3.45rem; z-index: 6;
-      max-width: min(21rem, calc(100vw - 2rem)); pointer-events: auto;
+      position: fixed; left: 2rem; top: 4.2rem; z-index: 6;
+      max-width: min(22rem, calc(100vw - 2.5rem)); pointer-events: auto;
     }
     #observatory-landing h1 {
-      margin: 0 0 0.35rem;
-      font: 500 1.02rem/1.25 "Iowan Old Style", Charter, Georgia, serif;
-      color: rgba(212,197,169,0.88); letter-spacing: 0.01em;
+      margin: 0 0 0.55rem;
+      font: 500 clamp(1.35rem, 3.2vw, 1.85rem)/1.18 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(212,197,169,0.9); letter-spacing: 0.012em;
     }
     #observatory-landing .landing-orientation {
-      margin: 0 0 0.7rem;
-      font: 500 0.82rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
-      color: rgba(58,80,112,0.82);
+      margin: 0 0 1.1rem;
+      font: 500 0.9rem/1.6 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(58,80,112,0.74);
     }
     #observatory-landing .landing-actions {
       display: flex; flex-direction: column; align-items: flex-start; gap: 0.38rem;
@@ -302,38 +302,38 @@ export function fieldPage(options = {}) {
     }
     #sheet-term[hidden], #sheet-neutral[hidden] { display: none; }
     #access-row {
-      position: fixed; left: 50%; top: 1.28rem; transform: translateX(-50%);
-      z-index: 8; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem 1rem;
+      position: fixed; left: 50%; top: 1.55rem; transform: translateX(-50%);
+      z-index: 8; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem 1.35rem;
       max-width: min(34rem, calc(100vw - 7rem)); pointer-events: auto;
     }
     #access-row a {
-      color: rgba(58,80,112,0.76); text-decoration: none;
-      font: 700 0.58rem/1 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase;
-      transition: color 0.18s ease;
+      color: rgba(58,80,112,0.58); text-decoration: none;
+      font: 500 0.56rem/1 system-ui, sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: color 0.22s ease;
     }
     #access-row a:hover,
-    #access-row a[aria-current="page"] { color: rgba(200,96,26,0.82); }
+    #access-row a[aria-current="page"] { color: rgba(200,96,26,0.78); }
     #enter-form {
-      position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%);
-      z-index: 12; width: min(19rem, calc(100vw - 2rem)); pointer-events: auto;
-      opacity: 0.72; transition: opacity 0.24s ease;
+      position: fixed; left: 50%; bottom: 1.65rem; transform: translateX(-50%);
+      z-index: 12; width: min(18rem, calc(100vw - 2rem)); pointer-events: auto;
+      opacity: 0.58; transition: opacity 0.28s ease;
     }
-    body.sheet-open #enter-form { opacity: 0.14; pointer-events: none; }
+    body.sheet-open #enter-form { opacity: 0.1; pointer-events: none; }
     #enter-input {
-      width: 100%; border: 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-      background: transparent; outline: none; padding: 0.32rem 0 0.36rem;
-      color: rgba(200,96,26,0.86); caret-color: rgba(200,96,26,0.9);
-      font: 500 0.95rem/1.2 "Iowan Old Style", Charter, Georgia, serif;
-      text-align: center; letter-spacing: 0.01em;
+      width: 100%; border: 0; border-bottom: 1px solid rgba(255,255,255,0.045);
+      background: transparent; outline: none; padding: 0.28rem 0 0.42rem;
+      color: rgba(200,96,26,0.78); caret-color: rgba(200,96,26,0.88);
+      font: 500 0.92rem/1.25 "Iowan Old Style", Charter, Georgia, serif;
+      text-align: center; letter-spacing: 0.02em;
     }
-    #enter-input::placeholder { color: rgba(58,80,112,0.72); opacity: 1; }
-    #enter-input:focus { border-bottom-color: rgba(200,96,26,0.36); }
+    #enter-input::placeholder { color: rgba(58,80,112,0.58); opacity: 1; }
+    #enter-input:focus { border-bottom-color: rgba(200,96,26,0.28); opacity: 1; }
     #term-sheet {
       position: fixed; top: 0; right: min(-28rem, -88vw); bottom: 0; z-index: 30;
-      width: min(28rem, 88vw); overflow-y: auto; pointer-events: auto;
-      background: rgba(7,9,14,0.96); border-left: 1px solid rgba(255,255,255,0.055);
-      backdrop-filter: blur(14px); padding: 4.5rem 1.55rem 2rem;
-      transition: right 0.34s cubic-bezier(0.32,0.72,0,1);
+      width: min(26rem, 86vw); overflow-y: auto; pointer-events: auto;
+      background: rgba(6,8,13,0.78); border-left: 0;
+      backdrop-filter: blur(18px); padding: 5rem 2rem 2.5rem;
+      transition: right 0.38s cubic-bezier(0.32,0.72,0,1);
     }
     #term-sheet.open { right: 0; }
     #sheet-close {
@@ -346,13 +346,13 @@ export function fieldPage(options = {}) {
       text-transform: uppercase; color: rgba(200,96,26,0.5); margin-bottom: 0.4rem;
     }
     #sheet-title {
-      font: 500 clamp(1.5rem, 4vw, 2.4rem)/1.1 "Iowan Old Style", Charter, Georgia, serif;
-      color: #c8601a; margin-bottom: 1.15rem;
+      font: 500 clamp(1.65rem, 4.2vw, 2.55rem)/1.08 "Iowan Old Style", Charter, Georgia, serif;
+      color: rgba(200,96,26,0.92); margin-bottom: 1.35rem;
     }
     #sheet-place {
-      margin: -0.35rem 0 0.85rem;
-      color: rgba(212,197,169,0.74);
-      font: 500 0.96rem/1.55 "Iowan Old Style", Charter, Georgia, serif;
+      margin: -0.2rem 0 1.1rem;
+      color: rgba(212,197,169,0.76);
+      font: 500 1rem/1.62 "Iowan Old Style", Charter, Georgia, serif;
       white-space: pre-wrap;
     }
     #sheet-atlas-link {
@@ -371,15 +371,16 @@ export function fieldPage(options = {}) {
       margin-bottom: 0.2rem;
     }
     .sheet-group h4 {
-      margin: 0 0 0.45rem; font: 700 0.6rem/1 system-ui, sans-serif;
-      letter-spacing: 0.12em; text-transform: uppercase; color: #2a3848;
+      margin: 0 0 0.55rem; font: 500 0.56rem/1 system-ui, sans-serif;
+      letter-spacing: 0.14em; text-transform: uppercase; color: rgba(42,56,72,0.72);
     }
     .sheet-relation {
-      display: block; border: 0; background: none; padding: 0.18rem 0;
-      color: #3d5570; cursor: pointer; text-align: left;
-      font: 500 0.92rem/1.22 "Iowan Old Style", Charter, Georgia, serif;
+      display: block; border: 0; background: none; padding: 0.22rem 0;
+      color: rgba(61,85,112,0.82); cursor: pointer; text-align: left;
+      font: 500 0.94rem/1.28 "Iowan Old Style", Charter, Georgia, serif;
+      transition: color 0.2s ease;
     }
-    .sheet-relation:hover { color: #c8601a; }
+    .sheet-relation:hover { color: rgba(200,96,26,0.88); }
     #sheet-empty {
       display: none; color: rgba(58,80,112,0.72);
       font: 500 0.9rem/1.45 "Iowan Old Style", Charter, Georgia, serif;
@@ -447,10 +448,10 @@ export function fieldPage(options = {}) {
 <canvas id="field"></canvas>
 <div id="top"><div id="mode">Observatory</div></div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
-  <a href="/field">🔭 Observatory</a>
-  <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-  <a href="/theory">📖 Theory</a>
-  <a href="/submission">✓ Proof</a>
+  <a href="/field" aria-current="page">Observatory</a>
+  <a href="https://calibration.realitymechanics.nz/">Pulse</a>
+  <a href="/theory">Theory</a>
+  <a href="/submission">Proof</a>
 </nav>
 <section id="observatory-landing" aria-label="Observatory orientation">
   <h1>Reality Mechanics Observatory</h1>
@@ -1641,6 +1642,15 @@ function drawSmoke() {
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, innerWidth, innerHeight);
 
+  if (homeMode && !focusId) {
+    const warm = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(innerWidth, innerHeight) * 0.46);
+    warm.addColorStop(0, 'rgba(200,96,26,0.022)');
+    warm.addColorStop(0.5, 'rgba(58,80,112,0.01)');
+    warm.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = warm;
+    ctx.fillRect(0, 0, innerWidth, innerHeight);
+  }
+
   ctx.save();
   ctx.translate(cx, cy);
   ctx.scale(scale, scale);
@@ -2743,10 +2753,11 @@ function drawHomeNode(op, alpha) {
   const profile = op.profile || computeProfile(op);
   const structuralMass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
   const radius = 7 + profile.density * 5 + structuralMass * 3;
+  const glow = radius * 2.85;
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const coreAlpha = 0.16 + structuralMass * 0.04;
-  const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, radius * 2.4);
+  const coreAlpha = 0.19 + structuralMass * 0.045;
+  const grad = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, glow);
   if (colourMode === 'fire') {
     grad.addColorStop(0, fireColor(order, coreAlpha * alpha, 14));
     grad.addColorStop(0.42, fireColor(order, coreAlpha * 0.34 * alpha, 6));
@@ -2758,7 +2769,7 @@ function drawHomeNode(op, alpha) {
   }
   ctx.beginPath();
   ctx.fillStyle = grad;
-  ctx.arc(pos.x, pos.y, radius * 2.4, 0, Math.PI * 2);
+  ctx.arc(pos.x, pos.y, glow, 0, Math.PI * 2);
   ctx.fill();
   const edgeAlpha = 0.04 + structuralMass * 0.012;
   ctx.beginPath();
@@ -3048,37 +3059,41 @@ export function theoryPage() {
   <title>Theory · Reality Mechanics</title>
   <meta name="description" content="Why Reality Mechanics works — concise public Theory with links to canonical documents."/>
   <style>
-    :root { --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72); --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; --line:rgba(255,255,255,0.08); }
+    :root { --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.7); --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; }
     * { box-sizing:border-box; }
-    body { margin:0; background:radial-gradient(circle at 50% 0%, #111925 0, #06080d 54%, #040509 100%); color:var(--warm-dim); font:16px/1.65 Georgia, Charter, serif; }
-    header { position:sticky; top:0; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(6,8,13,0.82); border-bottom:1px solid var(--line); backdrop-filter:blur(16px); }
-    .brand { color:var(--ember); font:700 12px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
-    nav { display:flex; gap:16px; flex-wrap:wrap; }
-    nav a { color:var(--cool); text-decoration:none; font:700 12px/1 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
-    nav a:hover { color:var(--ember); }
-    main { width:min(720px, calc(100vw - 32px)); margin:0 auto; padding:52px 0 72px; }
-    .eyebrow { color:var(--ember); font:700 11px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
-    h1 { margin:10px 0 8px; color:var(--warm); font:500 clamp(32px,6vw,52px)/1.05 Georgia, Charter, serif; }
-    .lede { color:var(--warm-dim); font-size:18px; max-width:640px; }
-    h2 { color:var(--warm); font:500 22px/1.2 Georgia, Charter, serif; margin:36px 0 8px; }
-    ul { padding-left:20px; max-width:640px; }
-    li { margin:8px 0; }
-    a { color:var(--lead); }
-    p { max-width:640px; }
+    body { margin:0; background:radial-gradient(ellipse 110% 70% at 50% -6%, #111925 0, #06080d 52%, #040509 100%); color:var(--warm-dim); font:17px/1.72 "Iowan Old Style", Charter, Georgia, serif; }
+    header { position:fixed; inset:0 0 auto; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 28px; background:linear-gradient(180deg, rgba(6,8,13,0.72) 0%, rgba(6,8,13,0) 100%); }
+    .brand { color:rgba(200,96,26,0.62); font:500 11px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; }
+    nav a { color:rgba(77,94,114,0.72); text-decoration:none; font:500 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    nav a:hover, nav a[aria-current="page"] { color:rgba(200,96,26,0.78); }
+    main { width:min(680px, calc(100vw - 48px)); margin:0 auto; padding:108px 0 96px; }
+    h1 { margin:0 0 20px; color:var(--warm); font:500 clamp(36px,6.5vw,58px)/1.06 "Iowan Old Style", Charter, Georgia, serif; letter-spacing:0.01em; }
+    .lede { color:var(--warm-dim); font-size:20px; line-height:1.62; max-width:600px; margin:0 0 52px; }
+    h2 { color:rgba(212,197,169,0.88); font:500 20px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin:48px 0 14px; }
+    ul { padding-left:0; list-style:none; max-width:600px; margin:0; }
+    li { margin:14px 0; padding-left:1.1rem; position:relative; }
+    li::before { content:""; position:absolute; left:0; top:0.72em; width:4px; height:4px; border-radius:50%; background:rgba(200,96,26,0.38); }
+    a { color:var(--lead); text-decoration:none; border-bottom:1px solid rgba(77,142,166,0.22); }
+    a:hover { color:rgba(200,96,26,0.88); border-bottom-color:rgba(200,96,26,0.32); }
+    p { max-width:600px; }
+    .calculus-notebook { margin:18px 0 0; padding:22px 0 4px 1.35rem; border-left:1px solid rgba(200,96,26,0.2); max-width:600px; }
+    .calculus-notebook .notebook-kicker { margin:0 0 10px; color:rgba(77,94,114,0.82); font:500 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.14em; text-transform:uppercase; }
+    .calculus-notebook p { margin:0; font:15px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.78); }
+    .calculus-notebook a { border-bottom-color:rgba(77,142,166,0.18); }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">Theory</div>
     <nav aria-label="Reality Mechanics">
-      <a href="/field">🔭 Observatory</a>
-      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-      <a href="/theory">📖 Theory</a>
-      <a href="/submission">✓ Proof</a>
+      <a href="/field">Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">Pulse</a>
+      <a href="/theory" aria-current="page">Theory</a>
+      <a href="/submission">Proof</a>
     </nav>
   </header>
   <main>
-    <div class="eyebrow">Theory</div>
     <h1>Why the discipline works.</h1>
     <p class="lede">Theory explains. It is not duplicated here. The Observatory demonstrates structure; Pulse demonstrates behaviour through time; Proof packages retraceable evidence.</p>
 
@@ -3092,9 +3107,14 @@ export function theoryPage() {
 
     <h2>Governance and practice</h2>
     <ul>
-      <li><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read (unpromoted).</li>
       <li><a href="${GITHUB_DOC}/docs/practice/COMMISSIONS.md">Commissions register</a> — resolved programme work.</li>
     </ul>
+
+    <h2>Calculus</h2>
+    <section class="calculus-notebook" aria-label="Practice calculus">
+      <p class="notebook-kicker">Laboratory notebook · unpromoted</p>
+      <p><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read. Precision without decoration.</p>
+    </section>
   </main>
 </body>
 </html>`;
@@ -3109,53 +3129,50 @@ export function submissionPage() {
   <title>Proof · Reality Mechanics</title>
   <meta name="description" content="Reality Mechanics Proof — retrace pathway through accepted evidence, candidates, and unresolved questions."/>
   <style>
-    :root {
-      --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.72);
-      --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; --line:rgba(255,255,255,0.08);
-    }
+    :root { --void:#06080d; --warm:#d4c5a9; --warm-dim:rgba(212,197,169,0.68); --ember:#c8601a; --cool:#4d5e72; --lead:#4d8ea6; }
     * { box-sizing:border-box; }
-    body { margin:0; background:radial-gradient(circle at 50% 0%, #111925 0, #06080d 54%, #040509 100%); color:var(--warm-dim); font:16px/1.65 Georgia, Charter, serif; }
-    header { position:sticky; top:0; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 18px; background:rgba(6,8,13,0.82); border-bottom:1px solid var(--line); backdrop-filter:blur(16px); }
-    .brand { color:var(--ember); font:700 12px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
-    nav { display:flex; gap:16px; }
-    nav a { color:var(--cool); text-decoration:none; font:700 12px/1 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase; }
-    nav a:hover { color:var(--ember); }
-    main { width:min(820px, calc(100vw - 32px)); margin:0 auto; padding:52px 0 72px; }
-    .eyebrow { color:var(--ember); font:700 11px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
-    h1 { margin:10px 0 8px; color:var(--warm); font:500 clamp(32px,6vw,56px)/1.05 Georgia, Charter, serif; }
-    .lede { color:var(--warm-dim); font-size:18px; max-width:680px; }
-    h2 { color:var(--warm); font:500 24px/1.2 Georgia, Charter, serif; margin:44px 0 6px; }
-    p { max-width:700px; }
-    ul { max-width:700px; padding-left:20px; }
-    li { margin:6px 0; }
-    a { color:var(--lead); }
-    .cols { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-top:14px; }
-    .card { border:1px solid var(--line); border-radius:10px; padding:16px; background:rgba(12,16,25,0.6); }
-    .card h3 { margin:0 0 8px; font:700 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
-    .card.accepted h3 { color:var(--ember); }
-    .card.candidate h3 { color:var(--lead); }
-    .card.unresolved h3 { color:var(--cool); }
-    .card ul { padding-left:18px; font-size:14px; }
-    .exhibits { display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; }
-    .exhibit { flex:1 1 200px; border:1px solid var(--line); border-radius:10px; padding:16px; background:rgba(12,16,25,0.6); text-decoration:none; color:var(--warm-dim); }
-    .exhibit:hover { border-color:rgba(200,96,26,0.4); }
-    .exhibit b { display:block; color:var(--warm); font-size:16px; margin-bottom:4px; }
-    .status-line { margin-top:40px; padding-top:18px; border-top:1px solid var(--line); color:var(--cool); font-size:14px; }
-    @media (max-width:640px) { .cols { grid-template-columns:1fr; } }
+    body { margin:0; background:radial-gradient(ellipse 110% 70% at 50% -6%, #101620 0, #06080d 54%, #040509 100%); color:var(--warm-dim); font:17px/1.72 "Iowan Old Style", Charter, Georgia, serif; }
+    header { position:fixed; inset:0 0 auto; z-index:4; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 28px; background:linear-gradient(180deg, rgba(6,8,13,0.72) 0%, rgba(6,8,13,0) 100%); }
+    .brand { color:rgba(200,96,26,0.62); font:500 11px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; }
+    nav a { color:rgba(77,94,114,0.72); text-decoration:none; font:500 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    nav a:hover, nav a[aria-current="page"] { color:rgba(200,96,26,0.78); }
+    main { width:min(720px, calc(100vw - 48px)); margin:0 auto; padding:108px 0 96px; }
+    h1 { margin:0 0 20px; color:var(--warm); font:500 clamp(36px,6.5vw,60px)/1.05 "Iowan Old Style", Charter, Georgia, serif; }
+    .lede { color:var(--warm-dim); font-size:20px; line-height:1.62; max-width:640px; margin:0 0 48px; }
+    h2 { color:rgba(212,197,169,0.9); font:500 22px/1.28 "Iowan Old Style", Charter, Georgia, serif; margin:52px 0 12px; }
+    p { max-width:640px; margin:0 0 14px; }
+    ul { max-width:640px; padding-left:0; list-style:none; margin:0 0 8px; }
+    li { margin:10px 0; padding-left:1.1rem; position:relative; }
+    li::before { content:""; position:absolute; left:0; top:0.72em; width:4px; height:4px; border-radius:50%; background:rgba(77,94,114,0.45); }
+    a { color:var(--lead); text-decoration:none; border-bottom:1px solid rgba(77,142,166,0.2); }
+    a:hover { color:rgba(200,96,26,0.86); border-bottom-color:rgba(200,96,26,0.3); }
+    .record { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px 36px; margin:28px 0 0; }
+    .record-section h3 { margin:0 0 12px; font:500 10px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    .record-section.accepted h3 { color:rgba(200,96,26,0.62); }
+    .record-section.candidate h3 { color:rgba(77,142,166,0.72); }
+    .record-section.unresolved h3 { color:rgba(77,94,114,0.82); }
+    .record-section ul { font-size:15px; line-height:1.65; }
+    .instruments { margin:20px 0 0; }
+    .instrument { display:block; margin:18px 0; padding:0; text-decoration:none; color:inherit; border:0; }
+    .instrument:hover .instrument-name { color:rgba(200,96,26,0.88); }
+    .instrument-name { display:block; color:var(--warm); font:500 18px/1.3 "Iowan Old Style", Charter, Georgia, serif; margin-bottom:4px; transition:color 0.2s ease; }
+    .instrument-desc { color:var(--cool); font-size:15px; }
+    .status-line { margin-top:56px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
+    @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } }
   </style>
 </head>
 <body>
   <header>
     <div class="brand">Proof</div>
     <nav aria-label="Reality Mechanics areas">
-      <a href="/field">🔭 Observatory</a>
-      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-      <a href="/theory">📖 Theory</a>
-      <a href="/submission">✓ Proof</a>
+      <a href="/field">Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/">Pulse</a>
+      <a href="/theory">Theory</a>
+      <a href="/submission" aria-current="page">Proof</a>
     </nav>
   </header>
   <main>
-    <div class="eyebrow">Proof</div>
     <h1>Retrace pathway</h1>
     <p class="lede">Proof packages what the programme currently holds as <b>accepted</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b> — so independent participants can review, challenge, and retrace it. Nothing here is promoted beyond its stated status.</p>
 
@@ -3170,8 +3187,8 @@ export function submissionPage() {
 
     <h2>Working architecture</h2>
     <p>Presented honestly: the accepted body is small and conservative; the investigated body is large. That is by design — derivation before promotion.</p>
-    <div class="cols">
-      <div class="card accepted">
+    <div class="record">
+      <section class="record-section accepted">
         <h3>Accepted</h3>
         <ul>
           <li>Constitution (C001–C014) as governing constraints.</li>
@@ -3181,16 +3198,16 @@ export function submissionPage() {
           <li>Stewardship method v1 — eight invariants, evidence grading E1–E5.</li>
           <li>Public surfaces: Observatory, Pulse, MCP.</li>
         </ul>
-      </div>
-      <div class="card candidate">
+      </section>
+      <section class="record-section candidate">
         <h3>Candidate</h3>
         <ul>
           <li>A candidate practice runtime, <b>Ark Run</b>.</li>
           <li>A candidate calculus relating Order and Ark — tested, found <b>not minimal</b>; minimal seat is Relation → Connection.</li>
           <li>Hypothesis: frontmatter fields are calibrated structural questions.</li>
         </ul>
-      </div>
-      <div class="card unresolved">
+      </section>
+      <section class="record-section unresolved">
         <h3>Unresolved</h3>
         <ul>
           <li>The Calculus has no accepted operation; the <b>:</b> operator is not accepted.</li>
@@ -3199,13 +3216,13 @@ export function submissionPage() {
           <li>Second Order terminal-marker gap, left unfilled.</li>
           <li>Production deployment / D1-sync not yet file-verified.</li>
         </ul>
-      </div>
+      </section>
     </div>
 
     <h2>Public instruments</h2>
-    <div class="exhibits">
-      <a class="exhibit" href="/field"><b>Observatory</b>Observe structural relationships in the field.</a>
-      <a class="exhibit" href="https://calibration.realitymechanics.nz/"><b>Pulse</b>Calibration — behaviour through time.</a>
+    <div class="instruments">
+      <a class="instrument" href="/field"><span class="instrument-name">Observatory</span><span class="instrument-desc">Observe structural relationships in the field.</span></a>
+      <a class="instrument" href="https://calibration.realitymechanics.nz/"><span class="instrument-name">Pulse</span><span class="instrument-desc">Calibration — behaviour through time.</span></a>
     </div>
 
     <h2>Evidence reports</h2>

@@ -15,96 +15,87 @@ const PAGE = `<!doctype html>
   <style>
     :root {
       --void:#07090e; --deep:#0c1019; --ember:#c8601a; --warm:#d4c5a9;
-      --warm-dim:rgba(212,197,169,0.68); --cool:#4d5e72; --line:rgba(255,255,255,0.075);
-      --lead:#4d8ea6; --good:#5f9c72;
+      --warm-dim:rgba(212,197,169,0.68); --cool:#4d5e72; --lead:#4d8ea6; --good:#5f9c72;
     }
     * { box-sizing:border-box; }
     html, body { min-height:100%; }
     body {
-      margin:0; background:radial-gradient(circle at 50% 0%, #111925 0, #07090e 52%, #040509 100%);
-      color:var(--warm-dim); font:15px/1.6 system-ui, sans-serif;
+      margin:0; background:radial-gradient(ellipse 110% 70% at 50% -6%, #111925 0, #07090e 52%, #040509 100%);
+      color:var(--warm-dim); font:17px/1.72 "Iowan Old Style", Charter, Georgia, serif;
     }
     header {
-      position:sticky; top:0; z-index:4; display:flex; justify-content:space-between; align-items:center;
-      gap:16px; padding:14px 18px; background:rgba(7,9,14,0.82);
-      border-bottom:1px solid var(--line); backdrop-filter:blur(16px);
+      position:fixed; inset:0 0 auto; z-index:4; display:flex; justify-content:space-between; align-items:center;
+      gap:20px; padding:22px 28px; background:linear-gradient(180deg, rgba(7,9,14,0.72) 0%, rgba(7,9,14,0) 100%);
     }
-    .brand { color:var(--ember); font-weight:700; letter-spacing:0.12em; font-size:12px; text-transform:uppercase; }
-    nav { display:flex; gap:14px; align-items:center; }
-    nav a { color:var(--cool); text-decoration:none; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
-    nav a:hover { color:var(--ember); }
-    main { width:min(860px, calc(100vw - 32px)); margin:0 auto; padding:54px 0 64px; }
-    .intro { max-width:760px; margin-bottom:34px; }
-    .eyebrow { color:var(--ember); font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+    .brand { color:rgba(200,96,26,0.62); font:500 11px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
+    nav { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+    nav a { color:rgba(77,94,114,0.72); text-decoration:none; font:500 11px/1 system-ui, sans-serif; letter-spacing:0.12em; text-transform:uppercase; }
+    nav a:hover, nav a[aria-current="page"] { color:rgba(200,96,26,0.78); }
+    main { width:min(760px, calc(100vw - 48px)); margin:0 auto; padding:108px 0 88px; }
+    .intro { max-width:640px; margin-bottom:52px; }
     h1 {
-      margin:10px 0 14px; color:var(--warm);
-      font:500 clamp(34px, 7vw, 68px)/1.02 Georgia, Charter, serif; letter-spacing:0;
+      margin:0 0 18px; color:var(--warm);
+      font:500 clamp(38px, 7vw, 64px)/1.04 "Iowan Old Style", Charter, Georgia, serif;
     }
-    .intro p { margin:0; max-width:680px; color:var(--warm-dim); font:19px/1.55 Georgia, Charter, serif; }
+    .intro p { margin:0; max-width:580px; color:var(--warm-dim); font-size:20px; line-height:1.62; }
     .proof {
-      display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; margin:28px 0 0;
-      color:var(--cool); font-size:13px;
+      display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:24px 28px; margin:36px 0 0;
+      color:var(--cool); font-size:14px; line-height:1.55;
     }
-    .proof div { border:1px solid var(--line); border-radius:8px; padding:12px; background:rgba(12,16,25,0.64); }
-    .proof b { display:block; color:var(--warm); margin-bottom:3px; }
+    .proof b { display:block; color:rgba(212,197,169,0.86); font:500 13px/1.3 system-ui, sans-serif; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
 
-    .mech {
-      margin-top:30px; border:1px solid var(--line); border-radius:10px;
-      background:rgba(12,16,25,0.72); padding:22px;
-    }
-    .mech-head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; }
-    .mech-head h2 { margin:0; color:var(--warm); font:500 22px/1.2 Georgia, Charter, serif; }
-    .mech-head .status { color:var(--cool); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+    .mech { margin-top:12px; padding:0; }
+    .mech-head { display:flex; justify-content:space-between; align-items:baseline; gap:18px; flex-wrap:wrap; margin-bottom:28px; }
+    .mech-head h2 { margin:0; color:rgba(212,197,169,0.9); font:500 22px/1.25 "Iowan Old Style", Charter, Georgia, serif; }
+    .mech-head .status { color:var(--cool); font:500 10px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
     .mech-head .status.live { color:var(--good); }
 
     .cardio-panel {
-      position:relative; margin:24px 0 8px; height:190px; border:1px solid var(--line); border-radius:8px;
-      background:#07090e; overflow:hidden;
+      position:relative; margin:0 0 12px; height:220px; border:0; border-radius:0;
+      background:radial-gradient(ellipse 90% 80% at 50% 58%, rgba(17,22,32,0.9) 0, #07090e 72%);
+      overflow:hidden;
     }
     .cardio-panel svg { width:100%; height:100%; display:block; }
-    .grid-line { stroke:rgba(255,255,255,0.045); stroke-width:1; }
-    #thresholdLine { stroke:var(--lead); stroke-width:1.2; stroke-dasharray:5 4; opacity:0.55; }
-    #emaLine { fill:none; stroke:var(--cool); stroke-width:1.3; stroke-dasharray:2 4; opacity:0.75; }
+    .grid-line { stroke:rgba(255,255,255,0.03); stroke-width:1; }
+    #thresholdLine { stroke:var(--lead); stroke-width:1; stroke-dasharray:4 5; opacity:0.42; }
+    #emaLine { fill:none; stroke:var(--cool); stroke-width:1.1; stroke-dasharray:2 5; opacity:0.55; }
     #strainLine {
-      fill:none; stroke:var(--ember); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
-      filter:drop-shadow(0 0 5px rgba(200,96,26,0.5));
+      fill:none; stroke:var(--ember); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
+      filter:drop-shadow(0 0 8px rgba(200,96,26,0.42));
     }
     #pulseDot { fill:var(--ember); r:0; opacity:0; }
-    #pulseDot.flashing { animation:beep 0.5s ease-out; }
-    @keyframes beep { 0% { r:2.4; opacity:1; } 100% { r:9; opacity:0; } }
+    #pulseDot.flashing { animation:beep 0.55s ease-out; }
+    @keyframes beep { 0% { r:2.2; opacity:0.9; } 100% { r:10; opacity:0; } }
     #flash { fill:#f4ead9; opacity:0; pointer-events:none; }
-    #flash.flashing { animation:strike 0.5s ease-out; }
-    @keyframes strike { 0% { opacity:0; } 10% { opacity:0.22; } 100% { opacity:0; } }
-    #carryLabel { fill:var(--warm-dim); font:700 11px/1 system-ui, sans-serif; }
-    #carryLabel.flash { animation:carryFlash 0.7s ease-out; }
-    @keyframes carryFlash { 0% { fill:var(--ember); } 100% { fill:var(--warm-dim); } }
-    .panel-cap { color:var(--cool); font-size:11px; margin-top:6px; }
-    .legend { display:flex; gap:16px; flex-wrap:wrap; color:var(--cool); font-size:11px; margin-top:6px; }
-    .legend span { display:inline-flex; align-items:center; gap:6px; }
-    .legend i { width:14px; height:2px; display:inline-block; }
-    .legend i.strain { background:var(--ember); }
-    .legend i.ema { background:var(--cool); opacity:0.8; }
-    .legend i.threshold { background:var(--lead); opacity:0.6; }
+    #flash.flashing { animation:strike 0.55s ease-out; }
+    @keyframes strike { 0% { opacity:0; } 12% { opacity:0.16; } 100% { opacity:0; } }
+    #carryLabel { fill:rgba(212,197,169,0.58); font:500 10px/1 system-ui, sans-serif; letter-spacing:0.06em; }
+    #carryLabel.flash { animation:carryFlash 0.75s ease-out; }
+    @keyframes carryFlash { 0% { fill:rgba(200,96,26,0.92); } 100% { fill:rgba(212,197,169,0.58); } }
+    .legend { display:flex; gap:20px; flex-wrap:wrap; color:rgba(77,94,114,0.78); font-size:11px; margin-top:8px; }
+    .legend span { display:inline-flex; align-items:center; gap:7px; }
+    .legend i { width:16px; height:1px; display:inline-block; }
+    .legend i.strain { background:rgba(200,96,26,0.72); }
+    .legend i.ema { background:rgba(77,94,114,0.65); }
+    .legend i.threshold { background:rgba(77,142,166,0.5); }
 
-    .readouts { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:10px; margin-top:20px; }
-    .readout {
-      border:1px solid var(--line); border-radius:8px; padding:12px; background:rgba(7,9,14,0.6);
-    }
-    .readout .k { color:var(--ember); font-size:10px; font-weight:700; letter-spacing:0.11em; text-transform:uppercase; }
-    .readout .v { color:var(--warm); font:500 22px/1.3 Georgia, Charter, serif; margin-top:4px; }
-    .readout .sub { color:var(--cool); font-size:11px; margin-top:2px; }
+    .readouts { display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:20px 16px; margin-top:32px; }
+    .readout { padding:0; background:none; border:0; }
+    .readout .k { color:rgba(200,96,26,0.58); font:500 9px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase; }
+    .readout .v { color:var(--warm); font:500 clamp(22px, 4vw, 30px)/1.2 "Iowan Old Style", Charter, Georgia, serif; margin-top:6px; }
+    .readout .sub { color:rgba(77,94,114,0.72); font-size:11px; margin-top:4px; line-height:1.4; }
 
-    .actions { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 0; }
+    .actions { display:flex; flex-wrap:wrap; gap:16px; margin:36px 0 0; }
     button {
-      border:1px solid var(--line); border-radius:8px; background:transparent; color:var(--cool);
-      font:700 11px/1 system-ui, sans-serif; letter-spacing:0.1em; text-transform:uppercase;
-      padding:12px 14px; cursor:pointer;
+      border:0; border-bottom:1px solid rgba(77,94,114,0.28); border-radius:0; background:transparent; color:rgba(77,94,114,0.82);
+      font:500 10px/1 system-ui, sans-serif; letter-spacing:0.14em; text-transform:uppercase;
+      padding:0 0 6px; cursor:pointer;
     }
-    button.primary { color:var(--ember); border-color:rgba(200,96,26,0.34); }
-    button:hover { color:var(--ember); border-color:rgba(200,96,26,0.36); }
+    button.primary { color:rgba(200,96,26,0.78); border-bottom-color:rgba(200,96,26,0.34); }
+    button:hover { color:rgba(200,96,26,0.9); border-bottom-color:rgba(200,96,26,0.42); }
 
-    .note { margin-top:18px; color:var(--cool); font-size:13px; max-width:640px; }
-    .note b { color:var(--ember); }
+    .note { margin-top:28px; color:rgba(77,94,114,0.78); font-size:14px; line-height:1.62; max-width:560px; }
+    .note b { color:rgba(200,96,26,0.72); font-weight:500; }
 
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
@@ -116,15 +107,14 @@ const PAGE = `<!doctype html>
   <header>
     <div class="brand">Pulse</div>
     <nav aria-label="Reality Mechanics">
-      <a href="https://realitymechanics.nz/field">🔭 Observatory</a>
-      <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
-      <a href="https://realitymechanics.nz/theory">📖 Theory</a>
-      <a href="https://realitymechanics.nz/submission">✓ Proof</a>
+      <a href="https://realitymechanics.nz/field">Observatory</a>
+      <a href="https://calibration.realitymechanics.nz/" aria-current="page">Pulse</a>
+      <a href="https://realitymechanics.nz/theory">Theory</a>
+      <a href="https://realitymechanics.nz/submission">Proof</a>
     </nav>
   </header>
   <main>
     <section class="intro">
-      <div class="eyebrow">Pulse</div>
       <h1>Behaviour through time.</h1>
       <p>Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
       <div class="proof">

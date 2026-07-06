@@ -182,11 +182,11 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /id="enter-form"/);
   assert.match(html, /id="term-sheet"/);
   assert.match(html, /id="access-row"/);
-  assert.match(html, /href="\/field">🔭 Observatory/);
-  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
-  assert.match(html, /href="\/theory">📖 Theory/);
+  assert.match(html, /href="\/field"[^>]*>Observatory/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
+  assert.match(html, /href="\/theory">Theory/);
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
-  assert.match(html, /href="\/submission">✓ Proof/);
+  assert.match(html, /href="\/submission">Proof/);
   assert.doesNotMatch(html, /href="\/atlas"/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
@@ -211,10 +211,10 @@ test("drawCurrent applies shared term ratio mode to all relation types", () => {
 
 test("Field links to Proof alongside Pulse", () => {
   const html = fieldPage();
-  assert.match(html, /href="\/submission">✓ Proof/);
-  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
-  assert.match(html, /href="\/field">🔭 Observatory/);
-  assert.match(html, /href="\/theory">📖 Theory/);
+  assert.match(html, /href="\/submission">Proof/);
+  assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
+  assert.match(html, /href="\/field"[^>]*>Observatory/);
+  assert.match(html, /href="\/theory">Theory/);
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
 });
 
@@ -277,7 +277,24 @@ test("/theory serves concise public Theory page", async () => {
   assert.match(html, /Why the discipline works/);
   assert.match(html, /Theory\.md/);
   assert.match(html, /Runtime principles/);
+  assert.match(html, /calculus-notebook/);
+  assert.match(html, /PRACTICE_CALCULUS\.md/);
   assert.doesNotMatch(html, /^# Invariant/m);
+  assert.doesNotMatch(html, /border-bottom:1px solid var\(--line\)/);
+});
+
+test("D-026 visual refinement removes nav icons and card chrome", () => {
+  const fieldHtml = fieldPage();
+  const proofHtml = submissionPage();
+  const theoryHtml = theoryPage();
+
+  for (const html of [fieldHtml, proofHtml, theoryHtml]) {
+    assert.doesNotMatch(html, /🔭|❤️|📖|✓/);
+  }
+  assert.doesNotMatch(proofHtml, /class="card/);
+  assert.match(proofHtml, /record-section accepted/);
+  assert.match(theoryHtml, /Laboratory notebook/);
+  assert.match(fieldHtml, /homeMode && !focusId/);
 });
 
 test("/proof serves the retrace pathway page", async () => {
@@ -313,10 +330,11 @@ test("D-021.5 public structure is Observatory Pulse Theory Proof only", () => {
   const theoryHtml = theoryPage();
 
   for (const html of [fieldHtml, proofHtml, theoryHtml]) {
-    assert.match(html, /🔭 Observatory/);
-    assert.match(html, /❤️ Pulse/);
-    assert.match(html, /📖 Theory/);
-    assert.match(html, /✓ Proof/);
+    assert.match(html, />Observatory</);
+    assert.match(html, />Pulse</);
+    assert.match(html, />Theory</);
+    assert.match(html, />Proof</);
+    assert.doesNotMatch(html, /🔭|❤️|📖|✓/);
   }
   assert.doesNotMatch(fieldHtml, /href="\/atlas"/);
   assert.doesNotMatch(fieldHtml, /href="\/garden"/);
