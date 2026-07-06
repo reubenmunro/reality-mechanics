@@ -23,6 +23,7 @@ Do not delete reports. Read supersession notes before citing.
 
 | Document | Role |
 |---|---|
+| `docs/reports/M-004-public-observatory-milestone.md` | **Phase One closure** — historical milestone |
 | `README.md` | Public GitHub landing |
 | `docs/PROGRAMME_INDEX.md` | Contributor entry |
 | `public-surface-manifest.mjs` | Product truth |

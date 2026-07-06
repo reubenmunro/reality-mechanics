@@ -1,7 +1,9 @@
 # Reality Mechanics — Programme Index
 
 **Canonical entry document for contributors and AI workers.**  
-**Last reconciled:** M-003 @ `333773c` (2026-07-07)
+**Last reconciled:** M-004 @ Phase One closure (2026-07-07)
+
+> **Phase One complete.** See [`docs/reports/M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md). Development pauses; future work from observation and retrace, not expansion for its own sake.
 
 > Sort the programme before extending it.
 
@@ -18,6 +20,7 @@
 | 5 | [`docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`](runtime/INVARIANT_RUNTIME_CONTRACT.md) | Observatory layer stack (P-003) |
 | 6 | [`docs/runtime/READ_ENGINE.md`](runtime/READ_ENGINE.md) | Read module pattern (O-006) |
 | 7 | [`docs/practice/COMMISSIONS.md`](practice/COMMISSIONS.md) | Commission register |
+| 8 | [`docs/reports/M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md) | **Phase One closure** — historical record |
 
 ---
 
@@ -72,7 +75,8 @@ Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
 | Report | Role |
 |---|---|
 | R-005 | Programme synthesis — architecture map |
-| R-006 | Operation reconciliation — HEAD truth |
+| R-006 | Operation reconciliation — HEAD truth (extended by O-008, W-001) |
+| M-004 | **Phase One public milestone** — closure record |
 | R-004 | D-025 manifest reconciliation (historical) |
 | R-003 | Coherence audit (historical; Phase 1 docs still open) |
 
@@ -119,7 +123,7 @@ Full register: `docs/practice/COMMISSIONS.md`
 | D-021.5 four-surface framing | D-024 + D-025 five surfaces |
 | R-002 MCP `get_public_programme` | D-025 `get_public_surfaces` |
 | S-001 Field/Calibration product map | R-005 five-surface synthesis |
-| FABLE snapshot @ `bf772fa` | R-006, M-003 @ `333773c` |
+| FABLE snapshot @ `bf772fa` | R-006, M-004 @ `66b14a8` |
 | Root docs Field-only | This index + manifest |
 
 ---
@@ -134,24 +138,23 @@ Full register: `docs/practice/COMMISSIONS.md`
 
 ---
 
-## 10. Next recommended commissions
+## 10. Phase One closed
 
-1. **Participation read annotation** — P-009 + Read Engine pattern  
-2. **Client weave-state bundle** — close O-006 drift gap  
-3. **D1 sync / version metadata** — operational gap  
-4. **Root doc vocabulary pass** — MISSION, member README (R-003 Phase 1)
+Phase One ended @ `66b14a8` (W-001). Milestone record: [`M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md).
+
+Open frontiers below remain unresolved. They are not a roadmap — they are recorded gaps only.
 
 ---
 
 ## 11. Quick commands
 
 ```bash
-npm --prefix .atlas-publisher test    # 116 tests
-npm --prefix member test              # 18 tests
+npm --prefix .atlas-publisher test    # 122 tests
+npm --prefix member test              # 20 tests
 npm --prefix reality-mechanics-mcp test # 42 tests
 npm --prefix .atlas-publisher run sync:d1 -- --apply  # after Atlas edits
 ```
 
 ---
 
-*Maintained by M-001, M-003. Update when operational facts or synthesis reports change.*
+*Maintained through M-004 (Phase One closure). Update when operational facts change; do not treat this index as a roadmap.*
