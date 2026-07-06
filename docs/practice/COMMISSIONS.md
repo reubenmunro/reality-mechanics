@@ -125,6 +125,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Observatory renderer reconstruction | O-008 | Resolved | First-load field empty; woven mechanics not perceptible | `docs/reports/O-008-observatory-renderer-reconstruction.md`; `woven-field-renderer.mjs`; `RMMechanics` client bundle; `drawWovenHomeField` |
 | Public GitHub final cleanup | M-003 | Resolved | Evidence backend incoherent for public reviewers | `docs/reports/M-003-public-github-final-cleanup.md`; README; supersession index; link audit |
 | Public experience polish | W-001 | Resolved | Public surfaces lacked shared wayfinding: human/AI paths undistinguished, MCP unoriented, evidence ladder implicit | `docs/reports/W-001-public-experience-polish.md`; ways-in on Theory/Proof/Calculus; Observatory + Pulse orientation; skip links + visible focus; 122 · 20 · 42 tests |
+| Mobile Observatory polish | W-002 | Resolved | Mobile compressed desktop layout; term panel opened before observation | `docs/reports/W-002-mobile-observatory-polish.md`; mobile bottom drawer; lazy term disclosure; field-first layout; 127 · 20 · 42 tests |
 | Public Observatory milestone | M-004 | Resolved | Phase One complete; record before development pause | `docs/reports/M-004-public-observatory-milestone.md`; Phase One closure @ `66b14a8` |
 
 ---

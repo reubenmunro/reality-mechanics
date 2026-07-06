@@ -281,7 +281,8 @@ test("D-021.4 neutral initial load renders whole field without Relation default"
 test("D-021.4 hash deep-link still enters focused observation", () => {
   const html = fieldPage();
   assert.match(html, /homeMode = false/);
-  assert.match(html, /observeTerm\(explicitTermId\)/);
+  assert.match(html, /observeTerm\(explicitTermId,/);
+  assert.match(html, /revealTermSheetForSelection\(explicitTermId\)/);
   assert.match(html, /replaceFieldLocation\(explicitTermId\)/);
 });
 

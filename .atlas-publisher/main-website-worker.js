@@ -532,12 +532,78 @@ export function fieldPage(options = {}) {
     #observatory-landing .landing-meta { margin: 0.85rem 0 0; max-width: 21rem; color: rgba(120,135,155,0.85); font: 400 12.5px/1.6 system-ui, sans-serif; }
     #observatory-landing .landing-meta a { color: rgba(77,142,166,0.9); text-decoration: none; border-bottom: 1px solid rgba(77,142,166,0.25); }
     #observatory-landing .landing-meta a:hover { color: rgba(200,96,26,0.9); }
-    @media (max-width: 700px) {
-      #observatory-landing { left: 1rem; top: 3.2rem; max-width: calc(100vw - 2rem); }
-      #access-row { top: 3rem; max-width: calc(100vw - 2rem); gap: 0.55rem 0.8rem; }
-      #enter-form { bottom: 1rem; }
-      #order-legend { display: none; }
-      #term-sheet { width: min(24rem, 92vw); right: min(-24rem, -92vw); padding: 4.25rem 1.15rem 2rem; }
+    #sheet-backdrop {
+      position: fixed; inset: 0; z-index: 28; pointer-events: none;
+      background: rgba(4,6,10,0); opacity: 0; transition: opacity 0.32s ease;
+    }
+    body.sheet-open #sheet-backdrop {
+      pointer-events: auto; opacity: 1; background: rgba(4,6,10,0.52);
+    }
+    #sheet-drag-handle {
+      display: none; position: absolute; top: 0.55rem; left: 50%; transform: translateX(-50%);
+      width: 2.6rem; height: 0.28rem; border-radius: 999px;
+      background: rgba(77,94,114,0.55); touch-action: none; cursor: grab;
+    }
+    #sheet-drag-handle:active { cursor: grabbing; }
+    @media (max-width: 900px) {
+      body.mobile-observatory #observatory-landing {
+        left: 0.65rem; top: auto;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 3.35rem);
+        max-width: calc(100vw - 1.3rem); z-index: 7;
+      }
+      body.mobile-observatory #observatory-landing h1,
+      body.mobile-observatory #observatory-landing .landing-postulate,
+      body.mobile-observatory #observatory-landing .landing-orientation,
+      body.mobile-observatory #observatory-landing .landing-meta { display: none; }
+      body.mobile-observatory #observatory-landing .landing-actions {
+        flex-direction: row; flex-wrap: wrap; gap: 0.5rem 0.85rem;
+      }
+      body.mobile-observatory.landing-dismissed #observatory-landing { display: none; }
+      body.mobile-observatory #access-row {
+        top: calc(env(safe-area-inset-top, 0px) + 0.45rem);
+        max-width: calc(100vw - 1rem); gap: 0.35rem 0.55rem;
+      }
+      body.mobile-observatory #access-row a {
+        font-size: 0.5rem; letter-spacing: 0.11em;
+      }
+      body.mobile-observatory #enter-form {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.55rem);
+        width: min(14rem, calc(100vw - 1.25rem)); opacity: 0.42;
+      }
+      body.mobile-observatory.sheet-open #enter-form { opacity: 0; pointer-events: none; }
+      body.mobile-observatory #field-status {
+        left: 0.55rem; right: auto;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.65rem);
+        font-size: 0.48rem; letter-spacing: 0.08em; max-width: 42vw; text-align: left;
+      }
+      body.mobile-observatory #order-legend { display: none; }
+      body.mobile-observatory #mechanics-panel.ready { display: none !important; }
+      body.mobile-observatory #sheet-backdrop { display: block; }
+      body.mobile-observatory #sheet-drag-handle { display: block; }
+      body.mobile-observatory #term-sheet {
+        top: auto; left: 0; right: 0; bottom: 0; width: 100%; max-width: none;
+        max-height: min(78vh, 640px); height: auto;
+        padding: 1.75rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+        border-radius: 1rem 1rem 0 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        transform: translateY(calc(100% + 1px));
+        transition: transform 0.38s cubic-bezier(0.32,0.72,0,1), right 0s;
+        right: auto;
+      }
+      body.mobile-observatory #term-sheet.open { transform: translateY(0); }
+      body.mobile-observatory #sheet-close { top: 0.55rem; right: 0.65rem; }
+      body.mobile-observatory #sheet-title {
+        font-size: clamp(1.25rem, 5vw, 1.65rem); margin-bottom: 0.85rem;
+      }
+      body.mobile-observatory #sheet-place {
+        font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.85rem;
+      }
+      body.mobile-observatory #sheet-relations { gap: 0.85rem 1rem; }
+      body.mobile-observatory .sheet-relation { font-size: 0.86rem; }
+    }
+    @media (max-width: 900px) and (orientation: landscape) {
+      body.mobile-observatory #term-sheet { max-height: min(68vh, 480px); }
+      body.mobile-observatory #enter-form { display: none; }
     }
   </style>
 </head>
@@ -569,7 +635,9 @@ export function fieldPage(options = {}) {
 </form>
 <div id="order-legend" aria-label="Dependency order and relation types"></div>
 <div id="field-status" role="status" aria-label="Field reading"></div>
+<div id="sheet-backdrop" hidden aria-hidden="true"></div>
 <section id="term-sheet" aria-live="polite" aria-label="Term sheet">
+  <div id="sheet-drag-handle" aria-hidden="true"></div>
   <button id="sheet-close" aria-label="Close">×</button>
   <div id="sheet-neutral">
     <div id="sheet-neutral-title">Observatory</div>
@@ -623,6 +691,14 @@ const fieldStatusEl = document.getElementById('field-status');
 const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
 const ATLAS_TREE_URL = 'https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics';
 let selectedTermId = null;
+let tapPulseTermId = null;
+let tapPulseStartedAt = 0;
+let mobileSheetRevealTimer = null;
+let drawerDragState = null;
+const MOBILE_OBSERVATORY_MQ = '(max-width: 900px)';
+const MOBILE_SHEET_REVEAL_MS = 420;
+const sheetBackdropEl = document.getElementById('sheet-backdrop');
+const sheetDragHandleEl = document.getElementById('sheet-drag-handle');
 const relationDebugEl = document.getElementById('relation-debug');
 const mechanicsPanelEl = document.getElementById('mechanics-panel');
 const mechanicsFocusEl = document.getElementById('mechanics-focus');
@@ -991,6 +1067,7 @@ function resize() {
   canvas.style.width = innerWidth + 'px';
   canvas.style.height = innerHeight + 'px';
   ctx.setTransform(dpr,0,0,dpr,0,0);
+  syncMobileObservatoryClass();
 }
 
 const STRUCTURAL_FIELD_FRAMES = new Set([
@@ -1442,6 +1519,76 @@ function drawFieldMovementWake(focus) {
   ctx.restore();
 }
 
+function isMobileObservatory() {
+  return window.matchMedia(MOBILE_OBSERVATORY_MQ).matches;
+}
+
+function syncMobileObservatoryClass() {
+  document.body.classList.toggle('mobile-observatory', isMobileObservatory());
+  if (sheetBackdropEl) sheetBackdropEl.hidden = !isMobileObservatory();
+}
+
+function clearMobileSheetRevealTimer() {
+  if (mobileSheetRevealTimer) {
+    clearTimeout(mobileSheetRevealTimer);
+    mobileSheetRevealTimer = null;
+  }
+}
+
+function pulseSelectedTerm(id) {
+  tapPulseTermId = id;
+  tapPulseStartedAt = performance.now();
+}
+
+function drawTapPulse() {
+  if (!tapPulseTermId) return;
+  const elapsed = performance.now() - tapPulseStartedAt;
+  if (elapsed > 520) { tapPulseTermId = null; return; }
+  const t = elapsed / 520;
+  const op = allOps[tapPulseTermId];
+  if (!op) return;
+  let px, py;
+  if (homeMode || !operations[tapPulseTermId]) {
+    const pos = homePosition(op);
+    px = pos.x; py = pos.y;
+  } else {
+    const s = screen(operations[tapPulseTermId]);
+    px = s.x; py = s.y;
+  }
+  const radius = (14 + t * 22) * (0.85 + Math.sin(t * Math.PI) * 0.25);
+  const alpha = (1 - t) * 0.42;
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const glow = ctx.createRadialGradient(px, py, 1, px, py, radius * 2.4);
+  glow.addColorStop(0, 'rgba(200,96,26,' + alpha + ')');
+  glow.addColorStop(0.45, 'rgba(200,96,26,' + (alpha * 0.35) + ')');
+  glow.addColorStop(1, 'rgba(200,96,26,0)');
+  ctx.fillStyle = glow;
+  ctx.beginPath();
+  ctx.arc(px, py, radius * 2.4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function scheduleMobileTermSheetReveal(id) {
+  clearMobileSheetRevealTimer();
+  mobileSheetRevealTimer = setTimeout(() => {
+    mobileSheetRevealTimer = null;
+    if (focusId !== id) return;
+    renderTermSheet(id);
+    openTermSheet();
+  }, MOBILE_SHEET_REVEAL_MS);
+}
+
+function revealTermSheetForSelection(id) {
+  if (isMobileObservatory()) {
+    pulseSelectedTerm(id);
+    scheduleMobileTermSheetReveal(id);
+    return;
+  }
+  openTermSheet();
+}
+
 function enterOperation(id) {
   const found = allOps[id] ? id : Object.values(allOps).find((op) => op.title.toLowerCase() === id.toLowerCase())?.id;
   if (!found) return;
@@ -1457,8 +1604,8 @@ function enterOperation(id) {
   initOperations(found);
   layout(found);
   replaceFieldLocation(found);
-  observeTerm(found);
-  openTermSheet();
+  observeTerm(found, { deferRender: isMobileObservatory() });
+  revealTermSheetForSelection(found);
   recordFieldMovement(previousFocusId, found);
   scheduleBehaviourTraceRefresh(true);
 }
@@ -1568,11 +1715,11 @@ function renderTermSheet(id = focusId) {
   return true;
 }
 
-function observeTerm(id) {
+function observeTerm(id, options = {}) {
   if (!allOps[id]) return false;
   selectedTermId = id;
   syncSheetView();
-  if (!renderTermSheet(id)) return false;
+  if (!options.deferRender && !renderTermSheet(id)) return false;
   if (modeEl) modeEl.textContent = allOps[id].title || id;
   saveLastFocus(id);
   dismissObservatoryLanding();
@@ -1581,11 +1728,17 @@ function observeTerm(id) {
 
 function openTermSheet() {
   readRegister = 'constellation';
+  if (selectedTermId) renderTermSheet(selectedTermId);
+  if (termSheetEl) termSheetEl.style.transform = '';
+  drawerDragState = null;
   document.body.classList.add('sheet-open');
   termSheetEl.classList.add('open');
 }
 
 function closeTermSheet() {
+  clearMobileSheetRevealTimer();
+  drawerDragState = null;
+  if (termSheetEl) termSheetEl.style.transform = '';
   document.body.classList.remove('sheet-open');
   termSheetEl.classList.remove('open');
   renderNeutralSheet();
@@ -1593,8 +1746,8 @@ function closeTermSheet() {
 
 function toggleTermSheet(id = focusId) {
   if (!selectedTermId || selectedTermId !== id) {
-    observeTerm(id);
-    openTermSheet();
+    observeTerm(id, { deferRender: isMobileObservatory() });
+    revealTermSheetForSelection(id);
     return;
   }
   closeTermSheet();
@@ -3039,6 +3192,7 @@ function draw() {
       }
     }
   }
+  drawTapPulse();
   renderRelationDebug();
   if (mechanicsRefreshPending) scheduleBehaviourTraceRefresh(false);
   else if (mechanicsEnabled && performance.now() - mechanicsLastRefresh > 900) scheduleBehaviourTraceRefresh(false);
@@ -3401,7 +3555,7 @@ canvas.addEventListener('pointerup', (event) => {
     const id = nearestOperation(event.clientX, event.clientY);
     if (id === focusId) toggleTermSheet(id);
     else if (id) enterOperation(id);
-    else if (!selectedTermId) openTermSheet();
+    else if (!selectedTermId && !isMobileObservatory()) openTermSheet();
   }
   activePointers.delete(event.pointerId);
   if (activePointers.size < 2) { pinchStartDist = null; pinchStartScale = null; }
@@ -3420,6 +3574,39 @@ canvas.addEventListener('wheel', (event) => {
 }, { passive: false });
 canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 sheetCloseEl.addEventListener('click', closeTermSheet);
+if (sheetBackdropEl) sheetBackdropEl.addEventListener('click', closeTermSheet);
+
+function initMobileTermDrawer() {
+  if (!sheetDragHandleEl || !termSheetEl) return;
+  const onDragMove = (event) => {
+    if (!drawerDragState) return;
+    const dy = Math.max(0, event.clientY - drawerDragState.startY);
+    termSheetEl.style.transform = 'translateY(' + dy + 'px)';
+    termSheetEl.style.transition = 'none';
+  };
+  const finishDrag = (event) => {
+    if (!drawerDragState) return;
+    const dy = Math.max(0, event.clientY - drawerDragState.startY);
+    drawerDragState = null;
+    termSheetEl.style.transition = '';
+    if (dy > 96) closeTermSheet();
+    else termSheetEl.style.transform = '';
+    window.removeEventListener('pointermove', onDragMove);
+    window.removeEventListener('pointerup', finishDrag);
+    window.removeEventListener('pointercancel', finishDrag);
+  };
+  sheetDragHandleEl.addEventListener('pointerdown', (event) => {
+    if (!isMobileObservatory() || !termSheetEl.classList.contains('open')) return;
+    event.preventDefault();
+    drawerDragState = { startY: event.clientY };
+    window.addEventListener('pointermove', onDragMove);
+    window.addEventListener('pointerup', finishDrag);
+    window.addEventListener('pointercancel', finishDrag);
+  });
+}
+
+initMobileTermDrawer();
+
 enterForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const op = findTerm(enterInput.value);
@@ -3575,6 +3762,8 @@ async function bootstrap() {
     operations = {};
     modeEl.textContent = 'Observatory';
     renderNeutralSheet();
+    closeTermSheet();
+    if (isMobileObservatory()) dismissObservatoryLanding();
     if (mechanicsEnabled) {
       renderMechanicsPanel();
       scheduleBehaviourTraceRefresh(true);
@@ -3590,9 +3779,9 @@ async function bootstrap() {
   layout(explicitTermId);
   recordFieldMovement(null, explicitTermId);
   dismissObservatoryLanding();
-  observeTerm(explicitTermId);
+  observeTerm(explicitTermId, { deferRender: isMobileObservatory() });
   replaceFieldLocation(explicitTermId);
-  openTermSheet();
+  revealTermSheetForSelection(explicitTermId);
 
   if (mechanicsEnabled) {
     renderMechanicsPanel();
@@ -3628,6 +3817,7 @@ if (landingContinueEl) {
   });
 })();
 
+syncMobileObservatoryClass();
 resize();
 requestAnimationFrame(loop);
 bootstrap();

@@ -97,6 +97,7 @@ Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
 | O-003–O-006 | Reads + read engine | O-006 formalisation |
 | O-008 | Renderer reconstruction | `docs/reports/O-008-observatory-renderer-reconstruction.md` — client `RMMechanics` activation |
 | W-001 | Public experience polish — wayfinding, MCP orientation, accessibility | `docs/reports/W-001-public-experience-polish.md` |
+| W-002 | Mobile Observatory polish — field-first, bottom drawer, lazy disclosure | `docs/reports/W-002-mobile-observatory-polish.md` |
 
 Full register: `docs/practice/COMMISSIONS.md`
 
@@ -149,7 +150,7 @@ Open frontiers below remain unresolved. They are not a roadmap — they are reco
 ## 11. Quick commands
 
 ```bash
-npm --prefix .atlas-publisher test    # 122 tests
+npm --prefix .atlas-publisher test    # 127 tests
 npm --prefix member test              # 20 tests
 npm --prefix reality-mechanics-mcp test # 42 tests
 npm --prefix .atlas-publisher run sync:d1 -- --apply  # after Atlas edits
