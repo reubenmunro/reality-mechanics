@@ -593,3 +593,30 @@ test("D-024 retired routes name five surfaces", async () => {
   assert.equal(res.status, 410);
   assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
+
+test("D-025 Calculus page and MCP render from one manifest — no drift possible", async () => {
+  const { DERIVATION_CHAIN, DERIVATION_INVENTORY, STATUS_VOCABULARY, PUBLIC_SURFACES } =
+    await import("../../public-surface-manifest.mjs");
+  const html = calculusPage();
+
+  for (const step of DERIVATION_CHAIN) {
+    assert.ok(html.includes(step.rule), `calculus page carries chain rule: ${step.step}`);
+  }
+  for (const v of STATUS_VOCABULARY) {
+    assert.ok(html.includes(v.meaning), `calculus page carries vocabulary meaning: ${v.status}`);
+  }
+  for (const [status, items] of Object.entries(DERIVATION_INVENTORY)) {
+    for (const item of items) {
+      assert.ok(html.includes(item.claim), `calculus page carries ${status} claim: ${item.claim.slice(0, 40)}`);
+    }
+  }
+
+  // The manifest's website routes must actually be served by this worker.
+  const websiteSurfaces = PUBLIC_SURFACES.filter((s) => s.baseUrl === "https://realitymechanics.nz");
+  for (const surface of websiteSurfaces) {
+    for (const route of surface.routes) {
+      const res = await worker.fetch(new Request("https://realitymechanics.nz" + route), {});
+      assert.ok([200, 503].includes(res.status), `manifest route ${route} is served (got ${res.status})`);
+    }
+  }
+});

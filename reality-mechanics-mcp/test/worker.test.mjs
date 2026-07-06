@@ -198,4 +198,44 @@ const source = await callTool("open_source_for_entry", { id: "practice.atlas" })
 ok(source.entries[0].sourcePath === "Reality_Mechanics/Atlas.md", "open_source_for_entry returns source path");
 ok(source.entries[0].source.githubEditUrl.includes("/edit/main/Reality_Mechanics/Atlas.md"), "open_source_for_entry returns GitHub edit URL");
 
+
+// ── D-025: public-surface read access ──────────────────────────────────────────
+
+ok(["get_public_surfaces", "get_derivation_status"].every((t) => toolNames.includes(t)),
+  "tools/list exposes D-025 public-surface read tools");
+
+const surfaces = await callTool("get_public_surfaces");
+ok(surfaces.surfaces.length === 6, "get_public_surfaces returns five surfaces plus MCP");
+ok(["observatory", "pulse", "theory", "proof", "calculus", "mcp"].every(
+  (id) => surfaces.surfaces.some((s) => s.id === id)),
+  "get_public_surfaces covers Observatory, Pulse, Theory, Proof, Calculus, MCP");
+ok(surfaces.surfaces.every((s) => Array.isArray(s.routes) && s.routes.length > 0),
+  "every surface names its routes");
+ok(surfaces.surfaces.every((s) => Array.isArray(s.sourceUrls) && s.sourceUrls.every((u) => u.startsWith("https://github.com/"))),
+  "every surface claim is retraceable to GitHub sources");
+ok(typeof surfaces.liveReadModel.entryCount === "number" && surfaces.liveReadModel.entryCount > 0,
+  "get_public_surfaces reports the live read-model entry count");
+ok(typeof surfaces.liveReadModel.atlasVersion === "string" && surfaces.liveReadModel.versionNote.includes("may lag"),
+  "read-model version label is reported with lag honesty");
+ok(surfaces.supportingReports.some((r) => r.report === "D-024"),
+  "supporting reports index includes the Calculus surface report");
+ok(Array.isArray(surfaces.driftNotes) && surfaces.driftNotes.length > 0,
+  "drift notes are exposed, not hidden");
+
+const derivation = await callTool("get_derivation_status");
+ok(derivation.promotionRule.includes("not accepted"),
+  "derivation status leads with the unpromotion rule");
+ok(["derived", "calibrated", "heuristic", "unresolved"].every(
+  (v) => derivation.statusVocabulary.some((s) => s.status === v)),
+  "status vocabulary distinguishes derived/calibrated/heuristic/unresolved");
+ok(derivation.derivationChain.length === 5 &&
+  derivation.derivationChain.some((s) => s.rule.includes("mass(t) = |{ s ≠ t : t ∈ holds(s) ∪ traces(s) }|")),
+  "derivation chain carries the exact mass rule");
+ok(derivation.derivationChain.every((s) => s.sourceUrl && s.sourceUrl.startsWith("https://github.com/")),
+  "every chain step is retraceable to a source file");
+ok(derivation.caveat.text.includes("not Atlas Ratio"),
+  "the Atlas Ratio non-equivalence caveat is preserved");
+ok(derivation.inventory.unresolved.length > 0 && derivation.openItems.length === derivation.inventory.unresolved.length,
+  "unresolved items remain explicitly unresolved");
+
 console.log(`\nAll ${passed} assertions passed.`);

@@ -16,9 +16,20 @@ import {
   relationBetween,
   structureContractForSurface,
 } from "../../atlas-structure-contract.mjs";
+import {
+  DERIVATION_CAVEAT,
+  DERIVATION_CHAIN,
+  DERIVATION_INVENTORY,
+  DRIFT_NOTES,
+  PUBLIC_SURFACES,
+  PUBLIC_SURFACE_MANIFEST_VERSION,
+  STATUS_VOCABULARY,
+  SUPPORTING_REPORTS,
+  sourceUrl,
+} from "../../public-surface-manifest.mjs";
 
 const PROTOCOL_VERSION = "2025-06-18";
-const SERVER_INFO = { name: "reality-mechanics-atlas", version: "2.3.0" };
+const SERVER_INFO = { name: "reality-mechanics-atlas", version: "2.4.0" };
 const MAX_QUERY = 200;
 const SEARCH_MAX = 25, SEARCH_DEFAULT = 8;
 const LIST_MAX = 200, LIST_DEFAULT = 50;
@@ -141,8 +152,17 @@ async function getUpstreamIds(env, startId, maxDepth = 3) {
 
 async function manifest(env) {
   const total = await dbFirst(env, "SELECT COUNT(*) as n FROM entries");
+  // D-025: report the real read-model version label. The label is written at
+  // sync time and may lag entry data (D-013) — never treat it as proof of
+  // freshness; entryCount and the label are separate reads.
+  let versionLabel = null;
+  try {
+    const row = await dbFirst(env, "SELECT value FROM garden_config WHERE key = 'atlas_version'");
+    versionLabel = row?.value || null;
+  } catch { versionLabel = null; }
   return {
-    atlasVersion: "d1-live",
+    atlasVersion: versionLabel || "unrecorded",
+    versionNote: "atlas_version is a sync-time label in the generated read-model; it may lag entry data (D-013). GitHub is canonical.",
     note: "Atlas reads come from generated D1. GitHub markdown/frontmatter is the editable source.",
     entryCount: total?.n || 0,
   };
@@ -262,6 +282,14 @@ const TOOLS = [
 
   { name: "get_manifest",
     description: "Return the identity and current state of the Atlas read model.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
+
+  { name: "get_public_surfaces",
+    description: "Return the public structure of Reality Mechanics as an AI-readable manifest: the five public surfaces (Observatory, Pulse, Theory, Proof, Calculus) plus this MCP — each with role, worker, routes, APIs, Atlas read path, and repo-relative sources — together with the live read-model reading (entry count, atlas version label) and the reports that support the current structure. Same structure a human sees on the website; every claim retraceable to a source file.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
+
+  { name: "get_derivation_status",
+    description: "Return the Calculus derivation state as structured data: the four-status vocabulary (derived / calibrated / heuristic / unresolved), the live derivation chain with exact rules and per-step status, the full four-status inventory with source paths, and what remains open. This is the AI read of the public /calculus surface — both render from the same manifest module, so they cannot drift. Nothing in it is promoted; the : operator is not accepted.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
 
   { name: "get_ai_entry_protocol",
@@ -393,6 +421,41 @@ async function callTool(name, args, env) {
   // ── get_manifest ──
   if (name === "get_manifest") {
     return manifest(env);
+  }
+
+  // ── get_public_surfaces (D-025) ──
+  if (name === "get_public_surfaces") {
+    return {
+      manifestVersion: PUBLIC_SURFACE_MANIFEST_VERSION,
+      publicStructure: "Observatory · Pulse · Theory · Proof · Calculus — plus this MCP as the AI-readable companion.",
+      surfaces: PUBLIC_SURFACES.map((surface) => ({
+        ...surface,
+        sourceUrls: surface.sources.map(sourceUrl),
+      })),
+      liveReadModel: await manifest(env),
+      supportingReports: SUPPORTING_REPORTS.map((r) => ({ ...r, sourceUrl: sourceUrl(r.source) })),
+      driftNotes: DRIFT_NOTES,
+      retraceability: "Every claim above carries a repo-relative source path; GitHub is canonical. The website Calculus page and this tool render from the same manifest module (public-surface-manifest.mjs).",
+    };
+  }
+
+  // ── get_derivation_status (D-025) ──
+  if (name === "get_derivation_status") {
+    return {
+      manifestVersion: PUBLIC_SURFACE_MANIFEST_VERSION,
+      promotionRule: "Nothing here is promoted. The Calculus has no accepted operation; the : operator is not accepted (C010). Statuses are exact; gaps are preserved.",
+      statusVocabulary: STATUS_VOCABULARY,
+      derivationChain: DERIVATION_CHAIN.map((step) => ({ ...step, sourceUrl: sourceUrl(step.source) })),
+      caveat: { ...DERIVATION_CAVEAT, sourceUrls: DERIVATION_CAVEAT.sources.map(sourceUrl) },
+      inventory: Object.fromEntries(
+        Object.entries(DERIVATION_INVENTORY).map(([status, items]) => [
+          status,
+          items.map((item) => ({ ...item, sourceUrl: sourceUrl(item.source) })),
+        ]),
+      ),
+      openItems: DERIVATION_INVENTORY.unresolved.map((item) => item.claim),
+      publicRoute: "https://realitymechanics.nz/calculus",
+    };
   }
 
   // ── get_ai_entry_protocol ──

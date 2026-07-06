@@ -3,6 +3,13 @@
 
 import { RELATION_FIELDS } from "../atlas-structure-contract.mjs";
 import {
+  DERIVATION_CAVEAT,
+  DERIVATION_CHAIN,
+  DERIVATION_INVENTORY,
+  STATUS_VOCABULARY,
+  sourceUrl,
+} from "../public-surface-manifest.mjs";
+import {
   maturityBandFromComponents,
   readFieldConfig,
   structureCarriesEntry,
@@ -3300,6 +3307,45 @@ export function theoryPage() {
 </html>`;
 }
 
+// D-025: the Calculus surface renders its status vocabulary, derivation chain,
+// and inventory from public-surface-manifest.mjs — the same data the MCP
+// serves to AI readers. One source of truth, two readers; drift prevented.
+function calculusSourceLink(path) {
+  const label = String(path).split("/").pop();
+  return '<a href="' + sourceUrl(path) + '">' + label + '</a>';
+}
+
+function calculusVocabHtml() {
+  return STATUS_VOCABULARY.map((v) =>
+    '<div class="' + v.status + '"><b>' + v.status + '</b>' + v.meaning + '</div>'
+  ).join("\n      ");
+}
+
+function calculusChainHtml() {
+  return DERIVATION_CHAIN.map((s) => `
+      <div class="chain-step">
+        <b>${s.step}</b><span class="chip ${s.status === "canonical" ? "derived" : s.status}">${s.chipLabel}</span>
+        <span class="rule">${s.rule}</span>
+        <span class="why">${s.note} Source: ${calculusSourceLink(s.source)}.</span>
+      </div>`).join("");
+}
+
+function calculusCaveatHtml() {
+  const text = DERIVATION_CAVEAT.text.replace(" not Atlas Ratio", " <b>not</b> Atlas Ratio");
+  const links = DERIVATION_CAVEAT.sources.map(calculusSourceLink).join(", ");
+  return text + " (" + links + ")";
+}
+
+function calculusInventoryHtml() {
+  return Object.entries(DERIVATION_INVENTORY).map(([status, items]) => `
+      <div class="inv ${status}">
+        <h3>${status[0].toUpperCase() + status.slice(1)}</h3>
+        <ul>
+          ${items.map((i) => '<li>' + i.claim + ' ' + calculusSourceLink(i.source) + '</li>').join("\n          ")}
+        </ul>
+      </div>`).join("");
+}
+
 export function calculusPage() {
   return `<!doctype html>
 <html lang="en">
@@ -3379,42 +3425,14 @@ export function calculusPage() {
     <h2>The status vocabulary</h2>
     <p>Every claim on this surface carries one of four statuses. They are not interchangeable.</p>
     <div class="vocab">
-      <div class="derived"><b>derived</b>Forced by repository evidence through a named test or locked definition. Independently retraceable to source and report.</div>
-      <div class="calibrated"><b>calibrated</b>Aligned to existing structure by a tested rule or configured threshold. Faithful — but chosen, not forced from first principles.</div>
-      <div class="heuristic"><b>heuristic</b>A working number or rendering choice made for legibility. Carries no structural claim and can change without a derivation event.</div>
-      <div class="unresolved"><b>unresolved</b>Insufficient evidence in either direction. The gap is preserved deliberately.</div>
+      ${calculusVocabHtml()}
     </div>
 
     <h2>The live derivation chain</h2>
     <p>This chain runs on the Observatory today. Each step names its exact rule and its status — mathematics already implied by the runtime, made explicit.</p>
-    <div class="chain">
-      <div class="chain-step">
-        <b>Declared relation</b><span class="chip derived">canonical source</span>
-        <span class="rule">holds · traces · carries · pairs · nests</span>
-        <span class="why">Every edge is declared in Atlas frontmatter, in GitHub. Nothing downstream may invent an edge.</span>
-      </div>
-      <div class="chain-step">
-        <b>Structural mass</b><span class="chip derived">derived</span>
-        <span class="rule">mass(t) = |{ s ≠ t : t ∈ holds(s) ∪ traces(s) }|</span>
-        <span class="why">Carrier in-degree over <code>holds</code> and <code>traces</code> only. <code>needs</code>, <code>carries</code>, <code>pairs</code>, <code>nests</code> are excluded by locked definition (<a href="${GITHUB_DOC}/docs/reports/D-010B-generalise-ratio-mechanics.md">D-010B</a>).</span>
-      </div>
-      <div class="chain-step">
-        <b>Ratio mode</b><span class="chip calibrated">calibrated</span>
-        <span class="rule">mode(x) = continuous if x ≥ 8 · transitional if x ≥ 3 · else discrete</span>
-        <span class="why">Threshold bands are configured operational values, not derived constants. They translate mass into a render register.</span>
-      </div>
-      <div class="chain-step">
-        <b>Render behaviour</b><span class="chip heuristic">heuristic</span>
-        <span class="rule">amplification coefficients × what the runtime already computes</span>
-        <span class="why">Rendering only — no new mechanics (<a href="${GITHUB_DOC}/docs/reports/D-020B-mechanics-amplification.md">D-020B</a>). Legibility floors and placement jitter are likewise heuristic (D-022, D-023).</span>
-      </div>
-      <div class="chain-step">
-        <b>Retrace</b><span class="chip derived">derived</span>
-        <span class="rule">GET /api/field/behaviour-trace?id=… recomputes the chain for any term</span>
-        <span class="why">The read back is mechanical (<a href="${GITHUB_DOC}/docs/reports/D-012-behaviour-retrace-instrument.md">D-012</a>). If a rendered behaviour cannot be retraced to a declared relation, it is marked, not bonded.</span>
-      </div>
+    <div class="chain">${calculusChainHtml()}
     </div>
-    <p class="caveat">This scalar chain is a narrower Field read. It is <b>not</b> Atlas Ratio — falsification found it <i>viable with constraints</i>, and a richer structural signature remains a future unknown (<a href="${GITHUB_DOC}/docs/reports/D-015B-derived-ratio-falsification.md">D-015B</a>, <a href="${GITHUB_DOC}/docs/runtime/DERIVED_RATIO.md">DERIVED_RATIO</a>).</p>
+    <p class="caveat">${calculusCaveatHtml()}</p>
 
     <h3>Maturity, derived at read time<span class="chip calibrated">calibrated</span></h3>
     <p>Each term's maturity band — <code>placed → fresh → settling → established → mature</code> — is computed from revision history, carrier count, and proposal record every time the field is read. It is never stored. Band thresholds (48 h, 7 d / 30 d / 90 d, carrier minimums) are configured values.</p>
@@ -3440,48 +3458,7 @@ export function calculusPage() {
     </ul>
 
     <h2>The full inventory</h2>
-    <div class="inventory">
-      <div class="inv derived">
-        <h3>Derived</h3>
-        <ul>
-          <li>Relation is the sole internal root of first-order dependency (<a href="${GITHUB_DOC}/docs/reports/C-R001-first-order-dependency-topology.md">C-R001</a>).</li>
-          <li>Carry and Trace are one condition, carved into two terms by direction (<a href="${GITHUB_DOC}/docs/stewardship/STEWARDSHIP_V1.md">Stewardship V1</a>).</li>
-          <li>Structural mass rule — holds/traces in-degree, locked (D-010B).</li>
-          <li>Behaviour retrace — the scalar chain is mechanically recomputable for any term (D-012; D-015B).</li>
-          <li>Runtime principles — statements of what the current runtime already implies, no more (<a href="${GITHUB_DOC}/docs/practice/RUNTIME_PRINCIPLES.md">D-014</a>).</li>
-          <li>Minimum support: the tested candidate is not minimal; minimal seat <code>Relation → Connection</code> (C-003).</li>
-        </ul>
-      </div>
-      <div class="inv calibrated">
-        <h3>Calibrated</h3>
-        <ul>
-          <li>Tier-1 place sentences — Atlas opening prose calibrated corpus-wide (<a href="${GITHUB_DOC}/docs/reports/D-018A-opening-place-calibration.md">D-018A</a>).</li>
-          <li>Tier-1 hold sentences — 481 files, 485/488 aligned (<a href="${GITHUB_DOC}/docs/reports/D-018D-tier-1-hold-calibration.md">D-018D</a>).</li>
-          <li>Whole-Atlas calibration classes (<a href="${GITHUB_DOC}/docs/reports/D-008-whole-atlas-calibration.md">D-008</a>).</li>
-          <li>Ratio-mode thresholds (3 / 8) and maturity bands — configured, revisable.</li>
-        </ul>
-      </div>
-      <div class="inv heuristic">
-        <h3>Heuristic</h3>
-        <ul>
-          <li>Mechanics amplification coefficients — rendering only, no new mechanics (D-020B).</li>
-          <li>Observatory legibility floors — perceptual alphas (D-022).</li>
-          <li>Dependency-bearing placement jitter and label budgets (D-023).</li>
-          <li>Adaptive render-quality budgets.</li>
-        </ul>
-      </div>
-      <div class="inv unresolved">
-        <h3>Unresolved</h3>
-        <ul>
-          <li><b>Pressure</b> is not derived — three senses distinguished, derivation open (<a href="${GITHUB_DOC}/docs/reports/C-A001-pressure-derivation-evidence.md">C-A001</a>).</li>
-          <li>The <code>:</code> operator is not accepted (C010).</li>
-          <li>"operation" carries six senses across two incompatible categories (C-C000A).</li>
-          <li>The calculus grain is undeclared (C-003).</li>
-          <li>Second Order has no terminal marker — confirmed gap, deliberately unfilled (<a href="${GITHUB_DOC}/docs/stewardship/OPEN_QUESTIONS.md">Open Questions</a>).</li>
-          <li>D1 schema and non-entries recovery path uncharacterised (commission C005).</li>
-          <li>A structural signature richer than the scalar ratio — future unknown (D-015B).</li>
-        </ul>
-      </div>
+    <div class="inventory">${calculusInventoryHtml()}
     </div>
 
     <h2>How this surface relates to the others</h2>
