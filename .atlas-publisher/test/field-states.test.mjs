@@ -186,7 +186,7 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
   assert.match(html, /href="\/theory">📖 Theory/);
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
-  assert.match(html, /href="\/submission">✓ Proof/);
+  assert.match(html, /href="\/proof">✓ Proof/);
   assert.doesNotMatch(html, /href="\/atlas"/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
@@ -211,7 +211,7 @@ test("drawCurrent applies shared term ratio mode to all relation types", () => {
 
 test("Field links to Proof alongside Pulse", () => {
   const html = fieldPage();
-  assert.match(html, /href="\/submission">✓ Proof/);
+  assert.match(html, /href="\/proof">✓ Proof/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">❤️ Pulse/);
   assert.match(html, /href="\/field">🔭 Observatory/);
   assert.match(html, /href="\/theory">📖 Theory/);
@@ -450,5 +450,62 @@ test("D-022 Theory states the working postulate without inventing theory", async
   assert.match(html, /Order carries\./);
   assert.match(html, /Trace places\./);
   assert.match(html, /Reality already carries order/);
-  assert.match(html, /working claim, corrected by failure, not a doctrine/);
+  assert.match(html, /corrected by failure\. Not a doctrine/);
+});
+
+test("D-023 placement derives from declared structure only", () => {
+  const html = fieldPage();
+  assert.match(html, /function buildHomeAngles/);
+  assert.match(html, /circular mean of the bearings/);
+  assert.match(html, /declaredRelationIds/);
+  assert.match(html, /homeAngles\.get\(op\.id\)/);
+});
+
+test("D-023 the cursor is a probe and the instrument declares its reading", () => {
+  const html = fieldPage();
+  assert.match(html, /canvas\.style\.cursor = hoverId \? 'pointer' : ''/);
+  assert.match(html, /id="field-status"/);
+  assert.match(html, /generated read-model/);
+  assert.match(html, /terms · /);
+});
+
+test("D-023 the strands are named in renderer colours", () => {
+  const html = fieldPage();
+  assert.match(html, /legend-stroke/);
+  assert.match(html, /relationColor\(type, 0\.9\)/);
+});
+
+test("D-023 landing opens with the working postulate", () => {
+  const html = fieldPage();
+  assert.match(html, /landing-postulate">Relation holds\. Order carries\. Trace places\./);
+  assert.match(html, /every strand a declared relation/);
+});
+
+test("D-023 Theory leads with the claim and cites sparingly", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /<h1>Reality already carries order\.<\/h1>/);
+  assert.match(html, /Why the discipline works\./);
+  assert.match(html, /Working Postulate v0\.6/);
+  assert.match(html, /independently reviewable/);
+  assert.match(html, /independently retraceable/);
+  assert.match(html, /Constitution — constitutional aim/);
+});
+
+test("D-023 Proof shows the retrace pathway and visible humility", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), {});
+  const html = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(html, /The retrace pathway/);
+  assert.match(html, /<b>Claim<\/b>/);
+  assert.match(html, /<b>Source<\/b>/);
+  assert.match(html, /<b>Method<\/b>/);
+  assert.match(html, /<b>Record<\/b>/);
+  assert.match(html, /What this does not claim/);
+  assert.match(html, /commission C005, open/);
+  assert.doesNotMatch(html, /Production deployment \/ D1-sync not yet file-verified/);
+  assert.match(html, /REPOSITORY_VERIFICATION\.md/);
 });

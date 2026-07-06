@@ -105,6 +105,9 @@ const PAGE = `<!doctype html>
 
     .note { margin-top:18px; color:var(--cool); font-size:13px; max-width:640px; }
     .note b { color:var(--ember); }
+    .runtime-line { color:var(--cool); font:600 11px/1.6 system-ui, sans-serif; letter-spacing:0.08em; text-transform:uppercase; }
+    .runtime-line a { color:var(--cool); }
+    .runtime-line a:hover { color:var(--ember); }
 
     @media (max-width:640px) {
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
@@ -119,14 +122,15 @@ const PAGE = `<!doctype html>
       <a href="https://realitymechanics.nz/field">🔭 Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">❤️ Pulse</a>
       <a href="https://realitymechanics.nz/theory">📖 Theory</a>
-      <a href="https://realitymechanics.nz/submission">✓ Proof</a>
+      <a href="https://realitymechanics.nz/proof">✓ Proof</a>
     </nav>
   </header>
   <main>
     <section class="intro">
       <div class="eyebrow">Pulse</div>
       <h1>Behaviour through time.</h1>
-      <p>Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
+      <p>The Observatory shows structure; Pulse shows what structure does under time. Calibration is the first Pulse instrument. It does not answer for you and does not need your input. Press start and watch strain rise until a pulse corrects it.</p>
+      <p class="runtime-line">Mechanical runtime · no AI · no Atlas mutation · <a href="/api/health">live health</a> · <a href="https://github.com/reubenmunro/reality-mechanics/blob/main/docs/reports/D-021.4-pulse-instrument-contract.md">instrument contract</a></p>
       <div class="proof">
         <div><b>Drift</b>Strain builds on its own. Nothing holds it still.</div>
         <div><b>Pulse</b>A correction fires only once threshold is crossed.</div>
