@@ -40,6 +40,7 @@ import {
   tracePressureDecayScale,
   tracePressureStrength,
 } from "./mechanics-amplification.mjs";
+import { buildClientMechanicsBundle } from "./woven-field-renderer.mjs";
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -822,6 +823,8 @@ function structuralMassForState(state) {
 function termRatioMode(op) {
   return ratioModeForState(stateFor(op.id));
 }
+
+${buildClientMechanicsBundle()}
 
 function orderBasinBias(order) {
   const value = String(order || 'operation').toLowerCase();
@@ -1789,7 +1792,10 @@ function opInThreadNetwork(opId) {
 
 function ratioReadableProfile(profile) {
   const mass = profile?.fieldStates?.structuralMass ?? profile?.structuralMass ?? 0;
-  return mass >= HOME_PRESSURE_GRID.fabricMassMin;
+  const fabricMin = (typeof RMMechanics !== 'undefined' && RMMechanics.HOME_WOVEN_VISIBILITY)
+    ? RMMechanics.HOME_WOVEN_VISIBILITY.fabricMassMin
+    : HOME_PRESSURE_GRID.fabricMassMin;
+  return mass >= fabricMin;
 }
 
 function buildHomeWeaveState() {
@@ -1938,10 +1944,11 @@ function drawHomeFabricFace(alpha) {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       const p = values[y * cols + x] / norm;
-      if (p < 0.035) continue;
+      const cellThreshold = RMMechanics.HOME_WOVEN_VISIBILITY.fabricCellThreshold;
+      if (p < cellThreshold) continue;
       const cx = (x + 0.5) * cellW;
       const cy = (y + 0.5) * cellH;
-      const cellAlpha = Math.min(0.13, p * 0.1) * alpha;
+      const cellAlpha = Math.min(0.2, p * 0.1 * RMMechanics.HOME_WOVEN_VISIBILITY.fabricCellAlphaScale) * alpha;
       const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(cellW, cellH) * 0.74);
       grad.addColorStop(0, 'rgba(58,80,112,' + cellAlpha + ')');
       grad.addColorStop(0.52, 'rgba(200,96,26,' + (cellAlpha * 0.28) + ')');
@@ -3202,12 +3209,13 @@ function drawHomeCondensation(op, alpha) {
 function drawHomeRelationCurrent(conn, alpha, lineBoost) {
   const { a, b, typeKey } = conn;
   const leg = resolveHomeLeg(conn);
-  const stroke = legStrokeAppearance(leg, {
+  const stroke = RMMechanics.homeLegStrokeAppearance(leg, {
     typeStrength: (relationTypes.find((t) => t.key === typeKey) || relationTypes[2]).strength,
     alpha,
     sense: relationSensibility(a.id, b.id),
     lineBoost,
     relationTension: 0,
+    wholeField: neutralWholeFieldOpen(),
   });
   const pa = homePosition(a);
   const pb = homePosition(b);
@@ -3246,23 +3254,44 @@ function drawHomeRelationCurrent(conn, alpha, lineBoost) {
   ctx.setLineDash([]);
 }
 
-// O-002: fabric-first home renderer — weave currents → thread/web edges → fabric face → condensation.
-function drawHomeField(alpha) {
+// O-008: woven-field renderer — derive → classify → threads → crossings → fabric → condensation → labels.
+function drawWovenHomeField(alpha) {
   const ops = Object.values(allOps);
   if (!homeConnections.length && !ops.length) return;
   const wholeField = neutralWholeFieldOpen();
   const lineBoost = wholeField ? 2.4 : 1;
+  const vis = RMMechanics.HOME_WOVEN_VISIBILITY;
 
+  buildHomeWeaveState();
   buildHomePressureField();
 
-  ctx.save();
-  ctx.globalCompositeOperation = 'lighter';
-  const n = Math.min(homeConnections.length, Math.max(42, Math.round(FIELD_RENDER_BUDGET.homeCurrents * adaptiveAmbientScale(0.38))));
-  const sorted = homeConnections
-    .slice()
-    .sort((left, right) => hashStr(left.a.id + left.typeKey + left.b.id) - hashStr(right.a.id + right.typeKey + right.b.id));
-  for (let i = 0; i < n; i++) drawHomeRelationCurrent(sorted[i], alpha, lineBoost);
-  ctx.restore();
+  const classified = RMMechanics.classifyHomeWeaveLegs(homeConnections, resolveHomeLeg);
+  const threadModes = new Set(['thread_forward', 'thread_return']);
+  const crossingModes = new Set(['web_crossing', 'crossing_unwoven']);
+  const threads = classified.filter((item) => threadModes.has(item.leg.weaveMode));
+  const crossings = classified.filter((item) => crossingModes.has(item.leg.weaveMode));
+  const remainder = classified.filter((item) => !threadModes.has(item.leg.weaveMode) && !crossingModes.has(item.leg.weaveMode));
+
+  const ambientCap = Math.max(42, Math.round(FIELD_RENDER_BUDGET.homeCurrents * adaptiveAmbientScale(0.38)));
+  const connectionCap = wholeField
+    ? Math.min(homeConnections.length, vis.wholeFieldConnectionCap)
+    : Math.min(homeConnections.length, ambientCap);
+
+  function drawLegBatch(batch, limit) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const count = Math.min(batch.length, limit);
+    for (let i = 0; i < count; i++) drawHomeRelationCurrent(batch[i].conn, alpha, lineBoost);
+    ctx.restore();
+  }
+
+  const threadBudget = wholeField ? connectionCap : Math.min(threads.length, Math.round(connectionCap * 0.55));
+  const crossingBudget = wholeField ? connectionCap : Math.min(crossings.length, Math.round(connectionCap * 0.28));
+  const remainderBudget = wholeField ? connectionCap : Math.max(12, connectionCap - threadBudget - crossingBudget);
+
+  drawLegBatch(threads, threadBudget);
+  drawLegBatch(crossings, crossingBudget);
+  drawLegBatch(remainder, remainderBudget);
 
   drawHomeFabricFace(alpha);
 
@@ -3270,12 +3299,14 @@ function drawHomeField(alpha) {
     ops.length,
     Math.max(48, Math.round(FIELD_RENDER_BUDGET.homeNodes * adaptiveAmbientScale(0.42))),
   );
+  const condenseMin = wholeField ? vis.condenseMassMin : HOME_PRESSURE_GRID.condenseThreshold;
   const condensing = ops
     .filter((op) => {
-      if (!opInThreadNetwork(op.id)) return false;
       const profile = op.profile || computeProfile(op);
       const mass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
-      return mass >= HOME_PRESSURE_GRID.condenseThreshold || homeLabelIds.includes(op.id);
+      if (homeLabelIds.includes(op.id)) return true;
+      if (!opInThreadNetwork(op.id)) return mass >= condenseMin * 1.4;
+      return mass >= condenseMin;
     })
     .sort((left, right) => {
       const lm = (left.profile || computeProfile(left)).fieldStates?.structuralMass || (left.profile || computeProfile(left)).structuralMass || 0;
@@ -3286,11 +3317,32 @@ function drawHomeField(alpha) {
     drawHomeCondensation(condensing[i], alpha);
   }
 
+  drawHomeStructuralLabels(alpha);
+
   if (hoverId && allOps[hoverId]) {
     const op = allOps[hoverId];
     const pos = homePosition(op);
     drawTermLabel(op, pos.x, pos.y + 14, 0.92 * alpha, 12, true);
   }
+}
+
+function drawHomeStructuralLabels(alpha) {
+  if (!neutralWholeFieldOpen() || !homeLabelIds.length) return;
+  const vis = RMMechanics.HOME_WOVEN_VISIBILITY;
+  const baseLabelAlpha = Math.min(0.68, 0.34 + alpha * 0.34);
+  homeLabelIds.forEach((id) => {
+    const op = allOps[id];
+    if (!op) return;
+    const profile = op.profile || computeProfile(op);
+    const mass = profile.fieldStates?.structuralMass || profile.structuralMass || 0;
+    if (mass < vis.labelMassMin && !opInThreadNetwork(id)) return;
+    const pos = homePosition(op);
+    drawTermLabel(op, pos.x, pos.y + 10, baseLabelAlpha * alpha, 10, mass >= vis.condenseMassMin);
+  });
+}
+
+function drawHomeField(alpha) {
+  drawWovenHomeField(alpha);
 }
 
 function spineDisplayOrder(opOrId) {

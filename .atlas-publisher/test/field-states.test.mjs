@@ -657,16 +657,17 @@ test("R-004 landing observe dismisses without opening term sheet", () => {
   assert.match(html, /dismissObservatoryLanding\(\);\s*closeTermSheet\(\)/);
 });
 
-test("O-001 field-first home renderer: fabric weave before condensation, labels on hover", () => {
+test("O-001 field-first home renderer: woven structure before condensation, structural labels earned", () => {
   const html = fieldPage();
-  assert.match(html, /O-002: fabric-first home renderer/);
+  assert.match(html, /O-008: woven-field renderer/);
   assert.match(html, /function drawHomeRelationCurrent/);
   assert.match(html, /function homePressureGradientAt/);
   assert.match(html, /HOME_PRESSURE_GRID/);
   assert.match(html, /buildHomePressureField\(\)/);
   assert.match(html, /drawHomeFabricFace\(alpha\)/);
   assert.doesNotMatch(html, /function drawHomeNode/);
-  assert.doesNotMatch(html, /homeLabelIds\.forEach\(\(id\)/);
+  assert.match(html, /function drawHomeStructuralLabels/);
+  assert.match(html, /homeLabelIds\.forEach/);
   assert.match(html, /Continuation and recoverability read before any term is chosen/);
 });
 
@@ -758,12 +759,13 @@ test("O-006 read engine: behaviour trace exposes readEngine bundle", async () =>
   assert.ok(body.readEngine.sourceOfTruthRules.length >= 6);
 });
 
-test("O-004 thread mechanics renderer: shared resolveLeg path", () => {
+test("O-004 thread mechanics renderer: shared resolveLeg path activated in client", () => {
   const html = fieldPage();
   assert.match(html, /function resolveHomeLeg/);
-  assert.match(html, /buildPairStateFromOps/);
-  assert.match(html, /legStrokeAppearance/);
+  assert.match(html, /window\.RMMechanics/);
+  assert.match(html, /var resolveLeg = RMMechanics\.resolveLeg/);
+  assert.match(html, /var buildPairStateFromOps = RMMechanics\.buildPairStateFromOps/);
   assert.match(html, /legFocusedAppearance/);
   assert.match(html, /tmsLeg/);
-  assert.match(html, /resolveLeg/);
+  assert.match(html, /RMMechanics\.homeLegStrokeAppearance/);
 });

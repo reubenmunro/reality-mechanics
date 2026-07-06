@@ -60,6 +60,7 @@ Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
 | Layer stack | `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md` |
 | Read catalogue | `.atlas-publisher/read-engine.mjs` |
 | Thread mechanics | `.atlas-publisher/thread-mechanics.mjs` |
+| Woven-field renderer | `.atlas-publisher/woven-field-renderer.mjs` (`RMMechanics` client bundle) |
 | Behaviour trace API | `GET /api/field/behaviour-trace?id=` |
 
 **Principle:** Derive reads first; appearance follows. Do not paint meaning.
@@ -90,6 +91,7 @@ Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
 |---|---|---|
 | O-001–O-002 | Field/fabric renderer | O-002 fabric gating |
 | O-003–O-006 | Reads + read engine | O-006 formalisation |
+| O-008 | Renderer reconstruction | `docs/reports/O-008-observatory-renderer-reconstruction.md` — client `RMMechanics` activation |
 
 Full register: `docs/practice/COMMISSIONS.md`
 
@@ -103,7 +105,7 @@ Full register: `docs/practice/COMMISSIONS.md`
 | Fabric held-whole read | P-012 | Paint fabric without weave |
 | Pressure derivation | C-A001 | Promote Pressure as primitive |
 | D1 sync automation | PROJECT_STATUS | Edit D1 directly |
-| Client weave-state bundle | O-006 §5 | Fork weave logic in draw* |
+| Client weave-state read bundle | O-006 §5 | Fork weave logic in draw* — thread resolver now in `RMMechanics`; full weave-state read bundle still server-side |
 
 ---
 

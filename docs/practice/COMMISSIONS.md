@@ -122,6 +122,7 @@ Hyphenated `D-00x` commissions deliver Observatory loop artefacts. Reports under
 | Structural gathering mechanics investigation | P-012 | Resolved | Does SG bridge thread pairs to coherent networks and Fabric? | `docs/reports/P-012-structural-gathering-mechanics.md`; partial — downstream convergence; parallel to Participation |
 | Read engine architecture investigation | P-013 | Resolved | Does Observatory need formal Read Engine between mechanics and renderer? | `docs/reports/P-013-read-engine-architecture.md`; partial formalise module pattern; reject new P-003 layer |
 | Programme sorting pass | M-001 | Resolved | Repository doc entropy after P/O programme | `docs/reports/M-001-programme-sorting-pass.md`; PROGRAMME_INDEX; R-005/R-006; supersession banners |
+| Observatory renderer reconstruction | O-008 | Resolved | First-load field empty; woven mechanics not perceptible | `docs/reports/O-008-observatory-renderer-reconstruction.md`; `woven-field-renderer.mjs`; `RMMechanics` client bundle; `drawWovenHomeField` |
 
 ---
 
