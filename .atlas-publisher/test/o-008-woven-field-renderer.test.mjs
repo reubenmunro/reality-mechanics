@@ -19,6 +19,8 @@ test("O-008 woven-field renderer: client mechanics bundle emitted in field HTML"
   assert.match(html, /var buildPairStateFromOps = RMMechanics\.buildPairStateFromOps/);
   assert.match(html, /homeLegStrokeAppearance/);
   assert.match(html, /classifyHomeWeaveLegs/);
+  assert.match(html, /function frameTransitionUnderlayAlpha/);
+  assert.match(html, /const MECHANICS_AMPLIFICATION = Object\.freeze/);
   assert.match(html, /O-008 woven-field renderer/);
 });
 

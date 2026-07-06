@@ -8,8 +8,9 @@ import {
   legStrokeAppearance,
   resolveLeg,
 } from "./thread-mechanics.mjs";
+import { MECHANICS_AMPLIFICATION } from "./mechanics-amplification.mjs";
 
-export const WOVEN_FIELD_RENDERER_VERSION = "o-008.v1";
+export const WOVEN_FIELD_RENDERER_VERSION = "o-008.v2";
 
 export const HOME_WOVEN_VISIBILITY = Object.freeze({
   version: WOVEN_FIELD_RENDERER_VERSION,
@@ -245,5 +246,98 @@ var mergePairState = RMMechanics.mergePairState;
 var weaveModeForLeg = RMMechanics.weaveModeForLeg;
 var fabricEligibleWeaveMode = RMMechanics.fabricEligibleWeaveMode;
 var endpointRatioFromFieldState = RMMechanics.endpointRatioFromFieldState;
+`;
+}
+
+/** D-020B amplification helpers used by inline Observatory draw/step paths. */
+export function buildClientAmplificationBundle() {
+  const ampJson = JSON.stringify(MECHANICS_AMPLIFICATION);
+  return `
+// O-008: client mechanics-amplification activation (keep aligned with mechanics-amplification.mjs)
+const MECHANICS_AMPLIFICATION = Object.freeze(${ampJson});
+function ratioVisualScale(ratioMode) {
+  ratioMode = ratioMode || {};
+  const mode = ratioMode.mode || 'discrete';
+  const transition = Number(ratioMode.transition || 0);
+  const continuous = Number(ratioMode.continuous || 0);
+  const amp = MECHANICS_AMPLIFICATION.ratio;
+  if (mode === 'continuous') {
+    return {
+      mode, strandScale: amp.continuousStrandCut,
+      wiggleScale: 0.34 + continuous * 0.18,
+      compressionGlow: amp.continuousCompressionGlow,
+      lineTightness: amp.continuousLineTightness,
+      filamentScale: 0.74,
+    };
+  }
+  if (mode === 'transitional') {
+    return {
+      mode, strandScale: 1.02 - transition * 0.34,
+      wiggleScale: 0.88 - transition * 0.22,
+      compressionGlow: 0.55 + transition * 0.85,
+      lineTightness: 0.96 + transition * 0.18,
+      filamentScale: 0.9 - transition * 0.12,
+    };
+  }
+  return {
+    mode: 'discrete', strandScale: amp.discreteStrandBoost, wiggleScale: 1.08,
+    compressionGlow: 0.48, lineTightness: 0.9, filamentScale: 1.06,
+  };
+}
+function couplingRelationSensibility(inFrameA, inFrameB, alphaA, alphaB, frameActive) {
+  if (!frameActive) return 1;
+  const amp = MECHANICS_AMPLIFICATION.coupling;
+  if (inFrameA && inFrameB) return amp.inFrameBoost;
+  return Math.max(amp.relationFloor, (alphaA + alphaB) * 0.5);
+}
+function couplingSensibilityTarget(inFrame, frameActive) {
+  if (!frameActive) return 1;
+  return inFrame ? 1 : MECHANICS_AMPLIFICATION.coupling.outOfFrameTarget;
+}
+function tracePressureStrength(baseStrength, relationKey) {
+  if (relationKey !== 'traces') return baseStrength;
+  return baseStrength * MECHANICS_AMPLIFICATION.trace.pressureTraceStrength;
+}
+function tracePressureDecayScale(relationKey) {
+  if (relationKey !== 'traces') return 1;
+  return MECHANICS_AMPLIFICATION.trace.pressureTraceDecayScale;
+}
+function amplifiedRhythmExpression(typeKey, rhythm, pulse, base) {
+  const amp = MECHANICS_AMPLIFICATION;
+  if (typeKey === 'traces') {
+    return Object.assign({}, base, {
+      t: base.t,
+      radiusScale: base.radiusScale * (0.92 + rhythm.intermittence * 0.14 * amp.trace.memoryPulse),
+      alphaScale: base.alphaScale * amp.trace.intermittenceAlpha,
+    });
+  }
+  if (typeKey === 'carries') {
+    return Object.assign({}, base, {
+      t: pulse,
+      radiusScale: base.radiusScale * (1 + rhythm.cadence * 0.28 * amp.carry.beadRadius),
+      alphaScale: base.alphaScale * amp.carry.beadAlpha,
+    });
+  }
+  if (typeKey === 'nests') {
+    return Object.assign({}, base, {
+      radiusScale: base.radiusScale * amp.nest.beadOrbit,
+      alphaScale: base.alphaScale * (1 + rhythm.circulation * 0.18),
+    });
+  }
+  return base;
+}
+function amplifiedCondensationFocus(structuralMass, pulseDepth, irregularity, arrivalAlpha) {
+  const amp = MECHANICS_AMPLIFICATION.condensation;
+  return {
+    pulseDepth: pulseDepth * amp.focusPulseDepth * (1 - structuralMass * 0.18),
+    irregularity: irregularity * amp.focusEdgeIrregularity,
+    arrivalAlpha: arrivalAlpha * amp.focusArrivalAlpha,
+  };
+}
+function frameTransitionUnderlayAlpha(homeAlpha, frameActive, transitionPulse) {
+  const amp = MECHANICS_AMPLIFICATION.frameTransition;
+  const base = Math.max(homeAlpha, frameActive ? 0.58 : 0);
+  return base + transitionPulse * amp.homeUnderlayBoost;
+}
 `;
 }

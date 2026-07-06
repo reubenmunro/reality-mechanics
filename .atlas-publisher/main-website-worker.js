@@ -40,7 +40,7 @@ import {
   tracePressureDecayScale,
   tracePressureStrength,
 } from "./mechanics-amplification.mjs";
-import { buildClientMechanicsBundle } from "./woven-field-renderer.mjs";
+import { buildClientAmplificationBundle, buildClientMechanicsBundle } from "./woven-field-renderer.mjs";
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -825,6 +825,8 @@ function termRatioMode(op) {
 }
 
 ${buildClientMechanicsBundle()}
+
+${buildClientAmplificationBundle()}
 
 function orderBasinBias(order) {
   const value = String(order || 'operation').toLowerCase();
