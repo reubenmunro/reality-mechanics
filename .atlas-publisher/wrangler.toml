@@ -1,10 +1,24 @@
 name = "super-frost-d434"
 main = "main-website-worker.js"
 compatibility_date = "2025-06-01"
+workers_dev = false
+
+[assets]
+directory = "./generated/public"
+binding = "ASSETS"
+run_worker_first = true
 
 [[routes]]
 pattern = "realitymechanics.nz"
 custom_domain = true
+
+[[routes]]
+pattern = "atlas.realitymechanics.nz/*"
+zone_name = "realitymechanics.nz"
+
+[[routes]]
+pattern = "theory.realitymechanics.nz/*"
+zone_name = "realitymechanics.nz"
 
 [[d1_databases]]
 binding = "ATLAS_DB"

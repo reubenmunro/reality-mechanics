@@ -5,6 +5,7 @@ import {
   CANONICAL_SOURCE_HASH,
   RELATION_KEYS,
 } from "../generated/canonical-participation.mjs";
+import { TRANSLATION_HASH } from "../generated/release-identity.mjs";
 
 const emptyStructure = () => Object.fromEntries(RELATION_KEYS.map((relation) => [relation, []]));
 const entry = (id, title, { order = null, register = null, structure = emptyStructure() } = {}) => ({
@@ -42,7 +43,7 @@ const rows = [
   entry("first.relation", "Relation", { order: "first" }),
 ];
 
-function makeDb() {
+function makeDb(sourceHash = CANONICAL_SOURCE_HASH, entryCount = CANONICAL_ENTRY_COUNT) {
   return {
     prepare(sql) {
       return {
@@ -51,8 +52,8 @@ function makeDb() {
         async all() {
           if (/SELECT key, value FROM atlas_metadata/.test(sql)) {
             return { results: [
-              { key: "source_hash", value: CANONICAL_SOURCE_HASH },
-              { key: "entry_count", value: String(CANONICAL_ENTRY_COUNT) },
+              { key: "source_hash", value: sourceHash },
+              { key: "entry_count", value: String(entryCount) },
             ] };
           }
           if (/WHERE id IN/.test(sql)) {
@@ -67,7 +68,7 @@ function makeDb() {
           return { results: rows };
         },
         async first() {
-          if (/COUNT\(\*\) as n/.test(sql)) return { n: CANONICAL_ENTRY_COUNT };
+          if (/COUNT\(\*\) as n/.test(sql)) return { n: entryCount };
           if (/WHERE id = \?/.test(sql)) return rows.find((row) => row.id === this.params[0]) || null;
           return null;
         },
@@ -108,6 +109,7 @@ assert.ok(!tools.some((name) => /^(write|ground|update|rebuild|submit)/.test(nam
 
 const protocol = await callTool("get_ai_entry_protocol");
 assert.equal(protocol.sourceHash, CANONICAL_SOURCE_HASH);
+assert.equal(protocol.translationHash, TRANSLATION_HASH);
 assert.deepEqual(protocol.members, [...AI_ENTRY_PROTOCOL]);
 assert.equal("startingIds" in protocol, false);
 
@@ -115,6 +117,7 @@ const manifest = await callTool("get_manifest");
 assert.equal(manifest.parity, true);
 assert.equal(manifest.entryCount, 490);
 assert.equal(manifest.sourceHash, CANONICAL_SOURCE_HASH);
+assert.equal(manifest.translationHash, TRANSLATION_HASH);
 
 const session = await callTool("begin_atlas_session");
 assert.deepEqual(session.protocol.members, [...AI_ENTRY_PROTOCOL]);
@@ -124,6 +127,7 @@ assert.ok(session.requiredEntries.every((item) => !("operatorContract" in item))
 
 const contract = await callTool("get_structure_contract");
 assert.equal(contract.sourceHash, CANONICAL_SOURCE_HASH);
+assert.equal(contract.translationHash, TRANSLATION_HASH);
 assert.deepEqual(Object.keys(contract.atlasSchema.relations), RELATION_KEYS);
 assert.deepEqual(contract.protocols["ai-entry"], [...AI_ENTRY_PROTOCOL]);
 
@@ -138,5 +142,30 @@ assert.equal("layers" in atlas, false);
 const related = await callTool("get_related", { id: "practice.atlas" });
 assert.deepEqual(Object.keys(related.relations), RELATION_KEYS);
 assert.equal(related.relations.carries[0].id, "practice.ai-participation");
+
+const rootResponse = await worker.fetch(new Request("https://mcp.example/"), env, {});
+const rootBody = await rootResponse.json();
+assert.equal(rootResponse.status, 200);
+assert.equal(rootResponse.headers.get("x-rm-canonical-source-hash"), CANONICAL_SOURCE_HASH);
+assert.equal(rootResponse.headers.get("x-rm-translation-hash"), TRANSLATION_HASH);
+assert.equal(rootBody.translationHash, TRANSLATION_HASH);
+
+const staleEnv = {
+  ATLAS_DB: makeDb("sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 493),
+};
+const staleResponse = await worker.fetch(new Request("https://mcp.example/mcp", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    jsonrpc: "2.0",
+    id: 999,
+    method: "tools/call",
+    params: { name: "get_entry", arguments: { id: "practice.atlas" } },
+  }),
+}), staleEnv, {});
+const staleBody = await staleResponse.json();
+assert.equal(staleBody.error.code, -32010);
+assert.match(staleBody.error.message, /translation_identity_mismatch/);
+assert.equal(staleResponse.headers.get("x-rm-translation-hash"), TRANSLATION_HASH);
 
 console.log("MCP Canonical Translation tests passed");

@@ -109,7 +109,10 @@ function makeDb() {
         params: [],
         bind(...params) { this.params = params; return this; },
         async all() {
-          if (/FROM atlas_metadata\b/.test(sql)) return { results: [{ value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" }] };
+          if (/FROM atlas_metadata\b/.test(sql)) return { results: [
+            { key: "source_hash", value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" },
+            { key: "entry_count", value: "490" },
+          ] };
           if (/FROM entries\b/.test(sql)) return { results: entries };
           if (/FROM entry_revisions\b/.test(sql)) return { results: revisions };
           if (/FROM proposals\b/.test(sql)) return { results: proposals };
@@ -129,6 +132,8 @@ function makeDb() {
     },
   };
 }
+
+const CURRENT_ENV = { ATLAS_DB: makeDb() };
 
 test("deriveFieldStatesPayload derives renderer states from D1 records only", async () => {
   const payload = await deriveFieldStatesPayload(
@@ -296,7 +301,7 @@ test("D-021.4 endpointOnly path is confined to focused condensation draw", () =>
 });
 
 test("/theory serves the complete generated canonical Theory entry", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -326,7 +331,7 @@ test("D-026 visual refinement removes nav icons and card chrome", () => {
 });
 
 test("/proof serves the retrace pathway page", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -336,7 +341,7 @@ test("/proof serves the retrace pathway page", async () => {
 });
 
 test("/submission serves the public Submission 001 page", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/submission"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -379,12 +384,10 @@ test("submissionPage separates generated Atlas records from candidate and unreso
   assert.match(html, /does not determine Atlas structure/);
 });
 
-test("/atlas is no longer a public surface", async () => {
+test("/atlas redirects to the canonical GitHub Atlas", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
-  const html = await res.text();
-
-  assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.equal(res.status, 308);
+  assert.equal(res.headers.get("location"), "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics");
 });
 
 test("/member is a compatibility doorway to Calibration", async () => {
@@ -421,7 +424,7 @@ test("/ark is retired as a standalone doorway", async () => {
 });
 
 test("/api/field/entries is retired in favour of derived field states", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/api/field/entries"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/api/field/entries"), CURRENT_ENV);
   const body = await res.text();
 
   assert.equal(res.status, 410);
@@ -492,7 +495,7 @@ test("D-022 decorative machinery removed from Observatory draw", () => {
 });
 
 test("D-022 Theory states the working postulate without inventing theory", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -532,7 +535,7 @@ test("D-023 landing opens with the working postulate", () => {
 });
 
 test("D-023 Theory leads with the claim and cites sparingly", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -544,7 +547,7 @@ test("D-023 Theory leads with the claim and cites sparingly", async () => {
 });
 
 test("D-023 Proof shows the retrace pathway and visible humility", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/proof"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -560,7 +563,7 @@ test("D-023 Proof shows the retrace pathway and visible humility", async () => {
 });
 
 test("D-024 /calculus serves the derivation surface", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), CURRENT_ENV);
   const html = await res.text();
 
   assert.equal(res.status, 200);
@@ -571,7 +574,7 @@ test("D-024 /calculus serves the derivation surface", async () => {
 });
 
 test("D-024 Calculus distinguishes derived, calibrated, heuristic, unresolved", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), CURRENT_ENV);
   const html = await res.text();
 
   for (const status of ["derived", "calibrated", "heuristic", "unresolved"]) {
@@ -582,7 +585,7 @@ test("D-024 Calculus distinguishes derived, calibrated, heuristic, unresolved", 
 });
 
 test("D-024 implied mathematics is explicit and honest", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), CURRENT_ENV);
   const html = await res.text();
 
   assert.match(html, /mass\(t\) = \|\{ s ≠ t : t ∈ holds\(s\) ∪ traces\(s\) \}\|/);
@@ -592,7 +595,7 @@ test("D-024 implied mathematics is explicit and honest", async () => {
 });
 
 test("D-024 candidate calculus presented without promotion", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), {});
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/calculus"), CURRENT_ENV);
   const html = await res.text();
 
   assert.match(html, /Order : Structure : Read/);
@@ -612,11 +615,10 @@ test("D-024 five public surfaces reachable from every page", () => {
   }
 });
 
-test("D-024 retired routes name five surfaces", async () => {
+test("D-024 Atlas route carries canonical source redirect", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
-  const body = await res.text();
-  assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.equal(res.status, 308);
+  assert.match(res.headers.get("location"), /github\.com\/reubenmunro\/reality-mechanics\/tree\/main\/Reality_Mechanics/);
 });
 
 test("Stage 2 separates generated structure from maintained Calculus evidence", () => {
@@ -720,7 +722,10 @@ test("O-006 read engine: behaviour trace exposes readEngine bundle", async () =>
           params: [],
           bind(...params) { this.params = params; return this; },
           async all() {
-            if (/FROM atlas_metadata\b/.test(sql)) return { results: [{ value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" }] };
+            if (/FROM atlas_metadata\b/.test(sql)) return { results: [
+              { key: "source_hash", value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" },
+              { key: "entry_count", value: "490" },
+            ] };
             if (/FROM entries\b/.test(sql)) return { results: entries };
             return { results: [] };
           },

@@ -24,7 +24,7 @@ Drift -> Strain -> Threshold -> Pulse -> Correction -> Open Strain (never zero)
 name = "reality-mechanics-calibration"
 main = "src/index.js"
 compatibility_date = "2026-06-03"
-workers_dev = true
+workers_dev = false
 
 [[routes]]
 pattern = "calibration.realitymechanics.nz"

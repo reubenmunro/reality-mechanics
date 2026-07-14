@@ -1,0 +1,50 @@
+{
+  "status": "prepared-not-applied",
+  "commission": "RC-001B",
+  "customHostRoutes": [
+    {
+      "source": "https://theory.realitymechanics.nz/*",
+      "mechanism": "Main Worker route and host dispatch",
+      "destination": "https://realitymechanics.nz/theory",
+      "statusCode": 308,
+      "preserveQuery": true,
+      "preservePath": false
+    },
+    {
+      "source": "https://atlas.realitymechanics.nz/ai/*",
+      "mechanism": "Main Worker route and host dispatch",
+      "destination": "https://realitymechanics.nz/ai/*",
+      "statusCode": 308,
+      "preserveQuery": true,
+      "preservePath": true
+    },
+    {
+      "source": "https://atlas.realitymechanics.nz/*",
+      "mechanism": "Main Worker route and host dispatch",
+      "destination": "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics",
+      "statusCode": 308,
+      "preserveQuery": false,
+      "preservePath": false
+    }
+  ],
+  "pagesDevBulkRedirects": [
+    {
+      "source": "https://reality-mechanics-atlas.pages.dev",
+      "destination": "https://atlas.realitymechanics.nz",
+      "statusCode": 301,
+      "subpathMatching": true,
+      "preservePathSuffix": true,
+      "preserveQuery": true
+    },
+    {
+      "source": "https://reality-mechanics-theory.pages.dev",
+      "destination": "https://theory.realitymechanics.nz",
+      "statusCode": 301,
+      "subpathMatching": true,
+      "preservePathSuffix": true,
+      "preserveQuery": true
+    }
+  ],
+  "deploymentAliases": "Pages deployment-specific aliases remain reachable until both Pages projects are deleted as the final cutover action. They are not release-complete redirects.",
+  "authority": "Operational routing only. This file carries no Atlas structure and is not a Translation input."
+}

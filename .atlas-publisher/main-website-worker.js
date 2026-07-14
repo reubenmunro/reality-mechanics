@@ -10,6 +10,10 @@ import {
   RELATION_KEYS,
 } from "./generated/canonical-participation.mjs";
 import {
+  RELEASE_IDENTIFIER,
+  TRANSLATION_HASH,
+} from "./generated/release-identity.mjs";
+import {
   DERIVATION_CAVEAT,
   DERIVATION_CHAIN,
   DERIVATION_INVENTORY,
@@ -63,6 +67,103 @@ const HTML_HEADERS = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
 };
+
+const GITHUB_ATLAS_URL = "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics";
+const MAIN_ORIGIN = "https://realitymechanics.nz";
+const ATLAS_LEGACY_HOSTS = new Set([
+  "atlas.realitymechanics.nz",
+  "reality-mechanics-atlas.pages.dev",
+]);
+const THEORY_LEGACY_HOSTS = new Set([
+  "theory.realitymechanics.nz",
+  "reality-mechanics-theory.pages.dev",
+]);
+
+export const TRANSLATION_IDENTITY_HEADERS = Object.freeze({
+  "X-RM-Canonical-Source-Hash": CANONICAL_SOURCE_HASH,
+  "X-RM-Translation-Hash": TRANSLATION_HASH,
+  "X-RM-Release-Identifier": RELEASE_IDENTIFIER,
+});
+
+class TranslationIdentityMismatch extends Error {
+  constructor(actualSourceHash, actualEntryCount) {
+    super("generated_d1_identity_mismatch");
+    this.actualSourceHash = actualSourceHash || null;
+    this.actualEntryCount = Number.isFinite(actualEntryCount) ? actualEntryCount : null;
+  }
+}
+
+function withTranslationIdentity(response) {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(TRANSLATION_IDENTITY_HEADERS)) headers.set(name, value);
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
+async function requireCurrentTranslation(env) {
+  if (!env?.ATLAS_DB) throw new TranslationIdentityMismatch(null, null);
+  const rows = await fieldAll(env, "SELECT key,value FROM atlas_metadata WHERE key IN ('source_hash','entry_count')");
+  const metadata = Object.fromEntries(rows.map(({ key, value }) => [key, value]));
+  const actualSourceHash = metadata.source_hash || null;
+  const actualEntryCount = Number(metadata.entry_count);
+  if (actualSourceHash !== CANONICAL_SOURCE_HASH || actualEntryCount !== Object.keys(CANONICAL_ENTRY_INDEX).length) {
+    throw new TranslationIdentityMismatch(actualSourceHash, actualEntryCount);
+  }
+  return actualSourceHash;
+}
+
+function unavailableTranslation(error) {
+  const actualSourceHash = error instanceof TranslationIdentityMismatch ? error.actualSourceHash : null;
+  const actualEntryCount = error instanceof TranslationIdentityMismatch ? error.actualEntryCount : null;
+  console.error(JSON.stringify({
+    event: "translation_identity_mismatch",
+    expectedCanonicalSourceHash: CANONICAL_SOURCE_HASH,
+    actualD1SourceHash: actualSourceHash,
+    actualD1EntryCount: actualEntryCount,
+    translationHash: TRANSLATION_HASH,
+    releaseIdentifier: RELEASE_IDENTIFIER,
+  }));
+  return withTranslationIdentity(new Response(JSON.stringify({
+    error: "current_translation_unavailable",
+    expectedCanonicalSourceHash: CANONICAL_SOURCE_HASH,
+    actualD1SourceHash: actualSourceHash,
+    actualD1EntryCount: actualEntryCount,
+    translationHash: TRANSLATION_HASH,
+  }), { status: 503, headers: JSON_HEADERS }));
+}
+
+function isGeneratedAssetPath(pathname) {
+  return pathname === "/manifest.json"
+    || pathname === "/participation/search-index.json"
+    || pathname === "/participation/atlas-source-format.md"
+    || pathname.startsWith("/ai/current/");
+}
+
+export function legacyRedirectFor(input) {
+  const url = input instanceof URL ? input : new URL(input);
+  if (THEORY_LEGACY_HOSTS.has(url.hostname)) {
+    const target = new URL("/theory", MAIN_ORIGIN);
+    target.search = url.search;
+    return target.toString();
+  }
+  if (ATLAS_LEGACY_HOSTS.has(url.hostname)) {
+    if (url.pathname === "/ai" || url.pathname === "/ai/") {
+      const target = new URL("/ai/current/index.json", MAIN_ORIGIN);
+      target.search = url.search;
+      return target.toString();
+    }
+    if (url.pathname.startsWith("/ai/")) {
+      const target = new URL(url.pathname, MAIN_ORIGIN);
+      target.search = url.search;
+      return target.toString();
+    }
+    return GITHUB_ATLAS_URL;
+  }
+  return null;
+}
 
 function fieldJson(value, fallback = {}) {
   try { return value ? JSON.parse(value) : fallback; } catch { return fallback; }
@@ -4253,7 +4354,12 @@ export function submissionPage() {
 }
 
 async function handleRequest(request, env) {
-  const { pathname } = new URL(request.url);
+  const url = new URL(request.url);
+  const { pathname } = url;
+  const legacyTarget = legacyRedirectFor(url);
+  if (legacyTarget) return Response.redirect(legacyTarget, 308);
+
+  if (pathname === "/atlas") return Response.redirect(GITHUB_ATLAS_URL, 308);
 
   if (pathname === "/robots.txt")
     return new Response("User-agent: *\nAllow: /\n", { headers: { "Content-Type": "text/plain; charset=utf-8" } });
@@ -4261,28 +4367,46 @@ async function handleRequest(request, env) {
   if (pathname === "/member" || pathname === "/bench" || pathname === "/calibration")
     return Response.redirect("https://calibration.realitymechanics.nz", 302);
 
+  const carriesCurrentTranslation = isGeneratedAssetPath(pathname)
+    || pathname === "/" || pathname === "" || pathname === "/field"
+    || pathname === "/theory" || pathname === "/calculus"
+    || pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001"
+    || pathname.startsWith("/api/field/");
+  if (carriesCurrentTranslation) {
+    try {
+      await requireCurrentTranslation(env);
+    } catch (error) {
+      return unavailableTranslation(error);
+    }
+  }
+
+  if (isGeneratedAssetPath(pathname)) {
+    if (!env?.ASSETS) return unavailableTranslation(new Error("assets_binding_unavailable"));
+    return withTranslationIdentity(await env.ASSETS.fetch(request));
+  }
+
   if (pathname === "/api/field/states")
-    return handleFieldStates(env);
+    return withTranslationIdentity(await handleFieldStates(env));
 
   if (pathname === "/api/field/behaviour-trace") {
     const focusId = new URL(request.url).searchParams.get("id") || "";
-    return handleFieldBehaviourTrace(env, focusId, request);
+    return withTranslationIdentity(await handleFieldBehaviourTrace(env, focusId, request));
   }
 
   if (pathname === "/" || pathname === "")
-    return new Response(fieldPage(), { headers: HTML_HEADERS });
+    return withTranslationIdentity(new Response(fieldPage(), { headers: HTML_HEADERS }));
 
   if (pathname === "/field")
-    return new Response(fieldPage(), { headers: HTML_HEADERS });
+    return withTranslationIdentity(new Response(fieldPage(), { headers: HTML_HEADERS }));
 
   if (pathname === "/theory")
-    return new Response(theoryPage(), { headers: HTML_HEADERS });
+    return withTranslationIdentity(new Response(theoryPage(), { headers: HTML_HEADERS }));
 
   if (pathname === "/calculus")
-    return new Response(calculusPage(), { headers: HTML_HEADERS });
+    return withTranslationIdentity(new Response(calculusPage(), { headers: HTML_HEADERS }));
 
   if (pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001")
-    return new Response(submissionPage(), { headers: HTML_HEADERS });
+    return withTranslationIdentity(new Response(submissionPage(), { headers: HTML_HEADERS }));
 
   return new Response("Reality Mechanics exposes Observatory, Pulse, Theory, Proof, and Calculus only.", {
     status: 410,

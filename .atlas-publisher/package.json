@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "translate": "ruby translate-atlas.rb",
-    "test": "ruby translate-atlas.rb && node --test test/*.test.mjs",
+    "translate": "ruby translate-atlas.rb && node build-public-translation.mjs",
+    "test": "npm run translate && node --test --test-concurrency=1 test/*.test.mjs",
     "sync:d1": "node sync-d1-from-repo.mjs",
     "verify:d1": "node verify-d1-from-repo.mjs"
   }

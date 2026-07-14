@@ -656,24 +656,6 @@ class CanonicalTranslation
       outputs["#{base}/ai/current/entries/#{id}.json"] = pretty_json(entry.merge("id" => id))
     end
 
-    outputs["#{base}/manifest.json"] = pretty_json({
-      "formatVersion" => 1,
-      "sourceHash" => graph.fetch("sourceHash"),
-      "entryCount" => graph.fetch("entries").length,
-      "protocols" => declaration(graph, "protocols"),
-      "outputs" => {
-        "canonicalGraph" => "canonical-graph.json",
-        "canonicalGraphSchema" => "canonical-graph.schema.json",
-        "d1Schema" => "atlas-d1-schema.sql",
-        "d1Data" => "atlas-d1-sync.sql",
-        "publisherModule" => "canonical-participation.mjs",
-        "mcpModule" => "../../reality-mechanics-mcp/generated/canonical-participation.mjs",
-        "mcpProtocol" => "participation/mcp-protocol.json",
-        "aiIndex" => "ai/current/index.json",
-        "searchIndex" => "participation/search-index.json",
-        "sourceDocumentation" => "participation/atlas-source-format.md",
-      },
-    })
     outputs
   end
 

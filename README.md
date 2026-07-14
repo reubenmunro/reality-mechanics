@@ -20,13 +20,13 @@ Reality
 
 ## Translation
 
-Run the one translation former:
+Run Canonical Translation and package its public participation bundle:
 
 ```bash
-ruby .atlas-publisher/translate-atlas.rb
+npm --prefix .atlas-publisher run translate
 ```
 
-It parses the Atlas once, validates the Atlas-owned schema, forms one disposable Canonical Graph, and generates every downstream structural representation from that graph.
+The Ruby former parses the Atlas once, validates the Atlas-owned schema, forms one disposable Canonical Graph, and generates every downstream structural representation from that graph. The Node packaging step consumes those generated outputs, calculates release identities, and prepares the Main Worker static asset bundle without reparsing the Atlas.
 
 Generated files are ignored by Git. Delete them freely; the command above must reconstruct them byte-for-byte.
 
@@ -47,6 +47,7 @@ The `--apply` flag is an explicit production write and is not part of normal bui
 - **Proof:** generated canonical result links plus maintained evidence and review records.
 - **Calculus:** generated comparison baseline plus maintained, explicitly non-canonical derivation evidence.
 - **MCP / AI:** generated schema, protocol, entry structure, determinations, and D1 read model; read-only transport.
+- **Generated web bundle:** `/ai/current/*`, `/participation/search-index.json`, `/manifest.json`, and `/participation/atlas-source-format.md` are release-bound Main Worker assets.
 - **Pulse / Calibration:** participant investigation; never a structural input to Translation.
 
 ## Tests
@@ -61,4 +62,4 @@ The publisher suite includes invalid-target rejection, clean D1 reconstruction, 
 
 ## Deployment
 
-Deployment is separate from Translation. See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and [`docs/deployment/CLOUDFLARE_SURFACE_MAP.md`](docs/deployment/CLOUDFLARE_SURFACE_MAP.md). No Stage 2 implementation command deploys, pushes, tags, or writes remote D1 unless explicitly invoked with the production action.
+Deployment is separate from Translation. See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and [`docs/deployment/CLOUDFLARE_SURFACE_MAP.md`](docs/deployment/CLOUDFLARE_SURFACE_MAP.md). The Main Worker deploys code and generated assets as one unit. No Translation command deploys, pushes, tags, or writes remote D1 unless explicitly invoked with the production action.

@@ -1,7 +1,7 @@
 name = "reality-mechanics-mcp"
 main = "src/index.js"
 compatibility_date = "2025-06-01"
-workers_dev = true
+workers_dev = false
 
 # Production endpoint: https://mcp.realitymechanics.nz/mcp
 [[routes]]

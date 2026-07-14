@@ -3,7 +3,7 @@ set -e
 cd "$(dirname "$0")"
 
 echo "Translating the canonical Atlas..."
-ruby .atlas-publisher/translate-atlas.rb
+npm --prefix .atlas-publisher run translate
 
 cd reality-mechanics-mcp
 
@@ -23,9 +23,7 @@ npx --yes wrangler@latest deploy
 
 echo
 echo "Done."
-echo "Test the printed  https://reality-mechanics-mcp.<your-subdomain>.workers.dev/mcp  URL."
-echo "To use https://mcp.realitymechanics.nz/mcp : uncomment the [[routes]] block in"
-echo "reality-mechanics-mcp/wrangler.toml, then run this again."
+echo "MCP deployed at https://mcp.realitymechanics.nz/mcp."
 echo
 
 if [ -t 0 ]; then read -k 1 "?Press any key to close this window."; fi

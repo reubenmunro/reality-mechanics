@@ -10,8 +10,14 @@ Operational deployment map only. Surface meaning remains in the Atlas; this file
 | Public Theory | `/theory` | `.atlas-publisher/` | Generated canonical Theory entry |
 | Proof | `/proof`, `/submission` | `.atlas-publisher/` | Generated canonical result links plus maintained evidence |
 | Calculus | `/calculus` | `.atlas-publisher/` | Generated baseline plus non-canonical evidence |
+| AI participation | `/ai/current/*` | Main Worker static assets | Generated index and 490 entry records |
+| Search | `/participation/search-index.json` | Main Worker static assets | Generated Canonical Graph projection |
+| Release manifest | `/manifest.json` | Main Worker static assets | Generated release and parity identity |
+| Source-format documentation | `/participation/atlas-source-format.md` | Main Worker static assets | Generated from Common Term Structure |
 | Pulse | `calibration.realitymechanics.nz` | `member/` | Calibration only; not a Translation input |
 | MCP | `mcp.realitymechanics.nz/mcp` | `reality-mechanics-mcp/` | Generated protocol and D1 read model |
+
+Cloudflare Pages has no surviving participation role. During RC-001B cutover, `atlas.realitymechanics.nz` and `theory.realitymechanics.nz` become Main Worker redirect routes. The two default `pages.dev` hostnames become account-level Bulk Redirect sources. Pages projects are deleted only after complete parity and redirect verification.
 
 ## D1
 
@@ -23,9 +29,11 @@ Operational deployment map only. Surface meaning remains in the Atlas; this file
 
 ## Build and Deploy
 
-Atlas, publisher, or MCP changes trigger the relevant CI build. Field and MCP jobs run Canonical Translation before tests or deployment. Deploy commands regenerate disposable outputs before invoking Wrangler.
+Atlas, publisher, or MCP changes trigger the relevant CI build. Field and MCP jobs run Canonical Translation and public bundle packaging before tests or deployment. Main Worker Static Assets publish the generated bundle in the same deployment as Worker code.
 
-Stage 2 prepared these paths but did not execute deployment, remote D1 writes, push, or tag operations.
+Production Workers use their custom domains and set `workers_dev = false`; no repository workflow depends on a `workers.dev` alias.
+
+Every Atlas-bearing Main or MCP response exposes `X-RM-Canonical-Source-Hash` and `X-RM-Translation-Hash`. Main and MCP fail closed when D1 source identity or entry count differs from the generated release identity.
 
 ## Verification After Approved Deployment
 
@@ -35,3 +43,6 @@ Stage 2 prepared these paths but did not execute deployment, remote D1 writes, p
 4. Call MCP `get_ai_entry_protocol` and verify the three ordered members.
 5. Read `/api/field/states` and verify the same source hash and 490 entries.
 6. Read `/theory` and verify its displayed source hash and determination.
+7. Read `/manifest.json` and verify the Canonical Graph, Translation, output, and expected D1 dataset hashes.
+8. Read all four generated route classes and verify matching identity headers.
+9. Verify the prepared legacy redirect map in `RC-001B_LEGACY_REDIRECTS.json` before deleting either Pages project.

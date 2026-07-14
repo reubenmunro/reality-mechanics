@@ -15,6 +15,10 @@ import {
   PROTOCOLS,
   RELATION_KEYS,
 } from "../generated/canonical-participation.mjs";
+import {
+  RELEASE_IDENTIFIER,
+  TRANSLATION_HASH,
+} from "../generated/release-identity.mjs";
 
 const PROTOCOL_VERSION = "2025-06-18";
 const SERVER_INFO = { name: "reality-mechanics-atlas", version: "3.0.0" };
@@ -28,6 +32,12 @@ const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization, Mcp-Session-Id, Mcp-Protocol-Version, CF-Access-Client-Id, CF-Access-Client-Secret",
+};
+
+const identityHeaders = {
+  "X-RM-Canonical-Source-Hash": CANONICAL_SOURCE_HASH,
+  "X-RM-Translation-Hash": TRANSLATION_HASH,
+  "X-RM-Release-Identifier": RELEASE_IDENTIFIER,
 };
 
 // ── D1 helpers ─────────────────────────────────────────────────────────────────
@@ -154,9 +164,30 @@ async function manifest(env) {
     entryCount,
     canonicalSourceHash: CANONICAL_SOURCE_HASH,
     canonicalEntryCount: CANONICAL_ENTRY_COUNT,
+    translationHash: TRANSLATION_HASH,
+    releaseIdentifier: RELEASE_IDENTIFIER,
     parity: sourceHash === CANONICAL_SOURCE_HASH && entryCount === CANONICAL_ENTRY_COUNT,
     note: "This is a generated read model. The Atlas is the sole maintained structural authority.",
   };
+}
+
+async function requireCurrentTranslation(env) {
+  const readModel = await manifest(env);
+  if (!readModel.parity) {
+    const error = new Error(`translation_identity_mismatch: expected ${CANONICAL_SOURCE_HASH}/${CANONICAL_ENTRY_COUNT}, received ${readModel.sourceHash}/${readModel.entryCount}`);
+    error.code = -32010;
+    console.error(JSON.stringify({
+      event: "translation_identity_mismatch",
+      expectedCanonicalSourceHash: CANONICAL_SOURCE_HASH,
+      actualD1SourceHash: readModel.sourceHash,
+      expectedEntryCount: CANONICAL_ENTRY_COUNT,
+      actualEntryCount: readModel.entryCount,
+      translationHash: TRANSLATION_HASH,
+      releaseIdentifier: RELEASE_IDENTIFIER,
+    }));
+    throw error;
+  }
+  return readModel;
 }
 
 function sessionEntry(row) {
@@ -277,6 +308,7 @@ function advertisedTools() {
 
 async function callTool(name, args, env) {
   if (!env.ATLAS_DB) throw new Error("ATLAS_DB binding not configured");
+  const currentReadModel = await requireCurrentTranslation(env);
 
   // ── begin_atlas_session ──
   if (name === "begin_atlas_session") {
@@ -289,12 +321,10 @@ async function callTool(name, args, env) {
     if (requiredEntries.some((entry) => !entry)) {
       throw new Error("Generated AI protocol does not resolve completely in D1");
     }
-    const readModel = await manifest(env);
-    if (!readModel.parity) throw new Error("Generated D1 identity does not match the MCP translation identity");
     return {
       purpose: "Begin a Reality Mechanics Atlas session before search or traversal.",
-      manifest: readModel,
-      protocol: { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, members: protocolIds },
+      manifest: currentReadModel,
+      protocol: { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH, members: protocolIds },
       requiredEntries,
       next: {
         forQuestions: ["search_atlas", "get_entry", "get_related"],
@@ -308,6 +338,7 @@ async function callTool(name, args, env) {
   if (name === "get_structure_contract") {
     return {
       sourceHash: CANONICAL_SOURCE_HASH,
+      translationHash: TRANSLATION_HASH,
       atlasSchema: ATLAS_SCHEMA,
       determinationRecords: DETERMINATION_RECORDS,
       protocols: PROTOCOLS,
@@ -316,12 +347,12 @@ async function callTool(name, args, env) {
 
   // ── get_manifest ──
   if (name === "get_manifest") {
-    return manifest(env);
+    return currentReadModel;
   }
 
   // ── get_ai_entry_protocol ──
   if (name === "get_ai_entry_protocol") {
-    return { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, members: [...AI_ENTRY_PROTOCOL] };
+    return { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH, members: [...AI_ENTRY_PROTOCOL] };
   }
 
   // ── search_atlas ──
@@ -861,12 +892,21 @@ async function handleRpc(msg, env, ctx) {
 
 export default {
   async fetch(request, env) {
-    if (request.method === "OPTIONS") return new Response(null, { headers: cors });
+    if (request.method === "OPTIONS") return new Response(null, { headers: { ...cors, ...identityHeaders } });
     const url = new URL(request.url);
 
-    if (request.method === "GET" && url.pathname !== "/mcp")
-      return json({ name: SERVER_INFO.name, version: SERVER_INFO.version,
-        transport: "streamable-http", endpoint: "/mcp", tools: advertisedTools("", env).map(t => t.name) }, 200);
+    if (request.method === "GET" && url.pathname !== "/mcp") {
+      try {
+        const readModel = await requireCurrentTranslation(env);
+        return json({ name: SERVER_INFO.name, version: SERVER_INFO.version,
+          transport: "streamable-http", endpoint: "/mcp", tools: advertisedTools("", env).map(t => t.name),
+          canonicalSourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH,
+          releaseIdentifier: RELEASE_IDENTIFIER, parity: readModel.parity }, 200);
+      } catch (error) {
+        return json({ error: "current_translation_unavailable", detail: error.message,
+          canonicalSourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH }, 503);
+      }
+    }
 
     if (url.pathname !== "/mcp") return json({ error: "not found" }, 404);
     if (request.method !== "POST") return new Response(null, { status: 405, headers: { ...cors, Allow: "POST" } });
@@ -895,6 +935,6 @@ export default {
 function json(obj, status) {
   return new Response(JSON.stringify(obj), {
     status: status || 200,
-    headers: { "content-type": "application/json; charset=utf-8", ...cors },
+    headers: { "content-type": "application/json; charset=utf-8", ...cors, ...identityHeaders },
   });
 }
