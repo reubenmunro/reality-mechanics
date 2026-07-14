@@ -84,11 +84,13 @@ Dataset hashes:
 
 | Surface | Version | Deployment |
 |---|---|---|
-| Main Worker | `1c9b6e5d-9f61-404a-8197-33b5ed2077ff` | `e192dc31-992f-400d-9e23-0b8b2e7a8630` |
-| MCP Worker | `5a4d862d-0fa2-4dde-9257-fd31e6eb4bc8` | `1702176c-9061-43e6-a266-5d4671de157f` |
-| Calibration Worker | `90f71ed3-ad46-4e8b-8705-8ee8f6b37cb3` | `8ef6198e-6291-4c65-ab57-c2beff355f5c` |
+| Main Worker | `1c9b6e5d-9f61-404a-8197-33b5ed2077ff` | `359eec6a-1845-48eb-b19e-d85cd8d43383` |
+| MCP Worker | `5a4d862d-0fa2-4dde-9257-fd31e6eb4bc8` | `00640d23-d12b-47f1-b478-866a31016b78` |
+| Calibration Worker | `90f71ed3-ad46-4e8b-8705-8ee8f6b37cb3` | `2e3e948b-3c9c-414a-a41a-b1c061475e8e` |
 
 Main and MCP expose the same canonical source hash, Translation hash, release identifier, D1 identity, and 490-entry count. Controlled mismatches fail closed on both. Calibration remains mechanical and does not claim Atlas identity.
+
+Promoting the release record to `main` triggered the existing deployment workflow and briefly published documentation-commit versions with release identifier `first-canonical-translation-rc-001b-ef1576b03aae`. Canonical source, graph, Translation, and D1 identities did not change, and Main/MCP remained mutually consistent, but the identifier was outside the approved production execution identity. The recorded approved versions above were therefore redeployed at 100% traffic. Final live verification returned `first-canonical-translation-rc-001b-0791a710373b` from both Main and MCP. The release-record follow-up commit uses GitHub's CI-skip convention so documentation preservation does not repeat the deployment.
 
 ## Protocol verification
 
