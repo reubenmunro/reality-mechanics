@@ -1,21 +1,27 @@
 #!/usr/bin/env node
 
-import { access } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync, spawnSync } from "node:child_process";
+import { buildRemoteImport, resolveWrangler, verifyRemoteD1 } from "./d1-remote.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "..");
-const args = new Set(process.argv.slice(2));
+const rawArgs = process.argv.slice(2);
+const args = new Set(rawArgs);
 const apply = args.has("--apply");
 const allowDirty = args.has("--allow-dirty");
-const unknown = [...args].filter((arg) => !["--apply", "--allow-dirty"].includes(arg));
+const databaseArgs = rawArgs.filter((arg) => arg.startsWith("--database="));
+const unknown = [...args].filter((arg) => !["--apply", "--allow-dirty"].includes(arg) && !arg.startsWith("--database="));
 
-if (unknown.length) {
+if (unknown.length || databaseArgs.length > 1 || databaseArgs[0] === "--database=") {
   console.error(`Unknown argument${unknown.length === 1 ? "" : "s"}: ${unknown.join(", ")}`);
+  console.error("Usage: node sync-d1-from-repo.mjs [--apply] [--allow-dirty] [--database=<D1 name>]");
   process.exit(1);
 }
+const database = databaseArgs[0]?.slice("--database=".length) || "atlas-d1";
 
 if (!allowDirty) {
   const status = execFileSync(
@@ -43,29 +49,26 @@ if (!apply) {
   process.exit(0);
 }
 
-const wranglerCandidates = [
-  join(repoRoot, ".atlas-publisher", "node_modules", ".bin", "wrangler"),
-  join(repoRoot, "member", "node_modules", ".bin", "wrangler"),
-  join(repoRoot, "reality-mechanics-mcp", "node_modules", ".bin", "wrangler"),
-];
-let wranglerCommand = "npx";
-let wranglerPrefix = ["wrangler"];
-for (const candidate of wranglerCandidates) {
-  try {
-    await access(candidate);
-    wranglerCommand = candidate;
-    wranglerPrefix = [];
-    break;
-  } catch {
-    // Use npx only when no workspace Wrangler executable exists.
-  }
-}
+const generatedRoot = join(here, "generated");
+const schemaSql = await readFile(join(generatedRoot, "atlas-d1-schema.sql"), "utf8");
+const dataSql = await readFile(join(generatedRoot, "atlas-d1-sync.sql"), "utf8");
+const importSql = buildRemoteImport(schemaSql, dataSql);
+const wrangler = await resolveWrangler(repoRoot);
+const temporaryRoot = await mkdtemp(join(tmpdir(), "rm-d1-import-"));
+const importFile = join(temporaryRoot, "atlas-d1-import.sql");
 
-for (const file of ["atlas-d1-schema.sql", "atlas-d1-sync.sql"]) {
+try {
+  await writeFile(importFile, importSql);
   const result = spawnSync(
-    wranglerCommand,
-    [...wranglerPrefix, "d1", "execute", "atlas-d1", "--remote", "--file", join(here, "generated", file)],
+    wrangler.command,
+    [...wrangler.prefix, "d1", "execute", database, "--remote", "--file", importFile, "--yes"],
     { cwd: repoRoot, stdio: "inherit" },
   );
   if (result.status !== 0) process.exit(result.status ?? 1);
+
+  const verification = await verifyRemoteD1({ database, generatedRoot, repoRoot, wrangler });
+  console.log("D1 import and exact generated parity verified:");
+  console.log(JSON.stringify(verification, null, 2));
+} finally {
+  await rm(temporaryRoot, { recursive: true, force: true });
 }

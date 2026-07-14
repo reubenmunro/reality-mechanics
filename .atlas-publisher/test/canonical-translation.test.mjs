@@ -13,6 +13,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { buildRemoteImport } from "../d1-remote.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const publisherRoot = resolve(here, "..");
@@ -86,10 +87,13 @@ test("Translation stops on an unresolved exact relation target", () => {
 test("D1 reconstructs all identities, placements, determinations, relations, and protocol members", () => {
   const root = mkdtempSync(join(tmpdir(), "rm-d1-"));
   const db = join(root, "atlas.db");
-  for (const file of ["atlas-d1-schema.sql", "atlas-d1-sync.sql"]) {
-    const result = spawnSync("sqlite3", [db], { input: readFileSync(join(generatedRoot, file)), encoding: "utf8" });
-    assert.equal(result.status, 0, result.stderr);
-  }
+  const schemaSql = readFileSync(join(generatedRoot, "atlas-d1-schema.sql"), "utf8");
+  const dataSql = readFileSync(join(generatedRoot, "atlas-d1-sync.sql"), "utf8");
+  assert.doesNotMatch(dataSql, /^(?:BEGIN TRANSACTION|COMMIT);$/m);
+  assert.match(schemaSql, /^DROP TABLE IF EXISTS atlas_registers;$/m);
+  const importSql = buildRemoteImport(schemaSql, dataSql);
+  const importResult = spawnSync("sqlite3", [db], { input: importSql, encoding: "utf8" });
+  assert.equal(importResult.status, 0, importResult.stderr);
   const query = [
     "select count(*) from entries;",
     "select count(*) from entries where entry_order is not null;",
@@ -120,6 +124,24 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
       `${row.id}:structure`,
     );
   }
+  rmSync(root, { recursive: true, force: true });
+});
+
+test("D1 import removes the legacy structural register table", () => {
+  const root = mkdtempSync(join(tmpdir(), "rm-d1-legacy-"));
+  const db = join(root, "atlas.db");
+  let result = spawnSync("sqlite3", [db, "CREATE TABLE atlas_registers (register TEXT, key TEXT, value TEXT); INSERT INTO atlas_registers VALUES ('legacy','order','foundation');"], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+
+  const importSql = buildRemoteImport(
+    readFileSync(join(generatedRoot, "atlas-d1-schema.sql"), "utf8"),
+    readFileSync(join(generatedRoot, "atlas-d1-sync.sql"), "utf8"),
+  );
+  result = spawnSync("sqlite3", [db], { input: importSql, encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  result = spawnSync("sqlite3", [db, "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='atlas_registers';"], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout.trim(), "0");
   rmSync(root, { recursive: true, force: true });
 });
 

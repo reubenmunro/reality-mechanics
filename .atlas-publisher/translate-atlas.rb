@@ -431,6 +431,7 @@ class CanonicalTranslation
       DROP TABLE IF EXISTS atlas_protocol_members;
       DROP TABLE IF EXISTS atlas_determinations;
       DROP TABLE IF EXISTS atlas_metadata;
+      DROP TABLE IF EXISTS atlas_registers;
       DROP TABLE IF EXISTS entries;
       CREATE TABLE entries (
         id TEXT PRIMARY KEY,
@@ -489,7 +490,6 @@ class CanonicalTranslation
     relation_keys = schema.fetch("relations").keys
     lines = [
       "-- Generated from one Canonical Graph. Delete and regenerate; do not edit.",
-      "BEGIN TRANSACTION;",
       "DELETE FROM atlas_protocol_members;",
       "DELETE FROM atlas_determinations;",
       "DELETE FROM atlas_metadata;",
@@ -554,7 +554,6 @@ class CanonicalTranslation
         lines << "INSERT INTO atlas_protocol_members (protocol,ordinal,entry_id) VALUES (#{sql(name)},#{ordinal},#{sql(entry_id)});"
       end
     end
-    lines << "COMMIT;"
     lines.join("\n") + "\n"
   end
 
