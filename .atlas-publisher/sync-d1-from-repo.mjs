@@ -44,6 +44,14 @@ if (translation.stdout) process.stdout.write(translation.stdout);
 if (translation.stderr) process.stderr.write(translation.stderr);
 if (translation.status !== 0) process.exit(translation.status ?? 1);
 
+const publicTranslation = spawnSync(process.execPath, [join(here, "build-public-translation.mjs")], {
+  cwd: repoRoot,
+  encoding: "utf8",
+});
+if (publicTranslation.stdout) process.stdout.write(publicTranslation.stdout);
+if (publicTranslation.stderr) process.stderr.write(publicTranslation.stderr);
+if (publicTranslation.status !== 0) process.exit(publicTranslation.status ?? 1);
+
 if (!apply) {
   console.log("Generated disposable participation artefacts. D1 was not written.");
   process.exit(0);

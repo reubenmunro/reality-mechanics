@@ -228,16 +228,58 @@ test("no Pages builder or manual canonical declaration remains in active deploym
   }
 });
 
-test("two complete generated rebuilds are byte-identical", () => {
+test("the exact D1 sync path leaves the complete public Translation deployable", () => {
+  const sync = spawnSync(process.execPath, [join(publisherRoot, "sync-d1-from-repo.mjs")], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+  assert.equal(sync.status, 0, sync.stderr);
+  assert.equal(existsSync(publicRoot), true);
+  assert.equal(filesUnder(publicRoot).length, 494);
+  assert.equal(existsSync(join(publicRoot, "manifest.json")), true);
+  assert.equal(existsSync(join(generatedRoot, "release-identity.mjs")), true);
+
+  const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
+  assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
+  assert.equal(manifest.canonicalGraphHash, "sha256:e2a9d6d6f52eb8496ff82e326bafcdf6127d487b3b0ec3b8ed54bcdc0a1ef340");
+  assert.equal(manifest.translationHash, TRANSLATION_HASH);
+  assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
+});
+
+test("Main Worker dry-runs immediately after the exact D1 sync path", {
+  skip: !process.env.RM_WRANGLER_BIN,
+}, () => {
+  const sync = spawnSync(process.execPath, [join(publisherRoot, "sync-d1-from-repo.mjs")], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+  assert.equal(sync.status, 0, sync.stderr);
+
+  const dryRun = spawnSync(process.env.RM_WRANGLER_BIN, ["deploy", "--config", "wrangler.toml", "--dry-run"], {
+    cwd: publisherRoot,
+    encoding: "utf8",
+  });
+  assert.equal(dryRun.status, 0, dryRun.stderr);
+  assert.match(dryRun.stdout, /Read 498 files from the assets directory/);
+  assert.match(dryRun.stdout, /--dry-run: exiting now/);
+});
+
+test("D1 sync, direct Translation, and repeated orchestration are byte-identical", () => {
   const roots = [
     generatedRoot,
     join(repoRoot, "reality-mechanics-mcp", "generated"),
     join(repoRoot, "docs", "generated"),
   ];
-  const first = spawnSync("npm", ["run", "translate"], { cwd: publisherRoot, encoding: "utf8" });
-  assert.equal(first.status, 0, first.stderr);
-  const firstHash = treeHash(roots);
-  const second = spawnSync("npm", ["run", "translate"], { cwd: publisherRoot, encoding: "utf8" });
-  assert.equal(second.status, 0, second.stderr);
-  assert.equal(treeHash(roots), firstHash);
+  const syncArgs = [join(publisherRoot, "sync-d1-from-repo.mjs")];
+  const firstSync = spawnSync(process.execPath, syncArgs, { cwd: repoRoot, encoding: "utf8" });
+  assert.equal(firstSync.status, 0, firstSync.stderr);
+  const syncHash = treeHash(roots);
+
+  const direct = spawnSync("npm", ["run", "translate"], { cwd: publisherRoot, encoding: "utf8" });
+  assert.equal(direct.status, 0, direct.stderr);
+  assert.equal(treeHash(roots), syncHash);
+
+  const secondSync = spawnSync(process.execPath, syncArgs, { cwd: repoRoot, encoding: "utf8" });
+  assert.equal(secondSync.status, 0, secondSync.stderr);
+  assert.equal(treeHash(roots), syncHash);
 });
