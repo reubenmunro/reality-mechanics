@@ -1,31 +1,45 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.carry-trace-test
-
-needs:
-  - "[[Common Term Structure]]"
-  - "[[Dependency Order]]"
-  - "[[Trace]]"
-  - "[[Retracing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the Atlas practice test that distinguishes confirmed downstream carrying from projected openings by requiring a recoverable return trace"
-  holds: "[[Common Term Structure]], [[Dependency Order]], [[Trace]], and [[Retracing]] — term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded"
-  pairs: "Asymmetry carries downward — Carry-Trace Test checks two directions through one dependency relation; no lateral co-condition is required for it to be locatable"
+  needs:
+    targets:
+      - foundation.common-term-structure
+      - ground.dependency-order
+      - first.trace
+      - practice.retracing
+  holds:
+    targets:
+      - foundation.common-term-structure
+      - ground.dependency-order
+      - first.trace
+      - practice.retracing
+    read: "[[Common Term Structure]], [[Dependency Order]], [[Trace]], and [[Retracing]] — term placement, structural precedence, a followable path, and the checking act must be available before a carry claim can be grounded"
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — Carry-Trace Test checks two directions through one dependency relation; no lateral co-condition is required for it to be locatable"
   traces:
-    - "[[Common Term Structure]]"
-    - "[[Dependency Order]]"
-    - "[[Trace]]"
-    - "[[Retracing]]"
-  nests: "wherever an Atlas note claims that one term carries another, including paths with multiple prior conditions or interrupted passage"
-  reads: "where a proposed forward carry is accepted only after a downstream term can recover the prior condition and relevant passage through its trace"
+    targets:
+      - foundation.common-term-structure
+      - ground.dependency-order
+      - first.trace
+      - practice.retracing
+  nests:
+    targets: []
+    read: "wherever an Atlas note claims that one term carries another, including paths with multiple prior conditions or interrupted passage"
+  reads:
+    targets: []
+    read: "where a proposed forward carry is accepted only after a downstream term can recover the prior condition and relevant passage through its trace"
   carries:
-    - "[[Bearing Pass]]"
-
+    targets:
+      - practice.garden-pass
 publish: true
 status: stable
 ---

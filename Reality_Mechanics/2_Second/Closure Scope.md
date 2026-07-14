@@ -5,51 +5,67 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.closure-scope
-
-needs:
-  - "[[Closure]]"
-  - "[[Scope]]"
-  - "[[Extent]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the bounded extent within which a read can be evaluated as holding."
-  holds: "[[Closure]], [[Scope]], and [[Extent]]. Closure must bound a read, scope must locate where it can hold, and extent must locate the reached range before the range of valid evaluation can be named."
-  pairs: "Asymmetry carries downward — into [[Evaluation]], [[Traversal]], and [[Know]]"
+  needs:
+    targets:
+      - second.closure
+      - second.scope
+      - second.extent
+  holds:
+    targets:
+      - second.closure
+      - second.scope
+      - second.extent
+    read: "[[Closure]], [[Scope]], and [[Extent]]. Closure must bound a read, scope must locate where it can hold, and extent must locate the reached range before the range of valid evaluation can be named."
+  pairs:
+    targets:
+      - second.evaluation
+      - second.traversal
+      - second.know
+    read: "Asymmetry carries downward — into [[Evaluation]], [[Traversal]], and [[Know]]"
   traces:
-    - "[[Closure]]"
-    - "[[Scope]]"
-    - "[[Extent]]"
-  nests: "as a passage condition. It regulates where a read can close locally, remain open, or overreach."
-  reads: "where a read can be evaluated without being treated as final beyond the scope at which it holds — where something is true here, within this scope, without claiming to be true everywhere. Closure Scope also makes overclaim and refusal of scope readable as opposite failures."
+    targets:
+      - second.closure
+      - second.scope
+      - second.extent
+  nests:
+    targets: []
+    read: "as a passage condition. It regulates where a read can close locally, remain open, or overreach."
+  reads:
+    targets: []
+    read: "where a read can be evaluated without being treated as final beyond the scope at which it holds — where something is true here, within this scope, without claiming to be true everywhere. Closure Scope also makes overclaim and refusal of scope readable as opposite failures."
   carries:
-    - "[[Evaluation]]"
-    - "[[Traversal]]"
-    - "[[Know]]"
-    - "[[Spell]]"
-    - "[[Scene]]"
-    - "[[Pair]]"
-    - "[[Condition]]"
-    - "[[Dimension]]"
-    - "[[Faith Read]]"
-    - "[[Occur]]"
-    - "[[Real]]"
-    - "[[Interval]]"
-    - "[[Terminal]]"
-    - "[[Adaptation]]"
-    - "[[Form]]"
-    - "[[Information]]"
-    - "[[Measure]]"
-    - "[[Relative]]"
-    - "[[Second-Order Disorder Effects]]"
-    - "[[Thing]]"
-    - "[[Governing]]"
-    - "[[Locating]]"
-    - "[[Restraint]]"
-    - "[[Applied Read]]"
-    - "[[Diagnosis]]"
-    - "[[Discipline]]"
-    - "[[Resolution Polarity]]"
-
+    targets:
+      - second.evaluation
+      - second.traversal
+      - second.know
+      - third.spell
+      - third.scene
+      - second.pair
+      - second.condition
+      - second.dimension
+      - third.faith-read
+      - second.occur
+      - second.real
+      - second.interval
+      - second.terminal
+      - second.adaptation
+      - second.form
+      - second.information
+      - second.measure
+      - second.relative
+      - second.second-order-disorder-effects
+      - second.thing
+      - third.governing
+      - third.locating
+      - third.restraint
+      - third.applied-read
+      - third.diagnosis
+      - practice.discipline
+      - third.resolution-polarity
 publish: true
 status: stable
 ---

@@ -5,24 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.current
-
-needs:
-  - "[[Flow]]"
-  - "[[Orientation]]"
-  - "[[Medium]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "directed flow through a medium."
-  holds: "[[Flow]], [[Orientation]], and [[Medium]]."
-  pairs: "Asymmetry carries downward — flow through [[Orientation]] and [[Medium]]"
+  needs:
+    targets:
+      - second.flow
+      - first.orientation
+      - second.medium
+  holds:
+    targets:
+      - second.flow
+      - first.orientation
+      - second.medium
+    read: "[[Flow]], [[Orientation]], and [[Medium]]."
+  pairs:
+    targets:
+      - first.orientation
+      - second.medium
+    read: "Asymmetry carries downward — flow through [[Orientation]] and [[Medium]]"
   traces:
-    - "[[Flow]]"
-    - "[[Orientation]]"
-    - "[[Medium]]"
-  nests: "inside flow as oriented carrying through a medium."
-  reads: "where flow can be read as moving in a direction through a medium."
-  carries: []
-
+    targets:
+      - second.flow
+      - first.orientation
+      - second.medium
+  nests:
+    targets: []
+    read: "inside flow as oriented carrying through a medium."
+  reads:
+    targets: []
+    read: "where flow can be read as moving in a direction through a medium."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

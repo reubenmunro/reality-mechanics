@@ -5,22 +5,34 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.visible
-
-needs:
-  - "[[Apparent]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presented readability — distinction presented to read"
-  holds: "[[Apparent]] — a distinction must be apparent before it can be presented to read"
-  pairs: "[[Invisible]] — Visible presents readability; Invisible carries non-presented readability without becoming absent or hidden"
+  needs:
+    targets:
+      - first.apparent
+  holds:
+    targets:
+      - first.apparent
+    read: "[[Apparent]] — a distinction must be apparent before it can be presented to read"
+  pairs:
+    targets:
+      - first.invisible
+    read: "[[Invisible]] — Visible presents readability; Invisible carries non-presented readability without becoming absent or hidden"
   traces:
-    - "[[Apparent]]"
-  nests: "under apparent presentation — can support truth, explanation, and understanding without being identical with them"
-  reads: "where distinction is read as presented rather than hidden, absent, or unavailable"
+    targets:
+      - first.apparent
+  nests:
+    targets: []
+    read: "under apparent presentation — can support truth, explanation, and understanding without being identical with them"
+  reads:
+    targets: []
+    read: "where distinction is read as presented rather than hidden, absent, or unavailable"
   carries:
-    - "[[Visibility]]"
-    - "[[Surface]]"
-
+    targets:
+      - second.visibility
+      - second.surface
 publish: true
 status: stable
 ---

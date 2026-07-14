@@ -5,27 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.responsibility
-
-needs:
-  - "[[Participation]]"
-  - "[[Effect]]"
-  - "[[Trace]]"
-  - "[[Coupled Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "participation made answerable for an effect where trace returns to the coupled boundary through which that effect became actionable."
-  holds: "[[Participation]], [[Effect]], [[Trace]], and [[Coupled Boundary]]. An effect must be present, participation must have entered the relation, and trace must recover the boundary through which that participation affected what followed before responsibility can be named."
-  pairs: "No lateral pair is required at this placement yet. Responsibility distinguishes the boundary through which an effect became actionable from the carrier through which its consequence later travelled."
+  needs:
+    targets:
+      - second.participation
+      - second.effect
+      - first.trace
+      - second.coupled-boundary
+  holds:
+    targets:
+      - second.participation
+      - second.effect
+      - first.trace
+      - second.coupled-boundary
+    read: "[[Participation]], [[Effect]], [[Trace]], and [[Coupled Boundary]]. An effect must be present, participation must have entered the relation, and trace must recover the boundary through which that participation affected what followed before responsibility can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Responsibility distinguishes the boundary through which an effect became actionable from the carrier through which its consequence later travelled."
   traces:
-    - "[[Participation]]"
-    - "[[Effect]]"
-    - "[[Trace]]"
-    - "[[Coupled Boundary]]"
-  nests: "inside coupling where attention, control, decision, evaluation, consent, checking, or another participation condition enters strongly enough to affect what follows."
-  reads: "where an effect can be followed back past its later carrier to the coupled boundary at which participation became able to alter the relation."
+    targets:
+      - second.participation
+      - second.effect
+      - first.trace
+      - second.coupled-boundary
+  nests:
+    targets: []
+    read: "inside coupling where attention, control, decision, evaluation, consent, checking, or another participation condition enters strongly enough to affect what follows."
+  reads:
+    targets: []
+    read: "where an effect can be followed back past its later carrier to the coupled boundary at which participation became able to alter the relation."
   carries:
-    - "[[Competence Boundary]]"
-
+    targets:
+      - third.competence-boundary
 publish: true
 status: stable
 ---

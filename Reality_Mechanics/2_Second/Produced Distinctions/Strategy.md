@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.strategy
-
-needs:
-  - "[[Structure]]"
-  - "[[Process]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a carried sequence oriented toward a resolution."
-  holds: "[[Structure]] and [[Process]]."
-  pairs: "[[Decision]]. Strategy orients a carried sequence toward resolution; Decision names the point where one path is taken."
+  needs:
+    targets:
+      - second.structure
+      - second.process
+  holds:
+    targets:
+      - second.structure
+      - second.process
+    read: "[[Structure]] and [[Process]]."
+  pairs:
+    targets:
+      - second.decision
+    read: "[[Decision]]. Strategy orients a carried sequence toward resolution; Decision names the point where one path is taken."
   traces:
-    - "[[Structure]]"
-    - "[[Process]]"
-    - "[[Function]]"
-  nests: "where a carried sequence is oriented toward a readable resolution."
-  reads: "where a carried sequence can be read as oriented — where participation is not merely proceeding but oriented toward a particular resolution."
+    targets:
+      - second.structure
+      - second.process
+      - second.function
+  nests:
+    targets: []
+    read: "where a carried sequence is oriented toward a readable resolution."
+  reads:
+    targets: []
+    read: "where a carried sequence can be read as oriented — where participation is not merely proceeding but oriented toward a particular resolution."
   carries:
-    - "[[Decision]]"
-
+    targets:
+      - second.decision
 publish: true
 status: stable
 ---

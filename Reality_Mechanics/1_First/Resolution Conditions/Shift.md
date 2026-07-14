@@ -5,24 +5,38 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.shift
-
-needs:
-  - "[[Resolution]]"
-  - "[[Orientation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution where bearing relocates orientation without yielding, failing, transferring, or being lost"
-  holds: "[[Resolution]] and [[Orientation]] — bearing must be determined and orientation available before reorientation can be read"
-  pairs: "[[Yield]] — shift changes orientation-direction without giving under strain; yield gives under strain without failing"
+  needs:
+    targets:
+      - first.resolution
+      - first.orientation
+  holds:
+    targets:
+      - first.resolution
+      - first.orientation
+    read: "[[Resolution]] and [[Orientation]] — bearing must be determined and orientation available before reorientation can be read"
+  pairs:
+    targets:
+      - first.yield
+    read: "[[Yield]] — shift changes orientation-direction without giving under strain; yield gives under strain without failing"
   traces:
-    - "[[Resolution]]"
-    - "[[Orientation]]"
-  nests: "under first-order resolution as reorientation without loss — may return to [[Threshold]] where the new orientation makes a change-limit readable"
-  reads: "where resolved bearing relocates its orientation rather than staying, giving, exiting, or failing — where the condition has changed direction while remaining itself"
+    targets:
+      - first.resolution
+      - first.orientation
+  nests:
+    targets:
+      - first.threshold
+    read: "under first-order resolution as reorientation without loss — may return to [[Threshold]] where the new orientation makes a change-limit readable"
+  reads:
+    targets: []
+    read: "where resolved bearing relocates its orientation rather than staying, giving, exiting, or failing — where the condition has changed direction while remaining itself"
   carries:
-    - "[[Threshold]]"
-    - "[[Adaptation]]"
-
+    targets:
+      - first.threshold
+      - second.adaptation
 publish: true
 status: stable
 ---

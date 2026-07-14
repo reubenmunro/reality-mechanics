@@ -5,31 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.ship-and-ark
+determination: pd.v3.pre-provenance-baseline
 domain: translation-boundaries
-
-needs:
-  - "[[Carrying]]"
-  - "[[Progress]]"
-  - "[[Branch]]"
-  - "[[Domain]]"
-  - "[[Translation Boundary]]"
 
 conditions:
   places: "the boundary where progress becomes terminal to what must remain carried through the crossing."
-  holds: "[[Carrying]], [[Progress]], [[Branch]], [[Domain]], and [[Translation Boundary]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.carrying
+      - second.progress
+      - third.branch
+      - third.domain
+      - third.translation-boundary
+  holds:
+    targets:
+      - second.carrying
+      - second.progress
+      - third.branch
+      - third.domain
+      - third.translation-boundary
+    read: "[[Carrying]], [[Progress]], [[Branch]], [[Domain]], and [[Translation Boundary]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Carrying]]"
-    - "[[Progress]]"
-    - "[[Branch]]"
-    - "[[Domain]]"
-    - "[[Translation Boundary]]"
-  nests: "within Translation Boundaries as a carrying-regime read: movement crosses from destination-led progress into preservation-led carrying."
-  reads: "where a system must ask whether movement is being steered by destination alone or by what must not be lost through the crossing."
+    targets:
+      - second.carrying
+      - second.progress
+      - third.branch
+      - third.domain
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "within Translation Boundaries as a carrying-regime read: movement crosses from destination-led progress into preservation-led carrying."
+  reads:
+    targets: []
+    read: "where a system must ask whether movement is being steered by destination alone or by what must not be lost through the crossing."
   carries:
-    - "[[Destination-Led Carrying]]"
-    - "[[Carrying Better]]"
-
+    targets:
+      - third.destination-led-carrying
+      - third.carrying-better
 publish: true
 status: stable
 ---

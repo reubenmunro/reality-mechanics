@@ -1,36 +1,52 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: condition
 ai_role: operation
 condition_key: practice.oracle-carrying-conditions
-
-needs:
-  - "[[Atlas Oracle]]"
-  - "[[AI Participation]]"
-  - "[[Check]]"
-  - "[[Care-Control Check]]"
-  - "[[Carried Condition]]"
-  - "[[Generate and Regenerate]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the operational conditions that must hold for Atlas Oracle to run without drifting from bounded carrying into unbounded AI use."
-  holds: "[[Atlas Oracle]], [[AI Participation]], [[Check]], [[Care-Control Check]], [[Carried Condition]], and [[Generate and Regenerate]]."
-  pairs: "External governance. Oracle Carrying Conditions governs by operation: if the conditions do not hold, the Oracle does not run."
+  needs:
+    targets:
+      - practice.atlas-oracle
+      - practice.ai-participation
+      - practice.check
+      - practice.care-control-check
+      - second.carried-condition
+      - practice.generate-and-regenerate
+  holds:
+    targets:
+      - practice.atlas-oracle
+      - practice.ai-participation
+      - practice.check
+      - practice.care-control-check
+      - second.carried-condition
+      - practice.generate-and-regenerate
+    read: "[[Atlas Oracle]], [[AI Participation]], [[Check]], [[Care-Control Check]], [[Carried Condition]], and [[Generate and Regenerate]]."
+  pairs:
+    targets: []
+    read: "External governance. Oracle Carrying Conditions governs by operation: if the conditions do not hold, the Oracle does not run."
   traces:
-    - "[[Atlas Oracle]]"
-    - "[[AI Participation]]"
-    - "[[Check]]"
-    - "[[Care-Control Check]]"
-    - "[[Carried Condition]]"
-    - "[[Generate and Regenerate]]"
-  nests: "inside Atlas Oracle as the runtime conditions that preserve bounded carrying."
-  reads: "where governance is not a separate policy layer but a condition of operation: the answer can run only while cost, scope, trace, storage, safety, and review remain bounded."
+    targets:
+      - practice.atlas-oracle
+      - practice.ai-participation
+      - practice.check
+      - practice.care-control-check
+      - second.carried-condition
+      - practice.generate-and-regenerate
+  nests:
+    targets: []
+    read: "inside Atlas Oracle as the runtime conditions that preserve bounded carrying."
+  reads:
+    targets: []
+    read: "where governance is not a separate policy layer but a condition of operation: the answer can run only while cost, scope, trace, storage, safety, and review remain bounded."
   carries:
-    - "[[Bearing Pass]]"
-    - "[[Generative Trace]]"
-
+    targets:
+      - practice.garden-pass
+      - practice.generative-trace
 publish: true
 status: working
 aliases:

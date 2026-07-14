@@ -5,35 +5,54 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.black-hole
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Physical Field Conditions]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Field Bearing]]"
-  - "[[Gravity]]"
-  - "[[Boundary]]"
-  - "[[Availability]]"
-  - "[[Terminal]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the physical field condition at which traversal is no longer a compatible continuation — the closure scope where available carrying cannot escape the centring condition."
-  holds: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], [[Boundary]], [[Availability]], [[Terminal]], and [[Closure Scope]]. Traversal must cease to be a compatible continuation and a boundary must locate the closure before the terminal condition can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - first.boundary
+      - first.availability
+      - second.terminal
+      - second.closure-scope
+  holds:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - first.boundary
+      - first.availability
+      - second.terminal
+      - second.closure-scope
+    read: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], [[Boundary]], [[Availability]], [[Terminal]], and [[Closure Scope]]. Traversal must cease to be a compatible continuation and a boundary must locate the closure before the terminal condition can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Physical Field Conditions]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Field Bearing]]"
-    - "[[Gravity]]"
-    - "[[Boundary]]"
-    - "[[Availability]]"
-    - "[[Terminal]]"
-    - "[[Closure Scope]]"
-  nests: "within Physical Field Conditions as the terminal field-bearing condition — the closure scope at which available carrying cannot proceed."
-  reads: "Black Hole becomes readable where collapsed gravitational field bearing creates a boundary that changes what can return, escape, or remain available to outside evaluation."
-  carries: []
-
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - first.boundary
+      - first.availability
+      - second.terminal
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the terminal field-bearing condition — the closure scope at which available carrying cannot proceed."
+  reads:
+    targets: []
+    read: "Black Hole becomes readable where collapsed gravitational field bearing creates a boundary that changes what can return, escape, or remain available to outside evaluation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

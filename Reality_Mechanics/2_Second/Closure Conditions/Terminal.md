@@ -5,29 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.terminal
-needs:
-- '[[Thread]]'
-- '[[Closure Scope]]'
-- '[[Boundary]]'
+determination: pd.v3.pre-provenance-baseline
 conditions:
-  places: the boundary where a read stops because continuation crosses a closure scope
-    the current read cannot follow.
-  holds: '[[Thread]], [[Closure Scope]], and [[Boundary]].'
-  pairs: "Thread carries downward — into [[Terminal]]. Terminal names where the followable strand can no longer continue as the same read."
+  places: "the boundary where a read stops because continuation crosses a closure scope the current read cannot follow."
+  needs:
+    targets:
+      - first.thread
+      - second.closure-scope
+      - first.boundary
+  holds:
+    targets:
+      - first.thread
+      - second.closure-scope
+      - first.boundary
+    read: "[[Thread]], [[Closure Scope]], and [[Boundary]]."
+  pairs:
+    targets:
+      - second.terminal
+    read: "Thread carries downward — into [[Terminal]]. Terminal names where the followable strand can no longer continue as the same read."
   traces:
-  - '[[Thread]]'
-  - '[[Closure Scope]]'
-  - '[[Boundary]]'
-  nests: where the current closure scope cannot follow continuation though carrying
-    continues beyond it.
-  reads: where a read can no longer be followed across a boundary, not because carrying
-    has ceased, but because continuation has crossed into a closure scope unavailable
-    to the current read.
+    targets:
+      - first.thread
+      - second.closure-scope
+      - first.boundary
+  nests:
+    targets: []
+    read: "where the current closure scope cannot follow continuation though carrying continues beyond it."
+  reads:
+    targets: []
+    read: "where a read can no longer be followed across a boundary, not because carrying has ceased, but because continuation has crossed into a closure scope unavailable to the current read."
   carries:
-  - '[[Collapse]]'
-  - '[[Order-Terminal]]'
-  - '[[Translation Boundary]]'
-
+    targets:
+      - second.collapse
+      - second.order_terminal
+      - third.translation-boundary
 publish: true
 status: stable
 ---

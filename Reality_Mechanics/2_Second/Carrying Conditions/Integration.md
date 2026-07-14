@@ -5,27 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.integration
-
-needs:
-  - "[[Intake]]"
-  - "[[Resolution]]"
-  - "[[Regulation]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "intake resolved into compatible carrying without erasing the distinction of what entered."
-  holds: "[[Intake]], [[Resolution]], [[Regulation]], and [[Compatibility]]. What enters must be available within carrying, resolved enough to participate, maintainable within the receiving condition, and compatible with what carries it before integration can be named."
-  pairs: "[[Splinter]]. Integration names what has crossed inward and becomes carried by the receiving order; Splinter names what has crossed inward but remains unresolved within it."
+  needs:
+    targets:
+      - second.intake
+      - first.resolution
+      - second.regulation
+      - second.compatibility
+  holds:
+    targets:
+      - second.intake
+      - first.resolution
+      - second.regulation
+      - second.compatibility
+    read: "[[Intake]], [[Resolution]], [[Regulation]], and [[Compatibility]]. What enters must be available within carrying, resolved enough to participate, maintainable within the receiving condition, and compatible with what carries it before integration can be named."
+  pairs:
+    targets:
+      - second.splinter
+    read: "[[Splinter]]. Integration names what has crossed inward and becomes carried by the receiving order; Splinter names what has crossed inward but remains unresolved within it."
   traces:
-    - "[[Intake]]"
-    - "[[Resolution]]"
-    - "[[Regulation]]"
-    - "[[Compatibility]]"
-  nests: "inside carrying where what has entered becomes held by the receiving order without being erased or remaining unresolved foreignness."
-  reads: "where what has entered can participate in the carrying condition, affect it, and be affected by it while remaining compatible with the order that now carries it."
+    targets:
+      - second.intake
+      - first.resolution
+      - second.regulation
+      - second.compatibility
+  nests:
+    targets: []
+    read: "inside carrying where what has entered becomes held by the receiving order without being erased or remaining unresolved foreignness."
+  reads:
+    targets: []
+    read: "where what has entered can participate in the carrying condition, affect it, and be affected by it while remaining compatible with the order that now carries it."
   carries:
-    - "[[Nourishment]]"
-
+    targets:
+      - third.nourishment
 publish: true
 status: stable
 ---

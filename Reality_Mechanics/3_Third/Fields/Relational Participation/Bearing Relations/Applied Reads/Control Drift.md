@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.control-drift
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Control]]"
-  - "[[Dependency Disorder]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding."
-  holds: "[[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]]."
-  pairs: "[[Control After Harm]]. Control Drift names the disorder where control loses retrace to what it was constraining; Control After Harm names the disorder where control is applied after harm without first restoring bearing. Each is a distinct form of control losing its structural ground."
+  needs:
+    targets:
+      - third.applied-read
+      - third.control
+      - second.dependency-disorder
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.control
+      - second.dependency-disorder
+      - second.closure-scope
+    read: "[[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]]."
+  pairs:
+    targets:
+      - third.control-after-harm
+    read: "[[Control After Harm]]. Control Drift names the disorder where control loses retrace to what it was constraining; Control After Harm names the disorder where control is applied after harm without first restoring bearing. Each is a distinct form of control losing its structural ground."
   traces:
-    - "[[Applied Read]]"
-    - "[[Control]]"
-    - "[[Dependency Disorder]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Control, where direction of availability loses its compatible grounding."
-  reads: "Control Drift becomes readable where direction continues after the bearing condition required for compatible proceeding has been displaced, forced, or made unable to correct the direction."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.control
+      - second.dependency-disorder
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Control, where direction of availability loses its compatible grounding."
+  reads:
+    targets: []
+    read: "Control Drift becomes readable where direction continues after the bearing condition required for compatible proceeding has been displaced, forced, or made unable to correct the direction."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

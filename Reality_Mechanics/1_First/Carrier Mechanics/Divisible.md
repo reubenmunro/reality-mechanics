@@ -5,21 +5,33 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.divisible
-
-needs:
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "readable separation — distinction that can be separated while relation remains available"
-  holds: "[[Boundary]] — distinction must be located before separability can be read"
-  pairs: "[[Indivisible]] — Divisible carries separability; Indivisible carries non-separability without sameness"
+  needs:
+    targets:
+      - first.boundary
+  holds:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — distinction must be located before separability can be read"
+  pairs:
+    targets:
+      - first.indivisible
+    read: "[[Indivisible]] — Divisible carries separability; Indivisible carries non-separability without sameness"
   traces:
-    - "[[Boundary]]"
-  nests: "as a structural carrier — supports later divisible bearing without turning separation into non-relation"
-  reads: "where distinction is read as separable within relation"
+    targets:
+      - first.boundary
+  nests:
+    targets: []
+    read: "as a structural carrier — supports later divisible bearing without turning separation into non-relation"
+  reads:
+    targets: []
+    read: "where distinction is read as separable within relation"
   carries:
-    - "[[Divisible Bearing]]"
-
+    targets:
+      - second.divisible-bearing
 publish: true
 status: stable
 ---

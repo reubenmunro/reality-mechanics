@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: operation
 ai_role: practice
 condition_key: practice.determine
-
-needs:
-  - "[[Pressure]]"
-  - "[[Check]]"
-  - "[[Boundary]]"
-  - "[[Clearance]]"
-  - "[[Hold]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the Ark operation that carries pressure into a temporary bounded hold."
-  holds: "[[Pressure]], [[Check]], [[Boundary]], [[Clearance]], and [[Hold]]."
-  pairs: "[[Determination]]. Determine names the operation; Determination names the temporary hold produced by the operation."
+  needs:
+    targets:
+      - second.pressure
+      - practice.check
+      - first.boundary
+      - first.clearance
+      - first.hold
+  holds:
+    targets:
+      - second.pressure
+      - practice.check
+      - first.boundary
+      - first.clearance
+      - first.hold
+    read: "[[Pressure]], [[Check]], [[Boundary]], [[Clearance]], and [[Hold]]."
+  pairs:
+    targets:
+      - practice.determination
+    read: "[[Determination]]. Determine names the operation; Determination names the temporary hold produced by the operation."
   traces:
-    - "[[Pressure]]"
-    - "[[Check]]"
-    - "[[Boundary]]"
-    - "[[Clearance]]"
-    - "[[Hold]]"
-  nests: "inside Ark Run as the transition from bounded scope to held determination."
-  reads: "where pressure may settle only after retrace and check have made the present scope sufficiently bounded."
+    targets:
+      - second.pressure
+      - practice.check
+      - first.boundary
+      - first.clearance
+      - first.hold
+  nests:
+    targets: []
+    read: "inside Ark Run as the transition from bounded scope to held determination."
+  reads:
+    targets: []
+    read: "where pressure may settle only after retrace and check have made the present scope sufficiently bounded."
   carries:
-    - "[[Determination]]"
-
+    targets:
+      - practice.determination
 publish: true
 status: working
 ---

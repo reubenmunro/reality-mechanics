@@ -5,27 +5,42 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.self-control
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Self-Bearing]]"
-  - "[[Control]]"
-  - "[[Delayed Availability]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which self-bearing delays or governs the carrying of an impulse — available bearing that regulates what the self carries forward."
-  holds: "[[Self-Bearing]], [[Control]], [[Delayed Availability]], and [[Compatibility]]. Self-bearing must hold and delayed availability must be readable before regulation of the self's own carrying can be named as self-control."
-  pairs: "No lateral pair is required at this placement yet. Self-Control names the applied read of self-regulation at the level of a specific controlling act; no contrasting applied read is currently named in the Cognition field."
+  needs:
+    targets:
+      - third.self-bearing
+      - third.control
+      - second.delayed-availability
+      - second.compatibility
+  holds:
+    targets:
+      - third.self-bearing
+      - third.control
+      - second.delayed-availability
+      - second.compatibility
+    read: "[[Self-Bearing]], [[Control]], [[Delayed Availability]], and [[Compatibility]]. Self-bearing must hold and delayed availability must be readable before regulation of the self's own carrying can be named as self-control."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Self-Control names the applied read of self-regulation at the level of a specific controlling act; no contrasting applied read is currently named in the Cognition field."
   traces:
-    - "[[Self-Bearing]]"
-    - "[[Control]]"
-    - "[[Delayed Availability]]"
-    - "[[Compatibility]]"
-  nests: "within the Cognition Field as the condition through which self-bearing governs what is carried forward — the structural ground for self-harm and cognitive carrying reads."
-  reads: "Self-Control becomes readable where a participant feels strain, keeps relation available, and prevents feeling, emotion, thought, or impulse from becoming incompatible action while resolution is still forming."
-  carries: []
-
+    targets:
+      - third.self-bearing
+      - third.control
+      - second.delayed-availability
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within the Cognition Field as the condition through which self-bearing governs what is carried forward — the structural ground for self-harm and cognitive carrying reads."
+  reads:
+    targets: []
+    read: "Self-Control becomes readable where a participant feels strain, keeps relation available, and prevents feeling, emotion, thought, or impulse from becoming incompatible action while resolution is still forming."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -1,34 +1,52 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: check
 ai_role: practice
 condition_key: practice.care-control-check
-
-needs:
-  - "[[Ark Run]]"
-  - "[[Determination]]"
-  - "[[Care]]"
-  - "[[Control]]"
-  - "[[Control Drift]]"
-  - "[[Check]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice check that reads what kind of force a determination generates: care, compatible control, control drift, or unresolved force."
-  holds: "[[Ark Run]], [[Determination]], [[Care]], [[Control]], [[Control Drift]], and [[Check]]."
-  pairs: "[[Care Without Bearing]]. Care-Control Check asks whether care or control remains borne; Care Without Bearing names a failure where care is claimed without bearing."
+  needs:
+    targets:
+      - practice.ark-run
+      - practice.determination
+      - third.care
+      - third.control
+      - third.control-drift
+      - practice.check
+  holds:
+    targets:
+      - practice.ark-run
+      - practice.determination
+      - third.care
+      - third.control
+      - third.control-drift
+      - practice.check
+    read: "[[Ark Run]], [[Determination]], [[Care]], [[Control]], [[Control Drift]], and [[Check]]."
+  pairs:
+    targets:
+      - third.care-without-bearing
+    read: "[[Care Without Bearing]]. Care-Control Check asks whether care or control remains borne; Care Without Bearing names a failure where care is claimed without bearing."
   traces:
-    - "[[Determination]]"
-    - "[[Ark Run]]"
-    - "[[Care]]"
-    - "[[Control]]"
-    - "[[Control Drift]]"
-    - "[[Check]]"
-  nests: "inside Ark Run as the force-read after determination and before movement to the next posture."
-  reads: "where a determination begins to carry force and that force must be read for availability, correction, drift, and remaining openness."
-  carries: "No direct downstream term is required. Care-Control Check constrains movement by checking generated force."
-
+    targets:
+      - practice.determination
+      - practice.ark-run
+      - third.care
+      - third.control
+      - third.control-drift
+      - practice.check
+  nests:
+    targets: []
+    read: "inside Ark Run as the force-read after determination and before movement to the next posture."
+  reads:
+    targets: []
+    read: "where a determination begins to carry force and that force must be read for availability, correction, drift, and remaining openness."
+  carries:
+    targets: []
+    read: "No direct downstream term is required. Care-Control Check constrains movement by checking generated force."
 publish: true
 status: working
 ---

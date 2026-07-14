@@ -5,26 +5,40 @@ order: third
 kind: class
 ai_role: class
 condition_key: third.field-relationships
-
-needs:
-  - "[[Third Order]]"
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a working grouping of third-order fields by recurring participation emphasis."
-  holds: "[[Third Order]], [[Field of Participation]], and [[Organic Field]]."
-  pairs: "[[Field Bearing]]. Field Relationships names how fields bear on each other; Field Bearing names how a field bears through its own conditions. Each is a distinct structural condition at the field level."
+  needs:
+    targets:
+      - third.third-order
+      - third.field-of-participation
+      - third.organic-field
+  holds:
+    targets:
+      - third.third-order
+      - third.field-of-participation
+      - third.organic-field
+    read: "[[Third Order]], [[Field of Participation]], and [[Organic Field]]."
+  pairs:
+    targets:
+      - third.field-bearing
+    read: "[[Field Bearing]]. Field Relationships names how fields bear on each other; Field Bearing names how a field bears through its own conditions. Each is a distinct structural condition at the field level."
   traces:
-    - "[[Third Order]]"
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-  nests: "where fields affect, overlap, support, constrain, or carry one another."
-  reads: "where fields can be grouped without turning the grouping into a domain, branch, or dependency order."
+    targets:
+      - third.third-order
+      - third.field-of-participation
+      - third.organic-field
+  nests:
+    targets: []
+    read: "where fields affect, overlap, support, constrain, or carry one another."
+  reads:
+    targets: []
+    read: "where fields can be grouped without turning the grouping into a domain, branch, or dependency order."
   carries:
-    - "[[Web]]"
-    - "[[Fabric]]"
-
+    targets:
+      - higher.web
+      - higher.fabric
 publish: true
 status: stable
 ---

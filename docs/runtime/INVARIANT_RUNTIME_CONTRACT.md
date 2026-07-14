@@ -6,7 +6,7 @@
 
 **Purpose:** Prevent Observatory, MCP, Calculus, and future runtime work from confusing **invariant substrate** with **participant overlay** or **rendered appearance**.
 
-**Related:** `docs/runtime/READ_ENGINE.md` (O-006 module pattern); `atlas-structure-contract.mjs` (`RELATION_EVENT_RUNTIME_CONTRACT`), `docs/practice/RUNTIME_PRINCIPLES.md`, `docs/runtime/DERIVED_RATIO.md`, D-012, D-014, D-015B, P-004 (`docs/reports/P-004-ratio-phase-engine-investigation.md` — phase register / RM field engine scope), P-005 (`docs/reports/P-005-weave-fabric-investigation.md` — weave/fabric medium vocabulary vs membrane), P-006 (`docs/reports/P-006-weaving-operation-investigation.md` — weaving as compound operation; no Weave term), P-007 (`docs/reports/P-007-operational-calculus-investigation.md` — operational calculus partial; three operator strata), P-008 (`docs/reports/P-008-carry-trace-weaving-investigation.md` — weaving as mutual Carry+Trace; drift vs archive), P-009 (`docs/reports/P-009-participation-threshold-investigation.md` — Participation derived; collective via recurrence/nesting), P-010 (`docs/reports/P-010-terminal-resolution-boundary-investigation.md` — order-terminal frame lift; structure invariant; phase gloss partial), P-011 (`docs/reports/P-011-thread-mechanics-investigation.md` — Thread Mechanics Specification; leg ratios partial), P-012 (`docs/reports/P-012-structural-gathering-mechanics.md` — SG convergence read; ThreadNetwork ≠ gathering; Fabric emerges not painted), P-013 (`docs/reports/P-013-read-engine-architecture.md` — Mechanics→Read→Renderer split; partial formalise read module pattern), O-005 (`docs/reports/O-005-gathering-read-annotation.md` — gathering read Mechanics annotation; no painted field), O-006 (`docs/reports/O-006-read-engine-module-formalisation.md` — READ_CATALOGUE; resolveFocusReads; not new layer).
+**Related:** `docs/runtime/READ_ENGINE.md` (O-006 module pattern); the canonical Common Term Structure entry and generated Canonical Graph schema; `docs/practice/RUNTIME_PRINCIPLES.md`; `docs/runtime/DERIVED_RATIO.md`; and the P-003 through P-013, D-012, D-014, D-015B, O-005, and O-006 evidence reports. This document is maintained runtime guidance, not structural authority.
 
 ---
 
@@ -71,7 +71,7 @@ L6  appearance
 - That prose overrides structure when they disagree.
 - That D1 is editable source (`sourceRule`: GitHub is canonical).
 
-**API / modules:** GitHub repo; D1 `entries`; MCP `get_entry`, `get_related`, `open_source_for_entry`; `atlas-structure-contract.mjs` `canonicalRule`.
+**API / modules:** canonical Atlas source; generated D1 `entries`; MCP `get_entry`, `get_related`, `open_source_for_entry`; generated Canonical Graph schema.
 
 ---
 
@@ -184,8 +184,8 @@ L6  appearance
 | | |
 |---|---|
 | **What it is** | Reference frame membership and order visibility. Modulates **what is seen**, not **what is true**. |
-| **Primary mechanisms** | `STRUCTURAL_FIELD_FRAMES`; `structuralFieldFrameIds`; `coupledSensibility`; `couplingSensibilityTarget`; `relationSensibility`. |
-| **Survives retrace** | Frame **definition** is structure (practice terms); **active frame state** is session. |
+| **Primary mechanisms** | Participant frame input, `coupledSensibility`, `couplingSensibilityTarget`, and `relationSensibility`. No canonical frame identity is currently selected. |
+| **Survives retrace** | Frame input is session state. It is not Atlas structure. |
 | **Survives observation** | **No** — alpha 1.0 in-frame, 0.08 out (D-011 O-5). |
 | **Invariant substrate** | **Unchanged** — L2 scalars unchanged when frame switches. |
 
@@ -199,7 +199,7 @@ L6  appearance
 - Out-of-frame terms cease to exist structurally.
 - Frame switch changes `mass.carriers`.
 
-**API / modules:** `setCurrentFieldReferenceFrame`; `refreshCoupledFrame`; behaviour trace behaviour `reference-frame-dimming`.
+**API / modules:** `refreshCoupledFrame`; behaviour trace behaviour `reference-frame-dimming`. The former unresolved `practice.*-read` IDs were retired during Canonical Translation.
 
 ---
 
@@ -311,7 +311,7 @@ Server-side trace **defaults** `runtimeOverlay` to `{}`. Client **merges** `coll
 1. **No silent layer collapse** — do not document overlay as structure; do not document appearance as ratio.
 2. **No new layer without commission** — e.g. permeability belongs in L2 only after derivation.
 3. **Bespoke per-term render** forbidden (`bespokeRule`) — extend translation vocabulary instead.
-4. **Four-status vocabulary** preserved: derived / calibrated / heuristic / unresolved (`public-surface-manifest.mjs`).
+4. **Four-status vocabulary** preserved as non-canonical Calculus evidence: derived / calibrated / heuristic / unresolved (`calculus-evidence.mjs`).
 5. **Physics expression** allowed on L2–L4; **physics ontology** claims forbidden without derivation (P-001).
 
 ---
@@ -326,7 +326,7 @@ Server-side trace **defaults** `runtimeOverlay` to `{}`. Client **merges** `coll
 | D-012 | `docs/reports/D-012-behaviour-retrace-instrument.md` |
 | D-014 | `docs/reports/D-014-runtime-principles-derivation.md` |
 | D-015B | `docs/reports/D-015B-derived-ratio-falsification.md` |
-| Contract | `atlas-structure-contract.mjs` |
+| Canonical structure | Atlas Common Term Structure; generated Canonical Graph schema |
 | Ratio | `docs/runtime/DERIVED_RATIO.md` |
 | Principles | `docs/practice/RUNTIME_PRINCIPLES.md` |
 

@@ -5,29 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.change
-
-needs:
-  - "[[Traversal]]"
-  - "[[Difference]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a readable difference across traversal."
-  holds: "[[Traversal]] and [[Difference]]."
-  pairs: "Asymmetry carries downward — lateral pair appears in what it carries: [[Growth]] ↔ [[Decay]]"
+  needs:
+    targets:
+      - second.traversal
+      - second.difference
+  holds:
+    targets:
+      - second.traversal
+      - second.difference
+    read: "[[Traversal]] and [[Difference]]."
+  pairs:
+    targets:
+      - second.growth
+      - second.decay
+    read: "Asymmetry carries downward — lateral pair appears in what it carries: [[Growth]] ↔ [[Decay]]"
   traces:
-    - "[[Traversal]]"
-    - "[[Difference]]"
-  nests: "where difference becomes readable across traversal."
-  reads: "where a condition can be followed from one readable state to another without losing the path between them."
+    targets:
+      - second.traversal
+      - second.difference
+  nests:
+    targets: []
+    read: "where difference becomes readable across traversal."
+  reads:
+    targets: []
+    read: "where a condition can be followed from one readable state to another without losing the path between them."
   carries:
-    - "[[Growth]]"
-    - "[[Decay]]"
-    - "[[Speed]]"
-    - "[[Flow]]"
-    - "[[Heat]]"
-    - "[[Effect]]"
-    - "[[Acceleration]]"
-
+    targets:
+      - second.growth
+      - second.decay
+      - second.speed
+      - second.flow
+      - second.heat
+      - second.effect
+      - second.acceleration
 publish: true
 status: stable
 ---

@@ -5,30 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.energy
-
-needs:
-  - "[[Generic]]"
-  - "[[Carrying]]"
-  - "[[Capacity]]"
-  - "[[Pressure]]"
-  - "[[Flow]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "generated availability for carrying."
-  holds: "[[Generic]], [[Carrying]], [[Capacity]], [[Pressure]], and [[Flow]]. A generative condition must make availability readable, and that availability must be able to enter carrying, capacity, pressure, or flow before energy can be named structurally."
-  pairs: "No universal lateral pair is required at this placement yet. Energy names generated availability for carrying; its local oppositions appear as depletion, dissipation, overload, or incompatible release in particular domains."
+  needs:
+    targets:
+      - ground.generic
+      - second.carrying
+      - second.capacity
+      - second.pressure
+      - second.flow
+  holds:
+    targets:
+      - ground.generic
+      - second.carrying
+      - second.capacity
+      - second.pressure
+      - second.flow
+    read: "[[Generic]], [[Carrying]], [[Capacity]], [[Pressure]], and [[Flow]]. A generative condition must make availability readable, and that availability must be able to enter carrying, capacity, pressure, or flow before energy can be named structurally."
+  pairs:
+    targets: []
+    read: "No universal lateral pair is required at this placement yet. Energy names generated availability for carrying; its local oppositions appear as depletion, dissipation, overload, or incompatible release in particular domains."
   traces:
-    - "[[Generic]]"
-    - "[[Carrying]]"
-    - "[[Capacity]]"
-    - "[[Pressure]]"
-    - "[[Flow]]"
-  nests: "inside carrying as generated availability that can support work, movement, transformation, maintenance, attention, repair, or continuation."
-  reads: "where generation makes carrying available as supportable capacity, active pressure, flow, work, movement, transformation, maintenance, repair, attention, or continuation."
+    targets:
+      - ground.generic
+      - second.carrying
+      - second.capacity
+      - second.pressure
+      - second.flow
+  nests:
+    targets: []
+    read: "inside carrying as generated availability that can support work, movement, transformation, maintenance, attention, repair, or continuation."
+  reads:
+    targets: []
+    read: "where generation makes carrying available as supportable capacity, active pressure, flow, work, movement, transformation, maintenance, repair, attention, or continuation."
   carries:
-    - "[[Metabolism]]"
-    - "[[Recovery]]"
-
+    targets:
+      - third.metabolism
+      - third.recovery
 publish: true
 status: working
 ---

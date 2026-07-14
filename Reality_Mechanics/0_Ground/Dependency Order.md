@@ -5,28 +5,40 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.dependency-order
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "structural precedence within Root Order — what must already hold before another term can become available"
-  holds: "[[Root Order]] — the governing arrangement must hold and be readable before structural precedence within it can be named"
-  pairs: "[[Natural Order]] — Dependency Order names structural precedence within the arrangement; Natural Order names the order available within it without imposition. Each requires the other: structural precedence is only nameable against order that holds without enforcement; available order is only readable against what must structurally precede it."
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — the governing arrangement must hold and be readable before structural precedence within it can be named"
+  pairs:
+    targets:
+      - ground.natural-order
+    read: "[[Natural Order]] — Dependency Order names structural precedence within the arrangement; Natural Order names the order available within it without imposition. Each requires the other: structural precedence is only nameable against order that holds without enforcement; available order is only readable against what must structurally precede it."
   traces:
-    - "[[Root Order]]"
-  nests: "inside Root Order, opening later dependency reads without becoming chronology, command, or preference"
-  reads: "where a term can be traced through prior conditions without confusing structural precedence with temporal sequence"
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "inside Root Order, opening later dependency reads without becoming chronology, command, or preference"
+  reads:
+    targets: []
+    read: "where a term can be traced through prior conditions without confusing structural precedence with temporal sequence"
   carries:
-    - "[[Dependency]]"
-    - "[[Structural Disorder]]"
-    - "[[Dependency Disorder]]"
-    - "[[Branch]]"
-    - "[[Placement Mode]]"
-    - "[[Diagnosis]]"
-    - "[[Carry-Trace Test]]"
-    - "[[Splicing]]"
-
+    targets:
+      - second.dependency
+      - ground.structural-disorder
+      - second.dependency-disorder
+      - third.branch
+      - third.placement-mode
+      - third.diagnosis
+      - practice.carry-trace-test
+      - practice.grafting
 publish: true
 status: stable
 ---

@@ -5,36 +5,48 @@ order: third
 kind: class
 ai_role: class
 condition_key: third.applied-read
+determination: pd.v3.pre-provenance-baseline
 domain: path-reads
-
-needs:
-  - "[[Path Reads]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "local use of a path read in a specific case."
-  holds: "[[Path Reads]] and [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.path-reads
+      - second.closure-scope
+  holds:
+    targets:
+      - third.path-reads
+      - second.closure-scope
+    read: "[[Path Reads]] and [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Path Reads]]"
-    - "[[Closure Scope]]"
-    - "[[Domain]]"
-    - "[[Field of Participation]]"
-    - "[[Organised Domain]]"
-    - "[[Terminal]]"
-    - "[[Translation Boundary]]"
-  nests: "where a path read becomes usable in a bounded case without becoming the case itself."
-  reads: "where a path read can be tested within a specific local condition."
+    targets:
+      - third.path-reads
+      - second.closure-scope
+      - third.domain
+      - third.field-of-participation
+      - third.organised-domain
+      - second.terminal
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "where a path read becomes usable in a bounded case without becoming the case itself."
+  reads:
+    targets: []
+    read: "where a path read can be tested within a specific local condition."
   carries:
-    - "[[Diagnosis]]"
-    - "[[Control After Harm]]"
-    - "[[Control Drift]]"
-    - "[[Grief]]"
-    - "[[Harmonic Drift]]"
-    - "[[Improvisation]]"
-    - "[[Extractive Acceleration]]"
-    - "[[Space-Based Solar Power]]"
-
+    targets:
+      - third.diagnosis
+      - third.control-after-harm
+      - third.control-drift
+      - third.grief
+      - third.harmonic-drift
+      - third.improvisation
+      - third.extractive-acceleration
+      - third.space-based-solar-power
 publish: true
 status: stable
 ---

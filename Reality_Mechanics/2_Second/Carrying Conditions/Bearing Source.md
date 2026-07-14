@@ -5,30 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.bearing-source
-
-needs:
-  - "[[Bearing]]"
-  - "[[Trace]]"
-  - "[[Carrying]]"
-  - "[[Structure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structure recovered by trace as what actually bears a carried condition."
-  holds: "[[Bearing]], [[Trace]], [[Carrying]], and [[Structure]]. Carrying must be present, bearing must be active, structure must be doing the holding, and a trace must be available before bearing source can be named."
-  pairs: "[[Apparent Source]]. Bearing Source names the structure recovered by trace as what actually bears a carried condition; Apparent Source names a presented or attributed structure taken as source that trace does not recover as its bearer."
+  needs:
+    targets:
+      - first.bearing
+      - first.trace
+      - second.carrying
+      - second.structure
+  holds:
+    targets:
+      - first.bearing
+      - first.trace
+      - second.carrying
+      - second.structure
+    read: "[[Bearing]], [[Trace]], [[Carrying]], and [[Structure]]. Carrying must be present, bearing must be active, structure must be doing the holding, and a trace must be available before bearing source can be named."
+  pairs:
+    targets:
+      - second.apparent-source
+    read: "[[Apparent Source]]. Bearing Source names the structure recovered by trace as what actually bears a carried condition; Apparent Source names a presented or attributed structure taken as source that trace does not recover as its bearer."
   traces:
-    - "[[Bearing]]"
-    - "[[Trace]]"
-    - "[[Carrying]]"
-    - "[[Structure]]"
-  nests: "inside carrying where trace can recover the structure from which a carried condition receives its bearing."
-  reads: "where a carried condition can be traced back to the structure that actually bears it."
+    targets:
+      - first.bearing
+      - first.trace
+      - second.carrying
+      - second.structure
+  nests:
+    targets: []
+    read: "inside carrying where trace can recover the structure from which a carried condition receives its bearing."
+  reads:
+    targets: []
+    read: "where a carried condition can be traced back to the structure that actually bears it."
   carries:
-    - "[[Sever]]"
-    - "[[Competence Boundary]]"
-    - "[[Reality Check]]"
-    - "[[Source Drift]]" 
-
+    targets:
+      - second.sever
+      - third.competence-boundary
+      - third.reality-check
+      - higher.source-drift
 publish: true
 status: stable
 ---

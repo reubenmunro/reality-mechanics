@@ -5,31 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.self
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Boundary]]"
-  - "[[Identity]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the condition through which cognition locates a boundary that distinguishes this participant's carrying from others — the recognised closure scope through which identity becomes locally readable."
-  holds: "[[Cognition]], [[Boundary]], [[Identity]], [[Recognition Read|Recognition]], and [[Closure Scope]]. Cognition must be present, a boundary must distinguish this carrying scope, and recognition must make identity locally readable before the condition can be named as self."
-  pairs: "[[Self-Bearing]]. Self names the bounded cognitive scope; Self-Bearing names the condition where that scope actively holds its own carrying."
+  needs:
+    targets:
+      - third.cognition
+      - first.boundary
+      - second.identity
+      - second.recognition-read
+      - second.closure-scope
+  holds:
+    targets:
+      - third.cognition
+      - first.boundary
+      - second.identity
+      - second.recognition-read
+      - second.closure-scope
+    read: "[[Cognition]], [[Boundary]], [[Identity]], [[Recognition Read|Recognition]], and [[Closure Scope]]. Cognition must be present, a boundary must distinguish this carrying scope, and recognition must make identity locally readable before the condition can be named as self."
+  pairs:
+    targets:
+      - third.self-bearing
+    read: "[[Self-Bearing]]. Self names the bounded cognitive scope; Self-Bearing names the condition where that scope actively holds its own carrying."
   traces:
-    - "[[Cognition]]"
-    - "[[Boundary]]"
-    - "[[Identity]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Closure Scope]]"
-  nests: "within the Cognition Field as the condition through which cognition locates its own carrying boundary — the structural ground for self-bearing, self-control, and self-harm reads."
-  reads: "Self becomes readable where relation is locally and recursively distinguishable as a participant across a closure scope."
+    targets:
+      - third.cognition
+      - first.boundary
+      - second.identity
+      - second.recognition-read
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within the Cognition Field as the condition through which cognition locates its own carrying boundary — the structural ground for self-bearing, self-control, and self-harm reads."
+  reads:
+    targets: []
+    read: "Self becomes readable where relation is locally and recursively distinguishable as a participant across a closure scope."
   carries:
-    - "[[Self-Bearing]]"
-
-
+    targets:
+      - third.self-bearing
 publish: true
 status: stable
 ---

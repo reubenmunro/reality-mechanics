@@ -5,27 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.process
-
-needs:
-  - "[[Sequence]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a sequence being carried."
-  holds: "[[Sequence]] and [[Carrying]]."
-  pairs: "[[Sequence]]. Sequence orders traversal; Process carries that sequence as continuing participation."
+  needs:
+    targets:
+      - second.sequence
+      - second.carrying
+  holds:
+    targets:
+      - second.sequence
+      - second.carrying
+    read: "[[Sequence]] and [[Carrying]]."
+  pairs:
+    targets:
+      - second.sequence
+    read: "[[Sequence]]. Sequence orders traversal; Process carries that sequence as continuing participation."
   traces:
-    - "[[Sequence]]"
-    - "[[Carrying]]"
-  nests: "where an ordered traversal is sustained through carrying as participation."
-  reads: "where a sequence can be followed as continuing participation — where the ordered traversal is being sustained rather than merely present."
+    targets:
+      - second.sequence
+      - second.carrying
+  nests:
+    targets: []
+    read: "where an ordered traversal is sustained through carrying as participation."
+  reads:
+    targets: []
+    read: "where a sequence can be followed as continuing participation — where the ordered traversal is being sustained rather than merely present."
   carries:
-    - "[[Flow]]"
-    - "[[Proceed]]"
-    - "[[Progress]]"
-    - "[[Become]]"
-    - "[[Strategy]]"
-
+    targets:
+      - second.flow
+      - second.proceed
+      - second.progress
+      - second.become
+      - second.strategy
 publish: true
 status: stable
 ---

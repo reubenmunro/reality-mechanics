@@ -126,7 +126,37 @@ The Architect and Steward can now decide:
 - **The frontmatter fields already form a coherent structural reading grammar *in stated intent*** — one operation read from eight positions, explicitly defined in `Common Term Structure.md` and enforced as a contract (`atlas-structure-contract.mjs`). The **downstream, lateral, scale, recognition, and self** reads (`carries`, `pairs`, `nests`, `reads`, `places`) realise that grammar with distinct content.
 - **But the *upstream* region of the grammar must be clarified before Calculus derivation relies on it.** `needs`, `holds`, and `traces` are near-redundant in practice (57/57 and 50/57 coincidence), and `pairs` is polyfunctional. A Calculus that treats these as three distinct structural reads would be reading a distinction the records do not currently carry.
 
-So: **coherent grammar, under-differentiated upstream.** The evidence supports proceeding to derive from the *forward/lateral/recognition* reads, but recommends the `needs`/`holds`/`traces` division of labour (and the `pairs` roles) be clarified first. This report does not perform that clarification (per mode).
+
+So: **coherent grammar, observationally coincident upstream.** The evidence shows that `needs`, `holds`, and `traces` often point to the same targets across first order, but this does not by itself prove redundancy. A field may ask a distinct structural question even when the answer coincides with another field. The `needs`/`holds`/`traces` division of labour, and the `pairs` roles, should be clarified before a Calculus treats them as independently differentiated upstream reads. This report does not perform that clarification (per mode).
+
+---
+
+## Architect Review
+
+**Evidence accepted.**
+
+The report establishes that the frontmatter fields are not ordinary metadata or graph edges. They are declared by the repository as structural reads of the same proceeding operation.
+
+The key architectural correction is that identical targets do not necessarily mean identical reads.
+
+For example:
+
+```text
+needs
+What must already hold?
+
+holds
+What presently bears this?
+
+traces
+How can this be retraced?
+```
+
+These questions may return the same linked term while still performing different structural work.
+
+Therefore, the strongest supported conclusion is not that the upstream fields are redundant. It is that the upstream fields are **observationally coincident** across much of first order and require clarification before Calculus derivation relies on their difference.
+
+The next investigation should treat each frontmatter field as a calibrated structural question rather than merely a relation type.
 
 ---
 

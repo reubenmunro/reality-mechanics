@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.balance
-
-needs:
-  - "[[Pressure]]"
-  - "[[Retain]]"
-  - "[[Release]]"
-  - "[[Compatibility]]"
-  - "[[Capacity]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "compatible regulation of pressure between retain and release."
-  holds: "[[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named."
-  pairs: "No lateral pair is required at this placement yet. Balance names dynamic regulation rather than a static opposite."
+  needs:
+    targets:
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.compatibility
+      - second.capacity
+  holds:
+    targets:
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.compatibility
+      - second.capacity
+    read: "[[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Balance names dynamic regulation rather than a static opposite."
   traces:
-    - "[[Pressure]]"
-    - "[[Retain]]"
-    - "[[Release]]"
-    - "[[Compatibility]]"
-    - "[[Capacity]]"
-  nests: "inside carrying as the regulation through which pressure remains bearable enough for relation to continue."
-  reads: "Balance becomes readable where pressure is regulated between retain and release so relation remains compatible."
-  carries: []
-
+    targets:
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.compatibility
+      - second.capacity
+  nests:
+    targets: []
+    read: "inside carrying as the regulation through which pressure remains bearable enough for relation to continue."
+  reads:
+    targets: []
+    read: "Balance becomes readable where pressure is regulated between retain and release so relation remains compatible."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

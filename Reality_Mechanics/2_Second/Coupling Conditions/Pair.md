@@ -5,24 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.pair
-
-needs:
-  - "[[Coupling]]"
-  - "[[Readability]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a bounded read of coupling in which two distinguishable conditions are held together as a readable two."
-  holds: "[[Coupling]], [[Readability]], and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — Pair names a structural condition, not a participant in one; the concept of pairing does not itself sit beside a lateral co-present sibling at this order"
+  needs:
+    targets:
+      - second.coupling
+      - second.readability
+      - second.closure-scope
+  holds:
+    targets:
+      - second.coupling
+      - second.readability
+      - second.closure-scope
+    read: "[[Coupling]], [[Readability]], and [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — Pair names a structural condition, not a participant in one; the concept of pairing does not itself sit beside a lateral co-present sibling at this order"
   traces:
-    - "[[Coupling]]"
-    - "[[Readability]]"
-    - "[[Closure Scope]]"
-  nests: "as a scoped read of coupling as two. It does not make two-ness primitive, total, or exhaustive."
-  reads: "where coupling can be read within a scope as two conditions held together while each remains distinguishable."
-  carries: []
-
+    targets:
+      - second.coupling
+      - second.readability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "as a scoped read of coupling as two. It does not make two-ness primitive, total, or exhaustive."
+  reads:
+    targets: []
+    read: "where coupling can be read within a scope as two conditions held together while each remains distinguishable."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

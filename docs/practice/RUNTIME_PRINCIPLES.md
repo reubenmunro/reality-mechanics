@@ -22,7 +22,7 @@ Canonical structure lives in the repository. Every surface — Field, MCP, Calib
 
 **Evidence**
 
-- `atlas-structure-contract.mjs`: `canonicalRule`, `RELATION_EVENT_RUNTIME_CONTRACT.invariantRule`
+- Canonical Common Term Structure and the generated Canonical Graph schema
 - D-010A: one shared pipeline; explicit edges only
 - D-012: behaviour retrace cites Atlas source fields, not invented events
 - `MISSION.md`: purpose is not to invent structure
@@ -77,11 +77,11 @@ That render compression **is** recognition (it is readability under budget — s
 
 **Statement**
 
-**Order** (`entry_order`, spine sequence) and **reference frames** (`practice.ratio-read`, etc.) determine **what is visible and emphasised** in observation. They do not validate or mutate Atlas structure at runtime.
+**Order** (`entry_order`, spine sequence) and participant reference frames determine **what is visible and emphasised** in observation. They do not validate or mutate Atlas structure at runtime. The retired `practice.*-read` product IDs are not canonical Atlas identities.
 
 **Evidence**
 
-- `ORDER_DEPTHS`, `orderBias`, `structuralFieldFrameIds`, `coupledSensibility`
+- generated order values, `orderBias`, and `coupledSensibility`
 - D-011 O-5, O-7
 - Atlas order as dependency band; Constitution authority order (governance, not runtime gate)
 - Structural Reading: frame before ratio read (`READING_ORDER`)

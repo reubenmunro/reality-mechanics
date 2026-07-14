@@ -1,38 +1,54 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.retrace-practice
-
-needs:
-  - "[[Trace]]"
-  - "[[Ground]]"
-  - "[[Relation]]"
-  - "[[Reality Mechanics]]"
-  - "[[Practice]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the Atlas [[Practice]] of recovering the dependency path that produced the current read."
-  holds: "[[Trace]], [[Ground]], [[Relation]], [[Reality Mechanics]], and [[Practice]]."
-  pairs: "[[Order Trace]]. Order Trace follows the dependency movement forward; Retrace Practice recovers it backward. Each requires the other: the forward path is only nameable against the possibility of returning through it; the return is only possible where a forward path was laid."
+  needs:
+    targets:
+      - first.trace
+      - ground.ground
+      - first.relation
+      - practice.reality-mechanics
+      - practice.practice
+  holds:
+    targets:
+      - first.trace
+      - ground.ground
+      - first.relation
+      - practice.reality-mechanics
+      - practice.practice
+    read: "[[Trace]], [[Ground]], [[Relation]], [[Reality Mechanics]], and [[Practice]]."
+  pairs:
+    targets:
+      - practice.order-trace
+    read: "[[Order Trace]]. Order Trace follows the dependency movement forward; Retrace Practice recovers it backward. Each requires the other: the forward path is only nameable against the possibility of returning through it; the return is only possible where a forward path was laid."
   traces:
-    - "[[Regenerate]]"
-    - "[[Trace]]"
-    - "[[Ground]]"
-    - "[[Relation]]"
-    - "[[Reality Mechanics]]"
-    - "[[Practice]]"
-    - "[[Root Resilience]]"
-    - "[[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where a note, branch, domain, or release can show how it became available and what dependency path carries it."
+    targets:
+      - ground.regenerate
+      - first.trace
+      - ground.ground
+      - first.relation
+      - practice.reality-mechanics
+      - practice.practice
+      - practice.root-resilience
+      - higher.higher-order-crossing
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where a note, branch, domain, or release can show how it became available and what dependency path carries it."
   carries:
-    - "[[Tracing]]"
-    - "[[Retracing]]"
-    - "[[Atlas Practice]]"
-
+    targets:
+      - practice.tracing
+      - practice.retracing
+      - practice.atlas-practice
 publish: true
 status: stable
 ---

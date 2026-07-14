@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.ungrounded-fabrication
+determination: pd.v3.pre-provenance-baseline
 domain: ai
-
-needs:
-  - "[[AI]]"
-  - "[[Coherence]]"
-  - "[[Trace]]"
-  - "[[Bearing Source]]"
-  - "[[Reality Check]]"
-  - "[[AI Drift]]"
 
 conditions:
   places: "the AI-domain failure condition where fabricated form appears coherent while its trace to reality is absent, broken, displaced, or unverified."
-  holds: "[[AI]], [[Coherence]], [[Trace]], [[Bearing Source]], [[Reality Check]], and [[AI Drift]]. Generated output and apparent coherence must be present before fabrication can be named as ungrounded."
-  pairs: "No lateral pair is required at this placement yet. Ungrounded Fabrication currently reads as an AI-domain failure condition: formed output with a coherent surface but no grounded trace."
+  needs:
+    targets:
+      - third.ai
+      - second.coherence
+      - first.trace
+      - second.bearing-source
+      - third.reality-check
+      - third.ai-drift
+  holds:
+    targets:
+      - third.ai
+      - second.coherence
+      - first.trace
+      - second.bearing-source
+      - third.reality-check
+      - third.ai-drift
+    read: "[[AI]], [[Coherence]], [[Trace]], [[Bearing Source]], [[Reality Check]], and [[AI Drift]]. Generated output and apparent coherence must be present before fabrication can be named as ungrounded."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Ungrounded Fabrication currently reads as an AI-domain failure condition: formed output with a coherent surface but no grounded trace."
   traces:
-    - "[[AI]]"
-    - "[[Coherence]]"
-    - "[[Trace]]"
-    - "[[Bearing Source]]"
-    - "[[Reality Check]]"
-    - "[[AI Drift]]"
-  nests: "within the AI domain as a failure of answerability in generated output."
-  reads: "Ungrounded Fabrication becomes readable where an output appears coherent, fluent, structured, or plausible while the dependency path that would ground it is absent, broken, displaced, or unverified."
-  carries: []
-
+    targets:
+      - third.ai
+      - second.coherence
+      - first.trace
+      - second.bearing-source
+      - third.reality-check
+      - third.ai-drift
+  nests:
+    targets: []
+    read: "within the AI domain as a failure of answerability in generated output."
+  reads:
+    targets: []
+    read: "Ungrounded Fabrication becomes readable where an output appears coherent, fluent, structured, or plausible while the dependency path that would ground it is absent, broken, displaced, or unverified."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

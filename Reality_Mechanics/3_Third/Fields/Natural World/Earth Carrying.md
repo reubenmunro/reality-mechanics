@@ -5,31 +5,45 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.earth-carrying
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Earth]]"
-  - "[[Carrying]]"
-  - "[[Dependency]]"
-  - "[[Invisible]]"
 
 conditions:
   places: "the carrying relation through which [[Earth]] holds human life, society, history, invention, and choice within material and ecological consequence."
-  holds: "[[Earth]], [[Carrying]], [[Dependency]], and [[Invisible]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.earth
+      - second.carrying
+      - second.dependency
+      - first.invisible
+  holds:
+    targets:
+      - third.earth
+      - second.carrying
+      - second.dependency
+      - first.invisible
+    read: "[[Earth]], [[Carrying]], [[Dependency]], and [[Invisible]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Earth]]"
-    - "[[Carrying]]"
-    - "[[Dependency]]"
-    - "[[Invisible]]"
-  nests: "where Earth is read as a carrier with supportable limits and obligations."
-  reads: "where built, economic, digital, or institutional systems appear primary while the earthly relation carrying and protecting them remains backgrounded, taken as given, or no longer read."
+    targets:
+      - third.earth
+      - second.carrying
+      - second.dependency
+      - first.invisible
+  nests:
+    targets: []
+    read: "where Earth is read as a carrier with supportable limits and obligations."
+  reads:
+    targets: []
+    read: "where built, economic, digital, or institutional systems appear primary while the earthly relation carrying and protecting them remains backgrounded, taken as given, or no longer read."
   carries:
-    - "[[Sustenance Field]]"
-    - "[[Terms of Service]]"
-    - "[[Extractive Acceleration]]"
-    - "[[Space-Based Solar Power]]"
-
+    targets:
+      - third.sustenance-field
+      - third.terms-of-service
+      - third.extractive-acceleration
+      - third.space-based-solar-power
 publish: true
 status: stable
 ---

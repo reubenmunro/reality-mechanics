@@ -5,25 +5,38 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.constrained-resolution
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Constraint]]"
-  - "[[Resolution]]"
 
 conditions:
   places: "resolution where what can be determined at scope is bounded by a prior constraint — bearing settling into a determined condition within limited options."
-  holds: "[[Constraint]] and [[Resolution]]. A constraint must bound what can hold before the determination can be read as constrained."
-  pairs: "[[Accommodation]]. Constrained Resolution names the general condition of resolution within constraint; Accommodation names the specific bearing form of that resolution in relational participation."
+  needs:
+    targets:
+      - second.constraint
+      - first.resolution
+  holds:
+    targets:
+      - second.constraint
+      - first.resolution
+    read: "[[Constraint]] and [[Resolution]]. A constraint must bound what can hold before the determination can be read as constrained."
+  pairs:
+    targets:
+      - third.accommodation
+    read: "[[Accommodation]]. Constrained Resolution names the general condition of resolution within constraint; Accommodation names the specific bearing form of that resolution in relational participation."
   traces:
-    - "[[Constraint]]"
-    - "[[Resolution]]"
-    - "[[Control]]"
-  nests: "within Relational Participation as the condition through which resolution holds within a bounded carrying scope."
-  reads: "Constrained resolution becomes readable where limiting conditions remain present while compatible bearing still resolves."
+    targets:
+      - second.constraint
+      - first.resolution
+      - third.control
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which resolution holds within a bounded carrying scope."
+  reads:
+    targets: []
+    read: "Constrained resolution becomes readable where limiting conditions remain present while compatible bearing still resolves."
   carries:
-    - "[[Accommodation]]" 
-
+    targets:
+      - third.accommodation
 publish: true
 status: stable
 ---

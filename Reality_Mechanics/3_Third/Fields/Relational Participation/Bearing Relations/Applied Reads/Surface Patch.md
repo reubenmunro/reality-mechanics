@@ -5,29 +5,45 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.surface-patch
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Surface]]"
-  - "[[Misrepair]]"
-  - "[[Repair Mismatch]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where repair restores surface coherence without restoring compatible bearing — proceeding that appears repaired while the underlying condition remains unrestored."
-  holds: "[[Applied Read]], [[Surface]], [[Misrepair]], [[Repair Mismatch]], and [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - second.surface
+      - third.misrepair
+      - third.repair-mismatch
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - second.surface
+      - third.misrepair
+      - third.repair-mismatch
+      - second.closure-scope
+    read: "[[Applied Read]], [[Surface]], [[Misrepair]], [[Repair Mismatch]], and [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Surface]]"
-    - "[[Misrepair]]"
-    - "[[Repair Mismatch]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Misrepair, where the surface of repair masks an unrestored carrying condition."
-  reads: "Surface Patch becomes readable where the repaired surface continues to function as a sign of restoration while the required carrying condition remains unavailable."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - second.surface
+      - third.misrepair
+      - third.repair-mismatch
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Misrepair, where the surface of repair masks an unrestored carrying condition."
+  reads:
+    targets: []
+    read: "Surface Patch becomes readable where the repaired surface continues to function as a sign of restoration while the required carrying condition remains unavailable."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

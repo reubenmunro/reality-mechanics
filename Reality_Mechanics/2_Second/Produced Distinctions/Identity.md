@@ -5,27 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.identity
-
-needs:
-  - "[[Form]]"
-  - "[[Recognition Read|Recognition]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "sustained distinguishability."
-  holds: "[[Form]] and [[Recognition Read|Recognition]]."
-  pairs: "Asymmetry carries downward — into [[Stability]], [[Self]]"
+  needs:
+    targets:
+      - second.form
+      - second.recognition-read
+  holds:
+    targets:
+      - second.form
+      - second.recognition-read
+    read: "[[Form]] and [[Recognition Read|Recognition]]."
+  pairs:
+    targets:
+      - second.stability
+      - third.self
+    read: "Asymmetry carries downward — into [[Stability]], [[Self]]"
   traces:
-    - "[[Form]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Coupling]]"
-    - "[[Indivisible Bearing]]"
-    - "[[Kind]]"
-  nests: "where form remains recognisable as itself across encounters without requiring essence or permanence."
-  reads: "where a formed distinction can be read as this across encounters — where what holds as arranged continues to be identifiable as the same condition rather than a new one."
+    targets:
+      - second.form
+      - second.recognition-read
+      - second.coupling
+      - second.indivisible-bearing
+      - second.kind
+  nests:
+    targets: []
+    read: "where form remains recognisable as itself across encounters without requiring essence or permanence."
+  reads:
+    targets: []
+    read: "where a formed distinction can be read as this across encounters — where what holds as arranged continues to be identifiable as the same condition rather than a new one."
   carries:
-    - "[[Stability]]"
-    - "[[Self]]"
-
+    targets:
+      - second.stability
+      - third.self
 publish: true
 status: stable
 ---

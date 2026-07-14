@@ -5,26 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.echo
-
-needs:
-  - "[[Readability]]"
-  - "[[Trace]]"
-  - "[[Recurrence]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a returned trace whose source is not directly present."
-  holds: "[[Readability]], [[Trace]], [[Recurrence]], and [[Carrying]]. A trace must be readable, recurrence must return it, and carrying must preserve enough of it for the return to be read before echo can be named."
-  pairs: "No lateral pair is required at this placement yet. Echo is distinguished from source, memory, and recurrence by naming returned trace rather than original presence, stored carrying, or occurrence again."
+  needs:
+    targets:
+      - second.readability
+      - first.trace
+      - second.recurrence
+      - second.carrying
+  holds:
+    targets:
+      - second.readability
+      - first.trace
+      - second.recurrence
+      - second.carrying
+    read: "[[Readability]], [[Trace]], [[Recurrence]], and [[Carrying]]. A trace must be readable, recurrence must return it, and carrying must preserve enough of it for the return to be read before echo can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Echo is distinguished from source, memory, and recurrence by naming returned trace rather than original presence, stored carrying, or occurrence again."
   traces:
-    - "[[Readability]]"
-    - "[[Trace]]"
-    - "[[Recurrence]]"
-    - "[[Carrying]]"
-  nests: "inside readability where a prior relation returns as readable trace without the source being directly present."
-  reads: "Echo becomes readable where a sound, form, word, pattern, feeling, gesture, or relation returns as trace while what produced it is no longer directly present."
-  carries: []
-
+    targets:
+      - second.readability
+      - first.trace
+      - second.recurrence
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside readability where a prior relation returns as readable trace without the source being directly present."
+  reads:
+    targets: []
+    read: "Echo becomes readable where a sound, form, word, pattern, feeling, gesture, or relation returns as trace while what produced it is no longer directly present."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

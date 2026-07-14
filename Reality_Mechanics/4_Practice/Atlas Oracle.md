@@ -1,41 +1,59 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: instrument
 ai_role: operation
 condition_key: practice.atlas-oracle
-
-needs:
-  - "[[Atlas]]"
-  - "[[Reasoning]]"
-  - "[[AI Participation]]"
-  - "[[Ark Run]]"
-  - "[[Check]]"
-  - "[[Generate and Regenerate]]"
-  - "[[Carried Condition]]"
-  - "[[Oracle Carrying Conditions]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the bounded instrument by which a participant brings pressure to the Atlas, receives an Atlas-grounded answer, inspects the trace, and can challenge what does or does not hold."
-  holds: "[[Atlas]], [[Reasoning]], [[AI Participation]], [[Ark Run]], [[Check]], [[Generate and Regenerate]], [[Carried Condition]], and [[Oracle Carrying Conditions]]."
-  pairs: "Open-ended chat. Atlas Oracle carries one pressure through an answerable Atlas trace; open-ended chat can continue fluently without preserving the carrying path."
+  needs:
+    targets:
+      - practice.atlas
+      - practice.reasoning
+      - practice.ai-participation
+      - practice.ark-run
+      - practice.check
+      - practice.generate-and-regenerate
+      - second.carried-condition
+      - practice.oracle-carrying-conditions
+  holds:
+    targets:
+      - practice.atlas
+      - practice.reasoning
+      - practice.ai-participation
+      - practice.ark-run
+      - practice.check
+      - practice.generate-and-regenerate
+      - second.carried-condition
+      - practice.oracle-carrying-conditions
+    read: "[[Atlas]], [[Reasoning]], [[AI Participation]], [[Ark Run]], [[Check]], [[Generate and Regenerate]], [[Carried Condition]], and [[Oracle Carrying Conditions]]."
+  pairs:
+    targets: []
+    read: "Open-ended chat. Atlas Oracle carries one pressure through an answerable Atlas trace; open-ended chat can continue fluently without preserving the carrying path."
   traces:
-    - "[[Atlas]]"
-    - "[[Reasoning]]"
-    - "[[AI Participation]]"
-    - "[[Ark Run]]"
-    - "[[Check]]"
-    - "[[Generate and Regenerate]]"
-    - "[[Carried Condition]]"
-    - "[[Oracle Carrying Conditions]]"
-  nests: "inside Atlas Practice as a human-facing instrument and AI-facing bounded operation."
-  reads: "where an answer is useful because it can be met, tested, rejected, corrected, and tended through the trace that carried it."
+    targets:
+      - practice.atlas
+      - practice.reasoning
+      - practice.ai-participation
+      - practice.ark-run
+      - practice.check
+      - practice.generate-and-regenerate
+      - second.carried-condition
+      - practice.oracle-carrying-conditions
+  nests:
+    targets: []
+    read: "inside Atlas Practice as a human-facing instrument and AI-facing bounded operation."
+  reads:
+    targets: []
+    read: "where an answer is useful because it can be met, tested, rejected, corrected, and tended through the trace that carried it."
   carries:
-    - "[[Bearing Pass]]"
-    - "[[Generative Trace]]"
-    - "[[Care-Control Check]]"
-
+    targets:
+      - practice.garden-pass
+      - practice.generative-trace
+      - practice.care-control-check
 publish: true
 status: working
 aliases:

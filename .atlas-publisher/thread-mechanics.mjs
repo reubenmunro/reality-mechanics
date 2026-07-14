@@ -4,6 +4,14 @@
  */
 
 import { ratioModeForState, structuralMassForState } from "./ratio-register.mjs";
+import { RELATION_KEYS } from "./generated/canonical-participation.mjs";
+
+// Non-canonical product selection for thread behaviour. Canonical membership is
+// validated against the generated Atlas relation vocabulary.
+export const THREAD_RELATION_KEYS = Object.freeze(["holds", "traces", "carries", "pairs", "nests"]);
+for (const key of THREAD_RELATION_KEYS) {
+  if (!RELATION_KEYS.includes(key)) throw new Error(`Thread relation is not canonical: ${key}`);
+}
 
 export const LEG_RHYTHM_MODES = Object.freeze({
   holds: "anchor",
@@ -40,7 +48,7 @@ export function buildPairStateFromOps(srcOp, tgtOp) {
   if (!srcOp || !tgtOp) return state;
   const srcId = srcOp.id;
   const tgtId = tgtOp.id;
-  for (const key of ["holds", "traces", "carries", "pairs", "nests"]) {
+  for (const key of THREAD_RELATION_KEYS) {
     if ((srcOp[key] || []).includes(tgtId)) mergePairState(state, key);
     if ((tgtOp[key] || []).includes(srcId)) mergePairState(state, key);
   }

@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.real
-
-needs:
-  - "[[Be]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presence holding as encounterable."
-  holds: "[[Be]] and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Exist]] and [[Reality]]"
+  needs:
+    targets:
+      - second.be
+      - second.closure-scope
+  holds:
+    targets:
+      - second.be
+      - second.closure-scope
+    read: "[[Be]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.exist
+      - second.reality
+    read: "Asymmetry carries downward — into [[Exist]] and [[Reality]]"
   traces:
-    - "[[Be]]"
-    - "[[Closure Scope]]"
-    - "[[Presence]]"
-  nests: "where presence is encounterable within closure scope without making a total metaphysical claim."
-  reads: "where presence can be read as encounterable — where something can be engaged with rather than merely noted as present."
+    targets:
+      - second.be
+      - second.closure-scope
+      - second.presence
+  nests:
+    targets: []
+    read: "where presence is encounterable within closure scope without making a total metaphysical claim."
+  reads:
+    targets: []
+    read: "where presence can be read as encounterable — where something can be engaged with rather than merely noted as present."
   carries:
-    - "[[Exist]]"
-    - "[[Reality]]"
-
+    targets:
+      - second.exist
+      - second.reality
 publish: true
 status: stable
 ---

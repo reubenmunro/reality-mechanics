@@ -5,32 +5,44 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.domain
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic and Organised Organisation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "an organised participation context."
-  holds: "[[Field of Participation]] and [[Organic and Organised Organisation]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-and-organised-organisation
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-and-organised-organisation
+    read: "[[Field of Participation]] and [[Organic and Organised Organisation]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic and Organised Organisation]]"
-    - "[[Place]]"
-    - "[[Society]]"
-    - "[[Terminal]]"
-    - "[[Translation Boundary]]"
-  nests: "where one or more fields are organised into a context, practice, discipline, tool, institution, or method."
-  reads: "A Domain becomes recognisable where one or more fields are organised into a coherent participation context. A domain is readable where it can show what fields it organises, what branches it carries, and whether its organisation remains retraceable."
+    targets:
+      - third.field-of-participation
+      - third.organic-and-organised-organisation
+      - first.place
+      - third.society
+      - second.terminal
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "where one or more fields are organised into a context, practice, discipline, tool, institution, or method."
+  reads:
+    targets: []
+    read: "A Domain becomes recognisable where one or more fields are organised into a coherent participation context. A domain is readable where it can show what fields it organises, what branches it carries, and whether its organisation remains retraceable."
   carries:
-    - "[[Branch]]"
-    - "[[Path Reads]]"
-    - "[[Applied Read]]"
-    - "[[Organised Domain]]"
-    - "[[Dominion]]"
-    - "[[Ship and Ark]]"
-
+    targets:
+      - third.branch
+      - third.path-reads
+      - third.applied-read
+      - third.organised-domain
+      - third.dominion
+      - third.ship-and-ark
 publish: true
 status: stable
 ---

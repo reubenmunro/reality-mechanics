@@ -5,28 +5,45 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.web
-
-needs:
-  - "[[Fabric]]"
-  - "[[Thread]]"
-  - "[[Trace]]"
-  - "[[Field Relationships]]"
-  - "[[Pattern]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "woven continuity read as traceable crossing-pattern."
-  holds: "[[Fabric]], [[Thread]], [[Trace]], [[Field Relationships]], and [[Pattern]]. Fabric must hold as woven continuity before its crossings can be followed as web."
-  pairs: "[[Fabric]]. Fabric names the face of the weave: woven continuity returned as a held whole. Web names the trace of the weave: the connected crossing-pattern through which threads remain followable within that continuity."
+  needs:
+    targets:
+      - higher.fabric
+      - first.thread
+      - first.trace
+      - third.field-relationships
+      - second.pattern
+  holds:
+    targets:
+      - higher.fabric
+      - first.thread
+      - first.trace
+      - third.field-relationships
+      - second.pattern
+    read: "[[Fabric]], [[Thread]], [[Trace]], [[Field Relationships]], and [[Pattern]]. Fabric must hold as woven continuity before its crossings can be followed as web."
+  pairs:
+    targets:
+      - higher.fabric
+    read: "[[Fabric]]. Fabric names the face of the weave: woven continuity returned as a held whole. Web names the trace of the weave: the connected crossing-pattern through which threads remain followable within that continuity."
   traces:
-    - "[[Fabric]]"
-    - "[[Thread]]"
-    - "[[Trace]]"
-    - "[[Field Relationships]]"
-    - "[[Pattern]]"
-  nests: "within higher order as the path-readable structure of fabric."
-  reads: "where woven continuity becomes navigable as traceable relation — where crossings can be followed without tearing the fabric into isolated threads."
-  carries: []
-
+    targets:
+      - higher.fabric
+      - first.thread
+      - first.trace
+      - third.field-relationships
+      - second.pattern
+  nests:
+    targets: []
+    read: "within higher order as the path-readable structure of fabric."
+  reads:
+    targets: []
+    read: "where woven continuity becomes navigable as traceable relation — where crossings can be followed without tearing the fabric into isolated threads."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

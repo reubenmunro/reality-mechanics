@@ -5,39 +5,56 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.body
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Branch]]"
-  - "[[Body Field]]"
-  - "[[Availability]]"
-  - "[[Strain]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the third-order field where structural terms become readable as embodied conditions — where availability, strain, carrying, and compatibility take form in what a living body can bear, sustain, or recover."
-  holds: "[[Branch]], [[Body Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Available distinction must be present and carrying must be readable before embodied structural conditions can be named."
-  pairs: "[[Cognition]]. Body names the embodied structural condition; Cognition names the cognitive structural condition. Each bounds a scope the other depends on for participation to hold."
+  needs:
+    targets:
+      - third.branch
+      - third.body-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.branch
+      - third.body-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+    read: "[[Branch]], [[Body Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Available distinction must be present and carrying must be readable before embodied structural conditions can be named."
+  pairs:
+    targets:
+      - third.cognition
+    read: "[[Cognition]]. Body names the embodied structural condition; Cognition names the cognitive structural condition. Each bounds a scope the other depends on for participation to hold."
   traces:
-    - "[[Branch]]"
-    - "[[Body Field]]"
-    - "[[Availability]]"
-    - "[[Strain]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "within the Body Field branch as the field-level container for embodied structural reads."
-  reads: "Body becomes readable where embodied signals, feelings, limits, and capacities show what can still be carried at the relevant closure scope."
+    targets:
+      - third.branch
+      - third.body-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within the Body Field branch as the field-level container for embodied structural reads."
+  reads:
+    targets: []
+    read: "Body becomes readable where embodied signals, feelings, limits, and capacities show what can still be carried at the relevant closure scope."
   carries:
-    - "[[Feeling]]"
-    - "[[Emotion]]"
-    - "[[Fatigue]]"
-    - "[[Injury]]"
-    - "[[Recovery]]"
-    - "[[Metabolism]]"
-    - "[[Fatigue Boundary]]" 
-    - "[[Timescale]]"
-
+    targets:
+      - third.feeling
+      - third.emotion
+      - third.fatigue
+      - third.injury
+      - third.recovery
+      - third.metabolism
+      - third.fatigue-boundary
+      - third.timescale
 publish: true
 status: stable
 ---

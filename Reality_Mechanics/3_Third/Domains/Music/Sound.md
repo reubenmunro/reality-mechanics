@@ -5,32 +5,47 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.sound
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Music]]"
-  - "[[Medium]]"
-  - "[[Bearing]]"
-  - "[[Availability]]"
 
 conditions:
   places: "audible carrying through a medium."
-  holds: "[[Music]], [[Medium]], [[Bearing]], and [[Availability]]. A medium must carry vibration or pressure enough for audible bearing to become available before sound can be named in the music domain."
-  pairs: "[[Noise]]. Sound names audible carrying that can become available to read; Noise names audible carrying not currently readable as signal, pattern, relation, or line at the relevant scope."
+  needs:
+    targets:
+      - third.music
+      - second.medium
+      - first.bearing
+      - first.availability
+  holds:
+    targets:
+      - third.music
+      - second.medium
+      - first.bearing
+      - first.availability
+    read: "[[Music]], [[Medium]], [[Bearing]], and [[Availability]]. A medium must carry vibration or pressure enough for audible bearing to become available before sound can be named in the music domain."
+  pairs:
+    targets:
+      - third.noise
+    read: "[[Noise]]. Sound names audible carrying that can become available to read; Noise names audible carrying not currently readable as signal, pattern, relation, or line at the relevant scope."
   traces:
-    - "[[Music]]"
-    - "[[Medium]]"
-    - "[[Bearing]]"
-    - "[[Availability]]"
-  nests: "within the music domain as the audible carrying condition from which rhythm, melody, harmony, silence, and noise become readable."
-  reads: "Sound becomes readable where carrying through a medium becomes audible enough to be participated in, patterned, held, or distinguished."
+    targets:
+      - third.music
+      - second.medium
+      - first.bearing
+      - first.availability
+  nests:
+    targets: []
+    read: "within the music domain as the audible carrying condition from which rhythm, melody, harmony, silence, and noise become readable."
+  reads:
+    targets: []
+    read: "Sound becomes readable where carrying through a medium becomes audible enough to be participated in, patterned, held, or distinguished."
   carries:
-    - "[[Noise]]"
-    - "[[Musical Rhythm]]"
-    - "[[Melody]]"
-    - "[[Harmony]]"
-    - "[[Silence]]"
-
+    targets:
+      - third.noise
+      - third.musical-rhythm
+      - third.melody
+      - third.harmony
+      - third.silence
 publish: true
 status: stable
 ---

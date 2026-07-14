@@ -4,29 +4,46 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.term-drift
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Language Domain]]"
-  - "[[Term]]"
-  - "[[Recurrence]]"
-  - "[[Difference]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "Term drift occurs when a word recurs while its structural participation changes."
-  holds: "[[Language Domain]], [[Term]], [[Recurrence]], [[Difference]], [[Compatibility]]."
-  pairs: "[[Inherited Term Drift]]. Term Drift names loss of dependency contact within a language context through recurrence; Inherited Term Drift names that loss carried across translation between contexts. Each is a distinct form of term drift."
+  needs:
+    targets:
+      - third.language-domain
+      - ground.term
+      - second.recurrence
+      - second.difference
+      - second.compatibility
+  holds:
+    targets:
+      - third.language-domain
+      - ground.term
+      - second.recurrence
+      - second.difference
+      - second.compatibility
+    read: "[[Language Domain]], [[Term]], [[Recurrence]], [[Difference]], [[Compatibility]]."
+  pairs:
+    targets:
+      - third.inherited-term-drift
+    read: "[[Inherited Term Drift]]. Term Drift names loss of dependency contact within a language context through recurrence; Inherited Term Drift names that loss carried across translation between contexts. Each is a distinct form of term drift."
   traces:
-    - "[[Language Domain]]"
-    - "[[Term]]"
-    - "[[Recurrence]]"
-    - "[[Difference]]"
-    - "[[Compatibility]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Term Drift becomes readable where recurrence of a term no longer carries the same dependency position."
-  carries: []
-
+    targets:
+      - third.language-domain
+      - ground.term
+      - second.recurrence
+      - second.difference
+      - second.compatibility
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Term Drift becomes readable where recurrence of a term no longer carries the same dependency position."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

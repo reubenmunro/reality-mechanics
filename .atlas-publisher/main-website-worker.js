@@ -1,14 +1,21 @@
 // main-website-worker.js
 // realitymechanics.nz — Field-only public surface
 
-import { RELATION_FIELDS } from "../atlas-structure-contract.mjs";
+import {
+  CANONICAL_ENTRY_INDEX,
+  CANONICAL_SOURCE_HASH,
+  ORDER_VALUES,
+  PUBLIC_THEORY_ENTRY,
+  REGISTER_VALUES,
+  RELATION_KEYS,
+} from "./generated/canonical-participation.mjs";
 import {
   DERIVATION_CAVEAT,
   DERIVATION_CHAIN,
   DERIVATION_INVENTORY,
   STATUS_VOCABULARY,
   sourceUrl,
-} from "../public-surface-manifest.mjs";
+} from "../calculus-evidence.mjs";
 import {
   maturityBandFromComponents,
   readFieldConfig,
@@ -26,6 +33,7 @@ import {
   mergePairState,
   pairKey as threadPairKey,
   resolveLeg,
+  THREAD_RELATION_KEYS,
   weaveModeForLeg,
 } from "./thread-mechanics.mjs";
 import { atlasSourceViewUrl, observatoryPlaceDisplay } from "./observatory-panel.mjs";
@@ -60,7 +68,7 @@ function fieldJson(value, fallback = {}) {
   try { return value ? JSON.parse(value) : fallback; } catch { return fallback; }
 }
 
-const FIELD_RELATION_KEYS = ["holds", "traces", "carries", "pairs", "nests"];
+const FIELD_RELATION_KEYS = RELATION_KEYS;
 
 function fieldRelations(structure) {
   const source = structure && typeof structure === "object" ? structure : {};
@@ -106,13 +114,17 @@ function fieldRatioMode(mass, thresholds = {}) {
 export async function deriveFieldStatesPayload(env, now = new Date()) {
   if (!env.ATLAS_DB) throw new Error("db_unavailable");
 
-  const [entries, revisions, proposals, atlasVersion, ratioModeThresholds] = await Promise.all([
-    fieldAll(env, "SELECT id, title, entry_order, excerpt, plain_text, content, source_path, structure, created, updated FROM entries ORDER BY source_path, id"),
+  const [entries, revisions, proposals, sourceIdentity, ratioModeThresholds] = await Promise.all([
+    fieldAll(env, "SELECT id, title, entry_order, entry_register, determination, excerpt, plain_text, content, source_path, structure, created, updated FROM entries ORDER BY source_path, id"),
     fieldAll(env, "SELECT entry_id, edit_class, actor, at FROM entry_revisions"),
     fieldAll(env, "SELECT entry_id, status, light_count, shade_count, created_at, updated_at FROM proposals"),
-    readFieldConfig(env, "atlas_version", null),
+    fieldAll(env, "SELECT value FROM atlas_metadata WHERE key = 'source_hash'"),
     readFieldConfig(env, "field_ratio_mode_thresholds", { transitional_min_mass: 3, continuous_min_mass: 8 }),
   ]);
+
+  if (sourceIdentity[0]?.value !== CANONICAL_SOURCE_HASH) {
+    throw new Error("generated_d1_identity_mismatch");
+  }
 
   const entryIds = new Set(entries.map((entry) => entry.id));
   const carriersById = new Map(entries.map((entry) => [entry.id, 0]));
@@ -187,7 +199,9 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
     return {
       id: entry.id,
       title: entry.title,
-      order: entry.entry_order || "operation",
+      order: entry.entry_order || null,
+      register: entry.entry_register || null,
+      determination: entry.determination,
       place: observatoryPlaceDisplay({ title: entry.title, body: entry.content || "" }),
       atlasUrl: atlasSourceViewUrl(entry.source_path),
       orderTerminal: orderTerminalMeta,
@@ -216,7 +230,7 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
   return {
     contractVersion: 1,
     source: "d1-derived",
-    atlasVersion,
+    sourceHash: CANONICAL_SOURCE_HASH,
     generatedAt: now.toISOString(),
     excludes: ["weather", "clearance", "lightShadowPressure", "geodesicBending", "membraneEdge"],
     thresholds: {
@@ -738,17 +752,23 @@ let mechanicsRefreshPending = false;
 let frameTransitionPulse = 0;
 window.__fieldBehaviourTrace = null;
 
-const relationTypes = [
+const CANONICAL_RELATION_KEYS = ${JSON.stringify(RELATION_KEYS)};
+const THREAD_RELATION_KEYS = Object.freeze(${JSON.stringify(THREAD_RELATION_KEYS)});
+const RELATION_RENDER_STYLES = {
   // wiggMult: filament wiggle amplitude multiplier (low = taut/still, high = loose/drifting)
   // bowMult:  arc bow depth multiplier
   // branchProb: probability of filament branches (0 = none, 1 = always)
   // strandMult: strand count multiplier
-  { key: 'holds',   color: [94, 112, 126],  strength: 0.56, direction: 'anchor',  wiggMult: 0.18, bowMult: 0.5,  branchProb: 0.0,  strandMult: 0.55 },
-  { key: 'traces',  color: [94, 132, 170],  strength: 0.72, direction: 'return',  wiggMult: 1.85, bowMult: 0.85, branchProb: 0.88, strandMult: 1.5  },
-  { key: 'carries', color: [200, 96, 26],   strength: 0.78, direction: 'outward', wiggMult: 0.32, bowMult: 1.5,  branchProb: 0.0,  strandMult: 0.65 },
-  { key: 'pairs',   color: [165, 126, 76],  strength: 0.48, direction: 'lateral', wiggMult: 0.65, bowMult: 0.4,  branchProb: 0.08, strandMult: 0.5  },
-  { key: 'nests',   color: [84, 105, 93],   strength: 0.42, direction: 'enclose', wiggMult: 0.12, bowMult: 0.28, branchProb: 0.0,  strandMult: 0.35 },
-];
+  needs:   { color: [126, 126, 142], strength: 0.62, direction: 'upstream', wiggMult: 0.18, bowMult: 0.65, branchProb: 0.0, strandMult: 0.55 },
+  holds:   { color: [94, 112, 126],  strength: 0.56, direction: 'anchor',   wiggMult: 0.18, bowMult: 0.5,  branchProb: 0.0, strandMult: 0.55 },
+  pairs:   { color: [165, 126, 76],  strength: 0.48, direction: 'lateral',  wiggMult: 0.65, bowMult: 0.4,  branchProb: 0.08, strandMult: 0.5 },
+  traces:  { color: [94, 132, 170],  strength: 0.72, direction: 'return',   wiggMult: 1.85, bowMult: 0.85, branchProb: 0.88, strandMult: 1.5 },
+  nests:   { color: [84, 105, 93],   strength: 0.42, direction: 'enclose',  wiggMult: 0.12, bowMult: 0.28, branchProb: 0.0, strandMult: 0.35 },
+  reads:   { color: [128, 146, 158], strength: 0.44, direction: 'read',     wiggMult: 0.48, bowMult: 0.55, branchProb: 0.0, strandMult: 0.45 },
+  carries: { color: [200, 96, 26],   strength: 0.78, direction: 'outward',  wiggMult: 0.32, bowMult: 1.5,  branchProb: 0.0, strandMult: 0.65 },
+};
+const relationTypes = CANONICAL_RELATION_KEYS.map((key) => ({ key, ...RELATION_RENDER_STYLES[key] }));
+if (relationTypes.some((relation) => !relation.color)) throw new Error('Canonical relation lacks a render style');
 
 const FIELD_RENDER_BUDGET = Object.freeze({
   dprLargeViewport: 1.5,
@@ -1070,89 +1090,13 @@ function resize() {
   syncMobileObservatoryClass();
 }
 
-const STRUCTURAL_FIELD_FRAMES = new Set([
-  'practice.ratio-read',
-  'practice.skeleton-read',
-  'practice.growth-read',
-  'practice.operations-read',
-  'practice.whole-read',
-]);
-
-function isStructuralFieldFrame(id) {
-  return STRUCTURAL_FIELD_FRAMES.has(id);
-}
-
 function isHomeFrame(id) {
   return String(allOps[id]?.title || '').toLowerCase() === 'reality mechanics';
 }
 
-function opOrder(op) {
-  return String(op?.entry_order || op?.order || '').toLowerCase();
-}
-
-function addIfPresent(set, id) {
-  if (allOps[id]) set.add(id);
-}
-
-function immediateCarries(ids) {
-  const next = new Set();
-  ids.forEach((id) => (allOps[id]?.carries || []).forEach((childId) => addIfPresent(next, childId)));
-  return next;
-}
-
-function recursiveCarries(ids) {
-  const reached = new Set(ids);
-  const queue = [...ids];
-  while (queue.length) {
-    const id = queue.shift();
-    (allOps[id]?.carries || []).forEach((childId) => {
-      if (!allOps[childId] || reached.has(childId)) return;
-      reached.add(childId);
-      queue.push(childId);
-    });
-  }
-  return reached;
-}
-
-function structuralFieldFrameIds(frameId) {
-  const ids = new Set();
-  if (!frameId || frameId === 'practice.whole-read') return new Set(globalFrameIds);
-
-  if (frameId === 'practice.ratio-read') {
-    Object.values(allOps).forEach((op) => {
-      const order = opOrder(op);
-      if (order === 'ground' || order === 'first') ids.add(op.id);
-    });
-    ['second.sensibility', 'second.appearance', 'first.ratio'].forEach((id) => addIfPresent(ids, id));
-    return ids;
-  }
-
-  if (frameId === 'practice.skeleton-read') {
-    Object.values(allOps).forEach((op) => {
-      if (op.id.startsWith('ground.') || opOrder(op) === 'ground') ids.add(op.id);
-    });
-    immediateCarries(['ground.seed', 'ground.ground']).forEach((id) => ids.add(id));
-    return ids;
-  }
-
-  if (frameId === 'practice.growth-read') {
-    structuralFieldFrameIds('practice.skeleton-read').forEach((id) => ids.add(id));
-    recursiveCarries(ids).forEach((id) => ids.add(id));
-    return ids;
-  }
-
-  if (frameId === 'practice.operations-read') {
-    ['first.carry', 'first.trace', 'first.hold', 'first.pair', 'first.nest', 'first.read'].forEach((id) => addIfPresent(ids, id));
-    immediateCarries(ids).forEach((id) => ids.add(id));
-    return ids;
-  }
-
-  return ids;
-}
-
 function refreshCoupledFrame() {
   globalFrameIds = new Set(Object.keys(allOps));
-  localFrameIds = structuralFieldFrameIds(currentFieldReferenceFrame);
+  localFrameIds = new Set(globalFrameIds);
   globalFrameIds.forEach((id) => {
     if (coupledSensibility[id] == null) coupledSensibility[id] = 1;
   });
@@ -1161,9 +1105,8 @@ function refreshCoupledFrame() {
   });
 }
 
-function setCurrentFieldReferenceFrame(id) {
-  if (!id || id === 'practice.whole-read') currentFieldReferenceFrame = null;
-  else currentFieldReferenceFrame = currentFieldReferenceFrame === id ? null : id;
+function resetCurrentFieldReferenceFrame() {
+  currentFieldReferenceFrame = null;
   frameTransitionPulse = 1;
   refreshCoupledFrame();
 }
@@ -1231,7 +1174,7 @@ function localIdsFromIndex(id, maxNodes = 120) {
 }
 
 function initOperations(id) {
-  const focus2 = allOps[id]; if (!focus2) return; const ids = new Set([id]); const rkeys = ["carries","holds","traces","pairs","nests"]; rkeys.forEach(k => (focus2[k]||[]).forEach(c => { if(allOps[c]) ids.add(c); })); Object.values(allOps).forEach(op => rkeys.forEach(k => { if((op[k]||[]).includes(id)) ids.add(op.id); }));
+  const focus2 = allOps[id]; if (!focus2) return; const ids = new Set([id]); THREAD_RELATION_KEYS.forEach(k => (focus2[k]||[]).forEach(c => { if(allOps[c]) ids.add(c); })); Object.values(allOps).forEach(op => THREAD_RELATION_KEYS.forEach(k => { if((op[k]||[]).includes(id)) ids.add(op.id); }));
   const prev = operations;
   operations = {};
   Array.from(ids).forEach((childId, i) => {
@@ -1354,7 +1297,11 @@ function layout(id) {
 
 let homeMode = true;
 
-const ORDER_DEPTHS = { ground: 0, first: 0.2, second: 0.4, third: 0.6, practice: 0.8, higher: 1.0 };
+const ORDER_SEQUENCE = ${JSON.stringify(ORDER_VALUES)};
+const ORDER_DEPTHS = Object.fromEntries(ORDER_SEQUENCE.map((order, index) => [
+  order,
+  ORDER_SEQUENCE.length === 1 ? 0 : index / (ORDER_SEQUENCE.length - 1),
+]));
 
 // Fire palette: the order read as a single burn — ember at ground, flame-colours through
 // the body, white-hot at higher, cooling through seed's yellow back home to ember.
@@ -1592,8 +1539,7 @@ function revealTermSheetForSelection(id) {
 function enterOperation(id) {
   const found = allOps[id] ? id : Object.values(allOps).find((op) => op.title.toLowerCase() === id.toLowerCase())?.id;
   if (!found) return;
-  if (isStructuralFieldFrame(found)) setCurrentFieldReferenceFrame(found);
-  else if (isHomeFrame(found)) setCurrentFieldReferenceFrame(null);
+  if (isHomeFrame(found)) resetCurrentFieldReferenceFrame();
   homeMode = false;
   targetFocusId = found;
   const previousFocusId = focusId;
@@ -1685,13 +1631,8 @@ function renderTermSheet(id = focusId) {
   }
   sheetRelationsEl.innerHTML = '';
   let groupCount = 0;
-  [
-    ['holds', 'Holds'],
-    ['traces', 'Traces'],
-    ['carries', 'Carries'],
-    ['pairs', 'Pairs'],
-    ['nests', 'Nests'],
-  ].forEach(([key, label]) => {
+  CANONICAL_RELATION_KEYS.forEach((key) => {
+    const label = key.charAt(0).toUpperCase() + key.slice(1);
     const items = relationTargets(op, key);
     if (!items.length) return;
     groupCount++;
@@ -2388,7 +2329,7 @@ function collectRuntimeOverlay() {
     fieldPressure: +fieldPressure.toFixed(3),
     endpointOnly: fieldPressure > 0.38,
     endpointOnlyCount,
-    referenceFrame: currentFieldReferenceFrame || 'practice.whole-read',
+    referenceFrame: currentFieldReferenceFrame,
     outOfFrameAlpha: 0.08,
     neighbourhoodInFrame: currentFieldReferenceFrame ? [...local].filter((id) => localFrameIds.has(id)).length : localCount,
     settled: +settled.toFixed(2),
@@ -3213,7 +3154,7 @@ const activePointers = new Map();
 let pinchStartDist = null, pinchStartScale = null;
 
 // ── Dependency-order traversal ────────────────────────────────────────────────
-const SPINE_ORDERS = ['ground', 'first', 'second', 'third', 'practice', 'higher'];
+const SPINE_ORDERS = ORDER_SEQUENCE;
 let spineFlat = [];       // all ids in full dependency order
 let spineCurrentIdx = -1; // index into spineFlat
 
@@ -3275,7 +3216,7 @@ let homeAlpha = 1.0;        // fades 1→0 when entering a term; home field unde
 let homeAngles = new Map();
 
 function declaredRelationIds(op) {
-  return ['holds','traces','carries','pairs','nests'].flatMap((key) => op[key] || []);
+  return THREAD_RELATION_KEYS.flatMap((key) => op[key] || []);
 }
 
 function buildHomeAngles() {
@@ -3321,7 +3262,7 @@ function buildHomeConnections() {
   homeConnections = [];
   const seen = new Set();
   Object.values(allOps).forEach((a) => {
-    ['carries', 'pairs', 'traces', 'holds', 'nests'].forEach((key) => {
+    THREAD_RELATION_KEYS.forEach((key) => {
       (a[key] || []).forEach((bId) => {
         const b = allOps[bId];
         if (!b) return;
@@ -3656,8 +3597,9 @@ function operationFromFieldState(state) {
   const op = {
     id: state.id,
     title: state.title || state.id,
-    order: state.order || 'operation',
-    entry_order: state.order || 'operation',
+    order: state.order || state.register || 'unplaced',
+    entry_order: state.order || null,
+    entry_register: state.register || null,
     behaviour: '',
     place: state.place || '',
     atlasUrl: state.atlasUrl || '',
@@ -3737,7 +3679,7 @@ async function bootstrap() {
     // generated Atlas read-model, and that the read path is one-way.
     if (fieldStatusEl) {
       const orderCount = new Set(states.map((s) => String(s.order || '').toLowerCase()).filter(Boolean)).size;
-      const version = payload.atlasVersion ? 'atlas ' + payload.atlasVersion : 'atlas version unrecorded';
+      const version = payload.sourceHash ? 'atlas ' + payload.sourceHash.slice(7, 19) : 'atlas identity unavailable';
       fieldStatusEl.textContent = states.length + ' terms · ' + orderCount + ' orders · ' + version + ' · generated read-model';
     }
     Object.values(allOps).forEach((op) => { if (!op.profile) op.profile = computeProfile(op); });
@@ -3831,6 +3773,22 @@ bootstrap();
 const GITHUB_DOC = "https://github.com/reubenmunro/reality-mechanics/blob/main";
 const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
 const MCP_ENDPOINT = "https://mcp.realitymechanics.nz/mcp";
+const PROOF_CANONICAL_SELECTIONS = Object.freeze([
+  "first.relation",
+  "practice.atlas",
+  "practice.reality-mechanics-theory",
+]);
+for (const id of PROOF_CANONICAL_SELECTIONS) {
+  if (!CANONICAL_ENTRY_INDEX[id]) throw new Error(`Proof selection does not resolve in Canonical Graph: ${id}`);
+}
+
+function proofCanonicalResultsHtml() {
+  return PROOF_CANONICAL_SELECTIONS.map((id) => {
+    const entry = CANONICAL_ENTRY_INDEX[id];
+    const url = `${GITHUB_DOC}/${entry.sourcePath.split("/").map(encodeURIComponent).join("/")}`;
+    return `<li><a href="${url}">${escapeDocumentHtml(entry.title)}</a> <code>${id}</code><br/>Determination: <code>${escapeDocumentHtml(entry.determination)}</code></li>`;
+  }).join("");
+}
 
 // W-001 — shared wayfinding for the document surfaces. Two ways into one
 // record: observing (human) and MCP traversal (AI). Neither is primary; both
@@ -3865,13 +3823,52 @@ function waysInHtml() {
           <h3>AI participation</h3>
           <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index &rarr; Repository</p>
           <p>The MCP is the read-only doorway for AI workers: the same canonical structure, served as traversal tools instead of pages. It exists so AI participants read structure rather than infer it. No write tools are exposed.</p>
-          <p>Begin with <code>begin_atlas_session</code>, then <code>get_public_surfaces</code>. Orientation: <a href="${GITHUB_DOC}/docs/PROGRAMME_INDEX.md">programme index</a> &middot; <a href="${GITHUB_DOC}/Reality_Mechanics/AI_PARTICIPATION.md">AI participation</a>.</p>
+          <p>Begin with <code>begin_atlas_session</code>, then use <code>get_entry</code> and <code>get_related</code>. The protocol and entry structure are generated from the Atlas.</p>
           <p class="endpoint"><code>${MCP_ENDPOINT}</code></p>
         </div>
       </div>
-      <p class="evidence-ladder">One record, one path: this site reads from <a href="${GITHUB_REPO_URL}">GitHub</a>, where the <a href="${GITHUB_REPO_URL}/tree/main/Reality_Mechanics">Atlas</a> is canonical, <a href="${GITHUB_DOC}/docs/reports">reports</a> preserve the evidence, and <a href="${GITHUB_REPO_URL}/tree/main/docs/runtime">runtime contracts</a> govern what the instruments may claim. Every public claim retraces along that path.</p>
+      <p class="evidence-ladder">Canonical source: <a href="${GITHUB_REPO_URL}/tree/main/Reality_Mechanics">Atlas</a>. This participation was translated from <code>${CANONICAL_SOURCE_HASH}</code>. <a href="${GITHUB_DOC}/docs/reports">Proof records</a> and maintained interfaces remain non-canonical.</p>
     </section>
 `;
+}
+
+function escapeDocumentHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function canonicalMarkdownHtml(markdown) {
+  const readable = String(markdown || "").replace(
+    /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g,
+    (_match, target, label) => label || target,
+  );
+  return readable.split(/\n{2,}/).filter(Boolean).map((block) => {
+    if (/^```/.test(block) && /```$/.test(block)) {
+      return `<pre><code>${escapeDocumentHtml(block.replace(/^```[^\n]*\n?/, "").replace(/\n?```$/, ""))}</code></pre>`;
+    }
+    const lines = block.split("\n");
+    if (lines.every((line) => /^-\s+/.test(line))) {
+      return `<ul>${lines.map((line) => `<li>${escapeDocumentHtml(line.replace(/^-\s+/, ""))}</li>`).join("")}</ul>`;
+    }
+    return `<p>${escapeDocumentHtml(block).replaceAll("\n", "<br/>")}</p>`;
+  }).join("\n");
+}
+
+function theoryEntryHtml() {
+  const sourceUrl = `${GITHUB_DOC}/${PUBLIC_THEORY_ENTRY.sourcePath.split("/").map(encodeURIComponent).join("/")}`;
+  const sections = PUBLIC_THEORY_ENTRY.content.sections.map((section) => `
+    <section>
+      <h2>${escapeDocumentHtml(section.heading)}</h2>
+      ${canonicalMarkdownHtml(section.markdown)}
+    </section>`).join("");
+  return `
+    <h1>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.title)}</h1>
+    <div class="lede">${canonicalMarkdownHtml(PUBLIC_THEORY_ENTRY.content.lead)}</div>
+    ${sections}
+    <p class="canonical-identity">Generated from <a href="${sourceUrl}">${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.sourcePath)}</a><br/>Determination: <code>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.determination)}</code><br/>Source: <code>${CANONICAL_SOURCE_HASH}</code></p>`;
 }
 
 export function theoryPage() {
@@ -3931,58 +3928,15 @@ export function theoryPage() {
     </nav>
   </header>
   <main id="main">
-    <h1>Reality already carries order.</h1>
-    <p class="lede">Reality Mechanics does not invent structure. It observes structural relations already carried in reality — and keeps every observation retraceable to its source.</p>
-
-    <h2>Why the discipline works.</h2>
-    <blockquote class="postulate">
-      <p>Relation holds.<br/>Order carries.<br/>Trace places.</p>
-      <cite>Working Postulate v0.6 — versioned, answerable to the Atlas, corrected by failure. Not a doctrine.</cite>
-    </blockquote>
-    <p>This is the ordinary-language test of whether a term has entered order: things relate; relation holds where it can remain available; order carries where what holds can continue; trace places where what carries can be followed back.</p>
-
-    <h2>The standard every claim answers to</h2>
-    <blockquote class="postulate quiet">
-      <p>Every accepted claim should be independently reviewable.<br/>Every accepted decision should be independently retraceable.</p>
-      <cite>Constitution — constitutional aim.</cite>
-    </blockquote>
-
-    <h2>How the surfaces demonstrate it</h2>
-    <div class="surfaces">
-      <a class="surface" href="/field"><span class="surface-name">Observatory</span><span class="surface-desc">Structure made visible — terms as places, relations as strands, order as depth.</span></a>
-      <a class="surface" href="https://calibration.realitymechanics.nz/"><span class="surface-name">Pulse</span><span class="surface-desc">Behaviour through time — strain, threshold, correction.</span></a>
-      <a class="surface" href="/proof"><span class="surface-name">Proof</span><span class="surface-desc">The retrace pathway — accepted, candidate, unresolved, with evidence.</span></a>
-      <a class="surface" href="/calculus"><span class="surface-name">Calculus</span><span class="surface-desc">The derivation surface — what is derived, calibrated, heuristic, and still unresolved.</span></a>
-    </div>
-    <p>Theory explains; it is not duplicated here. Each surface reads the same repository record.</p>
-
-    <h2>Canonical documents</h2>
-    <ul>
-      <li><a href="${GITHUB_DOC}/Reality_Mechanics/Theory.md">Theory</a> — canonical discipline explanation in the Atlas.</li>
-      <li><a href="${GITHUB_DOC}/MISSION.md">Mission</a> — purpose and compass.</li>
-      <li><a href="${GITHUB_DOC}/docs/CONSTITUTION.md">Constitution</a> — governing constraints.</li>
-      <li><a href="${GITHUB_DOC}/docs/practice/RUNTIME_PRINCIPLES.md">Runtime principles</a> — what the live runtime already implies.</li>
-    </ul>
-
-    <h2>Governance and practice</h2>
-    <ul>
-      <li><a href="${GITHUB_DOC}/docs/practice/COMMISSIONS.md">Commissions register</a> — resolved programme work.</li>
-    </ul>
-
-    <h2>Calculus</h2>
-    <section class="calculus-notebook" aria-label="Practice calculus">
-      <p class="notebook-kicker">Laboratory notebook · unpromoted</p>
-      <p><a href="${GITHUB_DOC}/docs/practice/PRACTICE_CALCULUS.md">Practice calculus</a> — candidate operational read. Precision without decoration.</p>
-    </section>
+    ${theoryEntryHtml()}
   ${waysInHtml()}
   </main>
 </body>
 </html>`;
 }
 
-// D-025: the Calculus surface renders its status vocabulary, derivation chain,
-// and inventory from public-surface-manifest.mjs — the same data the MCP
-// serves to AI readers. One source of truth, two readers; drift prevented.
+// Calculus methods and evidence are maintained Calibration participation. They
+// remain visibly non-canonical and never enter the Canonical Graph or MCP.
 function calculusSourceLink(path) {
   const label = String(path).split("/").pop();
   return '<a href="' + sourceUrl(path) + '">' + label + '</a>';
@@ -4097,6 +4051,9 @@ export function calculusPage() {
     <p class="lede">The Calculus is the derivation surface. It records how Reality Mechanics moves from relation, order, trace, and carrying toward explicit derivation — and preserves every gap it has not yet closed.</p>
     <p class="notice"><b>Nothing on this page is promoted.</b> The Calculus has no accepted operation; the <code>:</code> operator is not accepted. Statuses below are exact — where derivation is incomplete, the gap is shown, not papered over.</p>
 
+    <h2>Canonical comparison baseline</h2>
+    <p>This surface compares its methods against generated Atlas structure from <code>${CANONICAL_SOURCE_HASH}</code>. Relations: <code>${RELATION_KEYS.join(" · ")}</code>. Orders: <code>${ORDER_VALUES.join(" · ")}</code>. Registers: <code>${REGISTER_VALUES.join(" · ")}</code>.</p>
+
     <h2>The status vocabulary</h2>
     <p>Every claim on this surface carries one of four statuses. They are not interchangeable.</p>
     <div class="vocab">
@@ -4175,7 +4132,7 @@ export function submissionPage() {
     a:hover { color:rgba(200,96,26,0.86); border-bottom-color:rgba(200,96,26,0.3); }
     .record { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px 36px; margin:28px 0 0; }
     .record-section h3 { margin:0 0 12px; font:500 10px/1 system-ui, sans-serif; letter-spacing:0.16em; text-transform:uppercase; }
-    .record-section.accepted h3 { color:rgba(200,96,26,0.62); }
+    .record-section.atlas-record h3 { color:rgba(200,96,26,0.62); }
     .record-section.candidate h3 { color:rgba(77,142,166,0.72); }
     .record-section.unresolved h3 { color:rgba(77,94,114,0.82); }
     .record-section ul { font-size:15px; line-height:1.65; }
@@ -4210,12 +4167,12 @@ export function submissionPage() {
   </header>
   <main id="main">
     <h1>Retrace pathway</h1>
-    <p class="lede">Proof packages what the programme currently holds as <b>accepted</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b> — so independent participants can review, challenge, and retrace it. Nothing here is promoted beyond its stated status.</p>
+    <p class="lede">Proof preserves the retrace for what is <b>recorded in the Atlas</b>, what remains <b>candidate</b>, and what is still <b>unresolved</b>. It carries evidence and review; it does not determine Atlas structure.</p>
 
     <h2>The retrace pathway</h2>
     <p>Every claim on this site can be walked back to its source. The pathway has four steps:</p>
     <div class="pathway">
-      <div class="step"><span class="step-n">1</span><b>Claim</b>A statement with a named status — accepted, candidate, or unresolved. Never more than its status.</div>
+      <div class="step"><span class="step-n">1</span><b>Claim</b>A preserved statement, explicitly separated from canonical Atlas identity.</div>
       <a class="step" href="${GITHUB_DOC}/Reality_Mechanics"><span class="step-n">2</span><b>Source</b>The Atlas term or repository document the claim reads from. GitHub is canonical.</a>
       <a class="step" href="${GITHUB_DOC}/docs/stewardship/STEWARDSHIP_V1.md"><span class="step-n">3</span><b>Method</b>The stewardship tests or commission that examined it. The burden of proof sits on every proposed change, never on existing structure.</a>
       <a class="step" href="${GITHUB_DOC}/docs/reports"><span class="step-n">4</span><b>Record</b>The evidence report that preserved the examination, in <code>docs/reports/</code>.</a>
@@ -4231,17 +4188,12 @@ export function submissionPage() {
     <p>Atlas (source) → Stewardship (verification) → Platform (public surfaces). The Atlas is the editable, dependency-ordered record; Stewardship is a recovered audit method that verifies existing structure and authors nothing new; the Platform reads the Atlas through a generated D1 read-model. Authority flows down; evidence flows up.</p>
 
     <h2>Working architecture</h2>
-    <p>Presented honestly: the accepted body is small and conservative; the investigated body is large. That is by design — derivation before promotion.</p>
+    <p>Proof records evidence and review. It does not assign canonical status. Entries under “Recorded in Atlas” are generated from <code>${CANONICAL_SOURCE_HASH}</code>; candidate and unresolved material remains non-canonical evidence.</p>
     <div class="record">
-      <section class="record-section accepted">
-        <h3>Accepted</h3>
+      <section class="record-section atlas-record">
+        <h3>Recorded in Atlas</h3>
         <ul>
-          <li>Constitution (C001–C014) as governing constraints.</li>
-          <li>Atlas as canonical source; D1 as a generated read-model.</li>
-          <li><b>Relation</b> as the sole primitive.</li>
-          <li>Working Postulate v0.6 — "relation holds, order carries, trace places."</li>
-          <li>Stewardship method v1 — eight invariants, evidence grading E1–E5.</li>
-          <li>Public surfaces: Observatory, Pulse, MCP.</li>
+          ${proofCanonicalResultsHtml()}
         </ul>
       </section>
       <section class="record-section candidate">

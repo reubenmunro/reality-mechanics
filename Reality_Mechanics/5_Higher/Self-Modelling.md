@@ -5,23 +5,36 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.self-modelling
-
-needs:
-  - "[[Recursion]]"
-  - "[[Consciousness]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "an engineered form of higher-order carrying where a participant, system, or practice uses a model of itself for future participation."
-  holds: "[[Recursion]] and [[Consciousness]]."
-  pairs: "[[Self-Regulation]]. Self-Modelling makes self-read available; Self-Regulation uses that read to maintain carrying."
+  needs:
+    targets:
+      - higher.recursion
+      - higher.consciousness
+  holds:
+    targets:
+      - higher.recursion
+      - higher.consciousness
+    read: "[[Recursion]] and [[Consciousness]]."
+  pairs:
+    targets:
+      - higher.self-regulation
+    read: "[[Self-Regulation]]. Self-Modelling makes self-read available; Self-Regulation uses that read to maintain carrying."
   traces:
-    - "[[Recursion]]"
-    - "[[Consciousness]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where a participant or system carries a model of itself and uses that model to guide further participation."
+    targets:
+      - higher.recursion
+      - higher.consciousness
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where a participant or system carries a model of itself and uses that model to guide further participation."
   carries:
-    - "[[Self-Regulation]]"
-
+    targets:
+      - higher.self-regulation
 publish: true
 status: stable
 ---

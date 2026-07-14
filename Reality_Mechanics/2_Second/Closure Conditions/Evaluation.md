@@ -5,23 +5,35 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.evaluation
-
-needs:
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read being assessed within a closure scope."
-  holds: "[[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Observation]]"
+  needs:
+    targets:
+      - second.closure-scope
+  holds:
+    targets:
+      - second.closure-scope
+    read: "[[Closure Scope]]."
+  pairs:
+    targets:
+      - second.observation
+    read: "Asymmetry carries downward — into [[Observation]]"
   traces:
-    - "[[Closure Scope]]"
-    - "[[Decision]]"
-  nests: "where a read is actively checked, compared, judged, or assessed within scope."
-  reads: "where a read is being actively assessed rather than merely available — where something is being checked, compared, or judged within the current scope."
+    targets:
+      - second.closure-scope
+      - second.decision
+  nests:
+    targets: []
+    read: "where a read is actively checked, compared, judged, or assessed within scope."
+  reads:
+    targets: []
+    read: "where a read is being actively assessed rather than merely available — where something is being checked, compared, or judged within the current scope."
   carries:
-    - "[[Observation]]"
-    - "[[Progress]]"
-
+    targets:
+      - second.observation
+      - second.progress
 publish: true
 status: stable
 ---

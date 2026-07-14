@@ -5,25 +5,38 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.clear
-
-needs:
-  - "[[Relation]]"
-  - "[[Clean]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the readable side of clean relation — where relation is unobstructed enough for clearance to be held"
-  holds: "[[Clean]] and [[Relation]] — relation must remain free from residue or drift before it can be read without obstruction"
-  pairs: "[[Tact]] — clear governs readability; tact governs handling at contact"
+  needs:
+    targets:
+      - first.relation
+      - first.clean
+  holds:
+    targets:
+      - first.clean
+      - first.relation
+    read: "[[Clean]] and [[Relation]] — relation must remain free from residue or drift before it can be read without obstruction"
+  pairs:
+    targets:
+      - first.tact
+    read: "[[Tact]] — clear governs readability; tact governs handling at contact"
   traces:
-    - "[[Relation]]"
-    - "[[Clean]]"
-  nests: "before clearance — clear is the readability condition from which held separation can become readable as clearance"
-  reads: "where relation can be read without obstruction, obscurity, or false mixture"
+    targets:
+      - first.relation
+      - first.clean
+  nests:
+    targets: []
+    read: "before clearance — clear is the readability condition from which held separation can become readable as clearance"
+  reads:
+    targets: []
+    read: "where relation can be read without obstruction, obscurity, or false mixture"
   carries:
-    - "[[Clearance]]"
-    - "[[Relation Read]]"
-    - "[[Daylighting]]"
-
+    targets:
+      - first.clearance
+      - first.relation-read
+      - practice.shade-clearing
 publish: true
 status: stable
 ---

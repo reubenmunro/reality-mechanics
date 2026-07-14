@@ -5,25 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.consequence
-
-needs:
-  - "[[Effect]]"
-  - "[[Carrying]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "an effect continuing into later conditions through carrying."
-  holds: "[[Effect]], [[Carrying]], and [[Trace]]. An effect must be present, its continuation must be carried, and the later condition must remain traceable to that effect before consequence can be named."
-  pairs: "No lateral pair is required at this placement yet. Consequence names the continuation of effect, not whether that continuation is beneficial, harmful, intended, foreseen, or answerable."
+  needs:
+    targets:
+      - second.effect
+      - second.carrying
+      - first.trace
+  holds:
+    targets:
+      - second.effect
+      - second.carrying
+      - first.trace
+    read: "[[Effect]], [[Carrying]], and [[Trace]]. An effect must be present, its continuation must be carried, and the later condition must remain traceable to that effect before consequence can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Consequence names the continuation of effect, not whether that continuation is beneficial, harmful, intended, foreseen, or answerable."
   traces:
-    - "[[Effect]]"
-    - "[[Carrying]]"
-    - "[[Trace]]"
-  nests: "inside carrying where an effect does not end at the coupling in which it first became readable but participates in what follows."
-  reads: "where a later condition can be followed back to an earlier effect whose carrying remains active within it."
+    targets:
+      - second.effect
+      - second.carrying
+      - first.trace
+  nests:
+    targets: []
+    read: "inside carrying where an effect does not end at the coupling in which it first became readable but participates in what follows."
+  reads:
+    targets: []
+    read: "where a later condition can be followed back to an earlier effect whose carrying remains active within it."
   carries:
-    - "[[Harm]]"
-
+    targets:
+      - third.harm
 publish: true
 status: stable
 ---

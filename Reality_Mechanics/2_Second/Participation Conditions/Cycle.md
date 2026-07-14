@@ -5,23 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.cycle
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Return]]"
-  - "[[Period]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a return bounded by a recognisable period."
-  holds: "[[Recurrence]], [[Return]], and [[Period]]."
-  pairs: "No lateral pair is required. [[Recurrence]], [[Return]], and [[Period]] carry downward into Cycle."
+  needs:
+    targets:
+      - second.recurrence
+      - second.return
+      - second.period
+  holds:
+    targets:
+      - second.recurrence
+      - second.return
+      - second.period
+    read: "[[Recurrence]], [[Return]], and [[Period]]."
+  pairs:
+    targets:
+      - second.recurrence
+      - second.return
+      - second.period
+    read: "No lateral pair is required. [[Recurrence]], [[Return]], and [[Period]] carry downward into Cycle."
   traces:
-    - "[[Recurrence]]"
-    - "[[Return]]"
-    - "[[Period]]"
-  nests: "where recurrence makes a carried condition readable again through a recognisable period."
-  reads: "where a return can be bounded as one complete recurrence through a period."
-  carries: []
+    targets:
+      - second.recurrence
+      - second.return
+      - second.period
+  nests:
+    targets: []
+    read: "where recurrence makes a carried condition readable again through a recognisable period."
+  reads:
+    targets: []
+    read: "where a return can be bounded as one complete recurrence through a period."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

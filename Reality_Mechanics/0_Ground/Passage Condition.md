@@ -5,20 +5,32 @@ order: ground
 kind: class
 ai_role: class
 condition_key: ground.passage-condition
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a structural role — terms that regulate whether order can pass, hold, close, or remain available across a boundary or scope"
-  holds: "[[Root Order]] — the governing arrangement must hold before regulative roles within it can be named"
-  pairs: "root conditions — regulates passage rather than making an order emerge by itself"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — the governing arrangement must hold before regulative roles within it can be named"
+  pairs:
+    targets: []
+    read: "root conditions — regulates passage rather than making an order emerge by itself"
   traces:
-    - "[[Root Order]]"
-  nests: "across orders wherever a boundary or scope must regulate continuation, closure, allowance, or availability"
-  reads: "where a term does not make the next order emerge but determines whether existing carrying can continue, close, be allowed through, or remain available inside a scope"
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "across orders wherever a boundary or scope must regulate continuation, closure, allowance, or availability"
+  reads:
+    targets: []
+    read: "where a term does not make the next order emerge but determines whether existing carrying can continue, close, be allowed through, or remain available inside a scope"
   carries:
-    - "[[Allow]]"
+    targets:
+      - first.allow
 publish: true
 status: stable
 ---

@@ -1,32 +1,47 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.atlas-garden
-
-needs:
-  - "[[Atlas Practice]]"
-  - "[[Tend]]"
-  - "[[Root Resilience]]"
-  - "[[Posture Read]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the maintained structural read of the Atlas: foundation held, members relieved, postures placed, occlusion daylighted, and re-entry preserved."
-  holds: "[[Atlas Practice]], [[Tend]], [[Root Resilience]], and [[Posture Read]]. Atlas Practice must hold the discipline, tending must return with care, the foundation must withstand member-level work, and posture experiments must be placeable without becoming doctrine."
-  pairs: "Atlas Fabric carries downward as a practice container for maintaining the Atlas as living order rather than finished text."
+  needs:
+    targets:
+      - practice.atlas-practice
+      - practice.tend
+      - practice.root-resilience
+      - practice.posture-read
+  holds:
+    targets:
+      - practice.atlas-practice
+      - practice.tend
+      - practice.root-resilience
+      - practice.posture-read
+    read: "[[Atlas Practice]], [[Tend]], [[Root Resilience]], and [[Posture Read]]. Atlas Practice must hold the discipline, tending must return with care, the foundation must withstand member-level work, and posture experiments must be placeable without becoming doctrine."
+  pairs:
+    targets: []
+    read: "Atlas Fabric carries downward as a practice container for maintaining the Atlas as living order rather than finished text."
   traces:
-    - "[[Atlas Practice]]"
-    - "[[Tend]]"
-    - "[[Root Resilience]]"
-    - "[[Posture Read]]"
-    - "[[Structural Disorder]]"
-  nests: "inside Atlas Practice as the maintenance protocol for foundation, backbone, member, occlusion, relief, placement, failed postures, and re-entry."
-  reads: "where the Atlas is treated as a living carrying system whose terms must be placed, borne, relieved, daylighted, spliced, or left ungrounded according to what keeps re-entry possible and improves [[Resolution Rate]] without losing trace."
+    targets:
+      - practice.atlas-practice
+      - practice.tend
+      - practice.root-resilience
+      - practice.posture-read
+      - ground.structural-disorder
+  nests:
+    targets: []
+    read: "inside Atlas Practice as the maintenance protocol for foundation, backbone, member, occlusion, relief, placement, failed postures, and re-entry."
+  reads:
+    targets:
+      - second.resolution-rate
+    read: "where the Atlas is treated as a living carrying system whose terms must be placed, borne, relieved, daylighted, spliced, or left ungrounded according to what keeps re-entry possible and improves [[Resolution Rate]] without losing trace."
   carries:
-    - "[[Bearing Pass]]"
-
+    targets:
+      - practice.garden-pass
 publish: true
 status: working
 ---

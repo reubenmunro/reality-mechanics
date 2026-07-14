@@ -5,28 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.cancer
+determination: pd.v3.pre-provenance-baseline
 domain: life
-
-needs:
-  - "[[Life Field]]"
-  - "[[Alive]]"
-  - "[[Misrepair]]"
-  - "[[Bounded Asymmetry]]"
 
 conditions:
   places: "the condition through which living repair becomes misdirected re-bearing — bounded cellular difference that carries harmful recursion against the living condition it belongs within."
-  holds: "[[Life Field]], [[Alive]], [[Misrepair]], and [[Bounded Asymmetry]]. The alive condition must be present and misrepair must misdirect re-bearing before bounded cellular difference can be named as cancerous."
-  pairs: "[[Alive]]. Alive names the living condition; Cancer names the disorder where misrepair misdirects re-bearing within that condition so cellular asymmetry escapes compatible regulation."
+  needs:
+    targets:
+      - third.life-field
+      - third.alive
+      - third.misrepair
+      - first.bounded-asymmetry
+  holds:
+    targets:
+      - third.life-field
+      - third.alive
+      - third.misrepair
+      - first.bounded-asymmetry
+    read: "[[Life Field]], [[Alive]], [[Misrepair]], and [[Bounded Asymmetry]]. The alive condition must be present and misrepair must misdirect re-bearing before bounded cellular difference can be named as cancerous."
+  pairs:
+    targets:
+      - third.alive
+    read: "[[Alive]]. Alive names the living condition; Cancer names the disorder where misrepair misdirects re-bearing within that condition so cellular asymmetry escapes compatible regulation."
   traces:
-    - "[[Life Field]]"
-    - "[[Alive]]"
-    - "[[Misrepair]]"
-    - "[[Bounded Asymmetry]]"
-  nests: "within the Life Field as the condition through which living repair becomes misdirected — the structural ground for over-treatment reads."
-  reads: "Cancer becomes readable where living recurrence and repair become misdirected enough that cellular continuation becomes incompatible with organism-level carrying."
+    targets:
+      - third.life-field
+      - third.alive
+      - third.misrepair
+      - first.bounded-asymmetry
+  nests:
+    targets: []
+    read: "within the Life Field as the condition through which living repair becomes misdirected — the structural ground for over-treatment reads."
+  reads:
+    targets: []
+    read: "Cancer becomes readable where living recurrence and repair become misdirected enough that cellular continuation becomes incompatible with organism-level carrying."
   carries:
-    - "[[Over-Treatment]]" 
-
+    targets:
+      - third.over-treatment
 publish: true
 status: stable
 ---

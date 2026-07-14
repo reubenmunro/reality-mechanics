@@ -5,27 +5,40 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.degenerate
-
-needs:
-  - "[[Generic]]"
-  - "[[Structural Disorder]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural condition where carrying continues while the generative trace is lost — where a term, pattern, or practice carries forward without remaining answerable to the source that generated it"
-  holds: "[[Generic]] and [[Structural Disorder]] — a generative source must be operative before it can be lost, and loss of dependency readability must be nameable before its specific form as generative trace loss can be placed"
-  pairs: "[[Regenerate]]. Degenerate names carrying that has lost its generative trace; Regenerate names the return to generative conditions from within that loss — the recovery of the trace. Each requires the other: Degenerate is only nameable against the possibility of returning from it; Regenerate is only nameable against the condition it addresses."
+  needs:
+    targets:
+      - ground.generic
+      - ground.structural-disorder
+  holds:
+    targets:
+      - ground.generic
+      - ground.structural-disorder
+    read: "[[Generic]] and [[Structural Disorder]] — a generative source must be operative before it can be lost, and loss of dependency readability must be nameable before its specific form as generative trace loss can be placed"
+  pairs:
+    targets:
+      - ground.regenerate
+    read: "[[Regenerate]]. Degenerate names carrying that has lost its generative trace; Regenerate names the return to generative conditions from within that loss — the recovery of the trace. Each requires the other: Degenerate is only nameable against the possibility of returning from it; Regenerate is only nameable against the condition it addresses."
   traces:
-    - "[[Generic]]"
-    - "[[Structural Disorder]]"
-  nests: "within Structural Disorder as its specific mode where carrying continues while the generative trace drops — where what was generated from a source carries on as if it were the source"
-  reads: "where a term, pattern, or practice carries forward while the trace to its generative origin has been lost — where the form continues but the source is no longer held, and what was an instance has become a local primitive"
+    targets:
+      - ground.generic
+      - ground.structural-disorder
+  nests:
+    targets: []
+    read: "within Structural Disorder as its specific mode where carrying continues while the generative trace drops — where what was generated from a source carries on as if it were the source"
+  reads:
+    targets: []
+    read: "where a term, pattern, or practice carries forward while the trace to its generative origin has been lost — where the form continues but the source is no longer held, and what was an instance has become a local primitive"
   carries:
-    - "[[Source Drift]]"
-    - "[[Thin Carrying]]"
-    - "[[Destination-Led Carrying]]"
-    - "[[Regenerate]]"
-    - "[[Degeneration Read]]"
-
+    targets:
+      - higher.source-drift
+      - third.thin-carrying
+      - third.destination-led-carrying
+      - ground.regenerate
+      - third.degeneration-read
 publish: true
 status: stable
 ---

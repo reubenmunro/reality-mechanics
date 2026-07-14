@@ -1,26 +1,42 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.section
-
-needs:
-  - "[[Practice]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a participant's analytic cut through which part of relation becomes readable, countable, comparable, or diagnosable."
-  holds: "[[Practice]] and [[Readability]]. A participant must be in practice, and reading must be possible, before a cut made for reading can be named. Section does not hold relation open; relation and connection do not require sectioning."
-  pairs: "No pair placed yet. Section is a participant enactment alongside [[Carrying]] and [[Retracing]] — carry enacted, trace followed, boundary cut — and stands to [[Boundary]] as enactment to condition; none is a single mutual lateral pair."
+  needs:
+    targets:
+      - practice.practice
+      - second.readability
+  holds:
+    targets:
+      - practice.practice
+      - second.readability
+    read: "[[Practice]] and [[Readability]]. A participant must be in practice, and reading must be possible, before a cut made for reading can be named. Section does not hold relation open; relation and connection do not require sectioning."
+  pairs:
+    targets:
+      - second.carrying
+      - practice.retracing
+      - first.boundary
+    read: "No pair placed yet. Section is a participant enactment alongside [[Carrying]] and [[Retracing]] — carry enacted, trace followed, boundary cut — and stands to [[Boundary]] as enactment to condition; none is a single mutual lateral pair."
   traces:
-    - "[[Practice]]"
-    - "[[Readability]]"
-  nests: "among the practice-level read operations as the cut that makes a part readable — answerable to the boundary and scope it cuts relative to, without becoming a condition in relation."
-  reads: "where a participant cuts relation into a part that can be read, counted, compared, or diagnosed, and where that cut can itself be tested against the boundary it follows, crosses, or hides."
-  carries: []
-
+    targets:
+      - practice.practice
+      - second.readability
+  nests:
+    targets: []
+    read: "among the practice-level read operations as the cut that makes a part readable — answerable to the boundary and scope it cuts relative to, without becoming a condition in relation."
+  reads:
+    targets: []
+    read: "where a participant cuts relation into a part that can be read, counted, compared, or diagnosed, and where that cut can itself be tested against the boundary it follows, crosses, or hides."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

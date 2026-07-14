@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.nested-relation
-
-needs:
-  - "[[Within]]"
-  - "[[Nesting Read]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "asymmetrical relation — one relation participating within, and remaining ordered by, another relation."
-  holds: "[[Within]] and [[Nesting Read]]."
-  pairs: "Asymmetry carries downward — into [[Structural Gathering]]"
+  needs:
+    targets:
+      - second.within
+      - second.nesting-read
+  holds:
+    targets:
+      - second.within
+      - second.nesting-read
+    read: "[[Within]] and [[Nesting Read]]."
+  pairs:
+    targets:
+      - second.structural-gathering
+    read: "Asymmetry carries downward — into [[Structural Gathering]]"
   traces:
-    - "[[Within]]"
-    - "[[Nesting Read]]"
-  nests: "where one relation participates within another while remaining retraceable as its own relation."
-  reads: "where a relation can be read as participating within another relation — inner/outer, carried/carrier, local/wider, term/condition — while remaining followable as its own condition rather than dissolving into the outer one."
+    targets:
+      - second.within
+      - second.nesting-read
+  nests:
+    targets: []
+    read: "where one relation participates within another while remaining retraceable as its own relation."
+  reads:
+    targets: []
+    read: "where a relation can be read as participating within another relation — inner/outer, carried/carrier, local/wider, term/condition — while remaining followable as its own condition rather than dissolving into the outer one."
   carries:
-    - "[[Structural Gathering]]"
-    - "[[Nested Coupling]]"
-
+    targets:
+      - second.structural-gathering
+      - third.nested-coupling
 publish: true
 status: stable
 ---

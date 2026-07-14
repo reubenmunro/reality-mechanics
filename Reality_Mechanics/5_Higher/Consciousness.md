@@ -5,26 +5,40 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.consciousness
-
-needs:
-  - "[[Recursion]]"
-  - "[[Read]]"
-  - "[[Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "readability becoming available within participation."
-  holds: "[[Recursion]], [[Read]], and [[Participation]]."
-  pairs: "Asymmetry carries downward — into [[Higher Learning]]"
+  needs:
+    targets:
+      - higher.recursion
+      - first.read
+      - second.participation
+  holds:
+    targets:
+      - higher.recursion
+      - first.read
+      - second.participation
+    read: "[[Recursion]], [[Read]], and [[Participation]]."
+  pairs:
+    targets:
+      - higher.higher-learning
+    read: "Asymmetry carries downward — into [[Higher Learning]]"
   traces:
-    - "[[Recursion]]"
-    - "[[Read]]"
-    - "[[Participation]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where a read becomes available within the participant carrying it."
+    targets:
+      - higher.recursion
+      - first.read
+      - second.participation
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where a read becomes available within the participant carrying it."
   carries:
-    - "[[Higher Learning]]" 
-    - "[[Self-Modelling]]"
-
+    targets:
+      - higher.higher-learning
+      - higher.self-modelling
 publish: true
 status: stable
 ---

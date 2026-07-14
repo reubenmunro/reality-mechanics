@@ -5,48 +5,60 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.bearing
-
-needs:
-  - "[[Strain]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "strain held as a readable condition — sustained without collapsing or dissipating"
-  holds: "[[Strain]] — strain must remain pressing while it is held"
-  pairs: "Asymmetry carries downward — into [[Resolution]]"
+  needs:
+    targets:
+      - first.strain
+  holds:
+    targets:
+      - first.strain
+    read: "[[Strain]] — strain must remain pressing while it is held"
+  pairs:
+    targets:
+      - first.resolution
+    read: "Asymmetry carries downward — into [[Resolution]]"
   traces:
-    - "[[Strain]]"
-  nests: "between strain and resolution — also nests under later carrying, closure, repair, and load-bearing reads without becoming those reads"
-  reads: "where strain can be read as held — where contrast is sustained within the bounded condition rather than dissipating or resolving"
+    targets:
+      - first.strain
+  nests:
+    targets: []
+    read: "between strain and resolution — also nests under later carrying, closure, repair, and load-bearing reads without becoming those reads"
+  reads:
+    targets: []
+    read: "where strain can be read as held — where contrast is sustained within the bounded condition rather than dissipating or resolving"
   carries:
-    - "[[Resolution]]"
-    - "[[Orientation]]"
-    - "[[Load]]"
-    - "[[Bearing Read]]"
-    - "[[Apparent Bearing]]"
-    - "[[Constraint]]"
-    - "[[Bearing Source]]"
-    - "[[Control]]"
-    - "[[Maintained Coupling]]"
-    - "[[Reciprocity]]"
-    - "[[Improvisation]]"
-    - "[[Faith Read]]"
-    - "[[Teaching]]"
-    - "[[Reality-Bearing Connection]]"
-    - "[[Absorb]]"
-    - "[[Failure]]"
-    - "[[Transfer]]"
-    - "[[Yield]]"
-    - "[[Bearing Relation]]"
-    - "[[Divisible Bearing]]"
-    - "[[Indivisible Bearing]]"
-    - "[[Invisible Bearing Read]]"
-    - "[[Collapse]]"
-    - "[[Field Bearing]]"
-    - "[[Caring]]"
-    - "[[Sensing]]"
-    - "[[Hidden Bearing]]"
-    - "[[Invisible Bearing]]"
-
+    targets:
+      - first.resolution
+      - first.orientation
+      - second.load
+      - second.bearing-read
+      - second.apparent-bearing
+      - second.constraint
+      - second.bearing-source
+      - third.control
+      - third.maintained-coupling
+      - third.reciprocity
+      - third.improvisation
+      - third.faith-read
+      - third.teaching
+      - practice.reality-bearing-connection
+      - first.absorb
+      - first.failure
+      - first.transfer
+      - first.yield
+      - second.bearing-relation
+      - second.divisible-bearing
+      - second.indivisible-bearing
+      - second.invisible-bearing-read
+      - second.collapse
+      - third.field-bearing
+      - third.caring
+      - third.sensing
+      - higher.hidden-bearing
+      - higher.invisible-bearing
 publish: true
 status: stable
 ---

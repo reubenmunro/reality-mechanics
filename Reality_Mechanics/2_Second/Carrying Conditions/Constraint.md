@@ -5,30 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.constraint
-
-needs:
-  - "[[Bearing]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "availability bounded through carrying."
-  holds: "[[Bearing]] and [[Carrying]]."
-  pairs: "[[Regulation]]. Constraint narrows availability through carrying; Regulation maintains carrying within those bounds."
+  needs:
+    targets:
+      - first.bearing
+      - second.carrying
+  holds:
+    targets:
+      - first.bearing
+      - second.carrying
+    read: "[[Bearing]] and [[Carrying]]."
+  pairs:
+    targets:
+      - second.regulation
+    read: "[[Regulation]]. Constraint narrows availability through carrying; Regulation maintains carrying within those bounds."
   traces:
-    - "[[Bearing]]"
-    - "[[Carrying]]"
-  nests: "as carrying narrowed into bounded availability. It can support regulation, resistance, binding, and restraint."
-  reads: "where carrying can be read as limiting what is available — where what can participate is narrowed or directed through the carrying condition."
+    targets:
+      - first.bearing
+      - second.carrying
+  nests:
+    targets: []
+    read: "as carrying narrowed into bounded availability. It can support regulation, resistance, binding, and restraint."
+  reads:
+    targets: []
+    read: "where carrying can be read as limiting what is available — where what can participate is narrowed or directed through the carrying condition."
   carries:
-    - "[[Regulation]]"
-    - "[[Resistance]]"
-    - "[[Binding]]"
-    - "[[Restraint]]"
-    - "[[Control]]"
-    - "[[Engineered Coupling]]"
-    - "[[Guard]]"
-    - "[[Governing]]"
-
+    targets:
+      - second.regulation
+      - second.resistance
+      - third.binding
+      - third.restraint
+      - third.control
+      - third.engineered-coupling
+      - second.guard
+      - third.governing
 publish: true
 status: stable
 ---

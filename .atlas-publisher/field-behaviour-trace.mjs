@@ -5,10 +5,15 @@
 
 import { resolveFocusReads } from "./read-engine.mjs";
 import { ratioModeForState, structuralMassForState } from "./ratio-register.mjs";
+import { RELATION_KEYS } from "./generated/canonical-participation.mjs";
 
 export { ratioModeForState, structuralMassForState };
 
-export const FIELD_RELATION_KEYS = ["holds", "traces", "carries", "pairs", "nests"];
+export const FIELD_RELATION_KEYS = RELATION_KEYS;
+const RHYTHM_RELATION_PRIORITY = Object.freeze(["carries", "holds", "traces", "pairs", "nests"]);
+for (const key of RHYTHM_RELATION_PRIORITY) {
+  if (!FIELD_RELATION_KEYS.includes(key)) throw new Error(`Rhythm relation is not canonical: ${key}`);
+}
 
 const RHYTHM_SIGNATURES = {
   holds: { mode: "anchor", behaviour: "sustained pressure near a held midpoint" },
@@ -124,8 +129,7 @@ function pickRhythmSample(outgoing, incoming, preferredType) {
     const match = pool.find((edge) => edge.type === preferredType);
     if (match) return match;
   }
-  const priority = ["carries", "holds", "traces", "pairs", "nests"];
-  for (const key of priority) {
+  for (const key of RHYTHM_RELATION_PRIORITY) {
     const match = pool.find((edge) => edge.type === key);
     if (match) return match;
   }
@@ -240,25 +244,25 @@ export function buildFieldBehaviourTrace({
       id: "reference-frame-dimming",
       observation: "Reference-frame dimming",
       runtimeInput: {
-        referenceFrame: referenceFrame || "practice.whole-read",
+        referenceFrame,
         inFrameAlpha: 1,
         outOfFrameAlpha,
       },
       ratioRelationState: {
-        frameActive: Boolean(referenceFrame && referenceFrame !== "practice.whole-read"),
+        frameActive: Boolean(referenceFrame),
       },
       atlasSource: {
-        fields: ["practice reference frame term id", "structuralFieldFrameIds membership"],
+        fields: [],
         values: {
           referenceFrame: referenceFrame || null,
           neighbourhoodInFrame: runtimeOverlay.neighbourhoodInFrame ?? null,
         },
       },
       mechanicalOutput: {
-        outOfFrameTermsDimmed: Boolean(referenceFrame && referenceFrame !== "practice.whole-read"),
-        relationSensibilityAveraged: Boolean(referenceFrame && referenceFrame !== "practice.whole-read"),
+        outOfFrameTermsDimmed: Boolean(referenceFrame),
+        relationSensibilityAveraged: Boolean(referenceFrame),
       },
-      meaning: "When a practice reference frame is active, terms outside the frame membership set lerp to alpha 0.08; relations inherit averaged endpoint sensibility.",
+      meaning: "A non-canonical participant frame may modulate visibility, but no frame may be inferred from Atlas structure.",
     },
     {
       id: "relation-rhythm-signature",

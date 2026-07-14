@@ -5,30 +5,47 @@ order: first
 kind: crossing
 ai_role: crossing
 condition_key: first.first-order-crossing
-
-needs:
-  - "[[First Order]]"
-  - "[[Hold]]"
-  - "[[Connection]]"
-  - "[[Carry]]"
-  - "[[Place]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the crossing where held first-order carry is entered and enacted as second-order carrying."
-  holds: "[[First Order]], [[Hold]], [[Connection]], [[Carry]], and [[Place]]. First-order passage remains held and directionally available while it is enacted as carrying; hold does not finish before carrying begins. Place makes that passage enterable and checkable."
-  pairs: "Asymmetry carries downward — marks the transition into [[Carrying]] and [[Second Order]]"
+  needs:
+    targets:
+      - first.first-order
+      - first.hold
+      - first.connection
+      - first.carry
+      - first.place
+  holds:
+    targets:
+      - first.first-order
+      - first.hold
+      - first.connection
+      - first.carry
+      - first.place
+    read: "[[First Order]], [[Hold]], [[Connection]], [[Carry]], and [[Place]]. First-order passage remains held and directionally available while it is enacted as carrying; hold does not finish before carrying begins. Place makes that passage enterable and checkable."
+  pairs:
+    targets:
+      - second.carrying
+      - second.second-order
+    read: "Asymmetry carries downward — marks the transition into [[Carrying]] and [[Second Order]]"
   traces:
-    - "[[First Order]]"
-    - "[[Hold]]"
-    - "[[Connection]]"
-    - "[[Carry]]"
-    - "[[Place]]"
-  nests: "between orders — not a general threshold; marks the specific passage from first-order determination into second-order carrying"
-  reads: "where held forward availability is entered or continued as carrying."
+    targets:
+      - first.first-order
+      - first.hold
+      - first.connection
+      - first.carry
+      - first.place
+  nests:
+    targets: []
+    read: "between orders — not a general threshold; marks the specific passage from first-order determination into second-order carrying"
+  reads:
+    targets: []
+    read: "where held forward availability is entered or continued as carrying."
   carries:
-    - "[[Carrying]]"
-    - "[[Second Order]]"
-
+    targets:
+      - second.carrying
+      - second.second-order
 publish: true
 status: working
 ---

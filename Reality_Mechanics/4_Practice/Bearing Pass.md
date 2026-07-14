@@ -1,34 +1,48 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.garden-pass
-
-needs:
-  - "[[Atlas Fabric]]"
-  - "[[Check]]"
-  - "[[Carry-Trace Test]]"
-  - "[[Resolution Rate]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a repeatable bearing pass through an Atlas member: identify it, trace what holds it, test what it carries, name occlusion, and choose the next care action."
-  holds: "[[Atlas Fabric]], [[Check]], [[Carry-Trace Test]], and [[Resolution Rate]]. The fabric must provide the care frame, Check must locate the boundary of the member, Carry-Trace Test must distinguish confirmed carries from openings, and Resolution Rate must keep tending answerable to cleaner continuation rather than mere speed."
-  pairs: "Bearing Pass carries downward as a repeated care movement inside Atlas Fabric."
+  needs:
+    targets:
+      - practice.atlas-garden
+      - practice.check
+      - practice.carry-trace-test
+      - second.resolution-rate
+  holds:
+    targets:
+      - practice.atlas-garden
+      - practice.check
+      - practice.carry-trace-test
+      - second.resolution-rate
+    read: "[[Atlas Fabric]], [[Check]], [[Carry-Trace Test]], and [[Resolution Rate]]. The fabric must provide the care frame, Check must locate the boundary of the member, Carry-Trace Test must distinguish confirmed carries from openings, and Resolution Rate must keep tending answerable to cleaner continuation rather than mere speed."
+  pairs:
+    targets: []
+    read: "Bearing Pass carries downward as a repeated care movement inside Atlas Fabric."
   traces:
-    - "[[Atlas Fabric]]"
-    - "[[Check]]"
-    - "[[Carry-Trace Test]]"
-    - "[[Resolution Rate]]"
-  nests: "inside Atlas Fabric as the ordinary pass for tending a term, member, posture, domain, applied read, or failed growth."
-  reads: "where a participant can return to one member and ask what it is, what holds it, what it occludes, what it carries, whether resolution rate improved, and what care action preserves re-entry."
+    targets:
+      - practice.atlas-garden
+      - practice.check
+      - practice.carry-trace-test
+      - second.resolution-rate
+  nests:
+    targets: []
+    read: "inside Atlas Fabric as the ordinary pass for tending a term, member, posture, domain, applied read, or failed growth."
+  reads:
+    targets: []
+    read: "where a participant can return to one member and ask what it is, what holds it, what it occludes, what it carries, whether resolution rate improved, and what care action preserves re-entry."
   carries:
-    - "[[Daylighting]]"
-    - "[[Relief]]"
-    - "[[Splicing]]"
-    - "[[Decommissioning]]"
-
+    targets:
+      - practice.shade-clearing
+      - practice.pruning
+      - practice.grafting
+      - practice.composting
 publish: true
 status: working
 ---

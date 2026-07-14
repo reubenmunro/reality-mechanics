@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.degenerative-trace
-
-needs:
-  - "[[Trace]]"
-  - "[[Degenerate]]"
-  - "[[Carrying]]"
-  - "[[Source Drift]]"
-  - "[[Regenerate]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the trace of where carrying continued while contact with its generating order was lost."
-  holds: "[[Trace]], [[Degenerate]], [[Carrying]], [[Source Drift]], and [[Regenerate]]. Carrying must continue, generative trace loss must be readable, and a possible return through regeneration must remain nameable before Degenerative Trace can be used as a practice read."
-  pairs: "[[Generative Trace]]. Generative Trace preserves the generating order strongly enough to seed continuation; Degenerative Trace follows where carrying continued while that generating order was lost."
+  needs:
+    targets:
+      - first.trace
+      - ground.degenerate
+      - second.carrying
+      - higher.source-drift
+      - ground.regenerate
+  holds:
+    targets:
+      - first.trace
+      - ground.degenerate
+      - second.carrying
+      - higher.source-drift
+      - ground.regenerate
+    read: "[[Trace]], [[Degenerate]], [[Carrying]], [[Source Drift]], and [[Regenerate]]. Carrying must continue, generative trace loss must be readable, and a possible return through regeneration must remain nameable before Degenerative Trace can be used as a practice read."
+  pairs:
+    targets:
+      - practice.generative-trace
+    read: "[[Generative Trace]]. Generative Trace preserves the generating order strongly enough to seed continuation; Degenerative Trace follows where carrying continued while that generating order was lost."
   traces:
-    - "[[Trace]]"
-    - "[[Degenerate]]"
-    - "[[Carrying]]"
-    - "[[Source Drift]]"
-    - "[[Regenerate]]"
-  nests: "inside Atlas Practice as the diagnostic trace used when carrying still appears to continue but its source, dependency path, or generative order has become unrecoverable."
-  reads: "where a participant can locate how a carrying lost contact with what generated it while retaining enough trace to diagnose the loss and prepare regeneration."
+    targets:
+      - first.trace
+      - ground.degenerate
+      - second.carrying
+      - higher.source-drift
+      - ground.regenerate
+  nests:
+    targets: []
+    read: "inside Atlas Practice as the diagnostic trace used when carrying still appears to continue but its source, dependency path, or generative order has become unrecoverable."
+  reads:
+    targets: []
+    read: "where a participant can locate how a carrying lost contact with what generated it while retaining enough trace to diagnose the loss and prepare regeneration."
   carries:
-    - "[[Generate and Regenerate]]"
-
+    targets:
+      - practice.generate-and-regenerate
 publish: true
 status: working
 ---

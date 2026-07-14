@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.within
-
-needs:
-  - "[[In]]"
-  - "[[Clearance]]"
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation held inside a cleared boundary."
-  holds: "[[In]], [[Clearance]], and [[Boundary]]."
-  pairs: "Asymmetry carries downward — into [[Nested Relation]]"
+  needs:
+    targets:
+      - first.in
+      - first.clearance
+      - first.boundary
+  holds:
+    targets:
+      - first.in
+      - first.clearance
+      - first.boundary
+    read: "[[In]], [[Clearance]], and [[Boundary]]."
+  pairs:
+    targets:
+      - second.nested-relation
+    read: "Asymmetry carries downward — into [[Nested Relation]]"
   traces:
-    - "[[In]]"
-    - "[[Clearance]]"
-    - "[[Boundary]]"
-  nests: "as the compound of interior placement and available clearance: relation held inside a bounded relational space."
-  reads: "where relation can be read as inside and alongside a bounded condition — where something participates from within rather than from outside or alongside only."
+    targets:
+      - first.in
+      - first.clearance
+      - first.boundary
+  nests:
+    targets: []
+    read: "as the compound of interior placement and available clearance: relation held inside a bounded relational space."
+  reads:
+    targets: []
+    read: "where relation can be read as inside and alongside a bounded condition — where something participates from within rather than from outside or alongside only."
   carries:
-    - "[[Nested Relation]]"
-
+    targets:
+      - second.nested-relation
 publish: true
 status: stable
 ---

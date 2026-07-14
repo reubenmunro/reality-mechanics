@@ -5,28 +5,43 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.improvisation
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Carrying]]"
-  - "[[Bearing]]"
 
 conditions:
   places: "the musical read where carrying proceeds without pre-determined structure — where bearing is carried forward through immediate response to what the moment holds"
-  holds: "[[Applied Read]], [[Carrying]], and [[Bearing]]. Bearing must be present and carrying must be active for improvisation to be distinguishable from randomness."
-  pairs: "[[Musical Form]]. Improvisation departs from pre-determined form; musical form names the nested structure improvisation may reference, extend, or dissolve."
+  needs:
+    targets:
+      - third.applied-read
+      - second.carrying
+      - first.bearing
+  holds:
+    targets:
+      - third.applied-read
+      - second.carrying
+      - first.bearing
+    read: "[[Applied Read]], [[Carrying]], and [[Bearing]]. Bearing must be present and carrying must be active for improvisation to be distinguishable from randomness."
+  pairs:
+    targets:
+      - third.musical-form
+    read: "[[Musical Form]]. Improvisation departs from pre-determined form; musical form names the nested structure improvisation may reference, extend, or dissolve."
   traces:
-    - "[[Applied Read]]"
-    - "[[Carrying]]"
-    - "[[Bearing]]"
-    - "[[Harmony]]"
-    - "[[Musical Rhythm]]"
-    - "[[Music]]"
-  nests: "within the music domain as the read where structural carrying proceeds without a predetermined path"
-  reads: "where a musical participant carries relation forward without a pre-determined structure — where the next movement is determined by what the current moment bears rather than by a plan laid in advance"
-  carries: []
-
+    targets:
+      - third.applied-read
+      - second.carrying
+      - first.bearing
+      - third.harmony
+      - third.musical-rhythm
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the read where structural carrying proceeds without a predetermined path"
+  reads:
+    targets: []
+    read: "where a musical participant carries relation forward without a pre-determined structure — where the next movement is determined by what the current moment bears rather than by a plan laid in advance"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

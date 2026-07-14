@@ -5,31 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.return
-
-needs:
-  - "[[Boundary]]"
-  - "[[Carrying]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carried relation becoming readable again at a resolvable boundary."
-  holds: "[[Boundary]], [[Carrying]], and [[Readability]]."
-  pairs: "No lateral pair is required. [[Digress]] can precede Return where traversal departs from a held scope, but departure is not required for every return."
+  needs:
+    targets:
+      - first.boundary
+      - second.carrying
+      - second.readability
+  holds:
+    targets:
+      - first.boundary
+      - second.carrying
+      - second.readability
+    read: "[[Boundary]], [[Carrying]], and [[Readability]]."
+  pairs:
+    targets:
+      - second.digress
+    read: "No lateral pair is required. [[Digress]] can precede Return where traversal departs from a held scope, but departure is not required for every return."
   traces:
-    - "[[Boundary]]"
-    - "[[Carrying]]"
-    - "[[Readability]]"
-  nests: "where carried relation enters a boundary resolvable enough for its continuity to become readable again."
-  reads: "where continuity becomes readable again at a boundary — not as the same event repeated, but as carried relation recognised through a new entry."
+    targets:
+      - first.boundary
+      - second.carrying
+      - second.readability
+  nests:
+    targets: []
+    read: "where carried relation enters a boundary resolvable enough for its continuity to become readable again."
+  reads:
+    targets: []
+    read: "where continuity becomes readable again at a boundary — not as the same event repeated, but as carried relation recognised through a new entry."
   carries:
-    - "[[Cycle]]"
-    - "[[Frequency]]"
-    - "[[Face]]"
-    - "[[Retrace Read|Retrace]]"
-    - "[[Grief]]"
-    - "[[Rhythm]]"
-    - "[[Musical Rhythm]]"
-
+    targets:
+      - second.cycle
+      - second.frequency
+      - second.face
+      - second.retrace-read
+      - third.grief
+      - second.rhythm
+      - third.musical-rhythm
 publish: true
 status: stable
 ---

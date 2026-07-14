@@ -5,25 +5,39 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.threshold
-
-needs:
-  - "[[Boundary]]"
-  - "[[Strain]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a boundary condition under strain at the point where change becomes readable — the held change-limit within the current scope"
-  holds: "[[Boundary]] and [[Strain]] — distinction must be located and under contrast before its change-limit can be read"
-  pairs: "Asymmetry carries downward — into [[Capacity]] and [[Enter]]. Threshold names the change-limit point under strain; its asymmetry flows into what the limit holds (Capacity) and what crossing it opens (Enter)."
+  needs:
+    targets:
+      - first.boundary
+      - first.strain
+  holds:
+    targets:
+      - first.boundary
+      - first.strain
+    read: "[[Boundary]] and [[Strain]] — distinction must be located and under contrast before its change-limit can be read"
+  pairs:
+    targets:
+      - second.capacity
+      - first.enter
+    read: "Asymmetry carries downward — into [[Capacity]] and [[Enter]]. Threshold names the change-limit point under strain; its asymmetry flows into what the limit holds (Capacity) and what crossing it opens (Enter)."
   traces:
-    - "[[Boundary]]"
-    - "[[Strain]]"
-    - "[[Shift]]"
-  nests: "as a boundary condition — sits between strain and bearing without becoming the crossing between orders by itself"
-  reads: "where a boundary condition under strain can be read as change-limit — where something is present at the point of potential shift without yet having crossed"
+    targets:
+      - first.boundary
+      - first.strain
+      - first.shift
+  nests:
+    targets: []
+    read: "as a boundary condition — sits between strain and bearing without becoming the crossing between orders by itself"
+  reads:
+    targets: []
+    read: "where a boundary condition under strain can be read as change-limit — where something is present at the point of potential shift without yet having crossed"
   carries:
-    - "[[Capacity]]"
-    - "[[Enter]]"
-
+    targets:
+      - second.capacity
+      - first.enter
 publish: true
 status: stable
 ---

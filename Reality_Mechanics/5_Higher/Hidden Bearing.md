@@ -5,26 +5,39 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.hidden-bearing
-
-needs:
-  - "[[Bearing]]"
-  - "[[Higher Retrace|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying deliberately structured not to present the dependency path — where the carrier holds the bearing but does not surface it in the current read."
-  holds: "[[Bearing]] and [[Higher Retrace|Retrace]] — bearing must be operative before it can be deliberately structured not to present, and retrace must be available in principle before its deliberate withholding can be named."
-  pairs: "[[Invisible Bearing]]. Invisible Bearing names carrying that becomes non-presenting through organic accumulation — the structure is just there, non-presenting without being designed that way. Hidden Bearing names carrying deliberately structured not to present — the carrier holds the dependency path and does not surface it. Each requires the other: Invisible Bearing is only locatable against the possibility of deliberate non-presentation; Hidden Bearing is only nameable against the organically non-presenting condition it has taken as its structural model."
+  needs:
+    targets:
+      - first.bearing
+      - higher.higher-retrace
+  holds:
+    targets:
+      - first.bearing
+      - higher.higher-retrace
+    read: "[[Bearing]] and [[Higher Retrace|Retrace]] — bearing must be operative before it can be deliberately structured not to present, and retrace must be available in principle before its deliberate withholding can be named."
+  pairs:
+    targets:
+      - higher.invisible-bearing
+    read: "[[Invisible Bearing]]. Invisible Bearing names carrying that becomes non-presenting through organic accumulation — the structure is just there, non-presenting without being designed that way. Hidden Bearing names carrying deliberately structured not to present — the carrier holds the dependency path and does not surface it. Each requires the other: Invisible Bearing is only locatable against the possibility of deliberate non-presentation; Hidden Bearing is only nameable against the organically non-presenting condition it has taken as its structural model."
   traces:
-    - "[[Bearing]]"
-    - "[[Higher Retrace|Retrace]]"
-    - "[[Fabric]]"
-    - "[[Organic and Organised Organisation]]"
-    - "[[Organised Domain]]"
-  nests: "where bearing is deliberately held back from presentation — structured not to surface in the current read."
-  reads: "where the carrier holds the dependency path and does not surface it — where non-presentation is the structurally correct move rather than a failure of carrying."
+    targets:
+      - first.bearing
+      - higher.higher-retrace
+      - higher.fabric
+      - third.organic-and-organised-organisation
+      - third.organised-domain
+  nests:
+    targets: []
+    read: "where bearing is deliberately held back from presentation — structured not to surface in the current read."
+  reads:
+    targets: []
+    read: "where the carrier holds the dependency path and does not surface it — where non-presentation is the structurally correct move rather than a failure of carrying."
   carries:
-    - "[[Source Drift]]" 
-
+    targets:
+      - higher.source-drift
 publish: true
 status: stable
 ---

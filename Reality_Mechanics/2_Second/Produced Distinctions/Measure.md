@@ -5,27 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.measure
-
-needs:
-  - "[[Scale]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read compared against a bounded unit or scale."
-  holds: "[[Scale]] and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Unit]] and [[Rate]]"
+  needs:
+    targets:
+      - second.scale
+      - second.closure-scope
+  holds:
+    targets:
+      - second.scale
+      - second.closure-scope
+    read: "[[Scale]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.unit
+      - second.rate
+    read: "Asymmetry carries downward — into [[Unit]] and [[Rate]]"
   traces:
-    - "[[Scale]]"
-    - "[[Closure Scope]]"
-    - "[[Interval]]"
-    - "[[Number]]"
-  nests: "where extent, recurrence, interval, or change can be evaluated against unit or scale."
-  reads: "where a condition can be evaluated as more, less, equal, repeated, or extended against a readable unit or scale."
+    targets:
+      - second.scale
+      - second.closure-scope
+      - second.interval
+      - second.number
+  nests:
+    targets: []
+    read: "where extent, recurrence, interval, or change can be evaluated against unit or scale."
+  reads:
+    targets: []
+    read: "where a condition can be evaluated as more, less, equal, repeated, or extended against a readable unit or scale."
   carries:
-    - "[[Unit]]"
-    - "[[Rate]]"
-    - "[[Speed]]"
-
+    targets:
+      - second.unit
+      - second.rate
+      - second.speed
 publish: true
 status: stable
 ---

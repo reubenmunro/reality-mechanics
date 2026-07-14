@@ -5,28 +5,43 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.thread
-
-needs:
-  - "[[Term]]"
-  - "[[Trace]]"
-  - "[[Read]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "followable continuity through a readable length, across terms, or within an order."
-  holds: "[[Term]], [[Trace]], and [[Read]]."
-  pairs: "Term, Trace, and Read carry forward — into [[Thread]]. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Thread's structural complements appear at other orders: Terminal at second order names where the strand ends; [[Recursion]] at higher order names where carrying folds back."
+  needs:
+    targets:
+      - ground.term
+      - first.trace
+      - first.read
+  holds:
+    targets:
+      - ground.term
+      - first.trace
+      - first.read
+    read: "[[Term]], [[Trace]], and [[Read]]."
+  pairs:
+    targets:
+      - first.thread
+      - higher.recursion
+    read: "Term, Trace, and Read carry forward — into [[Thread]]. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Thread's structural complements appear at other orders: Terminal at second order names where the strand ends; [[Recursion]] at higher order names where carrying folds back."
   traces:
-    - "[[Term]]"
-    - "[[Trace]]"
-    - "[[Read]]"
-  nests: "as the continuity by which a read can be followed through a term, across terms, or within an order."
-  reads: "where a read remains followable across a readable length without yet crossing the terminal boundary of that read."
+    targets:
+      - ground.term
+      - first.trace
+      - first.read
+  nests:
+    targets: []
+    read: "as the continuity by which a read can be followed through a term, across terms, or within an order."
+  reads:
+    targets: []
+    read: "where a read remains followable across a readable length without yet crossing the terminal boundary of that read."
   carries:
-    - "[[Terminal]]"
-    - "[[Fabric]]"
-    - "[[Web]]"
-    - "[[Order-Terminal]]"
-
+    targets:
+      - second.terminal
+      - higher.fabric
+      - higher.web
+      - second.order_terminal
 publish: true
 status: stable
 ---

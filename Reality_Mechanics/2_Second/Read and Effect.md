@@ -5,25 +5,39 @@ order: second
 kind: distinction
 ai_role: distinction
 condition_key: second.read-and-effect
-
-needs:
-  - "[[Read]]"
-  - "[[Effect]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the distinction between recognisability, consequence, trace, and cause-read."
-  holds: "[[Read]], [[Effect]], and [[Trace]]. A condition must be recognisable, its consequence distinguishable, and the path back through carrying conditions traceable before a cause-read can be assigned."
-  pairs: "False causality. The error is treating a read as if it were an acting force."
+  needs:
+    targets:
+      - first.read
+      - second.effect
+      - first.trace
+  holds:
+    targets:
+      - first.read
+      - second.effect
+      - first.trace
+    read: "[[Read]], [[Effect]], and [[Trace]]. A condition must be recognisable, its consequence distinguishable, and the path back through carrying conditions traceable before a cause-read can be assigned."
+  pairs:
+    targets: []
+    read: "False causality. The error is treating a read as if it were an acting force."
   traces:
-    - "[[Read]]"
-    - "[[Effect]]"
-    - "[[Trace]]"
-    - "[[Carrying]]"
-  nests: "inside second-order distinction work, where recognisable presentation, carried consequence, trace, and cause-read must not collapse into one another."
-  reads: "where a recognisable condition, a following change, and the traced account through which that change becomes explainable are being confused or need to be kept separate."
-  carries: "No direct downstream carries are claimed yet. Second-Order Disorder Effects, Reality Check, and Order Trace remain candidate review sites rather than dependencies."
-
+    targets:
+      - first.read
+      - second.effect
+      - first.trace
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside second-order distinction work, where recognisable presentation, carried consequence, trace, and cause-read must not collapse into one another."
+  reads:
+    targets: []
+    read: "where a recognisable condition, a following change, and the traced account through which that change becomes explainable are being confused or need to be kept separate."
+  carries:
+    targets: []
+    read: "No direct downstream carries are claimed yet. Second-Order Disorder Effects, Reality Check, and Order Trace remain candidate review sites rather than dependencies."
 publish: true
 status: working
 ---

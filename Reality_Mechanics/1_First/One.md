@@ -5,22 +5,34 @@ order: first
 kind: primitive
 ai_role: primitive
 condition_key: first.one
-
-needs:
-  - "[[Seed]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the first readable reference — the first readable expression of Seed : Ground becoming active."
-  holds: "[[Seed]]. One is read from the source-side availability Seed holds; it is not self-originating and does not replace Seed : Ground."
-  pairs: "[[Other]] — One establishes reference; Other establishes distinction; the colon between them names the boundary, ratio, and clearance through which comparison remains possible without collapse."
+  needs:
+    targets:
+      - ground.seed
+  holds:
+    targets:
+      - ground.seed
+    read: "[[Seed]]. One is read from the source-side availability Seed holds; it is not self-originating and does not replace Seed : Ground."
+  pairs:
+    targets:
+      - first.other
+    read: "[[Other]] — One establishes reference; Other establishes distinction; the colon between them names the boundary, ratio, and clearance through which comparison remains possible without collapse."
   traces:
-    - "[[Seed]]"
-  nests: "inside reading order as the reference pole in One : Other, the first readable expression of the generative condition."
-  reads: "where a reference can be held without being mistaken for the whole, and without losing the source condition that made it readable."
+    targets:
+      - ground.seed
+  nests:
+    targets: []
+    read: "inside reading order as the reference pole in One : Other, the first readable expression of the generative condition."
+  reads:
+    targets: []
+    read: "where a reference can be held without being mistaken for the whole, and without losing the source condition that made it readable."
   carries:
-    - "[[Other]]"
-    - "[[Ratio]]"
-
+    targets:
+      - first.other
+      - first.ratio
 publish: true
 status: working
 ---

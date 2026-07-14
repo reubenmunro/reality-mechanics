@@ -5,31 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.load-bearing
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Architecture]]"
-  - "[[Bearing]]"
-  - "[[Load]]"
-  - "[[Capacity]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the architectural read where required bearing continues through built use without exceeding load, capacity, carrying, or compatibility."
-  holds: "[[Architecture]], [[Bearing]], [[Load]], [[Capacity]], [[Carrying]], [[Compatibility]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.load
+      - second.capacity
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.load
+      - second.capacity
+      - second.carrying
+      - second.compatibility
+    read: "[[Architecture]], [[Bearing]], [[Load]], [[Capacity]], [[Carrying]], [[Compatibility]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Architecture]]"
-    - "[[Bearing]]"
-    - "[[Load]]"
-    - "[[Capacity]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "within [[Architecture]] as a local translation of bearing, load, capacity, carrying, and compatibility."
-  reads: "Load-Bearing becomes readable where required load continues through built use without exceeding capacity or compatibility at the current closure scope."
-  carries: []
-
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.load
+      - second.capacity
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets:
+      - third.architecture
+    read: "within [[Architecture]] as a local translation of bearing, load, capacity, carrying, and compatibility."
+  reads:
+    targets: []
+    read: "Load-Bearing becomes readable where required load continues through built use without exceeding capacity or compatibility at the current closure scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

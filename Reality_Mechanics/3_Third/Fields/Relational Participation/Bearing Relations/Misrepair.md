@@ -5,26 +5,38 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.misrepair
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Repair]]"
-  - "[[Carrying]]"
 
 conditions:
   places: "repair-like continuation that preserves proceeding while carrying the wrong condition — carrying that appears to repair while failing to restore compatible bearing."
-  holds: "[[Repair]] and [[Carrying]]. The repair condition must be in view and carrying must continue before proceeding that miscarries repair can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.repair
+      - second.carrying
+  holds:
+    targets:
+      - third.repair
+      - second.carrying
+    read: "[[Repair]] and [[Carrying]]. The repair condition must be in view and carrying must continue before proceeding that miscarries repair can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Repair]]"
-    - "[[Carrying]]"
-  nests: "within Relational Participation as the condition through which repair fails while its surface is maintained."
-  reads: "Misrepair becomes readable where proceeding continues through a repair-like act while compatible bearing remains unrestored or wrongly carried."
+    targets:
+      - third.repair
+      - second.carrying
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which repair fails while its surface is maintained."
+  reads:
+    targets: []
+    read: "Misrepair becomes readable where proceeding continues through a repair-like act while compatible bearing remains unrestored or wrongly carried."
   carries:
-    - "[[Repair Mismatch]]"
-    - "[[Surface Patch]]"
-    - "[[Apology Without Repair]]"
-
+    targets:
+      - third.repair-mismatch
+      - third.surface-patch
+      - third.apology-without-repair
 publish: true
 status: stable
 ---

@@ -5,32 +5,46 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.scale
-
-needs:
-  - "[[Dimension]]"
-  - "[[Reference Frame]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "readable extent along a dimension within a reference frame."
-  holds: "[[Dimension]] and [[Reference Frame]]."
-  pairs: "Asymmetry carries downward — into [[Pattern]] and [[Measure]]"
+  needs:
+    targets:
+      - second.dimension
+      - second.reference-frame
+  holds:
+    targets:
+      - second.dimension
+      - second.reference-frame
+    read: "[[Dimension]] and [[Reference Frame]]."
+  pairs:
+    targets:
+      - second.pattern
+      - second.measure
+    read: "Asymmetry carries downward — into [[Pattern]] and [[Measure]]"
   traces:
-    - "[[Dimension]]"
-    - "[[Reference Frame]]"
-  nests: "where dimension has readable extent within closure scope."
-  reads: "where a dimension can be read as having extent — where something can be evaluated as more or less along a readable axis, and where order can be checked for continuity or substitution across a scale transition."
+    targets:
+      - second.dimension
+      - second.reference-frame
+  nests:
+    targets: []
+    read: "where dimension has readable extent within closure scope."
+  reads:
+    targets: []
+    read: "where a dimension can be read as having extent — where something can be evaluated as more or less along a readable axis, and where order can be checked for continuity or substitution across a scale transition."
   carries:
-    - "[[Pattern]]"
-    - "[[Information]]"
-    - "[[Measure]]"
-    - "[[Relative]]"
-    - "[[Growth]]"
-    - "[[Decay]]"
-    - "[[Thing]]"
-    - "[[Timescale]]"
-    - "[[Member]]"
-    - "[[Extractive Acceleration]]"
-
+    targets:
+      - second.pattern
+      - second.information
+      - second.measure
+      - second.relative
+      - second.growth
+      - second.decay
+      - second.thing
+      - third.timescale
+      - second.member
+      - third.extractive-acceleration
 publish: true
 status: stable
 ---

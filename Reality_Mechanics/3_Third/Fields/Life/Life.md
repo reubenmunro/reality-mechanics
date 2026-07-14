@@ -5,26 +5,39 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.life
+determination: pd.v3.pre-provenance-baseline
 domain: life
-
-needs:
-  - "[[Branch]]"
-  - "[[Natural Order]]"
-  - "[[Sustenance]]"
 
 conditions:
   places: "the third-order field where living carrying — recursive regulation, sustained coupling, and renewed availability — becomes readable as a structural condition."
-  holds: "[[Branch]], [[Natural Order]], and [[Sustenance]]. Natural order must structure recursive availability and sustenance must renew carrying before the living condition can be named."
-  pairs: "No lateral pair is required at this placement yet. Life names the third-order field of living carrying; its structural contrast at the same field-branch level is not yet a named vault term."
+  needs:
+    targets:
+      - third.branch
+      - ground.natural-order
+      - third.sustenance
+  holds:
+    targets:
+      - third.branch
+      - ground.natural-order
+      - third.sustenance
+    read: "[[Branch]], [[Natural Order]], and [[Sustenance]]. Natural order must structure recursive availability and sustenance must renew carrying before the living condition can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Life names the third-order field of living carrying; its structural contrast at the same field-branch level is not yet a named vault term."
   traces:
-    - "[[Branch]]"
-    - "[[Natural Order]]"
-    - "[[Sustenance]]"
-  nests: "within the Life Field branch as the field-level container for all life structural reads."
-  reads: "Life becomes readable where natural-order coupling remains available through living continuation, repair, recurrence, and constrained maintenance."
+    targets:
+      - third.branch
+      - ground.natural-order
+      - third.sustenance
+  nests:
+    targets: []
+    read: "within the Life Field branch as the field-level container for all life structural reads."
+  reads:
+    targets: []
+    read: "Life becomes readable where natural-order coupling remains available through living continuation, repair, recurrence, and constrained maintenance."
   carries:
-    - "[[Alive]]" 
-
+    targets:
+      - third.alive
 publish: true
 status: stable
 ---

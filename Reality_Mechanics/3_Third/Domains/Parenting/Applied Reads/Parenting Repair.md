@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.parenting-repair
+determination: pd.v3.pre-provenance-baseline
 domain: parenting
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Parenting]]"
-  - "[[Repair]]"
-  - "[[Harm]]"
-  - "[[Neglect]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the local case where parental relation must restore bearing after harm, neglect, rupture, or misrepair."
-  holds: "[[Applied Read]], [[Parenting]], [[Repair]], [[Harm]], [[Neglect]], [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.repair
+      - third.harm
+      - third.neglect
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.repair
+      - third.harm
+      - third.neglect
+      - second.closure-scope
+    read: "[[Applied Read]], [[Parenting]], [[Repair]], [[Harm]], [[Neglect]], [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Parenting]]"
-    - "[[Repair]]"
-    - "[[Harm]]"
-    - "[[Neglect]]"
-    - "[[Closure Scope]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Parenting Repair becomes readable where damaged or absent bearing is re-entered into compatible relation at the evaluated scope."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.repair
+      - third.harm
+      - third.neglect
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Parenting Repair becomes readable where damaged or absent bearing is re-entered into compatible relation at the evaluated scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,33 +5,51 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.gardening
+determination: pd.v3.pre-provenance-baseline
 domain: making
-
-needs:
-  - "[[Making Field]]"
-  - "[[Natural World Field]]"
-  - "[[Asymmetry]]"
-  - "[[Nested Coupling]]"
-  - "[[Maintained Coupling]]"
-  - "[[Care]]"
-  - "[[Boundary]]"
 
 conditions:
   places: "the applied domain through which maintained coupling holds organic asymmetry within a compatible boundary — where recurrent human bearing keeps a living system's inherent directedness within a scope it cannot hold alone."
-  holds: "[[Making Field]], [[Natural World Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], and [[Boundary]]. Organic asymmetry must be present, nested coupling must hold the gardener within the living system's scope, and care must be recurrent before the maintenance of bounded organic asymmetry can be named as gardening."
-  pairs: "No lateral pair is required at this placement yet. Gardening names the maintained coupling that holds organic asymmetry within compatible bounds; its structural contrast — a domain where organic asymmetry is met through extraction or clearance rather than maintained coupling — is not yet a named vault term."
+  needs:
+    targets:
+      - third.making-field
+      - third.natural-world-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - first.boundary
+  holds:
+    targets:
+      - third.making-field
+      - third.natural-world-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - first.boundary
+    read: "[[Making Field]], [[Natural World Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], and [[Boundary]]. Organic asymmetry must be present, nested coupling must hold the gardener within the living system's scope, and care must be recurrent before the maintenance of bounded organic asymmetry can be named as gardening."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Gardening names the maintained coupling that holds organic asymmetry within compatible bounds; its structural contrast — a domain where organic asymmetry is met through extraction or clearance rather than maintained coupling — is not yet a named vault term."
   traces:
-    - "[[Making Field]]"
-    - "[[Natural World Field]]"
-    - "[[Asymmetry]]"
-    - "[[Nested Coupling]]"
-    - "[[Maintained Coupling]]"
-    - "[[Care]]"
-    - "[[Boundary]]"
-  nests: "within Making Field as an applied domain read — a practice through which intentional human arrangement holds organic asymmetry within compatible bounds through recurrent, responsive coupling."
-  reads: "Gardening becomes readable where a living system's inherent directedness must be held within a scope it cannot hold alone — where without maintained coupling the asymmetry continues but exceeds the boundary that made it compatible."
-  carries: []
-
+    targets:
+      - third.making-field
+      - third.natural-world-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - first.boundary
+  nests:
+    targets: []
+    read: "within Making Field as an applied domain read — a practice through which intentional human arrangement holds organic asymmetry within compatible bounds through recurrent, responsive coupling."
+  reads:
+    targets: []
+    read: "Gardening becomes readable where a living system's inherent directedness must be held within a scope it cannot hold alone — where without maintained coupling the asymmetry continues but exceeds the boundary that made it compatible."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

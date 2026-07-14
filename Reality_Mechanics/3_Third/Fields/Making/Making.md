@@ -5,26 +5,38 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.making
+determination: pd.v3.pre-provenance-baseline
 domain: making
-
-needs:
-  - "[[Participation]]"
-  - "[[Field of Participation]]"
 
 conditions:
   places: "the third-order field where relation is carried into form through action, material, tool, method, or craft — the structural field for production, fabrication, and intentional forming."
-  holds: "[[Participation]] and [[Field of Participation]]. Participation must structure a field before relation carried into form can be named as making."
-  pairs: "No lateral pair is required at this placement yet. Making names the act of carrying relation into form through action, material, or craft; its structural contrast at the same dependency level — a field-level note naming the condition that Making requires in order to be distinguishable — is not yet a named vault term."
+  needs:
+    targets:
+      - second.participation
+      - third.field-of-participation
+  holds:
+    targets:
+      - second.participation
+      - third.field-of-participation
+    read: "[[Participation]] and [[Field of Participation]]. Participation must structure a field before relation carried into form can be named as making."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Making names the act of carrying relation into form through action, material, or craft; its structural contrast at the same dependency level — a field-level note naming the condition that Making requires in order to be distinguishable — is not yet a named vault term."
   traces:
-    - "[[Participation]]"
-    - "[[Field of Participation]]"
-  nests: "within the Making Field branch as the field-level container for production and fabrication reads."
-  reads: "where relation is carried into form through action, material, tool, method, or craft."
+    targets:
+      - second.participation
+      - third.field-of-participation
+  nests:
+    targets: []
+    read: "within the Making Field branch as the field-level container for production and fabrication reads."
+  reads:
+    targets: []
+    read: "where relation is carried into form through action, material, tool, method, or craft."
   carries:
-    - "[[Tool]]"
-    - "[[Weapon]]"
-    - "[[Hidden Carrying]]" 
-
+    targets:
+      - third.tool
+      - third.weapon
+      - third.hidden-carrying
 publish: true
 status: stable
 ---

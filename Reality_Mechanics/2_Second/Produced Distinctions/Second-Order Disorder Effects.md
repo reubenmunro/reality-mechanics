@@ -5,29 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.second-order-disorder-effects
-
-needs:
-  - "[[Dependency Disorder]]"
-  - "[[Disorder]]"
-  - "[[Incoherence]]"
-  - "[[Delayed Availability]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "produced disorder in second-order reads where availability, recognition, carrying, or closure is treated as present before it can bear."
-  holds: "[[Dependency Disorder]], [[Disorder]], [[Incoherence]], [[Delayed Availability]], and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Hope]]"
+  needs:
+    targets:
+      - second.dependency-disorder
+      - second.disorder
+      - second.incoherence
+      - second.delayed-availability
+      - second.closure-scope
+  holds:
+    targets:
+      - second.dependency-disorder
+      - second.disorder
+      - second.incoherence
+      - second.delayed-availability
+      - second.closure-scope
+    read: "[[Dependency Disorder]], [[Disorder]], [[Incoherence]], [[Delayed Availability]], and [[Closure Scope]]."
+  pairs:
+    targets:
+      - third.hope
+    read: "Asymmetry carries downward — into [[Hope]]"
   traces:
-    - "[[Dependency Disorder]]"
-    - "[[Disorder]]"
-    - "[[Incoherence]]"
-    - "[[Delayed Availability]]"
-    - "[[Closure Scope]]"
-  nests: "where availability, recognition, carrying, or closure is treated as present before it can bear."
-  reads: "where a produced read proceeds as though a condition is available, recognised, or stable while the dependency path cannot yet carry that claim."
+    targets:
+      - second.dependency-disorder
+      - second.disorder
+      - second.incoherence
+      - second.delayed-availability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where availability, recognition, carrying, or closure is treated as present before it can bear."
+  reads:
+    targets: []
+    read: "where a produced read proceeds as though a condition is available, recognised, or stable while the dependency path cannot yet carry that claim."
   carries:
-    - "[[Hope]]"
-
+    targets:
+      - third.hope
 publish: true
 status: stable
 ---

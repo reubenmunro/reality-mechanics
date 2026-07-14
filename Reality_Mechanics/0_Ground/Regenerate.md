@@ -5,26 +5,39 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.regenerate
-
-needs:
-  - "[[Generic]]"
-  - "[[Degenerate]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural condition of returning to generative conditions — recovering the trace to the originating source from within carrying that has lost it"
-  holds: "[[Generic]] and [[Degenerate]] — a generative source must be operative and its loss must be nameable before the return to that source can be placed"
-  pairs: "[[Degenerate]]. Degenerate names carrying that has lost its generative trace; Regenerate names the return to generative conditions from within that loss — the recovery of the trace. Each requires the other: Regenerate is only nameable against the condition it addresses; Degenerate is only nameable against the possibility of returning from it."
+  needs:
+    targets:
+      - ground.generic
+      - ground.degenerate
+  holds:
+    targets:
+      - ground.generic
+      - ground.degenerate
+    read: "[[Generic]] and [[Degenerate]] — a generative source must be operative and its loss must be nameable before the return to that source can be placed"
+  pairs:
+    targets:
+      - ground.degenerate
+    read: "[[Degenerate]]. Degenerate names carrying that has lost its generative trace; Regenerate names the return to generative conditions from within that loss — the recovery of the trace. Each requires the other: Regenerate is only nameable against the condition it addresses; Degenerate is only nameable against the possibility of returning from it."
   traces:
-    - "[[Generic]]"
-    - "[[Degenerate]]"
-  nests: "at Ground as the structural condition through which the generative trace is recovered — operative at every level where Degenerate has taken hold"
-  reads: "where carrying that has lost its generative trace recovers contact with the source that generated it — where what was treating itself as primitive traces back through what it carries to what carried it into being"
+    targets:
+      - ground.generic
+      - ground.degenerate
+  nests:
+    targets: []
+    read: "at Ground as the structural condition through which the generative trace is recovered — operative at every level where Degenerate has taken hold"
+  reads:
+    targets: []
+    read: "where carrying that has lost its generative trace recovers contact with the source that generated it — where what was treating itself as primitive traces back through what it carries to what carried it into being"
   carries:
-    - "[[Practice]]"
-    - "[[Retrace Practice]]"
-    - "[[Higher Retrace]]"
-    - "[[Degeneration Read]]"
-
+    targets:
+      - practice.practice
+      - practice.retrace-practice
+      - higher.higher-retrace
+      - third.degeneration-read
 publish: true
 status: stable
 ---

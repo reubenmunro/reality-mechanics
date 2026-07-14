@@ -5,32 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.form
-
-needs:
-  - "[[Difference]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "readable arrangement."
-  holds: "[[Difference]] and [[Closure Scope]]."
-  pairs: "[[Information]] — Form names the shape of difference at closure scope; Information names the content of that same difference. Each requires the other to be locatable."
+  needs:
+    targets:
+      - second.difference
+      - second.closure-scope
+  holds:
+    targets:
+      - second.difference
+      - second.closure-scope
+    read: "[[Difference]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.information
+    read: "[[Information]] — Form names the shape of difference at closure scope; Information names the content of that same difference. Each requires the other to be locatable."
   traces:
-    - "[[Difference]]"
-    - "[[Closure Scope]]"
-  nests: "where differences are held as one readable arrangement rather than isolated non-sameness."
-  reads: "where difference is held as arrangement — where multiple distinctions can be read together rather than as isolated non-sameness."
+    targets:
+      - second.difference
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where differences are held as one readable arrangement rather than isolated non-sameness."
+  reads:
+    targets: []
+    read: "where difference is held as arrangement — where multiple distinctions can be read together rather than as isolated non-sameness."
   carries:
-    - "[[Identity]]"
-    - "[[Pattern]]"
-    - "[[Kind]]"
-    - "[[Spell]]"
-    - "[[Glamour]]"
-    - "[[Surface]]"
-    - "[[Structural Gathering]]"
-    - "[[Structure]]"
-    - "[[Expressing]]"
-    - "[[Transforming]]"
-
+    targets:
+      - second.identity
+      - second.pattern
+      - second.kind
+      - third.spell
+      - third.glamour
+      - second.surface
+      - second.structural-gathering
+      - second.structure
+      - third.expressing
+      - third.transforming
 publish: true
 status: stable
 ---

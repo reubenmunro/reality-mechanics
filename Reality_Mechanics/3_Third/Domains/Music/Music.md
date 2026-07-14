@@ -5,32 +5,47 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.music
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Branch]]"
-  - "[[Medium]]"
-  - "[[Expression]]"
 
 conditions:
   places: "the musical-domain branch where structural Atlas terms become readable as rhythm, timing, sound, silence, recurrence, variation, and embodied participation."
-  holds: "[[Branch]], [[Medium]], [[Expression]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.branch
+      - second.medium
+      - third.expression
+  holds:
+    targets:
+      - third.branch
+      - second.medium
+      - third.expression
+    read: "[[Branch]], [[Medium]], [[Expression]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Branch]]"
-    - "[[Medium]]"
-    - "[[Expression]]"
-  nests: "within [[Expression Field]] and [[Body Field]] as a domain branch. Its local reads are musical terms, but their support remains retraceable through recurrence, medium, bearing, and carrying."
-  reads: "where relation is carried through rhythm, sound, silence, harmony, melody, and embodied participation — where the structural conditions of bearing, coupling, resolution, and carrying become readable in a specifically musical form"
+    targets:
+      - third.branch
+      - second.medium
+      - third.expression
+  nests:
+    targets:
+      - third.expression-field
+      - third.body-field
+    read: "within [[Expression Field]] and [[Body Field]] as a domain branch. Its local reads are musical terms, but their support remains retraceable through recurrence, medium, bearing, and carrying."
+  reads:
+    targets: []
+    read: "where relation is carried through rhythm, sound, silence, harmony, melody, and embodied participation — where the structural conditions of bearing, coupling, resolution, and carrying become readable in a specifically musical form"
   carries:
-    - "[[Sound]]"
-    - "[[Musical Rhythm]]"
-    - "[[Harmony]]"
-    - "[[Melody]]"
-    - "[[Silence]]"
-    - "[[Musical Resolution]]"
-    - "[[Musical Form]]"
-
+    targets:
+      - third.sound
+      - third.musical-rhythm
+      - third.harmony
+      - third.melody
+      - third.silence
+      - third.musical-resolution
+      - third.musical-form
 publish: true
 status: stable
 ---

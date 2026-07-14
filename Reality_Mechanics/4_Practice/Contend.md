@@ -1,32 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.contend
-
-needs:
-  - "[[Tend]]"
-  - "[[Strain]]"
-  - "[[Pressure]]"
-  - "[[Resistance]]"
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "tending under strain, pressure, resistance, or competing claim."
-  holds: "[[Tend]], [[Strain]], [[Pressure]], [[Resistance]], and [[Boundary]]. A relation must be tended, and that tending must meet pressure or opposition at a boundary, before contending can be named."
-  pairs: "[[Tend]]. Tend names care applied through attended practice; Contend names the same care where resistance must be met without losing relation."
+  needs:
+    targets:
+      - practice.tend
+      - first.strain
+      - second.pressure
+      - second.resistance
+      - first.boundary
+  holds:
+    targets:
+      - practice.tend
+      - first.strain
+      - second.pressure
+      - second.resistance
+      - first.boundary
+    read: "[[Tend]], [[Strain]], [[Pressure]], [[Resistance]], and [[Boundary]]. A relation must be tended, and that tending must meet pressure or opposition at a boundary, before contending can be named."
+  pairs:
+    targets:
+      - practice.tend
+    read: "[[Tend]]. Tend names care applied through attended practice; Contend names the same care where resistance must be met without losing relation."
   traces:
-    - "[[Tend]]"
-    - "[[Strain]]"
-    - "[[Pressure]]"
-    - "[[Resistance]]"
-    - "[[Boundary]]"
-  nests: "within practice where care has to hold through opposition, pressure, or competing claim."
-  reads: "Contend becomes readable where tending cannot continue by simple maintenance, because pressure, resistance, or competing claim must be met and carried at a boundary."
-  carries: []
-
+    targets:
+      - practice.tend
+      - first.strain
+      - second.pressure
+      - second.resistance
+      - first.boundary
+  nests:
+    targets: []
+    read: "within practice where care has to hold through opposition, pressure, or competing claim."
+  reads:
+    targets: []
+    read: "Contend becomes readable where tending cannot continue by simple maintenance, because pressure, resistance, or competing claim must be met and carried at a boundary."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,22 +5,34 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.in
-
-needs:
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "interior relation within a bounded condition"
-  holds: "[[Boundary]] — a boundary must locate distinction before interior placement can be read"
-  pairs: "[[Out]] — In carries interior placement; Out carries exterior placement"
+  needs:
+    targets:
+      - first.boundary
+  holds:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — a boundary must locate distinction before interior placement can be read"
+  pairs:
+    targets:
+      - first.out
+    read: "[[Out]] — In carries interior placement; Out carries exterior placement"
   traces:
-    - "[[Boundary]]"
-  nests: "as a structural carrier that can enter later compounds such as within, inside, input, inhabit, and in-relation"
-  reads: "where relation is read as within a located condition"
+    targets:
+      - first.boundary
+  nests:
+    targets: []
+    read: "as a structural carrier that can enter later compounds such as within, inside, input, inhabit, and in-relation"
+  reads:
+    targets: []
+    read: "where relation is read as within a located condition"
   carries:
-    - "[[Within]]"
-    - "[[Intake]]"
-
+    targets:
+      - second.within
+      - second.intake
 publish: true
 status: stable
 ---

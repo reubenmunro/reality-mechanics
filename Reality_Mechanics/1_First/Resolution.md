@@ -5,33 +5,47 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.resolution
-needs:
-- '[[Bearing]]'
-- "[[Clearance]]"
+determination: pd.v3.pre-provenance-baseline
 conditions:
-  places: bearing determined at the current scope of evaluation — held strain settling into a readable condition without terminating relation
-  holds: '[[Bearing]] and [[Clearance]] — strain must be held, and relation must remain held apart enough for change across the difference to become readable as a determined condition'
-  pairs: "No lateral pair is required at this placement. Resolution can shape what is carried without being the source of every carrying."
+  places: "bearing determined at the current scope of evaluation — held strain settling into a readable condition without terminating relation"
+  needs:
+    targets:
+      - first.bearing
+      - first.clearance
+  holds:
+    targets:
+      - first.bearing
+      - first.clearance
+    read: "[[Bearing]] and [[Clearance]] — strain must be held, and relation must remain held apart enough for change across the difference to become readable as a determined condition"
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement. Resolution can shape what is carried without being the source of every carrying."
   traces:
-  - '[[Bearing]]'
-  - "[[Clearance]]"
-  nests: as the first-order crossing support into Second Order — closes a condition at one scope without terminating wider relation
-  reads: where bearing can be read as determined — where held contrast has settled into a readable outcome at the current scope without ending wider relation
+    targets:
+      - first.bearing
+      - first.clearance
+  nests:
+    targets: []
+    read: "as the first-order crossing support into Second Order — closes a condition at one scope without terminating wider relation"
+  reads:
+    targets: []
+    read: "where bearing can be read as determined — where held contrast has settled into a readable outcome at the current scope without ending wider relation"
   carries:
-  - '[[Hold]]'
-  - '[[Failure]]'
-  - '[[Yield]]'
-  - '[[Release]]'
-  - '[[Transfer]]'
-  - '[[Absorb]]'
-  - '[[Shift]]'
-  - '[[Closure]]'
-  - '[[Sever]]'
-  - '[[Adaptation]]'
-  - '[[Integration]]'
-  - '[[Governing]]'
-  - '[[Resolution Polarity]]'
-  - '[[Extractive Acceleration]]'
+    targets:
+      - first.hold
+      - first.failure
+      - first.yield
+      - first.release
+      - first.transfer
+      - first.absorb
+      - first.shift
+      - second.closure
+      - second.sever
+      - second.adaptation
+      - second.integration
+      - third.governing
+      - third.resolution-polarity
+      - third.extractive-acceleration
 order_terminal:
   is_terminal: true
   terminal_of: first_order

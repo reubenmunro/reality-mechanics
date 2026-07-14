@@ -5,31 +5,47 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.enter
-
-needs:
-  - "[[Notice]]"
-  - "[[Boundary]]"
-  - "[[Threshold]]"
-  - "[[Allow]]"
-  - "[[Space]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the crossing from first contact into the relation-space opened by that contact"
-  holds: "[[Notice]], [[Boundary]], [[Threshold]], [[Allow]], and [[Space]] — contact, scope, change-limit, permission, and location must be present before crossing can be read"
-  pairs: "[[Allow]] — Allow names permitted passage from the condition side; Enter names taken passage from the participating side"
+  needs:
+    targets:
+      - first.notice
+      - first.boundary
+      - first.threshold
+      - first.allow
+      - first.space
+  holds:
+    targets:
+      - first.notice
+      - first.boundary
+      - first.threshold
+      - first.allow
+      - first.space
+    read: "[[Notice]], [[Boundary]], [[Threshold]], [[Allow]], and [[Space]] — contact, scope, change-limit, permission, and location must be present before crossing can be read"
+  pairs:
+    targets:
+      - first.allow
+    read: "[[Allow]] — Allow names permitted passage from the condition side; Enter names taken passage from the participating side"
   traces:
-    - "[[Notice]]"
-    - "[[Boundary]]"
-    - "[[Threshold]]"
-    - "[[Allow]]"
-    - "[[Space]]"
-  nests: "between notice and participation — widens the field after contact without yet naming sustained attention or full participation"
-  reads: "where first contact passes into participatory relation — where what was noticed is no longer only met from outside but becomes available from within a widened field"
+    targets:
+      - first.notice
+      - first.boundary
+      - first.threshold
+      - first.allow
+      - first.space
+  nests:
+    targets: []
+    read: "between notice and participation — widens the field after contact without yet naming sustained attention or full participation"
+  reads:
+    targets: []
+    read: "where first contact passes into participatory relation — where what was noticed is no longer only met from outside but becomes available from within a widened field"
   carries:
-    - "[[Attend]]"
-    - "[[Atlas Practice]]"
-    - "[[Participation]]"
-
+    targets:
+      - first.attend
+      - practice.atlas-practice
+      - second.participation
 publish: true
 status: stable
 ---

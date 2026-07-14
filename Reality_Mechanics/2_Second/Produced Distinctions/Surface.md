@@ -5,27 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.surface
-
-needs:
-  - "[[Visible]]"
-  - "[[Form]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the presenting face of a condition."
-  holds: "[[Visible]] and [[Form]]."
-  pairs: "[[Kind]] — Surface names the presenting face of a condition; Kind names the recurrent form recognisable across instances"
+  needs:
+    targets:
+      - first.visible
+      - second.form
+  holds:
+    targets:
+      - first.visible
+      - second.form
+    read: "[[Visible]] and [[Form]]."
+  pairs:
+    targets:
+      - second.kind
+    read: "[[Kind]] — Surface names the presenting face of a condition; Kind names the recurrent form recognisable across instances"
   traces:
-    - "[[Visible]]"
-    - "[[Form]]"
-  nests: "as the presenting face of a condition. It can present truthfully, partially, or as mismatch depending on what carries it."
-  reads: "where a condition presents a readable face — where what is available to read can be encountered before its carrying is fully traced."
+    targets:
+      - first.visible
+      - second.form
+  nests:
+    targets: []
+    read: "as the presenting face of a condition. It can present truthfully, partially, or as mismatch depending on what carries it."
+  reads:
+    targets: []
+    read: "where a condition presents a readable face — where what is available to read can be encountered before its carrying is fully traced."
   carries:
-    - "[[Fabric]]"
-    - "[[Face]]"
-    - "[[Surface Patch]]"
-    - "[[Documentation Gap]]"
-    - "[[AI Drift]]"
-
+    targets:
+      - higher.fabric
+      - second.face
+      - third.surface-patch
+      - third.documentation-gap
+      - third.ai-drift
 publish: true
 status: stable
 ---

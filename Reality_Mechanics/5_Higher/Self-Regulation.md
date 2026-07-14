@@ -5,28 +5,43 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.self-regulation
-
-needs:
-  - "[[Invisible Bearing]]"
-  - "[[Self-Modelling]]"
-  - "[[Regulation]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "higher-order carrying used to adjust, inhibit, repair, preserve, or redirect participation."
-  holds: "[[Invisible Bearing]], [[Self-Modelling]], [[Regulation]], and [[Compatibility]]."
-  pairs: "[[Self-Modelling]]. Self-Modelling reads the self; Self-Regulation adjusts carrying through that read."
+  needs:
+    targets:
+      - higher.invisible-bearing
+      - higher.self-modelling
+      - second.regulation
+      - second.compatibility
+  holds:
+    targets:
+      - higher.invisible-bearing
+      - higher.self-modelling
+      - second.regulation
+      - second.compatibility
+    read: "[[Invisible Bearing]], [[Self-Modelling]], [[Regulation]], and [[Compatibility]]."
+  pairs:
+    targets:
+      - higher.self-modelling
+    read: "[[Self-Modelling]]. Self-Modelling reads the self; Self-Regulation adjusts carrying through that read."
   traces:
-    - "[[Repair]]"
-    - "[[Invisible Bearing]]"
-    - "[[Self-Modelling]]"
-    - "[[Regulation]]"
-    - "[[Compatibility]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where participation adjusts its own carrying in response to what has become readable."
+    targets:
+      - third.repair
+      - higher.invisible-bearing
+      - higher.self-modelling
+      - second.regulation
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where participation adjusts its own carrying in response to what has become readable."
   carries:
-    - "[[Higher Learning]]"
-
+    targets:
+      - higher.higher-learning
 publish: true
 status: stable
 ---

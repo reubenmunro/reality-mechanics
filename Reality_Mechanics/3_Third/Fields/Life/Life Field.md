@@ -5,34 +5,53 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.life-field
+determination: pd.v3.pre-provenance-baseline
 domain: life
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Life]]"
-  - "[[Natural Order]]"
-  - "[[Coupling]]"
-  - "[[Carrying]]"
-  - "[[Recursive Regulation]]"
 
 conditions:
   places: "the recurring field of participation through which living carrying — recursive regulation, sustained coupling, and compatibility — becomes readable as organised experience."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Life]], [[Natural Order]], [[Coupling]], [[Carrying]], and [[Recursive Regulation]]. Field of Participation must structure a recurring scope and natural-order coupling must sustain recursive regulation before the life field can be named."
-  pairs: "[[Sustenance Field]]. Life Field names the field of living carrying sustained through recursive regulation; Sustenance Field names the field of renewed availability that keeps living carrying possible. Each requires the other: living carrying requires sustenance to continue; sustenance is only sustenance where it renews a living condition."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.life
+      - ground.natural-order
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.life
+      - ground.natural-order
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+    read: "[[Field of Participation]], [[Organic Field]], [[Life]], [[Natural Order]], [[Coupling]], [[Carrying]], and [[Recursive Regulation]]. Field of Participation must structure a recurring scope and natural-order coupling must sustain recursive regulation before the life field can be named."
+  pairs:
+    targets:
+      - third.sustenance-field
+    read: "[[Sustenance Field]]. Life Field names the field of living carrying sustained through recursive regulation; Sustenance Field names the field of renewed availability that keeps living carrying possible. Each requires the other: living carrying requires sustenance to continue; sustenance is only sustenance where it renews a living condition."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Life]]"
-    - "[[Natural Order]]"
-    - "[[Coupling]]"
-    - "[[Carrying]]"
-    - "[[Recursive Regulation]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where living continuation, growth, reproduction, illness, death, or biological carrying organises participation as life."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.life
+      - ground.natural-order
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where living continuation, growth, reproduction, illness, death, or biological carrying organises participation as life."
   carries:
-    - "[[Cancer]]"
-    - "[[Timescale]]"
+    targets:
+      - third.cancer
+      - third.timescale
 publish: true
 status: stable
 ---

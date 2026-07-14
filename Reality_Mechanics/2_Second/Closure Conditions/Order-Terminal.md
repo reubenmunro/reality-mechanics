@@ -5,23 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.order_terminal
-
-needs:
-- "[[Term]]"
-- "[[Thread]]"
-- "[[Terminal]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "terminality relative to an order — the point where a readable length completes within its order and cannot continue as the same read."
-  holds: "[[Term]], [[Thread]], and [[Terminal]]. A term carries a readable length; thread carries the continuity of the read through that length; terminal names the limit of readability at the current closure scope."
-  pairs: "Terminal carries downward — into [[Order-Terminal]]. Order-terminal is a role/condition of completion; no lateral complement holds the same position."
+  needs:
+    targets:
+      - ground.term
+      - first.thread
+      - second.terminal
+  holds:
+    targets:
+      - ground.term
+      - first.thread
+      - second.terminal
+    read: "[[Term]], [[Thread]], and [[Terminal]]. A term carries a readable length; thread carries the continuity of the read through that length; terminal names the limit of readability at the current closure scope."
+  pairs:
+    targets:
+      - second.order_terminal
+    read: "Terminal carries downward — into [[Order-Terminal]]. Order-terminal is a role/condition of completion; no lateral complement holds the same position."
   traces:
-  - "[[Term]]"
-  - "[[Thread]]"
-  - "[[Terminal]]"
-  nests: "where a term completes the readable length of an order without ending relation itself."
-  reads: "where continuation would cross the closure scope of the current order, requiring re-entry, restart, or lifting into another order."
-  carries: []
+    targets:
+      - ground.term
+      - first.thread
+      - second.terminal
+  nests:
+    targets: []
+    read: "where a term completes the readable length of an order without ending relation itself."
+  reads:
+    targets: []
+    read: "where continuation would cross the closure scope of the current order, requiring re-entry, restart, or lifting into another order."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

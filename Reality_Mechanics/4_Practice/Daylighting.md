@@ -1,30 +1,45 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.shade-clearing
-
-needs:
-  - "[[Bearing Pass]]"
-  - "[[Structural Disorder]]"
-  - "[[Clear]]"
-  - "[[Clean]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural practice of restoring readability where order is present but occluded by crowding, residue, missing trace, misplaced support, or overgrowth."
-  holds: "[[Bearing Pass]], [[Structural Disorder]], [[Clear]], and [[Clean]]. A bearing pass must locate the occluded member, structural disorder must name the loss of dependency readability, clear must make the path readable, and clean must keep the correction from carrying residue."
-  pairs: "Daylighting carries downward as a care action inside Bearing Pass."
+  needs:
+    targets:
+      - practice.garden-pass
+      - ground.structural-disorder
+      - first.clear
+      - first.clean
+  holds:
+    targets:
+      - practice.garden-pass
+      - ground.structural-disorder
+      - first.clear
+      - first.clean
+    read: "[[Bearing Pass]], [[Structural Disorder]], [[Clear]], and [[Clean]]. A bearing pass must locate the occluded member, structural disorder must name the loss of dependency readability, clear must make the path readable, and clean must keep the correction from carrying residue."
+  pairs:
+    targets: []
+    read: "Daylighting carries downward as a care action inside Bearing Pass."
   traces:
-    - "[[Bearing Pass]]"
-    - "[[Structural Disorder]]"
-    - "[[Clear]]"
-    - "[[Clean]]"
-  nests: "inside Atlas Fabric wherever order is present but cannot be read cleanly enough for re-entry."
-  reads: "where correction removes obscuring growth, residue, missing trace, or misplaced support so an order can be re-entered without treating occlusion as a separate thing."
-  carries: []
-
+    targets:
+      - practice.garden-pass
+      - ground.structural-disorder
+      - first.clear
+      - first.clean
+  nests:
+    targets: []
+    read: "inside Atlas Fabric wherever order is present but cannot be read cleanly enough for re-entry."
+  reads:
+    targets: []
+    read: "where correction removes obscuring growth, residue, missing trace, or misplaced support so an order can be re-entered without treating occlusion as a separate thing."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

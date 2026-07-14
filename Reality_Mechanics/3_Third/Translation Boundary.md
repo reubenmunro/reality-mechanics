@@ -5,37 +5,50 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.translation-boundary
-
-needs:
-  - "[[Terminal]]"
-  - "[[Boundary]]"
-  - "[[Translation]]"
+determination: pd.v3.pre-provenance-baseline
 
 crossings:
   - "[[Order Trace]]"
 
 conditions:
   places: "the joint where a root structural term becomes terminal to a field or domain without losing retrace. It separates trunk/root continuation from branch-local reading."
-  holds: "[[Terminal]], [[Boundary]], and [[Translation]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.terminal
+      - first.boundary
+      - third.translation
+  holds:
+    targets:
+      - second.terminal
+      - first.boundary
+      - third.translation
+    read: "[[Terminal]], [[Boundary]], and [[Translation]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Terminal]]"
-    - "[[Boundary]]"
-    - "[[Translation]]"
-    - "[[Order Trace]]"
-  nests: "at the crossing between structural Atlas terms and local field or domain terms. It can occur in a domain, field, couple, practice, discipline, technology, language, body, place, or other nested participation where the read cannot be interpreted fully from outside the participation."
-  reads: "where an outside structural read can locate the edge of a field or domain, but cannot continue inside it without local terms."
+    targets:
+      - second.terminal
+      - first.boundary
+      - third.translation
+      - practice.order-trace
+  nests:
+    targets: []
+    read: "at the crossing between structural Atlas terms and local field or domain terms. It can occur in a domain, field, couple, practice, discipline, technology, language, body, place, or other nested participation where the read cannot be interpreted fully from outside the participation."
+  reads:
+    targets: []
+    read: "where an outside structural read can locate the edge of a field or domain, but cannot continue inside it without local terms."
   carries:
-    - "[[Scene]]"
-    - "[[Terms of Service]]"
-    - "[[Ship and Ark]]"
-    - "[[Restraint]]"
-    - "[[Applied Read]]"
-    - "[[Path Reads]]"
-    - "[[Degeneration Read]]"
-    - "[[Extractive Acceleration]]"
-    - "[[Translation Invariance]]"
-
+    targets:
+      - third.scene
+      - third.terms-of-service
+      - third.ship-and-ark
+      - third.restraint
+      - third.applied-read
+      - third.path-reads
+      - third.degeneration-read
+      - third.extractive-acceleration
+      - practice.translation-invariance
 publish: true
 status: stable
 ---

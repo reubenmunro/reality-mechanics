@@ -5,24 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.unit
-
-needs:
-  - "[[Measure]]"
-  - "[[Recurrence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a bounded repeatable measure."
-  holds: "[[Measure]] and [[Recurrence]]."
-  pairs: "Asymmetry carries downward — into [[Count]] and [[Hertz]]"
+  needs:
+    targets:
+      - second.measure
+      - second.recurrence
+  holds:
+    targets:
+      - second.measure
+      - second.recurrence
+    read: "[[Measure]] and [[Recurrence]]."
+  pairs:
+    targets:
+      - second.count
+      - second.hertz
+    read: "Asymmetry carries downward — into [[Count]] and [[Hertz]]"
   traces:
-    - "[[Measure]]"
-    - "[[Recurrence]]"
-  nests: "where measure remains repeatable across instances without changing the comparison condition."
-  reads: "where a measure can be repeated across instances without changing the comparison condition."
+    targets:
+      - second.measure
+      - second.recurrence
+  nests:
+    targets: []
+    read: "where measure remains repeatable across instances without changing the comparison condition."
+  reads:
+    targets: []
+    read: "where a measure can be repeated across instances without changing the comparison condition."
   carries:
-    - "[[Count]]"
-    - "[[Hertz]]"
-
+    targets:
+      - second.count
+      - second.hertz
 publish: true
 status: stable
 ---

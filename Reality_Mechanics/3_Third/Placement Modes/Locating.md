@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.locating
+determination: pd.v3.pre-provenance-baseline
 domain: placement-modes
-
-needs:
-  - "[[Placement Mode]]"
-  - "[[Boundary]]"
-  - "[[Space]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the mode where participation is primarily carried through position, boundary, or situated availability — where something is placed by where it is, where it can be entered, or what boundary situates it."
-  holds: "[[Placement Mode]], [[Boundary]], [[Space]], and [[Closure Scope]]. A mode of participation must exist, space must be available, boundaries must situate position, and a scope must bound the location before situated placement can be placed as the primary mode."
-  pairs: "[[Moving]]. Locating names where something is; Moving names how it traverses from there."
+  needs:
+    targets:
+      - third.placement-mode
+      - first.boundary
+      - first.space
+      - second.closure-scope
+  holds:
+    targets:
+      - third.placement-mode
+      - first.boundary
+      - first.space
+      - second.closure-scope
+    read: "[[Placement Mode]], [[Boundary]], [[Space]], and [[Closure Scope]]. A mode of participation must exist, space must be available, boundaries must situate position, and a scope must bound the location before situated placement can be placed as the primary mode."
+  pairs:
+    targets:
+      - third.moving
+    read: "[[Moving]]. Locating names where something is; Moving names how it traverses from there."
   traces:
-    - "[[Placement Mode]]"
-    - "[[Boundary]]"
-    - "[[Space]]"
-    - "[[Closure Scope]]"
-  nests: "within Placement Modes as the positional mode — where the primary movement is situating participation within a bounded place rather than traversing, transforming, or transmitting it."
-  reads: "where a note is primarily placed by where something is, where it can be entered, where it belongs, or what boundary situates it."
-  carries: []
-
+    targets:
+      - third.placement-mode
+      - first.boundary
+      - first.space
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Placement Modes as the positional mode — where the primary movement is situating participation within a bounded place rather than traversing, transforming, or transmitting it."
+  reads:
+    targets: []
+    read: "where a note is primarily placed by where something is, where it can be entered, where it belongs, or what boundary situates it."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

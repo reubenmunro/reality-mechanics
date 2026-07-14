@@ -5,29 +5,45 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.dominion
-
-needs:
-  - "[[Domain]]"
-  - "[[Care]]"
-  - "[[Control]]"
-  - "[[Boundary]]"
-  - "[[Competence Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain."
-  holds: "[[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named."
-  pairs: "[[Domination]]. Dominion names authority that remains answerable to the domain it bears; Domination names control detached from care and the carrying conditions of the domain."
+  needs:
+    targets:
+      - third.domain
+      - third.care
+      - third.control
+      - first.boundary
+      - third.competence-boundary
+  holds:
+    targets:
+      - third.domain
+      - third.care
+      - third.control
+      - first.boundary
+      - third.competence-boundary
+    read: "[[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named."
+  pairs:
+    targets:
+      - third.domination
+    read: "[[Domination]]. Dominion names authority that remains answerable to the domain it bears; Domination names control detached from care and the carrying conditions of the domain."
   traces:
-    - "[[Domain]]"
-    - "[[Care]]"
-    - "[[Control]]"
-    - "[[Boundary]]"
-    - "[[Competence Boundary]]"
-  nests: "within domains where authority directs participation while remaining answerable to what the domain requires in order to keep carrying."
-  reads: "Dominion becomes readable where control is held inside care, boundary, and competence, so authority serves the carrying conditions of the domain rather than consuming them."
+    targets:
+      - third.domain
+      - third.care
+      - third.control
+      - first.boundary
+      - third.competence-boundary
+  nests:
+    targets: []
+    read: "within domains where authority directs participation while remaining answerable to what the domain requires in order to keep carrying."
+  reads:
+    targets: []
+    read: "Dominion becomes readable where control is held inside care, boundary, and competence, so authority serves the carrying conditions of the domain rather than consuming them."
   carries:
-    - "[[Domination]]"
-
+    targets:
+      - third.domination
 publish: true
 status: stable
 ---

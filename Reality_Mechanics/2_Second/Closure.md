@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.closure
-
-needs:
-  - "[[Boundary]]"
-  - "[[Resolution]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read becoming bounded enough for evaluation."
-  holds: "[[Boundary]] and [[Resolution]]. A read must be bounded and determined enough to be evaluated."
-  pairs: "Asymmetry carries downward — into [[Closure Scope]] via [[Scope]]"
+  needs:
+    targets:
+      - first.boundary
+      - first.resolution
+  holds:
+    targets:
+      - first.boundary
+      - first.resolution
+    read: "[[Boundary]] and [[Resolution]]. A read must be bounded and determined enough to be evaluated."
+  pairs:
+    targets:
+      - second.closure-scope
+      - second.scope
+    read: "Asymmetry carries downward — into [[Closure Scope]] via [[Scope]]"
   traces:
-    - "[[Boundary]]"
-    - "[[Resolution]]"
-  nests: "as a second-order support root. It makes evaluation, traversal, scope, and local holding possible without requiring finality."
-  reads: "where a read is bounded enough to be evaluated — where something can be assessed as holding or not holding within a delimited extent."
+    targets:
+      - first.boundary
+      - first.resolution
+  nests:
+    targets: []
+    read: "as a second-order support root. It makes evaluation, traversal, scope, and local holding possible without requiring finality."
+  reads:
+    targets: []
+    read: "where a read is bounded enough to be evaluated — where something can be assessed as holding or not holding within a delimited extent."
   carries:
-    - "[[Closure Scope]]"
-    - "[[Scope]]"
-    - "[[Decision]]"
-
+    targets:
+      - second.closure-scope
+      - second.scope
+      - second.decision
 publish: true
 status: stable
 ---

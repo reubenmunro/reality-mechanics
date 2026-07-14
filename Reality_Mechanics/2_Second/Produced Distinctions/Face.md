@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.face
-
-needs:
-  - "[[Boundary]]"
-  - "[[Surface]]"
-  - "[[Carrying]]"
-  - "[[Return]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the boundary-surface condition through which carrying becomes answerable to read."
-  holds: "[[Boundary]], [[Surface]], [[Carrying]], [[Return]], and [[Readability]]. Boundary must locate distinction, surface must present, carrying must continue, and carried relation must become readable again before a face can answer back as read."
-  pairs: "No lateral pair is required at this placement. Face names a synthesis condition: carrying, boundary, surface, return, and readability held together as answerable presentation."
+  needs:
+    targets:
+      - first.boundary
+      - second.surface
+      - second.carrying
+      - second.return
+      - second.readability
+  holds:
+    targets:
+      - first.boundary
+      - second.surface
+      - second.carrying
+      - second.return
+      - second.readability
+    read: "[[Boundary]], [[Surface]], [[Carrying]], [[Return]], and [[Readability]]. Boundary must locate distinction, surface must present, carrying must continue, and carried relation must become readable again before a face can answer back as read."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement. Face names a synthesis condition: carrying, boundary, surface, return, and readability held together as answerable presentation."
   traces:
-    - "[[Boundary]]"
-    - "[[Surface]]"
-    - "[[Carrying]]"
-    - "[[Return]]"
-    - "[[Readability]]"
-  nests: "where carried trace reaches a boundary-surface through which inside and outside become mutually accountable."
-  reads: "where carrying can return through a located surface as read, or where non-return becomes readable as still-effective carrying."
-  carries: []
-
+    targets:
+      - first.boundary
+      - second.surface
+      - second.carrying
+      - second.return
+      - second.readability
+  nests:
+    targets: []
+    read: "where carried trace reaches a boundary-surface through which inside and outside become mutually accountable."
+  reads:
+    targets: []
+    read: "where carrying can return through a located surface as read, or where non-return becomes readable as still-effective carrying."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

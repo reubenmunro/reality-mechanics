@@ -1,34 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.root-resilience
-
-needs:
-  - "[[Root System]]"
-  - "[[Root Order]]"
-  - "[[Groundedness]]"
-  - "[[Retrace Read|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the capacity of a grounded root system to withstand branch-level disruption without losing dependency order."
-  holds: "[[Root System]], [[Root Order]], [[Groundedness]], and [[Retrace Read|Retrace]]."
-  pairs: "Asymmetry carries downward — into [[Retrace Practice]]"
+  needs:
+    targets:
+      - practice.root-system
+      - ground.root-order
+      - ground.groundedness
+      - second.retrace-read
+  holds:
+    targets:
+      - practice.root-system
+      - ground.root-order
+      - ground.groundedness
+      - second.retrace-read
+    read: "[[Root System]], [[Root Order]], [[Groundedness]], and [[Retrace Read|Retrace]]."
+  pairs:
+    targets:
+      - practice.retrace-practice
+    read: "Asymmetry carries downward — into [[Retrace Practice]]"
   traces:
-    - "[[Root System]]"
-    - "[[Root Order]]"
-    - "[[Groundedness]]"
-    - "[[Retrace Read|Retrace]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where the root system can withstand correction, relief, drift detection, and remapping without losing the dependency order that keeps terms retraceable."
+    targets:
+      - practice.root-system
+      - ground.root-order
+      - ground.groundedness
+      - second.retrace-read
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where the root system can withstand correction, relief, drift detection, and remapping without losing the dependency order that keeps terms retraceable."
   carries:
-    - "[[Retrace Practice]]"
-    - "[[Atlas Fabric]]"
-    - "[[Relief]]"
-    - "[[Decommissioning]]"
-
+    targets:
+      - practice.retrace-practice
+      - practice.atlas-garden
+      - practice.pruning
+      - practice.composting
 publish: true
 status: stable
 ---

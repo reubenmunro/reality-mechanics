@@ -1,28 +1,42 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.grafting
-
-needs:
-  - "[[Bearing Pass]]"
-  - "[[Dependency Order]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural practice of reconnecting a member to the support it actually traces, rather than the support it claimed or appeared to have."
-  holds: "[[Bearing Pass]], [[Dependency Order]], and [[Trace]]. A bearing pass must locate the member, dependency order must distinguish real support from apparent support, and trace must make the return path followable."
-  pairs: "Splicing carries downward as a care action inside Bearing Pass."
+  needs:
+    targets:
+      - practice.garden-pass
+      - ground.dependency-order
+      - first.trace
+  holds:
+    targets:
+      - practice.garden-pass
+      - ground.dependency-order
+      - first.trace
+    read: "[[Bearing Pass]], [[Dependency Order]], and [[Trace]]. A bearing pass must locate the member, dependency order must distinguish real support from apparent support, and trace must make the return path followable."
+  pairs:
+    targets: []
+    read: "Splicing carries downward as a care action inside Bearing Pass."
   traces:
-    - "[[Bearing Pass]]"
-    - "[[Dependency Order]]"
-    - "[[Trace]]"
-  nests: "inside Atlas Fabric wherever a member may live if reconnected to the condition that actually holds it."
-  reads: "where a misplaced member is not discarded but reattached to a support it can retrace."
-  carries: []
-
+    targets:
+      - practice.garden-pass
+      - ground.dependency-order
+      - first.trace
+  nests:
+    targets: []
+    read: "inside Atlas Fabric wherever a member may live if reconnected to the condition that actually holds it."
+  reads:
+    targets: []
+    read: "where a misplaced member is not discarded but reattached to a support it can retrace."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

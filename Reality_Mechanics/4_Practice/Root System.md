@@ -1,29 +1,43 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.root-system
-
-needs:
-  - "[[Relation]]"
-  - "[[Root Order]]"
-  - "[[Invariant]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the protected source condition from which the Reality Mechanics system is organised."
-  holds: "[[Relation]], [[Root Order]], and [[Invariant]]."
-  pairs: "Asymmetry carries downward — into [[Root Resilience]]"
+  needs:
+    targets:
+      - first.relation
+      - ground.root-order
+      - ground.invariant
+  holds:
+    targets:
+      - first.relation
+      - ground.root-order
+      - ground.invariant
+    read: "[[Relation]], [[Root Order]], and [[Invariant]]."
+  pairs:
+    targets:
+      - practice.root-resilience
+    read: "Asymmetry carries downward — into [[Root Resilience]]"
   traces:
-    - "[[Relation]]"
-    - "[[Root Order]]"
-    - "[[Invariant]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where later terms can be traced back through dependency order without losing connection to the primitive."
+    targets:
+      - first.relation
+      - ground.root-order
+      - ground.invariant
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where later terms can be traced back through dependency order without losing connection to the primitive."
   carries:
-    - "[[Root Resilience]]"
-
+    targets:
+      - practice.root-resilience
 publish: true
 status: stable
 ---

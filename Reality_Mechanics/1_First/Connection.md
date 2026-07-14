@@ -5,23 +5,36 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.connection
-
-needs:
-  - "[[Relation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation holding between distinguishable conditions so that passage is available in more than one direction."
-  holds: "[[Relation]]. Relation must remain held for connection within relation to be available."
-  pairs: "Connection opens into [[Carry]] and [[Trace]] as directional availability within one relation, not two separate relations."
+  needs:
+    targets:
+      - first.relation
+  holds:
+    targets:
+      - first.relation
+    read: "[[Relation]]. Relation must remain held for connection within relation to be available."
+  pairs:
+    targets:
+      - first.carry
+      - first.trace
+    read: "Connection opens into [[Carry]] and [[Trace]] as directional availability within one relation, not two separate relations."
   traces:
-    - "[[Relation]]"
-  nests: "within relation as the connected passage through which carrying and trace become available without dividing the connection between them."
-  reads: "where distinguishable conditions remain joined through a passage that offers carry forward and trace backward."
+    targets:
+      - first.relation
+  nests:
+    targets: []
+    read: "within relation as the connected passage through which carrying and trace become available without dividing the connection between them."
+  reads:
+    targets: []
+    read: "where distinguishable conditions remain joined through a passage that offers carry forward and trace backward."
   carries:
-    - "[[Carry]]"
-    - "[[Trace]]"
-    - "[[First Order Crossing|Threshold (First → Second)]]"
-
+    targets:
+      - first.carry
+      - first.trace
+      - first.first-order-crossing
 publish: true
 status: working
 ---

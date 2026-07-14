@@ -1,32 +1,48 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.terms-and-conditions
-
-needs:
-  - "[[Term]]"
-  - "[[Condition]]"
-  - "[[Groundedness]]"
-  - "[[Common Term Structure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural agreement between named terms and the conditions that allow those terms to serve inside the Atlas."
-  holds: "[[Term]], [[Condition]], [[Groundedness]], and [[Common Term Structure]]."
-  pairs: "[[Terms of Service]] — both reverse the ordinary acceptance order: participation must remain answerable to the terms that make carrying possible. Terms and Conditions holds that reversal inward, where terms serve inside the Atlas through traceable conditions; Terms of Service holds it outward, where human service answers to the earth carrying it. Each requires the other to be locatable: the inward standard without the outward boundary is self-enclosed; the outward boundary without the inward standard has no terms to answer with."
+  needs:
+    targets:
+      - ground.term
+      - second.condition
+      - ground.groundedness
+      - foundation.common-term-structure
+  holds:
+    targets:
+      - ground.term
+      - second.condition
+      - ground.groundedness
+      - foundation.common-term-structure
+    read: "[[Term]], [[Condition]], [[Groundedness]], and [[Common Term Structure]]."
+  pairs:
+    targets:
+      - third.terms-of-service
+    read: "[[Terms of Service]] — both reverse the ordinary acceptance order: participation must remain answerable to the terms that make carrying possible. Terms and Conditions holds that reversal inward, where terms serve inside the Atlas through traceable conditions; Terms of Service holds it outward, where human service answers to the earth carrying it. Each requires the other to be locatable: the inward standard without the outward boundary is self-enclosed; the outward boundary without the inward standard has no terms to answer with."
   traces:
-    - "[[Term]]"
-    - "[[Condition]]"
-    - "[[Groundedness]]"
-    - "[[Common Term Structure]]"
-  nests: "at the root of the Atlas as a public-facing and practice-facing bridge. It can sit beside [[Reality Mechanics]] and [[Atlas]] because it names the standard by which the mapped body keeps its terms serviceable."
-  reads: "where a named word cannot be treated as valid merely because it has been named. It must show where it places, what holds it, what it pairs with, where it traces, where it nests, how it reads, and what it carries."
+    targets:
+      - ground.term
+      - second.condition
+      - ground.groundedness
+      - foundation.common-term-structure
+  nests:
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+    read: "at the root of the Atlas as a public-facing and practice-facing bridge. It can sit beside [[Reality Mechanics]] and [[Atlas]] because it names the standard by which the mapped body keeps its terms serviceable."
+  reads:
+    targets: []
+    read: "where a named word cannot be treated as valid merely because it has been named. It must show where it places, what holds it, what it pairs with, where it traces, where it nests, how it reads, and what it carries."
   carries:
-    - "[[Check]]"
-    - "[[Atlas Condition Header]]"
-
+    targets:
+      - practice.check
 publish: true
 status: stable
 ---
@@ -74,6 +90,4 @@ The phrase carries a double read. Publicly, it is familiar enough to enter. Stru
 ## Carries
 
 - [[Check]]
-- [[Atlas Condition Header]]
-
-Check tests the agreement this standard names; the [[Atlas Condition Header]] gives its conditions their compact gathered form.
+Check tests the agreement this standard names.

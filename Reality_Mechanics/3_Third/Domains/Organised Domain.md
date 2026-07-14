@@ -5,33 +5,48 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.organised-domain
+determination: pd.v3.pre-provenance-baseline
 domain: organised-domain
-
-needs:
-  - "[[Domain]]"
-  - "[[Organic and Organised Organisation]]"
-  - "[[Field of Participation]]"
-  - "[[Society]]"
 
 conditions:
   places: "an intentionally arranged participation context where one or more fields become organised into practice, discipline, institution, method, model, framework, or applied arrangement."
-  holds: "[[Domain]], [[Organic and Organised Organisation]], [[Field of Participation]], [[Society]]."
-  pairs: "[[Organic Field]] — Organised Domain names a participation context intentionally arranged; Organic Field names a field that emerges through recurring participation."
+  needs:
+    targets:
+      - third.domain
+      - third.organic-and-organised-organisation
+      - third.field-of-participation
+      - third.society
+  holds:
+    targets:
+      - third.domain
+      - third.organic-and-organised-organisation
+      - third.field-of-participation
+      - third.society
+    read: "[[Domain]], [[Organic and Organised Organisation]], [[Field of Participation]], [[Society]]."
+  pairs:
+    targets:
+      - third.organic-field
+    read: "[[Organic Field]] — Organised Domain names a participation context intentionally arranged; Organic Field names a field that emerges through recurring participation."
   traces:
-    - "[[Domain]]"
-    - "[[Organic and Organised Organisation]]"
-    - "[[Field of Participation]]"
-    - "[[Communion]]"
-    - "[[Society]]"
-    - "[[Terminal]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "An Organised Domain becomes recognisable where participation is intentionally arranged, maintained, revised, inherited, taught, governed, or applied. It is read by asking what organic fields it organises and whether its carrying remains retraceable."
+    targets:
+      - third.domain
+      - third.organic-and-organised-organisation
+      - third.field-of-participation
+      - third.communion
+      - third.society
+      - second.terminal
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "An Organised Domain becomes recognisable where participation is intentionally arranged, maintained, revised, inherited, taught, governed, or applied. It is read by asking what organic fields it organises and whether its carrying remains retraceable."
   carries:
-    - "[[Branch]]"
-    - "[[Applied Read]]"
-    - "[[Higher Retrace|Retrace]]"
-    - "[[Hidden Bearing]]"
-
+    targets:
+      - third.branch
+      - third.applied-read
+      - higher.higher-retrace
+      - higher.hidden-bearing
 publish: true
 status: stable
 ---

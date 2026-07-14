@@ -5,22 +5,34 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.time
-
-needs:
-  - "[[Clearance]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "held clearance as interval and continuation — relation persisting without collapsing into absolute self-sameness"
-  holds: "[[Clearance]] — relation must remain held apart enough to continue without collapsing into static sameness"
-  pairs: "[[Space]] — Time reads clearance as interval and continuation; Space reads clearance as separation and extent"
+  needs:
+    targets:
+      - first.clearance
+  holds:
+    targets:
+      - first.clearance
+    read: "[[Clearance]] — relation must remain held apart enough to continue without collapsing into static sameness"
+  pairs:
+    targets:
+      - first.space
+    read: "[[Space]] — Time reads clearance as interval and continuation; Space reads clearance as separation and extent"
   traces:
-    - "[[Clearance]]"
-  nests: "before chronology, sequence, process, progression, and causation — those are later traversal reads of time, not the first condition"
-  reads: "where held clearance can be read as interval and continuation — where relation is present as persisting rather than as static sameness. Downstream, time becomes readable as the rate and scale at which an order resolves."
+    targets:
+      - first.clearance
+  nests:
+    targets: []
+    read: "before chronology, sequence, process, progression, and causation — those are later traversal reads of time, not the first condition"
+  reads:
+    targets: []
+    read: "where held clearance can be read as interval and continuation — where relation is present as persisting rather than as static sameness. Downstream, time becomes readable as the rate and scale at which an order resolves."
   carries:
-    - "[[Timescale]]"
-    - "[[Interval]]"
-
+    targets:
+      - third.timescale
+      - second.interval
 publish: true
 status: stable
 ---

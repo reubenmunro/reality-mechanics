@@ -1,5 +1,7 @@
 # Commissions
 
+> Historical register. Entries below describe the architecture at the time of each commission and may cite files or tools retired by Canonical Translation. They are evidence, not current structural authority.
+
 ## Purpose
 
 This register records commissions issued by the Project Steward and their current state.

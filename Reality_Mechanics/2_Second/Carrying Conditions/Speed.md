@@ -5,28 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.speed
-
-needs:
-  - "[[Traversal]]"
-  - "[[Rate]]"
-  - "[[Measure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "rate of traversal through a closure scope."
-  holds: "[[Traversal]], [[Rate]], and [[Measure]]."
-  pairs: "Asymmetry carries downward — into [[Velocity]] and [[Acceleration]]"
+  needs:
+    targets:
+      - second.traversal
+      - second.rate
+      - second.measure
+  holds:
+    targets:
+      - second.traversal
+      - second.rate
+      - second.measure
+    read: "[[Traversal]], [[Rate]], and [[Measure]]."
+  pairs:
+    targets:
+      - second.velocity
+      - second.acceleration
+    read: "Asymmetry carries downward — into [[Velocity]] and [[Acceleration]]"
   traces:
-    - "[[Traversal]]"
-    - "[[Rate]]"
-    - "[[Measure]]"
-    - "[[Change]]"
-  nests: "inside traversal as rate through closure scope before direction is added."
-  reads: "where traversal through a scope can be evaluated as faster or slower per interval."
+    targets:
+      - second.traversal
+      - second.rate
+      - second.measure
+      - second.change
+  nests:
+    targets: []
+    read: "inside traversal as rate through closure scope before direction is added."
+  reads:
+    targets: []
+    read: "where traversal through a scope can be evaluated as faster or slower per interval."
   carries:
-    - "[[Velocity]]"
-    - "[[Acceleration]]"
-    - "[[Drag]]"
-
+    targets:
+      - second.velocity
+      - second.acceleration
+      - second.drag
 publish: true
 status: stable
 ---

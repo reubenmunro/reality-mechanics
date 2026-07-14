@@ -1,7 +1,7 @@
 # Supersession Index
 
 **Purpose:** Mark reports that remain as **evidence** but are **not current programme truth**.  
-**Maintained:** M-003 (2026-07-07)
+**Maintained:** Phase 6 Stage 2 (2026-07-14)
 
 Do not delete reports. Read supersession notes before citing.
 
@@ -26,9 +26,9 @@ Do not delete reports. Read supersession notes before citing.
 | `docs/reports/M-004-public-observatory-milestone.md` | **Phase One closure** — historical milestone |
 | `README.md` | Public GitHub landing |
 | `docs/PROGRAMME_INDEX.md` | Contributor entry |
-| `public-surface-manifest.mjs` | Product truth |
-| `docs/reports/R-005-programme-synthesis.md` | Architecture synthesis |
-| `docs/reports/R-006-operation-reconciliation.md` | Operational truth @ HEAD |
+| `Reality_Mechanics/` | Sole maintained structural authority |
+| `.atlas-publisher/generated/canonical-graph.json` | Disposable generated structural graph |
+| `docs/generated/atlas-source-format.md` | Generated source-format reference |
 | `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md` | Runtime layers |
 | `docs/runtime/READ_ENGINE.md` | Read module pattern |
 | `docs/practice/COMMISSIONS.md` | Commission register |
@@ -42,7 +42,9 @@ Do not delete reports. Read supersession notes before citing.
 | **D-021.5** Public Website Strip-Back | D-024, D-025, R-005 | Four surfaces → **five** (Calculus added). Theory is retained, not retired. |
 | **FABLE-REPO-STATE-FINDING-2026-07-06** | R-006, M-001 | Snapshot @ `bf772fa`; pre–P/O mechanics. MCP 15 tools → 17. |
 | **R-002** Release Blocker Remediation | R-004, D-025 | MCP `get_public_programme` **discarded**; doc claims partially reversed. Observatory fixes **landed** via R-004. |
-| **S-001** Programme Characterisation | R-005, manifest | Field/Calibration/MCP map; pre-Calculus public surface. Governance sections still useful. |
+| **S-001** Programme Characterisation | Phase 6 Canonical Translation | Field/Calibration/MCP map; pre-Calculus and pre-Canonical-Translation public surface. Governance sections still useful. |
+| **R-005** Programme Synthesis | Phase 6 Canonical Translation | Its maintained surface manifest was retired; surface participation is generated from the Atlas where structural. |
+| **R-006** Operation Reconciliation | Phase 6 Canonical Translation | Point-in-time operational evidence; no longer current authority. |
 | **R-004** @ `a094565` only | R-006, M-003 | Extended by P/O programme and O-008; test counts stale in R-004/R-006 bodies. |
 | **R-006** Operation Reconciliation | M-003, O-008 | HEAD/test counts in report body @ `1e0b526`; extended @ `333773c`. |
 | **O-001–O-004** Observatory renderer reports | **O-008** | Architecture/TMS evidence retained; **live client activation** and draw order superseded by `woven-field-renderer.mjs`. |

@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.feeling
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Body]]"
-  - "[[Sensing]]"
-  - "[[Availability]]"
-  - "[[Boundary]]"
-  - "[[Strain]]"
-  - "[[Readability]]"
 
 conditions:
   places: "the condition through which the body makes change in availability detectable — the structural node where bodily sensing becomes a readable boundary condition."
-  holds: "[[Body]], [[Sensing]], [[Availability]], [[Boundary]], [[Strain]], and [[Readability]]. Bodily change must locate a detectable boundary before the availability of strain can be read as feeling."
-  pairs: "[[Emotion]]. Feeling names available detection of bodily strain; Emotion names the condition where that detection gathers into pattern and presses bearing."
+  needs:
+    targets:
+      - third.body
+      - third.sensing
+      - first.availability
+      - first.boundary
+      - first.strain
+      - second.readability
+  holds:
+    targets:
+      - third.body
+      - third.sensing
+      - first.availability
+      - first.boundary
+      - first.strain
+      - second.readability
+    read: "[[Body]], [[Sensing]], [[Availability]], [[Boundary]], [[Strain]], and [[Readability]]. Bodily change must locate a detectable boundary before the availability of strain can be read as feeling."
+  pairs:
+    targets:
+      - third.emotion
+    read: "[[Emotion]]. Feeling names available detection of bodily strain; Emotion names the condition where that detection gathers into pattern and presses bearing."
   traces:
-    - "[[Body]]"
-    - "[[Sensing]]"
-    - "[[Availability]]"
-    - "[[Boundary]]"
-    - "[[Strain]]"
-    - "[[Readability]]"
-  nests: "within the Body Field as the condition through which availability becomes detectable — the structural ground for emotion, sensation, and affect reads."
-  reads: "Feeling becomes readable where embodied change is sensed as locally available to the participant before it has been fully patterned, named, expressed, or acted on."
+    targets:
+      - third.body
+      - third.sensing
+      - first.availability
+      - first.boundary
+      - first.strain
+      - second.readability
+  nests:
+    targets: []
+    read: "within the Body Field as the condition through which availability becomes detectable — the structural ground for emotion, sensation, and affect reads."
+  reads:
+    targets: []
+    read: "Feeling becomes readable where embodied change is sensed as locally available to the participant before it has been fully patterned, named, expressed, or acted on."
   carries:
-    - "[[Emotion]]" 
-
+    targets:
+      - third.emotion
 publish: true
 status: stable
 ---

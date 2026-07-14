@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.guard
-
-needs:
-  - "[[Boundary]]"
-  - "[[Availability]]"
-  - "[[Carrying]]"
-  - "[[Constraint]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying organised around a boundary to preserve availability by regulating passage."
-  holds: "[[Boundary]], [[Availability]], [[Carrying]], [[Constraint]], and [[Compatibility]]. A boundary must locate what is at stake, carrying must maintain it, constraint must regulate passage, and the guarded availability must remain supportable before guard can be named."
-  pairs: "No lateral pair is required at this placement yet. Guard names boundary-maintaining carrying; whether that guarding later reads as care, control, safety, restriction, or harm depends on the relation and effects that follow."
+  needs:
+    targets:
+      - first.boundary
+      - first.availability
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+  holds:
+    targets:
+      - first.boundary
+      - first.availability
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+    read: "[[Boundary]], [[Availability]], [[Carrying]], [[Constraint]], and [[Compatibility]]. A boundary must locate what is at stake, carrying must maintain it, constraint must regulate passage, and the guarded availability must remain supportable before guard can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Guard names boundary-maintaining carrying; whether that guarding later reads as care, control, safety, restriction, or harm depends on the relation and effects that follow."
   traces:
-    - "[[Boundary]]"
-    - "[[Availability]]"
-    - "[[Carrying]]"
-    - "[[Constraint]]"
-    - "[[Compatibility]]"
-  nests: "within carrying at a boundary, where passage is selectively constrained so that available bearing can remain."
-  reads: "Guard becomes readable where a maintained boundary regulates what may enter, leave, or bear upon an available condition. Its compatibility is tested by whether the guarded availability and its capacity for participation remain."
-  carries: []
-
+    targets:
+      - first.boundary
+      - first.availability
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within carrying at a boundary, where passage is selectively constrained so that available bearing can remain."
+  reads:
+    targets: []
+    read: "Guard becomes readable where a maintained boundary regulates what may enter, leave, or bear upon an available condition. Its compatibility is tested by whether the guarded availability and its capacity for participation remain."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

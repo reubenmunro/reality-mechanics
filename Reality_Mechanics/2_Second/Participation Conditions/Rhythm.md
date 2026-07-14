@@ -5,32 +5,48 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.rhythm
-
-needs:
-  - "[[Pattern]]"
-  - "[[Recurrence]]"
-  - "[[Interval]]"
-  - "[[Return]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "patterned recurrence carried through interval."
-  holds: "[[Pattern]], [[Recurrence]], [[Interval]], and [[Return]]."
-  pairs: "Asymmetry carries downward — into [[Tempo]] and [[Melody]]"
+  needs:
+    targets:
+      - second.pattern
+      - second.recurrence
+      - second.interval
+      - second.return
+  holds:
+    targets:
+      - second.pattern
+      - second.recurrence
+      - second.interval
+      - second.return
+    read: "[[Pattern]], [[Recurrence]], [[Interval]], and [[Return]]."
+  pairs:
+    targets:
+      - second.tempo
+      - third.melody
+    read: "Asymmetry carries downward — into [[Tempo]] and [[Melody]]"
   traces:
-    - "[[Pattern]]"
-    - "[[Recurrence]]"
-    - "[[Interval]]"
-    - "[[Cycle]]"
-    - "[[Frequency]]"
-    - "[[Medium]]"
-    - "[[Period]]"
-    - "[[Return]]"
-  nests: "where recurrence is carried as a pattern through intervals."
-  reads: "where recurrence is not merely counted but carried as a readable pattern through intervals."
+    targets:
+      - second.pattern
+      - second.recurrence
+      - second.interval
+      - second.cycle
+      - second.frequency
+      - second.medium
+      - second.period
+      - second.return
+  nests:
+    targets: []
+    read: "where recurrence is carried as a pattern through intervals."
+  reads:
+    targets: []
+    read: "where recurrence is not merely counted but carried as a readable pattern through intervals."
   carries:
-    - "[[Tempo]]"
-    - "[[Musical Rhythm]]"
-
+    targets:
+      - second.tempo
+      - third.musical-rhythm
 publish: true
 status: stable
 ---

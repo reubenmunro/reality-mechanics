@@ -5,29 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.reference-frame
-
-needs:
-  - "[[Ratio]]"
-  - "[[Boundary]]"
-  - "[[Closure Scope]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the nested placement through which a ratio, relation, scale, or relative read becomes answerable and one face of carrying becomes readable."
-  holds: "[[Ratio]], [[Boundary]], [[Closure Scope]], and [[Readability]]. A comparison must be readable, located, scoped, and followable before its reference frame can be named."
-  pairs: "[[Relative]] — Reference Frame names the placed reference; Relative names the read made answerable through that placement."
+  needs:
+    targets:
+      - first.ratio
+      - first.boundary
+      - second.closure-scope
+      - second.readability
+  holds:
+    targets:
+      - first.ratio
+      - first.boundary
+      - second.closure-scope
+      - second.readability
+    read: "[[Ratio]], [[Boundary]], [[Closure Scope]], and [[Readability]]. A comparison must be readable, located, scoped, and followable before its reference frame can be named."
+  pairs:
+    targets:
+      - second.relative
+    read: "[[Relative]] — Reference Frame names the placed reference; Relative names the read made answerable through that placement."
   traces:
-    - "[[Ratio]]"
-    - "[[Boundary]]"
-    - "[[Closure Scope]]"
-    - "[[Readability]]"
-  nests: "around relative, scale, measure, and reasoning reads as the placement that keeps comparison from pretending to come from nowhere."
-  reads: "where the reference of a read is explicit enough that change of frame, scale, or scope can be tested, and where different nested frames illuminate different faces of the same carrying."
+    targets:
+      - first.ratio
+      - first.boundary
+      - second.closure-scope
+      - second.readability
+  nests:
+    targets: []
+    read: "around relative, scale, measure, and reasoning reads as the placement that keeps comparison from pretending to come from nowhere."
+  reads:
+    targets: []
+    read: "where the reference of a read is explicit enough that change of frame, scale, or scope can be tested, and where different nested frames illuminate different faces of the same carrying."
   carries:
-    - "[[Relative]]"
-    - "[[Scale]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - second.relative
+      - second.scale
+      - practice.reasoning
 publish: true
 status: working
 aliases:

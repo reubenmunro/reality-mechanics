@@ -1,35 +1,51 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: map
 ai_role: practice
 condition_key: practice.order-generation
-
-needs:
-  - "[[Order Trace]]"
-  - "[[Regenerate]]"
-  - "[[Count]]"
-  - "[[Recurrence]]"
-  - "[[Posture]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a reference map of generative order systems used to clarify how bounded rules produce ordered continuation, construction, recurrence, and regeneration."
-  holds: "[[Order Trace]], [[Regenerate]], [[Count]], [[Recurrence]], and [[Posture]]."
-  pairs: "[[Order Trace]]. Order Trace follows the Atlas dependency movement; Order Generation names exemplar systems that make generative order readable."
+  needs:
+    targets:
+      - practice.order-trace
+      - ground.regenerate
+      - second.count
+      - second.recurrence
+      - first.posture
+  holds:
+    targets:
+      - practice.order-trace
+      - ground.regenerate
+      - second.count
+      - second.recurrence
+      - first.posture
+    read: "[[Order Trace]], [[Regenerate]], [[Count]], [[Recurrence]], and [[Posture]]."
+  pairs:
+    targets:
+      - practice.order-trace
+    read: "[[Order Trace]]. Order Trace follows the Atlas dependency movement; Order Generation names exemplar systems that make generative order readable."
   traces:
-    - "[[Order Trace]]"
-    - "[[Regenerate]]"
-    - "[[Count]]"
-    - "[[Recurrence]]"
-    - "[[Posture]]"
-  nests: "inside Atlas Practice as a reference map, not as a replacement for the dependency order itself."
-  reads: "where a simple bounded rule generates a continuable order: successor, construction, recurrence, regeneration, or dependency-carrying."
+    targets:
+      - practice.order-trace
+      - ground.regenerate
+      - second.count
+      - second.recurrence
+      - first.posture
+  nests:
+    targets: []
+    read: "inside Atlas Practice as a reference map, not as a replacement for the dependency order itself."
+  reads:
+    targets: []
+    read: "where a simple bounded rule generates a continuable order: successor, construction, recurrence, regeneration, or dependency-carrying."
   carries:
-    - "[[Generative Trace]]"
-    - "[[Generate and Regenerate]]"
-    - "[[Ark Run]]"
-
+    targets:
+      - practice.generative-trace
+      - practice.generate-and-regenerate
+      - practice.ark-run
 publish: true
 status: working
 ---

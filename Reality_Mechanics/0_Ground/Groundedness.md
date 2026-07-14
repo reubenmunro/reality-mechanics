@@ -5,22 +5,67 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.groundedness
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.phase-4-minimal-architecture
 
 conditions:
   places: "the condition of remaining answerable to what holds — where dependency contact is maintained rather than lost"
-  holds: "[[Root Order]] — dependency arrangement must hold before remaining answerable to it can be named"
-  pairs: "[[Structural Disorder]] — Groundedness names maintained dependency contact; Structural Disorder names its loss"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — dependency arrangement must hold before remaining answerable to it can be named"
+  pairs:
+    targets:
+      - ground.structural-disorder
+    read: "[[Structural Disorder]] — Groundedness names maintained dependency contact; Structural Disorder names its loss"
   traces:
-    - "[[Root Order]]"
-  nests: "wherever a term, read, path, or practice remains answerable to the conditions that hold it"
-  reads: "where a relation has not drifted from what makes it readable — dependency contact is present, not merely claimed"
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "wherever a term, read, path, or practice remains answerable to the conditions that hold it"
+  reads:
+    targets: []
+    read: "where a relation has not drifted from what makes it readable — dependency contact is present, not merely claimed"
   carries:
-    - "[[Root Resilience]]"
-    - "[[Terms and Conditions]]"
-    - "[[Recarry]]"
+    targets:
+      - practice.root-resilience
+      - practice.terms-and-conditions
+      - second.recarry
+determination_records:
+  pd.v3.pre-provenance-baseline:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#determination-provenance"
+    approved_on: "2026-07-14"
+    constitutional_response: "The smallest coherent change is to accept the 482 unchanged grounded Atlas entries surviving the approved Phase 1 and Phase 4 dispositions as prior participant determinations for migration, without asserting missing per-entry approval history. Their current grounded state is accepted at this boundary; any later substantive change requires a new participant determination."
+    structural_radius: constitutional
+    caveat: "This baseline records present participant acceptance. It does not prove the original author, approver, approval event, or approval date of any covered entry and must not be cited as evidence of those historical facts."
+  pd.v3.phase-4-minimal-architecture:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#phase-4-minimal-architecture"
+    approved_on: "2026-07-14"
+    constitutional_response: "The smallest coherent implementation retains one five-order spine and two unranked registers, declares one Atlas schema, carries stable exact-ID relation targets inside conditions, records bounded provenance, removes repository-format authority, and carries one three-entry AI protocol."
+    structural_radius: constitutional
+  pd.v3.canonical-atlas-architecture-v3:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#canonical-atlas-architecture-v3"
+    approved_on: "2026-07-14"
+    constitutional_response: "The Atlas records participant determinations; grounding is their recorded result; unresolved investigation remains in Calibration; and every determination states the smallest coherent change and its structural radius."
+    structural_radius: constitutional
+  pd.v3.public-surface-propagation:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#public-surface-propagation"
+    approved_on: "2026-07-14"
+    constitutional_response: "Every public surface participates without independently determining Atlas structure; structural content originates in the Atlas and is carried through one Canonical Graph."
+    structural_radius: constitutional
+  pd.v3.current-record-convention-removal:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#current-record-convention-removal"
+    approved_on: "2026-07-14"
+    constitutional_response: "The repository encoding must stop presenting itself as Atlas structure; Current Record Convention is removed and format documentation is generated from the approved schema."
+    structural_radius: repository
+  pd.v3.atlas-condition-header-removal:
+    proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#atlas-condition-header-removal"
+    approved_on: "2026-07-14"
+    constitutional_response: "Repository-format documentation is generated from atlas_schema, so Atlas Condition Header is removed without a replacement Atlas entry."
+    structural_radius: dependency
 
 publish: true
 status: stable
@@ -31,7 +76,7 @@ The condition of remaining answerable to what holds — where dependency contact
 
 Groundedness is held by [[Root Order]]. Dependency arrangement must hold before remaining answerable to it can be named.
 
-In the Atlas, Groundedness is also the root-contact check on a note: grounded where the note remains answerable to what holds it; ungrounded where its traces still require checking. This is not the same as permission to enter the Atlas. A placed growth may be working, planted, or tending while its groundedness is still being checked.
+In the Atlas, Groundedness records the result of participant determination: grounded where the claim is preserved, its dependency trace is placed, its structural radius is assessed, and the term remains answerable to what holds it. Investigation remains in Calibration. An unresolved record does not enter or remain in the Atlas as an ungrounded term.
 
 ## Places
 

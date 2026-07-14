@@ -1,28 +1,41 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.tracing
-
-needs:
-  - "[[Trace]]"
-  - "[[Practice]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice of locating or marking a trace so its backward availability becomes readable."
-  holds: "[[Trace]] and [[Practice]]."
-  pairs: "[[Retracing]]. Tracing locates or marks a trace; Retracing follows that trace backward through connection."
+  needs:
+    targets:
+      - first.trace
+      - practice.practice
+  holds:
+    targets:
+      - first.trace
+      - practice.practice
+    read: "[[Trace]] and [[Practice]]."
+  pairs:
+    targets:
+      - practice.retracing
+    read: "[[Retracing]]. Tracing locates or marks a trace; Retracing follows that trace backward through connection."
   traces:
-    - "[[Trace]]"
-    - "[[Practice]]"
-    - "[[Retrace Practice]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where a participant makes the backward availability of a connection explicit enough to be followed."
+    targets:
+      - first.trace
+      - practice.practice
+      - practice.retrace-practice
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where a participant makes the backward availability of a connection explicit enough to be followed."
   carries:
-    - "[[Check]]"
-
+    targets:
+      - practice.check
 publish: true
 status: stable
 ---

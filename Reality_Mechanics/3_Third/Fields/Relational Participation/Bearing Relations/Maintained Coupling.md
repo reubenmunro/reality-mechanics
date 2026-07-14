@@ -5,29 +5,44 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.maintained-coupling
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Coupling]]"
-  - "[[Bearing]]"
-  - "[[Recurrence]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which distinct coupled relation is held stable through recurrence — coupling that sustains across encounters and strain."
-  holds: "[[Coupling]], [[Bearing]], [[Recurrence]], and [[Compatibility]]. Coupling must be present, bearing must hold it, recurrence must establish the pattern, and the coupling must remain compatible before coupling can be read as maintained."
-  pairs: "[[Maintained Coupling Failure]]. Maintained Coupling names the held condition; Maintained Coupling Failure names its loss at scope."
+  needs:
+    targets:
+      - second.coupling
+      - first.bearing
+      - second.recurrence
+      - second.compatibility
+  holds:
+    targets:
+      - second.coupling
+      - first.bearing
+      - second.recurrence
+      - second.compatibility
+    read: "[[Coupling]], [[Bearing]], [[Recurrence]], and [[Compatibility]]. Coupling must be present, bearing must hold it, recurrence must establish the pattern, and the coupling must remain compatible before coupling can be read as maintained."
+  pairs:
+    targets:
+      - third.maintained-coupling-failure
+    read: "[[Maintained Coupling Failure]]. Maintained Coupling names the held condition; Maintained Coupling Failure names its loss at scope."
   traces:
-    - "[[Coupling]]"
-    - "[[Bearing]]"
-    - "[[Recurrence]]"
-    - "[[Compatibility]]"
-  nests: "within Relational Participation as the condition through which coupling is held as a recurring structural feature of relation."
-  reads: "Maintained coupling becomes readable where compatible recurrence depends on corrective or supportive bearing."
+    targets:
+      - second.coupling
+      - first.bearing
+      - second.recurrence
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which coupling is held as a recurring structural feature of relation."
+  reads:
+    targets: []
+    read: "Maintained coupling becomes readable where compatible recurrence depends on corrective or supportive bearing."
   carries:
-    - "[[Maintained Coupling Failure]]"
-    - "[[Tend]]"
-
+    targets:
+      - third.maintained-coupling-failure
+      - practice.tend
 publish: true
 status: stable
 ---

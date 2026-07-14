@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.self-harm
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Self-Bearing]]"
-  - "[[Self-Control]]"
-  - "[[Harm]]"
-  - "[[Injury]]"
-  - "[[Collapse]]"
 
 conditions:
   places: "the applied read of a closure scope where self-bearing fails and carrying turns against the self's own available conditions."
-  holds: "[[Applied Read]], [[Self-Bearing]], [[Self-Control]], [[Harm]], [[Injury]], and [[Collapse]]. Self-bearing must have failed and the resulting carrying must proceed incompatibly before the condition can be read as self-harm."
-  pairs: "No lateral pair is required at this placement yet. Self-Harm names the condition where self-bearing is disrupted or turned against the self; no direct structural contrast at this applied read level is currently named in the vault."
+  needs:
+    targets:
+      - third.applied-read
+      - third.self-bearing
+      - third.self-control
+      - third.harm
+      - third.injury
+      - second.collapse
+  holds:
+    targets:
+      - third.applied-read
+      - third.self-bearing
+      - third.self-control
+      - third.harm
+      - third.injury
+      - second.collapse
+    read: "[[Applied Read]], [[Self-Bearing]], [[Self-Control]], [[Harm]], [[Injury]], and [[Collapse]]. Self-bearing must have failed and the resulting carrying must proceed incompatibly before the condition can be read as self-harm."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Self-Harm names the condition where self-bearing is disrupted or turned against the self; no direct structural contrast at this applied read level is currently named in the vault."
   traces:
-    - "[[Applied Read]]"
-    - "[[Self-Bearing]]"
-    - "[[Self-Control]]"
-    - "[[Harm]]"
-    - "[[Injury]]"
-    - "[[Collapse]]"
-  nests: "within the Cognition Field as an applied read of collapsed self-bearing, where carrying turns against the self's own available conditions."
-  reads: "Self-Harm becomes readable where strain turns against the participant's own availability and the next compatible movement is safety, care, and re-bearing."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.self-bearing
+      - third.self-control
+      - third.harm
+      - third.injury
+      - second.collapse
+  nests:
+    targets: []
+    read: "within the Cognition Field as an applied read of collapsed self-bearing, where carrying turns against the self's own available conditions."
+  reads:
+    targets: []
+    read: "Self-Harm becomes readable where strain turns against the participant's own availability and the next compatible movement is safety, care, and re-bearing."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

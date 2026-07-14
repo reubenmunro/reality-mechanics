@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.growth
-
-needs:
-  - "[[Change]]"
-  - "[[Scale]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "increase in carrying, scale, or available participation across traversal."
-  holds: "[[Change]], [[Scale]], and [[Carrying]]."
-  pairs: "[[Decay]]. Growth reads increase across traversal; Decay reads decrease across traversal."
+  needs:
+    targets:
+      - second.change
+      - second.scale
+      - second.carrying
+  holds:
+    targets:
+      - second.change
+      - second.scale
+      - second.carrying
+    read: "[[Change]], [[Scale]], and [[Carrying]]."
+  pairs:
+    targets:
+      - second.decay
+    read: "[[Decay]]. Growth reads increase across traversal; Decay reads decrease across traversal."
   traces:
-    - "[[Change]]"
-    - "[[Scale]]"
-    - "[[Carrying]]"
-  nests: "inside change and scale reads as increase across traversal."
-  reads: "where a condition can be followed as increasing in extent, carrying, or available participation."
+    targets:
+      - second.change
+      - second.scale
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside change and scale reads as increase across traversal."
+  reads:
+    targets: []
+    read: "where a condition can be followed as increasing in extent, carrying, or available participation."
   carries:
-    - "[[Decay]]"
-
+    targets:
+      - second.decay
 publish: true
 status: stable
 ---

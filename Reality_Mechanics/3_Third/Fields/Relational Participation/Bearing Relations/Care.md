@@ -5,34 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.care
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Bearing]]"
-  - "[[Availability]]"
-  - "[[Attend]]"
-  - "[[Kind]]"
-  - "[[Sustenance]]"
 
 conditions:
   places: "bearing that preserves availability through relation while remaining attended to the condition whose availability it preserves."
-  holds: "[[Bearing]], [[Availability]], [[Attend]], [[Kind]], and [[Sustenance]]. Bearing must be present, availability must be at stake, and attention to that availability must be maintained before the condition can be read as care."
-  pairs: "[[Control]] and [[Neglect]]. Care names bearing that preserves availability through responsive relation; Control names bearing that directs availability through constraint; Neglect names the failure to hold care's preserving bearing."
+  needs:
+    targets:
+      - first.bearing
+      - first.availability
+      - first.attend
+      - second.kind
+      - third.sustenance
+  holds:
+    targets:
+      - first.bearing
+      - first.availability
+      - first.attend
+      - second.kind
+      - third.sustenance
+    read: "[[Bearing]], [[Availability]], [[Attend]], [[Kind]], and [[Sustenance]]. Bearing must be present, availability must be at stake, and attention to that availability must be maintained before the condition can be read as care."
+  pairs:
+    targets:
+      - third.control
+      - third.neglect
+    read: "[[Control]] and [[Neglect]]. Care names bearing that preserves availability through responsive relation; Control names bearing that directs availability through constraint; Neglect names the failure to hold care's preserving bearing."
   traces:
-    - "[[Bearing]]"
-    - "[[Availability]]"
-    - "[[Attend]]"
-    - "[[Kind]]"
-    - "[[Sustenance]]"
-  nests: "within Relational Participation as the condition through which bearing preserves availability in relation — the structural ground for all care-bearing reads."
-  reads: "Care becomes readable where bearing preserves availability through relation and remains attended to the condition it is preserving, including the resolution band through which that condition can receive and carry support."
+    targets:
+      - first.bearing
+      - first.availability
+      - first.attend
+      - second.kind
+      - third.sustenance
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which bearing preserves availability in relation — the structural ground for all care-bearing reads."
+  reads:
+    targets: []
+    read: "Care becomes readable where bearing preserves availability through relation and remains attended to the condition it is preserving, including the resolution band through which that condition can receive and carry support."
   carries:
-    - "[[Neglect]]" 
-    - "[[Parenting]]"
-    - "[[Domination]]"
-    - "[[Dominion]]"
-    - "[[Tend]]"
-
+    targets:
+      - third.neglect
+      - third.parenting
+      - third.domination
+      - third.dominion
+      - practice.tend
 publish: true
 status: stable
 ---

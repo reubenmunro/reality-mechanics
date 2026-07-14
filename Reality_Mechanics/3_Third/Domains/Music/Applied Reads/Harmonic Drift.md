@@ -5,32 +5,48 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.harmonic-drift
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Harmony]]"
-  - "[[Source Drift]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Source Drift]]"
 
 conditions:
   places: "the musical disorder read where harmonic carrying loses retrace to the tonal centre"
-  holds: "[[Applied Read]], [[Harmony]], [[Source Drift]], and [[Translation Boundary]]. Source Drift must cross explicitly into the musical applied read."
-  pairs: "[[Musical Resolution]]. Musical Resolution names successful determination of harmonic coupling at scope; Harmonic Drift names its failure — where tonal retrace is lost while surface coherence persists."
+  needs:
+    targets:
+      - third.applied-read
+      - third.harmony
+      - higher.source-drift
+      - third.translation-boundary
+  holds:
+    targets:
+      - third.applied-read
+      - third.harmony
+      - higher.source-drift
+      - third.translation-boundary
+    read: "[[Applied Read]], [[Harmony]], [[Source Drift]], and [[Translation Boundary]]. Source Drift must cross explicitly into the musical applied read."
+  pairs:
+    targets:
+      - third.musical-resolution
+    read: "[[Musical Resolution]]. Musical Resolution names successful determination of harmonic coupling at scope; Harmonic Drift names its failure — where tonal retrace is lost while surface coherence persists."
   traces:
-    - "[[Applied Read]]"
-    - "[[Harmony]]"
-    - "[[Source Drift]]"
-    - "[[Translation Boundary]]"
-    - "[[Carrying]]"
-    - "[[Music]]"
-  nests: "within the music domain as the diagnostic read for tonal disorientation — where harmonic carrying has moved beyond retrace"
-  reads: "where harmonic progression moves away from the tonal centre without a retraceable path back — where the key becomes unreadable because the ground of harmonic bearing can no longer be recovered"
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.harmony
+      - higher.source-drift
+      - third.translation-boundary
+      - second.carrying
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the diagnostic read for tonal disorientation — where harmonic carrying has moved beyond retrace"
+  reads:
+    targets: []
+    read: "where harmonic progression moves away from the tonal centre without a retraceable path back — where the key becomes unreadable because the ground of harmonic bearing can no longer be recovered"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

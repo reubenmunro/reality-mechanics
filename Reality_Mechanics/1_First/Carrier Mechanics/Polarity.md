@@ -5,21 +5,33 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.polarity
-
-needs:
-  - "[[Orientation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "opposed direction — distinction presented as bearing in opposing directions within relation"
-  holds: "[[Orientation]] — direction must be readable before opposition of direction can be read"
-  pairs: "[[Resolution Polarity]] — Polarity is first-order directional opposition; Resolution Polarity carries that opposition into resolution reads"
+  needs:
+    targets:
+      - first.orientation
+  holds:
+    targets:
+      - first.orientation
+    read: "[[Orientation]] — direction must be readable before opposition of direction can be read"
+  pairs:
+    targets:
+      - third.resolution-polarity
+    read: "[[Resolution Polarity]] — Polarity is first-order directional opposition; Resolution Polarity carries that opposition into resolution reads"
   traces:
-    - "[[Orientation]]"
-  nests: "before conflict or hierarchy — names directional opposition without making opposition into separation"
-  reads: "where distinction is read as bearing in opposed directions — where two orientations face away from each other within relation"
+    targets:
+      - first.orientation
+  nests:
+    targets: []
+    read: "before conflict or hierarchy — names directional opposition without making opposition into separation"
+  reads:
+    targets: []
+    read: "where distinction is read as bearing in opposed directions — where two orientations face away from each other within relation"
   carries:
-    - "[[Resolution Polarity]]"
-
+    targets:
+      - third.resolution-polarity
 publish: true
 status: stable
 ---

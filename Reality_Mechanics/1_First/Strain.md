@@ -5,27 +5,39 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.strain
-
-needs:
-  - "[[Availability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "available distinction under contrast — present and pressing without yet being held or resolved"
-  holds: "[[Availability]] — distinction must be present enough to enter contrast before strain can be read"
-  pairs: "Asymmetry carries downward — into [[Bearing]]"
+  needs:
+    targets:
+      - first.availability
+  holds:
+    targets:
+      - first.availability
+    read: "[[Availability]] — distinction must be present enough to enter contrast before strain can be read"
+  pairs:
+    targets:
+      - first.bearing
+    read: "Asymmetry carries downward — into [[Bearing]]"
   traces:
-    - "[[Availability]]"
-  nests: "between available distinction and bearing — names why a distinction becomes worth holding, resolving, or checking"
-  reads: "where available distinction can be read as under contrast — where something is present and pressing rather than merely available"
+    targets:
+      - first.availability
+  nests:
+    targets: []
+    read: "between available distinction and bearing — names why a distinction becomes worth holding, resolving, or checking"
+  reads:
+    targets: []
+    read: "where available distinction can be read as under contrast — where something is present and pressing rather than merely available"
   carries:
-    - "[[Bearing]]"
-    - "[[Threshold]]"
-    - "[[Absorb]]"
-    - "[[Release]]"
-    - "[[Disorder]]"
-    - "[[Degeneration Read]]"
-    - "[[Contend]]"
-
+    targets:
+      - first.bearing
+      - first.threshold
+      - first.absorb
+      - first.release
+      - second.disorder
+      - third.degeneration-read
+      - practice.contend
 publish: true
 status: stable
 ---

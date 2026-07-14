@@ -5,31 +5,47 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.destination-led-carrying
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Carrying]]"
-  - "[[Ship and Ark]]"
-  - "[[Progress]]"
-  - "[[Society]]"
-  - "[[Dependency]]"
 
 conditions:
   places: "the condition through which carrying is organised around an intended endpoint — carrying shaped by what it is moving toward rather than what it traces back to."
-  holds: "[[Carrying]], [[Ship and Ark]], [[Progress]], [[Society]], and [[Dependency]]. Carrying must be present and an intended endpoint must shape the direction before destination-led organisation can be named."
-  pairs: "[[Thin Carrying]]. Destination-Led Carrying names the condition through which carrying is shaped by intended endpoints; Thin Carrying names the structural consequence when that carrying loses relational depth."
+  needs:
+    targets:
+      - second.carrying
+      - third.ship-and-ark
+      - second.progress
+      - third.society
+      - second.dependency
+  holds:
+    targets:
+      - second.carrying
+      - third.ship-and-ark
+      - second.progress
+      - third.society
+      - second.dependency
+    read: "[[Carrying]], [[Ship and Ark]], [[Progress]], [[Society]], and [[Dependency]]. Carrying must be present and an intended endpoint must shape the direction before destination-led organisation can be named."
+  pairs:
+    targets:
+      - third.thin-carrying
+    read: "[[Thin Carrying]]. Destination-Led Carrying names the condition through which carrying is shaped by intended endpoints; Thin Carrying names the structural consequence when that carrying loses relational depth."
   traces:
-    - "[[Degenerate]]"
-    - "[[Carrying]]"
-    - "[[Ship and Ark]]"
-    - "[[Progress]]"
-    - "[[Society]]"
-    - "[[Dependency]]"
-  nests: "within the Society Field as the structural condition through which collective carrying is shaped by intended endpoints — the ground for thin carrying and documentation gap reads."
-  reads: "where a society orients carrying around arrival, expansion, or available choice while making the dependencies that carry those gains less visible."
+    targets:
+      - ground.degenerate
+      - second.carrying
+      - third.ship-and-ark
+      - second.progress
+      - third.society
+      - second.dependency
+  nests:
+    targets: []
+    read: "within the Society Field as the structural condition through which collective carrying is shaped by intended endpoints — the ground for thin carrying and documentation gap reads."
+  reads:
+    targets: []
+    read: "where a society orients carrying around arrival, expansion, or available choice while making the dependencies that carry those gains less visible."
   carries:
-    - "[[Thin Carrying]]"
-
+    targets:
+      - third.thin-carrying
 publish: true
 status: stable
 ---

@@ -5,24 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.be
-
-needs:
-  - "[[Presence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presence holding."
-  holds: "[[Presence]]."
-  pairs: "Asymmetry carries downward — into [[Being]], [[Exist]], and [[Become]]"
+  needs:
+    targets:
+      - second.presence
+  holds:
+    targets:
+      - second.presence
+    read: "[[Presence]]."
+  pairs:
+    targets:
+      - second.being
+      - second.exist
+      - second.become
+    read: "Asymmetry carries downward — into [[Being]], [[Exist]], and [[Become]]"
   traces:
-    - "[[Presence]]"
-  nests: "under presence as presence holding without requiring permanence."
-  reads: "where presence can be read as continuing rather than merely having appeared — where something is present now rather than only once."
+    targets:
+      - second.presence
+  nests:
+    targets: []
+    read: "under presence as presence holding without requiring permanence."
+  reads:
+    targets: []
+    read: "where presence can be read as continuing rather than merely having appeared — where something is present now rather than only once."
   carries:
-    - "[[Being]]"
-    - "[[Exist]]"
-    - "[[Become]]"
-    - "[[Real]]"
-
+    targets:
+      - second.being
+      - second.exist
+      - second.become
+      - second.real
 publish: true
 status: stable
 ---

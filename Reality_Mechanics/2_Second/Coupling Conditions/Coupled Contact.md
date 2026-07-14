@@ -5,29 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.coupled-contact
-
-needs:
-  - "[[Contact]]"
-  - "[[Coupling]]"
-  - "[[Presence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "contact maintained strongly enough for carrying, resistance, pressure, grip, traction, or effect to pass between conditions."
-  holds: "[[Contact]], [[Coupling]], and [[Presence]]. Contact must remain locally available and held in relation while it carries effect."
-  pairs: "[[Interposed Carrier]] — coupled contact names contact carrying effect; interposed carrier names a condition entering between contact and coupling, changing or interrupting what can pass."
+  needs:
+    targets:
+      - first.contact
+      - second.coupling
+      - second.presence
+  holds:
+    targets:
+      - first.contact
+      - second.coupling
+      - second.presence
+    read: "[[Contact]], [[Coupling]], and [[Presence]]. Contact must remain locally available and held in relation while it carries effect."
+  pairs:
+    targets:
+      - second.interposed_carrier
+    read: "[[Interposed Carrier]] — coupled contact names contact carrying effect; interposed carrier names a condition entering between contact and coupling, changing or interrupting what can pass."
   traces:
-    - "[[Contact]]"
-    - "[[Coupling]]"
-    - "[[Presence]]"
-    - "[[Coupled Boundary]]"
-  nests: "at a contact condition that remains coupled enough for carrying, resistance, grip, traction, or effect to pass."
-  reads: "where contact does more than meet: it carries effect, resistance, grip, pressure, heat, or directed carrying between conditions."
+    targets:
+      - first.contact
+      - second.coupling
+      - second.presence
+      - second.coupled-boundary
+  nests:
+    targets: []
+    read: "at a contact condition that remains coupled enough for carrying, resistance, grip, traction, or effect to pass."
+  reads:
+    targets: []
+    read: "where contact does more than meet: it carries effect, resistance, grip, pressure, heat, or directed carrying between conditions."
   carries:
-    - "[[Effect]]"
-    - "[[Friction]]"
-    - "[[Grip]]"
-    - "[[Traction]]"
-
+    targets:
+      - second.effect
+      - second.friction
+      - second.grip
+      - second.traction
 publish: true
 status: stable
 ---

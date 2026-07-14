@@ -5,29 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.musical-resolution
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Resolution]]"
-  - "[[Harmony]]"
 
 conditions:
   places: "the domain read for RM resolution conditions — where harmonic strain is determined at the current scope"
-  holds: "[[Resolution]] and [[Harmony]]. Harmonic strain must be coupled and bearing must be present before resolution can be read."
-  pairs: "[[Harmonic Drift]]. Musical Resolution names the successful determination of harmonic coupling at scope; Harmonic Drift names its failure — where tonal retrace is lost while surface coherence persists."
+  needs:
+    targets:
+      - first.resolution
+      - third.harmony
+  holds:
+    targets:
+      - first.resolution
+      - third.harmony
+    read: "[[Resolution]] and [[Harmony]]. Harmonic strain must be coupled and bearing must be present before resolution can be read."
+  pairs:
+    targets:
+      - third.harmonic-drift
+    read: "[[Harmonic Drift]]. Musical Resolution names the successful determination of harmonic coupling at scope; Harmonic Drift names its failure — where tonal retrace is lost while surface coherence persists."
   traces:
-    - "[[Resolution]]"
-    - "[[Hold]]"
-    - "[[Yield]]"
-    - "[[Release]]"
-    - "[[Transfer]]"
-    - "[[Absorb]]"
-    - "[[Harmony]]"
-    - "[[Music]]"
-  nests: "within the music domain as the terminal resolution read — where harmonic tension reaches determination"
-  reads: "where harmonic tension is determined at scope through cadence — the specific form of resolution naming how strain is held, yielded, released, transferred, or absorbed"
-  carries: []
-
+    targets:
+      - first.resolution
+      - first.hold
+      - first.yield
+      - first.release
+      - first.transfer
+      - first.absorb
+      - third.harmony
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the terminal resolution read — where harmonic tension reaches determination"
+  reads:
+    targets: []
+    read: "where harmonic tension is determined at scope through cadence — the specific form of resolution naming how strain is held, yielded, released, transferred, or absorbed"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

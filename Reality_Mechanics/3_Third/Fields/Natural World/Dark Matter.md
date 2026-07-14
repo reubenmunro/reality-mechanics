@@ -5,38 +5,57 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.dark-matter
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World Field]]"
-  - "[[Physical]]"
-  - "[[Physical Field Conditions]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Field Bearing]]"
-  - "[[Gravity]]"
-  - "[[Invisible Bearing]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Invisible Bearing]]"
 
 conditions:
   places: "the physical field condition through which invisible bearing structures field availability — carrying that shapes gravitational field conditions without becoming directly readable."
-  holds: "[[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], [[Invisible Bearing]], and [[Translation Boundary]]. Invisible Bearing must cross explicitly into the natural-world read."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - higher.invisible-bearing
+      - third.translation-boundary
+  holds:
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - higher.invisible-bearing
+      - third.translation-boundary
+    read: "[[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Gravity]], [[Invisible Bearing]], and [[Translation Boundary]]. Invisible Bearing must cross explicitly into the natural-world read."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Natural World Field]]"
-    - "[[Physical]]"
-    - "[[Physical Field Conditions]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Field Bearing]]"
-    - "[[Gravity]]"
-    - "[[Invisible Bearing]]"
-    - "[[Translation Boundary]]"
-  nests: "within Physical Field Conditions as the invisible bearing condition — one physical-field case in the Cosmic Polarity Read."
-  reads: "Dark Matter becomes readable where observed gravitational behaviour requires field bearing not accounted for by electromagnetically visible matter."
-  carries: []
-
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.gravity
+      - higher.invisible-bearing
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the invisible bearing condition — one physical-field case in the Cosmic Polarity Read."
+  reads:
+    targets: []
+    read: "Dark Matter becomes readable where observed gravitational behaviour requires field bearing not accounted for by electromagnetically visible matter."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

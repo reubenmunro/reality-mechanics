@@ -5,24 +5,38 @@ order: second
 kind: distinction
 ai_role: distinction
 condition_key: second.condition-state-view
-
-needs:
-  - "[[Condition]]"
-  - "[[Readability]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the distinction between a condition, a frozen or sectioned state-read, and the view through which that state becomes visible."
-  holds: "[[Condition]], [[Readability]], and [[Closure Scope]]. A condition must be readable as holding, reading must remain possible, and the scope of evaluation must be bounded before state and view can be distinguished without becoming primitives."
-  pairs: "Overclaim. The error is treating a state or view as if it were the whole condition."
+  needs:
+    targets:
+      - second.condition
+      - second.readability
+      - second.closure-scope
+  holds:
+    targets:
+      - second.condition
+      - second.readability
+      - second.closure-scope
+    read: "[[Condition]], [[Readability]], and [[Closure Scope]]. A condition must be readable as holding, reading must remain possible, and the scope of evaluation must be bounded before state and view can be distinguished without becoming primitives."
+  pairs:
+    targets: []
+    read: "Overclaim. The error is treating a state or view as if it were the whole condition."
   traces:
-    - "[[Condition]]"
-    - "[[Place]]"
-    - "[[Readability]]"
-  nests: "inside second-order distinction work, where a readable condition must not collapse into one state-read or one view."
-  reads: "where a condition, a frozen or sectioned read of that condition, and the position or read path through which it becomes visible are being confused or need to be kept separate."
-  carries: []
-
+    targets:
+      - second.condition
+      - first.place
+      - second.readability
+  nests:
+    targets: []
+    read: "inside second-order distinction work, where a readable condition must not collapse into one state-read or one view."
+  reads:
+    targets: []
+    read: "where a condition, a frozen or sectioned read of that condition, and the position or read path through which it becomes visible are being confused or need to be kept separate."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

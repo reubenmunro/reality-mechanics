@@ -5,24 +5,35 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.clean
-
-needs:
-  - "[[Relation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the invariant carrier by which relation remains free from residue, drift, or false mixture before readable difference is carried onward"
-  holds: "[[Relation]] — relation must hold before anything can be cleanly read, handled, separated, or met"
-  pairs: "Relation carries downward — into Clean. Clean is the invariant carrier before the readability and handling split."
+  needs:
+    targets:
+      - first.relation
+  holds:
+    targets:
+      - first.relation
+    read: "[[Relation]] — relation must hold before anything can be cleanly read, handled, separated, or met"
+  pairs:
+    targets: []
+    read: "Relation carries downward — into Clean. Clean is the invariant carrier before the readability and handling split."
   traces:
-    - "[[Relation]]"
-    - "[[Invariant]]"
-  nests: "before the clear/tact split — not as a category, but as the hidden carrier that lets reading and contact remain undistorted"
-  reads: "where relation is not carrying unnecessary residue, mixture, or drift into the next condition"
+    targets:
+      - first.relation
+      - ground.invariant
+  nests:
+    targets: []
+    read: "before the clear/tact split — not as a category, but as the hidden carrier that lets reading and contact remain undistorted"
+  reads:
+    targets: []
+    read: "where relation is not carrying unnecessary residue, mixture, or drift into the next condition"
   carries:
-    - "[[Clear]]"
-    - "[[Tact]]"
-    - "[[Daylighting]]"
-
+    targets:
+      - first.clear
+      - first.tact
+      - practice.shade-clearing
 publish: true
 status: stable
 ---

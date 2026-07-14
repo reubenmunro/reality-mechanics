@@ -5,26 +5,41 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.wonder
+determination: pd.v3.pre-provenance-baseline
 domain: path-reads
-
-needs:
-  - "[[Enchantment]]"
-  - "[[Participation]]"
-  - "[[Readability]]"
 
 conditions:
   places: "the opening mode of enchantment — where altered readability expands participation into attention, inquiry, or relation rather than constraining it."
-  holds: "[[Enchantment]], [[Participation]], and [[Readability]]. Influence must alter readability, participation must be available, and readability must be heightened rather than closed before opening can be read as wonder rather than confusion or mere surprise."
-  pairs: "[[Binding]]. Wonder names enchantment opening participation; Binding names enchantment constraining it."
+  needs:
+    targets:
+      - third.enchantment
+      - second.participation
+      - second.readability
+  holds:
+    targets:
+      - third.enchantment
+      - second.participation
+      - second.readability
+    read: "[[Enchantment]], [[Participation]], and [[Readability]]. Influence must alter readability, participation must be available, and readability must be heightened rather than closed before opening can be read as wonder rather than confusion or mere surprise."
+  pairs:
+    targets:
+      - third.binding
+    read: "[[Binding]]. Wonder names enchantment opening participation; Binding names enchantment constraining it."
   traces:
-    - "[[Enchantment]]"
-    - "[[Participation]]"
-    - "[[Readability]]"
-    - "[[Influence]]"
-  nests: "within the enchantment cluster as the opening path read — the specific mode where enchantment expands rather than closes participation."
-  reads: "where a heightened read opens participation into attention, inquiry, care, or further relation without detaching that participation from support."
-  carries: []
-
+    targets:
+      - third.enchantment
+      - second.participation
+      - second.readability
+      - second.influence
+  nests:
+    targets: []
+    read: "within the enchantment cluster as the opening path read — the specific mode where enchantment expands rather than closes participation."
+  reads:
+    targets: []
+    read: "where a heightened read opens participation into attention, inquiry, care, or further relation without detaching that participation from support."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

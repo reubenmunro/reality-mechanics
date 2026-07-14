@@ -5,23 +5,37 @@ order: higher
 kind: order
 ai_role: order
 condition_key: higher.higher-order
-
-needs:
-  - "[[Third Order]]"
-  - "[[Nesting]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the register where organised carrying enters, reads, and may alter its own carrying."
-  holds: "[[Third Order]] and [[Nesting]]."
-  pairs: "[[Opacity]]. Higher Order names the register that becomes available when Practice has retraced through accumulated structure back to Ground; Opacity names the condition where Ground is enclosed within accumulated structure and cannot be entered from within without that Practice. Each requires the other: Higher Order is only readable against the condition it resolves; Opacity is only nameable from a position that has begun to retrace it."
+  needs:
+    targets:
+      - third.third-order
+      - third.nesting
+  holds:
+    targets:
+      - third.third-order
+      - third.nesting
+    read: "[[Third Order]] and [[Nesting]]."
+  pairs:
+    targets:
+      - higher.opacity
+    read: "[[Opacity]]. Higher Order names the register that becomes available when Practice has retraced through accumulated structure back to Ground; Opacity names the condition where Ground is enclosed within accumulated structure and cannot be entered from within without that Practice. Each requires the other: Higher Order is only readable against the condition it resolves; Opacity is only nameable from a position that has begun to retrace it."
   traces:
-    - "[[Third Order]]"
-    - "[[Nesting]]"
-    - "[[Third Order Crossing|Threshold (Third → Higher)]]"
-  nests: "invisible bearing, nested carrying, recursion, opacity, higher retrace, recognition, learning, and faith."
-  reads: "where organised and nested connection enters its own carrying, making preservation, revision, amplification, or correction possible."
+    targets:
+      - third.third-order
+      - third.nesting
+      - third.third-order-crossing
+  nests:
+    targets: []
+    read: "invisible bearing, nested carrying, recursion, opacity, higher retrace, recognition, learning, and faith."
+  reads:
+    targets: []
+    read: "where organised and nested connection enters its own carrying, making preservation, revision, amplification, or correction possible."
   carries:
-    - "[[Higher Order Crossing]]"
+    targets:
+      - higher.higher-order-crossing
 publish: true
 status: working
 ---

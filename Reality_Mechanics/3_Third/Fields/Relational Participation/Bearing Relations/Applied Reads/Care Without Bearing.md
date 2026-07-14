@@ -5,29 +5,45 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.care-without-bearing
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Care]]"
-  - "[[Neglect]]"
-  - "[[Closure Scope]]"
-  - "[[Thin Carrying]]"
 
 conditions:
   places: "the applied read of care whose preservation of availability cannot sustain bearing at the relevant closure scope."
-  holds: "[[Applied Read]], [[Care]], [[Neglect]], [[Closure Scope]], and [[Thin Carrying]]."
-  pairs: "No lateral pair is required at this placement yet. Care Without Bearing names the disorder where care-like action proceeds without the bearing required for actual care; no contrasting applied read at the same structural level is currently named in the vault."
+  needs:
+    targets:
+      - third.applied-read
+      - third.care
+      - third.neglect
+      - second.closure-scope
+      - third.thin-carrying
+  holds:
+    targets:
+      - third.applied-read
+      - third.care
+      - third.neglect
+      - second.closure-scope
+      - third.thin-carrying
+    read: "[[Applied Read]], [[Care]], [[Neglect]], [[Closure Scope]], and [[Thin Carrying]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Care Without Bearing names the disorder where care-like action proceeds without the bearing required for actual care; no contrasting applied read at the same structural level is currently named in the vault."
   traces:
-    - "[[Applied Read]]"
-    - "[[Care]]"
-    - "[[Neglect]]"
-    - "[[Closure Scope]]"
-    - "[[Thin Carrying]]"
-  nests: "within Relational Participation as an applied read of Care, where the intention to preserve availability outstrips the bearing available to sustain it."
-  reads: "Care Without Bearing becomes readable where a relation names care while failing to carry what the other condition requires."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.care
+      - third.neglect
+      - second.closure-scope
+      - third.thin-carrying
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Care, where the intention to preserve availability outstrips the bearing available to sustain it."
+  reads:
+    targets: []
+    read: "Care Without Bearing becomes readable where a relation names care while failing to carry what the other condition requires."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

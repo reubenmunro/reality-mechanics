@@ -5,28 +5,43 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.release
-
-needs:
-  - "[[Resolution]]"
-  - "[[Bearing]]"
-  - "[[Strain]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution where held strain exits, discharges, or is no longer retained by the bearing condition"
-  holds: "[[Resolution]], [[Bearing]], and [[Strain]] — strain must be present, borne, and determined as leaving the bearing condition"
-  pairs: "[[Hold]] and [[Retain]] — Release lets a resolved condition go; Hold maintains it in place; Retain keeps pressure within a carrying relation. Release is readable against both what was held and what could be retained."
+  needs:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+  holds:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+    read: "[[Resolution]], [[Bearing]], and [[Strain]] — strain must be present, borne, and determined as leaving the bearing condition"
+  pairs:
+    targets:
+      - first.hold
+      - second.retain
+    read: "[[Hold]] and [[Retain]] — Release lets a resolved condition go; Hold maintains it in place; Retain keeps pressure within a carrying relation. Release is readable against both what was held and what could be retained."
   traces:
-    - "[[Resolution]]"
-    - "[[Bearing]]"
-    - "[[Strain]]"
-  nests: "under first-order resolution — can open later decoupling where the released condition no longer remains coupled"
-  reads: "where strain is resolved by being let out, discharged, or no longer retained in the bearing condition"
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+  nests:
+    targets: []
+    read: "under first-order resolution — can open later decoupling where the released condition no longer remains coupled"
+  reads:
+    targets: []
+    read: "where strain is resolved by being let out, discharged, or no longer retained in the bearing condition"
   carries:
-    - "[[Decoupling]]"
-    - "[[Recarry]]"
-    - "[[Balance]]"
-    - "[[Decommissioning]]"
-
+    targets:
+      - second.decoupling
+      - second.recarry
+      - second.balance
+      - practice.composting
 publish: true
 status: stable
 ---

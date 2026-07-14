@@ -5,47 +5,72 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.grief
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Relation]]"
-  - "[[Load]]"
-  - "[[Pressure]]"
-  - "[[Retain]]"
-  - "[[Release]]"
-  - "[[Balance]]"
-  - "[[Capacity]]"
-  - "[[Carrying]]"
-  - "[[Trace]]"
-  - "[[Groundedness]]"
-  - "[[Return]]"
-  - "[[Terminal]]"
-  - "[[Face]]"
 
 conditions:
   places: "the applied relational read where load concentrates as pressure because a relation continues to carry after its familiar face of return has crossed a terminal boundary."
-  holds: "[[Applied Read]], [[Relation]], [[Load]], [[Pressure]], [[Retain]], [[Release]], [[Balance]], [[Capacity]], [[Carrying]], [[Trace]], [[Groundedness]], [[Return]], [[Terminal]], and [[Face]]. Relation must have carried, a face of return must have been available, terminal change must alter that return, and the resulting pressure must remain traceable before grief can be read structurally."
-  pairs: "No lateral pair is required at this placement yet. Grief names relational pressure under changed return; its structural contrast may later be named as grounded mourning, living memory, or another release condition."
+  needs:
+    targets:
+      - third.applied-read
+      - first.relation
+      - second.load
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.balance
+      - second.capacity
+      - second.carrying
+      - first.trace
+      - ground.groundedness
+      - second.return
+      - second.terminal
+      - second.face
+  holds:
+    targets:
+      - third.applied-read
+      - first.relation
+      - second.load
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.balance
+      - second.capacity
+      - second.carrying
+      - first.trace
+      - ground.groundedness
+      - second.return
+      - second.terminal
+      - second.face
+    read: "[[Applied Read]], [[Relation]], [[Load]], [[Pressure]], [[Retain]], [[Release]], [[Balance]], [[Capacity]], [[Carrying]], [[Trace]], [[Groundedness]], [[Return]], [[Terminal]], and [[Face]]. Relation must have carried, a face of return must have been available, terminal change must alter that return, and the resulting pressure must remain traceable before grief can be read structurally."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Grief names relational pressure under changed return; its structural contrast may later be named as grounded mourning, living memory, or another release condition."
   traces:
-    - "[[Applied Read]]"
-    - "[[Relation]]"
-    - "[[Load]]"
-    - "[[Pressure]]"
-    - "[[Retain]]"
-    - "[[Release]]"
-    - "[[Balance]]"
-    - "[[Capacity]]"
-    - "[[Carrying]]"
-    - "[[Trace]]"
-    - "[[Groundedness]]"
-    - "[[Return]]"
-    - "[[Terminal]]"
-    - "[[Face]]"
-  nests: "within Relational Participation as an applied read of relation carrying after its familiar face of return has crossed the current closure scope."
-  reads: "where relation continues to carry as load after its familiar return can no longer re-enter the prior scope in the same way."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - first.relation
+      - second.load
+      - second.pressure
+      - second.retain
+      - first.release
+      - second.balance
+      - second.capacity
+      - second.carrying
+      - first.trace
+      - ground.groundedness
+      - second.return
+      - second.terminal
+      - second.face
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of relation carrying after its familiar face of return has crossed the current closure scope."
+  reads:
+    targets: []
+    read: "where relation continues to carry as load after its familiar return can no longer re-enter the prior scope in the same way."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

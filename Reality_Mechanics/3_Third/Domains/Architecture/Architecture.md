@@ -5,42 +5,62 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.architecture
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Branch]]"
-  - "[[Place Field]]"
-  - "[[Boundary]]"
-  - "[[Bearing]]"
-  - "[[Constraint]]"
-  - "[[Closure Scope]]"
-  - "[[Placed Participation]]"
 
 conditions:
   places: "the built-domain branch where structural Atlas terms become readable as occupation, shelter, access, support, construction, documentation, and use."
-  holds: "[[Branch]], [[Place Field]], [[Boundary]], [[Bearing]], [[Constraint]], [[Closure Scope]], [[Placed Participation]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.branch
+      - third.place-field
+      - first.boundary
+      - first.bearing
+      - second.constraint
+      - second.closure-scope
+      - third.placed-participation
+  holds:
+    targets:
+      - third.branch
+      - third.place-field
+      - first.boundary
+      - first.bearing
+      - second.constraint
+      - second.closure-scope
+      - third.placed-participation
+    read: "[[Branch]], [[Place Field]], [[Boundary]], [[Bearing]], [[Constraint]], [[Closure Scope]], [[Placed Participation]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Branch]]"
-    - "[[Place Field]]"
-    - "[[Boundary]]"
-    - "[[Bearing]]"
-    - "[[Constraint]]"
-    - "[[Closure Scope]]"
-    - "[[Placed Participation]]"
-    - "[[Technology Domain]]"
-  nests: "within [[Place Field]], [[Making Field]], and [[Knowledge Field]] as an organised domain branch. Its local reads are architectural terms, but their support remains retraceable through boundary, bearing, constraint, closure scope, and place."
-  reads: "Architecture becomes readable where boundary, bearing, constraint, closure scope, and place organise built occupation, shelter, access, support, construction, documentation, and use."
+    targets:
+      - third.branch
+      - third.place-field
+      - first.boundary
+      - first.bearing
+      - second.constraint
+      - second.closure-scope
+      - third.placed-participation
+      - third.technology-domain
+  nests:
+    targets:
+      - third.place-field
+      - third.making-field
+      - third.knowledge-field
+    read: "within [[Place Field]], [[Making Field]], and [[Knowledge Field]] as an organised domain branch. Its local reads are architectural terms, but their support remains retraceable through boundary, bearing, constraint, closure scope, and place."
+  reads:
+    targets: []
+    read: "Architecture becomes readable where boundary, bearing, constraint, closure scope, and place organise built occupation, shelter, access, support, construction, documentation, and use."
   carries:
-    - "[[Architectural Boundary]]"
-    - "[[Architectural Carrying]]"
-    - "[[Architectural Constraint]]"
-    - "[[Architectural Documentation]]"
-    - "[[Architectural Resolution]]"
-    - "[[Architectural Visibility]]"
-    - "[[Load-Bearing]]"
-    - "[[Documentation Gap]]"
-
+    targets:
+      - third.architectural-boundary
+      - third.architectural-carrying
+      - third.architectural-constraint
+      - third.architectural-documentation
+      - third.architectural-resolution
+      - third.architectural-visibility
+      - third.load-bearing
+      - third.documentation-gap
 publish: true
 status: stable
 ---

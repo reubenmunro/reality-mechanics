@@ -5,35 +5,54 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.answerable-mind
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Thought]]"
-  - "[[Readability]]"
-  - "[[Cognitive Metabolism]]"
-  - "[[Body]]"
-  - "[[Relation]]"
-  - "[[Reality Check]]"
-  - "[[Groundedness]]"
 
 conditions:
   places: "cognitive activity ordered by answerability rather than silence, escape, or control."
-  holds: "[[Cognition]], [[Thought]], [[Readability]], [[Cognitive Metabolism]], [[Body]], [[Relation]], [[Reality Check]], and [[Groundedness]]. Cognitive activity must be present, readable, metabolically carried, and grounded enough before it can answer to body, relation, task, reality, care, consequence, or truth."
-  pairs: "No lateral pair is required at this placement yet. Answerable Mind currently reads as cognitive metabolism made answerable."
+  needs:
+    targets:
+      - third.cognition
+      - third.thought
+      - second.readability
+      - third.cognitive-metabolism
+      - third.body
+      - first.relation
+      - third.reality-check
+      - ground.groundedness
+  holds:
+    targets:
+      - third.cognition
+      - third.thought
+      - second.readability
+      - third.cognitive-metabolism
+      - third.body
+      - first.relation
+      - third.reality-check
+      - ground.groundedness
+    read: "[[Cognition]], [[Thought]], [[Readability]], [[Cognitive Metabolism]], [[Body]], [[Relation]], [[Reality Check]], and [[Groundedness]]. Cognitive activity must be present, readable, metabolically carried, and grounded enough before it can answer to body, relation, task, reality, care, consequence, or truth."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Answerable Mind currently reads as cognitive metabolism made answerable."
   traces:
-    - "[[Cognition]]"
-    - "[[Thought]]"
-    - "[[Readability]]"
-    - "[[Cognitive Metabolism]]"
-    - "[[Body]]"
-    - "[[Relation]]"
-    - "[[Reality Check]]"
-    - "[[Groundedness]]"
-  nests: "within the Cognition Field as cognitive metabolism made answerable."
-  reads: "Answerable Mind becomes readable where active thought can return a grounded answer to what calls upon it: body, relation, task, reality, care, consequence, or truth."
-  carries: []
-
+    targets:
+      - third.cognition
+      - third.thought
+      - second.readability
+      - third.cognitive-metabolism
+      - third.body
+      - first.relation
+      - third.reality-check
+      - ground.groundedness
+  nests:
+    targets: []
+    read: "within the Cognition Field as cognitive metabolism made answerable."
+  reads:
+    targets: []
+    read: "Answerable Mind becomes readable where active thought can return a grounded answer to what calls upon it: body, relation, task, reality, care, consequence, or truth."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

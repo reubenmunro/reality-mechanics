@@ -5,33 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.consent
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Society Field]]"
-  - "[[Boundary]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Participation]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
-  - "[[Society]]"
 
 conditions:
   places: "the condition through which participation is made available within a recognised boundary — the structural node where recognition, participation, and compatibility hold as permission for carrying to proceed."
-  holds: "[[Society Field]], [[Boundary]], [[Recognition Read|Recognition]], [[Participation]], [[Compatibility]], [[Closure Scope]], and [[Society]]. A boundary must locate what is at stake, recognition must make it available, and compatibility must hold before permission for carrying can be named as consent."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.society-field
+      - first.boundary
+      - second.recognition-read
+      - second.participation
+      - second.compatibility
+      - second.closure-scope
+      - third.society
+  holds:
+    targets:
+      - third.society-field
+      - first.boundary
+      - second.recognition-read
+      - second.participation
+      - second.compatibility
+      - second.closure-scope
+      - third.society
+    read: "[[Society Field]], [[Boundary]], [[Recognition Read|Recognition]], [[Participation]], [[Compatibility]], [[Closure Scope]], and [[Society]]. A boundary must locate what is at stake, recognition must make it available, and compatibility must hold before permission for carrying can be named as consent."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Society Field]]"
-    - "[[Boundary]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Participation]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-    - "[[Society]]"
-  nests: "within the Society Field as the structural condition through which participation is made available within a recognised boundary."
-  reads: "Consent becomes readable where participation can proceed, pause, change, or stop through a recognised boundary at the relevant closure scope."
-  carries: []
-
+    targets:
+      - third.society-field
+      - first.boundary
+      - second.recognition-read
+      - second.participation
+      - second.compatibility
+      - second.closure-scope
+      - third.society
+  nests:
+    targets: []
+    read: "within the Society Field as the structural condition through which participation is made available within a recognised boundary."
+  reads:
+    targets: []
+    read: "Consent becomes readable where participation can proceed, pause, change, or stop through a recognised boundary at the relevant closure scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

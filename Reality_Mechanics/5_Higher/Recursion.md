@@ -5,30 +5,43 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.recursion
-needs:
-- '[[Nesting]]'
-- '[[Recursive]]'
-- '[[Higher Retrace|Retrace]]'
+determination: pd.v3.pre-provenance-baseline
 conditions:
-  places: nested organisation returning into its own carrying.
-  holds: '[[Nesting]], [[Recursive]], and [[Higher Retrace|Retrace]].'
-  pairs: 'No lateral pair is required. [[Thread]] provides a useful cross-order contrast:
-    Thread names followable continuity through a readable length; Recursion names nested
-    organisation returning into its own carrying. Neither requires the other to hold.'
+  places: "nested organisation returning into its own carrying."
+  needs:
+    targets:
+      - third.nesting
+      - second.recursive
+      - higher.higher-retrace
+  holds:
+    targets:
+      - third.nesting
+      - second.recursive
+      - higher.higher-retrace
+    read: "[[Nesting]], [[Recursive]], and [[Higher Retrace|Retrace]]."
+  pairs:
+    targets:
+      - first.thread
+    read: "No lateral pair is required. [[Thread]] provides a useful cross-order contrast: Thread names followable continuity through a readable length; Recursion names nested organisation returning into its own carrying. Neither requires the other to hold."
   traces:
-  - '[[Nesting]]'
-  - '[[Recursive]]'
-  - '[[Higher Retrace|Retrace]]'
-  - '[[Third Order Crossing|Threshold (Third → Higher)]]'
-  nests: where nested carrying can return into itself without losing retrace.
-  reads: where nested organisation returns into its own carrying without losing the
-    dependency path that makes the return retraceable.
+    targets:
+      - third.nesting
+      - second.recursive
+      - higher.higher-retrace
+      - third.third-order-crossing
+  nests:
+    targets: []
+    read: "where nested carrying can return into itself without losing retrace."
+  reads:
+    targets: []
+    read: "where nested organisation returns into its own carrying without losing the dependency path that makes the return retraceable."
   carries:
-  - '[[Higher Learning]]'
-  - '[[Higher Order Crossing]]'
-  - '[[Consciousness]]'
-  - '[[Self-Modelling]]'
-  - '[[Nested Carrying]]'
+    targets:
+      - higher.higher-learning
+      - higher.higher-order-crossing
+      - higher.consciousness
+      - higher.self-modelling
+      - higher.nested-carrying
 order_terminal:
   is_terminal: true
   terminal_of: higher_order

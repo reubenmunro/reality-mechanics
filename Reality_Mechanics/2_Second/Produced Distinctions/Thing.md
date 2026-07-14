@@ -5,31 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.thing
-
-needs:
-  - "[[Stability]]"
-  - "[[Scale]]"
-  - "[[Relative]]"
-  - "[[Closure Scope]]"
-  - "[[Structure]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a scale-local stability of relation."
-  holds: "[[Stability]], [[Scale]], [[Relative]], [[Closure Scope]], [[Structure]], and [[Readability]]. Relation must hold together as structure, remain stable enough at a scale, be placed through relation, close locally enough for evaluation, and become readable before it can be named or carried as a thing."
-  pairs: "No lateral pair is required at this placement yet. Thing currently reads as a scale-local stability between relations below it and relations above it."
+  needs:
+    targets:
+      - second.stability
+      - second.scale
+      - second.relative
+      - second.closure-scope
+      - second.structure
+      - second.readability
+  holds:
+    targets:
+      - second.stability
+      - second.scale
+      - second.relative
+      - second.closure-scope
+      - second.structure
+      - second.readability
+    read: "[[Stability]], [[Scale]], [[Relative]], [[Closure Scope]], [[Structure]], and [[Readability]]. Relation must hold together as structure, remain stable enough at a scale, be placed through relation, close locally enough for evaluation, and become readable before it can be named or carried as a thing."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Thing currently reads as a scale-local stability between relations below it and relations above it."
   traces:
-    - "[[Stability]]"
-    - "[[Scale]]"
-    - "[[Relative]]"
-    - "[[Closure Scope]]"
-    - "[[Structure]]"
-    - "[[Readability]]"
-  nests: "where smaller relations hold together sufficiently for larger relations to depend on them at a readable scale and closure scope."
-  reads: "Thing becomes readable where a relational stability can be named, used, carried, or depended on at the scale and scope where it holds."
+    targets:
+      - second.stability
+      - second.scale
+      - second.relative
+      - second.closure-scope
+      - second.structure
+      - second.readability
+  nests:
+    targets: []
+    read: "where smaller relations hold together sufficiently for larger relations to depend on them at a readable scale and closure scope."
+  reads:
+    targets: []
+    read: "Thing becomes readable where a relational stability can be named, used, carried, or depended on at the scale and scope where it holds."
   carries:
-    - "[[Member]]"
-
+    targets:
+      - second.member
 publish: true
 status: stable
 ---

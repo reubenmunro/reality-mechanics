@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.exist
-
-needs:
-  - "[[Be]]"
-  - "[[Real]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presence holding as real enough to be encountered or evaluated."
-  holds: "[[Be]] and [[Real]]."
-  pairs: "Asymmetry carries downward — into [[World]]"
+  needs:
+    targets:
+      - second.be
+      - second.real
+  holds:
+    targets:
+      - second.be
+      - second.real
+    read: "[[Be]] and [[Real]]."
+  pairs:
+    targets:
+      - second.world
+    read: "Asymmetry carries downward — into [[World]]"
   traces:
-    - "[[Be]]"
-    - "[[Real]]"
-  nests: "where real availability continues as encounterable, constrainable, countable, or evaluable."
-  reads: "where what holds as present can be encountered, constrained, affected, counted, or evaluated — where presence is real enough to participate in the conditions around it."
+    targets:
+      - second.be
+      - second.real
+  nests:
+    targets: []
+    read: "where real availability continues as encounterable, constrainable, countable, or evaluable."
+  reads:
+    targets: []
+    read: "where what holds as present can be encountered, constrained, affected, counted, or evaluated — where presence is real enough to participate in the conditions around it."
   carries:
-    - "[[World]]"
-
+    targets:
+      - second.world
 publish: true
 status: stable
 ---

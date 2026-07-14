@@ -5,25 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.drag
-
-needs:
-  - "[[Resistance]]"
-  - "[[Flow]]"
-  - "[[Speed]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "slowing resistance carried through flow."
-  holds: "[[Resistance]], [[Flow]], and [[Speed]]."
-  pairs: "Asymmetry carries downward — resistance applied through [[Flow]] and [[Speed]]"
+  needs:
+    targets:
+      - second.resistance
+      - second.flow
+      - second.speed
+  holds:
+    targets:
+      - second.resistance
+      - second.flow
+      - second.speed
+    read: "[[Resistance]], [[Flow]], and [[Speed]]."
+  pairs:
+    targets:
+      - second.flow
+      - second.speed
+    read: "Asymmetry carries downward — resistance applied through [[Flow]] and [[Speed]]"
   traces:
-    - "[[Resistance]]"
-    - "[[Flow]]"
-    - "[[Speed]]"
-    - "[[Friction]]"
-  nests: "inside resistance and flow as slowing resistance rather than blockage."
-  reads: "where flow continues while being slowed by the condition it passes through."
-  carries: []
-
+    targets:
+      - second.resistance
+      - second.flow
+      - second.speed
+      - second.friction
+  nests:
+    targets: []
+    read: "inside resistance and flow as slowing resistance rather than blockage."
+  reads:
+    targets: []
+    read: "where flow continues while being slowed by the condition it passes through."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -1,8 +1,10 @@
 /**
  * order-terminal.mjs — Order-terminal reads for Observatory (O-003).
- * Maps Atlas `order_terminal` frontmatter to participant annotations without D1 schema edits.
+ * Carries a bounded, non-canonical product selection into participant annotations.
  * Governing evidence: P-010, Order-Terminal.md instances.
  */
+
+import { CANONICAL_ENTRY_INDEX } from "./generated/canonical-participation.mjs";
 
 /** Atlas instances with `order_terminal.is_terminal: true` (condition_key → metadata). */
 export const ORDER_TERMINAL_REGISTRY = {
@@ -22,6 +24,10 @@ export const ORDER_TERMINAL_REGISTRY = {
     terminal_mode: "recursive_nesting",
   },
 };
+
+for (const id of Object.keys(ORDER_TERMINAL_REGISTRY)) {
+  if (!CANONICAL_ENTRY_INDEX[id]) throw new Error(`Order-terminal selection does not resolve in Canonical Graph: ${id}`);
+}
 
 const TERMINAL_OF_LABELS = {
   first_order: "First Order",

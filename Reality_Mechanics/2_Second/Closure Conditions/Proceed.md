@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.proceed
-
-needs:
-  - "[[Process]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "continuation without interruption."
-  holds: "[[Process]]."
-  pairs: "Asymmetry carries downward — into [[Progress]], [[Digress]]"
+  needs:
+    targets:
+      - second.process
+  holds:
+    targets:
+      - second.process
+    read: "[[Process]]."
+  pairs:
+    targets:
+      - second.progress
+      - second.digress
+    read: "Asymmetry carries downward — into [[Progress]], [[Digress]]"
   traces:
-    - "[[Process]]"
-  nests: "where a carried sequence continues through current scope without interruption."
-  reads: "where a carried sequence continues without interruption — where participation moves forward through the current scope."
+    targets:
+      - second.process
+  nests:
+    targets: []
+    read: "where a carried sequence continues through current scope without interruption."
+  reads:
+    targets: []
+    read: "where a carried sequence continues without interruption — where participation moves forward through the current scope."
   carries:
-    - "[[Progress]]"
-    - "[[Digress]]"
-    - "[[Moving]]"
-
+    targets:
+      - second.progress
+      - second.digress
+      - third.moving
 publish: true
 status: stable
 ---

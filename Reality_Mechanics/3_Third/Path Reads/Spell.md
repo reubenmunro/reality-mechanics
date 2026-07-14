@@ -5,25 +5,39 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.spell
+determination: pd.v3.pre-provenance-baseline
 domain: path-reads
-
-needs:
-  - "[[Enchantment]]"
-  - "[[Closure Scope]]"
-  - "[[Form]]"
 
 conditions:
   places: "enchantment bounded into a carried form — where influence is held within a specific act, phrase, ritual, or arrangement rather than remaining open."
-  holds: "[[Enchantment]], [[Closure Scope]], and [[Form]]. Influence must alter readability, a closure scope must bound it, and form must carry it before a bounded act can be read as a spell rather than as mere ritual or repetition."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.enchantment
+      - second.closure-scope
+      - second.form
+  holds:
+    targets:
+      - third.enchantment
+      - second.closure-scope
+      - second.form
+    read: "[[Enchantment]], [[Closure Scope]], and [[Form]]. Influence must alter readability, a closure scope must bound it, and form must carry it before a bounded act can be read as a spell rather than as mere ritual or repetition."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Enchantment]]"
-    - "[[Closure Scope]]"
-    - "[[Form]]"
-  nests: "within the enchantment cluster as the bounded-form path read — the specific mode where enchantment is carried through a delimited act or arrangement."
-  reads: "where altered readability is bounded into an act, form, phrase, ritual, pattern, or arrangement that can carry influence. The path through closure scope and form must be entered for the spell to become readable as carried influence rather than source power."
-  carries: []
-
+    targets:
+      - third.enchantment
+      - second.closure-scope
+      - second.form
+  nests:
+    targets: []
+    read: "within the enchantment cluster as the bounded-form path read — the specific mode where enchantment is carried through a delimited act or arrangement."
+  reads:
+    targets: []
+    read: "where altered readability is bounded into an act, form, phrase, ritual, pattern, or arrangement that can carry influence. The path through closure scope and form must be entered for the spell to become readable as carried influence rather than source power."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

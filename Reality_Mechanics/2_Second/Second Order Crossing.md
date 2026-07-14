@@ -5,26 +5,41 @@ order: second
 kind: crossing
 ai_role: crossing
 condition_key: second.second-order-crossing
-
-needs:
-  - "[[Second Order]]"
-  - "[[Participation]]"
-  - "[[Recurrence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the crossing where carrying through recurring participation begins to organise into a field."
-  holds: "[[Second Order]], [[Participation]], and [[Recurrence]]."
-  pairs: "Asymmetry carries downward — marks the transition into [[Field of Participation]] and [[Third Order]]"
+  needs:
+    targets:
+      - second.second-order
+      - second.participation
+      - second.recurrence
+  holds:
+    targets:
+      - second.second-order
+      - second.participation
+      - second.recurrence
+    read: "[[Second Order]], [[Participation]], and [[Recurrence]]."
+  pairs:
+    targets:
+      - third.field-of-participation
+      - third.third-order
+    read: "Asymmetry carries downward — marks the transition into [[Field of Participation]] and [[Third Order]]"
   traces:
-    - "[[Second Order]]"
-    - "[[Participation]]"
-    - "[[Recurrence]]"
-  nests: "between orders. It marks a specific passage, not a general threshold."
-  reads: "where carrying through participation recurs enough to organise into a field of participation."
+    targets:
+      - second.second-order
+      - second.participation
+      - second.recurrence
+  nests:
+    targets: []
+    read: "between orders. It marks a specific passage, not a general threshold."
+  reads:
+    targets: []
+    read: "where carrying through participation recurs enough to organise into a field of participation."
   carries:
-    - "[[Field of Participation]]"
-    - "[[Third Order]]"
-
+    targets:
+      - third.field-of-participation
+      - third.third-order
 publish: true
 status: working
 ---

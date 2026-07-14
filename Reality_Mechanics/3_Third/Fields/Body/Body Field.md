@@ -5,33 +5,50 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.body-field
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Availability]]"
-  - "[[Strain]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the recurring field of participation through which bodily conditions — sensation, movement, injury, fatigue, recovery, and feeling — become readable as organised embodied experience."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Field of Participation must structure a recurring scope and embodied structural conditions must be readable before the body field can be named."
-  pairs: "[[Cognition Field]]. Body Field names the recurring field of embodied participation; Cognition Field names the recurring field of cognitive participation. Each bounds a scope the other depends on for full participation to hold."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+    read: "[[Field of Participation]], [[Organic Field]], [[Availability]], [[Strain]], [[Carrying]], and [[Compatibility]]. Field of Participation must structure a recurring scope and embodied structural conditions must be readable before the body field can be named."
+  pairs:
+    targets:
+      - third.cognition-field
+    read: "[[Cognition Field]]. Body Field names the recurring field of embodied participation; Cognition Field names the recurring field of cognitive participation. Each bounds a scope the other depends on for full participation to hold."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Availability]]"
-    - "[[Strain]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where embodied sensation, limit, movement, injury, fatigue, feeling, or recovery organises participation as bodily experience."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - first.availability
+      - first.strain
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where embodied sensation, limit, movement, injury, fatigue, feeling, or recovery organises participation as bodily experience."
   carries:
-    - "[[Body]]"
-    - "[[Medicine]]" 
-
+    targets:
+      - third.body
+      - third.medicine
 publish: true
 status: stable
 ---

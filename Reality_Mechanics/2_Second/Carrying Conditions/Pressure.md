@@ -5,34 +5,49 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.pressure
-
-needs:
-  - "[[Load]]"
-  - "[[Relation]]"
-  - "[[Boundary]]"
-  - "[[Capacity]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "emergent load becoming locally borne through relation."
-  holds: "[[Load]], [[Relation]], [[Boundary]], [[Capacity]], and [[Compatibility]]. Load must meet a local carrying relation, and the boundary, capacity, and compatibility of that relation must be at stake, before pressure can be named."
-  pairs: "No lateral pair is required at this placement yet. Pressure is the emergent local bearing of load; its first regulatory branch is through retention and release."
+  needs:
+    targets:
+      - second.load
+      - first.relation
+      - first.boundary
+      - second.capacity
+      - second.compatibility
+  holds:
+    targets:
+      - second.load
+      - first.relation
+      - first.boundary
+      - second.capacity
+      - second.compatibility
+    read: "[[Load]], [[Relation]], [[Boundary]], [[Capacity]], and [[Compatibility]]. Load must meet a local carrying relation, and the boundary, capacity, and compatibility of that relation must be at stake, before pressure can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Pressure is the emergent local bearing of load; its first regulatory branch is through retention and release."
   traces:
-    - "[[Load]]"
-    - "[[Relation]]"
-    - "[[Boundary]]"
-    - "[[Capacity]]"
-    - "[[Compatibility]]"
-  nests: "inside carrying as the local emergence of load within a relation."
-  reads: "Pressure becomes readable where load is not only present but locally borne through a relation, making demand, strain, form, or adjustment active at a boundary, body, surface, system, or field."
+    targets:
+      - second.load
+      - first.relation
+      - first.boundary
+      - second.capacity
+      - second.compatibility
+  nests:
+    targets: []
+    read: "inside carrying as the local emergence of load within a relation."
+  reads:
+    targets: []
+    read: "Pressure becomes readable where load is not only present but locally borne through a relation, making demand, strain, form, or adjustment active at a boundary, body, surface, system, or field."
   carries:
-    - "[[Retain]]"
-    - "[[Energy]]"
-    - "[[Balance]]"
-    - "[[Overload]]"
-    - "[[Grief]]"
-    - "[[Contend]]"
-
+    targets:
+      - second.retain
+      - second.energy
+      - second.balance
+      - second.overload
+      - third.grief
+      - practice.contend
 publish: true
 status: stable
 ---

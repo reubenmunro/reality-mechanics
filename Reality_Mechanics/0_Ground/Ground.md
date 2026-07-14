@@ -5,24 +5,36 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.ground
-
-needs: []
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the acknowledged-prior of Reality Mechanics — the source-limit below the dependency spine"
-  holds: "acknowledged but not derived — holds by not being traced to within the system"
-  pairs: "[[Relation]] — Ground is acknowledged but not derived; Relation is the primitive from which tracing begins; [[Seed]] — Seed names Ground as relation-to-Ground becomes carryable within the loop"
-  traces: []
-  nests: "below Root Order and Natural Order as the source-limit that lets the Atlas participate in what it does not originate"
-  reads: "where the system participates in something prior rather than engineering itself from nothing — where its terms can be checked against what they did not generate"
+  needs:
+    targets: []
+  holds:
+    targets: []
+    read: "acknowledged but not derived — holds by not being traced to within the system"
+  pairs:
+    targets:
+      - first.relation
+      - ground.seed
+    read: "[[Relation]] — Ground is acknowledged but not derived; Relation is the primitive from which tracing begins; [[Seed]] — Seed names Ground as relation-to-Ground becomes carryable within the loop"
+  traces:
+    targets: []
+  nests:
+    targets: []
+    read: "below Root Order and Natural Order as the source-limit that lets the Atlas participate in what it does not originate"
+  reads:
+    targets: []
+    read: "where the system participates in something prior rather than engineering itself from nothing — where its terms can be checked against what they did not generate"
   carries:
-    - "[[Seed]]"
-    - "[[Natural Order]]"
-    - "[[Root Order]]"
-    - "[[Opacity]]"
-    - "[[Reality Mechanics]]"
-    - "[[Retrace Practice]]"
-
+    targets:
+      - ground.seed
+      - ground.natural-order
+      - ground.root-order
+      - higher.opacity
+      - practice.reality-mechanics
+      - practice.retrace-practice
 publish: true
 status: stable
 ---

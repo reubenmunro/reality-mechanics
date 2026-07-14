@@ -5,30 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.hope
+determination: pd.v3.pre-provenance-baseline
 domain: faith
-
-needs:
-  - "[[Faith Field]]"
-  - "[[Cognition Field]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Delayed Availability]]"
-  - "[[Second-Order Disorder Effects]]"
 
 conditions:
   places: "the condition through which possible readability is modelled when resolution is unavailable — bearing held toward a future closure scope where what is carried might become readable."
-  holds: "[[Faith Field]], [[Cognition Field]], [[Recognition Read|Recognition]], [[Delayed Availability]], and [[Second-Order Disorder Effects]]. Bearing must continue and delayed availability must hold before modelled future readability can be named as hope."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.faith-field
+      - third.cognition-field
+      - second.recognition-read
+      - second.delayed-availability
+      - second.second-order-disorder-effects
+  holds:
+    targets:
+      - third.faith-field
+      - third.cognition-field
+      - second.recognition-read
+      - second.delayed-availability
+      - second.second-order-disorder-effects
+    read: "[[Faith Field]], [[Cognition Field]], [[Recognition Read|Recognition]], [[Delayed Availability]], and [[Second-Order Disorder Effects]]. Bearing must continue and delayed availability must hold before modelled future readability can be named as hope."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Faith Field]]"
-    - "[[Cognition Field]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Delayed Availability]]"
-    - "[[Second-Order Disorder Effects]]"
-    - "[[Faith Read]]"
-  nests: "within the Faith Field as the cognitive-structural condition through which bearing is held toward future readability — the condition where faith meets possible resolution."
-  reads: "Hope becomes readable where relation is still borne, resolution is unavailable, and a possible read remains bounded enough to guide participation without becoming false recognition."
-  carries: []
-
+    targets:
+      - third.faith-field
+      - third.cognition-field
+      - second.recognition-read
+      - second.delayed-availability
+      - second.second-order-disorder-effects
+      - third.faith-read
+  nests:
+    targets: []
+    read: "within the Faith Field as the cognitive-structural condition through which bearing is held toward future readability — the condition where faith meets possible resolution."
+  reads:
+    targets: []
+    read: "Hope becomes readable where relation is still borne, resolution is unavailable, and a possible read remains bounded enough to guide participation without becoming false recognition."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

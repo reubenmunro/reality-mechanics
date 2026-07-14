@@ -5,33 +5,48 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.structure
-
-needs:
-  - "[[Form]]"
-  - "[[Carrying]]"
-  - "[[Relation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "ordered relation that bears."
-  holds: "[[Form]], [[Carrying]], and [[Relation]]. Form must become ordered enough through carrying relation to hold, constrain, or support what participates within it before structure can be named."
-  pairs: "Asymmetry carries downward — into [[Strategy]], [[Stability]]"
+  needs:
+    targets:
+      - second.form
+      - second.carrying
+      - first.relation
+  holds:
+    targets:
+      - second.form
+      - second.carrying
+      - first.relation
+    read: "[[Form]], [[Carrying]], and [[Relation]]. Form must become ordered enough through carrying relation to hold, constrain, or support what participates within it before structure can be named."
+  pairs:
+    targets:
+      - second.strategy
+      - second.stability
+    read: "Asymmetry carries downward — into [[Strategy]], [[Stability]]"
   traces:
-    - "[[Form]]"
-    - "[[Carrying]]"
-    - "[[Relation]]"
-    - "[[Medium]]"
-    - "[[Structural Gathering]]"
-  nests: "where form holds as aligned carrying relation."
-  reads: "where relation is ordered enough to bear — where an arrangement holds, carries, constrains, supports, or preserves what participates within it."
+    targets:
+      - second.form
+      - second.carrying
+      - first.relation
+      - second.medium
+      - second.structural-gathering
+  nests:
+    targets: []
+    read: "where form holds as aligned carrying relation."
+  reads:
+    targets: []
+    read: "where relation is ordered enough to bear — where an arrangement holds, carries, constrains, supports, or preserves what participates within it."
   carries:
-    - "[[Strategy]]"
-    - "[[Stability]]"
-    - "[[Function]]"
-    - "[[Apparent Source]]"
-    - "[[Bearing Source]]"
-    - "[[Member]]"
-    - "[[Thing]]"
-
+    targets:
+      - second.strategy
+      - second.stability
+      - second.function
+      - second.apparent-source
+      - second.bearing-source
+      - second.member
+      - second.thing
 publish: true
 status: stable
 ---

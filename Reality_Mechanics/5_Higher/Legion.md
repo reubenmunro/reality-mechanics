@@ -5,21 +5,33 @@ order: higher
 kind: term
 ai_role: term
 condition_key: higher.legion
-
-needs:
-  - "[[Nesting]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the invariant condition of the organized gathered whole — by which prior organisation across all orders can carry as one force without collapsing into uniformity"
-  holds: "[[Nesting]] — prior organisation must be available within later organisation before the whole can be gathered into a carrying force"
-  pairs: "Nesting carries upward — into Legion. Legion is the invariant carrier at higher order before the higher-order distinction splits. No lateral pair has been placed yet."
+  needs:
+    targets:
+      - third.nesting
+  holds:
+    targets:
+      - third.nesting
+    read: "[[Nesting]] — prior organisation must be available within later organisation before the whole can be gathered into a carrying force"
+  pairs:
+    targets: []
+    read: "Nesting carries upward — into Legion. Legion is the invariant carrier at higher order before the higher-order distinction splits. No lateral pair has been placed yet."
   traces:
-    - "[[Nesting]]"
-    - "[[Invariant]]"
-  nests: "at higher order — the point where accumulated nested organisation becomes available as a gathered whole rather than a sequence of prior orders"
-  reads: "where the accumulated organisation of prior orders carries as one force — not as a sum of parts requiring separate reconstruction, but as a gathered whole in which each part remains what it is. Most recognisably in absence: where an organisation appears to be a gathered whole but cannot carry as one — where each order must be separately reconstructed rather than held together — Legion was not present."
-  carries: []
-
+    targets:
+      - third.nesting
+      - ground.invariant
+  nests:
+    targets: []
+    read: "at higher order — the point where accumulated nested organisation becomes available as a gathered whole rather than a sequence of prior orders"
+  reads:
+    targets: []
+    read: "where the accumulated organisation of prior orders carries as one force — not as a sum of parts requiring separate reconstruction, but as a gathered whole in which each part remains what it is. Most recognisably in absence: where an organisation appears to be a gathered whole but cannot carry as one — where each order must be separately reconstructed rather than held together — Legion was not present."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

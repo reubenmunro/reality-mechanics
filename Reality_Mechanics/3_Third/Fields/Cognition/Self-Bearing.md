@@ -5,30 +5,44 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.self-bearing
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Self]]"
-  - "[[Bearing]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which the self carries its own strain — bearing held within the participant's own cognitive carrying rather than displaced or collapsed."
-  holds: "[[Self]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Self must be readable and bearing must be available to the self's own carrying before the held condition can be named as self-bearing."
-  pairs: "[[Self]]. Self names the bounded cognitive scope; Self-Bearing names the condition where that scope holds and carries its own carrying."
+  needs:
+    targets:
+      - third.self
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.self
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+    read: "[[Self]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Self must be readable and bearing must be available to the self's own carrying before the held condition can be named as self-bearing."
+  pairs:
+    targets:
+      - third.self
+    read: "[[Self]]. Self names the bounded cognitive scope; Self-Bearing names the condition where that scope holds and carries its own carrying."
   traces:
-    - "[[Self]]"
-    - "[[Bearing]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "within the Cognition Field as the condition through which a self holds its own strain in compatible carrying — the structural ground for self-control and self-harm reads."
-  reads: "Self-Bearing becomes readable where self-relation is held enough to remain available for compatible carrying."
+    targets:
+      - third.self
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within the Cognition Field as the condition through which a self holds its own strain in compatible carrying — the structural ground for self-control and self-harm reads."
+  reads:
+    targets: []
+    read: "Self-Bearing becomes readable where self-relation is held enough to remain available for compatible carrying."
   carries:
-    - "[[Self-Control]]"
-    - "[[Self-Harm]]"
-
-
+    targets:
+      - third.self-control
+      - third.self-harm
 publish: true
 status: stable
 ---

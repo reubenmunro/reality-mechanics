@@ -5,26 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.difference
-
-needs:
-  - "[[Distinction]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "distinguishable non-sameness."
-  holds: "[[Distinction]] and [[Readability]]."
-  pairs: "Asymmetry carries downward — into [[Form]], [[Information]], [[Change]]"
+  needs:
+    targets:
+      - first.distinction
+      - second.readability
+  holds:
+    targets:
+      - first.distinction
+      - second.readability
+    read: "[[Distinction]] and [[Readability]]."
+  pairs:
+    targets:
+      - second.form
+      - second.information
+      - second.change
+    read: "Asymmetry carries downward — into [[Form]], [[Information]], [[Change]]"
   traces:
-    - "[[Distinction]]"
-    - "[[Readability]]"
-  nests: "as the produced read of asymmetry becoming readable as this rather than that."
-  reads: "where relation can be read as this rather than that — where non-sameness is present and readable rather than merely implied."
+    targets:
+      - first.distinction
+      - second.readability
+  nests:
+    targets: []
+    read: "as the produced read of asymmetry becoming readable as this rather than that."
+  reads:
+    targets: []
+    read: "where relation can be read as this rather than that — where non-sameness is present and readable rather than merely implied."
   carries:
-    - "[[Form]]"
-    - "[[Information]]"
-    - "[[Change]]"
-    - "[[Dimension]]"
-
+    targets:
+      - second.form
+      - second.information
+      - second.change
+      - second.dimension
 publish: true
 status: stable
 ---

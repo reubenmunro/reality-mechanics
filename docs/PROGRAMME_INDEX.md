@@ -1,161 +1,41 @@
-# Reality Mechanics — Programme Index
+# Reality Mechanics - Programme Index
 
-**Canonical entry document for contributors and AI workers.**  
-**Last reconciled:** M-004 @ Phase One closure (2026-07-07)
+This index routes participants to current material. It is not canonical structure.
 
-> **Phase One complete.** See [`docs/reports/M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md). Development pauses; future work from observation and retrace, not expansion for its own sake.
+## Start Here
 
-> Sort the programme before extending it.
+| Need | Read |
+|---|---|
+| Canonical structure | [`Reality_Mechanics/`](../Reality_Mechanics/) |
+| Atlas source format | Generated `docs/generated/atlas-source-format.md` after Translation |
+| Current implementation state | [`PROJECT_STATUS.md`](../PROJECT_STATUS.md) |
+| Canonical architecture | [`docs/CONSTITUTION.md`](CONSTITUTION.md) |
+| Translation implementation | `.atlas-publisher/translate-atlas.rb` |
+| Historical and calibration evidence | [`docs/reports/`](reports/) |
+| Superseded reports | [`docs/reports/SUPERSESSION_INDEX.md`](reports/SUPERSESSION_INDEX.md) |
 
----
+## Participation Surfaces
 
-## 1. Start here
+Surface roles are recorded in the canonical `RM System Map` entry. No maintained structured surface manifest governs them.
 
-| Priority | Document | Why |
-|---|---|---|
-| 1 | **This index** | What is current, superseded, unresolved |
-| 2 | [`public-surface-manifest.mjs`](../public-surface-manifest.mjs) | **Product truth** — five surfaces + MCP; do not duplicate |
-| 3 | [`docs/reports/R-005-programme-synthesis.md`](reports/R-005-programme-synthesis.md) | Current architecture synthesis |
-| 4 | [`docs/reports/R-006-operation-reconciliation.md`](reports/R-006-operation-reconciliation.md) | Operational truth @ HEAD |
-| 5 | [`docs/runtime/INVARIANT_RUNTIME_CONTRACT.md`](runtime/INVARIANT_RUNTIME_CONTRACT.md) | Observatory layer stack (P-003) |
-| 6 | [`docs/runtime/READ_ENGINE.md`](runtime/READ_ENGINE.md) | Read module pattern (O-006) |
-| 7 | [`docs/practice/COMMISSIONS.md`](practice/COMMISSIONS.md) | Commission register |
-| 8 | [`docs/reports/M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md) | **Phase One closure** — historical record |
+- Observatory carries generated Atlas structure into a visual instrument.
+- Pulse carries non-canonical Calibration participation.
+- Public Theory carries the complete generated canonical Theory entry.
+- Proof carries evidence and generated canonical result references.
+- Calculus carries non-canonical derivation against a generated comparison baseline.
+- MCP and AI carry generated Atlas structure through read-only tools.
 
----
-
-## 2. Public surfaces (five + MCP)
-
-**Source of truth:** `public-surface-manifest.mjs` → `PUBLIC_SURFACES`
-
-| Surface | Route | Infrastructure alias (code only) |
-|---|---|---|
-| **Observatory** | `realitymechanics.nz/`, `/field` | Field worker, `/api/field/*` |
-| **Pulse** | `calibration.realitymechanics.nz` | Calibration worker, `member/` |
-| **Theory** | `/theory` | Same Field worker |
-| **Proof** | `/proof`, `/submission` | Same Field worker |
-| **Calculus** | `/calculus` | Same Field worker; renders manifest |
-| **MCP** | `mcp.realitymechanics.nz/mcp` | Read-only; 17 tools |
-
-Theory is **live and public** — not retired.
-
----
-
-## 3. Repository layers
+## Implementation
 
 ```text
-Atlas (Reality_Mechanics/)  →  Stewardship (docs/stewardship/)  →  Platform (Workers)
+Reality_Mechanics/
+  -> translate-atlas.rb
+  -> Canonical Graph
+  -> D1 / MCP / AI / search / manifests / docs / Field / Theory
 ```
 
-- Edit Atlas in GitHub → sync D1 manually → Field/MCP read generated model.
-- See [`README.md`](../README.md) for sync commands.
+Maintained product code may select canonical IDs for bounded behavior. Those selections are non-canonical configuration and must validate against the generated entry index.
 
----
+## Evidence
 
-## 4. Observatory runtime (current)
-
-```text
-Mechanics (L4)  →  Read Engine (modules)  →  Renderer (L5–L6)
-```
-
-| Contract | Path |
-|---|---|
-| Layer stack | `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md` |
-| Read catalogue | `.atlas-publisher/read-engine.mjs` |
-| Thread mechanics | `.atlas-publisher/thread-mechanics.mjs` |
-| Woven-field renderer | `.atlas-publisher/woven-field-renderer.mjs` (`RMMechanics` client bundle) |
-| Behaviour trace API | `GET /api/field/behaviour-trace?id=` |
-
-**Principle:** Derive reads first; appearance follows. Do not paint meaning.
-
----
-
-## 5. Synthesis & reconciliation reports
-
-| Report | Role |
-|---|---|
-| R-005 | Programme synthesis — architecture map |
-| R-006 | Operation reconciliation — HEAD truth (extended by O-008, W-001) |
-| M-004 | **Phase One public milestone** — closure record |
-| R-004 | D-025 manifest reconciliation (historical) |
-| R-003 | Coherence audit (historical; Phase 1 docs still open) |
-
----
-
-## 6. Research programme (resolved investigations)
-
-| Range | Topic | Entry |
-|---|---|---|
-| P-001–P-003 | Physics language, hierarchy, runtime contract | `docs/runtime/INVARIANT_RUNTIME_CONTRACT.md` |
-| P-004–P-008 | Ratio, weave, carry/trace | P-008 for fabric threshold |
-| P-009–P-010 | Participation, order-terminal | P-010 frame transition |
-| P-011–P-013 | Thread mechanics, gathering, read engine | `docs/reports/P-011-thread-mechanics-investigation.md` |
-
-| Range | Implementation | Entry |
-|---|---|---|
-| O-001–O-002 | Field/fabric renderer | O-002 fabric gating |
-| O-003–O-006 | Reads + read engine | O-006 formalisation |
-| O-008 | Renderer reconstruction | `docs/reports/O-008-observatory-renderer-reconstruction.md` — client `RMMechanics` activation |
-| W-001 | Public experience polish — wayfinding, MCP orientation, accessibility | `docs/reports/W-001-public-experience-polish.md` |
-| W-002 | Mobile Observatory polish — field-first, bottom drawer, lazy disclosure | `docs/reports/W-002-mobile-observatory-polish.md` |
-
-Full register: `docs/practice/COMMISSIONS.md`
-
----
-
-## 7. Open frontiers (unresolved)
-
-| Frontier | Evidence | Do not |
-|---|---|---|
-| Participation read | P-009 | Paint collective field |
-| Fabric held-whole read | P-012 | Paint fabric without weave |
-| Pressure derivation | C-A001 | Promote Pressure as primitive |
-| D1 sync automation | PROJECT_STATUS | Edit D1 directly |
-| Client weave-state read bundle | O-006 §5 | Fork weave logic in draw* — thread resolver now in `RMMechanics`; full weave-state read bundle still server-side |
-
----
-
-## 8. Superseded documents
-
-**Do not treat as current truth.** See [`docs/reports/SUPERSESSION_INDEX.md`](reports/SUPERSESSION_INDEX.md).
-
-| Superseded | Current |
-|---|---|
-| D-021.5 four-surface framing | D-024 + D-025 five surfaces |
-| R-002 MCP `get_public_programme` | D-025 `get_public_surfaces` |
-| S-001 Field/Calibration product map | R-005 five-surface synthesis |
-| FABLE snapshot @ `bf772fa` | R-006, M-004 @ `66b14a8` |
-| Root docs Field-only | This index + manifest |
-
----
-
-## 9. What not to promote
-
-1. Calculus operations or `: operator`
-2. Atlas/Derived Ratio identity
-3. New renderer fields without read commission
-4. Theory retirement (it is live at `/theory`)
-5. Reports as decisions (C007 — evidence only)
-
----
-
-## 10. Phase One closed
-
-Phase One ended @ `66b14a8` (W-001). Milestone record: [`M-004-public-observatory-milestone.md`](reports/M-004-public-observatory-milestone.md).
-
-Open frontiers below remain unresolved. They are not a roadmap — they are recorded gaps only.
-
----
-
-## 11. Quick commands
-
-```bash
-npm --prefix .atlas-publisher test    # 127 tests
-npm --prefix member test              # 20 tests
-npm --prefix reality-mechanics-mcp test # 42 tests
-npm --prefix .atlas-publisher run sync:d1 -- --apply  # after Atlas edits
-```
-
----
-
-*Maintained through M-004 (Phase One closure). Update when operational facts change; do not treat this index as a roadmap.*
+Reports record investigations and implementation history. They may describe superseded architecture. They do not override the current Atlas or generated source identity.

@@ -5,26 +5,38 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.society
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Participation]]"
-  - "[[Field of Participation]]"
 
 conditions:
   places: "the third-order field where recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants."
-  holds: "[[Participation]] and [[Field of Participation]]. Participation must structure a field and recurring relational patterns must be present before society can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.participation
+      - third.field-of-participation
+  holds:
+    targets:
+      - second.participation
+      - third.field-of-participation
+    read: "[[Participation]] and [[Field of Participation]]. Participation must structure a field and recurring relational patterns must be present before society can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Participation]]"
-    - "[[Field of Participation]]"
-  nests: "within the Society Field branch as the field-level container for social structural reads."
-  reads: "where relations between participants form recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair."
+    targets:
+      - second.participation
+      - third.field-of-participation
+  nests:
+    targets: []
+    read: "within the Society Field branch as the field-level container for social structural reads."
+  reads:
+    targets: []
+    read: "where relations between participants form recurring patterns of consent, obligation, belonging, governance, care, conflict, and repair."
   carries:
-    - "[[Consent]]"
-    - "[[Civil]]"
-    - "[[Destination-Led Carrying]]" 
-
+    targets:
+      - third.consent
+      - third.civil
+      - third.destination-led-carrying
 publish: true
 status: stable
 ---

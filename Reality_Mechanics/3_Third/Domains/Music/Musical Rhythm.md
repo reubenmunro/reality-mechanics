@@ -5,33 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.musical-rhythm
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Sound]]"
-  - "[[Rhythm]]"
-  - "[[Recurrence]]"
-  - "[[Boundary]]"
-  - "[[Return]]"
 
 conditions:
   places: "the temporal carrying condition through which music marks time as recurrent structure"
-  holds: "[[Sound]], [[Rhythm]], [[Recurrence]], [[Boundary]], and [[Return]]. Sound must recur as patterned interval, and carried relation must become readable again at a musical boundary."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.sound
+      - second.rhythm
+      - second.recurrence
+      - first.boundary
+      - second.return
+  holds:
+    targets:
+      - third.sound
+      - second.rhythm
+      - second.recurrence
+      - first.boundary
+      - second.return
+    read: "[[Sound]], [[Rhythm]], [[Recurrence]], [[Boundary]], and [[Return]]. Sound must recur as patterned interval, and carried relation must become readable again at a musical boundary."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Sound]]"
-    - "[[Recurrence]]"
-    - "[[Boundary]]"
-    - "[[Trace]]"
-    - "[[Music]]"
-    - "[[Rhythm]]"
-    - "[[Return]]"
-  nests: "within the music domain as the temporal ground of all other musical conditions"
-  reads: "where recurrent sound events mark time as a pattern that can be followed, departed from, and returned to"
+    targets:
+      - third.sound
+      - second.recurrence
+      - first.boundary
+      - first.trace
+      - third.music
+      - second.rhythm
+      - second.return
+  nests:
+    targets: []
+    read: "within the music domain as the temporal ground of all other musical conditions"
+  reads:
+    targets: []
+    read: "where recurrent sound events mark time as a pattern that can be followed, departed from, and returned to"
   carries:
-    - "[[Melody]]"
-    - "[[Silence]]"
-
+    targets:
+      - third.melody
+      - third.silence
 publish: true
 status: stable
 ---

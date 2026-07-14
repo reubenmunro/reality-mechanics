@@ -5,27 +5,38 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.term
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a structurally placed interpretation — a readable point that can be carried by a word, sign, image, arrangement, action, or thought without being identical to that carrier"
-  holds: "[[Root Order]] — dependency arrangement must hold before named points within it can be made carryable"
-  pairs: "[[Label]] — Term names with dependency, opening, and carried relation travelling together; Label marks without carrying traceable conditions"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — dependency arrangement must hold before named points within it can be made carryable"
+  pairs:
+    targets:
+      - ground.label
+    read: "[[Label]] — Term names with dependency, opening, and carried relation travelling together; Label marks without carrying traceable conditions"
   traces:
-    - "[[Root Order]]"
-  nests: "wherever an interpretation can be placed, traced, read, and carried at scope"
-  reads: "where an interpretation remains locatable through its dependencies across one or more carriers — meaning, dependency, opening, and carried relation travelling together"
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "wherever an interpretation can be placed, traced, read, and carried at scope"
+  reads:
+    targets: []
+    read: "where an interpretation remains locatable through its dependencies across one or more carriers — meaning, dependency, opening, and carried relation travelling together"
   carries:
-    - "[[Thread]]"
-    - "[[Terms and Conditions]]"
-    - "[[Order-Terminal]]"
-    - "[[Number]]"
-    - "[[Terms of Service]]"
-    - "[[Atlas Condition Header]]"
-    - "[[Translation Invariance]]"
-
+    targets:
+      - first.thread
+      - practice.terms-and-conditions
+      - second.order_terminal
+      - second.number
+      - third.terms-of-service
+      - practice.translation-invariance
 publish: true
 status: stable
 ---
@@ -76,5 +87,4 @@ The specific conditions that govern closure at later orders — Scope, Closure S
 - [[Order-Terminal]]
 - [[Number]]
 - [[Terms of Service]]
-- [[Atlas Condition Header]]
 - [[Translation Invariance]]

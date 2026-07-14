@@ -1,52 +1,67 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.atlas
-
-needs:
-  - "[[Reality Mechanics]]"
-  - "[[Root Order]]"
-  - "[[Theory]]"
+determination: pd.v3.public-surface-propagation
 
 conditions:
   places: "the dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order."
-  holds: "the discipline of [[Reality Mechanics]], the governing dependency arrangement of [[Root Order]], and the working postulate named by [[Theory]]."
-  pairs: "[[Reality Mechanics]] and [[Theory]]: Reality Mechanics is the discipline, Atlas is the worked surface, and Theory is the working postulate through which selected Atlas operations become testable."
+  needs:
+    targets:
+      - practice.reality-mechanics
+      - ground.root-order
+      - practice.reality-mechanics-theory
+  holds:
+    targets:
+      - practice.reality-mechanics
+      - ground.root-order
+      - practice.reality-mechanics-theory
+    read: "the discipline of [[Reality Mechanics]], the governing dependency arrangement of [[Root Order]], and the working postulate named by [[Theory]]."
+  pairs:
+    targets:
+      - practice.reality-mechanics
+      - practice.reality-mechanics-theory
+    read: "[[Reality Mechanics]] and [[Theory]]: Reality Mechanics is the discipline, Atlas is the worked surface, and Theory is the working postulate through which selected Atlas operations become testable."
   traces:
-    - "[[Translation Boundary]]"
-    - "[[Order Trace]]"
-    - "[[Reality Mechanics]]"
-    - "[[Root Order]]"
-  nests: "term notes, root notes, applied reads, practice notes, and higher-order retraces without making them identical."
-  reads: "where terms, traces, reads, and corrections are held together by structural role, immediate support, available openings, and retraceable placement."
+    targets:
+      - third.translation-boundary
+      - practice.order-trace
+      - practice.reality-mechanics
+      - ground.root-order
+  nests:
+    targets: []
+    read: "term notes, root notes, applied reads, practice notes, and higher-order retraces without making them identical."
+  reads:
+    targets: []
+    read: "where terms, traces, reads, and corrections are held together by structural role, immediate support, available openings, and retraceable placement."
   carries:
-    - "[[Common Term Structure]]"
-    - "[[Atlas Practice]]"
-    - "[[Reality-Bearing Connection]]"
-    - "[[Theory|The Working Postulate]]"
-    - "[[Atlasing]]"
-    - "[[Translation Invariance]]"
-    - "[[Atlas Root]]"
-    - "[[AI Participation]]"
-    - "[[Invariants]]"
-
+    targets:
+      - foundation.common-term-structure
+      - practice.atlas-practice
+      - practice.reality-bearing-connection
+      - practice.reality-mechanics-theory
+      - practice.atlasing
+      - practice.translation-invariance
+      - practice.atlas-root
+      - practice.ai-participation
+      - practice.invariants
 publish: true
 status: stable
 ---
 # Atlas
 
-The dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order.
+The Atlas is the sole canonical record of participant determinations in [[Reality Mechanics]]. It records grounded, dependency-placed, structurally bounded determinations and remains subordinate to reality.
 
 Atlas is held by the discipline of [[Reality Mechanics]], the governing dependency arrangement of [[Root Order]], and the working postulate named by [[Theory]].
 
 An Operating System for Reasoning may become a future-facing evolution of the Atlas as its human and AI participation surfaces mature. It is not the current claim. The current claim is simpler: the Atlas is a dependency-ordered reasoning system.
 
-The Atlas is not identical to its written notes. Writing is its present durable medium. Its reasoning may be carried through words, signs, diagrams, arrangements, actions, or thought; the Atlas remains the same mapped body only where dependency placement remains recoverable across those changes of carrier.
+The Atlas is canonically recorded in this source. Its structure may be translated through words, signs, diagrams, arrangements, actions, or machine representations; those carriers participate in the Atlas determination but do not become another Atlas.
 
-The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
+The Atlas is not authority over reality. Within Reality Mechanics it is the sole canonical structural authority; its determinations remain corrigible through participant review. The relation-order-trace practice must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
 
 The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. Generative order and reading order are distinct: [[Seed]] : [[Ground]] names the generative condition becoming active; [[One]] : [[Other]] names the first readable expression of that condition; [[Ratio]] names relation made readable as comparison without collapse. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
 

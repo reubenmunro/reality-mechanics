@@ -5,34 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.injury
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Body]]"
-  - "[[Boundary]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
-  - "[[Harm]]"
-  - "[[Splinter]]"
 
 conditions:
   places: "incompatible carrying within the body at a closure scope — carrying that proceeds against the body's compatible conditions and damages or removes available bearing."
-  holds: "[[Body]], [[Boundary]], [[Carrying]], [[Compatibility]], [[Closure Scope]], [[Harm]], and [[Splinter]]. Carrying must proceed against compatible conditions and a boundary must locate the damage before the condition can be read as injury."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.body
+      - first.boundary
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+      - third.harm
+      - second.splinter
+  holds:
+    targets:
+      - third.body
+      - first.boundary
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+      - third.harm
+      - second.splinter
+    read: "[[Body]], [[Boundary]], [[Carrying]], [[Compatibility]], [[Closure Scope]], [[Harm]], and [[Splinter]]. Carrying must proceed against compatible conditions and a boundary must locate the damage before the condition can be read as injury."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Body]]"
-    - "[[Boundary]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-    - "[[Harm]]"
-    - "[[Splinter]]"
-  nests: "within the Body Field as the condition through which incompatible carrying damages a bodily carrying scope."
-  reads: "Injury becomes readable where embodied carrying is damaged enough that continuing as before would increase incompatibility."
+    targets:
+      - third.body
+      - first.boundary
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+      - third.harm
+      - second.splinter
+  nests:
+    targets: []
+    read: "within the Body Field as the condition through which incompatible carrying damages a bodily carrying scope."
+  reads:
+    targets: []
+    read: "Injury becomes readable where embodied carrying is damaged enough that continuing as before would increase incompatibility."
   carries:
-    - "[[Recovery]]" 
-
+    targets:
+      - third.recovery
 publish: true
 status: stable
 ---

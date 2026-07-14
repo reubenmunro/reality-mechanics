@@ -5,26 +5,40 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.teaching-boundary
+determination: pd.v3.pre-provenance-baseline
 domain: teaching
-
-needs:
-  - "[[Teaching]]"
-  - "[[Boundary]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "a branch-level boundary condition that preserves learning participation from overrun, collapse, or imposed order."
-  holds: "[[Teaching]], [[Boundary]], [[Closure Scope]]."
-  pairs: "[[Learning Pace]]. Teaching Boundary names the edge at which bearing can no longer proceed compatibly with what the learner can carry; Learning Pace names the rate at which that bearing can be received."
+  needs:
+    targets:
+      - third.teaching
+      - first.boundary
+      - second.closure-scope
+  holds:
+    targets:
+      - third.teaching
+      - first.boundary
+      - second.closure-scope
+    read: "[[Teaching]], [[Boundary]], [[Closure Scope]]."
+  pairs:
+    targets:
+      - third.learning-pace
+    read: "[[Learning Pace]]. Teaching Boundary names the edge at which bearing can no longer proceed compatibly with what the learner can carry; Learning Pace names the rate at which that bearing can be received."
   traces:
-    - "[[Teaching]]"
-    - "[[Boundary]]"
-    - "[[Closure Scope]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Teaching Boundary becomes readable where the teaching condition stays within what the learner can compatibly bear and retrace, and where the learner's failed uptake can correct the teaching condition."
+    targets:
+      - third.teaching
+      - first.boundary
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Teaching Boundary becomes readable where the teaching condition stays within what the learner can compatibly bear and retrace, and where the learner's failed uptake can correct the teaching condition."
   carries:
-    - "[[Pace Mismatch]]"
-
+    targets:
+      - third.pace-mismatch
 publish: true
 status: stable
 ---

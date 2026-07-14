@@ -5,25 +5,40 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.noise
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Sound]]"
-  - "[[Readability]]"
-  - "[[Scope]]"
 
 conditions:
   places: "sound not currently readable as signal, pattern, relation, or line at the relevant scope."
-  holds: "[[Sound]], [[Readability]], and [[Scope]]. Sound must be present, and a scope of reading must be active, before unreadable audible carrying can be named as noise."
-  pairs: "[[Sound]]. Sound names audible carrying that can become available to read; Noise names sound whose relation is not currently readable at the relevant scope."
+  needs:
+    targets:
+      - third.sound
+      - second.readability
+      - second.scope
+  holds:
+    targets:
+      - third.sound
+      - second.readability
+      - second.scope
+    read: "[[Sound]], [[Readability]], and [[Scope]]. Sound must be present, and a scope of reading must be active, before unreadable audible carrying can be named as noise."
+  pairs:
+    targets:
+      - third.sound
+    read: "[[Sound]]. Sound names audible carrying that can become available to read; Noise names sound whose relation is not currently readable at the relevant scope."
   traces:
-    - "[[Sound]]"
-    - "[[Readability]]"
-    - "[[Scope]]"
-  nests: "within the music domain as the sound/readability boundary where audible carrying is present but not currently readable as signal, pattern, relation, or line."
-  reads: "Noise becomes readable where sound is present but cannot be carried as signal, pattern, relation, melody, harmony, or rhythm at the current scope or resolution band."
-  carries: []
-
+    targets:
+      - third.sound
+      - second.readability
+      - second.scope
+  nests:
+    targets: []
+    read: "within the music domain as the sound/readability boundary where audible carrying is present but not currently readable as signal, pattern, relation, or line."
+  reads:
+    targets: []
+    read: "Noise becomes readable where sound is present but cannot be carried as signal, pattern, relation, melody, harmony, or rhythm at the current scope or resolution band."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

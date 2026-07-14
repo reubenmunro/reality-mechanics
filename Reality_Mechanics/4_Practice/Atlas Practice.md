@@ -1,51 +1,75 @@
 ---
 
 grounded: true
-order: practice
-kind: order
+register: practice
+kind: practice
 ai_role: practice
 condition_key: practice.atlas-practice
-
-needs:
-  - "[[Atlas]]"
-  - "[[Theory]]"
-  - "[[Practice]]"
-  - "[[Discipline]]"
-  - "[[Notice]]"
-  - "[[Enter]]"
-  - "[[Attend]]"
-  - "[[Trace]]"
-  - "[[Step]]"
-  - "[[Retrace Practice]]"
-  - "[[Reality-Bearing Connection]]"
-  - "[[Reasoning]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows."
-  holds: "[[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], [[Reality-Bearing Connection]], and [[Reasoning]]."
-  pairs: "[[Participant]]. Atlas Practice is the discipline; Participant is the one taking part in that discipline."
+  needs:
+    targets:
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.practice
+      - practice.discipline
+      - first.notice
+      - first.enter
+      - first.attend
+      - first.trace
+      - practice.step
+      - practice.retrace-practice
+      - practice.reality-bearing-connection
+      - practice.reasoning
+  holds:
+    targets:
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.practice
+      - practice.discipline
+      - first.notice
+      - first.enter
+      - first.attend
+      - first.trace
+      - practice.step
+      - practice.retrace-practice
+      - practice.reality-bearing-connection
+      - practice.reasoning
+    read: "[[Atlas]], [[Theory]], [[Practice]], [[Discipline]], [[Notice]], [[Enter]], [[Attend]], [[Trace]], [[Step]], [[Retrace Practice]], [[Reality-Bearing Connection]], and [[Reasoning]]."
+  pairs:
+    targets:
+      - practice.participant
+    read: "[[Participant]]. Atlas Practice is the discipline; Participant is the one taking part in that discipline."
   traces:
-    - "[[Atlas]]"
-    - "[[Theory]]"
-    - "[[Practice]]"
-    - "[[Discipline]]"
-    - "[[Notice]]"
-    - "[[Enter]]"
-    - "[[Attend]]"
-    - "[[Trace]]"
-    - "[[Step]]"
-    - "[[Retrace Practice]]"
-    - "[[Place]]"
-    - "[[Reality-Bearing Connection]]"
-    - "[[Reasoning]]"
-    - "[[Higher Learning]]"
-    - "[[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]"
-  nests: "as the public discipline of placing, checking, retracing, and revising Atlas notes."
-  reads: "where participants use standards, tracing, retracing, placement, correction, and relief to keep the Atlas in contact with what actually bears its connections."
+    targets:
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.practice
+      - practice.discipline
+      - first.notice
+      - first.enter
+      - first.attend
+      - first.trace
+      - practice.step
+      - practice.retrace-practice
+      - first.place
+      - practice.reality-bearing-connection
+      - practice.reasoning
+      - higher.higher-learning
+      - higher.higher-order-crossing
+  nests:
+    targets: []
+    read: "as the public discipline of placing, checking, retracing, and revising Atlas notes."
+  reads:
+    targets: []
+    read: "where participants use standards, tracing, retracing, placement, correction, and relief to keep the Atlas in contact with what actually bears its connections."
   carries:
-    - "[[Order Trace]]"
-    - "[[Posture Read]]"
-    - "[[Atlas Fabric]]"
+    targets:
+      - practice.order-trace
+      - practice.posture-read
+      - practice.atlas-garden
 publish: true
 status: stable
 ---

@@ -5,19 +5,33 @@ order: first
 kind: class
 ai_role: class
 condition_key: first.operational-condition
-
-needs:
-  - "[[Bounded Asymmetry]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the class of first-order conditions that act on located distinction — locating, making available, straining, bearing, and resolving"
-  holds: "[[Bounded Asymmetry]] — distinction must be local enough before operations can act on it"
-  pairs: "[[Emergent Condition]] — emergent conditions arise through asymmetry; operational conditions act on located distinction"
+  needs:
+    targets:
+      - first.bounded-asymmetry
+  holds:
+    targets:
+      - first.bounded-asymmetry
+    read: "[[Bounded Asymmetry]] — distinction must be local enough before operations can act on it"
+  pairs:
+    targets:
+      - first.emergent-condition
+    read: "[[Emergent Condition]] — emergent conditions arise through asymmetry; operational conditions act on located distinction"
   traces:
-    - "[[Bounded Asymmetry]]"
-  nests: "boundary, availability, strain, threshold, bearing, and resolution as first-order operations on located distinction"
-  reads: "where a term names something that acts on located distinction rather than arising from within relation through asymmetry"
-  carries: []
+    targets:
+      - first.bounded-asymmetry
+  nests:
+    targets: []
+    read: "boundary, availability, strain, threshold, bearing, and resolution as first-order operations on located distinction"
+  reads:
+    targets: []
+    read: "where a term names something that acts on located distinction rather than arising from within relation through asymmetry"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

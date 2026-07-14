@@ -5,21 +5,33 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.sequence
-
-needs:
-  - "[[Traversal]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "an ordered traversal: reads followed through a scope in a dependency-readable arrangement."
-  holds: "[[Traversal]]."
-  pairs: "[[Process]]. Sequence orders traversal; Process carries the sequence as participation."
+  needs:
+    targets:
+      - second.traversal
+  holds:
+    targets:
+      - second.traversal
+    read: "[[Traversal]]."
+  pairs:
+    targets:
+      - second.process
+    read: "[[Process]]. Sequence orders traversal; Process carries the sequence as participation."
   traces:
-    - "[[Traversal]]"
-  nests: "where traversal has readable order and direction."
-  reads: "where reads can be followed one after another through an ordered arrangement — where the traversal has a readable direction."
+    targets:
+      - second.traversal
+  nests:
+    targets: []
+    read: "where traversal has readable order and direction."
+  reads:
+    targets: []
+    read: "where reads can be followed one after another through an ordered arrangement — where the traversal has a readable direction."
   carries:
-    - "[[Process]]"
-
+    targets:
+      - second.process
 publish: true
 status: stable
 ---

@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.nesting-read
-
-needs:
-  - "[[Stability]]"
-  - "[[Retrace Read|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the produced read through which a prior organisation remains available within a later organisation."
-  holds: "[[Stability]] and [[Retrace Read|Retrace]]."
-  pairs: "Asymmetry carries downward — into [[Nested Carrying]] and [[Nested Relation]]"
+  needs:
+    targets:
+      - second.stability
+      - second.retrace-read
+  holds:
+    targets:
+      - second.stability
+      - second.retrace-read
+    read: "[[Stability]] and [[Retrace Read|Retrace]]."
+  pairs:
+    targets:
+      - higher.nested-carrying
+      - second.nested-relation
+    read: "Asymmetry carries downward — into [[Nested Carrying]] and [[Nested Relation]]"
   traces:
-    - "[[Stability]]"
-    - "[[Retrace Read|Retrace]]"
-    - "[[Invisible Bearing Read]]"
-  nests: "where prior organisation remains retraceable within a later organisation."
-  reads: "where a prior organisation can be traced within a later one — where what held before continues to hold as available within the current scope rather than having been replaced."
+    targets:
+      - second.stability
+      - second.retrace-read
+      - second.invisible-bearing-read
+  nests:
+    targets: []
+    read: "where prior organisation remains retraceable within a later organisation."
+  reads:
+    targets: []
+    read: "where a prior organisation can be traced within a later one — where what held before continues to hold as available within the current scope rather than having been replaced."
   carries:
-    - "[[Nested Carrying]]"
-    - "[[Nested Relation]]"
-
+    targets:
+      - higher.nested-carrying
+      - second.nested-relation
 publish: true
 status: stable
 ---

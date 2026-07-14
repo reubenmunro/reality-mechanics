@@ -5,26 +5,39 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.nested-carrying
-
-needs:
-  - "[[Recursion]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "nesting actively carrying participation — where prior organisation bears later participation rather than merely being available within it."
-  holds: "[[Recursion]] and [[Carrying]]."
-  pairs: "Asymmetry carries downward — into [[Invisible Bearing]]"
+  needs:
+    targets:
+      - higher.recursion
+      - second.carrying
+  holds:
+    targets:
+      - higher.recursion
+      - second.carrying
+    read: "[[Recursion]] and [[Carrying]]."
+  pairs:
+    targets:
+      - higher.invisible-bearing
+    read: "Asymmetry carries downward — into [[Invisible Bearing]]"
   traces:
-    - "[[Recursion]]"
-    - "[[Carrying]]"
-    - "[[Nesting Read]]"
-  nests: "where carrying remains active through nested organisation without requiring explicit reconstruction."
-  reads: "where a prior organisation can be read as carrying later participation rather than merely being retraceable within it — where what was nested is now doing the carrying."
+    targets:
+      - higher.recursion
+      - second.carrying
+      - second.nesting-read
+  nests:
+    targets: []
+    read: "where carrying remains active through nested organisation without requiring explicit reconstruction."
+  reads:
+    targets: []
+    read: "where a prior organisation can be read as carrying later participation rather than merely being retraceable within it — where what was nested is now doing the carrying."
   carries:
-    - "[[Invisible Bearing]]"
-    - "[[Fabric]]"
-    - "[[Opacity]]"
-
+    targets:
+      - higher.invisible-bearing
+      - higher.fabric
+      - higher.opacity
 publish: true
 status: stable
 ---

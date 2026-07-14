@@ -1,6 +1,11 @@
 #!/bin/zsh
 set -e
-cd "$(dirname "$0")/reality-mechanics-mcp"
+cd "$(dirname "$0")"
+
+echo "Translating the canonical Atlas..."
+ruby .atlas-publisher/translate-atlas.rb
+
+cd reality-mechanics-mcp
 
 echo "Deploying the Reality Mechanics MCP Worker to Cloudflare..."
 echo

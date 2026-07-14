@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: meta
 ai_role: invariants
 condition_key: practice.invariants
-
-needs:
-  - "[[Atlas]]"
-  - "[[Invariant]]"
-  - "[[Root Order]]"
-  - "[[Groundedness]]"
+determination: pd.v3.canonical-atlas-architecture-v3
 
 conditions:
   places: "the current invariant read extracted from the Atlas so repeated structural constraints can be checked without being mistaken for new primitives."
-  holds: "[[Atlas]], [[Invariant]], [[Root Order]], and [[Groundedness]]."
-  pairs: "[[AI Participation]]. Invariants names what should remain stable through review; AI Participation names how an AI must handle those constraints."
+  needs:
+    targets:
+      - practice.atlas
+      - ground.invariant
+      - ground.root-order
+      - ground.groundedness
+  holds:
+    targets:
+      - practice.atlas
+      - ground.invariant
+      - ground.root-order
+      - ground.groundedness
+    read: "[[Atlas]], [[Invariant]], [[Root Order]], and [[Groundedness]]."
+  pairs:
+    targets:
+      - practice.ai-participation
+    read: "[[AI Participation]]. Invariants names what should remain stable through review; AI Participation names how an AI must handle those constraints."
   traces:
-    - "[[Atlas]]"
-    - "[[Invariant]]"
-    - "[[Root Order]]"
-    - "[[Groundedness]]"
-    - "[[Relation]]"
-    - "[[Theory]]"
-    - "[[Common Term Structure]]"
-  nests: "inside Atlas Practice as a checksum over dependency order, carry/trace reciprocity, grounding authority, and source drift."
-  reads: "where repeated Atlas constraints can be reviewed as stable enough to protect structure while still remaining answerable to their cited source notes."
-  carries: "No direct downstream term is required. Invariants protects repeated structural constraints rather than founding a new branch."
-
+    targets:
+      - practice.atlas
+      - ground.invariant
+      - ground.root-order
+      - ground.groundedness
+      - first.relation
+      - practice.reality-mechanics-theory
+      - foundation.common-term-structure
+  nests:
+    targets: []
+    read: "inside Atlas Practice as a checksum over dependency order, carry/trace reciprocity, grounding authority, and source drift."
+  reads:
+    targets: []
+    read: "where repeated Atlas constraints can be reviewed as stable enough to protect structure while still remaining answerable to their cited source notes."
+  carries:
+    targets: []
+    read: "No direct downstream term is required. Invariants protects repeated structural constraints rather than founding a new branch."
 publish: true
 status: working
 ---
@@ -47,7 +63,7 @@ The current invariant read extracted from the Atlas so repeated structural const
 - The deeper warrant for reciprocity is nesting location. A carry without a backtrace leaves the carried term's position in the nested order unresolved. Running carry and trace simultaneously through the same passage is how a participant locates a pattern's nesting position — and how unclear nesting is resolved. ([[Carry-Trace Test]], [[Posture Read]])
 - Dependency is antisymmetric: a note never traces what it carries.
 - Membership is not dependency. It lives in [[Nesting|Nests]], not in carries.
-- Only a participant grounds. Drafts do not govern until grounded. ([[Groundedness]])
+- Grounding is the recorded result of participant determination. Investigation remains in Calibration and does not govern the Atlas. ([[Groundedness]])
 - Derive before invent. A term earns a note only if it carries what neither component alone carries, and others trace to it.
 - Resolution closes a condition at its scope without ending wider relation. It is not a universal prerequisite for carrying. ([[Resolution]], [[Carrying]])
 - A participant resolves order only within its reach. What exceeds reach remains real, effective, and traceable. ([[Readability]], [[Timescale]])

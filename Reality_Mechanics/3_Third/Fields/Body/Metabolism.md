@@ -5,34 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.metabolism
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Body]]"
-  - "[[Life]]"
-  - "[[Intake]]"
-  - "[[Energy]]"
-  - "[[Resolution]]"
-  - "[[Repair]]"
-  - "[[Participation]]"
 
 conditions:
   places: "embodied resolution within living participation — the way intake, energy, strain, repair, waste, memory, and activity are converted into continued participation."
-  holds: "[[Body]], [[Life]], [[Intake]], [[Energy]], [[Resolution]], [[Repair]], and [[Participation]]. Living embodied participation must be present, and intake, energy, and repair must be available, before metabolism can be named as embodied resolution."
-  pairs: "No lateral pair is required at this placement yet. Metabolism currently reads as the embodied resolution pattern through which living participation continues."
+  needs:
+    targets:
+      - third.body
+      - third.life
+      - second.intake
+      - second.energy
+      - first.resolution
+      - third.repair
+      - second.participation
+  holds:
+    targets:
+      - third.body
+      - third.life
+      - second.intake
+      - second.energy
+      - first.resolution
+      - third.repair
+      - second.participation
+    read: "[[Body]], [[Life]], [[Intake]], [[Energy]], [[Resolution]], [[Repair]], and [[Participation]]. Living embodied participation must be present, and intake, energy, and repair must be available, before metabolism can be named as embodied resolution."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Metabolism currently reads as the embodied resolution pattern through which living participation continues."
   traces:
-    - "[[Body]]"
-    - "[[Life]]"
-    - "[[Intake]]"
-    - "[[Energy]]"
-    - "[[Resolution]]"
-    - "[[Repair]]"
-    - "[[Participation]]"
-  nests: "within the Body Field as the living resolution pathway through which a body carries change without losing continuity."
-  reads: "Metabolism becomes readable where a living system converts intake, strain, energy, rest, repair, waste, and activity into continued participation at a particular rate and pattern."
+    targets:
+      - third.body
+      - third.life
+      - second.intake
+      - second.energy
+      - first.resolution
+      - third.repair
+      - second.participation
+  nests:
+    targets: []
+    read: "within the Body Field as the living resolution pathway through which a body carries change without losing continuity."
+  reads:
+    targets: []
+    read: "Metabolism becomes readable where a living system converts intake, strain, energy, rest, repair, waste, and activity into continued participation at a particular rate and pattern."
   carries:
-    - "[[Cognitive Metabolism]]"
-
+    targets:
+      - third.cognitive-metabolism
 publish: true
 status: stable
 ---

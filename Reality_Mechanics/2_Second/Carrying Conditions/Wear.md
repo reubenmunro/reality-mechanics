@@ -5,24 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.wear
-
-needs:
-  - "[[Friction]]"
-  - "[[Recurrence]]"
-  - "[[Decay]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "change left by recurring friction."
-  holds: "[[Friction]], [[Recurrence]], and [[Decay]]."
-  pairs: "Asymmetry carries downward — friction through [[Recurrence]] and [[Decay]]"
+  needs:
+    targets:
+      - second.friction
+      - second.recurrence
+      - second.decay
+  holds:
+    targets:
+      - second.friction
+      - second.recurrence
+      - second.decay
+    read: "[[Friction]], [[Recurrence]], and [[Decay]]."
+  pairs:
+    targets:
+      - second.recurrence
+      - second.decay
+    read: "Asymmetry carries downward — friction through [[Recurrence]] and [[Decay]]"
   traces:
-    - "[[Friction]]"
-    - "[[Recurrence]]"
-    - "[[Decay]]"
-  nests: "inside recurrence, friction, and decay as change left by repeated resistance."
-  reads: "where repeated friction changes the condition that bears it."
-  carries: []
-
+    targets:
+      - second.friction
+      - second.recurrence
+      - second.decay
+  nests:
+    targets: []
+    read: "inside recurrence, friction, and decay as change left by repeated resistance."
+  reads:
+    targets: []
+    read: "where repeated friction changes the condition that bears it."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

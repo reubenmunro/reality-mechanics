@@ -1,103 +1,64 @@
 # Reality Mechanics
 
-Reality Mechanics observes structural relations already carried in reality and keeps every observation retraceable.
+Reality Mechanics observes structural relations already carried in reality and keeps each determination retraceable.
 
-The public programme is five surfaces on [realitymechanics.nz](https://realitymechanics.nz) plus a read-only MCP for AI traversal. **Atlas is source; the website is translation.** Term content lives in `Reality_Mechanics/` in this repository. Observatory and MCP read a generated D1 cache — not an editing surface.
+## Authority
 
-**Contributor entry:** [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md) · **Product truth:** [`public-surface-manifest.mjs`](public-surface-manifest.mjs)
-
----
-
-## Start here
-
-| If you are… | Read |
-|---|---|
-| Landing on GitHub for the first time | This README → [`docs/PROGRAMME_INDEX.md`](docs/PROGRAMME_INDEX.md) |
-| Checking what the public site claims | [`public-surface-manifest.mjs`](public-surface-manifest.mjs) |
-| Understanding the architecture | [`docs/reports/R-005-programme-synthesis.md`](docs/reports/R-005-programme-synthesis.md) |
-| Operational truth at current HEAD | [`PROJECT_STATUS.md`](PROJECT_STATUS.md) |
-| Distinguishing current vs superseded reports | [`docs/reports/SUPERSESSION_INDEX.md`](docs/reports/SUPERSESSION_INDEX.md) |
-
----
-
-## Five public surfaces (+ MCP)
-
-| Surface | URL | Role |
-|---|---|---|
-| **Observatory** | [realitymechanics.nz](https://realitymechanics.nz), `/field` | See structure — woven-field instrument |
-| **Pulse** | [calibration.realitymechanics.nz](https://calibration.realitymechanics.nz) | Sense behaviour through time |
-| **Theory** | `/theory` | Understand the claim |
-| **Proof** | `/proof`, `/submission` | Retrace the evidence |
-| **Calculus** | `/calculus` | Derivation surface — nothing promoted |
-| **MCP** | `mcp.realitymechanics.nz` | Read-only Atlas + programme traversal (17 tools) |
-
-Infrastructure names in code (Field, Calibration, `/api/field/*`) are legacy aliases. Retired routes (Garden, standalone Atlas, Ark) return **410**.
-
----
-
-## Accepted · candidate · unresolved
-
-Claim status is **not** decided in prose on the website alone.
-
-| Status | Meaning | Where recorded |
-|---|---|---|
-| **Accepted** | Carried far enough to stand in the public record | `public-surface-manifest.mjs` → `/calculus` |
-| **Candidate** | Examined; not promoted | Same manifest + source reports |
-| **Unresolved** | Gap preserved deliberately | Same manifest + `docs/reports/` |
-
-Commission reports under `docs/reports/` are **evidence**, not steward decisions. Register: [`docs/practice/COMMISSIONS.md`](docs/practice/COMMISSIONS.md).
-
----
-
-## Evidence and retrace
-
-Proof fails if the evidence path fails. The website links to GitHub sources; every Calculus claim carries a repo-relative `source` path in the manifest.
+The 490 entries under [`Reality_Mechanics/`](Reality_Mechanics/) are the sole maintained structural authority. Calibration and every software or public representation are non-canonical participation.
 
 ```text
-Atlas (Reality_Mechanics/)  →  commit on GitHub  →  D1 sync (manual)  →  Observatory / MCP read model
+Reality
+  -> Calibration
+  -> Participant Determination
+  -> Atlas
+  -> Canonical Graph
+  -> deterministic Translation
+  -> generated participation
 ```
 
-Workflow for Atlas changes:
+`D1`, MCP protocol data, AI records, search, manifests, generated source documentation, Observatory data, Field data, and Public Theory are disposable outputs. If an output differs from the Atlas, Translation is wrong.
 
-1. Edit terms in `Reality_Mechanics/`.
-2. Commit and push to GitHub.
-3. Run `npm --prefix .atlas-publisher run sync:d1 -- --apply`.
-4. Observatory and MCP read the updated D1 cache.
+## Translation
 
-D1 is generated and may be rebuilt from the repository. Do not edit D1 directly for Atlas terms.
+Run the one translation former:
 
----
+```bash
+ruby .atlas-publisher/translate-atlas.rb
+```
 
-## MCP
+It parses the Atlas once, validates the Atlas-owned schema, forms one disposable Canonical Graph, and generates every downstream structural representation from that graph.
 
-The MCP worker shares [`public-surface-manifest.mjs`](public-surface-manifest.mjs) with the website (D-025). It reads Atlas structure from D1; it does not write Atlas, D1, or public pages.
+Generated files are ignored by Git. Delete them freely; the command above must reconstruct them byte-for-byte.
 
----
+## D1
+
+Generate without writing D1:
+
+```bash
+npm --prefix .atlas-publisher run sync:d1 -- --allow-dirty
+```
+
+The `--apply` flag is an explicit production write and is not part of normal build or test execution.
+
+## Public Participation
+
+- **Observatory / Field:** generated identities, relations, placement, labels, determinations, and source identity; maintained rendering and interaction.
+- **Public Theory:** complete canonical Theory entry generated from the Atlas; maintained presentation only.
+- **Proof:** generated canonical result links plus maintained evidence and review records.
+- **Calculus:** generated comparison baseline plus maintained, explicitly non-canonical derivation evidence.
+- **MCP / AI:** generated schema, protocol, entry structure, determinations, and D1 read model; read-only transport.
+- **Pulse / Calibration:** participant investigation; never a structural input to Translation.
 
 ## Tests
 
 ```bash
-npm --prefix .atlas-publisher test    # 116 tests
-npm --prefix member test              # 18 tests
-npm --prefix reality-mechanics-mcp test  # 42 tests
+npm --prefix .atlas-publisher test
+npm --prefix reality-mechanics-mcp test
+npm --prefix member test
 ```
 
-**176 tests** at HEAD. GitHub Actions deploys Observatory, Pulse, and MCP on push to `main`.
+The publisher suite includes invalid-target rejection, clean D1 reconstruction, surface parity, and two byte-identical disposable rebuilds.
 
----
+## Deployment
 
-## Deploy
-
-See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Required repository secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (not in tree).
-
-Surface map: [`docs/deployment/CLOUDFLARE_SURFACE_MAP.md`](docs/deployment/CLOUDFLARE_SURFACE_MAP.md)
-
----
-
-## Unresolved (steward)
-
-| Item | Status |
-|---|---|
-| **Licence** | No root `LICENSE` file — choice pending |
-| **D1 sync in CI** | Manual apply only |
-| **GitHub About panel** | See checklist in [`docs/reports/M-003-public-github-final-cleanup.md`](docs/reports/M-003-public-github-final-cleanup.md) |
+Deployment is separate from Translation. See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and [`docs/deployment/CLOUDFLARE_SURFACE_MAP.md`](docs/deployment/CLOUDFLARE_SURFACE_MAP.md). No Stage 2 implementation command deploys, pushes, tags, or writes remote D1 unless explicitly invoked with the production action.

@@ -5,27 +5,42 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.musical-form
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Nesting]]"
-  - "[[Melody]]"
-  - "[[Harmony]]"
 
 conditions:
   places: "the nested carrying condition in music — where sections, themes, and developments carry each other as a structured whole"
-  holds: "[[Nesting]], [[Melody]], and [[Harmony]]. Musical sections must be readable before their nesting can be carried as form."
-  pairs: "[[Improvisation]]. Musical Form names the nested structural organisation of a musical work; Improvisation names the condition where participation departs from or freely references that organisation. Each requires the other to be locatable: form without improvisation is mere constraint; improvisation without form has nothing to depart from."
+  needs:
+    targets:
+      - third.nesting
+      - third.melody
+      - third.harmony
+  holds:
+    targets:
+      - third.nesting
+      - third.melody
+      - third.harmony
+    read: "[[Nesting]], [[Melody]], and [[Harmony]]. Musical sections must be readable before their nesting can be carried as form."
+  pairs:
+    targets:
+      - third.improvisation
+    read: "[[Improvisation]]. Musical Form names the nested structural organisation of a musical work; Improvisation names the condition where participation departs from or freely references that organisation. Each requires the other to be locatable: form without improvisation is mere constraint; improvisation without form has nothing to depart from."
   traces:
-    - "[[Nesting]]"
-    - "[[Melody]]"
-    - "[[Harmony]]"
-    - "[[Musical Rhythm]]"
-    - "[[Music]]"
-  nests: "within the music domain as the large-scale carrying condition — the structure through which the whole piece carries"
-  reads: "where sections of a musical work nest within each other so that development, return, variation, and contrast become readable as a carried whole"
-  carries: []
-
+    targets:
+      - third.nesting
+      - third.melody
+      - third.harmony
+      - third.musical-rhythm
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the large-scale carrying condition — the structure through which the whole piece carries"
+  reads:
+    targets: []
+    read: "where sections of a musical work nest within each other so that development, return, variation, and contrast become readable as a carried whole"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

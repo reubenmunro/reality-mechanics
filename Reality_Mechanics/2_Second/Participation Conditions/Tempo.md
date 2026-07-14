@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.tempo
-
-needs:
-  - "[[Rhythm]]"
-  - "[[Rate]]"
-  - "[[Pace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "rate carried as pace within rhythmic participation."
-  holds: "[[Rhythm]], [[Rate]], and [[Pace]]."
-  pairs: "Asymmetry carries downward — into [[Learning Pace]]"
+  needs:
+    targets:
+      - second.rhythm
+      - second.rate
+      - second.pace
+  holds:
+    targets:
+      - second.rhythm
+      - second.rate
+      - second.pace
+    read: "[[Rhythm]], [[Rate]], and [[Pace]]."
+  pairs:
+    targets:
+      - third.learning-pace
+    read: "Asymmetry carries downward — into [[Learning Pace]]"
   traces:
-    - "[[Rhythm]]"
-    - "[[Rate]]"
-    - "[[Pace]]"
-  nests: "where rhythmic recurrence proceeds at a supportable rate within closure scope."
-  reads: "where rhythmic recurrence can be read as proceeding at a supportable rate."
+    targets:
+      - second.rhythm
+      - second.rate
+      - second.pace
+  nests:
+    targets: []
+    read: "where rhythmic recurrence proceeds at a supportable rate within closure scope."
+  reads:
+    targets: []
+    read: "where rhythmic recurrence can be read as proceeding at a supportable rate."
   carries:
-    - "[[Learning Pace]]"
-
+    targets:
+      - third.learning-pace
 publish: true
 status: stable
 ---

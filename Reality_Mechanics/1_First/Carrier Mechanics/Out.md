@@ -5,20 +5,33 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.out
-
-needs:
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "exterior relation beyond a bounded condition"
-  holds: "[[Boundary]] — a boundary must locate distinction before exterior placement can be read"
-  pairs: "[[In]] — In carries interior placement; Out carries exterior placement"
+  needs:
+    targets:
+      - first.boundary
+  holds:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — a boundary must locate distinction before exterior placement can be read"
+  pairs:
+    targets:
+      - first.in
+    read: "[[In]] — In carries interior placement; Out carries exterior placement"
   traces:
-    - "[[Boundary]]"
-  nests: "as a structural carrier that can enter later compounds such as outside, output, outward, and out-of-relation"
-  reads: "where relation is read as beyond a located condition"
-  carries: []
-
+    targets:
+      - first.boundary
+  nests:
+    targets: []
+    read: "as a structural carrier that can enter later compounds such as outside, output, outward, and out-of-relation"
+  reads:
+    targets: []
+    read: "where relation is read as beyond a located condition"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

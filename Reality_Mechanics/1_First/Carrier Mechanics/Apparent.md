@@ -5,25 +5,42 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.apparent
-
-needs:
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "distinction as presented enough to become available to notice"
-  holds: "[[Boundary]] — distinction must be located enough to present"
-  pairs: "Asymmetry carries downward — into [[Visible]], [[Invisible]], [[Notice]], [[Trace]], [[Apparent Bearing]], and [[Apparent Source]]"
+  needs:
+    targets:
+      - first.boundary
+  holds:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — distinction must be located enough to present"
+  pairs:
+    targets:
+      - first.visible
+      - first.invisible
+      - first.notice
+      - first.trace
+      - second.apparent-bearing
+      - second.apparent-source
+    read: "Asymmetry carries downward — into [[Visible]], [[Invisible]], [[Notice]], [[Trace]], [[Apparent Bearing]], and [[Apparent Source]]"
   traces:
-    - "[[Boundary]]"
-  nests: "before trace, holding, or recognition — can open visibility, invisibility, notice, and trace without yet becoming any of them"
-  reads: "where distinction is present enough to be noticed — available to enter notice, attention, and trace without yet being followed, held, or read"
+    targets:
+      - first.boundary
+  nests:
+    targets: []
+    read: "before trace, holding, or recognition — can open visibility, invisibility, notice, and trace without yet becoming any of them"
+  reads:
+    targets: []
+    read: "where distinction is present enough to be noticed — available to enter notice, attention, and trace without yet being followed, held, or read"
   carries:
-    - "[[Visible]]"
-    - "[[Invisible]]"
-    - "[[Notice]]"
-    - "[[Apparent Bearing]]"
-    - "[[Apparent Source]]"
-
+    targets:
+      - first.visible
+      - first.invisible
+      - first.notice
+      - second.apparent-bearing
+      - second.apparent-source
 publish: true
 status: stable
 ---

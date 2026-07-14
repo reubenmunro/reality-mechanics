@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "node test/worker.test.mjs"
+    "translate": "ruby ../.atlas-publisher/translate-atlas.rb",
+    "test": "ruby ../.atlas-publisher/translate-atlas.rb && node test/worker.test.mjs"
   },
   "devDependencies": {
     "wrangler": "^3.90.0"

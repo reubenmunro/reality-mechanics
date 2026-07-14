@@ -5,26 +5,38 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.hold
-
-needs:
-  - "[[Resolution]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution remaining supportable as the same condition"
-  holds: "[[Resolution]] — bearing must be determined at the current scope before it can remain supportable"
-  pairs: "[[Release]] — Hold maintains a resolved condition in place; Release lets it go. Each requires the other to be locatable."
+  needs:
+    targets:
+      - first.resolution
+  holds:
+    targets:
+      - first.resolution
+    read: "[[Resolution]] — bearing must be determined at the current scope before it can remain supportable"
+  pairs:
+    targets:
+      - first.release
+    read: "[[Release]] — Hold maintains a resolved condition in place; Release lets it go. Each requires the other to be locatable."
   traces:
-    - "[[Resolution]]"
-  nests: "under first-order resolution, remaining present through whatever it supports without being carrying itself"
-  reads: "where resolved bearing stays together enough to remain available for reading, support, and the carrying that continues through it"
+    targets:
+      - first.resolution
+  nests:
+    targets: []
+    read: "under first-order resolution, remaining present through whatever it supports without being carrying itself"
+  reads:
+    targets: []
+    read: "where resolved bearing stays together enough to remain available for reading, support, and the carrying that continues through it"
   carries:
-    - "[[Carry]]"
-    - "[[Trace]]"
-    - "[[First Order Crossing|Threshold (First → Second)]]"
-    - "[[Carrying]]"
-    - "[[Read]]"
-    - "[[Retain]]"
-
+    targets:
+      - first.carry
+      - first.trace
+      - first.first-order-crossing
+      - second.carrying
+      - first.read
+      - second.retain
 publish: true
 status: stable
 ---

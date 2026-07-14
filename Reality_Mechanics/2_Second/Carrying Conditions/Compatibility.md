@@ -5,45 +5,60 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.compatibility
-
-needs:
-  - "[[Carrying]]"
-  - "[[Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the condition through which what is being carried can continue through the conditions it moves into."
-  holds: "[[Carrying]] and [[Coupling]]."
-  pairs: "Asymmetry carries downward — into [[Stability]], [[Capacity]], and [[Know]]"
+  needs:
+    targets:
+      - second.carrying
+      - second.coupling
+  holds:
+    targets:
+      - second.carrying
+      - second.coupling
+    read: "[[Carrying]] and [[Coupling]]."
+  pairs:
+    targets:
+      - second.stability
+      - second.capacity
+      - second.know
+    read: "Asymmetry carries downward — into [[Stability]], [[Capacity]], and [[Know]]"
   traces:
-    - "[[Carrying]]"
-    - "[[Coupling]]"
-  nests: "as a passage condition for carrying. It regulates whether carrying can continue through encountered conditions."
-  reads: "where carrying can be evaluated as supportable — where what is being carried and the conditions it moves through can be read as holding together at the current scope."
+    targets:
+      - second.carrying
+      - second.coupling
+  nests:
+    targets: []
+    read: "as a passage condition for carrying. It regulates whether carrying can continue through encountered conditions."
+  reads:
+    targets: []
+    read: "where carrying can be evaluated as supportable — where what is being carried and the conditions it moves through can be read as holding together at the current scope."
   carries:
-    - "[[Stability]]"
-    - "[[Capacity]]"
-    - "[[Know]]"
-    - "[[Grip]]"
-    - "[[Boundary Loosening]]"
-    - "[[Competence Boundary]]"
-    - "[[Function]]"
-    - "[[Parenting]]"
-    - "[[Pace]]"
-    - "[[Guard]]"
-    - "[[Pressure]]"
-    - "[[Recarry]]"
-    - "[[Adaptation]]"
-    - "[[Balance]]"
-    - "[[Integration]]"
-    - "[[Overload]]"
-    - "[[Regulation]]"
-    - "[[Resonance]]"
-    - "[[Retain]]"
-    - "[[Extend]]"
-    - "[[Coherence]]"
-    - "[[Sustaining]]"
-    - "[[Self-Regulation]]"
-
+    targets:
+      - second.stability
+      - second.capacity
+      - second.know
+      - second.grip
+      - second.boundary-loosening
+      - third.competence-boundary
+      - second.function
+      - third.parenting
+      - second.pace
+      - second.guard
+      - second.pressure
+      - second.recarry
+      - second.adaptation
+      - second.balance
+      - second.integration
+      - second.overload
+      - second.regulation
+      - second.resonance
+      - second.retain
+      - second.extend
+      - second.coherence
+      - third.sustaining
+      - higher.self-regulation
 publish: true
 status: stable
 ---

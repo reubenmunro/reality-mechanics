@@ -5,28 +5,42 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.contact
-
-needs:
-  - "[[Boundary]]"
-  - "[[Clearance]]"
-  - "[[Tact]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation meeting at a boundary, edge, surface, or point of touch."
-  holds: "[[Boundary]], [[Clearance]], and [[Tact]]. Boundary locates distinction, clearance can close into meeting, and tact keeps contact from collapsing into interference, pressure, or harm."
-  pairs: "Clear and Tact carry downward — into [[Contact]]. Meeting is where the readability and handling tracks converge."
+  needs:
+    targets:
+      - first.boundary
+      - first.clearance
+      - first.tact
+  holds:
+    targets:
+      - first.boundary
+      - first.clearance
+      - first.tact
+    read: "[[Boundary]], [[Clearance]], and [[Tact]]. Boundary locates distinction, clearance can close into meeting, and tact keeps contact from collapsing into interference, pressure, or harm."
+  pairs:
+    targets:
+      - first.contact
+    read: "Clear and Tact carry downward — into [[Contact]]. Meeting is where the readability and handling tracks converge."
   traces:
-    - "[[Boundary]]"
-    - "[[Clearance]]"
-    - "[[Tact]]"
-    - "[[Relation]]"
-  nests: "at the edge where located distinction meets, touches, or becomes locally available for later coupling."
-  reads: "where relation is no longer only separated by clearance, but meets at an edge, surface, or point of touch."
+    targets:
+      - first.boundary
+      - first.clearance
+      - first.tact
+      - first.relation
+  nests:
+    targets: []
+    read: "at the edge where located distinction meets, touches, or becomes locally available for later coupling."
+  reads:
+    targets: []
+    read: "where relation is no longer only separated by clearance, but meets at an edge, surface, or point of touch."
   carries:
-    - "[[Coupled Contact]]"
-    - "[[Interposed Carrier]]"
-    - "[[Recarry]]"
-
+    targets:
+      - second.coupled-contact
+      - second.interposed_carrier
+      - second.recarry
 publish: true
 status: stable
 ---

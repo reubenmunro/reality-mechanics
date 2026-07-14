@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.number
-
-needs:
-  - "[[Count]]"
-  - "[[Root Order]]"
-  - "[[Term]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "count made carryable in order."
-  holds: "[[Count]], [[Root Order]], and [[Term]]."
-  pairs: "Asymmetry carries downward — into [[Measure]]"
+  needs:
+    targets:
+      - second.count
+      - ground.root-order
+      - ground.term
+  holds:
+    targets:
+      - second.count
+      - ground.root-order
+      - ground.term
+    read: "[[Count]], [[Root Order]], and [[Term]]."
+  pairs:
+    targets:
+      - second.measure
+    read: "Asymmetry carries downward — into [[Measure]]"
   traces:
-    - "[[Count]]"
-    - "[[Root Order]]"
-    - "[[Term]]"
-  nests: "where count becomes stable enough to compare, combine, divide, scale, and retrace as ordered relation."
-  reads: "where count can be carried as an ordered position — where how-many remains stable enough to compare, combine, divide, scale, or retrace without losing the relation it carries."
+    targets:
+      - second.count
+      - ground.root-order
+      - ground.term
+  nests:
+    targets: []
+    read: "where count becomes stable enough to compare, combine, divide, scale, and retrace as ordered relation."
+  reads:
+    targets: []
+    read: "where count can be carried as an ordered position — where how-many remains stable enough to compare, combine, divide, scale, or retrace without losing the relation it carries."
   carries:
-    - "[[Measure]]"
-
+    targets:
+      - second.measure
 publish: true
 status: stable
 ---

@@ -1,42 +1,57 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.practice
-
-needs:
-  - "[[Participation]]"
-  - "[[Recurrence]]"
-  - "[[Attend]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "repeated, attended participation through which action remains available, correctable, and carried through use."
-  holds: "[[Participation]], [[Recurrence]], [[Attend]], and [[Readability]] — participation must recur, remain attended, and stay readable enough for correction to occur."
-  pairs: "[[Discipline]]. Practice repeats answerable action; Discipline keeps that action ordered and retraceable."
+  needs:
+    targets:
+      - second.participation
+      - second.recurrence
+      - first.attend
+      - second.readability
+  holds:
+    targets:
+      - second.participation
+      - second.recurrence
+      - first.attend
+      - second.readability
+    read: "[[Participation]], [[Recurrence]], [[Attend]], and [[Readability]] — participation must recur, remain attended, and stay readable enough for correction to occur."
+  pairs:
+    targets:
+      - practice.discipline
+    read: "[[Discipline]]. Practice repeats answerable action; Discipline keeps that action ordered and retraceable."
   traces:
-    - "[[Regenerate]]"
-    - "[[Participation]]"
-    - "[[Recurrence]]"
-    - "[[Attend]]"
-    - "[[Readability]]"
-    - "[[Participant]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where return through use stays attended enough to keep action available for correction, tending, and retrace."
+    targets:
+      - ground.regenerate
+      - second.participation
+      - second.recurrence
+      - first.attend
+      - second.readability
+      - practice.participant
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where return through use stays attended enough to keep action available for correction, tending, and retrace."
   carries:
-    - "[[Step]]"
-    - "[[Check]]"
-    - "[[Tend]]"
-    - "[[Discipline]]"
-    - "[[Tracing]]"
-    - "[[Retracing]]"
-    - "[[Retrace Practice]]"
-    - "[[Atlas Practice]]"
-    - "[[Section]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - practice.step
+      - practice.check
+      - practice.tend
+      - practice.discipline
+      - practice.tracing
+      - practice.retracing
+      - practice.retrace-practice
+      - practice.atlas-practice
+      - practice.section
+      - practice.reasoning
 publish: true
 status: stable
 ---

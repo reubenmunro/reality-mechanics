@@ -5,30 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.learning
+determination: pd.v3.pre-provenance-baseline
 domain: teaching
-
-needs:
-  - "[[Teaching]]"
-  - "[[Readability]]"
-  - "[[Compatibility]]"
-  - "[[Carrying]]"
-  - "[[Memory]]"
 
 conditions:
   places: "participation changing through compatible uptake of what becomes readable."
-  holds: "[[Teaching]], [[Readability]], [[Compatibility]], [[Carrying]], and [[Memory]]."
-  pairs: "[[Teaching]]. Teaching carries bearing toward the learner; Learning names what becomes available and carried through that bearing. Teaching and Learning name opposite sides of the same structural juncture."
+  needs:
+    targets:
+      - third.teaching
+      - second.readability
+      - second.compatibility
+      - second.carrying
+      - third.memory
+  holds:
+    targets:
+      - third.teaching
+      - second.readability
+      - second.compatibility
+      - second.carrying
+      - third.memory
+    read: "[[Teaching]], [[Readability]], [[Compatibility]], [[Carrying]], and [[Memory]]."
+  pairs:
+    targets:
+      - third.teaching
+    read: "[[Teaching]]. Teaching carries bearing toward the learner; Learning names what becomes available and carried through that bearing. Teaching and Learning name opposite sides of the same structural juncture."
   traces:
-    - "[[Teaching]]"
-    - "[[Readability]]"
-    - "[[Compatibility]]"
-    - "[[Carrying]]"
-    - "[[Memory]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "where a participant can take up a read, correction, practice, step, or condition in a way that changes future carrying without bypassing bearing. Learning can tune a participant's resolution band and make explicit sequence less visible by carrying more of the order implicitly."
+    targets:
+      - third.teaching
+      - second.readability
+      - second.compatibility
+      - second.carrying
+      - third.memory
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "where a participant can take up a read, correction, practice, step, or condition in a way that changes future carrying without bypassing bearing. Learning can tune a participant's resolution band and make explicit sequence less visible by carrying more of the order implicitly."
   carries:
-    - "[[Higher Learning]]"
-
+    targets:
+      - higher.higher-learning
 publish: true
 status: stable
 ---

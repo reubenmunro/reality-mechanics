@@ -5,26 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.condition
-
-needs:
-  - "[[Readability]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read held as available within the current closure scope."
-  holds: "[[Readability]] and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Stability]]"
+  needs:
+    targets:
+      - second.readability
+      - second.closure-scope
+  holds:
+    targets:
+      - second.readability
+      - second.closure-scope
+    read: "[[Readability]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.stability
+    read: "Asymmetry carries downward — into [[Stability]]"
   traces:
-    - "[[Readability]]"
-    - "[[Closure Scope]]"
-  nests: "where a read is held as the state currently holding within closure scope."
-  reads: "where a read can be identified as the state currently holding — where something can be said to be the case within the current scope."
+    targets:
+      - second.readability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where a read is held as the state currently holding within closure scope."
+  reads:
+    targets: []
+    read: "where a read can be identified as the state currently holding — where something can be said to be the case within the current scope."
   carries:
-    - "[[Stability]]"
-    - "[[Terms and Conditions]]"
-    - "[[Atlas Condition Header]]"
-    - "[[Condition, State, and View]]"
-
+    targets:
+      - second.stability
+      - practice.terms-and-conditions
+      - second.condition-state-view
 publish: true
 status: stable
 ---
@@ -64,5 +76,4 @@ Condition becomes recognisable where a read can be identified as the state curre
 
 - [[Stability]]
 - [[Terms and Conditions]]
-- [[Atlas Condition Header]]
 - [[Condition, State, and View]]

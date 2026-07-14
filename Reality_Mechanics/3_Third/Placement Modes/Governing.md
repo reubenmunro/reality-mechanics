@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.governing
+determination: pd.v3.pre-provenance-baseline
 domain: placement-modes
-
-needs:
-  - "[[Placement Mode]]"
-  - "[[Constraint]]"
-  - "[[Closure Scope]]"
-  - "[[Resolution]]"
 
 conditions:
   places: "the mode where participation is primarily carried through direction, constraint, rule, or maintained order — where a scope is organised by decisions that limit or coordinate what can happen within it."
-  holds: "[[Placement Mode]], [[Constraint]], [[Closure Scope]], and [[Resolution]]. A mode of participation must exist, constraint must be operable, a scope must be bounded, and resolution must be available before direction and order can be placed as the primary mode."
-  pairs: "[[Caring]]. Governing directs and constrains participation within a scope; Caring preserves and repairs the bearing that scope requires."
+  needs:
+    targets:
+      - third.placement-mode
+      - second.constraint
+      - second.closure-scope
+      - first.resolution
+  holds:
+    targets:
+      - third.placement-mode
+      - second.constraint
+      - second.closure-scope
+      - first.resolution
+    read: "[[Placement Mode]], [[Constraint]], [[Closure Scope]], and [[Resolution]]. A mode of participation must exist, constraint must be operable, a scope must be bounded, and resolution must be available before direction and order can be placed as the primary mode."
+  pairs:
+    targets:
+      - third.caring
+    read: "[[Caring]]. Governing directs and constrains participation within a scope; Caring preserves and repairs the bearing that scope requires."
   traces:
-    - "[[Placement Mode]]"
-    - "[[Constraint]]"
-    - "[[Closure Scope]]"
-    - "[[Resolution]]"
-  nests: "within Placement Modes as the ordering mode — where the primary movement is directing, limiting, or coordinating participation rather than preserving, transmitting, or transforming it."
-  reads: "where a note is primarily placed by directed carrying that limits, orders, decides, or coordinates participation within a scope."
-  carries: []
-
+    targets:
+      - third.placement-mode
+      - second.constraint
+      - second.closure-scope
+      - first.resolution
+  nests:
+    targets: []
+    read: "within Placement Modes as the ordering mode — where the primary movement is directing, limiting, or coordinating participation rather than preserving, transmitting, or transforming it."
+  reads:
+    targets: []
+    read: "where a note is primarily placed by directed carrying that limits, orders, decides, or coordinates participation within a scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

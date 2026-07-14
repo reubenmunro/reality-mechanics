@@ -5,23 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.interposed_carrier
-
-needs:
-  - "[[Contact]]"
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a carrying medium that interposes between two parties in contact, holding its own carrying condition between them — modifying, redirecting, or preventing direct coupling"
-  holds: "[[Contact]] and [[Boundary]]. Contact must be present for something to interpose between the parties; boundary locates the medium's own edges, distinguishing it from what it holds between."
-  pairs: "[[Coupled Contact]] — Coupled Contact names contact that carries effect directly; Interposed Carrier names contact where a medium enters between and changes or interrupts what can pass. Each requires the other to be locatable."
+  needs:
+    targets:
+      - first.contact
+      - first.boundary
+  holds:
+    targets:
+      - first.contact
+      - first.boundary
+    read: "[[Contact]] and [[Boundary]]. Contact must be present for something to interpose between the parties; boundary locates the medium's own edges, distinguishing it from what it holds between."
+  pairs:
+    targets:
+      - second.coupled-contact
+    read: "[[Coupled Contact]] — Coupled Contact names contact that carries effect directly; Interposed Carrier names contact where a medium enters between and changes or interrupts what can pass. Each requires the other to be locatable."
   traces:
-    - "[[Contact]]"
-    - "[[Boundary]]"
-    - "[[Tact]]"
-  nests: "between contact and coupling — where the meeting is not face-to-face but carried through a medium that holds its own pressure or dynamic carrying between the parties"
-  reads: "where contact is not direct — where a dynamic medium stands between the parties and carries between them, transforming what coupling is possible"
-  carries: []
-
+    targets:
+      - first.contact
+      - first.boundary
+      - first.tact
+  nests:
+    targets: []
+    read: "between contact and coupling — where the meeting is not face-to-face but carried through a medium that holds its own pressure or dynamic carrying between the parties"
+  reads:
+    targets: []
+    read: "where contact is not direct — where a dynamic medium stands between the parties and carries between them, transforming what coupling is possible"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

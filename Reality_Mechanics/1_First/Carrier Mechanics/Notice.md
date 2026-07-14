@@ -5,25 +5,38 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.notice
-
-needs:
-  - "[[Apparent]]"
-  - "[[Availability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "first contact with what has become apparent"
-  holds: "[[Apparent]] and [[Availability]] — something must be available enough to appear before it can be noticed"
-  pairs: "Asymmetry carries downward — into [[Attend]]. Notice is the first contact with what has become apparent; Attend is the sustained holding that follows from it."
+  needs:
+    targets:
+      - first.apparent
+      - first.availability
+  holds:
+    targets:
+      - first.apparent
+      - first.availability
+    read: "[[Apparent]] and [[Availability]] — something must be available enough to appear before it can be noticed"
+  pairs:
+    targets:
+      - first.attend
+    read: "Asymmetry carries downward — into [[Attend]]. Notice is the first contact with what has become apparent; Attend is the sustained holding that follows from it."
   traces:
-    - "[[Apparent]]"
-    - "[[Availability]]"
-  nests: "before enter, attend, trace, and read — the smallest contact opening through which later reading can begin"
-  reads: "where something available is met as worth following — where a distinction has entered contact enough that passage or attention may begin"
+    targets:
+      - first.apparent
+      - first.availability
+  nests:
+    targets: []
+    read: "before enter, attend, trace, and read — the smallest contact opening through which later reading can begin"
+  reads:
+    targets: []
+    read: "where something available is met as worth following — where a distinction has entered contact enough that passage or attention may begin"
   carries:
-    - "[[Attend]]"
-    - "[[Enter]]"
-    - "[[Atlas Practice]]"
-
+    targets:
+      - first.attend
+      - first.enter
+      - practice.atlas-practice
 publish: true
 status: stable
 ---

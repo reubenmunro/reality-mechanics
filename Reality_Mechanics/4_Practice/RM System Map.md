@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: map
 ai_role: entry
 condition_key: practice.rm-system-map
-
-needs:
-  - "[[Reality Mechanics]]"
-  - "[[Atlas]]"
-  - "[[Theory]]"
-  - "[[AI Participation]]"
-  - "[[Ark Run]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the current working map of the Reality Mechanics carriers: canonical structure, vault, Atlas, publisher, AI export, MCP, workers, field physics, Ark runtime, and archive."
-  holds: "[[Reality Mechanics]], [[Atlas]], [[Theory]], [[AI Participation]], and [[Ark Run]]."
-  pairs: "[[Atlas Root]]. Atlas Root maps entry into the Atlas body; RM System Map maps the current carriers around that body."
+  needs:
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.ai-participation
+      - practice.ark-run
+  holds:
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.ai-participation
+      - practice.ark-run
+    read: "[[Reality Mechanics]], [[Atlas]], [[Theory]], [[AI Participation]], and [[Ark Run]]."
+  pairs:
+    targets:
+      - practice.atlas-root
+    read: "[[Atlas Root]]. Atlas Root maps entry into the Atlas body; RM System Map maps the current carriers around that body."
   traces:
-    - "[[Reality Mechanics]]"
-    - "[[Atlas]]"
-    - "[[Theory]]"
-    - "[[AI Participation]]"
-    - "[[Ark Run]]"
-  nests: "beside Atlas Root as an operational map rather than a term in the dependency spine."
-  reads: "where a participant needs to know which carrier is canonical structure, human translation, AI translation, worker lag state, public surface, retrieval layer, runtime, or preserved release."
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - practice.reality-mechanics-theory
+      - practice.ai-participation
+      - practice.ark-run
+  nests:
+    targets: []
+    read: "beside Atlas Root as an operational map rather than a term in the dependency spine."
+  reads:
+    targets: []
+    read: "where a participant needs to know which carrier is canonical structure, human translation, AI translation, worker lag state, public surface, retrieval layer, runtime, or preserved release."
   carries:
-    - "[[Archive]]"
-
+    targets:
+      - practice.archive
 publish: true
 status: working
 ---

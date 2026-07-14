@@ -5,34 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.gravity
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World Field]]"
-  - "[[Physical]]"
-  - "[[Physical Field Conditions]]"
-  - "[[Field Bearing]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Natural World]]"
 
 conditions:
   places: "the physical field condition through which mass-bearing relation makes availability structured toward a centre — the natural-world read of field bearing pulling available participation."
-  holds: "[[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Bearing]], [[Field Availability Pattern]], and [[Natural World]]. Physical field conditions must hold and field bearing must structure availability before the centring condition can be named as gravity."
-  pairs: "[[Dark Energy]]. Gravity names the centring and attracting field-bearing condition; Dark Energy names the expanding condition that works against gravitational structuring at cosmic scale."
+  needs:
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-bearing
+      - third.field-availability-pattern
+      - third.natural-world
+  holds:
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-bearing
+      - third.field-availability-pattern
+      - third.natural-world
+    read: "[[Natural World Field]], [[Physical]], [[Physical Field Conditions]], [[Field Bearing]], [[Field Availability Pattern]], and [[Natural World]]. Physical field conditions must hold and field bearing must structure availability before the centring condition can be named as gravity."
+  pairs:
+    targets:
+      - third.dark-energy
+    read: "[[Dark Energy]]. Gravity names the centring and attracting field-bearing condition; Dark Energy names the expanding condition that works against gravitational structuring at cosmic scale."
   traces:
-    - "[[Natural World Field]]"
-    - "[[Physical]]"
-    - "[[Physical Field Conditions]]"
-    - "[[Field Bearing]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Natural World]]"
-  nests: "within Physical Field Conditions as the centring field-bearing condition — one physical-field case in the Cosmic Polarity Read."
-  reads: "Gravity becomes readable where physical-field conditions bear on traversal so that orbit, return, escape, load, or measurement becomes altered at a closure scope."
+    targets:
+      - third.natural-world-field
+      - third.physical
+      - third.physical-field-conditions
+      - third.field-bearing
+      - third.field-availability-pattern
+      - third.natural-world
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the centring field-bearing condition — one physical-field case in the Cosmic Polarity Read."
+  reads:
+    targets: []
+    read: "Gravity becomes readable where physical-field conditions bear on traversal so that orbit, return, escape, load, or measurement becomes altered at a closure scope."
   carries:
-    - "[[Dark Energy]]"
-    - "[[Dark Matter]]"
-    - "[[Black Hole]]" 
-
+    targets:
+      - third.dark-energy
+      - third.dark-matter
+      - third.black-hole
 publish: true
 status: stable
 ---

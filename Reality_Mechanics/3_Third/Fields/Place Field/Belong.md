@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.belong
+determination: pd.v3.pre-provenance-baseline
 domain: place
-
-needs:
-  - "[[Place Field]]"
-  - "[[Being]]"
-  - "[[Participation]]"
-  - "[[Compatibility]]"
-  - "[[World]]"
-  - "[[Placed Participation]]"
 
 conditions:
   places: "Belonging places the condition through which a participant is carried within a field where participation fits — the compatibility between what a participant carries and what the field can sustain."
-  holds: "Belonging is held by [[Place Field]], [[Being]], [[Participation]], [[Compatibility]], [[World]], and [[Placed Participation]]. Participation must be present and compatibility must hold between the participant and the field before the carried fit can be named as belonging."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.place-field
+      - second.being
+      - second.participation
+      - second.compatibility
+      - second.world
+      - third.placed-participation
+  holds:
+    targets:
+      - third.place-field
+      - second.being
+      - second.participation
+      - second.compatibility
+      - second.world
+      - third.placed-participation
+    read: "Belonging is held by [[Place Field]], [[Being]], [[Participation]], [[Compatibility]], [[World]], and [[Placed Participation]]. Participation must be present and compatibility must hold between the participant and the field before the carried fit can be named as belonging."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Place Field]]"
-    - "[[Being]]"
-    - "[[Participation]]"
-    - "[[Compatibility]]"
-    - "[[World]]"
-    - "[[Placed Participation]]"
-  nests: "Belonging nests within the Place Field as the compatibility condition through which a participant is carried within a fitting field."
-  reads: "Belong becomes readable where carried presence fits the field it participates in without bypassing boundary, compatibility, or dependency order."
-  carries: []
-
+    targets:
+      - third.place-field
+      - second.being
+      - second.participation
+      - second.compatibility
+      - second.world
+      - third.placed-participation
+  nests:
+    targets: []
+    read: "Belonging nests within the Place Field as the compatibility condition through which a participant is carried within a fitting field."
+  reads:
+    targets: []
+    read: "Belong becomes readable where carried presence fits the field it participates in without bypassing boundary, compatibility, or dependency order."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

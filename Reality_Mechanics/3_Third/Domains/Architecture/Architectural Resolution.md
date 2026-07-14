@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.architectural-resolution
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Architecture]]"
-  - "[[Resolution]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "determination of built carrying across design conditions, construction conditions, regulatory conditions, and occupation."
-  holds: "[[Architecture]], [[Resolution]], [[Carrying]], [[Compatibility]]."
-  pairs: "[[Architectural Boundary]]. Architectural Resolution names the determination of strain at architectural scope; Architectural Boundary names where that determination is required."
+  needs:
+    targets:
+      - third.architecture
+      - first.resolution
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.architecture
+      - first.resolution
+      - second.carrying
+      - second.compatibility
+    read: "[[Architecture]], [[Resolution]], [[Carrying]], [[Compatibility]]."
+  pairs:
+    targets:
+      - third.architectural-boundary
+    read: "[[Architectural Boundary]]. Architectural Resolution names the determination of strain at architectural scope; Architectural Boundary names where that determination is required."
   traces:
-    - "[[Architecture]]"
-    - "[[Resolution]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Architectural Resolution becomes readable where a built condition is determined enough for use, support, or construction to continue compatibly."
-  carries: []
-
+    targets:
+      - third.architecture
+      - first.resolution
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Architectural Resolution becomes readable where a built condition is determined enough for use, support, or construction to continue compatibly."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

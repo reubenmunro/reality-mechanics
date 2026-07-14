@@ -1,32 +1,45 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: read
 ai_role: theory
 condition_key: practice.posture-read
-
-needs:
-  - "[[Posture]]"
-  - "[[Atlas Practice]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a versioned order experiment that reads postulate as posture: an act of relation through which connection can become structure, clear, and clean."
-  holds: "[[Posture]] and [[Atlas Practice]]. Posture must be available as the orientating condition, and Atlas Practice must hold the discipline that lets the experiment be traced, tested, revised, or rejected."
-  pairs: "Carry-Trace Test stands beside this read as its practice check. Posture Read proposes an order; [[Carry-Trace Test]] checks whether its carries return by trace."
+  needs:
+    targets:
+      - first.posture
+      - practice.atlas-practice
+  holds:
+    targets:
+      - first.posture
+      - practice.atlas-practice
+    read: "[[Posture]] and [[Atlas Practice]]. Posture must be available as the orientating condition, and Atlas Practice must hold the discipline that lets the experiment be traced, tested, revised, or rejected."
+  pairs:
+    targets:
+      - practice.carry-trace-test
+    read: "Carry-Trace Test stands beside this read as its practice check. Posture Read proposes an order; [[Carry-Trace Test]] checks whether its carries return by trace."
   traces:
-    - "[[Posture]]"
-    - "[[Atlas Practice]]"
-    - "[[Connection]]"
-    - "[[Structure]]"
-    - "[[Clear]]"
-    - "[[Clean]]"
-    - "[[Structural Disorder]]"
-  nests: "inside Atlas Practice as a working order experiment, not as a replacement for the Atlas or a final doctrine."
-  reads: "where a postulate is treated as a posture of relation: not a belief to defend, but an orientation through which relation becomes constructible, readable, and retraceable."
+    targets:
+      - first.posture
+      - practice.atlas-practice
+      - first.connection
+      - second.structure
+      - first.clear
+      - first.clean
+      - ground.structural-disorder
+  nests:
+    targets: []
+    read: "inside Atlas Practice as a working order experiment, not as a replacement for the Atlas or a final doctrine."
+  reads:
+    targets: []
+    read: "where a postulate is treated as a posture of relation: not a belief to defend, but an orientation through which relation becomes constructible, readable, and retraceable."
   carries:
-    - "[[Atlas Fabric]]"
-
+    targets:
+      - practice.atlas-garden
 publish: true
 status: working
 ---

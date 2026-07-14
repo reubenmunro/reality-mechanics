@@ -5,29 +5,42 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.clearance
-
-needs:
-  - "[[Relation]]"
-  - "[[Clear]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the first room relation needs to remain readable as relation — held separation before any boundary is drawn"
-  holds: "[[Relation]] and [[Clear]] — relation must hold, and it must be readable enough for separation to become clearance rather than vague absence"
-  pairs: "[[Asymmetry]] — clearance keeps relation readable as relation; asymmetry makes unevenness readable within relation"
+  needs:
+    targets:
+      - first.relation
+      - first.clear
+  holds:
+    targets:
+      - first.relation
+      - first.clear
+    read: "[[Relation]] and [[Clear]] — relation must hold, and it must be readable enough for separation to become clearance rather than vague absence"
+  pairs:
+    targets:
+      - first.asymmetry
+    read: "[[Asymmetry]] — clearance keeps relation readable as relation; asymmetry makes unevenness readable within relation"
   traces:
-    - "[[Relation]]"
-    - "[[Clear]]"
-  nests: "before boundary — opens space and time reads without yet drawing a local edge"
-  reads: "where relation holds apart enough to remain relation — neither collapsed into sameness nor lost as unrelated difference"
+    targets:
+      - first.relation
+      - first.clear
+  nests:
+    targets: []
+    read: "before boundary — opens space and time reads without yet drawing a local edge"
+  reads:
+    targets: []
+    read: "where relation holds apart enough to remain relation — neither collapsed into sameness nor lost as unrelated difference"
   carries:
-    - "[[Relation Read]]"
-    - "[[Time]]"
-    - "[[Space]]"
-    - "[[Contact]]"
-    - "[[Primitive Carrier]]"
-    - "[[Resolution]]"
-    - "[[Within]]"
-
+    targets:
+      - first.relation-read
+      - first.time
+      - first.space
+      - first.contact
+      - first.primitive-carrier
+      - first.resolution
+      - second.within
 publish: true
 status: stable
 ---

@@ -1,27 +1,40 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.participant
-
-needs:
-  - "[[Participation]]"
-  - "[[Reality Mechanics]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas."
-  holds: "[[Participation]] and [[Reality Mechanics]]."
-  pairs: "[[Atlas Practice]]. Participant names the one who takes part; Atlas Practice names the discipline that keeps participation retraceable."
+  needs:
+    targets:
+      - second.participation
+      - practice.reality-mechanics
+  holds:
+    targets:
+      - second.participation
+      - practice.reality-mechanics
+    read: "[[Participation]] and [[Reality Mechanics]]."
+  pairs:
+    targets:
+      - practice.atlas-practice
+    read: "[[Atlas Practice]]. Participant names the one who takes part; Atlas Practice names the discipline that keeps participation retraceable."
   traces:
-    - "[[Participation]]"
-    - "[[Reality Mechanics]]"
-  nests: "as the one taking part in Atlas Practice."
-  reads: "where a person, AI, practice, or system engages the Atlas in a way that can affect reading, placement, correction, or contribution."
+    targets:
+      - second.participation
+      - practice.reality-mechanics
+  nests:
+    targets: []
+    read: "as the one taking part in Atlas Practice."
+  reads:
+    targets: []
+    read: "where a person, AI, practice, or system engages the Atlas in a way that can affect reading, placement, correction, or contribution."
   carries:
-    - "[[Practice]]"
-
+    targets:
+      - practice.practice
 publish: true
 status: stable
 ---

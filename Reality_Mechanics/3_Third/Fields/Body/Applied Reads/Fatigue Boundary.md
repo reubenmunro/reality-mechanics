@@ -5,30 +5,46 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.fatigue-boundary
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Fatigue]]"
-  - "[[Capacity]]"
-  - "[[Compatibility]]"
-  - "[[Control]]"
 
 conditions:
   places: "the applied read of the located limit on available carrying — the closure scope at which continued participation becomes incompatible with current capacity."
-  holds: "[[Applied Read]], [[Fatigue]], [[Capacity]], [[Compatibility]], and [[Control]]. Fatigue must be readable and capacity must be locally evaluable before the limit on compatible carrying can be named."
-  pairs: "No lateral pair is required at this placement yet. Fatigue Boundary names the applied read that locates the edge of compatible continuation under fatigue; no contrasting applied read exists in the Body field at this time."
+  needs:
+    targets:
+      - third.applied-read
+      - third.fatigue
+      - second.capacity
+      - second.compatibility
+      - third.control
+  holds:
+    targets:
+      - third.applied-read
+      - third.fatigue
+      - second.capacity
+      - second.compatibility
+      - third.control
+    read: "[[Applied Read]], [[Fatigue]], [[Capacity]], [[Compatibility]], and [[Control]]. Fatigue must be readable and capacity must be locally evaluable before the limit on compatible carrying can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Fatigue Boundary names the applied read that locates the edge of compatible continuation under fatigue; no contrasting applied read exists in the Body field at this time."
   traces:
-    - "[[Applied Read]]"
-    - "[[Fatigue]]"
-    - "[[Capacity]]"
-    - "[[Compatibility]]"
-    - "[[Control]]"
-    - "[[Body]]"
-  nests: "within the Body Field as an applied read of Fatigue at the boundary of compatible carrying."
-  reads: "Fatigue Boundary becomes readable where reduced availability is sensed and the next action either respects, adjusts, supports, or overrides that limit."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.fatigue
+      - second.capacity
+      - second.compatibility
+      - third.control
+      - third.body
+  nests:
+    targets: []
+    read: "within the Body Field as an applied read of Fatigue at the boundary of compatible carrying."
+  reads:
+    targets: []
+    read: "Fatigue Boundary becomes readable where reduced availability is sensed and the next action either respects, adjusts, supports, or overrides that limit."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,29 +5,47 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.carrying-better
+determination: pd.v3.pre-provenance-baseline
 domain: our-story
-
-needs:
-  - "[[Carrying]]"
-  - "[[Our Story Field]]"
-  - "[[Retrace Read]]"
-  - "[[Progress]]"
-  - "[[Ship and Ark]]"
 
 conditions:
   places: "the condition through which inherited carrying is improved — where retrace makes prior carrying available for correction, refinement, or more compatible continuation."
-  holds: "[[Carrying]], [[Our Story Field]], [[Retrace Read]], [[Progress]], and [[Ship and Ark]]. Inherited carrying must be retraceable and retrace must make correction available before improved continuation can be named."
-  pairs: "[[Inheritance]] and [[Borne and Carried]]. Inheritance names what is passed forward from prior carrying; Borne and Carried names the received origin of human carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable."
+  needs:
+    targets:
+      - second.carrying
+      - third.our-story-field
+      - second.retrace-read
+      - second.progress
+      - third.ship-and-ark
+  holds:
+    targets:
+      - second.carrying
+      - third.our-story-field
+      - second.retrace-read
+      - second.progress
+      - third.ship-and-ark
+    read: "[[Carrying]], [[Our Story Field]], [[Retrace Read]], [[Progress]], and [[Ship and Ark]]. Inherited carrying must be retraceable and retrace must make correction available before improved continuation can be named."
+  pairs:
+    targets:
+      - third.inheritance
+      - third.borne-and-carried
+    read: "[[Inheritance]] and [[Borne and Carried]]. Inheritance names what is passed forward from prior carrying; Borne and Carried names the received origin of human carrying; Carrying Better names the condition where retrace makes that inheritance correctable and improvable."
   traces:
-    - "[[Carrying]]"
-    - "[[Our Story Field]]"
-    - "[[Retrace Read]]"
-    - "[[Progress]]"
-    - "[[Ship and Ark]]"
-  nests: "within the Our Story Field as the retrace-structural condition through which carrying is improved over prior inheritance."
-  reads: "where history, preservation, invention, or discovery are oriented toward carrying more truthfully, not merely toward moving forward."
-  carries: []
-
+    targets:
+      - second.carrying
+      - third.our-story-field
+      - second.retrace-read
+      - second.progress
+      - third.ship-and-ark
+  nests:
+    targets: []
+    read: "within the Our Story Field as the retrace-structural condition through which carrying is improved over prior inheritance."
+  reads:
+    targets: []
+    read: "where history, preservation, invention, or discovery are oriented toward carrying more truthfully, not merely toward moving forward."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

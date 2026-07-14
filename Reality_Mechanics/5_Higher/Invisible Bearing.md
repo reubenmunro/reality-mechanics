@@ -5,30 +5,44 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.invisible-bearing
-
-needs:
-  - "[[Nested Carrying]]"
-  - "[[Bearing]]"
-  - "[[Higher Retrace|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "nested organisation carrying participation without requiring explicit retracing in the current read."
-  holds: "[[Nested Carrying]], [[Bearing]], and [[Higher Retrace|Retrace]]."
-  pairs: "[[Hidden Bearing]]. Invisible Bearing names carrying that becomes non-presenting through organic accumulation — the structure is just there, active without being designed to conceal. Hidden Bearing names carrying deliberately structured not to present — the carrier holds the dependency path and does not surface it. Organic non-presentation and engineered non-presentation: each requires the other to be locatable."
+  needs:
+    targets:
+      - higher.nested-carrying
+      - first.bearing
+      - higher.higher-retrace
+  holds:
+    targets:
+      - higher.nested-carrying
+      - first.bearing
+      - higher.higher-retrace
+    read: "[[Nested Carrying]], [[Bearing]], and [[Higher Retrace|Retrace]]."
+  pairs:
+    targets:
+      - higher.hidden-bearing
+    read: "[[Hidden Bearing]]. Invisible Bearing names carrying that becomes non-presenting through organic accumulation — the structure is just there, active without being designed to conceal. Hidden Bearing names carrying deliberately structured not to present — the carrier holds the dependency path and does not surface it. Organic non-presentation and engineered non-presentation: each requires the other to be locatable."
   traces:
-    - "[[Nested Carrying]]"
-    - "[[Bearing]]"
-    - "[[Higher Retrace|Retrace]]"
-  nests: "where carrying remains active without presenting itself."
-  reads: "where participation is carried by a nested organisation that no longer needs to be explicitly traced each time — where the structure participates in the next read before being explicitly recognised."
+    targets:
+      - higher.nested-carrying
+      - first.bearing
+      - higher.higher-retrace
+  nests:
+    targets: []
+    read: "where carrying remains active without presenting itself."
+  reads:
+    targets: []
+    read: "where participation is carried by a nested organisation that no longer needs to be explicitly traced each time — where the structure participates in the next read before being explicitly recognised."
   carries:
-    - "[[Fabric]]"
-    - "[[Higher Faith]]"
-    - "[[Opacity]]"
-    - "[[Higher Order Crossing]]"
-    - "[[Self-Regulation]]"
-    - "[[Source Drift]]"
-
+    targets:
+      - higher.fabric
+      - higher.higher-faith
+      - higher.opacity
+      - higher.higher-order-crossing
+      - higher.self-regulation
+      - higher.source-drift
 publish: true
 status: stable
 ---

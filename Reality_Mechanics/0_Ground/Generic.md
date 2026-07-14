@@ -5,25 +5,38 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.generic
-
-needs:
-  - "[[Natural Order]]"
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural condition through which a pattern generates instances of itself — the originating source from which instances arise, operative before any instance appears"
-  holds: "[[Natural Order]] and [[Root Order]] — the dependency order must hold and natural order must be operative before a structural pattern can generate instances from a prior source"
-  pairs: "[[Emergent]] — Generic names what generates instances from a prior structural source; Emergent names what arises from conditions without a prior generative source. Each requires the other: a generative source is only nameable against what arises without one; emergence is only nameable against what comes from a prior source."
+  needs:
+    targets:
+      - ground.natural-order
+      - ground.root-order
+  holds:
+    targets:
+      - ground.natural-order
+      - ground.root-order
+    read: "[[Natural Order]] and [[Root Order]] — the dependency order must hold and natural order must be operative before a structural pattern can generate instances from a prior source"
+  pairs:
+    targets:
+      - ground.emergent
+    read: "[[Emergent]] — Generic names what generates instances from a prior structural source; Emergent names what arises from conditions without a prior generative source. Each requires the other: a generative source is only nameable against what arises without one; emergence is only nameable against what comes from a prior source."
   traces:
-    - "[[Natural Order]]"
-    - "[[Root Order]]"
-  nests: "at Ground as the originating condition through which the structural patterns named at each order generate their instances — including the orders themselves"
-  reads: "where a structural condition can be read as the source from which instances arise — where instances do not merely share recognisable form but trace to a common originating pattern that was operative before any instance appeared"
+    targets:
+      - ground.natural-order
+      - ground.root-order
+  nests:
+    targets: []
+    read: "at Ground as the originating condition through which the structural patterns named at each order generate their instances — including the orders themselves"
+  reads:
+    targets: []
+    read: "where a structural condition can be read as the source from which instances arise — where instances do not merely share recognisable form but trace to a common originating pattern that was operative before any instance appeared"
   carries:
-    - "[[Kind]]"
-    - "[[Degenerate]]"
-    - "[[Regenerate]]"
-
+    targets:
+      - second.kind
+      - ground.degenerate
+      - ground.regenerate
 publish: true
 status: stable
 ---

@@ -3,6 +3,9 @@ set -e
 
 cd "$(dirname "$0")"
 
+echo "Translating the canonical Atlas..."
+ruby .atlas-publisher/translate-atlas.rb
+
 echo "Checking the Reality Mechanics main website Worker..."
 echo
 

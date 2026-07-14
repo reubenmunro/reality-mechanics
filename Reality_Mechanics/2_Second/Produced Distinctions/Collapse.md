@@ -5,25 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.collapse
-
-needs:
-  - "[[Dependency Disorder]]"
-  - "[[Bearing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a bounded carrying relation read as ceasing to hold at the current closure scope."
-  holds: "[[Dependency Disorder]] and [[Bearing]]."
-  pairs: "Asymmetry carries downward — dependency disorder reaching bearing"
+  needs:
+    targets:
+      - second.dependency-disorder
+      - first.bearing
+  holds:
+    targets:
+      - second.dependency-disorder
+      - first.bearing
+    read: "[[Dependency Disorder]] and [[Bearing]]."
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — dependency disorder reaching bearing"
   traces:
-    - "[[Dependency Disorder]]"
-    - "[[Bearing]]"
-    - "[[Overload]]"
-    - "[[Terminal]]"
-    - "[[Disorder]]"
-  nests: "where bounded carrying becomes unreadable at the current closure scope without claiming final non-relation."
-  reads: "where a previously bounded carrying condition can no longer be read as holding — where bearing has failed rather than merely strained."
-  carries: []
-
+    targets:
+      - second.dependency-disorder
+      - first.bearing
+      - second.overload
+      - second.terminal
+      - second.disorder
+  nests:
+    targets: []
+    read: "where bounded carrying becomes unreadable at the current closure scope without claiming final non-relation."
+  reads:
+    targets: []
+    read: "where a previously bounded carrying condition can no longer be read as holding — where bearing has failed rather than merely strained."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

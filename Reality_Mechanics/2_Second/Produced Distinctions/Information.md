@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.information
-
-needs:
-  - "[[Difference]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "difference that makes a read available."
-  holds: "[[Difference]] and [[Closure Scope]]."
-  pairs: "[[Form]] — Information names the content of difference at closure scope; Form names the shape of that same difference. Each requires the other to be locatable."
+  needs:
+    targets:
+      - second.difference
+      - second.closure-scope
+  holds:
+    targets:
+      - second.difference
+      - second.closure-scope
+    read: "[[Difference]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.form
+    read: "[[Form]] — Information names the content of difference at closure scope; Form names the shape of that same difference. Each requires the other to be locatable."
   traces:
-    - "[[Difference]]"
-    - "[[Closure Scope]]"
-    - "[[Scale]]"
-  nests: "where difference changes what becomes available to evaluation."
-  reads: "where a difference can be read as changing what is available to evaluation — where not-same produces a readable alteration rather than mere distinction."
+    targets:
+      - second.difference
+      - second.closure-scope
+      - second.scale
+  nests:
+    targets: []
+    read: "where difference changes what becomes available to evaluation."
+  reads:
+    targets: []
+    read: "where a difference can be read as changing what is available to evaluation — where not-same produces a readable alteration rather than mere distinction."
   carries:
-    - "[[Know]]"
-
+    targets:
+      - second.know
 publish: true
 status: stable
 ---

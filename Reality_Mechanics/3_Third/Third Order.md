@@ -5,29 +5,44 @@ order: third
 kind: order
 ai_role: order
 condition_key: third.third-order
-
-needs:
-  - "[[Second Order]]"
-  - "[[Participation]]"
-  - "[[Field of Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "participating carrying becoming organised and nested into recurring fields, domains, branches, and applied reads."
-  holds: "[[Second Order]], [[Participation]], and [[Field of Participation]]."
-  pairs: "Asymmetry carries downward — into [[Higher Order]]"
+  needs:
+    targets:
+      - second.second-order
+      - second.participation
+      - third.field-of-participation
+  holds:
+    targets:
+      - second.second-order
+      - second.participation
+      - third.field-of-participation
+    read: "[[Second Order]], [[Participation]], and [[Field of Participation]]."
+  pairs:
+    targets:
+      - higher.higher-order
+    read: "Asymmetry carries downward — into [[Higher Order]]"
   traces:
-    - "[[Second Order]]"
-    - "[[Participation]]"
-    - "[[Field of Participation]]"
-    - "[[Second Order Crossing|Threshold (Second → Third)]]"
-  nests: "fields, domains, branches, translation boundaries, path reads, placement modes, and applied diagnosis as forms of organised participation."
-  reads: "where carrying through participation becomes organised and nested while its connections remain available as carry and trace."
+    targets:
+      - second.second-order
+      - second.participation
+      - third.field-of-participation
+      - second.second-order-crossing
+  nests:
+    targets: []
+    read: "fields, domains, branches, translation boundaries, path reads, placement modes, and applied diagnosis as forms of organised participation."
+  reads:
+    targets: []
+    read: "where carrying through participation becomes organised and nested while its connections remain available as carry and trace."
   carries:
-    - "[[Higher Order]]"
-    - "[[Field Relationships]]"
-    - "[[Placement Mode]]"
-    - "[[Third Order Crossing|Threshold (Third → Higher)]]"
-    - "[[Opacity]]"
+    targets:
+      - higher.higher-order
+      - third.field-relationships
+      - third.placement-mode
+      - third.third-order-crossing
+      - higher.opacity
 publish: true
 status: working
 ---

@@ -10,6 +10,16 @@ It is not a constitutional constraint.
 
 It is a proposal to be tested against repository evidence.
 
+## Purpose
+
+This paper does not attempt to derive the Calculus.
+
+Its purpose is to establish the architectural programme that the Calculus must satisfy.
+
+The proposal is that Reality Mechanics should move from asking, "What are the correct structures?" toward asking, "What are the correct structural questions?"
+
+Only after those questions are disciplined can the operations that preserve order between question and answer be derived.
+
 ---
 
 ## Governing Hypothesis
@@ -74,7 +84,7 @@ It may mean the same structural condition answers several distinct questions at 
 
 These formulations are provisional.
 
-They should be tested against `Common Term Structure.md`, `atlas-structure-contract.mjs`, first-order term frontmatter, and the evidence reports already produced under the Calculus programme.
+They should be tested against the canonical Common Term Structure entry, the generated `docs/generated/atlas-source-format.md`, relevant Atlas entries, and the evidence reports already produced under the Calculus programme.
 
 ---
 
@@ -84,13 +94,23 @@ The Calculus is not the question alone.
 
 It is not the answer alone.
 
-The Calculus concerns the operation that preserves order between question and answer.
+The Calculus concerns the operations that preserve order between question and answer, and between answer and retrace.
 
 ```text
 Question
   :
 Answer
 ```
+
+A structural question is not the beginning of Reality.
+
+It is the beginning of participation.
+
+Reality already carries order.
+
+The participant enters by asking.
+
+The Calculus therefore concerns the disciplined transformation from participation toward retraceable structure.
 
 The `:` is not accepted here as final notation.
 
@@ -117,6 +137,26 @@ This hypothesis gives the bodies of Reality Mechanics different responsibilities
 Under this framing, the Atlas is not merely a store of knowledge.
 
 It is a record of answers that remain accountable to the questions by which they were recovered.
+
+This suggests a complementary architecture:
+
+```text
+Reality
+    ↓
+Participation
+    ↓
+Question
+    :
+Answer
+    ↓
+Atlas
+    ↓
+Read
+```
+
+This is not yet a formal derivation.
+
+It is the current architectural orientation for future work.
 
 ---
 

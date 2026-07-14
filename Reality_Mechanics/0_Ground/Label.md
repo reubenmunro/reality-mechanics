@@ -5,20 +5,33 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.label
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a name that marks without carrying traceable conditions — naming without dependency, opening, or carried relation"
-  holds: "[[Root Order]] — dependency arrangement must hold before naming of any kind, including marking without conditions, can occur"
-  pairs: "[[Term]] — Label marks without carrying traceable conditions; Term names with dependency, opening, and carried relation travelling together"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — dependency arrangement must hold before naming of any kind, including marking without conditions, can occur"
+  pairs:
+    targets:
+      - ground.term
+    read: "[[Term]] — Label marks without carrying traceable conditions; Term names with dependency, opening, and carried relation travelling together"
   traces:
-    - "[[Root Order]]"
-  nests: "wherever a name functions as a marker rather than as a carryable length of relation"
-  reads: "where a name marks something without the conditions through which it could be traced, entered, or carried forward — naming that has not yet become or does not need to become a term"
-  carries: []
-
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "wherever a name functions as a marker rather than as a carryable length of relation"
+  reads:
+    targets: []
+    read: "where a name marks something without the conditions through which it could be traced, entered, or carried forward — naming that has not yet become or does not need to become a term"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

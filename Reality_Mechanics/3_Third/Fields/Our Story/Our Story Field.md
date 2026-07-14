@@ -5,28 +5,42 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.our-story-field
+determination: pd.v3.pre-provenance-baseline
 domain: our-story
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Our Story]]"
 
 conditions:
   places: "the recurring field of participation through which prior carrying is held, passed forward, and improved — the structural field for inheritance, memory, retrace, and carried continuation."
-  holds: "[[Field of Participation]], [[Organic Field]], and [[Our Story]]. Field of Participation must structure a recurring scope and shared participation must remain narratively retraceable before the field can be named."
-  pairs: "[[Relational Participation Field]]. Our Story Field names the field of carried prior relation — what has been passed forward through history, memory, and inheritance; Relational Participation Field names the field of enacted present relation — how bearing, care, harm, and repair proceed between participants. History is enacted in the present; present participation accumulates into history."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.our-story
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.our-story
+    read: "[[Field of Participation]], [[Organic Field]], and [[Our Story]]. Field of Participation must structure a recurring scope and shared participation must remain narratively retraceable before the field can be named."
+  pairs:
+    targets:
+      - third.relational-participation-field
+    read: "[[Relational Participation Field]]. Our Story Field names the field of carried prior relation — what has been passed forward through history, memory, and inheritance; Relational Participation Field names the field of enacted present relation — how bearing, care, harm, and repair proceed between participants. History is enacted in the present; present participation accumulates into history."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Our Story]]"
-  nests: "as a public field container for shared relational history."
-  reads: "where inheritance, memory, narrative, history, or intergenerational carrying organises participation as shared continuity."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.our-story
+  nests:
+    targets: []
+    read: "as a public field container for shared relational history."
+  reads:
+    targets: []
+    read: "where inheritance, memory, narrative, history, or intergenerational carrying organises participation as shared continuity."
   carries:
-    - "[[Inheritance]]"
-    - "[[Carrying Better]]"
-    - "[[Borne and Carried]]"
-
+    targets:
+      - third.inheritance
+      - third.carrying-better
+      - third.borne-and-carried
 publish: true
 status: stable
 ---

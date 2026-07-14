@@ -5,31 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.medium
-
-needs:
-  - "[[Carrying]]"
-  - "[[Participation]]"
-  - "[[Allow]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "what carrying occurs through."
-  holds: "[[Carrying]], [[Participation]], and [[Allow]]."
-  pairs: "Asymmetry carries downward — into [[Structure]], [[Flow]], [[Current]]"
+  needs:
+    targets:
+      - second.carrying
+      - second.participation
+      - first.allow
+  holds:
+    targets:
+      - second.carrying
+      - second.participation
+      - first.allow
+    read: "[[Carrying]], [[Participation]], and [[Allow]]."
+  pairs:
+    targets:
+      - second.structure
+      - second.flow
+      - second.current
+    read: "Asymmetry carries downward — into [[Structure]], [[Flow]], [[Current]]"
   traces:
-    - "[[Carrying]]"
-    - "[[Participation]]"
-    - "[[Allow]]"
-  nests: "as the through-condition of carrying and participation. It shapes what can be allowed through."
-  reads: "where carrying can be read as occurring through something — where participation passes through a condition rather than independently of it, and where that condition shapes what can be allowed through."
+    targets:
+      - second.carrying
+      - second.participation
+      - first.allow
+  nests:
+    targets: []
+    read: "as the through-condition of carrying and participation. It shapes what can be allowed through."
+  reads:
+    targets: []
+    read: "where carrying can be read as occurring through something — where participation passes through a condition rather than independently of it, and where that condition shapes what can be allowed through."
   carries:
-    - "[[Structure]]"
-    - "[[Flow]]"
-    - "[[Current]]"
-    - "[[Teaching]]"
-    - "[[Communicating]]"
-    - "[[Expressing]]"
-    - "[[Translation Invariance]]"
-
+    targets:
+      - second.structure
+      - second.flow
+      - second.current
+      - third.teaching
+      - third.communicating
+      - third.expressing
+      - practice.translation-invariance
 publish: true
 status: stable
 ---

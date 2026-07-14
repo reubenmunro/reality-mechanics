@@ -5,22 +5,33 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.union
-
-needs:
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the invariant condition of genuine joining — by which distinct resolved conditions can be held together without collapsing into sameness or remaining merely adjacent"
-  holds: "[[Carrying]] — carrying must be established before distinct conditions can be genuinely joined"
-  pairs: "Carrying carries downward — into Union. Union is the invariant carrier before the coupling and decoupling split."
+  needs:
+    targets:
+      - second.carrying
+  holds:
+    targets:
+      - second.carrying
+    read: "[[Carrying]] — carrying must be established before distinct conditions can be genuinely joined"
+  pairs:
+    targets: []
+    read: "Carrying carries downward — into Union. Union is the invariant carrier before the coupling and decoupling split."
   traces:
-    - "[[Carrying]]"
-    - "[[Invariant]]"
-  nests: "before the coupling/decoupling split — not as a category above them, but as the hidden condition that lets coupling hold mutual availability and decoupling release genuine joining rather than mere proximity"
-  reads: "where distinct resolved conditions are joined in a way that allows carrying to hold between them — without collapsing into sameness and without the joining remaining merely apparent. Most recognisably in absence: where coupling fails despite apparent carrying, Union was not present."
+    targets:
+      - second.carrying
+      - ground.invariant
+  nests:
+    targets: []
+    read: "before the coupling/decoupling split — not as a category above them, but as the hidden condition that lets coupling hold mutual availability and decoupling release genuine joining rather than mere proximity"
+  reads:
+    targets: []
+    read: "where distinct resolved conditions are joined in a way that allows carrying to hold between them — without collapsing into sameness and without the joining remaining merely apparent. Most recognisably in absence: where coupling fails despite apparent carrying, Union was not present."
   carries:
-    - "[[Coupling]]"
-
+    targets:
+      - second.coupling
 publish: true
 status: stable
 ---

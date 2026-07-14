@@ -1,198 +1,189 @@
 ---
-grounded: false
-order: foundation
+grounded: true
+register: foundation
 kind: principle
 ai_role: practice
 condition_key: foundation.common-term-structure
-
-needs: []
+determination: pd.v3.phase-4-minimal-architecture
 
 conditions:
-  places: "the common mechanics through which each record preserves the present calibration of how a structural operation proceeds through dependency."
-  holds: "the relation between recovered position, proceeding operation, calibrated language, and current record convention."
-  pairs: "[[Current Record Convention]] as the present repository encoding; Common Term Structure preserves the authoring discipline."
+  places: "the common structural reads through which an Atlas term records one participant determination as placed, answerable, retraceable, bounded, readable, and able to carry demonstrated continuation."
+  needs:
+    targets:
+      - practice.atlas
+      - ground.term
+      - second.structure
+      - ground.groundedness
+      - first.place
+      - first.hold
+      - second.pair
+      - first.trace
+      - third.nesting
+      - first.read
+      - first.carry
+  holds:
+    targets:
+      - practice.atlas
+      - ground.term
+      - second.structure
+      - ground.groundedness
+      - first.place
+      - first.hold
+      - second.pair
+      - first.trace
+      - third.nesting
+      - first.read
+      - first.carry
+    read: "[[Atlas]], [[Term]], [[Structure]], [[Groundedness]], [[Place]], [[Hold]], [[Pair]], [[Trace]], [[Nesting]], [[Read]], and [[Carry]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required. Common Term Structure governs the structural reads of an Atlas term rather than completing one side of a lateral condition."
   traces:
-    - "[[Reality Mechanics]]"
-    - "[[Structure]]"
-    - "[[Ratio]]"
-    - "[[Trace]]"
-    - "[[Carry]]"
-  nests: "where structural records preserve position, proceeding, and recalibration across implementation change."
-  reads: "where a participant can be positioned by language, retrace the operation, and continue calibration through dependency."
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - ground.term
+      - second.structure
+      - ground.groundedness
+      - first.place
+      - first.hold
+      - second.pair
+      - first.trace
+      - third.nesting
+      - first.read
+      - first.carry
+  nests:
+    targets: []
+    read: "wherever a participant determination is recorded as an Atlas term across changes of carrier."
+  reads:
+    targets: []
+    read: "where one determination can be recovered through Places, Holds, Pairs, Traces, Nests, Reads, and Carries without confusing those reads with their repository encoding."
   carries:
-    - "[[Current Record Convention]]"
-    - "[[Groundedness]]"
-    - "[[Retrace Practice]]"
-    - "[[Carry-Trace Test]]"
+    targets:
+      - practice.terms-and-conditions
+      - practice.atlasing
+      - practice.carry-trace-test
+      - practice.discipline
+      - practice.ai-participation
+atlas_schema:
+  identity_field: condition_key
+  required_fields:
+    - title
+    - grounded
+    - condition_key
+    - kind
+    - status
+    - publish
+    - determination
+    - conditions
+    - placement
+  placement:
+    exactly_one_of:
+      - order
+      - register
+    order_values:
+      - ground
+      - first
+      - second
+      - third
+      - higher
+    register_values:
+      - foundation
+      - practice
+  status_values:
+    stable: "A grounded determination whose current claim, placement, and declared dependencies have no active bounded revision scope."
+    working: "A grounded determination whose current claim and placement govern while a bounded expression or correction remains actively revisable; it is not unresolved investigation."
+  structural_radii:
+    - local
+    - dependency
+    - constitutional
+    - translation
+    - repository
+  relation_meanings:
+    needs: "What must already be available before the determination can hold."
+    holds: "What presently bears the determination."
+    pairs: "What completes the read laterally where a pair is structurally required."
+    traces: "The recoverable dependency through which the determination can be returned to what made it available."
+    nests: "Where the determination remains stable enough to participate in a larger or smaller read."
+    reads: "How another participant can recover the determination from the term."
+    carries: "Demonstrated downstream continuation, never predicted possibility."
+  condition_representation:
+    places: authored_read
+    relations: explicit_targets_and_optional_authored_read
+  target_absence:
+    mode: explicit_empty_array
+    read_required_for:
+      - pairs
+      - carries
 
 publish: true
-status: developing
+status: stable
 ---
 # Common Term Structure
 
+The common structural reads through which an Atlas term records one participant determination as placed, answerable, retraceable, bounded, readable, and able to carry demonstrated continuation.
+
+Common Term Structure is held by [[Atlas]], [[Term]], [[Structure]], [[Groundedness]], [[Place]], [[Hold]], [[Pair]], [[Trace]], [[Nesting]], [[Read]], and [[Carry]].
+
+It records structural questions, not a repository layout. Markdown, frontmatter, headings, wikilinks, databases, protocols, and other carriers may translate these reads, but no carrier defines or repairs the structure.
+
 ## Purpose
 
-Each record preserves the present calibration of how a structural operation proceeds through dependency.
+Each Atlas term records one participant determination.
 
-The record positions participation so the proceeding operation can be retraced, recalibrated, and carried by future participants.
-
-## Recovery Order
-
-Recover position.
-
-Observe how the operation proceeds.
-
-Calibrate the language.
-
-Preserve the current calibration.
-
-## Language
-
-Language positions participation.
-
-Position gives the participant a place to begin.
-
-Structure preserves the relation between positions.
-
-Dependency unfolds proceeding.
-
-Language is recalibrated as recovered position becomes clearer.
+Common Term Structure keeps that determination recoverable from the structural positions through which it is placed, borne, related, traced, nested, read, and carried.
 
 ## Structural Reads
 
-Each heading provides another structural read of the same proceeding operation.
+Each structural read asks a different question of the same determination.
 
-The headings calibrate the record from different structural positions.
+The same target may answer more than one question without making the questions identical. A dependency may both be needed and presently bear a term; a trace may include an immediate dependency and continue beyond it. Coincident targets do not collapse distinct reads.
 
-Each section preserves the same operation through its own read.
+Translation carries the declared answers. It does not infer an answer where the Atlas does not contain one.
 
 ## Places
 
-Places calibrates where the operation becomes available.
+Places records where the determination becomes structurally available.
 
 ## Holds
 
-Holds calibrates what presently bears the operation.
+Holds records what presently bears the determination.
 
 ## Pairs
 
-Pairs calibrates what completes the read of the operation where a paired condition is recoverable.
+Pairs records what completes the read laterally where a paired condition is structurally required.
+
+Where no lateral pair is required, the record states that absence rather than inventing a pair.
 
 ## Traces
 
-Traces calibrates the recoverable dependency through which the operation can be retraced.
+Traces records the dependency through which the determination can be recovered.
 
-Trace continues as far as structural retrace requires.
+Trace may extend beyond immediate need where structural retrace requires it. Every trace target is explicitly determined in the Atlas; translation does not infer trace depth.
 
 ## Nests
 
-Nests calibrates where the operation remains stable enough to participate in larger or smaller reads.
+Nests records where the determination remains stable enough to participate in larger or smaller reads.
 
 ## Reads
 
-Reads calibrates how another participant can recover the operation from the current record.
-
-The heading anchors position.
-
-The body calibrates proceeding.
-
-Each sentence preserves one identifiable structural operation.
+Reads records how another participant can recover the determination from the term.
 
 ## Carries
 
-Carries calibrates what the operation makes available for downstream retrace.
+Carries records demonstrated downstream continuation.
 
-Carry records demonstrated continuation.
-
-Possible continuation remains an opening until a downstream trace confirms it.
-
-## Current Record Convention
-
-The current repository convention records terms in Markdown with frontmatter.
-
-The convention is operational and remains editable as the recovered structure becomes clearer.
-
-Current fields include:
-
-```yaml
-grounded:
-order:
-kind:
-ai_role:
-condition_key:
-
-needs:
-
-conditions:
-  places:
-  holds:
-  pairs:
-  traces:
-  nests:
-  reads:
-  carries:
-
-publish:
-status:
-```
-
-`condition_key` carries stable identity.
-
-`order`, `kind`, `ai_role`, and `status` are current operational labels.
-
-They help the present system sort, read, and publish records.
-
-They remain editable where the terms reveal better structure.
-
-## Wikilinks
-
-The current implementation uses wikilinks to encode structural references.
-
-Use:
-
-```text
-[[Term]]
-[[Target|Visible Text]]
-```
-
-A wikilink performs structural work.
-
-It holds, traces, pairs, nests, reads, or carries the current condition.
-
-## Ratio And Adjustment
-
-A structural record preserves the ratios that make adjustment possible.
-
-A ratio is a sensed relation through which carrying can change before distortion becomes visible.
-
-Order, frequency, threshold, and proportion are current reads of changing relation.
-
-## Stewardship
-
-Proceed from the current calibrated floor.
-
-Allow dependency to unfold.
-
-Preserve the improved calibration.
-
-Repeat.
-
-Edit language when recovered position becomes clearer than the current record.
-
-Preserve language when recovered position remains stable.
+Possible continuation remains an opening. A carry is recorded only where the downstream term can trace the prior determination and relevant passage.
 
 ## Validation
 
-Before a record is considered structurally complete, confirm:
+Before a term is promoted to the Atlas, confirm:
 
-- identity remains recoverable
-- position is preserved
-- proceeding remains explicit
-- metadata supports structure
+- the claim is preserved
+- dependency is traced and placed
+- structural radius is assessed
+- participant determination is recorded
+- each structural read is answered, including an explicit absence where no pair or carry is required
 - trace remains recoverable
-- carry records demonstrated continuation
-- ratio and threshold are visible where adjustment matters
-- references perform structural work
-- prose preserves the proceeding operation
-- implementation remains answerable to mechanics
-- future recalibration can continue without losing structural continuity
+- carry records demonstrated continuation rather than prediction
+- the carrier remains answerable to the determination and does not define it

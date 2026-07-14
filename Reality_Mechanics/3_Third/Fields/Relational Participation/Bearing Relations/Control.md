@@ -5,32 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.control
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Bearing]]"
-  - "[[Availability]]"
-  - "[[Constraint]]"
 
 conditions:
   places: "bearing directing availability through relation while the directed condition remains able to affect the direction."
-  holds: "[[Bearing]], [[Availability]], and [[Constraint]]. Bearing must be present, availability must be at stake, and a constraining condition must be readable before direction within compatible relation can be named."
-  pairs: "[[Care]]. Control names bearing that directs availability through constraint; Care names bearing that preserves availability through responsive relation. Control remains compatible where direction stays answerable to the availability care preserves."
+  needs:
+    targets:
+      - first.bearing
+      - first.availability
+      - second.constraint
+  holds:
+    targets:
+      - first.bearing
+      - first.availability
+      - second.constraint
+    read: "[[Bearing]], [[Availability]], and [[Constraint]]. Bearing must be present, availability must be at stake, and a constraining condition must be readable before direction within compatible relation can be named."
+  pairs:
+    targets:
+      - third.care
+    read: "[[Care]]. Control names bearing that directs availability through constraint; Care names bearing that preserves availability through responsive relation. Control remains compatible where direction stays answerable to the availability care preserves."
   traces:
-    - "[[Bearing]]"
-    - "[[Availability]]"
-    - "[[Constraint]]"
-  nests: "within Relational Participation as the condition through which bearing directs available relation — the structural ground for all direction-bearing reads."
-  reads: "Control becomes readable where bearing directs availability within relation while the directed condition remains able to affect the direction."
+    targets:
+      - first.bearing
+      - first.availability
+      - second.constraint
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which bearing directs available relation — the structural ground for all direction-bearing reads."
+  reads:
+    targets: []
+    read: "Control becomes readable where bearing directs availability within relation while the directed condition remains able to affect the direction."
   carries:
-    - "[[Behaviour]]"
-    - "[[Constrained Resolution]]" 
-    - "[[Control After Harm]]"
-    - "[[Control Drift]]"
-    - "[[Domination]]"
-    - "[[Dominion]]"
-    - "[[Restraint]]"
-
+    targets:
+      - third.behaviour
+      - third.constrained-resolution
+      - third.control-after-harm
+      - third.control-drift
+      - third.domination
+      - third.dominion
+      - third.restraint
 publish: true
 status: stable
 ---

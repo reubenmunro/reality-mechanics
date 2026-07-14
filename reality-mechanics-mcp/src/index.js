@@ -7,29 +7,17 @@
  */
 
 import {
-  ATLAS_STRUCTURE_CONTRACT,
-  CONTRACT_SUMMARY,
-  LAG_STATES,
-  RATIO_CONTRACT,
-  TRANSLATION_SURFACES,
-  WORKER_ORDER,
-  relationBetween,
-  structureContractForSurface,
-} from "../../atlas-structure-contract.mjs";
-import {
-  DERIVATION_CAVEAT,
-  DERIVATION_CHAIN,
-  DERIVATION_INVENTORY,
-  DRIFT_NOTES,
-  PUBLIC_SURFACES,
-  PUBLIC_SURFACE_MANIFEST_VERSION,
-  STATUS_VOCABULARY,
-  SUPPORTING_REPORTS,
-  sourceUrl,
-} from "../../public-surface-manifest.mjs";
+  AI_ENTRY_PROTOCOL,
+  ATLAS_SCHEMA,
+  CANONICAL_ENTRY_COUNT,
+  CANONICAL_SOURCE_HASH,
+  DETERMINATION_RECORDS,
+  PROTOCOLS,
+  RELATION_KEYS,
+} from "../generated/canonical-participation.mjs";
 
 const PROTOCOL_VERSION = "2025-06-18";
-const SERVER_INFO = { name: "reality-mechanics-atlas", version: "2.4.0" };
+const SERVER_INFO = { name: "reality-mechanics-atlas", version: "3.0.0" };
 const MAX_QUERY = 200;
 const SEARCH_MAX = 25, SEARCH_DEFAULT = 8;
 const LIST_MAX = 200, LIST_DEFAULT = 50;
@@ -52,9 +40,14 @@ function parseEntry(row) {
     tags:     JSON.parse(row.tags     || "[]"),
     related:  JSON.parse(row.related  || "[]"),
     structure: row.structure ? JSON.parse(row.structure) : null,
+    conditions: row.conditions ? JSON.parse(row.conditions) : null,
     headings: JSON.parse(row.headings || "[]"),
     grounded: row.grounded === 1,
   };
+}
+
+function relationBetween(structure = {}, rightId = "") {
+  return RELATION_KEYS.filter((relation) => Array.isArray(structure?.[relation]) && structure[relation].includes(rightId));
 }
 
 async function dbAll(env, sql, params = []) {
@@ -152,19 +145,17 @@ async function getUpstreamIds(env, startId, maxDepth = 3) {
 
 async function manifest(env) {
   const total = await dbFirst(env, "SELECT COUNT(*) as n FROM entries");
-  // D-025: report the real read-model version label. The label is written at
-  // sync time and may lag entry data (D-013) — never treat it as proof of
-  // freshness; entryCount and the label are separate reads.
-  let versionLabel = null;
-  try {
-    const row = await dbFirst(env, "SELECT value FROM garden_config WHERE key = 'atlas_version'");
-    versionLabel = row?.value || null;
-  } catch { versionLabel = null; }
+  const metadata = await dbAll(env, "SELECT key, value FROM atlas_metadata");
+  const values = Object.fromEntries(metadata.map((row) => [row.key, row.value]));
+  const sourceHash = values.source_hash || null;
+  const entryCount = total?.n || 0;
   return {
-    atlasVersion: versionLabel || "unrecorded",
-    versionNote: "atlas_version is a sync-time label in the generated read-model; it may lag entry data (D-013). GitHub is canonical.",
-    note: "Atlas reads come from generated D1. GitHub markdown/frontmatter is the editable source.",
-    entryCount: total?.n || 0,
+    sourceHash,
+    entryCount,
+    canonicalSourceHash: CANONICAL_SOURCE_HASH,
+    canonicalEntryCount: CANONICAL_ENTRY_COUNT,
+    parity: sourceHash === CANONICAL_SOURCE_HASH && entryCount === CANONICAL_ENTRY_COUNT,
+    note: "This is a generated read model. The Atlas is the sole maintained structural authority.",
   };
 }
 
@@ -178,98 +169,17 @@ function sessionEntry(row) {
     status: entry.status,
     grounded: entry.grounded,
     order: entry.entry_order,
+    register: entry.entry_register,
+    determination: entry.determination,
     type: entry.entry_type,
     structure: entry.structure,
+    conditions: entry.conditions,
     excerpt: entry.excerpt,
     content: clip(entry.content),
-    layers: LAYER_CONTRACT.layers,
-    operatorContract: OPERATOR_CONTRACT,
-    _read_as: READ_AS,
   };
 }
 
-// ── Content / static data ──────────────────────────────────────────────────────
-
-const LAYER_CONTRACT = {
-  sourceOfTruth: ATLAS_STRUCTURE_CONTRACT.sourceRule,
-  layers: TRANSLATION_SURFACES,
-  workerOrder: [
-    "structure: inspect the one canonical structure before reading any translation",
-    ...WORKER_ORDER.map((step) => `${step.key}: ${step.role}`),
-  ],
-  workerOrderDetail: WORKER_ORDER,
-  lagStates: LAG_STATES,
-  ratio: RATIO_CONTRACT,
-  rule: ATLAS_STRUCTURE_CONTRACT.canonicalRule,
-};
-
-const OPERATOR_CONTRACT = {
-  invariant: "Where an Atlas term names one of the note-grammar operations, the term must remain answerable to that operation's edge behavior.",
-  families: [
-    { key: "hold", edge: "holds", termForms: ["Hold", "Holding"], read: "edge shows dependency held; term shows held condition gathered" },
-    { key: "trace", edge: "traces", termForms: ["Trace", "Tracing", "Retracing"], read: "edge shows return path; term shows return as condition or practice" },
-    { key: "carry", edge: "carries", termForms: ["Carry", "Carrying", "Recarry"], read: "edge shows forward passage; term shows carrying capacity or mass gathered" },
-    { key: "pair", edge: "pairs", termForms: ["Pair", "Pairing"], read: "edge shows contrast/coupling; term shows paired condition gathered" },
-    { key: "nest", edge: "nests", termForms: ["Nest", "Nesting"], read: "edge shows membership/enclosure; term shows nested condition gathered" },
-    { key: "read", edge: "reads", termForms: ["Read", "Reading"], read: "edge shows readability relation; term shows recognition as condition gathered" },
-    { key: "place", edge: "places", termForms: ["Place", "Placing", "Locating"], read: "edge/section places the term; term shows placement as operation gathered" },
-  ],
-  rule: "For operator terms, inspect both forms: the edge behavior and the term prose/structure. If they diverge, repair the GitHub source before syncing generated D1 data.",
-};
-
-const READ_AS = `The Atlas is a dependency-ordered reading system carried by one canonical structure, not a dictionary. ${CONTRACT_SUMMARY} Frontmatter is AI language; prose is human language. Read in order: locate the reference frame, read the active ratio, trace what had to already be true, form a retraceable reason, then choose a bounded continuation.`;
-
-const AI_OUTPUT_CONTRACT = {
-  purpose: "Keep Atlas-assisted AI answers traceable through the MCP rather than fluent from memory.",
-  rule: "Use MCP tools before making Atlas claims. Search finds entry points; get_entry/get_related supply the authored structure.",
-  minimumFields: ["Pressure","Trace","Bound","Determination","Trace state","Next recarry","Unresolved"],
-  oracleFields: ["Answer","Trace path","Primary handle","Supporting handles","Move made","Bound","Next recarry","Review options"],
-  oracleCarryingConditions: ["bounded input","bounded answer","MCP trace available","structured output","review path","raw storage off by default","cost cap active","rate limit active","safety route active","pause available"],
-  regenerationCheck: {
-    formula: "GT = O x P x B x R",
-    factors: { O: "Origin: what generated the carrying", P: "Process: what operation produced continuation", B: "Bound: what kept the carrying answerable", R: "Re-entry: how another run or participant can continue from it" },
-    rule: "If any factor is missing, do not claim generative trace or regeneration.",
-  },
-};
-
-const MCP_INSTRUCTIONS = `The Reality Mechanics Atlas is a dependency-ordered reading system carried by one canonical structure, NOT a dictionary or glossary. Before any Atlas work, call begin_atlas_session. Use this MCP as a read doorway: begin_atlas_session for orientation, search_atlas only for entry points, then get_entry and get_related before making Atlas claims. A term is located by its relations, not a definition. ${CONTRACT_SUMMARY} Frontmatter is AI language; prose is human language. Always trace before defining: call get_entry and read structure FIRST — follow holds/traces back to what a term depends on and carries forward to what it opens; use get_related to traverse further. For ratio work, use read_ratio: name the reference frame, relation, trace, and continuation pressure. Prose may communicate structure, but it does not override structure. Search only finds entry points; the meaning is in traversal. The order is a loop, not a ladder: when a trace reaches a primitive (e.g. Relation) it does NOT dead-end — the Atlas returns. Follow the return, not a wall. For field-to-field structural translation: use get_field_terms to enumerate a field's terms, find_shared_ground to identify shared first/second-order Atlas terms (the translation surface), and translate_reason to get a structured map from reason text to target-field structural equivalents. The Atlas supplies the structure; you generate and verify the translated reason via Translation Invariance.`;
-
-const AI_ENTRY_PROTOCOL = {
-  title: "AI Entry Protocol",
-  purpose: "Orient an AI participant before search so the Atlas is entered as a dependency-ordered reasoning system rather than queried as a glossary.",
-  principle: "Enter through the MCP before retrieval. Search finds entry points; get_entry/get_related carry authored structure.",
-  structureContract: ATLAS_STRUCTURE_CONTRACT,
-  layerContract: LAYER_CONTRACT,
-  operatorContract: OPERATOR_CONTRACT,
-  entryPath: [
-    { step: 1, tool: "get_entry", arguments: { id: "practice.atlas" }, reason: "Read what the Atlas is: the dependency-ordered reasoning system." },
-    { step: 2, tool: "get_entry", arguments: { id: "practice.ai-participation" }, reason: "Read the AI-facing participation constraints before contributing." },
-    { step: 3, tool: "get_entry", arguments: { id: "practice.atlas-note-standard" }, reason: "Read the note grammar: holds, pairs, traces, nests, reads, carries." },
-    { step: 4, tool: "search_atlas", arguments: { query: "<user term or question>" }, reason: "Use search only after orientation, and treat results as entry points." },
-    { step: 5, tool: "get_entry", arguments: { id: "<selected result id>" }, reason: "For the target term, read `structure` before prose." },
-    { step: 6, tool: "get_related", arguments: { id: "<selected result id>" }, reason: "Traverse holds/traces upstream and carries downstream before answering." },
-  ],
-  rules: [
-    "Use the MCP before making Atlas claims; do not rely on memory, public page text alone, or inferred definitions.",
-    "Do not answer from search results alone.",
-    "For every Atlas term, read `structure` first: holds/traces before prose, carries before implications.",
-    "Treat GitHub markdown/frontmatter as the editable Atlas source of truth; D1 is a generated read model for AI and worker reads.",
-    ATLAS_STRUCTURE_CONTRACT.canonicalRule,
-    ATLAS_STRUCTURE_CONTRACT.translationRule,
-    "Do not edit Atlas terms directly in D1. Recover D1-only data into repository files, then sync generated data back into D1.",
-    "Treat prose as human language: read it after structure, and keep it answerable to structure.",
-    "If prose and structure disagree, name the mismatch and repair the GitHub source rather than silently reconciling it.",
-    "For the seven operator families, compare edge behavior with term behavior: the edge shows operation in passage; the term shows operation gathered as condition.",
-    "Treat holds/traces as what the term depends on; treat carries as what it opens.",
-    "Use get_related for structural terms, practice terms, and any claim about dependency.",
-    "Present uncertainty as unresolved trace, not as confident definition.",
-    "Never invent primitives, carries, or merges. If a relation is not in structure, name it as a possible read rather than an Atlas dependency.",
-    "For Atlas changes, edit the GitHub repository first. This MCP is read-only.",
-    "When trace reaches a primitive, follow the return through pairs/practice; do not treat it as a dead end.",
-  ],
-  outputContract: AI_OUTPUT_CONTRACT,
-  startingIds: ["practice.atlas", "practice.ai-participation", "practice.atlas-note-standard"],
-};
+const MCP_INSTRUCTIONS = "Begin with begin_atlas_session. The returned protocol and entries are generated from the canonical Atlas. Search locates entries; get_entry and get_related carry the canonical relations. This MCP is read-only.";
 
 // ── Tool definitions ───────────────────────────────────────────────────────────
 
@@ -284,27 +194,19 @@ const TOOLS = [
     description: "Return the identity and current state of the Atlas read model.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
 
-  { name: "get_public_surfaces",
-    description: "Return the public structure of Reality Mechanics as an AI-readable manifest: the five public surfaces (Observatory, Pulse, Theory, Proof, Calculus) plus this MCP — each with role, worker, routes, APIs, Atlas read path, and repo-relative sources — together with the live read-model reading (entry count, atlas version label) and the reports that support the current structure. Same structure a human sees on the website; every claim retraceable to a source file.",
-    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
-
-  { name: "get_derivation_status",
-    description: "Return the Calculus derivation state as structured data: the four-status vocabulary (derived / calibrated / heuristic / unresolved), the live derivation chain with exact rules and per-step status, the full four-status inventory with source paths, and what remains open. This is the AI read of the public /calculus surface — both render from the same manifest module, so they cannot drift. Nothing in it is promoted; the : operator is not accepted.",
-    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
-
   { name: "get_ai_entry_protocol",
-    description: "Return the required entry ritual for AI participants: enter through Reasoning, Atlas, AI Participation, and Atlas Note Standard before search.",
+    description: "Return the ordered AI entry protocol generated from the canonical Atlas.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
 
   { name: "get_structure_contract",
-    description: "Return the canonical Atlas structure contract: one structure, many translations, explicit ratio reads, and lag-aware worker order.",
-    inputSchema: { type: "object", additionalProperties: false, properties: {
-      surface: { type: "string", description: "Optional translation surface: structure, frontmatter, prose, mcp, field, calibration, d1" } } } },
+    description: "Return the generated Atlas schema, determinations, protocols, and source identity.",
+    inputSchema: { type: "object", additionalProperties: false, properties: {} } },
 
   { name: "search_atlas",
     description: "Find entry points into the dependency-ordered Atlas by text and metadata. Each result is a place to begin tracing, not a final answer — follow its relations with get_entry/get_related.",
     inputSchema: { type: "object", additionalProperties: false, required: ["query"], properties: {
       query: { type: "string" }, order: strOrArr,
+      register: strOrArr,
       grounded: { type: "boolean" }, limit: { type: "integer", minimum: 1, maximum: SEARCH_MAX } } } },
 
   { name: "get_entry",
@@ -335,7 +237,7 @@ const TOOLS = [
   { name: "list_entries",
     description: "List entries by metadata filters. Supports pagination via offset.",
     inputSchema: { type: "object", additionalProperties: false, properties: {
-      order: strOrArr, grounded: { type: "boolean" },
+      order: strOrArr, register: strOrArr, grounded: { type: "boolean" },
       limit: { type: "integer", minimum: 1, maximum: LIST_MAX },
       offset: { type: "integer", minimum: 0 } } } },
 
@@ -378,33 +280,22 @@ async function callTool(name, args, env) {
 
   // ── begin_atlas_session ──
   if (name === "begin_atlas_session") {
-    const startingIds = AI_ENTRY_PROTOCOL.startingIds;
-    const placeholders = startingIds.map(() => "?").join(",");
+    const protocolIds = [...AI_ENTRY_PROTOCOL];
+    const placeholders = protocolIds.map(() => "?").join(",");
     const rows = await dbAll(env,
-      `SELECT * FROM entries WHERE id IN (${placeholders})`, startingIds);
+      `SELECT * FROM entries WHERE id IN (${placeholders})`, protocolIds);
     const byId = makeById(rows);
+    const requiredEntries = protocolIds.map((id) => sessionEntry(byId.get(id)));
+    if (requiredEntries.some((entry) => !entry)) {
+      throw new Error("Generated AI protocol does not resolve completely in D1");
+    }
+    const readModel = await manifest(env);
+    if (!readModel.parity) throw new Error("Generated D1 identity does not match the MCP translation identity");
     return {
       purpose: "Begin a Reality Mechanics Atlas session before search or traversal.",
-      manifest: await manifest(env),
-      protocol: AI_ENTRY_PROTOCOL,
-      requiredPracticeEntries: startingIds
-        .map(id => sessionEntry(byId.get(id)))
-        .filter(Boolean),
-      governance: {
-        firstMove: "Call begin_atlas_session before Atlas work.",
-        searchRule: "Search finds entry points only; do not answer from search results alone.",
-        structureRule: ATLAS_STRUCTURE_CONTRACT.canonicalRule,
-        layerRule: `Frontmatter is AI language; prose is human language. ${ATLAS_STRUCTURE_CONTRACT.translationRule}`,
-        lagRule: ATLAS_STRUCTURE_CONTRACT.lagRule,
-        ratioRule: RATIO_CONTRACT.rule,
-        operatorRule: OPERATOR_CONTRACT.invariant,
-        workerOrder: LAYER_CONTRACT.workerOrder,
-        dependencyRule: "Use get_related before making dependency, carry, trace, pair, or nesting claims.",
-        changeRule: "This MCP is read-only. Atlas edits start in GitHub and reach D1 only through repo-to-D1 sync.",
-        translationRule: "For field-to-field translation: use get_field_terms to enumerate a field's terms, find_shared_ground to locate the shared first/second-order Atlas terms (the translation surface), translate_reason to get a structured map from reason text to target-field structural equivalents. AI generates the translated reason; the Atlas provides structural grounding only. Verify via Translation Invariance: retrace the generated reason back to the shared ground terms and locate any loss.",
-        translationCapability: "The Atlas spans multiple fields (Society, Natural World, Knowledge, Life, Expression, Making, etc.) through shared first/second-order terms. Two field-local terms that trace back to the same first/second-order Atlas conditions are structurally equivalent — not metaphorically. Translation holds where the dependency trace is recoverable; where it fails, the failure names what depended on field-local medium rather than shared structure.",
-        aiRole: "AI generates reasons (traceable support). The Atlas provides structural grounding. Translation between fields is structural: AI locates shared Atlas grounding, generates a reason in target-field terms, and verifies via Translation Invariance. The Atlas does not generate prose — it supplies the dependency structure the prose must answer to.",
-      },
+      manifest: readModel,
+      protocol: { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, members: protocolIds },
+      requiredEntries,
       next: {
         forQuestions: ["search_atlas", "get_entry", "get_related"],
         forKnownTerms: ["get_entry_by_title", "get_entry", "get_related"],
@@ -415,7 +306,12 @@ async function callTool(name, args, env) {
 
   // ── get_structure_contract ──
   if (name === "get_structure_contract") {
-    return structureContractForSurface(args.surface || "mcp");
+    return {
+      sourceHash: CANONICAL_SOURCE_HASH,
+      atlasSchema: ATLAS_SCHEMA,
+      determinationRecords: DETERMINATION_RECORDS,
+      protocols: PROTOCOLS,
+    };
   }
 
   // ── get_manifest ──
@@ -423,43 +319,10 @@ async function callTool(name, args, env) {
     return manifest(env);
   }
 
-  // ── get_public_surfaces (D-025) ──
-  if (name === "get_public_surfaces") {
-    return {
-      manifestVersion: PUBLIC_SURFACE_MANIFEST_VERSION,
-      publicStructure: "Observatory · Pulse · Theory · Proof · Calculus — plus this MCP as the AI-readable companion.",
-      surfaces: PUBLIC_SURFACES.map((surface) => ({
-        ...surface,
-        sourceUrls: surface.sources.map(sourceUrl),
-      })),
-      liveReadModel: await manifest(env),
-      supportingReports: SUPPORTING_REPORTS.map((r) => ({ ...r, sourceUrl: sourceUrl(r.source) })),
-      driftNotes: DRIFT_NOTES,
-      retraceability: "Every claim above carries a repo-relative source path; GitHub is canonical. The website Calculus page and this tool render from the same manifest module (public-surface-manifest.mjs).",
-    };
-  }
-
-  // ── get_derivation_status (D-025) ──
-  if (name === "get_derivation_status") {
-    return {
-      manifestVersion: PUBLIC_SURFACE_MANIFEST_VERSION,
-      promotionRule: "Nothing here is promoted. The Calculus has no accepted operation; the : operator is not accepted (C010). Statuses are exact; gaps are preserved.",
-      statusVocabulary: STATUS_VOCABULARY,
-      derivationChain: DERIVATION_CHAIN.map((step) => ({ ...step, sourceUrl: sourceUrl(step.source) })),
-      caveat: { ...DERIVATION_CAVEAT, sourceUrls: DERIVATION_CAVEAT.sources.map(sourceUrl) },
-      inventory: Object.fromEntries(
-        Object.entries(DERIVATION_INVENTORY).map(([status, items]) => [
-          status,
-          items.map((item) => ({ ...item, sourceUrl: sourceUrl(item.source) })),
-        ]),
-      ),
-      openItems: DERIVATION_INVENTORY.unresolved.map((item) => item.claim),
-      publicRoute: "https://realitymechanics.nz/calculus",
-    };
-  }
-
   // ── get_ai_entry_protocol ──
-  if (name === "get_ai_entry_protocol") return AI_ENTRY_PROTOCOL;
+  if (name === "get_ai_entry_protocol") {
+    return { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, members: [...AI_ENTRY_PROTOCOL] };
+  }
 
   // ── search_atlas ──
   if (name === "search_atlas") {
@@ -481,6 +344,11 @@ async function callTool(name, args, env) {
       clauses.push(`e.entry_order IN (${orders.map(() => "?").join(",")})`);
       params.push(...orders);
     }
+    if (args.register) {
+      const registers = Array.isArray(args.register) ? args.register : [args.register];
+      clauses.push(`e.entry_register IN (${registers.map(() => "?").join(",")})`);
+      params.push(...registers);
+    }
     if (args.grounded !== undefined) {
       clauses.push("e.grounded = ?");
       params.push(args.grounded ? 1 : 0);
@@ -491,7 +359,8 @@ async function callTool(name, args, env) {
 
     const rows = await dbAll(env,
       `SELECT e.id, e.title, e.excerpt, e.status, e.grounded,
-              e.entry_order, e.entry_type, e.source_path, e.public_url, e.updated, e.content_hash
+              e.entry_order, e.entry_register, e.determination,
+              e.entry_type, e.source_path, e.public_url, e.updated
        FROM entries e ${where} LIMIT ?`, params);
 
     return {
@@ -499,9 +368,11 @@ async function callTool(name, args, env) {
       results: rows.map(r => ({
         id: r.id, title: r.title, excerpt: r.excerpt,
         status: r.status, grounded: r.grounded === 1,
-        order: r.entry_order, type: r.entry_type,
+        order: r.entry_order, register: r.entry_register,
+        determination: r.determination,
+        type: r.entry_type,
         sourcePath: r.source_path, publicUrl: r.public_url,
-        updated: r.updated, contentHash: r.content_hash,
+        updated: r.updated,
       })),
     };
   }
@@ -519,29 +390,16 @@ async function callTool(name, args, env) {
     // Resolve structure IDs to {id, title, publicUrl}
     let resolvedStructure = null;
     if (e.structure) {
-      const allIds = [
-        ...(e.structure.holds || []),
-        ...(e.structure.traces || []),
-        ...(e.structure.carries || []),
-        ...(e.structure.pairs || []),
-        ...(e.structure.nests || []),
-        ...(e.structure.reads || []),
-      ].filter(Boolean);
+      const allIds = RELATION_KEYS.flatMap((relation) => e.structure[relation] || []).filter(Boolean);
 
       if (allIds.length) {
         const placeholders = allIds.map(() => "?").join(",");
         const related = await dbAll(env,
           `SELECT id, title, public_url FROM entries WHERE id IN (${placeholders})`, allIds);
         const byId = makeById(related);
-        resolvedStructure = {
-          holds:   resolveIds(e.structure.holds,   byId),
-          traces:  resolveIds(e.structure.traces,  byId),
-          carries: resolveIds(e.structure.carries, byId),
-          pairs:   resolveIds(e.structure.pairs,   byId),
-          nests:   resolveIds(e.structure.nests,   byId),
-          reads:   resolveIds(e.structure.reads,   byId),
-          _source: "d1-frontmatter",
-        };
+        resolvedStructure = Object.fromEntries(
+          RELATION_KEYS.map((relation) => [relation, resolveIds(e.structure[relation], byId)]),
+        );
       }
     }
 
@@ -550,15 +408,15 @@ async function callTool(name, args, env) {
       sourcePath: e.source_path,
       source: githubSourceLinks(e.source_path),
       status: e.status, grounded: e.grounded,
-      order: e.entry_order, type: e.entry_type,
+      order: e.entry_order, register: e.entry_register,
+      determination: e.determination,
+      type: e.entry_type,
       structure: resolvedStructure,
-      layers: LAYER_CONTRACT.layers,
-      operatorContract: OPERATOR_CONTRACT,
+      conditions: e.conditions,
       content: e.content,
       headings: e.headings,
       wordCount: e.word_count,
       updatedAt: e.updated,
-      _read_as: READ_AS,
     };
   }
 
@@ -571,39 +429,30 @@ async function callTool(name, args, env) {
     if (!row) return { notFound: true, id };
     const e = parseEntry(row);
 
-    let upstream = { holds: [], traces: [] };
-    let downstream = { carries: [] };
-    let lateral = { pairs: [] };
-    let nesting = { nests: [] };
+    let relations = Object.fromEntries(RELATION_KEYS.map((relation) => [relation, []]));
 
     if (e.structure) {
-      const allIds = [
-        ...(e.structure.holds || []), ...(e.structure.traces || []),
-        ...(e.structure.carries || []), ...(e.structure.pairs || []),
-        ...(e.structure.nests || []),
-      ].filter(Boolean);
+      const allIds = RELATION_KEYS.flatMap((relation) => e.structure[relation] || []).filter(Boolean);
 
       if (allIds.length) {
         const placeholders = allIds.map(() => "?").join(",");
         const related = await dbAll(env,
           `SELECT id, title, public_url FROM entries WHERE id IN (${placeholders})`, allIds);
         const byId = makeById(related);
-        upstream  = { holds: resolveIds(e.structure.holds, byId), traces: resolveIds(e.structure.traces, byId) };
-        downstream = { carries: resolveIds(e.structure.carries, byId) };
-        lateral   = { pairs: resolveIds(e.structure.pairs, byId) };
-        nesting   = { nests: resolveIds(e.structure.nests, byId) };
+        relations = Object.fromEntries(
+          RELATION_KEYS.map((relation) => [relation, resolveIds(e.structure[relation], byId)]),
+        );
       }
     }
 
     const result = {
       id, title: e.title,
-      upstream, downstream, lateral, nesting,
-      note: "Upstream (holds/traces) is what this depends on — trace it back; downstream (carries) is what it opens.",
+      determination: e.determination,
+      relations,
     };
 
-    if (upstream.holds.length === 0 && upstream.traces.length === 0) {
+    if ((relations.needs || []).length === 0) {
       result.atPrimitive = true;
-      result.return = "Trace has reached a primitive — this is NOT a dead end. The Atlas returns: follow lateral.pairs (e.g. Ground / Seed, the return-side) and the Practice crossing back to Ground. The order is a loop, and the return is not a repeat.";
     }
 
     return result;
@@ -617,10 +466,10 @@ async function callTool(name, args, env) {
 
     const rows = id
       ? await dbAll(env,
-          "SELECT id, title, source_path, public_url, updated, content_hash FROM entries WHERE id = ?",
+          "SELECT id, title, source_path, public_url, updated FROM entries WHERE id = ?",
           [id])
       : await dbAll(env,
-          "SELECT id, title, source_path, public_url, updated, content_hash FROM entries WHERE title = ? COLLATE NOCASE",
+          "SELECT id, title, source_path, public_url, updated FROM entries WHERE title = ? COLLATE NOCASE",
           [title]);
 
     if (!rows.length) return { notFound: true, id: id || null, title: title || null };
@@ -632,7 +481,6 @@ async function callTool(name, args, env) {
         title: row.title,
         publicUrl: row.public_url,
         updated: row.updated,
-        contentHash: row.content_hash,
         sourcePath: row.source_path || null,
         source,
         editable: !!source,
@@ -687,8 +535,7 @@ async function callTool(name, args, env) {
       continuation: hasDirectRelation
         ? "Canonical relation exists; reason from the typed relation and declared frame."
         : "No direct relation exists; treat it as a possible read unless the GitHub source is changed and synced.",
-      contract: RATIO_CONTRACT,
-      _read_as: "Ratio is relation made readable from a frame; do not collapse it into a definition or invent missing structure.",
+      sourceHash: CANONICAL_SOURCE_HASH,
     };
   }
 
@@ -698,7 +545,7 @@ async function callTool(name, args, env) {
     if (!query) return { error: "title is required" };
 
     const rows = await dbAll(env,
-      "SELECT id, title, entry_order, entry_type, status, source_path, public_url, content_hash FROM entries WHERE title = ? COLLATE NOCASE",
+      "SELECT id, title, entry_order, entry_register, determination, entry_type, status, source_path, public_url FROM entries WHERE title = ? COLLATE NOCASE",
       [query]);
 
     if (!rows.length) {
@@ -712,9 +559,10 @@ async function callTool(name, args, env) {
     return {
       query, count: rows.length, collision: rows.length > 1,
       entries: rows.map(r => ({
-        id: r.id, title: r.title, order: r.entry_order, type: r.entry_type,
+        id: r.id, title: r.title, order: r.entry_order, register: r.entry_register,
+        determination: r.determination, type: r.entry_type,
         status: r.status,
-        sourcePath: r.source_path, publicUrl: r.public_url, contentHash: r.content_hash,
+        sourcePath: r.source_path, publicUrl: r.public_url,
       })),
     };
   }
@@ -731,6 +579,11 @@ async function callTool(name, args, env) {
       clauses.push(`entry_order IN (${orders.map(() => "?").join(",")})`);
       params.push(...orders);
     }
+    if (args.register) {
+      const registers = Array.isArray(args.register) ? args.register : [args.register];
+      clauses.push(`entry_register IN (${registers.map(() => "?").join(",")})`);
+      params.push(...registers);
+    }
     if (args.grounded !== undefined) {
       clauses.push("grounded = ?");
       params.push(args.grounded ? 1 : 0);
@@ -739,7 +592,7 @@ async function callTool(name, args, env) {
     const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
     const countRow = await dbFirst(env, `SELECT COUNT(*) as n FROM entries ${where}`, params);
     const rows = await dbAll(env,
-      `SELECT id, title, status, grounded, entry_order, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
+      `SELECT id, title, status, grounded, entry_order, entry_register, determination, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
       [...params, limit, offset]);
 
     return {
@@ -748,7 +601,9 @@ async function callTool(name, args, env) {
       entries: rows.map(r => ({
         id: r.id, title: r.title, status: r.status,
         grounded: r.grounded === 1,
-        order: r.entry_order, publicUrl: r.public_url,
+        order: r.entry_order, register: r.entry_register,
+        determination: r.determination,
+        publicUrl: r.public_url,
         sourcePath: r.source_path, updated: r.updated,
       })),
     };

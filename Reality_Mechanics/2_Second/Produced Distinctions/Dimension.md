@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.dimension
-
-needs:
-  - "[[Difference]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a readable axis of difference."
-  holds: "[[Difference]] and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Scale]]"
+  needs:
+    targets:
+      - second.difference
+      - second.closure-scope
+  holds:
+    targets:
+      - second.difference
+      - second.closure-scope
+    read: "[[Difference]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.scale
+    read: "Asymmetry carries downward — into [[Scale]]"
   traces:
-    - "[[Difference]]"
-    - "[[Closure Scope]]"
-  nests: "where difference becomes a readable axis for comparison and order."
-  reads: "where difference can be read as directional — where distinctions can be arranged along a readable axis rather than merely noted as non-same."
+    targets:
+      - second.difference
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where difference becomes a readable axis for comparison and order."
+  reads:
+    targets: []
+    read: "where difference can be read as directional — where distinctions can be arranged along a readable axis rather than merely noted as non-same."
   carries:
-    - "[[Scale]]"
-
+    targets:
+      - second.scale
 publish: true
 status: stable
 ---

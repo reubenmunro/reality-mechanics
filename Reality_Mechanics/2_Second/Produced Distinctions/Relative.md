@@ -5,33 +5,51 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.relative
-
-needs:
-  - "[[Relation]]"
-  - "[[Ratio]]"
-  - "[[Reference Frame]]"
-  - "[[Boundary]]"
-  - "[[Closure Scope]]"
-  - "[[Scale]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read placed through relation, ratio, and reference frame."
-  holds: "[[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, ratio must make comparison readable, the reference frame must be explicit, boundary must locate the read, scope and scale must be locatable, and the condition must be readable before relativity can be named without drifting into arbitrariness."
-  pairs: "[[Reference Frame]] — Relative names the placed read; Reference Frame names the reference through which the placement remains answerable."
+  needs:
+    targets:
+      - first.relation
+      - first.ratio
+      - second.reference-frame
+      - first.boundary
+      - second.closure-scope
+      - second.scale
+      - second.readability
+  holds:
+    targets:
+      - first.relation
+      - first.ratio
+      - second.reference-frame
+      - first.boundary
+      - second.closure-scope
+      - second.scale
+      - second.readability
+    read: "[[Relation]], [[Ratio]], [[Reference Frame]], [[Boundary]], [[Closure Scope]], [[Scale]], and [[Readability]]. Relation must hold, ratio must make comparison readable, the reference frame must be explicit, boundary must locate the read, scope and scale must be locatable, and the condition must be readable before relativity can be named without drifting into arbitrariness."
+  pairs:
+    targets:
+      - second.reference-frame
+    read: "[[Reference Frame]] — Relative names the placed read; Reference Frame names the reference through which the placement remains answerable."
   traces:
-    - "[[Relation]]"
-    - "[[Ratio]]"
-    - "[[Reference Frame]]"
-    - "[[Boundary]]"
-    - "[[Closure Scope]]"
-    - "[[Scale]]"
-    - "[[Readability]]"
-  nests: "where a read depends on the relation, scope, scale, or placement through which it becomes readable."
-  reads: "Relative becomes readable where a condition is not read from nowhere, but through the relation, frame, scale, and carrying conditions that place the read."
+    targets:
+      - first.relation
+      - first.ratio
+      - second.reference-frame
+      - first.boundary
+      - second.closure-scope
+      - second.scale
+      - second.readability
+  nests:
+    targets: []
+    read: "where a read depends on the relation, scope, scale, or placement through which it becomes readable."
+  reads:
+    targets: []
+    read: "Relative becomes readable where a condition is not read from nowhere, but through the relation, frame, scale, and carrying conditions that place the read."
   carries:
-    - "[[Thing]]"
-
+    targets:
+      - second.thing
 publish: true
 status: stable
 ---

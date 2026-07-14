@@ -5,41 +5,63 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.relational-participation.applied.parenting-as-maintained-coupling
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Relational Participation Field]]"
-  - "[[Asymmetry]]"
-  - "[[Nested Coupling]]"
-  - "[[Maintained Coupling]]"
-  - "[[Care]]"
-  - "[[Harm]]"
-  - "[[Neglect]]"
-  - "[[Control]]"
-  - "[[Safety Boundary]]"
-  - "[[Trust]]"
-  - "[[Betrayal]]"
 
 conditions:
   places: "the applied domain through which maintained coupling holds a child's developmental asymmetry within compatible bounds — where the parent's recurrent, responsive bearing preserves available carrying while the child's own capacity to hold their asymmetry progressively grows toward autonomy."
-  holds: "[[Relational Participation Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Neglect]], [[Control]], [[Safety Boundary]], [[Trust]], and [[Betrayal]]. A developmental asymmetry must be present, nested coupling must hold the parent within the child's scope, and care must be recurrent and responsive before the maintained holding of developmental asymmetry can be named as parenting."
-  pairs: "No lateral pair is required at this placement. Parenting as Maintained Coupling is the Relational Participation Field translation of Parenting rather than one side of a separate pair."
+  needs:
+    targets:
+      - third.relational-participation-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.neglect
+      - third.control
+      - third.safety-boundary
+      - third.trust
+      - third.betrayal
+  holds:
+    targets:
+      - third.relational-participation-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.neglect
+      - third.control
+      - third.safety-boundary
+      - third.trust
+      - third.betrayal
+    read: "[[Relational Participation Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Neglect]], [[Control]], [[Safety Boundary]], [[Trust]], and [[Betrayal]]. A developmental asymmetry must be present, nested coupling must hold the parent within the child's scope, and care must be recurrent and responsive before the maintained holding of developmental asymmetry can be named as parenting."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement. Parenting as Maintained Coupling is the Relational Participation Field translation of Parenting rather than one side of a separate pair."
   traces:
-    - "[[Relational Participation Field]]"
-    - "[[Asymmetry]]"
-    - "[[Nested Coupling]]"
-    - "[[Maintained Coupling]]"
-    - "[[Care]]"
-    - "[[Harm]]"
-    - "[[Neglect]]"
-    - "[[Control]]"
-    - "[[Safety Boundary]]"
-    - "[[Trust]]"
-    - "[[Betrayal]]"
-  nests: "within Relational Participation Field as an applied domain read — the practice through which the full vocabulary of relational participation (Care, Harm, Neglect, Control, Trust, Betrayal, Safety Boundary, Repair) becomes visible in the domain most readers can locate themselves in, either as parent or as child."
-  reads: "Parenting becomes readable where a child's developmental asymmetry must be held within compatible bounds through maintained coupling — where the parent's bearing preserves available carrying while progressively making that bearing less necessary."
-  carries: []
-
+    targets:
+      - third.relational-participation-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.neglect
+      - third.control
+      - third.safety-boundary
+      - third.trust
+      - third.betrayal
+  nests:
+    targets: []
+    read: "within Relational Participation Field as an applied domain read — the practice through which the full vocabulary of relational participation (Care, Harm, Neglect, Control, Trust, Betrayal, Safety Boundary, Repair) becomes visible in the domain most readers can locate themselves in, either as parent or as child."
+  reads:
+    targets: []
+    read: "Parenting becomes readable where a child's developmental asymmetry must be held within compatible bounds through maintained coupling — where the parent's bearing preserves available carrying while progressively making that bearing less necessary."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,33 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.casimir-plates
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Physical Field Conditions]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Field Bearing]]"
-  - "[[Boundary]]"
-  - "[[Constraint]]"
-  - "[[Coupled Asymmetry]]"
-  - "[[Readability]]"
 
 conditions:
   places: "the physical field condition through which constrained boundary conditions reduce available field modes — the natural-world read of constraint making coupled asymmetry measurable as attraction."
-  holds: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Boundary]], [[Constraint]], [[Coupled Asymmetry]], and [[Readability]]. Boundary conditions must constrain field modes and coupled asymmetry must be readable before the measured force can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - first.boundary
+      - second.constraint
+      - second.coupled-asymmetry
+      - second.readability
+  holds:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - first.boundary
+      - second.constraint
+      - second.coupled-asymmetry
+      - second.readability
+    read: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Boundary]], [[Constraint]], [[Coupled Asymmetry]], and [[Readability]]. Boundary conditions must constrain field modes and coupled asymmetry must be readable before the measured force can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Physical Field Conditions]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Field Bearing]]"
-    - "[[Boundary]]"
-    - "[[Constraint]]"
-    - "[[Coupled Asymmetry]]"
-    - "[[Readability]]"
-  nests: "within Physical Field Conditions as the constrained-boundary field read — demonstrating coupled asymmetry through constraint on available field modes."
-  reads: "Casimir Plates becomes readable where plate spacing and material boundary conditions constrain available field modes enough for constrained field availability to bear on the plates as measurable attraction."
-  carries: []
-
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - first.boundary
+      - second.constraint
+      - second.coupled-asymmetry
+      - second.readability
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the constrained-boundary field read — demonstrating coupled asymmetry through constraint on available field modes."
+  reads:
+    targets: []
+    read: "Casimir Plates becomes readable where plate spacing and material boundary conditions constrain available field modes enough for constrained field availability to bear on the plates as measurable attraction."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,30 +5,45 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.relational-participation-field
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Bearing Relation]]"
-  - "[[Coupling]]"
 
 conditions:
   places: "the recurring field of participation through which bearing, care, harm, repair, trust, violation, and maintained coupling become readable between participants."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Bearing Relation]], and [[Coupling]]. Field of Participation must structure a recurring scope and bearing must be traceable across coupling before relational conditions can become a named field."
-  pairs: "[[Our Story Field]]. Relational Participation Field names the field of enacted present relation — how bearing, care, harm, and repair proceed between participants; Our Story Field names the field of carried prior relation — what has been passed forward through history, memory, and inheritance. Present participation accumulates into history; history shapes the field of present participation."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.bearing-relation
+      - second.coupling
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.bearing-relation
+      - second.coupling
+    read: "[[Field of Participation]], [[Organic Field]], [[Bearing Relation]], and [[Coupling]]. Field of Participation must structure a recurring scope and bearing must be traceable across coupling before relational conditions can become a named field."
+  pairs:
+    targets:
+      - third.our-story-field
+    read: "[[Our Story Field]]. Relational Participation Field names the field of enacted present relation — how bearing, care, harm, and repair proceed between participants; Our Story Field names the field of carried prior relation — what has been passed forward through history, memory, and inheritance. Present participation accumulates into history; history shapes the field of present participation."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Bearing Relation]]"
-    - "[[Coupling]]"
-  nests: "as a public field container for relational participation reads."
-  reads: "where relations between participants become organised enough to be read through care, harm, repair, reciprocity, control, or maintained coupling."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.bearing-relation
+      - second.coupling
+  nests:
+    targets: []
+    read: "as a public field container for relational participation reads."
+  reads:
+    targets: []
+    read: "where relations between participants become organised enough to be read through care, harm, repair, reciprocity, control, or maintained coupling."
   carries:
-    - "[[Bearing Relations]]"
-    - "[[Safety]]"
-    - "[[Parenting as Maintained Coupling]]"
-
+    targets:
+      - third.bearing-relations
+      - third.safety
+      - third.relational-participation.applied.parenting-as-maintained-coupling
 publish: true
 status: stable
 ---

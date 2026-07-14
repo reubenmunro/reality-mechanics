@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: instrument
 ai_role: practice
 condition_key: practice.generate-and-regenerate
-
-needs:
-  - "[[Order Generation]]"
-  - "[[Generative Trace]]"
-  - "[[Degenerative Trace]]"
-  - "[[Check]]"
-  - "[[Recarry]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice instrument for asking how carrying is generated, where its trace is preserved or lost, and how it can be regenerated and carried again."
-  holds: "[[Order Generation]], [[Generative Trace]], [[Degenerative Trace]], [[Check]], and [[Recarry]]. A generated carrying, a trace check, a possible degeneration path, and a way to re-enter carrying must be available before the instrument can be used."
-  pairs: "[[Bearing Pass]]. Bearing Pass tends a member; Generate and Regenerate tests whether the member preserves enough generative trace to continue, diagnose loss, and re-enter carrying."
+  needs:
+    targets:
+      - practice.order-generation
+      - practice.generative-trace
+      - practice.degenerative-trace
+      - practice.check
+      - second.recarry
+  holds:
+    targets:
+      - practice.order-generation
+      - practice.generative-trace
+      - practice.degenerative-trace
+      - practice.check
+      - second.recarry
+    read: "[[Order Generation]], [[Generative Trace]], [[Degenerative Trace]], [[Check]], and [[Recarry]]. A generated carrying, a trace check, a possible degeneration path, and a way to re-enter carrying must be available before the instrument can be used."
+  pairs:
+    targets:
+      - practice.garden-pass
+    read: "[[Bearing Pass]]. Bearing Pass tends a member; Generate and Regenerate tests whether the member preserves enough generative trace to continue, diagnose loss, and re-enter carrying."
   traces:
-    - "[[Order Generation]]"
-    - "[[Generative Trace]]"
-    - "[[Degenerative Trace]]"
-    - "[[Check]]"
-    - "[[Recarry]]"
-  nests: "inside Atlas Practice as an instrument for designed regeneration: making the trace of a process capable of seeding another movement."
-  reads: "where a participant needs to move from generated carrying through trace, degeneration diagnosis, regeneration, and recarry without losing the order that made continuation possible."
+    targets:
+      - practice.order-generation
+      - practice.generative-trace
+      - practice.degenerative-trace
+      - practice.check
+      - second.recarry
+  nests:
+    targets: []
+    read: "inside Atlas Practice as an instrument for designed regeneration: making the trace of a process capable of seeding another movement."
+  reads:
+    targets: []
+    read: "where a participant needs to move from generated carrying through trace, degeneration diagnosis, regeneration, and recarry without losing the order that made continuation possible."
   carries:
-    - "[[Ark Run]]"
-
+    targets:
+      - practice.ark-run
 publish: true
 status: working
 ---

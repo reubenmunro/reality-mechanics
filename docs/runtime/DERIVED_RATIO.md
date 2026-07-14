@@ -360,7 +360,7 @@ Architectural only. No code.
 | **D-011** | [`docs/reports/D-011-emergent-behaviour-observations.md`](../reports/D-011-emergent-behaviour-observations.md) |
 | **D-012** | [`docs/reports/D-012-behaviour-retrace-instrument.md`](../reports/D-012-behaviour-retrace-instrument.md) |
 | Atlas | [`Reality_Mechanics/1_First/Ratio.md`](../../Reality_Mechanics/1_First/Ratio.md) |
-| Contract | [`atlas-structure-contract.mjs`](../../atlas-structure-contract.mjs) |
+| Canonical structure | Atlas Common Term Structure; generated `docs/generated/atlas-source-format.md` |
 | Runtime | [`field-maturity.mjs`](../../field-maturity.mjs), [`.atlas-publisher/main-website-worker.js`](../../.atlas-publisher/main-website-worker.js) |
 
 ---

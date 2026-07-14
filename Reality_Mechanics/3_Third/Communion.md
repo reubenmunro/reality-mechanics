@@ -5,23 +5,34 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.communion
-
-needs:
-  - "[[Field of Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the invariant condition of genuine collective participation — by which distinct participations can be genuinely together without collapsing into sameness or remaining merely co-present"
-  holds: "[[Field of Participation]] — a field of participation must be established before distinct participations can be genuinely together"
-  pairs: "Field of Participation carries downward — into Communion. Communion is the invariant carrier before the organic and organised split."
+  needs:
+    targets:
+      - third.field-of-participation
+  holds:
+    targets:
+      - third.field-of-participation
+    read: "[[Field of Participation]] — a field of participation must be established before distinct participations can be genuinely together"
+  pairs:
+    targets: []
+    read: "Field of Participation carries downward — into Communion. Communion is the invariant carrier before the organic and organised split."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Invariant]]"
-  nests: "before the organic/organised split — not as a category above them, but as the hidden condition that lets organic fields arise through genuine participation and organised domains carry genuine participation into arrangement"
-  reads: "where distinct participations are genuinely together — not merely co-present, coordinated, or aggregated, but held in a participation that something passes through. Most recognisably in absence: where what appears to be a community, field, or organisation has lost genuine participation-together while the form remains."
+    targets:
+      - third.field-of-participation
+      - ground.invariant
+  nests:
+    targets: []
+    read: "before the organic/organised split — not as a category above them, but as the hidden condition that lets organic fields arise through genuine participation and organised domains carry genuine participation into arrangement"
+  reads:
+    targets: []
+    read: "where distinct participations are genuinely together — not merely co-present, coordinated, or aggregated, but held in a participation that something passes through. Most recognisably in absence: where what appears to be a community, field, or organisation has lost genuine participation-together while the form remains."
   carries:
-    - "[[Organic Field]]"
-    - "[[Organised Domain]]"
-
+    targets:
+      - third.organic-field
+      - third.organised-domain
 publish: true
 status: stable
 ---

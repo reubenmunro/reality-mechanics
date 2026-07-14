@@ -5,30 +5,46 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.friction
-
-needs:
-  - "[[Coupled Contact]]"
-  - "[[Resistance]]"
-  - "[[Flow]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resistance at coupled contact during flow."
-  holds: "[[Coupled Contact]], [[Resistance]], and [[Flow]]."
-  pairs: "Asymmetry carries downward — into [[Grip]], [[Traction]], and [[Drag]]"
+  needs:
+    targets:
+      - second.coupled-contact
+      - second.resistance
+      - second.flow
+  holds:
+    targets:
+      - second.coupled-contact
+      - second.resistance
+      - second.flow
+    read: "[[Coupled Contact]], [[Resistance]], and [[Flow]]."
+  pairs:
+    targets:
+      - second.grip
+      - second.traction
+      - second.drag
+    read: "Asymmetry carries downward — into [[Grip]], [[Traction]], and [[Drag]]"
   traces:
-    - "[[Coupled Contact]]"
-    - "[[Contact]]"
-    - "[[Resistance]]"
-    - "[[Flow]]"
-  nests: "at coupled contact during flow. It can slow, grip, wear, heat, or support carrying."
-  reads: "where flow meets coupled contact and that contact resists, slows, grips, wears, or heats what is carried."
+    targets:
+      - second.coupled-contact
+      - first.contact
+      - second.resistance
+      - second.flow
+  nests:
+    targets: []
+    read: "at coupled contact during flow. It can slow, grip, wear, heat, or support carrying."
+  reads:
+    targets: []
+    read: "where flow meets coupled contact and that contact resists, slows, grips, wears, or heats what is carried."
   carries:
-    - "[[Grip]]"
-    - "[[Traction]]"
-    - "[[Drag]]"
-    - "[[Wear]]"
-    - "[[Heat]]"
-
+    targets:
+      - second.grip
+      - second.traction
+      - second.drag
+      - second.wear
+      - second.heat
 publish: true
 status: stable
 ---

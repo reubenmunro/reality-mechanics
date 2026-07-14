@@ -5,24 +5,39 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.transfer
-
-needs:
-  - "[[Resolution]]"
-  - "[[Bearing]]"
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution where bearing passes strain, load, or support into another condition"
-  holds: "[[Resolution]], [[Bearing]], and [[Boundary]] — what was borne must be determined enough to pass across a boundary"
-  pairs: "[[Absorb]] — Transfer moves a resolved condition to another carrier; Absorb takes a condition in under strain. Each requires the other to be locatable."
+  needs:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.boundary
+  holds:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.boundary
+    read: "[[Resolution]], [[Bearing]], and [[Boundary]] — what was borne must be determined enough to pass across a boundary"
+  pairs:
+    targets:
+      - first.absorb
+    read: "[[Absorb]] — Transfer moves a resolved condition to another carrier; Absorb takes a condition in under strain. Each requires the other to be locatable."
   traces:
-    - "[[Resolution]]"
-    - "[[Bearing]]"
-    - "[[Boundary]]"
-  nests: "under first-order resolution — can open carrying but is not carrying in the second-order sense"
-  reads: "where bearing resolves by passing strain or support across a boundary into another condition"
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.boundary
+  nests:
+    targets: []
+    read: "under first-order resolution — can open carrying but is not carrying in the second-order sense"
+  reads:
+    targets: []
+    read: "where bearing resolves by passing strain or support across a boundary into another condition"
   carries:
-
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

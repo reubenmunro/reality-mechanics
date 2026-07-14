@@ -5,21 +5,34 @@ order: first
 kind: order
 ai_role: order
 condition_key: first.first-order
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the register where relation becomes connectable, orientable as posture, and placeable enough for carry and trace to become available."
-  holds: "[[Root Order]] — its terms must follow the dependency arrangement rather than a topic sequence"
-  pairs: "Asymmetry carries downward — into [[Second Order]]"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — its terms must follow the dependency arrangement rather than a topic sequence"
+  pairs:
+    targets:
+      - second.second-order
+    read: "Asymmetry carries downward — into [[Second Order]]"
   traces:
-    - "[[Root Order]]"
-  nests: "relation, hold, carry, place, connection, trace, and the conditions that distinguish, locate, strain, bear, or resolve what may pass through connection."
-  reads: "where relation becomes held and placeable enough to offer forward carry and backward trace before those directions are enacted in later orders."
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "relation, hold, carry, place, connection, trace, and the conditions that distinguish, locate, strain, bear, or resolve what may pass through connection."
+  reads:
+    targets: []
+    read: "where relation becomes held and placeable enough to offer forward carry and backward trace before those directions are enacted in later orders."
   carries:
-    - "[[Second Order]]"
-    - "[[First Order Crossing|Threshold (First → Second)]]"
+    targets:
+      - second.second-order
+      - first.first-order-crossing
 publish: true
 status: working
 ---

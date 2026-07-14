@@ -5,27 +5,40 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.earth
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World]]"
-  - "[[World]]"
-  - "[[Carrying]]"
 
 conditions:
   places: "the natural world body within which human participation becomes materially, ecologically, atmospherically, historically, and protectively carried."
-  holds: "[[Natural World]], [[World]], and [[Carrying]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.natural-world
+      - second.world
+      - second.carrying
+  holds:
+    targets:
+      - third.natural-world
+      - second.world
+      - second.carrying
+    read: "[[Natural World]], [[World]], and [[Carrying]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Natural World]]"
-    - "[[World]]"
-    - "[[Carrying]]"
-  nests: "inside Natural World as the local world-body through which participation is carried."
-  reads: "where human life is read as occurring within a material, ecological, and protective carrying body rather than above, outside, or merely upon a background setting."
+    targets:
+      - third.natural-world
+      - second.world
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside Natural World as the local world-body through which participation is carried."
+  reads:
+    targets: []
+    read: "where human life is read as occurring within a material, ecological, and protective carrying body rather than above, outside, or merely upon a background setting."
   carries:
-    - "[[Earth Carrying]]"
-    - "[[Sustenance Field]]"
-
+    targets:
+      - third.earth-carrying
+      - third.sustenance-field
 publish: true
 status: stable
 ---

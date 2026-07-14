@@ -5,24 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.decoupling
-
-needs:
-  - "[[Coupled Boundary]]"
-  - "[[Boundary Loosening]]"
-  - "[[Release]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "coupling no longer holding a coupled boundary as mutual availability."
-  holds: "[[Coupled Boundary]], [[Boundary Loosening]], and [[Release]]."
-  pairs: "[[Coupling]]. Decoupling names mutual availability no longer holding; Coupling names distinct resolved conditions held in mutual availability. Each requires the other to be locatable."
+  needs:
+    targets:
+      - second.coupled-boundary
+      - second.boundary-loosening
+      - first.release
+  holds:
+    targets:
+      - second.coupled-boundary
+      - second.boundary-loosening
+      - first.release
+    read: "[[Coupled Boundary]], [[Boundary Loosening]], and [[Release]]."
+  pairs:
+    targets:
+      - second.coupling
+    read: "[[Coupling]]. Decoupling names mutual availability no longer holding; Coupling names distinct resolved conditions held in mutual availability. Each requires the other to be locatable."
   traces:
-    - "[[Coupled Boundary]]"
-    - "[[Boundary Loosening]]"
-    - "[[Release]]"
-  nests: "where coupled boundary resolves as separation, release, or loss of mutual availability."
-  reads: "where a coupled boundary resolves as separation, release, or loss of mutual availability rather than continued contact, compatibility, or participation."
-  carries: []
-
+    targets:
+      - second.coupled-boundary
+      - second.boundary-loosening
+      - first.release
+  nests:
+    targets: []
+    read: "where coupled boundary resolves as separation, release, or loss of mutual availability."
+  reads:
+    targets: []
+    read: "where a coupled boundary resolves as separation, release, or loss of mutual availability rather than continued contact, compatibility, or participation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

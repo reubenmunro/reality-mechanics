@@ -5,28 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.kind
-
-needs:
-  - "[[Form]]"
-  - "[[Pattern]]"
-  - "[[Recognition Read|Recognition]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "recurrent form recognisable across distinct instances."
-  holds: "[[Form]], [[Pattern]], and [[Recognition Read|Recognition]]."
-  pairs: "[[Surface]] — Kind names recurrent form across instances; Surface names the presenting face through which that form becomes available"
+  needs:
+    targets:
+      - second.form
+      - second.pattern
+      - second.recognition-read
+  holds:
+    targets:
+      - second.form
+      - second.pattern
+      - second.recognition-read
+    read: "[[Form]], [[Pattern]], and [[Recognition Read|Recognition]]."
+  pairs:
+    targets:
+      - second.surface
+    read: "[[Surface]] — Kind names recurrent form across instances; Surface names the presenting face through which that form becomes available"
   traces:
-    - "[[Generic]]"
-    - "[[Form]]"
-    - "[[Pattern]]"
-    - "[[Recognition Read|Recognition]]"
-  nests: "where recurring form remains recognisable across distinct instances without collapsing them into sameness."
-  reads: "where distinct instances can be read as the same relational sort while remaining different instances — where recurrence and form hold enough continuity for recognition without flattening local difference."
+    targets:
+      - ground.generic
+      - second.form
+      - second.pattern
+      - second.recognition-read
+  nests:
+    targets: []
+    read: "where recurring form remains recognisable across distinct instances without collapsing them into sameness."
+  reads:
+    targets: []
+    read: "where distinct instances can be read as the same relational sort while remaining different instances — where recurrence and form hold enough continuity for recognition without flattening local difference."
   carries:
-    - "[[Identity]]"
-    - "[[Inheritance]]"
-    - "[[Care]]"
-
+    targets:
+      - second.identity
+      - third.inheritance
+      - third.care
 publish: true
 status: stable
 ---

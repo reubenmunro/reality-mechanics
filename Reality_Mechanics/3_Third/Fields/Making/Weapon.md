@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.weapon
+determination: pd.v3.pre-provenance-baseline
 domain: making
-
-needs:
-  - "[[Making]]"
-  - "[[Tool]]"
-  - "[[Control]]"
-  - "[[Harm]]"
-  - "[[Violation]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the use-path where made or available capacity is directed toward force, damage, threat, disabling, coercion, override, or forced resolution."
-  holds: "[[Making]], [[Tool]], [[Control]], [[Harm]], [[Violation]], and [[Compatibility]]. Capacity must be available through a made or usable form, and compatible participation must be at stake, before redirected capacity can be read as weapon."
-  pairs: "Tool / Weapon is a use-path distinction, not a simple object pair. Tool names capacity translated into compatible extension; Weapon names capacity redirected into force, harm, threat, disabling, coercion, override, or forced resolution."
+  needs:
+    targets:
+      - third.making
+      - third.tool
+      - third.control
+      - third.harm
+      - third.violation
+      - second.compatibility
+  holds:
+    targets:
+      - third.making
+      - third.tool
+      - third.control
+      - third.harm
+      - third.violation
+      - second.compatibility
+    read: "[[Making]], [[Tool]], [[Control]], [[Harm]], [[Violation]], and [[Compatibility]]. Capacity must be available through a made or usable form, and compatible participation must be at stake, before redirected capacity can be read as weapon."
+  pairs:
+    targets: []
+    read: "Tool / Weapon is a use-path distinction, not a simple object pair. Tool names capacity translated into compatible extension; Weapon names capacity redirected into force, harm, threat, disabling, coercion, override, or forced resolution."
   traces:
-    - "[[Making Field]]"
-    - "[[Tool]]"
-    - "[[Making]]"
-    - "[[Control]]"
-    - "[[Harm]]"
-    - "[[Violation]]"
-    - "[[Compatibility]]"
-  nests: "within the Making Field as the redirected use of made or available capacity."
-  reads: "Weapon becomes readable where capacity that could extend participation is redirected into forcing, damaging, disabling, threatening, coercing, overriding, or imposing resolution on compatible participation."
-  carries: []
-
+    targets:
+      - third.making-field
+      - third.tool
+      - third.making
+      - third.control
+      - third.harm
+      - third.violation
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within the Making Field as the redirected use of made or available capacity."
+  reads:
+    targets: []
+    read: "Weapon becomes readable where capacity that could extend participation is redirected into forcing, damaging, disabling, threatening, coercing, overriding, or imposing resolution on compatible participation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

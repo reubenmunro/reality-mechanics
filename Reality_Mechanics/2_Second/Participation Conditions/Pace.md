@@ -5,28 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.pace
-
-needs:
-  - "[[Rate]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "supportable rate through carrying."
-  holds: "[[Rate]], [[Carrying]], and [[Compatibility]]."
-  pairs: "Asymmetry carries downward — into [[Learning Pace]] and [[Pace Mismatch]]"
+  needs:
+    targets:
+      - second.rate
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - second.rate
+      - second.carrying
+      - second.compatibility
+    read: "[[Rate]], [[Carrying]], and [[Compatibility]]."
+  pairs:
+    targets:
+      - third.learning-pace
+      - third.pace-mismatch
+    read: "Asymmetry carries downward — into [[Learning Pace]] and [[Pace Mismatch]]"
   traces:
-    - "[[Rate]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "where rate is evaluated against supportable carrying and compatibility."
-  reads: "where a rate of proceeding can be evaluated as supportable, too fast, too slow, or mismatched for the carrying condition."
+    targets:
+      - second.rate
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "where rate is evaluated against supportable carrying and compatibility."
+  reads:
+    targets: []
+    read: "where a rate of proceeding can be evaluated as supportable, too fast, too slow, or mismatched for the carrying condition."
   carries:
-    - "[[Learning Pace]]"
-    - "[[Pace Mismatch]]"
-    - "[[Tempo]]"
-    - "[[Extractive Acceleration]]"
-
+    targets:
+      - third.learning-pace
+      - third.pace-mismatch
+      - second.tempo
+      - third.extractive-acceleration
 publish: true
 status: stable
 ---

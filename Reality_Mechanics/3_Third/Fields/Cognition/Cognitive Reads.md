@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.cognitive-reads
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Read]]"
-  - "[[Readability]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the set of path reads through which thought and memory become evaluable at a closure scope — the branch of reads that apply cognitive structural conditions to specific passages."
-  holds: "[[Cognition]], [[Read]], [[Readability]], and [[Closure Scope]]. Cognition must hold and readability must be present before cognitive path reads can be named."
-  pairs: "[[Cognitive Carrying]] — Cognitive Reads names path reads through which cognitive conditions become evaluable; Cognitive Carrying names the continuation of cognitive states through participation."
+  needs:
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.closure-scope
+  holds:
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.closure-scope
+    read: "[[Cognition]], [[Read]], [[Readability]], and [[Closure Scope]]. Cognition must hold and readability must be present before cognitive path reads can be named."
+  pairs:
+    targets:
+      - third.cognitive-carrying
+    read: "[[Cognitive Carrying]] — Cognitive Reads names path reads through which cognitive conditions become evaluable; Cognitive Carrying names the continuation of cognitive states through participation."
   traces:
-    - "[[Cognition]]"
-    - "[[Read]]"
-    - "[[Readability]]"
-    - "[[Closure Scope]]"
-  nests: "within the Cognition Field as the container for thought- and memory-grounded path reads."
-  reads: "Cognitive Reads becomes readable where a condition becomes available to cognition as something that can be evaluated, retained, discerned, remembered, or re-entered within a closure scope."
-  carries: []
-
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within the Cognition Field as the container for thought- and memory-grounded path reads."
+  reads:
+    targets: []
+    read: "Cognitive Reads becomes readable where a condition becomes available to cognition as something that can be evaluated, retained, discerned, remembered, or re-entered within a closure scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

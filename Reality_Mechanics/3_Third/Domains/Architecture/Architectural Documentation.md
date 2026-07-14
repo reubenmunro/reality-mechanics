@@ -5,23 +5,37 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.architectural-documentation
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Architecture]]"
-  - "[[Medium]]"
 
 conditions:
   places: "representational carrying for built resolution."
-  holds: "[[Architecture]], [[Medium]]."
-  pairs: "[[Architectural Visibility]]. Architectural Documentation carries the structural condition through medium; Architectural Visibility names the readability condition that documentation must achieve."
+  needs:
+    targets:
+      - third.architecture
+      - second.medium
+  holds:
+    targets:
+      - third.architecture
+      - second.medium
+    read: "[[Architecture]], [[Medium]]."
+  pairs:
+    targets:
+      - third.architectural-visibility
+    read: "[[Architectural Visibility]]. Architectural Documentation carries the structural condition through medium; Architectural Visibility names the readability condition that documentation must achieve."
   traces:
-    - "[[Architecture]]"
-    - "[[Medium]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Architectural Documentation becomes readable where built conditions are carried through a medium so use, repair, construction, or evaluation can remain retraceable."
-  carries: []
-
+    targets:
+      - third.architecture
+      - second.medium
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Architectural Documentation becomes readable where built conditions are carried through a medium so use, repair, construction, or evaluation can remain retraceable."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

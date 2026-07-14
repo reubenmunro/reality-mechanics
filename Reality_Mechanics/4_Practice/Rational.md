@@ -1,32 +1,48 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.rational
-
-needs:
-  - "[[Reasoning]]"
-  - "[[Ratio]]"
-  - "[[Reference Frame]]"
-  - "[[Carrying]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the quality of a read, action, or continuation that can remain in accountable proportion."
-  holds: "[[Reasoning]], [[Ratio]], [[Reference Frame]], [[Carrying]], and [[Trace]]. A ratio must be accountably read, the frame must be explicit, carrying must remain answerable, and trace must remain available."
-  pairs: "Merely logical. Rational does not mean formally logical alone; it means able to remain in accountable proportion."
+  needs:
+    targets:
+      - practice.reasoning
+      - first.ratio
+      - second.reference-frame
+      - second.carrying
+      - first.trace
+  holds:
+    targets:
+      - practice.reasoning
+      - first.ratio
+      - second.reference-frame
+      - second.carrying
+      - first.trace
+    read: "[[Reasoning]], [[Ratio]], [[Reference Frame]], [[Carrying]], and [[Trace]]. A ratio must be accountably read, the frame must be explicit, carrying must remain answerable, and trace must remain available."
+  pairs:
+    targets: []
+    read: "Merely logical. Rational does not mean formally logical alone; it means able to remain in accountable proportion."
   traces:
-    - "[[Reasoning]]"
-    - "[[Ratio]]"
-    - "[[Reference Frame]]"
-    - "[[Carrying]]"
-    - "[[Trace]]"
-  nests: "inside Atlas Practice as a quality of reads, actions, and continuations that can be carried without losing proportion."
-  reads: "where a continuation remains answerable to relation, reference frame, carrying, and traceability."
-  carries: []
-
+    targets:
+      - practice.reasoning
+      - first.ratio
+      - second.reference-frame
+      - second.carrying
+      - first.trace
+  nests:
+    targets: []
+    read: "inside Atlas Practice as a quality of reads, actions, and continuations that can be carried without losing proportion."
+  reads:
+    targets: []
+    read: "where a continuation remains answerable to relation, reference frame, carrying, and traceability."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

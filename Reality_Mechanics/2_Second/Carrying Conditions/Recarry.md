@@ -5,31 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.recarry
-
-needs:
-  - "[[Carrying]]"
-  - "[[Trace]]"
-  - "[[Contact]]"
-  - "[[Groundedness]]"
-  - "[[Release]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying returned through contact and held again, differently."
-  holds: "[[Carrying]], [[Trace]], [[Contact]], [[Groundedness]], [[Release]], and [[Compatibility]]. Carrying must remain traceable, contact must alter the carrying without erasing it, a changed path must be released enough to move, and the receiving or wider carrying relation must remain compatible before recarrying can be named."
-  pairs: "No lateral pair is required at this placement yet. Recarry names carrying returned through contact or carried again differently after changed carrying; it is not agreement, conversion, compromise, or the opposite of carrying."
+  needs:
+    targets:
+      - second.carrying
+      - first.trace
+      - first.contact
+      - ground.groundedness
+      - first.release
+      - second.compatibility
+  holds:
+    targets:
+      - second.carrying
+      - first.trace
+      - first.contact
+      - ground.groundedness
+      - first.release
+      - second.compatibility
+    read: "[[Carrying]], [[Trace]], [[Contact]], [[Groundedness]], [[Release]], and [[Compatibility]]. Carrying must remain traceable, contact must alter the carrying without erasing it, a changed path must be released enough to move, and the receiving or wider carrying relation must remain compatible before recarrying can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Recarry names carrying returned through contact or carried again differently after changed carrying; it is not agreement, conversion, compromise, or the opposite of carrying."
   traces:
-    - "[[Carrying]]"
-    - "[[Trace]]"
-    - "[[Contact]]"
-    - "[[Groundedness]]"
-    - "[[Release]]"
-    - "[[Compatibility]]"
-  nests: "within carrying as the condition through which what is carried enters contact, returns with trace, and is held again differently; or where what can no longer be carried through one local path is returned into grounding relations and carried differently."
-  reads: "Recarry becomes readable where carrying returns through contact still held, but altered by trace, or where retained carrying is traced to ground and released into compatible grounding relations rather than held only as local pressure or forced into absence."
+    targets:
+      - second.carrying
+      - first.trace
+      - first.contact
+      - ground.groundedness
+      - first.release
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within carrying as the condition through which what is carried enters contact, returns with trace, and is held again differently; or where what can no longer be carried through one local path is returned into grounding relations and carried differently."
+  reads:
+    targets: []
+    read: "Recarry becomes readable where carrying returns through contact still held, but altered by trace, or where retained carrying is traced to ground and released into compatible grounding relations rather than held only as local pressure or forced into absence."
   carries:
-    - "[[Recovery]]"
-
+    targets:
+      - third.recovery
 publish: true
 status: stable
 ---

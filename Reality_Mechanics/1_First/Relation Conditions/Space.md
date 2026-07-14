@@ -5,24 +5,36 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.space
-
-needs:
-  - "[[Clearance]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "held clearance as separation and extent — relation readable as position, distance, here/there, co-presence, and placement"
-  holds: "[[Clearance]] — relation must remain held apart enough to become locatable"
-  pairs: "[[Time]] — Space reads clearance as separation and extent; Time reads clearance as interval and continuation"
+  needs:
+    targets:
+      - first.clearance
+  holds:
+    targets:
+      - first.clearance
+    read: "[[Clearance]] — relation must remain held apart enough to become locatable"
+  pairs:
+    targets:
+      - first.time
+    read: "[[Time]] — Space reads clearance as separation and extent; Time reads clearance as interval and continuation"
   traces:
-    - "[[Clearance]]"
-  nests: "before boundary and before later reads of empty container or absolute extension — relation as placed rather than only persisting"
-  reads: "where clearance can be read as separated, extended, or located relation — where differences are not just held apart but placed in relation to each other"
+    targets:
+      - first.clearance
+  nests:
+    targets: []
+    read: "before boundary and before later reads of empty container or absolute extension — relation as placed rather than only persisting"
+  reads:
+    targets: []
+    read: "where clearance can be read as separated, extended, or located relation — where differences are not just held apart but placed in relation to each other"
   carries:
-    - "[[Physical Space]]"
-    - "[[Placed Participation]]"
-    - "[[Enter]]"
-    - "[[Locating]]"
-
+    targets:
+      - third.physical-space
+      - third.placed-participation
+      - first.enter
+      - third.locating
 publish: true
 status: stable
 ---

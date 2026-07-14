@@ -5,31 +5,47 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.technology-domain
+determination: pd.v3.pre-provenance-baseline
 domain: technology
-
-needs:
-  - "[[Domain]]"
-  - "[[Making Field]]"
-  - "[[Carrying]]"
-  - "[[Function]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the organised participation context through which produced arrangements extend, modify, automate, or support participation."
-  holds: "[[Domain]], [[Making Field]], [[Carrying]], [[Function]], [[Medium]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.domain
+      - third.making-field
+      - second.carrying
+      - second.function
+      - second.medium
+  holds:
+    targets:
+      - third.domain
+      - third.making-field
+      - second.carrying
+      - second.function
+      - second.medium
+    read: "[[Domain]], [[Making Field]], [[Carrying]], [[Function]], [[Medium]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Domain]]"
-    - "[[Making Field]]"
-    - "[[Carrying]]"
-    - "[[Function]]"
-    - "[[Medium]]"
-  nests: "within [[Making Field]] as a branch index — organising sub-domains (AI, Architecture, and others) rather than carrying its own distinct Applied Reads"
-  reads: "where participation is intentionally arranged through tools, systems, techniques, infrastructure, automation, or produced capabilities."
+    targets:
+      - third.domain
+      - third.making-field
+      - second.carrying
+      - second.function
+      - second.medium
+  nests:
+    targets:
+      - third.making-field
+    read: "within [[Making Field]] as a branch index — organising sub-domains (AI, Architecture, and others) rather than carrying its own distinct Applied Reads"
+  reads:
+    targets: []
+    read: "where participation is intentionally arranged through tools, systems, techniques, infrastructure, automation, or produced capabilities."
   carries:
-    - "[[AI]]"
-    - "[[Architecture]]"
-
+    targets:
+      - third.ai
+      - third.architecture
 publish: true
 status: stable
 ---

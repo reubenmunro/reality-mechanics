@@ -5,27 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.apparent-source
-
-needs:
-  - "[[Apparent]]"
-  - "[[Trace]]"
-  - "[[Carrying]]"
-  - "[[Structure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a presented or attributed structure taken as source where trace does not recover it as what actually bears the carrying."
-  holds: "[[Apparent]], [[Trace]], [[Carrying]], and [[Structure]]. A structure must be presented, carrying must be active, and trace must be available to test whether the presented source actually bears it before apparent source can be named."
-  pairs: "[[Bearing Source]]. Bearing Source names the structure recovered by trace as what actually bears a carried condition; Apparent Source names a presented or attributed structure taken as source that trace does not recover as its bearer."
+  needs:
+    targets:
+      - first.apparent
+      - first.trace
+      - second.carrying
+      - second.structure
+  holds:
+    targets:
+      - first.apparent
+      - first.trace
+      - second.carrying
+      - second.structure
+    read: "[[Apparent]], [[Trace]], [[Carrying]], and [[Structure]]. A structure must be presented, carrying must be active, and trace must be available to test whether the presented source actually bears it before apparent source can be named."
+  pairs:
+    targets:
+      - second.bearing-source
+    read: "[[Bearing Source]]. Bearing Source names the structure recovered by trace as what actually bears a carried condition; Apparent Source names a presented or attributed structure taken as source that trace does not recover as its bearer."
   traces:
-    - "[[Apparent]]"
-    - "[[Trace]]"
-    - "[[Carrying]]"
-    - "[[Structure]]"
-  nests: "inside carrying where a visible, proximal, authoritative, or stable structure is taken as source while its bearing remains unsupported by trace."
-  reads: "where retrace passes through or beyond the structure treated as source and recovers the actual bearing elsewhere."
+    targets:
+      - first.apparent
+      - first.trace
+      - second.carrying
+      - second.structure
+  nests:
+    targets: []
+    read: "inside carrying where a visible, proximal, authoritative, or stable structure is taken as source while its bearing remains unsupported by trace."
+  reads:
+    targets: []
+    read: "where retrace passes through or beyond the structure treated as source and recovers the actual bearing elsewhere."
   carries:
-    - "[[Source Drift]]"
-
+    targets:
+      - higher.source-drift
 publish: true
 status: stable
 ---

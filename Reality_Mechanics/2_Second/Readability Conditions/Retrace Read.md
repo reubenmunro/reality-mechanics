@@ -5,32 +5,46 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.retrace-read
-
-needs:
-  - "[[Read]]"
-  - "[[Trace]]"
-  - "[[Return]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a produced read through which a trace can recover the dependency path."
-  holds: "[[Read]], [[Trace]], and [[Return]]. A dependency path must be available, and its carried relation must become readable again as the path is followed."
-  pairs: "[[Recognition Read]] — Recognition Read reads what the dependency pattern looks like from above; Retrace Read traces back through the dependency path from within"
+  needs:
+    targets:
+      - first.read
+      - first.trace
+      - second.return
+  holds:
+    targets:
+      - first.read
+      - first.trace
+      - second.return
+    read: "[[Read]], [[Trace]], and [[Return]]. A dependency path must be available, and its carried relation must become readable again as the path is followed."
+  pairs:
+    targets:
+      - second.recognition-read
+    read: "[[Recognition Read]] — Recognition Read reads what the dependency pattern looks like from above; Retrace Read traces back through the dependency path from within"
   traces:
-    - "[[Read]]"
-    - "[[Trace]]"
-    - "[[Participation]]"
-    - "[[Return]]"
-    - "[[Traversal]]"
-  nests: "where a read can return through its dependency path to recover what made it available."
-  reads: "where a dependency path can be followed back through prior conditions to recover what made the current read available — where \"how did we get here\" has a traceable answer."
+    targets:
+      - first.read
+      - first.trace
+      - second.participation
+      - second.return
+      - second.traversal
+  nests:
+    targets: []
+    read: "where a read can return through its dependency path to recover what made it available."
+  reads:
+    targets: []
+    read: "where a dependency path can be followed back through prior conditions to recover what made the current read available — where \"how did we get here\" has a traceable answer."
   carries:
-    - "[[Nesting Read]]"
-    - "[[Higher Recognition]]"
-    - "[[Reality-Bearing Connection]]"
-    - "[[Illusion]]"
-    - "[[Higher Order Crossing]]"
-    - "[[Root Resilience]]"
-
+    targets:
+      - second.nesting-read
+      - higher.higher-recognition
+      - practice.reality-bearing-connection
+      - third.illusion
+      - higher.higher-order-crossing
+      - practice.root-resilience
 publish: true
 status: stable
 ---

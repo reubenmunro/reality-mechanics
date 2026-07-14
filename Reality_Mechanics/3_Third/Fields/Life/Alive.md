@@ -5,34 +5,52 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.alive
+determination: pd.v3.pre-provenance-baseline
 domain: life
-
-needs:
-  - "[[Life]]"
-  - "[[Live]]"
-  - "[[Coupling]]"
-  - "[[Carrying]]"
-  - "[[Recursive Regulation]]"
-  - "[[Compatibility]]"
-  - "[[Adaptation]]"
 
 conditions:
   places: "the condition through which coupled carrying is sustained through recursive regulation — a living condition that persists by continuing to regulate its own carrying."
-  holds: "[[Life]], [[Live]], [[Coupling]], [[Carrying]], [[Recursive Regulation]], [[Compatibility]], and [[Adaptation]]. Coupling must hold, recursive regulation must sustain compatible carrying, and adaptation must remain possible before the condition can be named as alive."
-  pairs: "[[Cancer]]. Alive names the living condition sustained through compatible recursive regulation; Cancer names the disorder where misrepair misdirects re-bearing within that same condition. Each requires the other to be distinguishable at this scope."
+  needs:
+    targets:
+      - third.life
+      - second.live
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+      - second.compatibility
+      - second.adaptation
+  holds:
+    targets:
+      - third.life
+      - second.live
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+      - second.compatibility
+      - second.adaptation
+    read: "[[Life]], [[Live]], [[Coupling]], [[Carrying]], [[Recursive Regulation]], [[Compatibility]], and [[Adaptation]]. Coupling must hold, recursive regulation must sustain compatible carrying, and adaptation must remain possible before the condition can be named as alive."
+  pairs:
+    targets:
+      - third.cancer
+    read: "[[Cancer]]. Alive names the living condition sustained through compatible recursive regulation; Cancer names the disorder where misrepair misdirects re-bearing within that same condition. Each requires the other to be distinguishable at this scope."
   traces:
-    - "[[Life]]"
-    - "[[Live]]"
-    - "[[Coupling]]"
-    - "[[Carrying]]"
-    - "[[Recursive Regulation]]"
-    - "[[Compatibility]]"
-    - "[[Adaptation]]"
-  nests: "within the Life Field as the condition through which recursive regulation sustains coupled carrying — the structural ground for cancer and over-treatment reads."
-  reads: "Alive becomes readable where living coupling can still maintain, repair, adapt, respond, resume, or continue compatible carrying at the evaluated scope."
+    targets:
+      - third.life
+      - second.live
+      - second.coupling
+      - second.carrying
+      - second.recursive-regulation
+      - second.compatibility
+      - second.adaptation
+  nests:
+    targets: []
+    read: "within the Life Field as the condition through which recursive regulation sustains coupled carrying — the structural ground for cancer and over-treatment reads."
+  reads:
+    targets: []
+    read: "Alive becomes readable where living coupling can still maintain, repair, adapt, respond, resume, or continue compatible carrying at the evaluated scope."
   carries:
-    - "[[Cancer]]" 
-
+    targets:
+      - third.cancer
 publish: true
 status: stable
 ---

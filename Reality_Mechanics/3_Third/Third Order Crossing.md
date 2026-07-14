@@ -5,26 +5,41 @@ order: third
 kind: crossing
 ai_role: crossing
 condition_key: third.third-order-crossing
-
-needs:
-  - "[[Third Order]]"
-  - "[[Nesting]]"
-  - "[[Recursive]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the crossing where organised and nested carrying enters its own carrying."
-  holds: "[[Third Order]], [[Nesting]], and [[Recursive]]."
-  pairs: "Asymmetry carries downward — marks the transition into [[Recursion]] and [[Higher Order]]"
+  needs:
+    targets:
+      - third.third-order
+      - third.nesting
+      - second.recursive
+  holds:
+    targets:
+      - third.third-order
+      - third.nesting
+      - second.recursive
+    read: "[[Third Order]], [[Nesting]], and [[Recursive]]."
+  pairs:
+    targets:
+      - higher.recursion
+      - higher.higher-order
+    read: "Asymmetry carries downward — marks the transition into [[Recursion]] and [[Higher Order]]"
   traces:
-    - "[[Third Order]]"
-    - "[[Nesting]]"
-    - "[[Recursive]]"
-  nests: "between Third Order and Higher Order."
-  reads: "where organised and nested carrying begins participating in the carrying that preserves, revises, or redirects it."
+    targets:
+      - third.third-order
+      - third.nesting
+      - second.recursive
+  nests:
+    targets: []
+    read: "between Third Order and Higher Order."
+  reads:
+    targets: []
+    read: "where organised and nested carrying begins participating in the carrying that preserves, revises, or redirects it."
   carries:
-    - "[[Recursion]]"
-    - "[[Higher Order]]"
-
+    targets:
+      - higher.recursion
+      - higher.higher-order
 publish: true
 status: working
 ---

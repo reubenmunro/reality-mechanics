@@ -5,24 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.count
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Unit]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "recurrence held as how many through distinguishable units."
-  holds: "[[Recurrence]] and [[Unit]]."
-  pairs: "Asymmetry carries downward — into [[Number]] and [[Step]]"
+  needs:
+    targets:
+      - second.recurrence
+      - second.unit
+  holds:
+    targets:
+      - second.recurrence
+      - second.unit
+    read: "[[Recurrence]] and [[Unit]]."
+  pairs:
+    targets:
+      - second.number
+      - practice.step
+    read: "Asymmetry carries downward — into [[Number]] and [[Step]]"
   traces:
-    - "[[Recurrence]]"
-    - "[[Unit]]"
-  nests: "where recurrence and unit become readable as quantity within scope."
-  reads: "where repeated units can be held together as how many — where recurrence is not only returning, but becoming readable as quantity within scope."
+    targets:
+      - second.recurrence
+      - second.unit
+  nests:
+    targets: []
+    read: "where recurrence and unit become readable as quantity within scope."
+  reads:
+    targets: []
+    read: "where repeated units can be held together as how many — where recurrence is not only returning, but becoming readable as quantity within scope."
   carries:
-    - "[[Number]]"
-    - "[[Step]]"
-
+    targets:
+      - second.number
+      - practice.step
 publish: true
 status: stable
 ---

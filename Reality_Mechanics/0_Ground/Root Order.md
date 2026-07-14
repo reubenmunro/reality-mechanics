@@ -5,38 +5,52 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.root-order
-
-needs:
-  - "[[Ground]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the governing dependency arrangement of the Atlas — what must already hold before later terms can become available, and the condition through which that arrangement becomes followable"
-  holds: "[[Ground]] — the system must acknowledge what precedes its own derivation before it can order dependency"
-  pairs: "Asymmetry carries downward — into [[Dependency Order]], [[Natural Order]], [[Passage Condition]]. Root Order names the governing dependency arrangement of the whole system; everything else traces to it. No lateral co-condition is required for it to be locatable."
+  needs:
+    targets:
+      - ground.ground
+  holds:
+    targets:
+      - ground.ground
+    read: "[[Ground]] — the system must acknowledge what precedes its own derivation before it can order dependency"
+  pairs:
+    targets:
+      - ground.dependency-order
+      - ground.natural-order
+      - ground.passage-condition
+    read: "Asymmetry carries downward — into [[Dependency Order]], [[Natural Order]], [[Passage Condition]]. Root Order names the governing dependency arrangement of the whole system; everything else traces to it. No lateral co-condition is required for it to be locatable."
   traces:
-    - "[[Ground]]"
-  nests: "the dependency spine of the Atlas — readable through organic and engineered organisation without becoming mere sequence"
-  reads: "where a term can be traced backward through prior conditions without confusing dependency with sequence, and where that arrangement is followable rather than merely present"
+    targets:
+      - ground.ground
+  nests:
+    targets: []
+    read: "the dependency spine of the Atlas — readable through organic and engineered organisation without becoming mere sequence"
+  reads:
+    targets: []
+    read: "where a term can be traced backward through prior conditions without confusing dependency with sequence, and where that arrangement is followable rather than merely present"
   carries:
-    - "[[Dependency Order]]"
-    - "[[Natural Order]]"
-    - "[[Passage Condition]]"
-    - "[[Root System]]"
-    - "[[Emergent]]"
-    - "[[Generic]]"
-    - "[[Groundedness]]"
-    - "[[Invariant]]"
-    - "[[Label]]"
-    - "[[Primitive]]"
-    - "[[Structural Disorder]]"
-    - "[[Term]]"
-    - "[[First Order]]"
-    - "[[Number]]"
-    - "[[Atlas]]"
-    - "[[Order Trace]]"
-    - "[[Root Resilience]]"
-    - "[[Translation Invariance]]"
-
+    targets:
+      - ground.dependency-order
+      - ground.natural-order
+      - ground.passage-condition
+      - practice.root-system
+      - ground.emergent
+      - ground.generic
+      - ground.groundedness
+      - ground.invariant
+      - ground.label
+      - ground.primitive
+      - ground.structural-disorder
+      - ground.term
+      - first.first-order
+      - second.number
+      - practice.atlas
+      - practice.order-trace
+      - practice.root-resilience
+      - practice.translation-invariance
 publish: true
 status: stable
 ---

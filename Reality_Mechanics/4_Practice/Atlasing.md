@@ -1,29 +1,43 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.atlasing
-
-needs:
-  - "[[Atlas]]"
-  - "[[Common Term Structure]]"
-  - "[[Reality-Bearing Connection]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the act of placing, revising, or connecting terms inside the Atlas according to trace, read, opens, and retrace."
-  holds: "[[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]]."
-  pairs: "Asymmetry carries downward — Atlasing is the terminal practice of placing, revising, and connecting terms in the Atlas; it opens the work without carrying a further structural term"
+  needs:
+    targets:
+      - practice.atlas
+      - foundation.common-term-structure
+      - practice.reality-bearing-connection
+  holds:
+    targets:
+      - practice.atlas
+      - foundation.common-term-structure
+      - practice.reality-bearing-connection
+    read: "[[Atlas]], [[Common Term Structure]], and [[Reality-Bearing Connection]]."
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — Atlasing is the terminal practice of placing, revising, and connecting terms in the Atlas; it opens the work without carrying a further structural term"
   traces:
-    - "[[Atlas]]"
-    - "[[Common Term Structure]]"
-    - "[[Reality-Bearing Connection]]"
-    - "[[Check]]"
-  nests: "as the ongoing practice of keeping the Atlas placed, grounded, and retraceable."
-  reads: "where a term, experience, correction, or contribution is placed so its support, readable condition, and available openings remain retraceable."
-  carries: []
-
+    targets:
+      - practice.atlas
+      - foundation.common-term-structure
+      - practice.reality-bearing-connection
+      - practice.check
+  nests:
+    targets: []
+    read: "as the ongoing practice of keeping the Atlas placed, grounded, and retraceable."
+  reads:
+    targets: []
+    read: "where a term, experience, correction, or contribution is placed so its support, readable condition, and available openings remain retraceable."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

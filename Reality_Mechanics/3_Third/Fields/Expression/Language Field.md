@@ -5,28 +5,46 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.language-field
+determination: pd.v3.pre-provenance-baseline
 domain: expression
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Readability]]"
-  - "[[Difference]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the recurring field of participation through which readable difference through medium becomes available — the field from which language, representation, and translation emerge."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Readability]], [[Difference]], and [[Medium]]. Field of Participation must structure a recurring scope, readability must be available, and difference must be present through a medium before the language field can be named."
-  pairs: "[[Expression Field]]. Language Field names the field of readable difference through medium — where distinction becomes nameable; Expression Field names the field of outward appearance through medium — where relation becomes visibly present. Each requires the other to be locatable: language is only readable against a background of expression; expression is only outward against a background of what can be named."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.readability
+      - second.difference
+      - second.medium
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.readability
+      - second.difference
+      - second.medium
+    read: "[[Field of Participation]], [[Organic Field]], [[Readability]], [[Difference]], and [[Medium]]. Field of Participation must structure a recurring scope, readability must be available, and difference must be present through a medium before the language field can be named."
+  pairs:
+    targets:
+      - third.expression-field
+    read: "[[Expression Field]]. Language Field names the field of readable difference through medium — where distinction becomes nameable; Expression Field names the field of outward appearance through medium — where relation becomes visibly present. Each requires the other to be locatable: language is only readable against a background of expression; expression is only outward against a background of what can be named."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Readability]]"
-    - "[[Difference]]"
-    - "[[Medium]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where readable difference through a medium becomes available as a recurring participatory field — where what can be named and traced recurs across cases, domains, and branches."
-  carries: []
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.readability
+      - second.difference
+      - second.medium
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where readable difference through a medium becomes available as a recurring participatory field — where what can be named and traced recurs across cases, domains, and branches."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

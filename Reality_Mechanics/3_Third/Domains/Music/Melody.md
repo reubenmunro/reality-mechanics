@@ -5,29 +5,42 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.melody
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Sound]]"
-  - "[[Thread]]"
-  - "[[Musical Rhythm]]"
 
 conditions:
   places: "the traceable thread of bearing carried through sequential sound"
-  holds: "[[Sound]], [[Thread]], and [[Musical Rhythm]]. A followable line requires audible carrying, followable continuity, and temporal structure to carry it forward."
-  pairs: "No lateral pair is required at this placement. Sound/Noise holds the broader audible contrast; Melody names the traceable line carried by sound through rhythm."
+  needs:
+    targets:
+      - third.sound
+      - first.thread
+      - third.musical-rhythm
+  holds:
+    targets:
+      - third.sound
+      - first.thread
+      - third.musical-rhythm
+    read: "[[Sound]], [[Thread]], and [[Musical Rhythm]]. A followable line requires audible carrying, followable continuity, and temporal structure to carry it forward."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement. Sound/Noise holds the broader audible contrast; Melody names the traceable line carried by sound through rhythm."
   traces:
-    - "[[Sound]]"
-    - "[[Thread]]"
-    - "[[Musical Rhythm]]"
-    - "[[Carrying]]"
-    - "[[Music]]"
-  nests: "within the music domain as the horizontal carrying condition — the line through which musical thought can be followed and returned to"
-  reads: "where sequential tones carry a followable line — one that can be noticed, departed from, and returned to as the same line"
+    targets:
+      - third.sound
+      - first.thread
+      - third.musical-rhythm
+      - second.carrying
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the horizontal carrying condition — the line through which musical thought can be followed and returned to"
+  reads:
+    targets: []
+    read: "where sequential tones carry a followable line — one that can be noticed, departed from, and returned to as the same line"
   carries:
-    - "[[Harmony]]"
-    - "[[Musical Form]]"
-
+    targets:
+      - third.harmony
+      - third.musical-form
 publish: true
 status: stable
 ---

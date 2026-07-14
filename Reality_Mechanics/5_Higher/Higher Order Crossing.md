@@ -5,28 +5,45 @@ order: higher
 kind: crossing
 ai_role: crossing
 condition_key: higher.higher-order-crossing
-
-needs:
-  - "[[Higher Order]]"
-  - "[[Recursion]]"
-  - "[[Invisible Bearing]]"
-  - "[[Retrace Read|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the threshold where organised carrying offers its trace to practice and a participant may enter it through retracing."
-  holds: "[[Higher Order]], [[Recursion]], [[Invisible Bearing]], and [[Retrace Read|Retrace]]."
-  pairs: "Asymmetry carries downward — marks the transition into [[Higher Retrace]] and [[Retrace Practice]]"
+  needs:
+    targets:
+      - higher.higher-order
+      - higher.recursion
+      - higher.invisible-bearing
+      - second.retrace-read
+  holds:
+    targets:
+      - higher.higher-order
+      - higher.recursion
+      - higher.invisible-bearing
+      - second.retrace-read
+    read: "[[Higher Order]], [[Recursion]], [[Invisible Bearing]], and [[Retrace Read|Retrace]]."
+  pairs:
+    targets:
+      - higher.higher-retrace
+      - practice.retrace-practice
+    read: "Asymmetry carries downward — marks the transition into [[Higher Retrace]] and [[Retrace Practice]]"
   traces:
-    - "[[Higher Order]]"
-    - "[[Recursion]]"
-    - "[[Invisible Bearing]]"
-    - "[[Retrace Read|Retrace]]"
-  nests: "between higher-order recognition and practical discipline — the structural threshold that neither Higher Order nor Practice can replace."
-  reads: "where a participant enters the trace offered by organised carrying and follows connection backward through practice."
+    targets:
+      - higher.higher-order
+      - higher.recursion
+      - higher.invisible-bearing
+      - second.retrace-read
+  nests:
+    targets: []
+    read: "between higher-order recognition and practical discipline — the structural threshold that neither Higher Order nor Practice can replace."
+  reads:
+    targets: []
+    read: "where a participant enters the trace offered by organised carrying and follows connection backward through practice."
   carries:
-    - "[[Higher Retrace]]"
-    - "[[Retrace Practice]]"
-    - "[[Atlas Practice]]"
+    targets:
+      - higher.higher-retrace
+      - practice.retrace-practice
+      - practice.atlas-practice
 publish: true
 status: working
 ---

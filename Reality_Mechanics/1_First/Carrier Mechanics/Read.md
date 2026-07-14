@@ -5,31 +5,46 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.read
-
-needs:
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "recognition of meaningful distinction at the current scope"
-  holds: "[[Trace]] — the distinction must remain followable for it to be taken up as meaningful; trace does not finish before read begins"
-  pairs: "Asymmetry carries downward — into [[Readability]], [[Thread]], [[Step]], and [[Retrace Read|Retrace]]"
+  needs:
+    targets:
+      - first.trace
+  holds:
+    targets:
+      - first.trace
+    read: "[[Trace]] — the distinction must remain followable for it to be taken up as meaningful; trace does not finish before read begins"
+  pairs:
+    targets:
+      - second.readability
+      - first.thread
+      - practice.step
+      - second.retrace-read
+    read: "Asymmetry carries downward — into [[Readability]], [[Thread]], [[Step]], and [[Retrace Read|Retrace]]"
   traces:
-    - "[[Trace]]"
-    - "[[Attend]]"
-    - "[[Hold]]"
-  nests: "between trace and readability — can widen or recur without exhausting the trace"
-  reads: "where a traced distinction is taken up as meaningful, so the trace is not only followable but significant within the current scope"
+    targets:
+      - first.trace
+      - first.attend
+      - first.hold
+  nests:
+    targets: []
+    read: "between trace and readability — can widen or recur without exhausting the trace"
+  reads:
+    targets: []
+    read: "where a traced distinction is taken up as meaningful, so the trace is not only followable but significant within the current scope"
   carries:
-    - "[[Readability]]"
-    - "[[Thread]]"
-    - "[[Step]]"
-    - "[[Retrace Read|Retrace]]"
-    - "[[Consciousness]]"
-    - "[[Structural Carrier]]"
-    - "[[Communicating]]"
-    - "[[Expressing]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - second.readability
+      - first.thread
+      - practice.step
+      - second.retrace-read
+      - higher.consciousness
+      - first.structural-carrier
+      - third.communicating
+      - third.expressing
+      - practice.reasoning
 publish: true
 status: stable
 ---

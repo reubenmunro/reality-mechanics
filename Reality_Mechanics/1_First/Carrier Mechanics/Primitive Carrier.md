@@ -5,24 +5,37 @@ order: first
 kind: class
 ai_role: class
 condition_key: first.primitive-carrier
-
-needs:
-  - "[[Boundary]]"
-  - "[[Clearance]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the first-order carrier role through which located distinction can be carried as readable relation"
-  holds: "[[Boundary]] and [[Clearance]] — distinction must be located while relation remains readable"
-  pairs: "Asymmetry carries downward — into [[Operation Carrier]]. Primitive Carrier names the first-order carrier role; what that role carries forward is Operation Carrier."
+  needs:
+    targets:
+      - first.boundary
+      - first.clearance
+  holds:
+    targets:
+      - first.boundary
+      - first.clearance
+    read: "[[Boundary]] and [[Clearance]] — distinction must be located while relation remains readable"
+  pairs:
+    targets:
+      - first.operation-carrier
+    read: "Asymmetry carries downward — into [[Operation Carrier]]. Primitive Carrier names the first-order carrier role; what that role carries forward is Operation Carrier."
   traces:
-    - "[[Boundary]]"
-    - "[[Clearance]]"
-  nests: "below second-order carrying — carries located distinction as readable relation without becoming a second-order condition, domain, branch, or engineered operation"
-  reads: "where a located distinction can be carried without yet becoming a second-order condition, domain, branch, or engineered operation"
+    targets:
+      - first.boundary
+      - first.clearance
+  nests:
+    targets: []
+    read: "below second-order carrying — carries located distinction as readable relation without becoming a second-order condition, domain, branch, or engineered operation"
+  reads:
+    targets: []
+    read: "where a located distinction can be carried without yet becoming a second-order condition, domain, branch, or engineered operation"
   carries:
-    - "[[Operation Carrier]]"
-    - "[[Structural Carrier]]"
-
+    targets:
+      - first.operation-carrier
+      - first.structural-carrier
 publish: true
 status: stable
 ---

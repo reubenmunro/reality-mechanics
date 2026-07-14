@@ -5,33 +5,52 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.over-treatment
+determination: pd.v3.pre-provenance-baseline
 domain: life
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Alive]]"
-  - "[[Cancer]]"
-  - "[[Misrepair]]"
-  - "[[Capacity]]"
-  - "[[Overload]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where intervention proceeds as repair but exceeds supportable capacity at the relevant closure scope — incompatible carrying in the name of restoration."
-  holds: "[[Applied Read]], [[Alive]], [[Cancer]], [[Misrepair]], [[Capacity]], [[Overload]], and [[Closure Scope]]. The alive condition must be strained and intervention must exceed compatible capacity before the incompatibility can be named as over-treatment."
-  pairs: "[[Medicine]]. Medicine names the maintained coupling that holds organic asymmetry within compatible bounds — where the practitioner's bearing preserves the body's available carrying; Over-Treatment names the condition where that coupling exceeds compatible scope and the intervention becomes the source of harm."
+  needs:
+    targets:
+      - third.applied-read
+      - third.alive
+      - third.cancer
+      - third.misrepair
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.alive
+      - third.cancer
+      - third.misrepair
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+    read: "[[Applied Read]], [[Alive]], [[Cancer]], [[Misrepair]], [[Capacity]], [[Overload]], and [[Closure Scope]]. The alive condition must be strained and intervention must exceed compatible capacity before the incompatibility can be named as over-treatment."
+  pairs:
+    targets:
+      - third.medicine
+    read: "[[Medicine]]. Medicine names the maintained coupling that holds organic asymmetry within compatible bounds — where the practitioner's bearing preserves the body's available carrying; Over-Treatment names the condition where that coupling exceeds compatible scope and the intervention becomes the source of harm."
   traces:
-    - "[[Applied Read]]"
-    - "[[Alive]]"
-    - "[[Cancer]]"
-    - "[[Misrepair]]"
-    - "[[Capacity]]"
-    - "[[Overload]]"
-    - "[[Closure Scope]]"
-  nests: "within the Life Field as an applied read of Cancer and Misrepair, where therapeutic intervention proceeds incompatibly with the living condition it addresses."
-  reads: "Over-Treatment becomes readable where intervention proceeds as repair while exceeding capacity so the living condition's compatible carrying becomes less available."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.alive
+      - third.cancer
+      - third.misrepair
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within the Life Field as an applied read of Cancer and Misrepair, where therapeutic intervention proceeds incompatibly with the living condition it addresses."
+  reads:
+    targets: []
+    read: "Over-Treatment becomes readable where intervention proceeds as repair while exceeding capacity so the living condition's compatible carrying becomes less available."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

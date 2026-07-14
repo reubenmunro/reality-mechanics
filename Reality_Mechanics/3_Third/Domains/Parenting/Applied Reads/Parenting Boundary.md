@@ -5,29 +5,45 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.parenting-boundary
+determination: pd.v3.pre-provenance-baseline
 domain: parenting
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Parenting]]"
-  - "[[Boundary]]"
-  - "[[Care]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the local case where parental care must locate a boundary that preserves availability without forcing dependence."
-  holds: "[[Applied Read]], [[Parenting]], [[Boundary]], [[Care]], [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - first.boundary
+      - third.care
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - first.boundary
+      - third.care
+      - second.closure-scope
+    read: "[[Applied Read]], [[Parenting]], [[Boundary]], [[Care]], [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Parenting]]"
-    - "[[Boundary]]"
-    - "[[Care]]"
-    - "[[Closure Scope]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Parenting Boundary becomes readable where a limit preserves the child's available bearing rather than merely asserting parental direction."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.parenting
+      - first.boundary
+      - third.care
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Parenting Boundary becomes readable where a limit preserves the child's available bearing rather than merely asserting parental direction."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

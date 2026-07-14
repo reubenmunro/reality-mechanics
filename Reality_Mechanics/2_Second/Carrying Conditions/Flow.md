@@ -5,32 +5,48 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.flow
-
-needs:
-  - "[[Carrying]]"
-  - "[[Medium]]"
-  - "[[Process]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying continuing through a medium."
-  holds: "[[Carrying]], [[Medium]], and [[Process]]."
-  pairs: "Asymmetry carries downward — into [[Throughput]], [[Current]], and [[Resistance]]"
+  needs:
+    targets:
+      - second.carrying
+      - second.medium
+      - second.process
+  holds:
+    targets:
+      - second.carrying
+      - second.medium
+      - second.process
+    read: "[[Carrying]], [[Medium]], and [[Process]]."
+  pairs:
+    targets:
+      - second.throughput
+      - second.current
+      - second.resistance
+    read: "Asymmetry carries downward — into [[Throughput]], [[Current]], and [[Resistance]]"
   traces:
-    - "[[Carrying]]"
-    - "[[Medium]]"
-    - "[[Process]]"
-    - "[[Change]]"
-  nests: "inside carrying through a medium. It can open current, throughput, resistance, friction, drag, and heat."
-  reads: "where a carried condition continues through a medium as an available process."
+    targets:
+      - second.carrying
+      - second.medium
+      - second.process
+      - second.change
+  nests:
+    targets: []
+    read: "inside carrying through a medium. It can open current, throughput, resistance, friction, drag, and heat."
+  reads:
+    targets: []
+    read: "where a carried condition continues through a medium as an available process."
   carries:
-    - "[[Throughput]]"
-    - "[[Current]]"
-    - "[[Energy]]"
-    - "[[Resistance]]"
-    - "[[Friction]]"
-    - "[[Drag]]"
-    - "[[Heat]]"
-
+    targets:
+      - second.throughput
+      - second.current
+      - second.energy
+      - second.resistance
+      - second.friction
+      - second.drag
+      - second.heat
 publish: true
 status: stable
 ---

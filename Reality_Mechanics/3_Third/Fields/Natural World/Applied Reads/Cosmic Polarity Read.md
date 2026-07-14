@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.cosmic-polarity-read
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World Field]]"
-  - "[[Physical Field Conditions]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Field Bearing]]"
-  - "[[Resolution Polarity]]"
-  - "[[Observation]]"
 
 conditions:
   places: "the applied comparison through which physical-field cases — gravity, dark matter, dark energy, light, and black holes — are read against Resolution Polarity."
-  holds: "[[Natural World Field]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Resolution Polarity]], and [[Observation]]. Physical field conditions must hold and resolution polarity must be available as a structural lens before the applied comparison can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.resolution-polarity
+      - second.observation
+  holds:
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.resolution-polarity
+      - second.observation
+    read: "[[Natural World Field]], [[Physical Field Conditions]], [[Field Availability Pattern]], [[Field Bearing]], [[Resolution Polarity]], and [[Observation]]. Physical field conditions must hold and resolution polarity must be available as a structural lens before the applied comparison can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Natural World Field]]"
-    - "[[Physical Field Conditions]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Field Bearing]]"
-    - "[[Resolution Polarity]]"
-    - "[[Observation]]"
-  nests: "within the Natural World Field as an applied structural comparison — a polarity read that holds physical-field cases against Resolution Polarity without claiming physical field conditions as structural source."
-  reads: "Cosmic Polarity Read becomes available where physical-field notes are compared as a polarity set: light as apparent clearance, gravity as constrained clearance, dark matter as invisible bearing, dark energy as opening clearance, and black hole as boundary-limited non-return."
-  carries: []
-
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - third.field-bearing
+      - third.resolution-polarity
+      - second.observation
+  nests:
+    targets: []
+    read: "within the Natural World Field as an applied structural comparison — a polarity read that holds physical-field cases against Resolution Polarity without claiming physical field conditions as structural source."
+  reads:
+    targets: []
+    read: "Cosmic Polarity Read becomes available where physical-field notes are compared as a polarity set: light as apparent clearance, gravity as constrained clearance, dark matter as invisible bearing, dark energy as opening clearance, and black hole as boundary-limited non-return."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

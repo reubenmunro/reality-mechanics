@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.divisible-bearing
-
-needs:
-  - "[[Bearing]]"
-  - "[[Divisible]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "bearing that can be separated into distinguishable parts without losing the carrying condition."
-  holds: "[[Bearing]] and [[Divisible]]."
-  pairs: "[[Indivisible Bearing]]. Divisible Bearing carries through separable parts; Indivisible Bearing must remain whole to carry."
+  needs:
+    targets:
+      - first.bearing
+      - first.divisible
+  holds:
+    targets:
+      - first.bearing
+      - first.divisible
+    read: "[[Bearing]] and [[Divisible]]."
+  pairs:
+    targets:
+      - second.indivisible-bearing
+    read: "[[Indivisible Bearing]]. Divisible Bearing carries through separable parts; Indivisible Bearing must remain whole to carry."
   traces:
-    - "[[Bearing]]"
-    - "[[Divisible]]"
-  nests: "where carrying remains readable across distinguishable parts."
-  reads: "where carrying can be read through distinguishable divisions — where the holding condition persists across separable parts without losing participation."
+    targets:
+      - first.bearing
+      - first.divisible
+  nests:
+    targets: []
+    read: "where carrying remains readable across distinguishable parts."
+  reads:
+    targets: []
+    read: "where carrying can be read through distinguishable divisions — where the holding condition persists across separable parts without losing participation."
   carries:
-    - "[[Pattern]]"
-
+    targets:
+      - second.pattern
 publish: true
 status: stable
 ---

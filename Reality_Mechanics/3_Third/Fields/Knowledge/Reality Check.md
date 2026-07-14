@@ -5,40 +5,59 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.reality-check
+determination: pd.v3.pre-provenance-baseline
 domain: knowledge
-
-needs:
-  - "[[Reality]]"
-  - "[[Read]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
-  - "[[Bearing Source]]"
-  - "[[Dependency Disorder]]"
-  - "[[Check]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Check]]"
 
 conditions:
   places: "the evaluative read through which a claim, representation, or local model is checked for compatibility with what bears it — the closure-scope test of whether a read remains traceable."
-  holds: "[[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], [[Check]], and [[Translation Boundary]]. Practice Check must cross explicitly into the Knowledge Field read."
-  pairs: "[[Knowledge]] — Reality Check is the closure test of knowing; Knowledge holds the field within which that test applies."
+  needs:
+    targets:
+      - second.reality
+      - first.read
+      - second.compatibility
+      - second.closure-scope
+      - second.bearing-source
+      - second.dependency-disorder
+      - practice.check
+      - third.translation-boundary
+  holds:
+    targets:
+      - second.reality
+      - first.read
+      - second.compatibility
+      - second.closure-scope
+      - second.bearing-source
+      - second.dependency-disorder
+      - practice.check
+      - third.translation-boundary
+    read: "[[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], [[Check]], and [[Translation Boundary]]. Practice Check must cross explicitly into the Knowledge Field read."
+  pairs:
+    targets:
+      - third.knowledge
+    read: "[[Knowledge]] — Reality Check is the closure test of knowing; Knowledge holds the field within which that test applies."
   traces:
-    - "[[Reality]]"
-    - "[[Read]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-    - "[[Bearing Source]]"
-    - "[[Dependency Disorder]]"
-    - "[[Check]]"
-    - "[[Translation Boundary]]"
-    - "[[Knowledge]]"
-  nests: "within the Knowledge Field as the evaluative path read through which claims and models are tested against traceable bearing."
-  reads: "Reality Check becomes readable where a representation, claim, or read is tested against what can still be borne, resolved, and carried by its bearing source at the relevant closure scope, including whether the read is calibrated to the order and scope of the question it is answering and whether the boundary that turns read into action remains traceable."
+    targets:
+      - second.reality
+      - first.read
+      - second.compatibility
+      - second.closure-scope
+      - second.bearing-source
+      - second.dependency-disorder
+      - practice.check
+      - third.translation-boundary
+      - third.knowledge
+  nests:
+    targets: []
+    read: "within the Knowledge Field as the evaluative path read through which claims and models are tested against traceable bearing."
+  reads:
+    targets: []
+    read: "Reality Check becomes readable where a representation, claim, or read is tested against what can still be borne, resolved, and carried by its bearing source at the relevant closure scope, including whether the read is calibrated to the order and scope of the question it is answering and whether the boundary that turns read into action remains traceable."
   carries:
-    - "[[Competence Boundary]]" 
-
+    targets:
+      - third.competence-boundary
 publish: true
 status: stable
 ---

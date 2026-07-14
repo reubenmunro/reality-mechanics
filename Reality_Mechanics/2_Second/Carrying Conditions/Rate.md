@@ -5,31 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.rate
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Interval]]"
-  - "[[Measure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation read against interval."
-  holds: "[[Recurrence]], [[Interval]], and [[Measure]]."
-  pairs: "Asymmetry carries downward — into [[Frequency]], [[Speed]], and [[Tempo]]"
+  needs:
+    targets:
+      - second.recurrence
+      - second.interval
+      - second.measure
+  holds:
+    targets:
+      - second.recurrence
+      - second.interval
+      - second.measure
+    read: "[[Recurrence]], [[Interval]], and [[Measure]]."
+  pairs:
+    targets:
+      - second.frequency
+      - second.speed
+      - second.tempo
+    read: "Asymmetry carries downward — into [[Frequency]], [[Speed]], and [[Tempo]]"
   traces:
-    - "[[Recurrence]]"
-    - "[[Interval]]"
-    - "[[Measure]]"
-  nests: "inside interval and measure as recurrence, change, or carrying read per interval."
-  reads: "where recurrence, change, or carrying can be read as occurring per interval."
+    targets:
+      - second.recurrence
+      - second.interval
+      - second.measure
+  nests:
+    targets: []
+    read: "inside interval and measure as recurrence, change, or carrying read per interval."
+  reads:
+    targets: []
+    read: "where recurrence, change, or carrying can be read as occurring per interval."
   carries:
-    - "[[Frequency]]"
-    - "[[Speed]]"
-    - "[[Tempo]]"
-    - "[[Pace]]"
-    - "[[Timescale]]"
-    - "[[Throughput]]"
-    - "[[Resolution Rate]]"
-
+    targets:
+      - second.frequency
+      - second.speed
+      - second.tempo
+      - second.pace
+      - third.timescale
+      - second.throughput
+      - second.resolution-rate
 publish: true
 status: stable
 ---

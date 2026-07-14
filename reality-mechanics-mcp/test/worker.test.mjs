@@ -1,90 +1,45 @@
-/**
- * Offline tests for the D1-backed Reality Mechanics Atlas MCP Worker.
- * No network; provides a tiny ATLAS_DB mock with the SQL shapes used here.
- */
-import assert from "node:assert";
+import assert from "node:assert/strict";
+import {
+  AI_ENTRY_PROTOCOL,
+  CANONICAL_ENTRY_COUNT,
+  CANONICAL_SOURCE_HASH,
+  RELATION_KEYS,
+} from "../generated/canonical-participation.mjs";
 
+const emptyStructure = () => Object.fromEntries(RELATION_KEYS.map((relation) => [relation, []]));
+const entry = (id, title, { order = null, register = null, structure = emptyStructure() } = {}) => ({
+  id,
+  title,
+  source_path: `Reality_Mechanics/${title}.md`,
+  public_url: `https://realitymechanics.nz/field#${id}`,
+  status: "stable",
+  grounded: 1,
+  entry_order: order,
+  entry_register: register,
+  determination: "pd.v3.pre-provenance-baseline",
+  entry_type: register === "practice" ? "practice" : "term",
+  aliases: "[]",
+  tags: "[]",
+  related: JSON.stringify(Object.values(structure).flat()),
+  structure: JSON.stringify(structure),
+  conditions: JSON.stringify({
+    places: `${title} test place`,
+    ...Object.fromEntries(RELATION_KEYS.map((relation) => [relation, { targets: structure[relation] }])),
+  }),
+  headings: "[]",
+  excerpt: `${title} excerpt.`,
+  content: `# ${title}\n\n${title} canonical content.`,
+  word_count: 4,
+  updated: null,
+});
+
+const atlasStructure = emptyStructure();
+atlasStructure.carries = ["practice.ai-participation"];
 const rows = [
-  {
-    id: "practice.atlas",
-    title: "Atlas",
-    source_path: "Reality_Mechanics/Atlas.md",
-    public_url: "https://realitymechanics.nz/field#practice.atlas",
-    status: "stable",
-    grounded: 1,
-    entry_order: "practice",
-    entry_type: "practice",
-    aliases: "[]",
-    tags: "[]",
-    related: "[]",
-    structure: JSON.stringify({ holds: [], traces: [], carries: ["practice.ai-participation"], pairs: [], nests: [], reads: [] }),
-    headings: "[]",
-    excerpt: "Atlas names the dependency-ordered reasoning system.",
-    content: "# Atlas\n\nAtlas names the dependency-ordered reasoning system.",
-    word_count: 7,
-    content_hash: "sha256:atlas",
-    updated: "2026-06-30T00:00:00.000Z",
-  },
-  {
-    id: "practice.ai-participation",
-    title: "AI Participation",
-    source_path: "Reality_Mechanics/AI_PARTICIPATION.md",
-    public_url: "https://realitymechanics.nz/field#practice.ai-participation",
-    status: "stable",
-    grounded: 1,
-    entry_order: "practice",
-    entry_type: "practice",
-    aliases: "[]",
-    tags: "[]",
-    related: "[]",
-    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
-    headings: "[]",
-    excerpt: "AI participation remains answerable to Atlas structure.",
-    content: "# AI Participation\n\nAI participation remains answerable to Atlas structure.",
-    word_count: 8,
-    content_hash: "sha256:ai-participation",
-    updated: "2026-06-30T00:00:00.000Z",
-  },
-  {
-    id: "practice.atlas-note-standard",
-    title: "Atlas Note Standard",
-    source_path: "Reality_Mechanics/4_Practice/Atlas Note Standard.md",
-    public_url: "https://realitymechanics.nz/field#practice.atlas-note-standard",
-    status: "stable",
-    grounded: 1,
-    entry_order: "practice",
-    entry_type: "practice",
-    aliases: "[]",
-    tags: "[]",
-    related: "[]",
-    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
-    headings: "[]",
-    excerpt: "Atlas Note Standard names the note grammar.",
-    content: "# Atlas Note Standard\n\n## Holds\n\nAtlas.",
-    word_count: 6,
-    content_hash: "sha256:atlas-note-standard",
-    updated: "2026-06-30T00:00:00.000Z",
-  },
-  {
-    id: "practice.ungrounded",
-    title: "Ungrounded",
-    source_path: "Reality_Mechanics/4_Practice/Ungrounded.md",
-    public_url: "https://realitymechanics.nz/field#practice.ungrounded",
-    status: "stable",
-    grounded: 0,
-    entry_order: "practice",
-    entry_type: "practice",
-    aliases: "[]",
-    tags: "[]",
-    related: "[]",
-    structure: JSON.stringify({ holds: ["practice.atlas"], traces: [], carries: [], pairs: [], nests: [], reads: [] }),
-    headings: "[]",
-    excerpt: "Ungrounded test entry.",
-    content: "# Ungrounded\n\n## Reads\n\nStill settling.",
-    word_count: 4,
-    content_hash: "sha256:ungrounded-before",
-    updated: "2026-06-30T00:00:00.000Z",
-  },
+  entry("practice.atlas", "Atlas", { register: "practice", structure: atlasStructure }),
+  entry("foundation.common-term-structure", "Common Term Structure", { register: "foundation" }),
+  entry("practice.ai-participation", "AI Participation", { register: "practice" }),
+  entry("first.relation", "Relation", { order: "first" }),
 ];
 
 function makeDb() {
@@ -94,13 +49,17 @@ function makeDb() {
         params: [],
         bind(...params) { this.params = params; return this; },
         async all() {
+          if (/SELECT key, value FROM atlas_metadata/.test(sql)) {
+            return { results: [
+              { key: "source_hash", value: CANONICAL_SOURCE_HASH },
+              { key: "entry_count", value: String(CANONICAL_ENTRY_COUNT) },
+            ] };
+          }
           if (/WHERE id IN/.test(sql)) {
             const ids = new Set(this.params);
             return { results: rows.filter((row) => ids.has(row.id)) };
           }
-          if (/WHERE id = \?/.test(sql)) {
-            return { results: rows.filter((row) => row.id === this.params[0]) };
-          }
+          if (/WHERE id = \?/.test(sql)) return { results: rows.filter((row) => row.id === this.params[0]) };
           if (/WHERE title = \? COLLATE NOCASE/.test(sql)) {
             const title = String(this.params[0] || "").toLowerCase();
             return { results: rows.filter((row) => row.title.toLowerCase() === title) };
@@ -108,12 +67,9 @@ function makeDb() {
           return { results: rows };
         },
         async first() {
-          if (/COUNT\(\*\) as n/.test(sql)) return { n: rows.length };
+          if (/COUNT\(\*\) as n/.test(sql)) return { n: CANONICAL_ENTRY_COUNT };
           if (/WHERE id = \?/.test(sql)) return rows.find((row) => row.id === this.params[0]) || null;
-          return rows[0] || null;
-        },
-        async run() {
-          return { success: true };
+          return null;
         },
       };
     },
@@ -124,118 +80,63 @@ const worker = (await import("../src/index.js")).default;
 const env = { ATLAS_DB: makeDb() };
 let rpcId = 0;
 
-async function rpc(method, params, headers = {}) {
-  const req = new Request("https://mcp.example/mcp", {
+async function rpc(method, params = {}) {
+  const response = await worker.fetch(new Request("https://mcp.example/mcp", {
     method: "POST",
-    headers: { "content-type": "application/json", ...headers },
+    headers: { "content-type": "application/json" },
     body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params }),
-  });
-  return (await worker.fetch(req, env, {})).json();
+  }), env, {});
+  return response.json();
 }
 
 async function callTool(name, args = {}) {
-  const r = await rpc("tools/call", { name, arguments: args });
-  assert.ok(r.result, `tools/call ${name} returned: ${JSON.stringify(r)}`);
-  return r.result.structuredContent;
+  const response = await rpc("tools/call", { name, arguments: args });
+  assert.ok(response.result, JSON.stringify(response));
+  return response.result.structuredContent;
 }
 
-let passed = 0;
-const ok = (cond, msg) => { assert.ok(cond, msg); console.log("  ✓ " + msg); passed++; };
-
 const init = await rpc("initialize", { protocolVersion: "2025-06-18" });
-ok(init.result.serverInfo.name === "reality-mechanics-atlas", "initialize returns server info");
-ok(init.result.instructions.includes("Frontmatter is AI language; prose is human language"), "initialize exposes layer instructions");
+assert.equal(init.result.serverInfo.version, "3.0.0");
+assert.match(init.result.instructions, /generated from the canonical Atlas/);
 
-const preflight = await worker.fetch(new Request("https://mcp.example/mcp", {
-  method: "OPTIONS",
-  headers: {
-    Origin: "https://realitymechanics.nz",
-    "Access-Control-Request-Method": "POST",
-    "Access-Control-Request-Headers": "content-type,authorization,cf-access-client-id,cf-access-client-secret,mcp-session-id,mcp-protocol-version",
-  },
-}), env, {});
-const allowedHeaders = preflight.headers.get("Access-Control-Allow-Headers") || "";
-ok(preflight.status === 200 && allowedHeaders.includes("Authorization"), "MCP preflight allows Authorization");
-ok(allowedHeaders.includes("CF-Access-Client-Id") && allowedHeaders.includes("CF-Access-Client-Secret"), "MCP preflight allows Cloudflare Access service-token headers");
+const listed = await rpc("tools/list");
+const tools = listed.result.tools.map((tool) => tool.name);
+assert.ok(["begin_atlas_session", "get_manifest", "get_ai_entry_protocol", "get_structure_contract", "get_entry", "get_related"].every((name) => tools.includes(name)));
+assert.ok(!tools.includes("get_public_surfaces"));
+assert.ok(!tools.includes("get_derivation_status"));
+assert.ok(!tools.some((name) => /^(write|ground|update|rebuild|submit)/.test(name)));
 
-const list = await rpc("tools/list", {});
-const toolNames = list.result.tools.map((t) => t.name);
-ok(["begin_atlas_session", "get_ai_entry_protocol", "get_entry", "get_related"].every((t) => toolNames.includes(t)),
-  "tools/list exposes core structure-first tools");
-ok(["search_atlas", "get_entry_by_title", "list_entries", "get_recent_changes", "read_ratio"].every((t) => toolNames.includes(t)),
-  "tools/list exposes useful read tools");
-ok(toolNames.includes("open_source_for_entry"), "tools/list exposes source bridge tool");
-ok(["get_field_terms", "find_shared_ground", "translate_reason"].every((t) => toolNames.includes(t)),
-  "tools/list exposes field translation read tools");
-ok(!["write_proposal", "update_entry_section", "ground_entry", "rebuild_search_index", "submit_atlas_insert", "list_garden_proposals"].some((t) => toolNames.includes(t)),
-  "tools/list exposes no write, maintenance, or Garden tools");
+const protocol = await callTool("get_ai_entry_protocol");
+assert.equal(protocol.sourceHash, CANONICAL_SOURCE_HASH);
+assert.deepEqual(protocol.members, [...AI_ENTRY_PROTOCOL]);
+assert.equal("startingIds" in protocol, false);
 
-const rejectedWrite = await rpc("tools/call", { name: "write_proposal", arguments: { entry_id: "practice.atlas" } });
-ok(rejectedWrite.error?.code === -32601, "write_proposal is not callable");
-
-const proto = await callTool("get_ai_entry_protocol");
-ok(proto.startingIds.length === 3 && proto.startingIds[0] === "practice.atlas", "entry protocol starts from current three ids");
-ok(proto.layerContract.layers.structure && proto.layerContract.layers.prose, "entry protocol includes structure/prose layer contract");
-ok(proto.operatorContract.families.length === 7, "entry protocol includes seven operator families");
-ok(proto.rules.some((rule) => rule.includes("GitHub markdown/frontmatter")), "entry protocol names GitHub as editable source of truth");
-ok(proto.rules.some((rule) => rule.includes("edge shows operation in passage")), "entry protocol names operator edge/term correspondence");
+const manifest = await callTool("get_manifest");
+assert.equal(manifest.parity, true);
+assert.equal(manifest.entryCount, 490);
+assert.equal(manifest.sourceHash, CANONICAL_SOURCE_HASH);
 
 const session = await callTool("begin_atlas_session");
-ok(session.protocol.layerContract.workerOrder.some((step) => step.startsWith("structure:")), "begin_atlas_session exposes worker order");
-ok(session.governance.layerRule.includes("Frontmatter is AI language"), "begin_atlas_session exposes layer governance");
-ok(session.governance.operatorRule.includes("edge behavior"), "begin_atlas_session exposes operator invariant");
-ok(session.requiredPracticeEntries.every((entry) => entry.layers?.structure), "session practice entries include layer contract");
-ok(session.requiredPracticeEntries.every((entry) => entry.operatorContract?.families?.length === 7), "session practice entries include operator contract");
+assert.deepEqual(session.protocol.members, [...AI_ENTRY_PROTOCOL]);
+assert.deepEqual(session.requiredEntries.map((item) => item.id), [...AI_ENTRY_PROTOCOL]);
+assert.ok(session.requiredEntries.every((item) => item.determination));
+assert.ok(session.requiredEntries.every((item) => !("operatorContract" in item)));
 
-const entry = await callTool("get_entry", { id: "practice.atlas" });
-ok(entry.structure.carries.some((item) => item.id === "practice.ai-participation"), "get_entry resolves canonical structure first");
-ok(entry.source.githubEditUrl.endsWith("/edit/main/Reality_Mechanics/Atlas.md"), "get_entry includes GitHub source links");
-ok(entry.layers.frontmatter && entry.layers.prose, "get_entry includes layer contract");
-ok(entry.operatorContract.families.some((family) => family.key === "carry"), "get_entry includes operator contract");
-ok(entry._read_as.includes("prose is human language"), "get_entry read-as distinguishes prose from structure");
+const contract = await callTool("get_structure_contract");
+assert.equal(contract.sourceHash, CANONICAL_SOURCE_HASH);
+assert.deepEqual(Object.keys(contract.atlasSchema.relations), RELATION_KEYS);
+assert.deepEqual(contract.protocols["ai-entry"], [...AI_ENTRY_PROTOCOL]);
 
-const source = await callTool("open_source_for_entry", { id: "practice.atlas" });
-ok(source.entries[0].sourcePath === "Reality_Mechanics/Atlas.md", "open_source_for_entry returns source path");
-ok(source.entries[0].source.githubEditUrl.includes("/edit/main/Reality_Mechanics/Atlas.md"), "open_source_for_entry returns GitHub edit URL");
+const atlas = await callTool("get_entry", { id: "practice.atlas" });
+assert.equal(atlas.register, "practice");
+assert.equal(atlas.order, null);
+assert.equal(atlas.determination, "pd.v3.pre-provenance-baseline");
+assert.deepEqual(Object.keys(atlas.structure), RELATION_KEYS);
+assert.equal(atlas.structure.carries[0].id, "practice.ai-participation");
+assert.equal("layers" in atlas, false);
 
+const related = await callTool("get_related", { id: "practice.atlas" });
+assert.deepEqual(Object.keys(related.relations), RELATION_KEYS);
+assert.equal(related.relations.carries[0].id, "practice.ai-participation");
 
-// ── D-025: public-surface read access ──────────────────────────────────────────
-
-ok(["get_public_surfaces", "get_derivation_status"].every((t) => toolNames.includes(t)),
-  "tools/list exposes D-025 public-surface read tools");
-
-const surfaces = await callTool("get_public_surfaces");
-ok(surfaces.surfaces.length === 6, "get_public_surfaces returns five surfaces plus MCP");
-ok(["observatory", "pulse", "theory", "proof", "calculus", "mcp"].every(
-  (id) => surfaces.surfaces.some((s) => s.id === id)),
-  "get_public_surfaces covers Observatory, Pulse, Theory, Proof, Calculus, MCP");
-ok(surfaces.surfaces.every((s) => Array.isArray(s.routes) && s.routes.length > 0),
-  "every surface names its routes");
-ok(surfaces.surfaces.every((s) => Array.isArray(s.sourceUrls) && s.sourceUrls.every((u) => u.startsWith("https://github.com/"))),
-  "every surface claim is retraceable to GitHub sources");
-ok(typeof surfaces.liveReadModel.entryCount === "number" && surfaces.liveReadModel.entryCount > 0,
-  "get_public_surfaces reports the live read-model entry count");
-ok(typeof surfaces.liveReadModel.atlasVersion === "string" && surfaces.liveReadModel.versionNote.includes("may lag"),
-  "read-model version label is reported with lag honesty");
-ok(surfaces.supportingReports.some((r) => r.report === "D-024"),
-  "supporting reports index includes the Calculus surface report");
-ok(Array.isArray(surfaces.driftNotes) && surfaces.driftNotes.length > 0,
-  "drift notes are exposed, not hidden");
-
-const derivation = await callTool("get_derivation_status");
-ok(derivation.promotionRule.includes("not accepted"),
-  "derivation status leads with the unpromotion rule");
-ok(["derived", "calibrated", "heuristic", "unresolved"].every(
-  (v) => derivation.statusVocabulary.some((s) => s.status === v)),
-  "status vocabulary distinguishes derived/calibrated/heuristic/unresolved");
-ok(derivation.derivationChain.length === 5 &&
-  derivation.derivationChain.some((s) => s.rule.includes("mass(t) = |{ s ≠ t : t ∈ holds(s) ∪ traces(s) }|")),
-  "derivation chain carries the exact mass rule");
-ok(derivation.derivationChain.every((s) => s.sourceUrl && s.sourceUrl.startsWith("https://github.com/")),
-  "every chain step is retraceable to a source file");
-ok(derivation.caveat.text.includes("not Atlas Ratio"),
-  "the Atlas Ratio non-equivalence caveat is preserved");
-ok(derivation.inventory.unresolved.length > 0 && derivation.openItems.length === derivation.inventory.unresolved.length,
-  "unresolved items remain explicitly unresolved");
-
-console.log(`\nAll ${passed} assertions passed.`);
+console.log("MCP Canonical Translation tests passed");

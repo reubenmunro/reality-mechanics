@@ -5,26 +5,38 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.structural-disorder
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "loss of dependency readability in the carrying structure — where what must hold is hidden, interrupted, displaced, bypassed, or forced"
-  holds: "[[Root Order]] — order must be readable before its loss can be named"
-  pairs: "[[Groundedness]] — Structural Disorder reveals where order has lost dependency contact; Groundedness names maintained contact"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — order must be readable before its loss can be named"
+  pairs:
+    targets:
+      - ground.groundedness
+    read: "[[Groundedness]] — Structural Disorder reveals where order has lost dependency contact; Groundedness names maintained contact"
   traces:
-    - "[[Root Order]]"
-    - "[[Dependency Order]]"
-  nests: "wherever dependency is obscured, displaced, inverted, or treated as optional after it is required"
-  reads: "where dependency is obscured, displaced, inverted, skipped, or treated as optional after it has become required — disorder in the carrying structure, not merely mess, difference, or instability"
+    targets:
+      - ground.root-order
+      - ground.dependency-order
+  nests:
+    targets: []
+    read: "wherever dependency is obscured, displaced, inverted, or treated as optional after it is required"
+  reads:
+    targets: []
+    read: "where dependency is obscured, displaced, inverted, skipped, or treated as optional after it has become required — disorder in the carrying structure, not merely mess, difference, or instability"
   carries:
-    - "[[Dependency Disorder]]"
-    - "[[Degenerate]]"
-    - "[[Diagnosis]]"
-    - "[[Daylighting]]"
-    - "[[Relief]]"
-
+    targets:
+      - second.dependency-disorder
+      - ground.degenerate
+      - third.diagnosis
+      - practice.shade-clearing
+      - practice.pruning
 publish: true
 status: stable
 ---

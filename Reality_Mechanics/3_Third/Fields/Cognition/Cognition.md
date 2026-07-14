@@ -5,36 +5,50 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.cognition
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Branch]]"
-  - "[[Cognition Field]]"
-  - "[[Cognitive Participation]]"
-  - "[[Recurrence]]"
 
 conditions:
   places: "ordered participation in readability — the condition through which a participant can receive, distinguish, retain, compare, orient, and respond to difference within a resolution band."
-  holds: "[[Branch]], [[Cognition Field]], [[Cognitive Participation]], and [[Recurrence]]. Cognitive participation must be present and recurrence must make returnable comparison possible before cognition can be named as an organised field condition."
-  pairs: "[[Body]]. Cognition names the cognitive structural condition within the participatory field; Body names the embodied structural condition. Each bounds a scope the other depends on."
+  needs:
+    targets:
+      - third.branch
+      - third.cognition-field
+      - second.cognitive-participation
+      - second.recurrence
+  holds:
+    targets:
+      - third.branch
+      - third.cognition-field
+      - second.cognitive-participation
+      - second.recurrence
+    read: "[[Branch]], [[Cognition Field]], [[Cognitive Participation]], and [[Recurrence]]. Cognitive participation must be present and recurrence must make returnable comparison possible before cognition can be named as an organised field condition."
+  pairs:
+    targets:
+      - third.body
+    read: "[[Body]]. Cognition names the cognitive structural condition within the participatory field; Body names the embodied structural condition. Each bounds a scope the other depends on."
   traces:
-    - "[[Branch]]"
-    - "[[Cognition Field]]"
-    - "[[Cognitive Participation]]"
-    - "[[Recurrence]]"
-  nests: "within the Cognition Field branch as the field-level container for cognitive structural reads."
-  reads: "Cognition becomes readable where a participant can receive, distinguish, retain, compare, orient, and respond to readable difference without making mind the source of order."
+    targets:
+      - third.branch
+      - third.cognition-field
+      - second.cognitive-participation
+      - second.recurrence
+  nests:
+    targets: []
+    read: "within the Cognition Field branch as the field-level container for cognitive structural reads."
+  reads:
+    targets: []
+    read: "Cognition becomes readable where a participant can receive, distinguish, retain, compare, orient, and respond to readable difference without making mind the source of order."
   carries:
-    - "[[Thought]]"
-    - "[[Memory]]"
-    - "[[Self]]"
-    - "[[Cognitive Carrying]]"
-    - "[[Cognitive Metabolism]]"
-    - "[[Answerable Mind]]"
-    - "[[Cognitive Reads]]"
-    - "[[Externalised Cognition]]"
-
-
+    targets:
+      - third.thought
+      - third.memory
+      - third.self
+      - third.cognitive-carrying
+      - third.cognitive-metabolism
+      - third.answerable-mind
+      - third.cognitive-reads
+      - third.externalised-cognition
 publish: true
 status: stable
 ---

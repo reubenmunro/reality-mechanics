@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.apparent-bearing
-
-needs:
-  - "[[Bearing]]"
-  - "[[Apparent]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "bearing becoming presented."
-  holds: "[[Bearing]] and [[Apparent]]."
-  pairs: "Asymmetry carries downward — into [[Observation]]"
+  needs:
+    targets:
+      - first.bearing
+      - first.apparent
+  holds:
+    targets:
+      - first.bearing
+      - first.apparent
+    read: "[[Bearing]] and [[Apparent]]."
+  pairs:
+    targets:
+      - second.observation
+    read: "Asymmetry carries downward — into [[Observation]]"
   traces:
-    - "[[Bearing]]"
-    - "[[Apparent]]"
-  nests: "inside bearing reads as bearing presented enough to be noticed."
-  reads: "where carrying can be noticed — where holding presents itself as holding rather than remaining invisible."
+    targets:
+      - first.bearing
+      - first.apparent
+  nests:
+    targets: []
+    read: "inside bearing reads as bearing presented enough to be noticed."
+  reads:
+    targets: []
+    read: "where carrying can be noticed — where holding presents itself as holding rather than remaining invisible."
   carries:
-    - "[[Observation]]"
-
+    targets:
+      - second.observation
 publish: true
 status: stable
 ---

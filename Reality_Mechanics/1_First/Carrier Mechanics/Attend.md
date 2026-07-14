@@ -5,31 +5,47 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.attend
-
-needs:
-  - "[[Notice]]"
-  - "[[Enter]]"
-  - "[[Availability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "sustained presence with what has been noticed and entered"
-  holds: "[[Notice]], [[Enter]], and [[Availability]] — contact and passage must be open before sustained presence can hold"
-  pairs: "Asymmetry carries downward — into [[Trace]], [[Read]], and [[Readability]]"
+  needs:
+    targets:
+      - first.notice
+      - first.enter
+      - first.availability
+  holds:
+    targets:
+      - first.notice
+      - first.enter
+      - first.availability
+    read: "[[Notice]], [[Enter]], and [[Availability]] — contact and passage must be open before sustained presence can hold"
+  pairs:
+    targets:
+      - first.trace
+      - first.read
+      - second.readability
+    read: "Asymmetry carries downward — into [[Trace]], [[Read]], and [[Readability]]"
   traces:
-    - "[[Notice]]"
-    - "[[Enter]]"
-    - "[[Availability]]"
-  nests: "between first contact and trace — keeps relation open before judgment, closure, or explanation"
-  reads: "where a noticed distinction is held in contact long enough for its relation, difference, or path to begin disclosing itself"
+    targets:
+      - first.notice
+      - first.enter
+      - first.availability
+  nests:
+    targets: []
+    read: "between first contact and trace — keeps relation open before judgment, closure, or explanation"
+  reads:
+    targets: []
+    read: "where a noticed distinction is held in contact long enough for its relation, difference, or path to begin disclosing itself"
   carries:
-    - "[[Read]]"
-    - "[[Readability]]"
-    - "[[Discipline]]"
-    - "[[Observation]]"
-    - "[[Atlas Practice]]"
-    - "[[Practice]]"
-    - "[[Tend]]"
-
+    targets:
+      - first.read
+      - second.readability
+      - practice.discipline
+      - second.observation
+      - practice.atlas-practice
+      - practice.practice
+      - practice.tend
 publish: true
 status: stable
 ---

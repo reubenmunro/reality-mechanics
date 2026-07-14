@@ -5,22 +5,37 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.not
-
-needs:
-  - "[[Boundary]]"
-  - "[[Availability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "non-availability within the current scope — relation marked as unavailable, interrupted, absent, excluded, or outside scope"
-  holds: "[[Boundary]] and [[Availability]] — scope must be bounded and availability readable before non-availability can be marked"
-  pairs: "Asymmetry carries downward — Not applies the [[Boundary]]↔[[Availability]] structure to mark specific conditions as not-available within scope. In carries interior placement; Out carries exterior placement — both already paired. Not operates on the negative side without a lateral co-condition."
+  needs:
+    targets:
+      - first.boundary
+      - first.availability
+  holds:
+    targets:
+      - first.boundary
+      - first.availability
+    read: "[[Boundary]] and [[Availability]] — scope must be bounded and availability readable before non-availability can be marked"
+  pairs:
+    targets:
+      - first.boundary
+      - first.availability
+    read: "Asymmetry carries downward — Not applies the [[Boundary]]↔[[Availability]] structure to mark specific conditions as not-available within scope. In carries interior placement; Out carries exterior placement — both already paired. Not operates on the negative side without a lateral co-condition."
   traces:
-    - "[[Boundary]]"
-    - "[[Availability]]"
-  nests: "as a structural carrier of absence, interruption, exclusion, and outside-scope relation without turning them into conclusions"
-  reads: "where a condition is read through what it excludes — where the boundary of a scope is as readable as its interior"
-  carries: []
-
+    targets:
+      - first.boundary
+      - first.availability
+  nests:
+    targets: []
+    read: "as a structural carrier of absence, interruption, exclusion, and outside-scope relation without turning them into conclusions"
+  reads:
+    targets: []
+    read: "where a condition is read through what it excludes — where the boundary of a scope is as readable as its interior"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

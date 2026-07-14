@@ -5,34 +5,49 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.language-domain
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Domain]]"
-  - "[[Expression Field]]"
-  - "[[Language Field]]"
-  - "[[Knowledge Field]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the organised participation context through which naming, translating, representing, and carrying meaning through terms become readable as shared use."
-  holds: "[[Domain]], [[Expression Field]], [[Language Field]], [[Knowledge Field]], and [[Medium]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.domain
+      - third.expression-field
+      - third.language-field
+      - third.knowledge-field
+      - second.medium
+  holds:
+    targets:
+      - third.domain
+      - third.expression-field
+      - third.language-field
+      - third.knowledge-field
+      - second.medium
+    read: "[[Domain]], [[Expression Field]], [[Language Field]], [[Knowledge Field]], and [[Medium]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Domain]]"
-    - "[[Expression Field]]"
-    - "[[Language Field]]"
-    - "[[Knowledge Field]]"
-    - "[[Medium]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "where meaning is intentionally, culturally, or conventionally organised through naming, translation, representation, address, instruction, or term use."
+    targets:
+      - third.domain
+      - third.expression-field
+      - third.language-field
+      - third.knowledge-field
+      - second.medium
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "where meaning is intentionally, culturally, or conventionally organised through naming, translation, representation, address, instruction, or term use."
   carries:
-    - "[[Language]]"
-    - "[[Representation]]"
-    - "[[Translation]]"
-    - "[[Term Drift]]"
-    - "[[Inherited Term Drift]]"
-
+    targets:
+      - third.language
+      - third.representation
+      - third.translation
+      - third.term-drift
+      - third.inherited-term-drift
 publish: true
 status: stable
 ---

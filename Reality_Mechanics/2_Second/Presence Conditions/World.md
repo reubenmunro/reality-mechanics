@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.world
-
-needs:
-  - "[[Reality]]"
-  - "[[Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "reality held as a participating scope."
-  holds: "[[Reality]] and [[Participation]]."
-  pairs: "Asymmetry carries downward — into [[Knowledge]]"
+  needs:
+    targets:
+      - second.reality
+      - second.participation
+  holds:
+    targets:
+      - second.reality
+      - second.participation
+    read: "[[Reality]] and [[Participation]]."
+  pairs:
+    targets:
+      - third.knowledge
+    read: "Asymmetry carries downward — into [[Knowledge]]"
   traces:
-    - "[[Reality]]"
-    - "[[Participation]]"
-    - "[[Exist]]"
-  nests: "where reality is held as the participating scope of encounter and continuation."
-  reads: "where reality is read as the participating scope of encounter — where what is real is not just encounterable but forms the condition within which participation continues."
+    targets:
+      - second.reality
+      - second.participation
+      - second.exist
+  nests:
+    targets: []
+    read: "where reality is held as the participating scope of encounter and continuation."
+  reads:
+    targets: []
+    read: "where reality is read as the participating scope of encounter — where what is real is not just encounterable but forms the condition within which participation continues."
   carries:
-    - "[[Knowledge]]"
-
+    targets:
+      - third.knowledge
 publish: true
 status: stable
 ---

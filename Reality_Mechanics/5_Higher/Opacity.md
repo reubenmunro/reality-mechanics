@@ -5,27 +5,43 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.opacity
+determination: pd.v3.pre-provenance-baseline
 domain: higher-order
-
-needs:
-  - "[[Third Order]]"
-  - "[[Nested Carrying]]"
-  - "[[Invisible Bearing]]"
-  - "[[Ground]]"
 
 conditions:
   places: "the structural condition where accumulated third-order carrying has rendered Ground unretraceable from within — where the dependency chain still runs to Ground but can no longer be entered from the participant's current position without disciplined practice."
-  holds: "[[Third Order]], [[Nested Carrying]], [[Invisible Bearing]], and [[Ground]]. Third-order participation must have accumulated, Invisible Bearing must have layered past the threshold of available Higher Retrace, and Ground must be present but enclosed before the condition of structural opacity can be named."
-  pairs: "[[Higher Order]]. Opacity names the condition where Ground is enclosed within accumulated structure — where the dependency chain runs to Ground but cannot be entered from within without practice; Higher Order names the register that becomes available when Practice has retraced through that enclosure back to what has been bearing the structure all along. Each requires the other: Higher Order is only readable against the condition it resolves; Opacity is only nameable from a position that has begun to retrace it."
+  needs:
+    targets:
+      - third.third-order
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - ground.ground
+  holds:
+    targets:
+      - third.third-order
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - ground.ground
+    read: "[[Third Order]], [[Nested Carrying]], [[Invisible Bearing]], and [[Ground]]. Third-order participation must have accumulated, Invisible Bearing must have layered past the threshold of available Higher Retrace, and Ground must be present but enclosed before the condition of structural opacity can be named."
+  pairs:
+    targets:
+      - higher.higher-order
+    read: "[[Higher Order]]. Opacity names the condition where Ground is enclosed within accumulated structure — where the dependency chain runs to Ground but cannot be entered from within without practice; Higher Order names the register that becomes available when Practice has retraced through that enclosure back to what has been bearing the structure all along. Each requires the other: Higher Order is only readable against the condition it resolves; Opacity is only nameable from a position that has begun to retrace it."
   traces:
-    - "[[Third Order]]"
-    - "[[Nested Carrying]]"
-    - "[[Invisible Bearing]]"
-    - "[[Ground]]"
-  nests: "within the Higher Order register as the terminal condition that makes Higher Order Crossing structurally necessary — the hinge between accumulated participation and the Practice that can re-establish contact with Ground."
-  reads: "Opacity becomes readable where accumulated participation has reached a depth from which Ground can no longer be retraced from within — where the structure carries the participant rather than the participant carrying the structure, and where the dependency chain that has always run to Ground is no longer enterable without the disciplined retrace that Practice opens."
-  carries: []
-
+    targets:
+      - third.third-order
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - ground.ground
+  nests:
+    targets: []
+    read: "within the Higher Order register as the terminal condition that makes Higher Order Crossing structurally necessary — the hinge between accumulated participation and the Practice that can re-establish contact with Ground."
+  reads:
+    targets: []
+    read: "Opacity becomes readable where accumulated participation has reached a depth from which Ground can no longer be retraced from within — where the structure carries the participant rather than the participant carrying the structure, and where the dependency chain that has always run to Ground is no longer enterable without the disciplined retrace that Practice opens."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -7,6 +7,7 @@
 import { ratioModeForState, structuralMassForState } from "./ratio-register.mjs";
 import {
   pairKey,
+  THREAD_RELATION_KEYS,
   weaveModeForLeg,
 } from "./thread-mechanics.mjs";
 import { buildWeaveStateFromEdges } from "./weave-state.mjs";
@@ -15,8 +16,6 @@ export const GATHERING_READ_VERSION = "gathering.v1";
 
 /** O-002 fabricMassMin default — ratio-readable endpoint threshold. */
 export const DEFAULT_FABRIC_MASS_MIN = 0.12;
-
-const RELATION_KEYS = ["holds", "traces", "carries", "pairs", "nests"];
 
 function relationsOf(state) {
   return state?.relations && typeof state.relations === "object" ? state.relations : state || {};
@@ -30,7 +29,7 @@ export function enumerateNeighbourhoodEdges(neighbourhoodIds, statesById) {
     const src = statesById[srcId];
     if (!src) return;
     const rel = relationsOf(src);
-    RELATION_KEYS.forEach((typeKey) => {
+    THREAD_RELATION_KEYS.forEach((typeKey) => {
       (rel[typeKey] || []).forEach((tgtId) => {
         if (idSet.has(tgtId) && statesById[tgtId]) {
           edges.push({ srcId, tgtId, typeKey });

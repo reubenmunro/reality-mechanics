@@ -5,31 +5,46 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.expression-field
+determination: pd.v3.pre-provenance-baseline
 domain: expression
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Expression]]"
-  - "[[Relation]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the recurring field of participation through which relation becomes outwardly readable — through gesture, form, affect, sound, image, or visible presentation."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Expression]], [[Relation]], and [[Medium]]. Field of Participation must structure a recurring scope and relation must be present through a medium before the expression field can be named."
-  pairs: "[[Language Field]]. Expression Field names the field of outward appearance through medium; Language Field names the field of readable difference through medium. Each requires the other to be locatable."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.expression
+      - first.relation
+      - second.medium
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.expression
+      - first.relation
+      - second.medium
+    read: "[[Field of Participation]], [[Organic Field]], [[Expression]], [[Relation]], and [[Medium]]. Field of Participation must structure a recurring scope and relation must be present through a medium before the expression field can be named."
+  pairs:
+    targets:
+      - third.language-field
+    read: "[[Language Field]]. Expression Field names the field of outward appearance through medium; Language Field names the field of readable difference through medium. Each requires the other to be locatable."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Expression]]"
-    - "[[Relation]]"
-    - "[[Medium]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where relation becomes outwardly readable through gesture, form, affect, sound, image, or visible presentation."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.expression
+      - first.relation
+      - second.medium
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where relation becomes outwardly readable through gesture, form, affect, sound, image, or visible presentation."
   carries:
-    - "[[Gesture]]"
-
-
+    targets:
+      - third.gesture
 publish: true
 status: stable
 ---

@@ -5,30 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.observation
-
-needs:
-  - "[[Cognitive Participation]]"
-  - "[[Visibility]]"
-  - "[[Attend]]"
-  - "[[Evaluation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "participated readability held in evaluation."
-  holds: "[[Cognitive Participation]], [[Visibility]], [[Attend]], and [[Evaluation]]. Readable difference must be participated in, presented enough to evaluate, and attended before observation can be named."
-  pairs: "[[Visibility]]. Visibility makes presented distinction readable; Observation takes that visible read into evaluation."
+  needs:
+    targets:
+      - second.cognitive-participation
+      - second.visibility
+      - first.attend
+      - second.evaluation
+  holds:
+    targets:
+      - second.cognitive-participation
+      - second.visibility
+      - first.attend
+      - second.evaluation
+    read: "[[Cognitive Participation]], [[Visibility]], [[Attend]], and [[Evaluation]]. Readable difference must be participated in, presented enough to evaluate, and attended before observation can be named."
+  pairs:
+    targets:
+      - second.visibility
+    read: "[[Visibility]]. Visibility makes presented distinction readable; Observation takes that visible read into evaluation."
   traces:
-    - "[[Cognitive Participation]]"
-    - "[[Visibility]]"
-    - "[[Attend]]"
-    - "[[Evaluation]]"
-    - "[[Apparent Bearing]]"
-  nests: "where visible distinction is attended and evaluated rather than merely available."
-  reads: "where a visible condition is being actively evaluated — where what is readable is attended and read rather than merely available to be read."
+    targets:
+      - second.cognitive-participation
+      - second.visibility
+      - first.attend
+      - second.evaluation
+      - second.apparent-bearing
+  nests:
+    targets: []
+    read: "where visible distinction is attended and evaluated rather than merely available."
+  reads:
+    targets: []
+    read: "where a visible condition is being actively evaluated — where what is readable is attended and read rather than merely available to be read."
   carries:
-    - "[[Recognition Read|Recognition]]"
-    - "[[Pattern]]"
-    - "[[Higher Recognition]]"
-
+    targets:
+      - second.recognition-read
+      - second.pattern
+      - higher.higher-recognition
 publish: true
 status: stable
 ---

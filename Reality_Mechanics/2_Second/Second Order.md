@@ -5,22 +5,35 @@ order: second
 kind: order
 ai_role: order
 condition_key: second.second-order
-
-needs:
-  - "[[First Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the register where carry is enacted as carrying and connection enters coupling, presence, bearing relation, and participation."
-  holds: "[[First Order]]. First-order connection and carry must remain available for carrying to proceed as participation; first order does not finish before second order begins."
-  pairs: "Asymmetry carries downward — into [[Third Order]]"
+  needs:
+    targets:
+      - first.first-order
+  holds:
+    targets:
+      - first.first-order
+    read: "[[First Order]]. First-order connection and carry must remain available for carrying to proceed as participation; first order does not finish before second order begins."
+  pairs:
+    targets:
+      - third.third-order
+    read: "Asymmetry carries downward — into [[Third Order]]"
   traces:
-    - "[[First Order]]"
-    - "[[First Order Crossing|Threshold (First → Second)]]"
-  nests: "carrying, coupling, presence, coupled contact, bearing relation, participation, readability, closure, and closure scope as second-order support roots and root-family conditions."
-  reads: "where connection is actively carrying through coupling, presence, bearing relation, closure, readability, and participation."
+    targets:
+      - first.first-order
+      - first.first-order-crossing
+  nests:
+    targets: []
+    read: "carrying, coupling, presence, coupled contact, bearing relation, participation, readability, closure, and closure scope as second-order support roots and root-family conditions."
+  reads:
+    targets: []
+    read: "where connection is actively carrying through coupling, presence, bearing relation, closure, readability, and participation."
   carries:
-    - "[[Third Order]]"
-    - "[[Second Order Crossing|Threshold (Second → Third)]]"
+    targets:
+      - third.third-order
+      - second.second-order-crossing
 publish: true
 status: working
 ---

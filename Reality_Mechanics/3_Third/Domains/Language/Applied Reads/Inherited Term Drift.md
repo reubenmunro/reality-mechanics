@@ -5,29 +5,46 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.inherited-term-drift
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Term Drift]]"
-  - "[[Translation]]"
-  - "[[Closure Scope]]"
-  - "[[Language Domain]]"
 
 conditions:
   places: "the local case where a received term keeps its name while entering a different structural role."
-  holds: "[[Applied Read]], [[Term Drift]], [[Translation]], [[Closure Scope]], [[Language Domain]]."
-  pairs: "[[Term Drift]]. Inherited Term Drift names drift carried across translation; Term Drift names drift within a context. Each is a distinct form of term drift."
+  needs:
+    targets:
+      - third.applied-read
+      - third.term-drift
+      - third.translation
+      - second.closure-scope
+      - third.language-domain
+  holds:
+    targets:
+      - third.applied-read
+      - third.term-drift
+      - third.translation
+      - second.closure-scope
+      - third.language-domain
+    read: "[[Applied Read]], [[Term Drift]], [[Translation]], [[Closure Scope]], [[Language Domain]]."
+  pairs:
+    targets:
+      - third.term-drift
+    read: "[[Term Drift]]. Inherited Term Drift names drift carried across translation; Term Drift names drift within a context. Each is a distinct form of term drift."
   traces:
-    - "[[Applied Read]]"
-    - "[[Term Drift]]"
-    - "[[Translation]]"
-    - "[[Closure Scope]]"
-    - "[[Language Domain]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Inherited Term Drift becomes readable where the same term is repeated after its participation has changed."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.term-drift
+      - third.translation
+      - second.closure-scope
+      - third.language-domain
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Inherited Term Drift becomes readable where the same term is repeated after its participation has changed."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

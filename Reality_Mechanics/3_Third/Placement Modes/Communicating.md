@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.communicating
+determination: pd.v3.pre-provenance-baseline
 domain: placement-modes
-
-needs:
-  - "[[Placement Mode]]"
-  - "[[Read]]"
-  - "[[Medium]]"
-  - "[[Allow]]"
 
 conditions:
   places: "the mode where participation is primarily carried through readable transmission between positions — where a read is carried across a medium between distinct participants."
-  holds: "[[Placement Mode]], [[Read]], [[Medium]], and [[Allow]]. A mode of participation must exist, readability must be transmissible, a medium must carry it, and allowance must be present before transmission can be placed as the primary mode."
-  pairs: "[[Sensing]]. Sensing names detection of local difference; Communicating names readable transmission of that difference between positions."
+  needs:
+    targets:
+      - third.placement-mode
+      - first.read
+      - second.medium
+      - first.allow
+  holds:
+    targets:
+      - third.placement-mode
+      - first.read
+      - second.medium
+      - first.allow
+    read: "[[Placement Mode]], [[Read]], [[Medium]], and [[Allow]]. A mode of participation must exist, readability must be transmissible, a medium must carry it, and allowance must be present before transmission can be placed as the primary mode."
+  pairs:
+    targets:
+      - third.sensing
+    read: "[[Sensing]]. Sensing names detection of local difference; Communicating names readable transmission of that difference between positions."
   traces:
-    - "[[Placement Mode]]"
-    - "[[Read]]"
-    - "[[Medium]]"
-    - "[[Allow]]"
-  nests: "within Placement Modes as the transmission mode — where the primary movement is carrying readability across speaker, medium, sign, or shared form."
-  reads: "where a note is primarily placed by carried readability across speaker, listener, sign, document, instruction, representation, or shared form."
-  carries: []
-
+    targets:
+      - third.placement-mode
+      - first.read
+      - second.medium
+      - first.allow
+  nests:
+    targets: []
+    read: "within Placement Modes as the transmission mode — where the primary movement is carrying readability across speaker, medium, sign, or shared form."
+  reads:
+    targets: []
+    read: "where a note is primarily placed by carried readability across speaker, listener, sign, document, instruction, representation, or shared form."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

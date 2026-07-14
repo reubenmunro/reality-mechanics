@@ -1,28 +1,42 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.composting
-
-needs:
-  - "[[Bearing Pass]]"
-  - "[[Release]]"
-  - "[[Root Resilience]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the structural practice of releasing failed or relieved material as doctrine while keeping what it taught available to the order."
-  holds: "[[Bearing Pass]], [[Release]], and [[Root Resilience]]. A bearing pass must identify the material, release must let the claim go, and root resilience must keep the failure from corrupting the dependency order."
-  pairs: "Decommissioning carries downward as a care action inside Bearing Pass."
+  needs:
+    targets:
+      - practice.garden-pass
+      - first.release
+      - practice.root-resilience
+  holds:
+    targets:
+      - practice.garden-pass
+      - first.release
+      - practice.root-resilience
+    read: "[[Bearing Pass]], [[Release]], and [[Root Resilience]]. A bearing pass must identify the material, release must let the claim go, and root resilience must keep the failure from corrupting the dependency order."
+  pairs:
+    targets: []
+    read: "Decommissioning carries downward as a care action inside Bearing Pass."
   traces:
-    - "[[Bearing Pass]]"
-    - "[[Release]]"
-    - "[[Root Resilience]]"
-  nests: "inside Atlas Fabric wherever failed postures, released claims, or relieved member material can become record without remaining doctrine."
-  reads: "where failed material is released from carrying authority but retained as traceable record about what could not hold, carry, place, clear, or clean."
-  carries: []
-
+    targets:
+      - practice.garden-pass
+      - first.release
+      - practice.root-resilience
+  nests:
+    targets: []
+    read: "inside Atlas Fabric wherever failed postures, released claims, or relieved member material can become record without remaining doctrine."
+  reads:
+    targets: []
+    read: "where failed material is released from carrying authority but retained as traceable record about what could not hold, carry, place, clear, or clean."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

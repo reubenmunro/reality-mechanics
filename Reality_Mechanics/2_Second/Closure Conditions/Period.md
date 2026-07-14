@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.period
-
-needs:
-  - "[[Interval]]"
-  - "[[Recurrence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the interval per recurrence."
-  holds: "[[Interval]] and [[Recurrence]]."
-  pairs: "No universal lateral pair is required. [[Frequency]] is the reciprocal measure of Period where returns form a stable cycle; irregular recurrence may have a period or rate without a single reciprocal pair."
+  needs:
+    targets:
+      - second.interval
+      - second.recurrence
+  holds:
+    targets:
+      - second.interval
+      - second.recurrence
+    read: "[[Interval]] and [[Recurrence]]."
+  pairs:
+    targets:
+      - second.frequency
+    read: "No universal lateral pair is required. [[Frequency]] is the reciprocal measure of Period where returns form a stable cycle; irregular recurrence may have a period or rate without a single reciprocal pair."
   traces:
-    - "[[Interval]]"
-    - "[[Recurrence]]"
-  nests: "where recurrence is read by the interval it takes to return or occur again."
-  reads: "where one recurrence can be read by the interval it takes to return or occur again."
+    targets:
+      - second.interval
+      - second.recurrence
+  nests:
+    targets: []
+    read: "where recurrence is read by the interval it takes to return or occur again."
+  reads:
+    targets: []
+    read: "where one recurrence can be read by the interval it takes to return or occur again."
   carries:
-    - "[[Cycle]]"
-
+    targets:
+      - second.cycle
 publish: true
 status: stable
 ---

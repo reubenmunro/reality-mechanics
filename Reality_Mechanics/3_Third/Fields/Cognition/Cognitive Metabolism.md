@@ -5,32 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.cognitive-metabolism
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Thought]]"
-  - "[[Metabolism]]"
-  - "[[Body]]"
-  - "[[Coupling]]"
-  - "[[Reality Check]]"
 
 conditions:
   places: "the cognitive resolution pathway through which strain, attention, stimulation, and available energy are converted through thought, mapping, design, language, prediction, or conceptual ordering."
-  holds: "[[Cognition]], [[Thought]], [[Metabolism]], [[Body]], [[Coupling]], and [[Reality Check]]. Cognition and thought must be present, and thought must remain coupled to the body that carries it, before cognitive metabolism can remain reality-bearing."
-  pairs: "No lateral pair is required at this placement yet. Cognitive Metabolism currently reads as a cognitive resolution pathway whose compatibility must still be checked through body, rest, relation, and reality."
+  needs:
+    targets:
+      - third.cognition
+      - third.thought
+      - third.metabolism
+      - third.body
+      - second.coupling
+      - third.reality-check
+  holds:
+    targets:
+      - third.cognition
+      - third.thought
+      - third.metabolism
+      - third.body
+      - second.coupling
+      - third.reality-check
+    read: "[[Cognition]], [[Thought]], [[Metabolism]], [[Body]], [[Coupling]], and [[Reality Check]]. Cognition and thought must be present, and thought must remain coupled to the body that carries it, before cognitive metabolism can remain reality-bearing."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Cognitive Metabolism currently reads as a cognitive resolution pathway whose compatibility must still be checked through body, rest, relation, and reality."
   traces:
-    - "[[Cognition]]"
-    - "[[Thought]]"
-    - "[[Metabolism]]"
-    - "[[Body]]"
-    - "[[Coupling]]"
-    - "[[Reality Check]]"
-  nests: "within the Cognition Field as a metabolic pathway of embodied cognition, not as escape from the body."
-  reads: "Cognitive Metabolism becomes readable where thought, mapping, design, language, prediction, or ordering resolves strain and attention while remaining coupled to body, rest, relation, and reality."
+    targets:
+      - third.cognition
+      - third.thought
+      - third.metabolism
+      - third.body
+      - second.coupling
+      - third.reality-check
+  nests:
+    targets: []
+    read: "within the Cognition Field as a metabolic pathway of embodied cognition, not as escape from the body."
+  reads:
+    targets: []
+    read: "Cognitive Metabolism becomes readable where thought, mapping, design, language, prediction, or ordering resolves strain and attention while remaining coupled to body, rest, relation, and reality."
   carries:
-    - "[[Answerable Mind]]"
-
+    targets:
+      - third.answerable-mind
 publish: true
 status: stable
 ---

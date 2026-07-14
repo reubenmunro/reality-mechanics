@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.maintained-coupling-failure
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Maintained Coupling]]"
-  - "[[Stability]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where maintained coupling loses its stability at a closure scope — where the condition of held distinct relation fails to sustain."
-  holds: "[[Applied Read]], [[Maintained Coupling]], [[Stability]], and [[Closure Scope]]."
-  pairs: "[[Maintained Coupling]]. Maintained Coupling names the held condition; Maintained Coupling Failure names its breakdown at scope."
+  needs:
+    targets:
+      - third.applied-read
+      - third.maintained-coupling
+      - second.stability
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.maintained-coupling
+      - second.stability
+      - second.closure-scope
+    read: "[[Applied Read]], [[Maintained Coupling]], [[Stability]], and [[Closure Scope]]."
+  pairs:
+    targets:
+      - third.maintained-coupling
+    read: "[[Maintained Coupling]]. Maintained Coupling names the held condition; Maintained Coupling Failure names its breakdown at scope."
   traces:
-    - "[[Applied Read]]"
-    - "[[Maintained Coupling]]"
-    - "[[Stability]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Maintained Coupling at the point of failure."
-  reads: "Maintained Coupling Failure becomes readable where relation continues while the bearing required to sustain compatible coupling is no longer available."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.maintained-coupling
+      - second.stability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Maintained Coupling at the point of failure."
+  reads:
+    targets: []
+    read: "Maintained Coupling Failure becomes readable where relation continues while the bearing required to sustain compatible coupling is no longer available."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

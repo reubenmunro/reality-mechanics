@@ -5,20 +5,33 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.primitive
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "where dependency tracing stops within the system — a structural role, not a specific kind of content"
-  holds: "[[Root Order]] — the governing arrangement must hold before a stopping point within it can be named"
-  pairs: "[[Invariant]] — Primitive names irreducible availability; Invariant names what remains stable through change"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — the governing arrangement must hold before a stopping point within it can be named"
+  pairs:
+    targets:
+      - ground.invariant
+    read: "[[Invariant]] — Primitive names irreducible availability; Invariant names what remains stable through change"
   traces:
-    - "[[Root Order]]"
-  nests: "at the point before further reduction breaks the read, giving later terms a root they cannot skip"
-  reads: "where a condition cannot be reduced further without losing the read it makes possible — a root availability later terms depend on"
-  carries: []
-
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "at the point before further reduction breaks the read, giving later terms a root they cannot skip"
+  reads:
+    targets: []
+    read: "where a condition cannot be reduced further without losing the read it makes possible — a root availability later terms depend on"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

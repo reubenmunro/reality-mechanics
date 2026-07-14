@@ -5,34 +5,46 @@ order: first
 kind: primitive
 ai_role: primitive
 condition_key: first.relation
-
-needs: []
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "active relation within the Atlas — the primitive condition through which generation can occur and from which tracing begins."
-  holds: "primitive within the system — no prior term produces it. Ratio is the readable form of relation, not the generative source of relation."
-  pairs: "[[Ground]] and [[Ratio]] — Ground is acknowledged but not derived; Ratio is how relation becomes readable to a participant."
-  traces: []
-  nests: "beneath first-order reads as the active relation that can generate, while Ratio belongs to reading order as relation made readable."
-  reads: "where downstream terms can be traced back through their conditions without making any downstream term primitive in its place."
+  needs:
+    targets: []
+  holds:
+    targets: []
+    read: "primitive within the system — no prior term produces it. Ratio is the readable form of relation, not the generative source of relation."
+  pairs:
+    targets:
+      - ground.ground
+      - first.ratio
+    read: "[[Ground]] and [[Ratio]] — Ground is acknowledged but not derived; Ratio is how relation becomes readable to a participant."
+  traces:
+    targets: []
+  nests:
+    targets: []
+    read: "beneath first-order reads as the active relation that can generate, while Ratio belongs to reading order as relation made readable."
+  reads:
+    targets: []
+    read: "where downstream terms can be traced back through their conditions without making any downstream term primitive in its place."
   carries:
-    - "[[Connection]]"
-    - "[[Place]]"
-    - "[[Clean]]"
-    - "[[Asymmetry]]"
-    - "[[Expression]]"
-    - "[[Root System]]"
-    - "[[Tact]]"
-    - "[[Clear]]"
-    - "[[Clearance]]"
-    - "[[Pressure]]"
-    - "[[Extend]]"
-    - "[[Relative]]"
-    - "[[Structure]]"
-    - "[[Theory|The Working Postulate]]"
-    - "[[Order Trace]]"
-    - "[[Retrace Practice]]"
-
+    targets:
+      - first.connection
+      - first.place
+      - first.clean
+      - first.asymmetry
+      - third.expression
+      - practice.root-system
+      - first.tact
+      - first.clear
+      - first.clearance
+      - second.pressure
+      - second.extend
+      - second.relative
+      - second.structure
+      - practice.reality-mechanics-theory
+      - practice.order-trace
+      - practice.retrace-practice
 publish: true
 status: stable
 ---

@@ -5,31 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.carried-condition
-
-needs:
-  - "[[Carrying]]"
-  - "[[Ground]]"
-  - "[[Load]]"
-  - "[[Capacity]]"
-  - "[[Overload]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the carrying condition returned to when load has concentrated too tightly in the participant or carrier."
-  holds: "[[Carrying]], [[Ground]], [[Load]], [[Capacity]], and [[Overload]]. Carrying must be readable, ground must be available as a prior carrier, and load must be readable against capacity before return to carried condition can be named."
-  pairs: "[[Overload]]. Overload names load exceeding supportable capacity; Carried Condition names return to prior carrying conditions before interpretation or further carrying."
+  needs:
+    targets:
+      - second.carrying
+      - ground.ground
+      - second.load
+      - second.capacity
+      - second.overload
+  holds:
+    targets:
+      - second.carrying
+      - ground.ground
+      - second.load
+      - second.capacity
+      - second.overload
+    read: "[[Carrying]], [[Ground]], [[Load]], [[Capacity]], and [[Overload]]. Carrying must be readable, ground must be available as a prior carrier, and load must be readable against capacity before return to carried condition can be named."
+  pairs:
+    targets:
+      - second.overload
+    read: "[[Overload]]. Overload names load exceeding supportable capacity; Carried Condition names return to prior carrying conditions before interpretation or further carrying."
   traces:
-    - "[[Carrying]]"
-    - "[[Ground]]"
-    - "[[Load]]"
-    - "[[Capacity]]"
-    - "[[Overload]]"
-  nests: "inside carrying as a return condition: where the carrier stops treating itself as the only carrier and lets prior carrying conditions take load."
-  reads: "where load, pressure, fatigue, shock, illness, burnout, collapse, or ordinary overload exceeds self-carrying and the first movement is return to ground, gravity, weight, breath, support, and interval before meaning."
+    targets:
+      - second.carrying
+      - ground.ground
+      - second.load
+      - second.capacity
+      - second.overload
+  nests:
+    targets: []
+    read: "inside carrying as a return condition: where the carrier stops treating itself as the only carrier and lets prior carrying conditions take load."
+  reads:
+    targets: []
+    read: "where load, pressure, fatigue, shock, illness, burnout, collapse, or ordinary overload exceeds self-carrying and the first movement is return to ground, gravity, weight, breath, support, and interval before meaning."
   carries:
-    - "[[Recovery]]"
-    - "[[Recarry]]"
-    - "[[Borne and Carried]]"
-
+    targets:
+      - third.recovery
+      - second.recarry
+      - third.borne-and-carried
 publish: true
 status: working
 ---

@@ -5,25 +5,39 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.field-bearing
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Bearing]]"
-  - "[[Traversal]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a field bearing on traversal or participation."
-  holds: "[[Field of Participation]], [[Bearing]], and [[Traversal]]."
-  pairs: "[[Field Relationships]]. Field Bearing names how a field bears through its own conditions; Field Relationships names how fields bear on each other. Each is a distinct structural condition at the field level."
+  needs:
+    targets:
+      - third.field-of-participation
+      - first.bearing
+      - second.traversal
+  holds:
+    targets:
+      - third.field-of-participation
+      - first.bearing
+      - second.traversal
+    read: "[[Field of Participation]], [[Bearing]], and [[Traversal]]."
+  pairs:
+    targets:
+      - third.field-relationships
+    read: "[[Field Relationships]]. Field Bearing names how a field bears through its own conditions; Field Relationships names how fields bear on each other. Each is a distinct structural condition at the field level."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Bearing]]"
-    - "[[Traversal]]"
-  nests: "where a field carries force, direction, constraint, or availability through participation."
-  reads: "Field Bearing becomes readable where a field changes available traversal or participation by already bearing on what enters it — where movement, action, attention, return, escape, or participation is altered by the field condition itself."
+    targets:
+      - third.field-of-participation
+      - first.bearing
+      - second.traversal
+  nests:
+    targets: []
+    read: "where a field carries force, direction, constraint, or availability through participation."
+  reads:
+    targets: []
+    read: "Field Bearing becomes readable where a field changes available traversal or participation by already bearing on what enters it — where movement, action, attention, return, escape, or participation is altered by the field condition itself."
   carries:
-    - "[[Gravity]]"
-
+    targets:
+      - third.gravity
 publish: true
 status: stable
 ---

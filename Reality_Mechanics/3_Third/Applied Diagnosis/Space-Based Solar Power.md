@@ -5,35 +5,54 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.space-based-solar-power
+determination: pd.v3.pre-provenance-baseline
 domain: applied-diagnosis
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Diagnosis]]"
-  - "[[Intake]]"
-  - "[[Splinter]]"
-  - "[[Earth Carrying]]"
-  - "[[Boundary]]"
-  - "[[Regulation]]"
-  - "[[Hidden Carrying]]"
 
 conditions:
   places: "the applied RM diagnosis question for orbital energy collection — specifically whether the pathway is retraceable intake into Earth carrying or a splinter condition crossing a boundary without adequate carrying relation."
-  holds: "[[Applied Read]], [[Diagnosis]], [[Intake]], [[Splinter]], [[Earth Carrying]], [[Boundary]], [[Regulation]], and [[Hidden Carrying]]. The diagnostic framework, the structural carrying conditions being tested, and the risk conditions being read all must be available before this specific engineering case can be diagnosed as intake-or-splinter rather than treated as a neutral infrastructure question."
-  pairs: "No lateral pair is required at this placement yet; Space-Based Solar Power stands as a single applied case within Applied Diagnosis."
+  needs:
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - second.intake
+      - second.splinter
+      - third.earth-carrying
+      - first.boundary
+      - second.regulation
+      - third.hidden-carrying
+  holds:
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - second.intake
+      - second.splinter
+      - third.earth-carrying
+      - first.boundary
+      - second.regulation
+      - third.hidden-carrying
+    read: "[[Applied Read]], [[Diagnosis]], [[Intake]], [[Splinter]], [[Earth Carrying]], [[Boundary]], [[Regulation]], and [[Hidden Carrying]]. The diagnostic framework, the structural carrying conditions being tested, and the risk conditions being read all must be available before this specific engineering case can be diagnosed as intake-or-splinter rather than treated as a neutral infrastructure question."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; Space-Based Solar Power stands as a single applied case within Applied Diagnosis."
   traces:
-    - "[[Applied Read]]"
-    - "[[Diagnosis]]"
-    - "[[Earth Carrying]]"
-    - "[[Intake]]"
-    - "[[Splinter]]"
-    - "[[Boundary]]"
-    - "[[Regulation]]"
-    - "[[Hidden Carrying]]"
-  nests: "within Applied Diagnosis as a worked test case for the intake/splinter boundary condition — where an engineering pathway is diagnosed against Earth carrying rather than claimed as infrastructure."
-  reads: "Space-Based Solar Power becomes readable as an applied diagnosis where external energy is routed through an engineered channel into Earth systems, and the question becomes whether that channel is intake that can be received or splintering that crosses a boundary without adequate carrying relation."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - third.earth-carrying
+      - second.intake
+      - second.splinter
+      - first.boundary
+      - second.regulation
+      - third.hidden-carrying
+  nests:
+    targets: []
+    read: "within Applied Diagnosis as a worked test case for the intake/splinter boundary condition — where an engineering pathway is diagnosed against Earth carrying rather than claimed as infrastructure."
+  reads:
+    targets: []
+    read: "Space-Based Solar Power becomes readable as an applied diagnosis where external energy is routed through an engineered channel into Earth systems, and the question becomes whether that channel is intake that can be received or splintering that crosses a boundary without adequate carrying relation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

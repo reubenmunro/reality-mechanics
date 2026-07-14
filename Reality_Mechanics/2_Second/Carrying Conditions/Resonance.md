@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.resonance
-
-needs:
-  - "[[Frequency]]"
-  - "[[Coupling]]"
-  - "[[Pattern]]"
-  - "[[Compatibility]]"
-  - "[[Capacity]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "difference coupled through a shared carrying pattern."
-  holds: "[[Frequency]], [[Coupling]], [[Pattern]], [[Compatibility]], and [[Capacity]]. Recurrence must have readable rate or pattern, distinct conditions must couple, and the carrier must have compatible capacity before resonance can be named."
-  pairs: "No lateral pair is required at this placement yet. Resonance is evaluated by whether shared carrying remains compatible or amplifies beyond capacity."
+  needs:
+    targets:
+      - second.frequency
+      - second.coupling
+      - second.pattern
+      - second.compatibility
+      - second.capacity
+  holds:
+    targets:
+      - second.frequency
+      - second.coupling
+      - second.pattern
+      - second.compatibility
+      - second.capacity
+    read: "[[Frequency]], [[Coupling]], [[Pattern]], [[Compatibility]], and [[Capacity]]. Recurrence must have readable rate or pattern, distinct conditions must couple, and the carrier must have compatible capacity before resonance can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Resonance is evaluated by whether shared carrying remains compatible or amplifies beyond capacity."
   traces:
-    - "[[Frequency]]"
-    - "[[Coupling]]"
-    - "[[Pattern]]"
-    - "[[Compatibility]]"
-    - "[[Capacity]]"
-  nests: "inside carrying where distinct conditions become mutually active through a shared frequency, rhythm, pattern, or carrying condition."
-  reads: "Resonance becomes readable where one condition can carry, amplify, return, or be moved by another condition's pattern without becoming identical to it."
-  carries: []
-
+    targets:
+      - second.frequency
+      - second.coupling
+      - second.pattern
+      - second.compatibility
+      - second.capacity
+  nests:
+    targets: []
+    read: "inside carrying where distinct conditions become mutually active through a shared frequency, rhythm, pattern, or carrying condition."
+  reads:
+    targets: []
+    read: "Resonance becomes readable where one condition can carry, amplify, return, or be moved by another condition's pattern without becoming identical to it."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

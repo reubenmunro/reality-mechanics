@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.knowing
+determination: pd.v3.pre-provenance-baseline
 domain: placement-modes
-
-needs:
-  - "[[Placement Mode]]"
-  - "[[Readability]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Know]]"
 
 conditions:
   places: "the mode where participation is primarily carried through readable distinction, recognition, test, or retained understanding — where what is read becomes identifiable, checkable, or teachable."
-  holds: "[[Placement Mode]], [[Readability]], [[Recognition Read|Recognition]], and [[Know]]. A mode of participation must exist, readability must produce distinct conditions, recognition must be possible, and the capacity to know must be available before retained understanding can be placed as the primary mode."
-  pairs: "[[Expressing]]. Knowing is the inward direction — reading in toward distinction and retained understanding; Expressing is the outward direction — making readable form available to others."
+  needs:
+    targets:
+      - third.placement-mode
+      - second.readability
+      - second.recognition-read
+      - second.know
+  holds:
+    targets:
+      - third.placement-mode
+      - second.readability
+      - second.recognition-read
+      - second.know
+    read: "[[Placement Mode]], [[Readability]], [[Recognition Read|Recognition]], and [[Know]]. A mode of participation must exist, readability must produce distinct conditions, recognition must be possible, and the capacity to know must be available before retained understanding can be placed as the primary mode."
+  pairs:
+    targets:
+      - third.expressing
+    read: "[[Expressing]]. Knowing is the inward direction — reading in toward distinction and retained understanding; Expressing is the outward direction — making readable form available to others."
   traces:
-    - "[[Placement Mode]]"
-    - "[[Readability]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Know]]"
-  nests: "within Placement Modes as the understanding mode — where the primary movement is readable distinction becoming identifiable, checkable, modelled, or retained."
-  reads: "where a note is primarily placed by a read becoming identifiable, checkable, retained, modelled, taught, or revised."
-  carries: []
-
+    targets:
+      - third.placement-mode
+      - second.readability
+      - second.recognition-read
+      - second.know
+  nests:
+    targets: []
+    read: "within Placement Modes as the understanding mode — where the primary movement is readable distinction becoming identifiable, checkable, modelled, or retained."
+  reads:
+    targets: []
+    read: "where a note is primarily placed by a read becoming identifiable, checkable, retained, modelled, taught, or revised."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

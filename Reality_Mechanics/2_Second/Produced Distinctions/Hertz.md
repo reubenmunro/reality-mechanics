@@ -5,22 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.hertz
-
-needs:
-  - "[[Frequency]]"
-  - "[[Unit]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "frequency measured as counted returns per second."
-  holds: "[[Frequency]] and [[Unit]]."
-  pairs: "Asymmetry carries downward — unit of [[Frequency]] per [[Unit]] of time"
+  needs:
+    targets:
+      - second.frequency
+      - second.unit
+  holds:
+    targets:
+      - second.frequency
+      - second.unit
+    read: "[[Frequency]] and [[Unit]]."
+  pairs:
+    targets:
+      - second.frequency
+      - second.unit
+    read: "Asymmetry carries downward — unit of [[Frequency]] per [[Unit]] of time"
   traces:
-    - "[[Frequency]]"
-    - "[[Unit]]"
-  nests: "as a unit-read of frequency measured against the standard interval of one second."
-  reads: "where readable returns are counted per second."
-  carries: []
-
+    targets:
+      - second.frequency
+      - second.unit
+  nests:
+    targets: []
+    read: "as a unit-read of frequency measured against the standard interval of one second."
+  reads:
+    targets: []
+    read: "where readable returns are counted per second."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

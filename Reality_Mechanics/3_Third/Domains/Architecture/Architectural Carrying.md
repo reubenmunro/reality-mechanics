@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.architectural-carrying
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Architecture]]"
-  - "[[Bearing]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "compatible Bearing participation within built form."
-  holds: "[[Architecture]], [[Bearing]], [[Carrying]], [[Compatibility]]."
-  pairs: "[[Architectural Constraint]]. Architectural Carrying names the continuation of structural bearing through the building; Architectural Constraint names the bounded conditions within which that carrying must remain compatible."
+  needs:
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+    read: "[[Architecture]], [[Bearing]], [[Carrying]], [[Compatibility]]."
+  pairs:
+    targets:
+      - third.architectural-constraint
+    read: "[[Architectural Constraint]]. Architectural Carrying names the continuation of structural bearing through the building; Architectural Constraint names the bounded conditions within which that carrying must remain compatible."
   traces:
-    - "[[Architecture]]"
-    - "[[Bearing]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Architectural Carrying becomes readable where a built condition continues to support use, load, access, or occupation compatibly."
-  carries: []
-
+    targets:
+      - third.architecture
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Architectural Carrying becomes readable where a built condition continues to support use, load, access, or occupation compatibly."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

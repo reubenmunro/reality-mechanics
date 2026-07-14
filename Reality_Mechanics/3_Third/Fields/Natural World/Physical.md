@@ -5,32 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.physical
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World Field]]"
-  - "[[Relation Read]]"
-  - "[[Boundary]]"
-  - "[[Availability]]"
-  - "[[Readability]]"
-  - "[[Natural World]]"
 
 conditions:
   places: "the third-order field read where material and field conditions become readable as structural — where boundary, availability, and readability become evaluable in the natural world."
-  holds: "[[Natural World Field]], [[Relation Read]], [[Boundary]], [[Availability]], [[Readability]], and [[Natural World]]. Boundary must locate material distinction and readability must be present before natural conditions can be named as physical field reads."
-  pairs: "No lateral pair is required at this placement yet. Physical names the material distinction condition through which boundary, availability, and readability become evaluable in the natural world; its structural contrast at the same dependency level is not yet a named vault term."
+  needs:
+    targets:
+      - third.natural-world-field
+      - first.relation-read
+      - first.boundary
+      - first.availability
+      - second.readability
+      - third.natural-world
+  holds:
+    targets:
+      - third.natural-world-field
+      - first.relation-read
+      - first.boundary
+      - first.availability
+      - second.readability
+      - third.natural-world
+    read: "[[Natural World Field]], [[Relation Read]], [[Boundary]], [[Availability]], [[Readability]], and [[Natural World]]. Boundary must locate material distinction and readability must be present before natural conditions can be named as physical field reads."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Physical names the material distinction condition through which boundary, availability, and readability become evaluable in the natural world; its structural contrast at the same dependency level is not yet a named vault term."
   traces:
-    - "[[Natural World Field]]"
-    - "[[Relation Read]]"
-    - "[[Boundary]]"
-    - "[[Availability]]"
-    - "[[Readability]]"
-    - "[[Natural World]]"
-  nests: "within the Natural World Field as the field-level condition through which material and field relations become structurally readable."
-  reads: "Physical becomes readable where natural-world relation can be sensed, located, measured, constrained, affected, or modelled as material or field condition."
+    targets:
+      - third.natural-world-field
+      - first.relation-read
+      - first.boundary
+      - first.availability
+      - second.readability
+      - third.natural-world
+  nests:
+    targets: []
+    read: "within the Natural World Field as the field-level condition through which material and field relations become structurally readable."
+  reads:
+    targets: []
+    read: "Physical becomes readable where natural-world relation can be sensed, located, measured, constrained, affected, or modelled as material or field condition."
   carries:
-    - "[[Physical Field Conditions]]"
-
+    targets:
+      - third.physical-field-conditions
 publish: true
 status: stable
 ---

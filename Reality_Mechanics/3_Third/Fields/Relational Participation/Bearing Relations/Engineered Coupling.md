@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.engineered-coupling
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Coupling]]"
-  - "[[Carrying]]"
-  - "[[Constraint]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "coupling that is deliberately constructed to hold distinct resolved conditions in compatible mutual availability — coupling shaped by constraint and carrying rather than emergent."
-  holds: "[[Coupling]], [[Carrying]], [[Constraint]], and [[Compatibility]]. Coupling must hold, carrying must continue, a constraining structure must shape the coupling, and the imposed continuation must remain compatible before it can be read as engineered."
-  pairs: "[[Nested Coupling]] — Engineered Coupling names coupling deliberately constructed by constraint; Nested Coupling names coupling that arises through nesting within a larger structure."
+  needs:
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+  holds:
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+    read: "[[Coupling]], [[Carrying]], [[Constraint]], and [[Compatibility]]. Coupling must hold, carrying must continue, a constraining structure must shape the coupling, and the imposed continuation must remain compatible before it can be read as engineered."
+  pairs:
+    targets:
+      - third.nested-coupling
+    read: "[[Nested Coupling]] — Engineered Coupling names coupling deliberately constructed by constraint; Nested Coupling names coupling that arises through nesting within a larger structure."
   traces:
-    - "[[Coupling]]"
-    - "[[Carrying]]"
-    - "[[Constraint]]"
-    - "[[Compatibility]]"
-  nests: "within Relational Participation as the condition through which coupling is deliberately structured — the structural ground for Technology Domain and AI domain reads."
-  reads: "Engineered coupling becomes readable where constructed carrying preserves availability, bearing, resolution, and dependency order."
-  carries: []
-
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.constraint
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within Relational Participation as the condition through which coupling is deliberately structured — the structural ground for Technology Domain and AI domain reads."
+  reads:
+    targets: []
+    read: "Engineered coupling becomes readable where constructed carrying preserves availability, bearing, resolution, and dependency order."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

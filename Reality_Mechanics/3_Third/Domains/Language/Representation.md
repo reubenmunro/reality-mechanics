@@ -5,33 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.representation
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Reality]]"
-  - "[[Read]]"
-  - "[[Readability]]"
-  - "[[Medium]]"
-  - "[[Form]]"
-  - "[[Recognition Read]]"
-  - "[[Language Domain]]"
 
 conditions:
   places: "branch-level expression that carries a read into [[Form]]."
-  holds: "[[Reality]], [[Read]], [[Readability]], [[Medium]], [[Form]], [[Recognition Read]], [[Language Domain]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.reality
+      - first.read
+      - second.readability
+      - second.medium
+      - second.form
+      - second.recognition-read
+      - third.language-domain
+  holds:
+    targets:
+      - second.reality
+      - first.read
+      - second.readability
+      - second.medium
+      - second.form
+      - second.recognition-read
+      - third.language-domain
+    read: "[[Reality]], [[Read]], [[Readability]], [[Medium]], [[Form]], [[Recognition Read]], [[Language Domain]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Reality]]"
-    - "[[Read]]"
-    - "[[Readability]]"
-    - "[[Medium]]"
-    - "[[Form]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Language Domain]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Representation becomes readable where a read is carried into form so it can be used, checked, transmitted, or misread."
-  carries: []
-
+    targets:
+      - second.reality
+      - first.read
+      - second.readability
+      - second.medium
+      - second.form
+      - second.recognition-read
+      - third.language-domain
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Representation becomes readable where a read is carried into form so it can be used, checked, transmitted, or misread."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

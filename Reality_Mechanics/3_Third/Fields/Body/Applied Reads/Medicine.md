@@ -5,39 +5,61 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.medicine
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Body Field]]"
-  - "[[Life Field]]"
-  - "[[Asymmetry]]"
-  - "[[Nested Coupling]]"
-  - "[[Maintained Coupling]]"
-  - "[[Care]]"
-  - "[[Harm]]"
-  - "[[Competence Boundary]]"
-  - "[[Safety Boundary]]"
-  - "[[Recovery]]"
 
 conditions:
   places: "the applied domain through which maintained coupling holds a body's organic asymmetry within compatible bounds — where the practitioner's recurrent, responsive bearing preserves available carrying without overriding the body's own regulatory capacity."
-  holds: "[[Body Field]], [[Life Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Competence Boundary]], [[Safety Boundary]], and [[Recovery]]. Organic asymmetry must be present and strained, nested coupling must hold the practitioner within the body's scope, and care must be recurrent and bounded by competence before the maintained holding of bodily asymmetry can be named as medicine."
-  pairs: "[[Over-Treatment]]. Medicine names the maintained coupling that holds organic asymmetry within compatible bounds — where the practitioner's bearing preserves the body's available carrying; Over-Treatment names the condition where that coupling exceeds compatible scope and the intervention becomes the source of harm."
+  needs:
+    targets:
+      - third.body-field
+      - third.life-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.competence-boundary
+      - third.safety-boundary
+      - third.recovery
+  holds:
+    targets:
+      - third.body-field
+      - third.life-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.competence-boundary
+      - third.safety-boundary
+      - third.recovery
+    read: "[[Body Field]], [[Life Field]], [[Asymmetry]], [[Nested Coupling]], [[Maintained Coupling]], [[Care]], [[Harm]], [[Competence Boundary]], [[Safety Boundary]], and [[Recovery]]. Organic asymmetry must be present and strained, nested coupling must hold the practitioner within the body's scope, and care must be recurrent and bounded by competence before the maintained holding of bodily asymmetry can be named as medicine."
+  pairs:
+    targets:
+      - third.over-treatment
+    read: "[[Over-Treatment]]. Medicine names the maintained coupling that holds organic asymmetry within compatible bounds — where the practitioner's bearing preserves the body's available carrying; Over-Treatment names the condition where that coupling exceeds compatible scope and the intervention becomes the source of harm."
   traces:
-    - "[[Body Field]]"
-    - "[[Life Field]]"
-    - "[[Asymmetry]]"
-    - "[[Nested Coupling]]"
-    - "[[Maintained Coupling]]"
-    - "[[Care]]"
-    - "[[Harm]]"
-    - "[[Competence Boundary]]"
-    - "[[Safety Boundary]]"
-    - "[[Recovery]]"
-  nests: "within Body Field as an applied domain read — the practice through which maintained coupling holds the body's organic asymmetry within compatible bounds through recurrent, responsive bearing bounded by competence."
-  reads: "Medicine becomes readable where a body's own regulatory capacity cannot hold compatible carrying alone — where the practitioner's maintained coupling preserves the conditions within which the body's asymmetry can proceed toward recovery."
-  carries: []
-
+    targets:
+      - third.body-field
+      - third.life-field
+      - first.asymmetry
+      - third.nested-coupling
+      - third.maintained-coupling
+      - third.care
+      - third.harm
+      - third.competence-boundary
+      - third.safety-boundary
+      - third.recovery
+  nests:
+    targets: []
+    read: "within Body Field as an applied domain read — the practice through which maintained coupling holds the body's organic asymmetry within compatible bounds through recurrent, responsive bearing bounded by competence."
+  reads:
+    targets: []
+    read: "Medicine becomes readable where a body's own regulatory capacity cannot hold compatible carrying alone — where the practitioner's maintained coupling preserves the conditions within which the body's asymmetry can proceed toward recovery."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

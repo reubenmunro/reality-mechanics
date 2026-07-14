@@ -1,30 +1,44 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.reality-bearing-connection
-
-needs:
-  - "[[Atlas]]"
-  - "[[Bearing]]"
-  - "[[Retrace Read|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a connection that can carry reality through trace, read, bearing, and retrace."
-  holds: "[[Atlas]], [[Bearing]], and [[Retrace Read|Retrace]]."
-  pairs: "Asymmetry carries downward — into [[Atlasing]]"
+  needs:
+    targets:
+      - practice.atlas
+      - first.bearing
+      - second.retrace-read
+  holds:
+    targets:
+      - practice.atlas
+      - first.bearing
+      - second.retrace-read
+    read: "[[Atlas]], [[Bearing]], and [[Retrace Read|Retrace]]."
+  pairs:
+    targets:
+      - practice.atlasing
+    read: "Asymmetry carries downward — into [[Atlasing]]"
   traces:
-    - "[[Atlas]]"
-    - "[[Bearing]]"
-    - "[[Retrace Read|Retrace]]"
-  nests: "where notes, terms, supports, reads, and retraces carry reality rather than mere information."
-  reads: "where a link, placement, or relation is coupled enough to participate and nested enough to be ordered, so it can be followed back through what supports it and still carry the reality it claims to connect."
+    targets:
+      - practice.atlas
+      - first.bearing
+      - second.retrace-read
+  nests:
+    targets: []
+    read: "where notes, terms, supports, reads, and retraces carry reality rather than mere information."
+  reads:
+    targets: []
+    read: "where a link, placement, or relation is coupled enough to participate and nested enough to be ordered, so it can be followed back through what supports it and still carry the reality it claims to connect."
   carries:
-    - "[[Atlasing]]"
-    - "[[Atlas Practice]]"
-
+    targets:
+      - practice.atlasing
+      - practice.atlas-practice
 publish: true
 status: stable
 ---

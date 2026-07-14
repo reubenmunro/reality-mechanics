@@ -5,28 +5,40 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.natural-order
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "order already available within the governing arrangement — dependency readability that holds without being imposed by the read that enters it"
-  holds: "[[Root Order]] — Root Order holds the governing arrangement; Natural Order names what is already available within it"
-  pairs: "[[Dependency Order]] — Natural Order names the order available within the arrangement without imposition; Dependency Order names the structural precedence within that same arrangement. Each requires the other: available order is only readable against structural precedence; structural precedence is only nameable against the order it orders."
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — Root Order holds the governing arrangement; Natural Order names what is already available within it"
+  pairs:
+    targets:
+      - ground.dependency-order
+    read: "[[Dependency Order]] — Natural Order names the order available within the arrangement without imposition; Dependency Order names the structural precedence within that same arrangement. Each requires the other: available order is only readable against structural precedence; structural precedence is only nameable against the order it orders."
   traces:
-    - "[[Root Order]]"
-    - "[[Ground]]"
-  nests: "wherever order holds through available relation rather than continual external correction"
-  reads: "where recurring conditions preserve dependency structure without external correction — order holding because it is available, not imposed, and not dependent on entry by read in order to hold"
+    targets:
+      - ground.root-order
+      - ground.ground
+  nests:
+    targets: []
+    read: "wherever order holds through available relation rather than continual external correction"
+  reads:
+    targets: []
+    read: "where recurring conditions preserve dependency structure without external correction — order holding because it is available, not imposed, and not dependent on entry by read in order to hold"
   carries:
-    - "[[Participation]]"
-    - "[[Organic]]"
-    - "[[Generic]]"
-    - "[[Emergent]]"
-    - "[[Natural World]]"
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-
+    targets:
+      - second.participation
+      - third.organic
+      - ground.generic
+      - ground.emergent
+      - third.natural-world
+      - third.field-of-participation
+      - third.organic-field
 publish: true
 status: stable
 ---

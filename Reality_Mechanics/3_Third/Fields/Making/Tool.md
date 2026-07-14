@@ -5,33 +5,52 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.tool
+determination: pd.v3.pre-provenance-baseline
 domain: making
-
-needs:
-  - "[[Making Field]]"
-  - "[[Form]]"
-  - "[[Function]]"
-  - "[[Medium]]"
-  - "[[Making]]"
-  - "[[Extend]]"
-  - "[[Readability]]"
 
 conditions:
   places: "the condition through which a made form extends a participant's carrying by translating relation into a usable resolution band — the structural node where form, function, medium, and readability combine to augment what relation can carry."
-  holds: "[[Making Field]], [[Form]], [[Function]], [[Medium]], [[Making]], [[Extend]], and [[Readability]]. Form must be carried through making, extension must remain answerable to source, function must be readable through a medium, and the translated condition must enter a usable resolution band before the augmenting condition can be named as a tool."
-  pairs: "[[Hidden Carrying]]. Tool names the produced form that makes carrying available and visible; Hidden Carrying names the condition where produced form displaces and obscures the carrying it depends on."
+  needs:
+    targets:
+      - third.making-field
+      - second.form
+      - second.function
+      - second.medium
+      - third.making
+      - second.extend
+      - second.readability
+  holds:
+    targets:
+      - third.making-field
+      - second.form
+      - second.function
+      - second.medium
+      - third.making
+      - second.extend
+      - second.readability
+    read: "[[Making Field]], [[Form]], [[Function]], [[Medium]], [[Making]], [[Extend]], and [[Readability]]. Form must be carried through making, extension must remain answerable to source, function must be readable through a medium, and the translated condition must enter a usable resolution band before the augmenting condition can be named as a tool."
+  pairs:
+    targets:
+      - third.hidden-carrying
+    read: "[[Hidden Carrying]]. Tool names the produced form that makes carrying available and visible; Hidden Carrying names the condition where produced form displaces and obscures the carrying it depends on."
   traces:
-    - "[[Making Field]]"
-    - "[[Form]]"
-    - "[[Function]]"
-    - "[[Medium]]"
-    - "[[Making]]"
-    - "[[Extend]]"
-    - "[[Readability]]"
-  nests: "within the Making Field as the condition through which made form extends carrying — the structural ground for technology, medium, and instrument reads."
-  reads: "Tool becomes readable where a made form allows participation that would otherwise be unavailable, harder to carry, or less compatible by translating relation into a form the participant can receive, integrate, and carry."
-  carries: []
-
+    targets:
+      - third.making-field
+      - second.form
+      - second.function
+      - second.medium
+      - third.making
+      - second.extend
+      - second.readability
+  nests:
+    targets: []
+    read: "within the Making Field as the condition through which made form extends carrying — the structural ground for technology, medium, and instrument reads."
+  reads:
+    targets: []
+    read: "Tool becomes readable where a made form allows participation that would otherwise be unavailable, harder to carry, or less compatible by translating relation into a form the participant can receive, integrate, and carry."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

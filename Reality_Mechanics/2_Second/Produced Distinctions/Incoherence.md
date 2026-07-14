@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.incoherence
-
-needs:
-  - "[[Coherence]]"
-  - "[[Overload]]"
-  - "[[Disorder]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "compatible pattern holding no longer remaining readable."
-  holds: "[[Coherence]], [[Overload]], and [[Disorder]]."
-  pairs: "[[Coherence]]. Coherence names compatible patterns holding together; Incoherence names loss of readable compatibility."
+  needs:
+    targets:
+      - second.coherence
+      - second.overload
+      - second.disorder
+  holds:
+    targets:
+      - second.coherence
+      - second.overload
+      - second.disorder
+    read: "[[Coherence]], [[Overload]], and [[Disorder]]."
+  pairs:
+    targets:
+      - second.coherence
+    read: "[[Coherence]]. Coherence names compatible patterns holding together; Incoherence names loss of readable compatibility."
   traces:
-    - "[[Coherence]]"
-    - "[[Overload]]"
-    - "[[Disorder]]"
-  nests: "where patterns expected to carry together no longer remain compatibly readable."
-  reads: "where multiple patterns can no longer be read as compatibly held together — where their carrying produces conflict, turbulence, shutdown, fragmentation, or disorder within the current scope."
+    targets:
+      - second.coherence
+      - second.overload
+      - second.disorder
+  nests:
+    targets: []
+    read: "where patterns expected to carry together no longer remain compatibly readable."
+  reads:
+    targets: []
+    read: "where multiple patterns can no longer be read as compatibly held together — where their carrying produces conflict, turbulence, shutdown, fragmentation, or disorder within the current scope."
   carries:
-    - "[[Second-Order Disorder Effects]]"
-
+    targets:
+      - second.second-order-disorder-effects
 publish: true
 status: stable
 ---

@@ -5,26 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.coherence
-
-needs:
-  - "[[Pattern]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "compatible patterns holding together."
-  holds: "[[Pattern]] and [[Compatibility]]."
-  pairs: "[[Incoherence]]. Coherence names compatible patterns holding together; Incoherence names that compatibility no longer remaining readable."
+  needs:
+    targets:
+      - second.pattern
+      - second.compatibility
+  holds:
+    targets:
+      - second.pattern
+      - second.compatibility
+    read: "[[Pattern]] and [[Compatibility]]."
+  pairs:
+    targets:
+      - second.incoherence
+    read: "[[Incoherence]]. Coherence names compatible patterns holding together; Incoherence names that compatibility no longer remaining readable."
   traces:
-    - "[[Pattern]]"
-    - "[[Compatibility]]"
-    - "[[Recurrence]]"
-  nests: "where multiple patterns hold together across a scope without losing individual readability."
-  reads: "where multiple patterns can be read as holding together — where what recurs across a scope remains compatible rather than collapsing into disorder."
+    targets:
+      - second.pattern
+      - second.compatibility
+      - second.recurrence
+  nests:
+    targets: []
+    read: "where multiple patterns hold together across a scope without losing individual readability."
+  reads:
+    targets: []
+    read: "where multiple patterns can be read as holding together — where what recurs across a scope remains compatible rather than collapsing into disorder."
   carries:
-    - "[[Stability]]"
-    - "[[Incoherence]]"
-    - "[[Knowledge]]"
-
+    targets:
+      - second.stability
+      - second.incoherence
+      - third.knowledge
 publish: true
 status: stable
 ---

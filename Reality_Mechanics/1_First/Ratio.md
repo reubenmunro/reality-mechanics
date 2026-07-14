@@ -5,27 +5,41 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.ratio
-
-needs:
-  - "[[One]]"
-  - "[[Other]]"
-  - "[[Clearance]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation made readable between distinguishable terms — comparison held by reference, distinction, boundary, and clearance."
-  holds: "[[One]], [[Other]], and [[Clearance]]. A reference and distinction must be readable, and enough held separation must remain, before relation can be read as ratio without collapse."
-  pairs: "[[Relation]] — Ratio is relation made readable; Relation is the active condition that ratio remains answerable to."
+  needs:
+    targets:
+      - first.one
+      - first.other
+      - first.clearance
+  holds:
+    targets:
+      - first.one
+      - first.other
+      - first.clearance
+    read: "[[One]], [[Other]], and [[Clearance]]. A reference and distinction must be readable, and enough held separation must remain, before relation can be read as ratio without collapse."
+  pairs:
+    targets:
+      - first.relation
+    read: "[[Relation]] — Ratio is relation made readable; Relation is the active condition that ratio remains answerable to."
   traces:
-    - "[[One]]"
-    - "[[Other]]"
-    - "[[Clearance]]"
-  nests: "inside reading order as relation made readable, not as the generative source of relation."
-  reads: "where reference and distinction can be compared without becoming the same thing, unrelated things, or an unplaced measure."
+    targets:
+      - first.one
+      - first.other
+      - first.clearance
+  nests:
+    targets: []
+    read: "inside reading order as relation made readable, not as the generative source of relation."
+  reads:
+    targets: []
+    read: "where reference and distinction can be compared without becoming the same thing, unrelated things, or an unplaced measure."
   carries:
-    - "[[Reference Frame]]"
-    - "[[Relative]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - second.reference-frame
+      - second.relative
+      - practice.reasoning
 publish: true
 status: working
 aliases:

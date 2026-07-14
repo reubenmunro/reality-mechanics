@@ -5,26 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.disorder
-
-needs:
-  - "[[Stability]]"
-  - "[[Strain]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "stability no longer holding."
-  holds: "[[Stability]] and [[Strain]]."
-  pairs: "[[Stability]]. Stability names identity and coherence holding; Disorder names that holding becoming unreadable."
+  needs:
+    targets:
+      - second.stability
+      - first.strain
+  holds:
+    targets:
+      - second.stability
+      - first.strain
+    read: "[[Stability]] and [[Strain]]."
+  pairs:
+    targets:
+      - second.stability
+    read: "[[Stability]]. Stability names identity and coherence holding; Disorder names that holding becoming unreadable."
   traces:
-    - "[[Stability]]"
-    - "[[Strain]]"
-  nests: "where identity, coherence, or compatibility no longer holds within the current scope."
-  reads: "where a previously stable condition can no longer be read as holding — where identity, coherence, or compatibility has broken down within the current scope."
+    targets:
+      - second.stability
+      - first.strain
+  nests:
+    targets: []
+    read: "where identity, coherence, or compatibility no longer holds within the current scope."
+  reads:
+    targets: []
+    read: "where a previously stable condition can no longer be read as holding — where identity, coherence, or compatibility has broken down within the current scope."
   carries:
-    - "[[Incoherence]]"
-    - "[[Dependency Disorder]]"
-    - "[[Collapse]]"
-    - "[[Second-Order Disorder Effects]]"
-
+    targets:
+      - second.incoherence
+      - second.dependency-disorder
+      - second.collapse
+      - second.second-order-disorder-effects
 publish: true
 status: stable
 ---

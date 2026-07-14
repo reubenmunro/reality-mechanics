@@ -1,32 +1,45 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.reality-mechanics
-
-needs:
-  - "[[Ground]]"
-  - "[[Theory]]"
+determination: pd.v3.public-surface-propagation
 
 conditions:
   places: "the discipline of keeping relation traceable as order through a working postulate, grounded retrace, accumulated carrying, and answerable placement."
-  holds: "[[Ground]] and the working root named by [[Theory]]: it begins from what is acknowledged before the system derives its own terms."
-  pairs: "[[Atlas]]. Reality Mechanics is the discipline; Atlas is the worked and tended surface produced through the discipline."
+  needs:
+    targets:
+      - ground.ground
+      - practice.reality-mechanics-theory
+  holds:
+    targets:
+      - ground.ground
+      - practice.reality-mechanics-theory
+    read: "[[Ground]] and the working root named by [[Theory]]: it begins from what is acknowledged before the system derives its own terms."
+  pairs:
+    targets:
+      - practice.atlas
+    read: "[[Atlas]]. Reality Mechanics is the discipline; Atlas is the worked and tended surface produced through the discipline."
   traces:
-    - "[[Ground]]"
-    - "[[Discipline]]"
-    - "[[Translation Boundary]]"
-    - "[[Order Trace]]"
-  nests: "the whole practice: root order, term notes, applied reads, participant correction, and public carrying."
-  reads: "where a term can be placed by structural role, direct trace, readable condition, available openings, and retraceable correction without losing dependency order."
+    targets:
+      - ground.ground
+      - practice.discipline
+      - third.translation-boundary
+      - practice.order-trace
+  nests:
+    targets: []
+    read: "the whole practice: root order, term notes, applied reads, participant correction, and public carrying."
+  reads:
+    targets: []
+    read: "where a term can be placed by structural role, direct trace, readable condition, available openings, and retraceable correction without losing dependency order."
   carries:
-    - "[[Atlas]]"
-    - "[[Common Term Structure]]"
-    - "[[Participant]]"
-    - "[[Retrace Practice]]"
-
+    targets:
+      - practice.atlas
+      - foundation.common-term-structure
+      - practice.participant
+      - practice.retrace-practice
 publish: true
 status: stable
 ---
@@ -40,7 +53,7 @@ It begins from a working postulate: relation holds, order carries, trace places.
 
 It is the practice through which relation becomes readable, readability becomes traceable, traceability becomes answerable, and answerability returns to practice. Terms, experiences, corrections, and contributions are placed, checked, revised, and grounded according to immediate support, readable condition, and available openings.
 
-The [[Atlas]] is the dependency-ordered reasoning system produced through this discipline. Its written notes are the current worked and tended surface. The Atlas is not the authority-object; the relation-order-trace practice is what must remain repeatable.
+The [[Atlas]] is the sole canonical record of participant determinations produced through this discipline. It remains subordinate to reality; within Reality Mechanics it is the sole canonical structural authority. The relation-order-trace practice must remain repeatable.
 
 ## Places
 

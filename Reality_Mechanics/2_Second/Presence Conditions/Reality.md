@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.reality
-
-needs:
-  - "[[Real]]"
-  - "[[Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "coupled relation readable as real."
-  holds: "[[Real]] and [[Coupling]]."
-  pairs: "Asymmetry carries downward — into [[World]]"
+  needs:
+    targets:
+      - second.real
+      - second.coupling
+  holds:
+    targets:
+      - second.real
+      - second.coupling
+    read: "[[Real]] and [[Coupling]]."
+  pairs:
+    targets:
+      - second.world
+    read: "Asymmetry carries downward — into [[World]]"
   traces:
-    - "[[Real]]"
-    - "[[Coupling]]"
-  nests: "where coupled presence holds as the actual condition of the current scope."
-  reads: "where coupled relation can be encountered as real within the current scope — where what is present is not merely readable but holds as the actual condition of the scope."
+    targets:
+      - second.real
+      - second.coupling
+  nests:
+    targets: []
+    read: "where coupled presence holds as the actual condition of the current scope."
+  reads:
+    targets: []
+    read: "where coupled relation can be encountered as real within the current scope — where what is present is not merely readable but holds as the actual condition of the scope."
   carries:
-    - "[[World]]"
-
+    targets:
+      - second.world
 publish: true
 status: stable
 ---

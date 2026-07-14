@@ -5,16 +5,8 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.degeneration-read
+determination: pd.v3.pre-provenance-baseline
 domain: path-reads
-
-needs:
-  - "[[Path Reads]]"
-  - "[[Order Trace]]"
-  - "[[Strain]]"
-  - "[[Degenerate]]"
-  - "[[Source Drift]]"
-  - "[[Regenerate]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Source Drift]]"
@@ -22,20 +14,47 @@ crossings:
 
 conditions:
   places: "the reusable read by which a carrying is followed from health, through strain, into degeneration, and back through repair — read by whether its trace back remains followable."
-  holds: "[[Path Reads]], [[Order Trace]], [[Strain]], [[Degenerate]], [[Source Drift]], [[Regenerate]], and [[Translation Boundary]]. Source Drift must cross explicitly into the third-order path read."
-  pairs: "No lateral pair is required. [[Order Trace]] is the dependency path that Degeneration Read diagnoses under strain, trace loss, and repair; it is a prerequisite, not a co-required opposite."
+  needs:
+    targets:
+      - third.path-reads
+      - practice.order-trace
+      - first.strain
+      - ground.degenerate
+      - higher.source-drift
+      - ground.regenerate
+      - third.translation-boundary
+  holds:
+    targets:
+      - third.path-reads
+      - practice.order-trace
+      - first.strain
+      - ground.degenerate
+      - higher.source-drift
+      - ground.regenerate
+      - third.translation-boundary
+    read: "[[Path Reads]], [[Order Trace]], [[Strain]], [[Degenerate]], [[Source Drift]], [[Regenerate]], and [[Translation Boundary]]. Source Drift must cross explicitly into the third-order path read."
+  pairs:
+    targets:
+      - practice.order-trace
+    read: "No lateral pair is required. [[Order Trace]] is the dependency path that Degeneration Read diagnoses under strain, trace loss, and repair; it is a prerequisite, not a co-required opposite."
   traces:
-    - "[[Path Reads]]"
-    - "[[Order Trace]]"
-    - "[[Strain]]"
-    - "[[Degenerate]]"
-    - "[[Source Drift]]"
-    - "[[Regenerate]]"
-    - "[[Translation Boundary]]"
-  nests: "as a guide-read across orders — any carrying can be read through it without replacing the direct trace inside each term."
-  reads: "where a carrying can be located at one of four stages — healthy, strained, degenerate, or repairing — read by whether its trace back is followable, not by its output."
-  carries: []
-
+    targets:
+      - third.path-reads
+      - practice.order-trace
+      - first.strain
+      - ground.degenerate
+      - higher.source-drift
+      - ground.regenerate
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "as a guide-read across orders — any carrying can be read through it without replacing the direct trace inside each term."
+  reads:
+    targets: []
+    read: "where a carrying can be located at one of four stages — healthy, strained, degenerate, or repairing — read by whether its trace back is followable, not by its output."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: working
 ---

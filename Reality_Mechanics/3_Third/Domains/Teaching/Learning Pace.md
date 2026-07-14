@@ -5,30 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.learning-pace
+determination: pd.v3.pre-provenance-baseline
 domain: teaching
-
-needs:
-  - "[[Teaching]]"
-  - "[[Bearing]]"
-  - "[[Carrying]]"
-  - "[[Tempo]]"
-  - "[[Pace]]"
 
 conditions:
   places: "how learning participation remains compatibly carried through a teaching condition without exceeding available bearing."
-  holds: "[[Teaching]], [[Bearing]], [[Carrying]], [[Tempo]], [[Pace]]."
-  pairs: "[[Teaching Boundary]]. Learning Pace names the supportable rate at which bearing can be received; Teaching Boundary names the edge where that rate can no longer hold."
+  needs:
+    targets:
+      - third.teaching
+      - first.bearing
+      - second.carrying
+      - second.tempo
+      - second.pace
+  holds:
+    targets:
+      - third.teaching
+      - first.bearing
+      - second.carrying
+      - second.tempo
+      - second.pace
+    read: "[[Teaching]], [[Bearing]], [[Carrying]], [[Tempo]], [[Pace]]."
+  pairs:
+    targets:
+      - third.teaching-boundary
+    read: "[[Teaching Boundary]]. Learning Pace names the supportable rate at which bearing can be received; Teaching Boundary names the edge where that rate can no longer hold."
   traces:
-    - "[[Teaching]]"
-    - "[[Bearing]]"
-    - "[[Carrying]]"
-    - "[[Tempo]]"
-    - "[[Pace]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Learning Pace becomes readable where instruction proceeds at a rate the learner can still carry, test, and re-enter."
+    targets:
+      - third.teaching
+      - first.bearing
+      - second.carrying
+      - second.tempo
+      - second.pace
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Learning Pace becomes readable where instruction proceeds at a rate the learner can still carry, test, and re-enter."
   carries:
-    - "[[Pace Mismatch]]"
-
+    targets:
+      - third.pace-mismatch
 publish: true
 status: stable
 ---

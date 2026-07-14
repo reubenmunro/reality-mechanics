@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.natural-world-field
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Natural World]]"
-  - "[[Natural Order]]"
-  - "[[Boundary]]"
 
 conditions:
   places: "the recurring field of participation through which physical, ecological, spatial, material, and cosmic conditions become readable as organised natural experience."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Natural World]], [[Natural Order]], and [[Boundary]]. Field of Participation must structure a recurring scope and natural order must make bounded natural conditions readable before the natural world field can be named."
-  pairs: "[[Making Field]]. Natural World Field names the field of organic form — relation carried into arrangement through natural order without intentional design; Making Field names the field of intentional form — relation carried into arrangement through action and craft."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.natural-world
+      - ground.natural-order
+      - first.boundary
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.natural-world
+      - ground.natural-order
+      - first.boundary
+    read: "[[Field of Participation]], [[Organic Field]], [[Natural World]], [[Natural Order]], and [[Boundary]]. Field of Participation must structure a recurring scope and natural order must make bounded natural conditions readable before the natural world field can be named."
+  pairs:
+    targets:
+      - third.making-field
+    read: "[[Making Field]]. Natural World Field names the field of organic form — relation carried into arrangement through natural order without intentional design; Making Field names the field of intentional form — relation carried into arrangement through action and craft."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Natural World]]"
-    - "[[Natural Order]]"
-    - "[[Boundary]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where physical, material, ecological, spatial, cosmic, or environmental conditions organise participation without depending on engineered arrangement."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.natural-world
+      - ground.natural-order
+      - first.boundary
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where physical, material, ecological, spatial, cosmic, or environmental conditions organise participation without depending on engineered arrangement."
   carries:
-    - "[[Physical]]"
-    - "[[Physical Field Conditions]]"
-    - "[[Gravity]]"
-    - "[[Timescale]]"
+    targets:
+      - third.physical
+      - third.physical-field-conditions
+      - third.gravity
+      - third.timescale
 publish: true
 status: stable
 ---

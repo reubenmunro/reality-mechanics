@@ -5,37 +5,56 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.fatigue
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Body]]"
-  - "[[Strain]]"
-  - "[[Load]]"
-  - "[[Capacity]]"
-  - "[[Availability]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "embodied reduction in available carrying where continued participation requires rest, pacing, support, release, or recovery."
-  holds: "[[Body]], [[Strain]], [[Load]], [[Capacity]], [[Availability]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Accumulated load must reduce available capacity before the limit on continued participation can be named as fatigue."
-  pairs: "[[Recovery]]. Fatigue names the reduction in available carrying through accumulated load; Recovery names the restoration of compatible carrying following fatigue or injury."
+  needs:
+    targets:
+      - third.body
+      - first.strain
+      - second.load
+      - second.capacity
+      - first.availability
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+  holds:
+    targets:
+      - third.body
+      - first.strain
+      - second.load
+      - second.capacity
+      - first.availability
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+    read: "[[Body]], [[Strain]], [[Load]], [[Capacity]], [[Availability]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Accumulated load must reduce available capacity before the limit on continued participation can be named as fatigue."
+  pairs:
+    targets:
+      - third.recovery
+    read: "[[Recovery]]. Fatigue names the reduction in available carrying through accumulated load; Recovery names the restoration of compatible carrying following fatigue or injury."
   traces:
-    - "[[Body]]"
-    - "[[Strain]]"
-    - "[[Load]]"
-    - "[[Capacity]]"
-    - "[[Availability]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-  nests: "within the Body Field as the structural condition through which accumulated load reduces what can be carried — the ground for recovery, fatigue boundary, and capacity reads."
-  reads: "Fatigue becomes readable where accumulated load reduces available capacity and changes what the body can carry without further incompatibility."
+    targets:
+      - third.body
+      - first.strain
+      - second.load
+      - second.capacity
+      - first.availability
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within the Body Field as the structural condition through which accumulated load reduces what can be carried — the ground for recovery, fatigue boundary, and capacity reads."
+  reads:
+    targets: []
+    read: "Fatigue becomes readable where accumulated load reduces available capacity and changes what the body can carry without further incompatibility."
   carries:
-    - "[[Recovery]]"
-    - "[[Fatigue Boundary]]" 
-
+    targets:
+      - third.recovery
+      - third.fatigue-boundary
 publish: true
 status: stable
 ---

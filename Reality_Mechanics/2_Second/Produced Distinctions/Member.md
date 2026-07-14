@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.member
-
-needs:
-  - "[[Thing]]"
-  - "[[Scale]]"
-  - "[[Structure]]"
-  - "[[Carrying]]"
-  - "[[Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a scale-local participating part in a carried body."
-  holds: "[[Thing]], [[Scale]], [[Structure]], [[Carrying]], and [[Participation]]. A thing must be readable at a scale, ordered enough to bear, and participating in a wider carried body before it can be read as a member."
-  pairs: "No lateral pair is required at this placement yet. Unit is a useful contrast: Unit names a bounded repeatable measure; Member names a scale-local participating part in a carried body."
+  needs:
+    targets:
+      - second.thing
+      - second.scale
+      - second.structure
+      - second.carrying
+      - second.participation
+  holds:
+    targets:
+      - second.thing
+      - second.scale
+      - second.structure
+      - second.carrying
+      - second.participation
+    read: "[[Thing]], [[Scale]], [[Structure]], [[Carrying]], and [[Participation]]. A thing must be readable at a scale, ordered enough to bear, and participating in a wider carried body before it can be read as a member."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Unit is a useful contrast: Unit names a bounded repeatable measure; Member names a scale-local participating part in a carried body."
   traces:
-    - "[[Thing]]"
-    - "[[Scale]]"
-    - "[[Structure]]"
-    - "[[Carrying]]"
-    - "[[Participation]]"
-  nests: "where a thing is made of smaller members, carries itself, receives load or relation, and resolves what it carries into a wider body."
-  reads: "Member becomes readable where a thing is located by its participation in a wider carried body rather than by isolated identity. A label may mark the current member-read for communication, but the member-read remains answerable to placement, scale, carrying, and participation."
-  carries: []
-
+    targets:
+      - second.thing
+      - second.scale
+      - second.structure
+      - second.carrying
+      - second.participation
+  nests:
+    targets: []
+    read: "where a thing is made of smaller members, carries itself, receives load or relation, and resolves what it carries into a wider body."
+  reads:
+    targets: []
+    read: "Member becomes readable where a thing is located by its participation in a wider carried body rather than by isolated identity. A label may mark the current member-read for communication, but the member-read remains answerable to placement, scale, carrying, and participation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

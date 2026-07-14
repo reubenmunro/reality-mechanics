@@ -5,36 +5,56 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.timescale
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Time]]"
-  - "[[Readability]]"
-  - "[[Scale]]"
-  - "[[Rate]]"
-  - "[[Carrying]]"
-  - "[[Body]]"
-  - "[[Life Field]]"
-  - "[[Natural World Field]]"
 
 conditions:
   places: "the condition through which carrying is evaluable across different orders of temporal extent and resolution capacity — the structural read of how carrying, life, and natural conditions become readable at different scales."
-  holds: "[[Time]], [[Readability]], [[Scale]], [[Rate]], [[Carrying]], [[Body]], [[Life Field]], and [[Natural World Field]]. Time must remain available as interval and continuation, while carrying, scale, rate, and resolution capacity make that continuation locally readable."
-  pairs: "[[Physical Space]]. Timescale names temporal extent as a carrying parameter; Physical Space names dimensional structure as a carrying parameter. Each is one structural dimension of physical field conditions."
+  needs:
+    targets:
+      - first.time
+      - second.readability
+      - second.scale
+      - second.rate
+      - second.carrying
+      - third.body
+      - third.life-field
+      - third.natural-world-field
+  holds:
+    targets:
+      - first.time
+      - second.readability
+      - second.scale
+      - second.rate
+      - second.carrying
+      - third.body
+      - third.life-field
+      - third.natural-world-field
+    read: "[[Time]], [[Readability]], [[Scale]], [[Rate]], [[Carrying]], [[Body]], [[Life Field]], and [[Natural World Field]]. Time must remain available as interval and continuation, while carrying, scale, rate, and resolution capacity make that continuation locally readable."
+  pairs:
+    targets:
+      - third.physical-space
+    read: "[[Physical Space]]. Timescale names temporal extent as a carrying parameter; Physical Space names dimensional structure as a carrying parameter. Each is one structural dimension of physical field conditions."
   traces:
-    - "[[Scale]]"
-    - "[[Rate]]"
-    - "[[Carrying]]"
-    - "[[Body]]"
-    - "[[Life Field]]"
-    - "[[Natural World Field]]"
-    - "[[Time]]"
-    - "[[Physical Field Conditions]]"
-    - "[[Readability]]"
-  nests: "within the Natural World Field as the scale-structural condition through which carrying becomes readable across different temporal extents."
-  reads: "Timescale becomes readable where held clearance is resolved locally enough for a participant, organism, cell, or ecosystem to carry relation at its own scale, rate, and native resolution band."
-  carries: []
-
+    targets:
+      - second.scale
+      - second.rate
+      - second.carrying
+      - third.body
+      - third.life-field
+      - third.natural-world-field
+      - first.time
+      - third.physical-field-conditions
+      - second.readability
+  nests:
+    targets: []
+    read: "within the Natural World Field as the scale-structural condition through which carrying becomes readable across different temporal extents."
+  reads:
+    targets: []
+    read: "Timescale becomes readable where held clearance is resolved locally enough for a participant, organism, cell, or ecosystem to carry relation at its own scale, rate, and native resolution band."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,22 +5,36 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.failure
-
-needs:
-  - "[[Resolution]]"
-  - "[[Bearing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution where bearing cannot remain supportable at the current scope"
-  holds: "[[Resolution]] and [[Bearing]] — bearing must be present and determined before its loss of support can be read as failure"
-  pairs: "Asymmetry carries downward. Failure names a specific mode of [[Resolution]] — where bearing cannot remain supportable at the current scope. It is downstream of Resolution and Bearing without a lateral co-condition."
+  needs:
+    targets:
+      - first.resolution
+      - first.bearing
+  holds:
+    targets:
+      - first.resolution
+      - first.bearing
+    read: "[[Resolution]] and [[Bearing]] — bearing must be present and determined before its loss of support can be read as failure"
+  pairs:
+    targets:
+      - first.resolution
+    read: "Asymmetry carries downward. Failure names a specific mode of [[Resolution]] — where bearing cannot remain supportable at the current scope. It is downstream of Resolution and Bearing without a lateral co-condition."
   traces:
-    - "[[Resolution]]"
-    - "[[Bearing]]"
-  nests: "under first-order resolution — absence, repair, harm, or disorder may follow but failure names the loss of supportable bearing"
-  reads: "where bearing resolves as loss of support, collapse, break, or inability to continue under the strain it bears"
-  carries: []
-
+    targets:
+      - first.resolution
+      - first.bearing
+  nests:
+    targets: []
+    read: "under first-order resolution — absence, repair, harm, or disorder may follow but failure names the loss of supportable bearing"
+  reads:
+    targets: []
+    read: "where bearing resolves as loss of support, collapse, break, or inability to continue under the strain it bears"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,33 +5,50 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.teaching
+determination: pd.v3.pre-provenance-baseline
 domain: teaching
-
-needs:
-  - "[[Branch]]"
-  - "[[Knowledge Field]]"
-  - "[[Knowledge]]"
-  - "[[Bearing]]"
-  - "[[Medium]]"
 
 conditions:
   places: "branch-level participation that preserves and develops available learning conditions through compatible uptake."
-  holds: "[[Branch]], [[Knowledge Field]], [[Knowledge]], [[Bearing]], [[Medium]]."
-  pairs: "[[Learning]] and [[Parenting]]. Teaching carries bearing toward the learner through medium; Learning names what becomes available through that bearing. Parenting names care-bearing and developmental holding beside teaching's knowledge-bearing."
+  needs:
+    targets:
+      - third.branch
+      - third.knowledge-field
+      - third.knowledge
+      - first.bearing
+      - second.medium
+  holds:
+    targets:
+      - third.branch
+      - third.knowledge-field
+      - third.knowledge
+      - first.bearing
+      - second.medium
+    read: "[[Branch]], [[Knowledge Field]], [[Knowledge]], [[Bearing]], [[Medium]]."
+  pairs:
+    targets:
+      - third.learning
+      - third.parenting
+    read: "[[Learning]] and [[Parenting]]. Teaching carries bearing toward the learner through medium; Learning names what becomes available through that bearing. Parenting names care-bearing and developmental holding beside teaching's knowledge-bearing."
   traces:
-    - "[[Branch]]"
-    - "[[Knowledge Field]]"
-    - "[[Knowledge]]"
-    - "[[Bearing]]"
-    - "[[Medium]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Teaching becomes readable where instruction carries a learner into available uptake without imposing order faster than the learner can bear."
+    targets:
+      - third.branch
+      - third.knowledge-field
+      - third.knowledge
+      - first.bearing
+      - second.medium
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Teaching becomes readable where instruction carries a learner into available uptake without imposing order faster than the learner can bear."
   carries:
-    - "[[Learning Pace]]"
-    - "[[Teaching Boundary]]"
-    - "[[Pace Mismatch]]"
-    - "[[Parenting]]"
-
+    targets:
+      - third.learning-pace
+      - third.teaching-boundary
+      - third.pace-mismatch
+      - third.parenting
 publish: true
 status: stable
 ---

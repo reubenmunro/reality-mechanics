@@ -5,24 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.throughput
-
-needs:
-  - "[[Flow]]"
-  - "[[Rate]]"
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "flow measured through a boundary or medium at a rate."
-  holds: "[[Flow]], [[Rate]], and [[Boundary]]."
-  pairs: "Asymmetry carries downward — flow through [[Rate]] and [[Boundary]]"
+  needs:
+    targets:
+      - second.flow
+      - second.rate
+      - first.boundary
+  holds:
+    targets:
+      - second.flow
+      - second.rate
+      - first.boundary
+    read: "[[Flow]], [[Rate]], and [[Boundary]]."
+  pairs:
+    targets:
+      - second.rate
+      - first.boundary
+    read: "Asymmetry carries downward — flow through [[Rate]] and [[Boundary]]"
   traces:
-    - "[[Flow]]"
-    - "[[Rate]]"
-    - "[[Boundary]]"
-  nests: "inside flow as amount passing through a medium or boundary per interval."
-  reads: "where carrying through a medium or boundary can be measured as amount per interval."
-  carries: []
-
+    targets:
+      - second.flow
+      - second.rate
+      - first.boundary
+  nests:
+    targets: []
+    read: "inside flow as amount passing through a medium or boundary per interval."
+  reads:
+    targets: []
+    read: "where carrying through a medium or boundary can be measured as amount per interval."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

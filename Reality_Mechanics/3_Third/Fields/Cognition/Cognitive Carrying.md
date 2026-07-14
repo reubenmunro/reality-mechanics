@@ -5,27 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.cognitive-carrying
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Bearing]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which a cognitive state — thought, orientation, or pattern — is continued through participation rather than discharged or discarded."
-  holds: "[[Cognition]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Cognition must be present and bearing must hold a cognitive condition before its continuation through participation can be named."
-  pairs: "[[Cognitive Reads]] — Cognitive Carrying names the continuation of cognitive states through participation; Cognitive Reads names path reads through which those states become evaluable."
+  needs:
+    targets:
+      - third.cognition
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - third.cognition
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+    read: "[[Cognition]], [[Bearing]], [[Carrying]], and [[Compatibility]]. Cognition must be present and bearing must hold a cognitive condition before its continuation through participation can be named."
+  pairs:
+    targets:
+      - third.cognitive-reads
+    read: "[[Cognitive Reads]] — Cognitive Carrying names the continuation of cognitive states through participation; Cognitive Reads names path reads through which those states become evaluable."
   traces:
-    - "[[Cognition]]"
-    - "[[Bearing]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-  nests: "within the Cognition Field as the condition through which cognitive states are sustained and carried through participation."
-  reads: "Cognitive Carrying becomes readable where information or a read remains available for use across a cognitive condition without becoming incompatible with the dependency path that carries it."
-  carries: []
-
+    targets:
+      - third.cognition
+      - first.bearing
+      - second.carrying
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within the Cognition Field as the condition through which cognitive states are sustained and carried through participation."
+  reads:
+    targets: []
+    read: "Cognitive Carrying becomes readable where information or a read remains available for use across a cognitive condition without becoming incompatible with the dependency path that carries it."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

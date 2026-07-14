@@ -5,31 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.pattern
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Recognition Read|Recognition]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "readable recurrence."
-  holds: "[[Recurrence]] and [[Recognition Read|Recognition]]."
-  pairs: "Asymmetry carries downward — into [[Coherence]], [[Kind]]"
+  needs:
+    targets:
+      - second.recurrence
+      - second.recognition-read
+  holds:
+    targets:
+      - second.recurrence
+      - second.recognition-read
+    read: "[[Recurrence]] and [[Recognition Read|Recognition]]."
+  pairs:
+    targets:
+      - second.coherence
+      - second.kind
+    read: "Asymmetry carries downward — into [[Coherence]], [[Kind]]"
   traces:
-    - "[[Recurrence]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Divisible Bearing]]"
-    - "[[Form]]"
-    - "[[Observation]]"
-    - "[[Scale]]"
-  nests: "where recurrence is held as a distinguishable arrangement, including but not limited to decoration or design."
-  reads: "where recurrence can be read as a distinguishable arrangement — where what occurs again can be identified as forming one readable condition rather than isolated occurrences."
+    targets:
+      - second.recurrence
+      - second.recognition-read
+      - second.divisible-bearing
+      - second.form
+      - second.observation
+      - second.scale
+  nests:
+    targets: []
+    read: "where recurrence is held as a distinguishable arrangement, including but not limited to decoration or design."
+  reads:
+    targets: []
+    read: "where recurrence can be read as a distinguishable arrangement — where what occurs again can be identified as forming one readable condition rather than isolated occurrences."
   carries:
-    - "[[Coherence]]"
-    - "[[Kind]]"
-    - "[[Rhythm]]"
-    - "[[Web]]"
-    - "[[Resonance]]"
-
+    targets:
+      - second.coherence
+      - second.kind
+      - second.rhythm
+      - higher.web
+      - second.resonance
 publish: true
 status: stable
 ---

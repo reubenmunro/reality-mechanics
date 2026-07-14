@@ -5,27 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.intake
-
-needs:
-  - "[[In]]"
-  - "[[Availability]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "availability crossing inward through a boundary into carrying."
-  holds: "[[In]], [[Availability]], and [[Carrying]]."
-  pairs: "Asymmetry carries downward — into [[Integration]] and [[Splinter]]. Intake names inward crossing; Integration and Splinter name whether what crossed becomes carried by the receiving order or remains unresolved within it."
+  needs:
+    targets:
+      - first.in
+      - first.availability
+      - second.carrying
+  holds:
+    targets:
+      - first.in
+      - first.availability
+      - second.carrying
+    read: "[[In]], [[Availability]], and [[Carrying]]."
+  pairs:
+    targets:
+      - second.integration
+      - second.splinter
+    read: "Asymmetry carries downward — into [[Integration]] and [[Splinter]]. Intake names inward crossing; Integration and Splinter name whether what crossed becomes carried by the receiving order or remains unresolved within it."
   traces:
-    - "[[In]]"
-    - "[[Availability]]"
-    - "[[Carrying]]"
-  nests: "at the boundary where outside availability crosses inward into carrying."
-  reads: "where availability crosses inward through a boundary and enters carrying — where what was outside is no longer merely present at the boundary but has become available within the carrying condition."
+    targets:
+      - first.in
+      - first.availability
+      - second.carrying
+  nests:
+    targets: []
+    read: "at the boundary where outside availability crosses inward into carrying."
+  reads:
+    targets: []
+    read: "where availability crosses inward through a boundary and enters carrying — where what was outside is no longer merely present at the boundary but has become available within the carrying condition."
   carries:
-    - "[[Integration]]"
-    - "[[Splinter]]"
-    - "[[Space-Based Solar Power]]"
-
+    targets:
+      - second.integration
+      - second.splinter
+      - third.space-based-solar-power
 publish: true
 status: stable
 ---

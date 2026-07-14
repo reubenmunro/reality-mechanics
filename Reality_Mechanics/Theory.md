@@ -1,32 +1,49 @@
 ---
 grounded: true
-order: practice
+register: practice
 kind: theory
 ai_role: theory
 condition_key: practice.reality-mechanics-theory
+determination: pd.v3.public-surface-propagation
 version: 0.6
 updated: 2026-06-25
 
-needs:
-  - "[[Atlas]]"
-  - "[[Relation]]"
-  - "[[Root Order]]"
-  - "[[Trace]]"
-
 conditions:
   places: "the working postulate of Reality Mechanics: relation holds, order carries, trace places."
-  holds: "[[Atlas]], [[Relation]], [[Root Order]], and [[Trace]]. The worked surface must be available, relation must ground the system, root order must hold the dependency arrangement, and trace must make placement answerable."
-  pairs: "[[Atlas]] — Atlas is the worked surface; the postulate bounds what counts as a valid Atlas operation."
+  needs:
+    targets:
+      - practice.atlas
+      - first.relation
+      - ground.root-order
+      - first.trace
+  holds:
+    targets:
+      - practice.atlas
+      - first.relation
+      - ground.root-order
+      - first.trace
+    read: "[[Atlas]], [[Relation]], [[Root Order]], and [[Trace]]. The worked surface must be available, relation must ground the system, root order must hold the dependency arrangement, and trace must make placement answerable."
+  pairs:
+    targets:
+      - practice.atlas
+    read: "[[Atlas]] — Atlas is the worked surface; the postulate bounds what counts as a valid Atlas operation."
   traces:
-    - "[[Atlas]]"
-    - "[[Relation]]"
-    - "[[Root Order]]"
-    - "[[Trace]]"
+    targets:
+      - practice.atlas
+      - first.relation
+      - ground.root-order
+      - first.trace
+  nests:
+    targets: []
+    read: "beside the Atlas as a versioned working postulate, answerable to Atlas placement, structural tending, alternative posture, and correction by failure."
+  reads:
+    targets:
+      - second.resolution-rate
+      - practice.posture-read
+    read: "where relation holds, order carries, and trace places; where [[Resolution Rate]] tests whether meaningful distinction can resolve without losing order; and where [[Posture Read]] remains available as a planted practice read."
   carries:
-    - "[[Atlas Practice]]"
-  nests: "beside the Atlas as a versioned working postulate, answerable to Atlas placement, structural tending, alternative posture, and correction by failure."
-  reads: "where relation holds, order carries, and trace places; where [[Resolution Rate]] tests whether meaningful distinction can resolve without losing order; and where [[Posture Read]] remains available as a planted practice read."
-
+    targets:
+      - practice.atlas-practice
 publish: true
 status: stable
 ---
@@ -63,13 +80,13 @@ Compressed through resolution:
 relation enters order where distinction can resolve without losing trace.
 ```
 
-The [[Atlas]] is not a glossary and not the authority-object. It is the current dependency-ordered reasoning system where this relation-order-trace practice becomes inspectable. Its written notes are the worked and tended surface. Terms are handles; order is what they handle.
+The [[Atlas]] is not a glossary and is not authority over reality. Within Reality Mechanics it is the sole canonical structural authority: the dependency-ordered record where this relation-order-trace practice becomes inspectable. Terms are handles; order is what they handle.
 
 The structural pattern this names is the same one the MCP uses operationally: find an entry, read its structure, trace what holds it, follow what it carries, and return through the order.
 
 ## Claim
 
-The claim being tested is:
+The current participant-determined postulate is:
 
 ```text
 Relation holds.
@@ -268,17 +285,6 @@ The formal layer remains a comparison surface, not an authority.
 - [Traced Monoidal Categories](https://doi.org/10.1017/S0305004100074338) is relevant as a contrast for trace as feedback.
 
 These comparisons do not ground the postulate. They help test whether a formalisation is already covered, wrongly stated, or useful enough to keep.
-
-## Open Problems
-
-- Does "relation holds, order carries, trace places" remain ordinary enough to use and strong enough to test?
-- Which Atlas entries resist rereading under the relation/order/trace postulate?
-- What is the minimum order required before relation can carry without becoming mere sequence?
-- Is "relation enters order where distinction can resolve without losing trace" a consequence of the postulate, or a second compression of it?
-- Does Resolution Rate belong as a theory test, a second-order consequence, or both?
-- How should competing postures be adjudicated when more than one orientation is available?
-- When do crossings compose without losing the recoverable posture?
-- What would count as a genuine alternative postulate that changes the whole Atlas order?
 
 ## Places
 

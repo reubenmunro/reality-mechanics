@@ -5,25 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.velocity
-
-needs:
-  - "[[Speed]]"
-  - "[[Orientation]]"
-  - "[[Traversal]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "speed with direction through traversal."
-  holds: "[[Speed]], [[Orientation]], and [[Traversal]]."
-  pairs: "Asymmetry carries downward — into [[Acceleration]]"
+  needs:
+    targets:
+      - second.speed
+      - first.orientation
+      - second.traversal
+  holds:
+    targets:
+      - second.speed
+      - first.orientation
+      - second.traversal
+    read: "[[Speed]], [[Orientation]], and [[Traversal]]."
+  pairs:
+    targets:
+      - second.acceleration
+    read: "Asymmetry carries downward — into [[Acceleration]]"
   traces:
-    - "[[Speed]]"
-    - "[[Orientation]]"
-    - "[[Traversal]]"
-  nests: "inside traversal as speed with direction."
-  reads: "where traversal can be read as both how fast it proceeds and which way it bears."
+    targets:
+      - second.speed
+      - first.orientation
+      - second.traversal
+  nests:
+    targets: []
+    read: "inside traversal as speed with direction."
+  reads:
+    targets: []
+    read: "where traversal can be read as both how fast it proceeds and which way it bears."
   carries:
-    - "[[Acceleration]]"
-
+    targets:
+      - second.acceleration
 publish: true
 status: stable
 ---

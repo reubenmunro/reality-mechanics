@@ -5,42 +5,57 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.field-of-participation
-
-needs:
-  - "[[Participation]]"
-  - "[[Recurrence]]"
-  - "[[Natural Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a recurring organisation arising through participation."
-  holds: "[[Participation]], [[Recurrence]], and [[Natural Order]]."
-  pairs: "Asymmetry carries downward — into [[Organic Field]] ↔ [[Organised Domain]]"
+  needs:
+    targets:
+      - second.participation
+      - second.recurrence
+      - ground.natural-order
+  holds:
+    targets:
+      - second.participation
+      - second.recurrence
+      - ground.natural-order
+    read: "[[Participation]], [[Recurrence]], and [[Natural Order]]."
+  pairs:
+    targets:
+      - third.organic-field
+      - third.organised-domain
+    read: "Asymmetry carries downward — into [[Organic Field]] ↔ [[Organised Domain]]"
   traces:
-    - "[[Participation]]"
-    - "[[Recurrence]]"
-    - "[[Natural Order]]"
-    - "[[Second Order Crossing|Threshold (Second → Third)]]"
-    - "[[Translation Boundary]]"
-  nests: "before domains, branches, methods, and applied reads. It is the recurring organisation of participation itself."
-  reads: "A Field of Participation becomes recognisable where different branches, cases, activities, and domains repeatedly resolve through the same recurring organisation of participation. The field is recognised where top-down derivation and bottom-up observation meet within the same read."
+    targets:
+      - second.participation
+      - second.recurrence
+      - ground.natural-order
+      - second.second-order-crossing
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "before domains, branches, methods, and applied reads. It is the recurring organisation of participation itself."
+  reads:
+    targets: []
+    read: "A Field of Participation becomes recognisable where different branches, cases, activities, and domains repeatedly resolve through the same recurring organisation of participation. The field is recognised where top-down derivation and bottom-up observation meet within the same read."
   carries:
-    - "[[Communion]]"
-    - "[[Branch]]"
-    - "[[Applied Read]]"
-    - "[[Field Bearing]]"
-    - "[[Scene]]"
-    - "[[Nesting]]"
-    - "[[Expression]]"
-    - "[[Making]]"
-    - "[[Natural World]]"
-    - "[[Our Story]]"
-    - "[[Society]]"
-    - "[[Sustenance]]"
-    - "[[Domain]]"
-    - "[[Field Relationships]]"
-    - "[[Organic Field]]"
-    - "[[Third Order]]"
-
+    targets:
+      - third.communion
+      - third.branch
+      - third.applied-read
+      - third.field-bearing
+      - third.scene
+      - third.nesting
+      - third.expression
+      - third.making
+      - third.natural-world
+      - third.our-story
+      - third.society
+      - third.sustenance
+      - third.domain
+      - third.field-relationships
+      - third.organic-field
+      - third.third-order
 publish: true
 status: stable
 ---

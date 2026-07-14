@@ -5,29 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.overload
-
-needs:
-  - "[[Load]]"
-  - "[[Pressure]]"
-  - "[[Capacity]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "load exceeding supportable capacity."
-  holds: "[[Load]], [[Pressure]], [[Capacity]], and [[Compatibility]]."
-  pairs: "[[Capacity]]. Capacity names supportable carrying; Overload names load exceeding that supportable capacity."
+  needs:
+    targets:
+      - second.load
+      - second.pressure
+      - second.capacity
+      - second.compatibility
+  holds:
+    targets:
+      - second.load
+      - second.pressure
+      - second.capacity
+      - second.compatibility
+    read: "[[Load]], [[Pressure]], [[Capacity]], and [[Compatibility]]."
+  pairs:
+    targets:
+      - second.capacity
+    read: "[[Capacity]]. Capacity names supportable carrying; Overload names load exceeding that supportable capacity."
   traces:
-    - "[[Load]]"
-    - "[[Pressure]]"
-    - "[[Capacity]]"
-    - "[[Compatibility]]"
-  nests: "at the excess point where load exceeds supportable capacity."
-  reads: "where what bears on carrying exceeds what the current condition can support or resolve — where continuation cannot remain compatible without change, support, reduction, translation, or re-resolution."
+    targets:
+      - second.load
+      - second.pressure
+      - second.capacity
+      - second.compatibility
+  nests:
+    targets: []
+    read: "at the excess point where load exceeds supportable capacity."
+  reads:
+    targets: []
+    read: "where what bears on carrying exceeds what the current condition can support or resolve — where continuation cannot remain compatible without change, support, reduction, translation, or re-resolution."
   carries:
-    - "[[Carried Condition]]"
-    - "[[Incoherence]]"
-    - "[[Collapse]]"
-
+    targets:
+      - second.carried-condition
+      - second.incoherence
+      - second.collapse
 publish: true
 status: stable
 ---

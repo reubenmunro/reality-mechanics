@@ -5,21 +5,32 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.seed
-
-needs: []
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the Ground-level relation-to-Ground: the source condition held before the dependency spine begins and recoverable in Fabric"
-  holds: "held by Ground — present before the chain begins, requiring only the acknowledged prior in order to hold"
-  pairs: "[[Ground]] — Ground is the acknowledged prior; Seed is Ground as relation-to-Ground becomes carryable and recoverable within what begins. Together they name the first in/out bifurcation around Relation without making Seed a prior term in the dependency spine."
+  needs:
+    targets: []
+  holds:
+    targets: []
+    read: "held by Ground — present before the chain begins, requiring only the acknowledged prior in order to hold"
+  pairs:
+    targets:
+      - ground.ground
+    read: "[[Ground]] — Ground is the acknowledged prior; Seed is Ground as relation-to-Ground becomes carryable and recoverable within what begins. Together they name the first in/out bifurcation around Relation without making Seed a prior term in the dependency spine."
   traces:
-    - "[[Ground]]"
-  nests: "at Ground level — prior to Clean, holding Relation before the first order operates"
-  reads: "where Fabric holds as a whole and what was nested within Relation from the start becomes recognisable without having to pull the chain apart"
+    targets:
+      - ground.ground
+  nests:
+    targets: []
+    read: "at Ground level — prior to Clean, holding Relation before the first order operates"
+  reads:
+    targets: []
+    read: "where Fabric holds as a whole and what was nested within Relation from the start becomes recognisable without having to pull the chain apart"
   carries:
-    - "[[One]]"
-    - "[[Other]]"
-
+    targets:
+      - first.one
+      - first.other
 publish: true
 status: stable
 ---

@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.invisible-bearing-read
-
-needs:
-  - "[[Bearing]]"
-  - "[[Invisible]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "bearing that carries participation without presenting as bearing."
-  holds: "[[Bearing]] and [[Invisible]]."
-  pairs: "Asymmetry carries downward — into [[Nesting Read]]"
+  needs:
+    targets:
+      - first.bearing
+      - first.invisible
+  holds:
+    targets:
+      - first.bearing
+      - first.invisible
+    read: "[[Bearing]] and [[Invisible]]."
+  pairs:
+    targets:
+      - second.nesting-read
+    read: "Asymmetry carries downward — into [[Nesting Read]]"
   traces:
-    - "[[Bearing]]"
-    - "[[Invisible]]"
-  nests: "where bearing remains retraceable without presenting as bearing."
-  reads: "where carrying can be traced despite not presenting as carrying — where something holds without showing that it holds."
+    targets:
+      - first.bearing
+      - first.invisible
+  nests:
+    targets: []
+    read: "where bearing remains retraceable without presenting as bearing."
+  reads:
+    targets: []
+    read: "where carrying can be traced despite not presenting as carrying — where something holds without showing that it holds."
   carries:
-    - "[[Nesting Read]]"
-
+    targets:
+      - second.nesting-read
 publish: true
 status: stable
 ---

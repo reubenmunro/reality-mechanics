@@ -5,33 +5,51 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.protective-control
+determination: pd.v3.pre-provenance-baseline
 domain: parenting
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Parenting]]"
-  - "[[Control After Harm]]"
-  - "[[Control]]"
-  - "[[Care]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the local parenting case where control enters to protect dependent availability after risk, harm, or insufficient bearing."
-  holds: "[[Applied Read]], [[Parenting]], [[Control After Harm]], [[Control]], [[Care]], [[Compatibility]], and [[Closure Scope]]. Protective direction must remain answerable to the availability care preserves before it can be read as compatible protection."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.control-after-harm
+      - third.control
+      - third.care
+      - second.compatibility
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.control-after-harm
+      - third.control
+      - third.care
+      - second.compatibility
+      - second.closure-scope
+    read: "[[Applied Read]], [[Parenting]], [[Control After Harm]], [[Control]], [[Care]], [[Compatibility]], and [[Closure Scope]]. Protective direction must remain answerable to the availability care preserves before it can be read as compatible protection."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Parenting]]"
-    - "[[Control After Harm]]"
-    - "[[Control]]"
-    - "[[Care]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Protective Control becomes readable where direction protects dependent availability while preserving the dependency path required for compatible repair and growth."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.parenting
+      - third.control-after-harm
+      - third.control
+      - third.care
+      - second.compatibility
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Protective Control becomes readable where direction protects dependent availability while preserving the dependency path required for compatible repair and growth."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

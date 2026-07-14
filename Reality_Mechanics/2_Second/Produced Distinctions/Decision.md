@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.decision
-
-needs:
-  - "[[Strategy]]"
-  - "[[Closure]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a carried sequence resolved at a choice point."
-  holds: "[[Strategy]] and [[Closure]]."
-  pairs: "[[Strategy]]. Strategy orients a carried sequence; Decision names its point of determination."
+  needs:
+    targets:
+      - second.strategy
+      - second.closure
+  holds:
+    targets:
+      - second.strategy
+      - second.closure
+    read: "[[Strategy]] and [[Closure]]."
+  pairs:
+    targets:
+      - second.strategy
+    read: "[[Strategy]]. Strategy orients a carried sequence; Decision names its point of determination."
   traces:
-    - "[[Strategy]]"
-    - "[[Closure]]"
-  nests: "at a closure point in a carried strategy where continuation requires one path to be taken."
-  reads: "where a carried, oriented sequence reaches a point where continuation requires selecting one available path — where strategy resolves into a taken direction."
+    targets:
+      - second.strategy
+      - second.closure
+  nests:
+    targets: []
+    read: "at a closure point in a carried strategy where continuation requires one path to be taken."
+  reads:
+    targets: []
+    read: "where a carried, oriented sequence reaches a point where continuation requires selecting one available path — where strategy resolves into a taken direction."
   carries:
-    - "[[Evaluation]]"
-
+    targets:
+      - second.evaluation
 publish: true
 status: stable
 ---

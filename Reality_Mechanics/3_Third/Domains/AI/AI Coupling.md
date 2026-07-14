@@ -5,28 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.ai-coupling
+determination: pd.v3.pre-provenance-baseline
 domain: ai
-
-needs:
-  - "[[AI]]"
-  - "[[Engineered Coupling]]"
-  - "[[Carrying]]"
-  - "[[Hidden Carrying]]"
 
 conditions:
   places: "the coupling condition specific to AI interaction — where human read, generated output, Atlas structure, and evaluative proceeding remain compatibly joined so that the output can be tested and retraced."
-  holds: "[[AI]], [[Engineered Coupling]], [[Carrying]], and [[Hidden Carrying]] — it requires that the four-way joining remain compatible through the interaction."
-  pairs: "[[AI Drift]]. AI Coupling names maintained compatible joining; AI Drift names the condition where dependency structure is lost while surface coherence persists."
+  needs:
+    targets:
+      - third.ai
+      - third.engineered-coupling
+      - second.carrying
+      - third.hidden-carrying
+  holds:
+    targets:
+      - third.ai
+      - third.engineered-coupling
+      - second.carrying
+      - third.hidden-carrying
+    read: "[[AI]], [[Engineered Coupling]], [[Carrying]], and [[Hidden Carrying]] — it requires that the four-way joining remain compatible through the interaction."
+  pairs:
+    targets:
+      - third.ai-drift
+    read: "[[AI Drift]]. AI Coupling names maintained compatible joining; AI Drift names the condition where dependency structure is lost while surface coherence persists."
   traces:
-    - "[[AI]]"
-    - "[[Engineered Coupling]]"
-    - "[[Carrying]]"
-    - "[[Hidden Carrying]]"
-  nests: "within the AI domain as the structural coupling condition that grounding and availability depend upon."
-  reads: "AI Coupling becomes readable where human read, generated output, model interface, and Atlas structure remain compatibly joined through an AI interaction, especially where generated output becomes actionable through a human, institutional, interface, deployment, or domain boundary."
+    targets:
+      - third.ai
+      - third.engineered-coupling
+      - second.carrying
+      - third.hidden-carrying
+  nests:
+    targets: []
+    read: "within the AI domain as the structural coupling condition that grounding and availability depend upon."
+  reads:
+    targets: []
+    read: "AI Coupling becomes readable where human read, generated output, model interface, and Atlas structure remain compatibly joined through an AI interaction, especially where generated output becomes actionable through a human, institutional, interface, deployment, or domain boundary."
   carries:
-    - "[[AI Atlas Grounding]]"
-
+    targets:
+      - third.ai-atlas-grounding
 publish: true
 status: stable
 ---

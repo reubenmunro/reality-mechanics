@@ -5,29 +5,46 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.neutrino
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Physical Field Conditions]]"
-  - "[[Field Availability Pattern]]"
-  - "[[Traversal]]"
-  - "[[Medium]]"
-  - "[[Coupling]]"
 
 conditions:
   places: "the physical field condition through which a traversal proceeds with minimal coupling — field participation that passes through medium with scarce interaction."
-  holds: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Traversal]], [[Medium]], and [[Coupling]]. Field conditions must hold and traversal must be readable before minimal-coupling field participation can be named."
-  pairs: "[[Light]]. Neutrino names minimal-coupling field traversal; Light names full-coupling electromagnetic traversal. Each carries through the physical field under different coupling conditions."
+  needs:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - second.traversal
+      - second.medium
+      - second.coupling
+  holds:
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - second.traversal
+      - second.medium
+      - second.coupling
+    read: "[[Physical Field Conditions]], [[Field Availability Pattern]], [[Traversal]], [[Medium]], and [[Coupling]]. Field conditions must hold and traversal must be readable before minimal-coupling field participation can be named."
+  pairs:
+    targets:
+      - third.light
+    read: "[[Light]]. Neutrino names minimal-coupling field traversal; Light names full-coupling electromagnetic traversal. Each carries through the physical field under different coupling conditions."
   traces:
-    - "[[Physical Field Conditions]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Traversal]]"
-    - "[[Medium]]"
-    - "[[Coupling]]"
-  nests: "within Physical Field Conditions as the minimal-coupling traversal condition — where field participation passes through medium without requiring readable coupling."
-  reads: "Neutrino becomes readable where a traversing physical condition passes through medium while only rarely becoming available to local detection."
-  carries: []
-
+    targets:
+      - third.physical-field-conditions
+      - third.field-availability-pattern
+      - second.traversal
+      - second.medium
+      - second.coupling
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the minimal-coupling traversal condition — where field participation passes through medium without requiring readable coupling."
+  reads:
+    targets: []
+    read: "Neutrino becomes readable where a traversing physical condition passes through medium while only rarely becoming available to local detection."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

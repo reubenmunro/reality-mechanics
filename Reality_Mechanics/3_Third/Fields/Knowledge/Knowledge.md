@@ -5,39 +5,58 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.knowledge
+determination: pd.v3.pre-provenance-baseline
 domain: knowledge
-
-needs:
-  - "[[Knowledge Field]]"
-  - "[[Know]]"
-  - "[[Carrying]]"
-  - "[[Recurrence]]"
-  - "[[Compatibility]]"
-  - "[[Medium]]"
-  - "[[Coherence]]"
-  - "[[World]]"
 
 conditions:
   places: "the third-order field where knowing is maintained, tested, taught, or revised through participatory carrying — the structural field for know, bearing source, modelling, competence, and reality check."
-  holds: "[[Knowledge Field]], [[Know]], [[Carrying]], [[Recurrence]], [[Compatibility]], [[Medium]], [[Coherence]], and [[World]]. Knowing must be carried, tested against compatibility, and sustained through recurrence before knowledge can be named as a field condition."
-  pairs: "[[Reality Check]] — Knowledge holds the field of knowing; Reality Check is the closure test of whether a read within that field remains traceable."
+  needs:
+    targets:
+      - third.knowledge-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+      - second.medium
+      - second.coherence
+      - second.world
+  holds:
+    targets:
+      - third.knowledge-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+      - second.medium
+      - second.coherence
+      - second.world
+    read: "[[Knowledge Field]], [[Know]], [[Carrying]], [[Recurrence]], [[Compatibility]], [[Medium]], [[Coherence]], and [[World]]. Knowing must be carried, tested against compatibility, and sustained through recurrence before knowledge can be named as a field condition."
+  pairs:
+    targets:
+      - third.reality-check
+    read: "[[Reality Check]] — Knowledge holds the field of knowing; Reality Check is the closure test of whether a read within that field remains traceable."
   traces:
-    - "[[Knowledge Field]]"
-    - "[[Know]]"
-    - "[[Carrying]]"
-    - "[[Recurrence]]"
-    - "[[Compatibility]]"
-    - "[[Medium]]"
-    - "[[Coherence]]"
-    - "[[World]]"
-  nests: "within the Knowledge Field branch as the field-level container for all knowledge structural reads."
-  reads: "Knowledge becomes readable where knowing is organised enough to be carried beyond the immediate act of knowing while remaining open to test, revision, or transmission."
+    targets:
+      - third.knowledge-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+      - second.medium
+      - second.coherence
+      - second.world
+  nests:
+    targets: []
+    read: "within the Knowledge Field branch as the field-level container for all knowledge structural reads."
+  reads:
+    targets: []
+    read: "Knowledge becomes readable where knowing is organised enough to be carried beyond the immediate act of knowing while remaining open to test, revision, or transmission."
   carries:
-    - "[[Modelling]]"
-    - "[[Reality Check]]"
-    - "[[Competence Boundary]]" 
-    - "[[Teaching]]"
-
+    targets:
+      - third.modelling
+      - third.reality-check
+      - third.competence-boundary
+      - third.teaching
 publish: true
 status: stable
 ---

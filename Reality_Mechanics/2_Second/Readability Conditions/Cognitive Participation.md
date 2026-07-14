@@ -5,25 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.cognitive-participation
-
-needs:
-  - "[[Readability]]"
-  - "[[Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation participating in readability — the condition through which readable difference is received, distinguished, oriented, or responded to within a participating system."
-  holds: "[[Readability]] and [[Participation]]. Difference must be available to be read, and relation must be actively taking part in a scope before cognition can be named structurally."
-  pairs: "No lateral pair is required at this placement yet. Cognitive Participation is a hinge between readability and participation, not a side of a pair."
+  needs:
+    targets:
+      - second.readability
+      - second.participation
+  holds:
+    targets:
+      - second.readability
+      - second.participation
+    read: "[[Readability]] and [[Participation]]. Difference must be available to be read, and relation must be actively taking part in a scope before cognition can be named structurally."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Cognitive Participation is a hinge between readability and participation, not a side of a pair."
   traces:
-    - "[[Readability]]"
-    - "[[Participation]]"
-  nests: "between readability and recognition as the participating uptake of readable difference before that difference is identified as this."
-  reads: "Cognitive Participation becomes readable where relation receives, distinguishes, or orients to readable difference without requiring consciousness, self-awareness, or human thought."
+    targets:
+      - second.readability
+      - second.participation
+  nests:
+    targets: []
+    read: "between readability and recognition as the participating uptake of readable difference before that difference is identified as this."
+  reads:
+    targets: []
+    read: "Cognitive Participation becomes readable where relation receives, distinguishes, or orients to readable difference without requiring consciousness, self-awareness, or human thought."
   carries:
-    - "[[Recognition Read|Recognition]]"
-    - "[[Cognition]]"
-    - "[[Observation]]"
-
+    targets:
+      - second.recognition-read
+      - third.cognition
+      - second.observation
 publish: true
 status: stable
 ---

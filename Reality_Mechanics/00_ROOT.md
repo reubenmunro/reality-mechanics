@@ -1,30 +1,46 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: meta
 ai_role: entry
 condition_key: practice.atlas-root
-
-needs:
-  - "[[Reality Mechanics]]"
-  - "[[Atlas]]"
-  - "[[Root Order]]"
-  - "[[Theory]]"
+determination: pd.v3.public-surface-propagation
 
 conditions:
   places: "the root entrance to Reality Mechanics and the Atlas: the working postulate, dependency spine, posture read, order crossing map, and entry practice."
-  holds: "[[Reality Mechanics]], [[Atlas]], [[Root Order]], and [[Theory]]."
-  pairs: "[[Atlas]]. Atlas Root is the entry map; Atlas is the worked and tended surface the map opens into."
+  needs:
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - ground.root-order
+      - practice.reality-mechanics-theory
+  holds:
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - ground.root-order
+      - practice.reality-mechanics-theory
+    read: "[[Reality Mechanics]], [[Atlas]], [[Root Order]], and [[Theory]]."
+  pairs:
+    targets:
+      - practice.atlas
+    read: "[[Atlas]]. Atlas Root is the entry map; Atlas is the worked and tended surface the map opens into."
   traces:
-    - "[[Reality Mechanics]]"
-    - "[[Atlas]]"
-    - "[[Root Order]]"
-    - "[[Theory]]"
-  nests: "at the entrance of the Atlas as a root-facing map rather than a separate doctrine."
-  reads: "where a participant needs the working postulate, dependency spine, posture read, order crossings, and entry practice in one place."
-  carries: "No direct downstream term is required. Atlas Root opens entry into the Atlas rather than generating a separate branch."
-
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas
+      - ground.root-order
+      - practice.reality-mechanics-theory
+  nests:
+    targets: []
+    read: "at the entrance of the Atlas as a root-facing map rather than a separate doctrine."
+  reads:
+    targets: []
+    read: "where a participant needs the working postulate, dependency spine, posture read, order crossings, and entry practice in one place."
+  carries:
+    targets: []
+    read: "No direct downstream term is required. Atlas Root opens entry into the Atlas rather than generating a separate branch."
 publish: true
 status: working
 ---
@@ -49,7 +65,7 @@ It is not a taxonomy.
 
 It is a tended surface for reasoning. Terms are handles; order is what they handle. Its purpose is to preserve dependency order so that humans and AI can participate within relation rather than only describe it.
 
-The Atlas is not the authority-object. The relation-order-trace practice is what must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
+The Atlas is not authority over reality. Within Reality Mechanics it is the sole canonical structural authority; its determinations remain corrigible through participant review. The relation-order-trace practice must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
 
 ## Root Dependency Order
 

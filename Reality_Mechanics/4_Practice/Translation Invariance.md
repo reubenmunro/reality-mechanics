@@ -1,34 +1,51 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.translation-invariance
-
-needs:
-  - "[[Atlas]]"
-  - "[[Root Order]]"
-  - "[[Term]]"
-  - "[[Invariant]]"
-  - "[[Medium]]"
-  - "[[Translation Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice test by which Atlas structure is varied in expression and checked for recoverable dependency order"
-  holds: "[[Atlas]], [[Root Order]], [[Term]], [[Invariant]], [[Medium]], and [[Translation Boundary]] — a mapped order, structurally placed interpretations, variation, carriers, and a crossing between forms must be available before preservation across translation can be tested"
-  pairs: "Asymmetry carries downward — Translation Invariance is a practice test; no lateral co-condition is required for it to be locatable"
+  needs:
+    targets:
+      - practice.atlas
+      - ground.root-order
+      - ground.term
+      - ground.invariant
+      - second.medium
+      - third.translation-boundary
+  holds:
+    targets:
+      - practice.atlas
+      - ground.root-order
+      - ground.term
+      - ground.invariant
+      - second.medium
+      - third.translation-boundary
+    read: "[[Atlas]], [[Root Order]], [[Term]], [[Invariant]], [[Medium]], and [[Translation Boundary]] — a mapped order, structurally placed interpretations, variation, carriers, and a crossing between forms must be available before preservation across translation can be tested"
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — Translation Invariance is a practice test; no lateral co-condition is required for it to be locatable"
   traces:
-    - "[[Atlas]]"
-    - "[[Root Order]]"
-    - "[[Term]]"
-    - "[[Invariant]]"
-    - "[[Medium]]"
-    - "[[Translation Boundary]]"
-  nests: "wherever an Atlas term, path, or larger structure can be expressed through more than one carrier and compared without protecting its original surface form"
-  reads: "where words, signs, diagrams, arrangements, actions, or thoughts vary while dependency placement remains recoverable — and where translation loss reveals structure that depended on the prior expression"
-  carries: []
-
+    targets:
+      - practice.atlas
+      - ground.root-order
+      - ground.term
+      - ground.invariant
+      - second.medium
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "wherever an Atlas term, path, or larger structure can be expressed through more than one carrier and compared without protecting its original surface form"
+  reads:
+    targets: []
+    read: "where words, signs, diagrams, arrangements, actions, or thoughts vary while dependency placement remains recoverable — and where translation loss reveals structure that depended on the prior expression"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

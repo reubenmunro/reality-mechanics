@@ -5,28 +5,43 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.silence
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Sound]]"
-  - "[[Availability]]"
-  - "[[Bearing]]"
-  - "[[Musical Rhythm]]"
 
 conditions:
   places: "the availability condition in music — where bearing is held without sounding"
-  holds: "[[Sound]], [[Availability]], [[Bearing]], and [[Musical Rhythm]]. Sound must have been sounding before its absence is readable as silence rather than as mere absence."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.sound
+      - first.availability
+      - first.bearing
+      - third.musical-rhythm
+  holds:
+    targets:
+      - third.sound
+      - first.availability
+      - first.bearing
+      - third.musical-rhythm
+    read: "[[Sound]], [[Availability]], [[Bearing]], and [[Musical Rhythm]]. Sound must have been sounding before its absence is readable as silence rather than as mere absence."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Sound]]"
-    - "[[Availability]]"
-    - "[[Bearing]]"
-    - "[[Musical Rhythm]]"
-    - "[[Music]]"
-  nests: "within the music domain as the resting availability condition — present inside rhythm rather than outside it"
-  reads: "where sound stops but bearing continues — where absence is readable as held rather than lost"
-  carries: []
-
+    targets:
+      - third.sound
+      - first.availability
+      - first.bearing
+      - third.musical-rhythm
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the resting availability condition — present inside rhythm rather than outside it"
+  reads:
+    targets: []
+    read: "where sound stops but bearing continues — where absence is readable as held rather than lost"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

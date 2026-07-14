@@ -5,28 +5,42 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.society-field
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Society]]"
 
 conditions:
   places: "the recurring field of participation through which patterns of consent, obligation, belonging, governance, care, conflict, and repair become readable between participants."
-  holds: "[[Field of Participation]], [[Organic Field]], and [[Society]]. Field of Participation must structure a recurring scope and collective relational patterns must be readable before the field can be named."
-  pairs: "[[Place Field]]. Society Field names the field of recurring relational patterns among participants; Place Field names the field of located participation. Social patterns are always carried somewhere; places are only readable where patterns of participation recur within them."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.society
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.society
+    read: "[[Field of Participation]], [[Organic Field]], and [[Society]]. Field of Participation must structure a recurring scope and collective relational patterns must be readable before the field can be named."
+  pairs:
+    targets:
+      - third.place-field
+    read: "[[Place Field]]. Society Field names the field of recurring relational patterns among participants; Place Field names the field of located participation. Social patterns are always carried somewhere; places are only readable where patterns of participation recur within them."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Society]]"
-  nests: "as a public field container for collective relational reads."
-  reads: "where collective relation, consent, obligation, governance, conflict, care, or shared organisation makes participation social."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - third.society
+  nests:
+    targets: []
+    read: "as a public field container for collective relational reads."
+  reads:
+    targets: []
+    read: "where collective relation, consent, obligation, governance, conflict, care, or shared organisation makes participation social."
   carries:
-    - "[[Consent]]"
-    - "[[Civil]]"
-    - "[[Law]]" 
-
+    targets:
+      - third.consent
+      - third.civil
+      - third.law
 publish: true
 status: stable
 ---

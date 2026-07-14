@@ -5,35 +5,55 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.inheritance
+determination: pd.v3.pre-provenance-baseline
 domain: our-story
-
-needs:
-  - "[[Our Story Field]]"
-  - "[[Carrying]]"
-  - "[[Recurrence]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Medium]]"
-  - "[[Compatibility]]"
-  - "[[Kind]]"
-  - "[[Our Story]]"
 
 conditions:
   places: "the condition through which prior carrying is passed forward through recurrence and recognition — what a field, community, or practice continues to carry from prior relation."
-  holds: "[[Our Story Field]], [[Carrying]], [[Recurrence]], [[Recognition Read|Recognition]], [[Medium]], [[Compatibility]], [[Kind]], and [[Our Story]]. Prior carrying must be present, recurrence must sustain it, and recognition must make it available before forward-passed carrying can be named as inheritance."
-  pairs: "[[Carrying Better]]. Inheritance names the forward-passing of prior carrying; Carrying Better names the condition where retrace makes that inheritance correctable."
+  needs:
+    targets:
+      - third.our-story-field
+      - second.carrying
+      - second.recurrence
+      - second.recognition-read
+      - second.medium
+      - second.compatibility
+      - second.kind
+      - third.our-story
+  holds:
+    targets:
+      - third.our-story-field
+      - second.carrying
+      - second.recurrence
+      - second.recognition-read
+      - second.medium
+      - second.compatibility
+      - second.kind
+      - third.our-story
+    read: "[[Our Story Field]], [[Carrying]], [[Recurrence]], [[Recognition Read|Recognition]], [[Medium]], [[Compatibility]], [[Kind]], and [[Our Story]]. Prior carrying must be present, recurrence must sustain it, and recognition must make it available before forward-passed carrying can be named as inheritance."
+  pairs:
+    targets:
+      - third.carrying-better
+    read: "[[Carrying Better]]. Inheritance names the forward-passing of prior carrying; Carrying Better names the condition where retrace makes that inheritance correctable."
   traces:
-    - "[[Our Story Field]]"
-    - "[[Carrying]]"
-    - "[[Recurrence]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Medium]]"
-    - "[[Compatibility]]"
-    - "[[Kind]]"
-    - "[[Our Story]]"
-  nests: "within the Our Story Field as the condition through which prior carrying is sustained and passed forward through recognition and recurrence."
-  reads: "Inheritance becomes readable where what is received remains identifiable enough to be carried, revised, refused, repaired, or retold."
+    targets:
+      - third.our-story-field
+      - second.carrying
+      - second.recurrence
+      - second.recognition-read
+      - second.medium
+      - second.compatibility
+      - second.kind
+      - third.our-story
+  nests:
+    targets: []
+    read: "within the Our Story Field as the condition through which prior carrying is sustained and passed forward through recognition and recurrence."
+  reads:
+    targets: []
+    read: "Inheritance becomes readable where what is received remains identifiable enough to be carried, revised, refused, repaired, or retold."
   carries:
-
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,39 +5,60 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.law
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Society Field]]"
-  - "[[Civil]]"
-  - "[[Consent]]"
-  - "[[Violation]]"
-  - "[[Repair]]"
-  - "[[Boundary]]"
-  - "[[Constrained Resolution]]"
-  - "[[Competence Boundary]]"
-  - "[[Destination-Led Carrying]]"
-  - "[[Thin Carrying]]"
 
 conditions:
   places: "the applied domain through which Violation is formally bounded and Repair is structurally obligated — where the relational conditions of compatible and incompatible boundary-crossing are given explicit scope, named consequence, and institutional procedure."
-  holds: "[[Society Field]], [[Civil]], [[Consent]], [[Violation]], [[Repair]], [[Boundary]], [[Constrained Resolution]], [[Competence Boundary]], [[Destination-Led Carrying]], and [[Thin Carrying]]. Compatible boundary-crossing must be distinguishable from incompatible boundary-crossing, civil order must require public answerability, and a procedure for determining which occurred must be available before the formal institution of Violation and Repair can be named as Law."
-  pairs: "No lateral pair is required at this placement yet. Law names the formal institution through which Violation is recognised and Repair is structurally obligated; its structural contrast — informal or customary resolution that holds the same conditions without institutional procedure — is not yet a named vault term."
+  needs:
+    targets:
+      - third.society-field
+      - third.civil
+      - third.consent
+      - third.violation
+      - third.repair
+      - first.boundary
+      - third.constrained-resolution
+      - third.competence-boundary
+      - third.destination-led-carrying
+      - third.thin-carrying
+  holds:
+    targets:
+      - third.society-field
+      - third.civil
+      - third.consent
+      - third.violation
+      - third.repair
+      - first.boundary
+      - third.constrained-resolution
+      - third.competence-boundary
+      - third.destination-led-carrying
+      - third.thin-carrying
+    read: "[[Society Field]], [[Civil]], [[Consent]], [[Violation]], [[Repair]], [[Boundary]], [[Constrained Resolution]], [[Competence Boundary]], [[Destination-Led Carrying]], and [[Thin Carrying]]. Compatible boundary-crossing must be distinguishable from incompatible boundary-crossing, civil order must require public answerability, and a procedure for determining which occurred must be available before the formal institution of Violation and Repair can be named as Law."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Law names the formal institution through which Violation is recognised and Repair is structurally obligated; its structural contrast — informal or customary resolution that holds the same conditions without institutional procedure — is not yet a named vault term."
   traces:
-    - "[[Society Field]]"
-    - "[[Civil]]"
-    - "[[Consent]]"
-    - "[[Violation]]"
-    - "[[Repair]]"
-    - "[[Boundary]]"
-    - "[[Constrained Resolution]]"
-    - "[[Competence Boundary]]"
-    - "[[Destination-Led Carrying]]"
-    - "[[Thin Carrying]]"
-  nests: "within Society Field as an applied domain read — the institutional practice through which Society-level structural conditions (Consent, Violation, Repair, Obligation) are made explicit, scoped, and procedurally enforceable."
-  reads: "Law becomes readable where compatible and incompatible boundary-crossing are given formal names, where the determination of which occurred is structured by procedure rather than by relational negotiation, and where the obligation to repair follows from the determination rather than from willingness."
-  carries: []
-
+    targets:
+      - third.society-field
+      - third.civil
+      - third.consent
+      - third.violation
+      - third.repair
+      - first.boundary
+      - third.constrained-resolution
+      - third.competence-boundary
+      - third.destination-led-carrying
+      - third.thin-carrying
+  nests:
+    targets: []
+    read: "within Society Field as an applied domain read — the institutional practice through which Society-level structural conditions (Consent, Violation, Repair, Obligation) are made explicit, scoped, and procedurally enforceable."
+  reads:
+    targets: []
+    read: "Law becomes readable where compatible and incompatible boundary-crossing are given formal names, where the determination of which occurred is structured by procedure rather than by relational negotiation, and where the obligation to repair follows from the determination rather than from willingness."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

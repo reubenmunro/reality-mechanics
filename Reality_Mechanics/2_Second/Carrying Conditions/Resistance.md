@@ -5,28 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.resistance
-
-needs:
-  - "[[Constraint]]"
-  - "[[Flow]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying opposed, narrowed, or slowed by a condition it must pass through."
-  holds: "[[Constraint]], [[Flow]], and [[Carrying]]."
-  pairs: "Asymmetry carries downward — into [[Friction]], [[Drag]], [[Grip]]"
+  needs:
+    targets:
+      - second.constraint
+      - second.flow
+      - second.carrying
+  holds:
+    targets:
+      - second.constraint
+      - second.flow
+      - second.carrying
+    read: "[[Constraint]], [[Flow]], and [[Carrying]]."
+  pairs:
+    targets:
+      - second.friction
+      - second.drag
+      - second.grip
+    read: "Asymmetry carries downward — into [[Friction]], [[Drag]], [[Grip]]"
   traces:
-    - "[[Constraint]]"
-    - "[[Flow]]"
-    - "[[Carrying]]"
-  nests: "where carrying continues only through opposition, narrowing, or slowing."
-  reads: "where carrying or flow continues only through opposition, narrowing, or slowing."
+    targets:
+      - second.constraint
+      - second.flow
+      - second.carrying
+  nests:
+    targets: []
+    read: "where carrying continues only through opposition, narrowing, or slowing."
+  reads:
+    targets: []
+    read: "where carrying or flow continues only through opposition, narrowing, or slowing."
   carries:
-    - "[[Friction]]"
-    - "[[Drag]]"
-    - "[[Grip]]"
-    - "[[Contend]]"
-
+    targets:
+      - second.friction
+      - second.drag
+      - second.grip
+      - practice.contend
 publish: true
 status: stable
 ---

@@ -5,34 +5,55 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.fabric
-
-needs:
-  - "[[Thread]]"
-  - "[[Field Relationships]]"
-  - "[[Nested Carrying]]"
-  - "[[Invisible Bearing]]"
-  - "[[Surface]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "relation carried as woven continuity across fields, threads, traces, and boundaries — the face of the weave as held whole."
-  holds: "[[Thread]], [[Field Relationships]], [[Nested Carrying]], [[Invisible Bearing]], [[Surface]], and [[Trace]]."
-  pairs: "[[Web]]. Fabric names the face of the weave: woven continuity returned as a held whole. Web names the trace of the weave: the connected crossing-pattern through which threads remain followable within that continuity."
+  needs:
+    targets:
+      - first.thread
+      - third.field-relationships
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - second.surface
+      - first.trace
+  holds:
+    targets:
+      - first.thread
+      - third.field-relationships
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - second.surface
+      - first.trace
+    read: "[[Thread]], [[Field Relationships]], [[Nested Carrying]], [[Invisible Bearing]], [[Surface]], and [[Trace]]."
+  pairs:
+    targets:
+      - higher.web
+    read: "[[Web]]. Fabric names the face of the weave: woven continuity returned as a held whole. Web names the trace of the weave: the connected crossing-pattern through which threads remain followable within that continuity."
   traces:
-    - "[[Thread]]"
-    - "[[Field Relationships]]"
-    - "[[Nested Carrying]]"
-    - "[[Invisible Bearing]]"
-    - "[[Surface]]"
-    - "[[Trace]]"
-    - "[[Structural Gathering]]"
-  nests: "as broad woven continuity where visible, invisible, and hidden threads may carry relation."
-  reads: "where multiple relations, fields, or dependency paths hold together as woven continuity — where the whole carries before each [[Thread|thread]] has to be separately read, and where [[Visible]] threads can be followed without tearing the continuity into isolated parts. Fabric is where [[Seed]] becomes recognisable: what was nested within [[Relation]] from the start is present in the holding without being traced back to."
+    targets:
+      - first.thread
+      - third.field-relationships
+      - higher.nested-carrying
+      - higher.invisible-bearing
+      - second.surface
+      - first.trace
+      - second.structural-gathering
+  nests:
+    targets: []
+    read: "as broad woven continuity where visible, invisible, and hidden threads may carry relation."
+  reads:
+    targets:
+      - first.thread
+      - first.visible
+      - ground.seed
+      - first.relation
+    read: "where multiple relations, fields, or dependency paths hold together as woven continuity — where the whole carries before each [[Thread|thread]] has to be separately read, and where [[Visible]] threads can be followed without tearing the continuity into isolated parts. Fabric is where [[Seed]] becomes recognisable: what was nested within [[Relation]] from the start is present in the holding without being traced back to."
   carries:
-    - "[[Hidden Bearing]]"
-    - "[[Higher Retrace]]"
-    - "[[Web]]"
-
+    targets:
+      - higher.hidden-bearing
+      - higher.higher-retrace
+      - higher.web
 publish: true
 status: stable
 ---

@@ -5,21 +5,35 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.coupled-asymmetry
-
-needs:
-  - "[[Resolved Asymmetry]]"
-  - "[[Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolved asymmetry held between coupled conditions."
-  holds: "[[Resolved Asymmetry]] and [[Coupling]] — asymmetry must be determined, and conditions must be held in relation, before unevenness can persist through coupling."
-  pairs: "Asymmetry carries downward — resolved asymmetry held through coupling."
+  needs:
+    targets:
+      - first.resolved-asymmetry
+      - second.coupling
+  holds:
+    targets:
+      - first.resolved-asymmetry
+      - second.coupling
+    read: "[[Resolved Asymmetry]] and [[Coupling]] — asymmetry must be determined, and conditions must be held in relation, before unevenness can persist through coupling."
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — resolved asymmetry held through coupling."
   traces:
-    - "[[Resolved Asymmetry]]"
-    - "[[Coupling]]"
-  nests: "where asymmetry persists between coupled conditions without collapsing the coupling into sameness."
-  reads: "where two coupled conditions can be read as uneven — where the coupling holds difference rather than resolving it into sameness."
-  carries: []
+    targets:
+      - first.resolved-asymmetry
+      - second.coupling
+  nests:
+    targets: []
+    read: "where asymmetry persists between coupled conditions without collapsing the coupling into sameness."
+  reads:
+    targets: []
+    read: "where two coupled conditions can be read as uneven — where the coupling holds difference rather than resolving it into sameness."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

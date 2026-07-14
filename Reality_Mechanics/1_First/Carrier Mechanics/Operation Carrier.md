@@ -5,19 +5,33 @@ order: first
 kind: class
 ai_role: class
 condition_key: first.operation-carrier
-
-needs:
-  - "[[Primitive Carrier]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the class of primitive carriers that make conditions readable across the system"
-  holds: "[[Primitive Carrier]] — the class role is held by the broader primitive carrier condition"
-  pairs: "[[Structural Carrier]] — operation carriers make any condition readable; structural carriers transmit specific relational roles into later compounds"
+  needs:
+    targets:
+      - first.primitive-carrier
+  holds:
+    targets:
+      - first.primitive-carrier
+    read: "[[Primitive Carrier]] — the class role is held by the broader primitive carrier condition"
+  pairs:
+    targets:
+      - first.structural-carrier
+    read: "[[Structural Carrier]] — operation carriers make any condition readable; structural carriers transmit specific relational roles into later compounds"
   traces:
-    - "[[Primitive Carrier]]"
-  nests: "Apparent, Trace, Read, and Orientation as cross-system reading operations"
-  reads: "where a term names something that makes any condition readable rather than acting on distinction at one point in the sequence"
-  carries: []
+    targets:
+      - first.primitive-carrier
+  nests:
+    targets: []
+    read: "Apparent, Trace, Read, and Orientation as cross-system reading operations"
+  reads:
+    targets: []
+    read: "where a term names something that makes any condition readable rather than acting on distinction at one point in the sequence"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

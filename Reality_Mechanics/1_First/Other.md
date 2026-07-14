@@ -5,23 +5,36 @@ order: first
 kind: primitive
 ai_role: primitive
 condition_key: first.other
-
-needs:
-  - "[[One]]"
-  - "[[Seed]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the first readable distinction from a held reference — what lets One : Other express active Seed : Ground without becoming the generative condition itself."
-  holds: "[[One]] and [[Seed]]. A reference must remain held, and the source-side availability must remain acknowledged, while Other is read as distinct rather than mere negation."
-  pairs: "[[One]] — Other establishes distinction from reference; One establishes the reference from which distinction can be read."
+  needs:
+    targets:
+      - first.one
+      - ground.seed
+  holds:
+    targets:
+      - first.one
+      - ground.seed
+    read: "[[One]] and [[Seed]]. A reference must remain held, and the source-side availability must remain acknowledged, while Other is read as distinct rather than mere negation."
+  pairs:
+    targets:
+      - first.one
+    read: "[[One]] — Other establishes distinction from reference; One establishes the reference from which distinction can be read."
   traces:
-    - "[[One]]"
-    - "[[Seed]]"
-  nests: "with One inside reading order, before ratio as the readable form of relation."
-  reads: "where what is not the reference remains distinguishable without becoming unrelated, excluded, or collapsed back into sameness."
+    targets:
+      - first.one
+      - ground.seed
+  nests:
+    targets: []
+    read: "with One inside reading order, before ratio as the readable form of relation."
+  reads:
+    targets: []
+    read: "where what is not the reference remains distinguishable without becoming unrelated, excluded, or collapsed back into sameness."
   carries:
-    - "[[Ratio]]"
-
+    targets:
+      - first.ratio
 publish: true
 status: working
 ---

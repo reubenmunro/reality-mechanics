@@ -5,24 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.heat
-
-needs:
-  - "[[Friction]]"
-  - "[[Change]]"
-  - "[[Flow]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "energetic consequence made readable through friction."
-  holds: "[[Friction]], [[Change]], and [[Flow]]."
-  pairs: "Asymmetry carries downward — friction through [[Change]] and [[Flow]]"
+  needs:
+    targets:
+      - second.friction
+      - second.change
+      - second.flow
+  holds:
+    targets:
+      - second.friction
+      - second.change
+      - second.flow
+    read: "[[Friction]], [[Change]], and [[Flow]]."
+  pairs:
+    targets:
+      - second.change
+      - second.flow
+    read: "Asymmetry carries downward — friction through [[Change]] and [[Flow]]"
   traces:
-    - "[[Friction]]"
-    - "[[Change]]"
-    - "[[Flow]]"
-  nests: "inside frictional carrying as energetic consequence, not as a full account of thermodynamics."
-  reads: "where friction changes carrying into energetic availability that can be felt, measured, or further carried."
-  carries: []
-
+    targets:
+      - second.friction
+      - second.change
+      - second.flow
+  nests:
+    targets: []
+    read: "inside frictional carrying as energetic consequence, not as a full account of thermodynamics."
+  reads:
+    targets: []
+    read: "where friction changes carrying into energetic availability that can be felt, measured, or further carried."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

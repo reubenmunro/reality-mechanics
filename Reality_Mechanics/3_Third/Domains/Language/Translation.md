@@ -5,30 +5,45 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.translation
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Language Domain]]"
-  - "[[Readability]]"
-  - "[[Difference]]"
-  - "[[Medium]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "branch-level carrying of readable distinction across language conditions."
-  holds: "[[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Compatibility]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - second.compatibility
+  holds:
+    targets:
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - second.compatibility
+    read: "[[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Compatibility]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Language Domain]]"
-    - "[[Readability]]"
-    - "[[Difference]]"
-    - "[[Medium]]"
-    - "[[Compatibility]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Translation becomes readable where readable distinction is carried across language conditions without becoming incompatible with the read it carries."
+    targets:
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - second.compatibility
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Translation becomes readable where readable distinction is carried across language conditions without becoming incompatible with the read it carries."
   carries:
-    - "[[Translation Boundary]]"
-
+    targets:
+      - third.translation-boundary
 publish: true
 status: stable
 ---

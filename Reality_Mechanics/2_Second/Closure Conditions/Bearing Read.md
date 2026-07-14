@@ -5,20 +5,32 @@ order: second
 kind: class
 ai_role: class
 condition_key: second.bearing-read
-
-needs:
-  - "[[Bearing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the class of second-order produced reads through which bearing becomes readable in specific ways — as presented, visible, invisible, divisible, or indivisible."
-  holds: "[[Bearing]]."
-  pairs: "Asymmetry carries downward — names the class of reads through which bearing becomes readable at second order"
+  needs:
+    targets:
+      - first.bearing
+  holds:
+    targets:
+      - first.bearing
+    read: "[[Bearing]]."
+  pairs:
+    targets: []
+    read: "Asymmetry carries downward — names the class of reads through which bearing becomes readable at second order"
   traces:
-    - "[[Bearing]]"
-  nests: "as the class of second-order reads that make bearing available to evaluation in specific ways."
-  reads: "where a term names a specific way in which bearing is readable — not bearing itself but bearing as read through a particular condition."
-  carries: []
-
+    targets:
+      - first.bearing
+  nests:
+    targets: []
+    read: "as the class of second-order reads that make bearing available to evaluation in specific ways."
+  reads:
+    targets: []
+    read: "where a term names a specific way in which bearing is readable — not bearing itself but bearing as read through a particular condition."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

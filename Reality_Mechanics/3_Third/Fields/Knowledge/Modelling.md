@@ -5,32 +5,50 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.modelling
+determination: pd.v3.pre-provenance-baseline
 domain: knowledge
-
-needs:
-  - "[[Knowledge Field]]"
-  - "[[Read]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Pattern]]"
-  - "[[Medium]]"
-  - "[[Form]]"
 
 conditions:
   places: "the condition through which a read, pattern, or form is carried in a medium as a representation — carrying that makes what is read available to recognition without requiring its direct presence."
-  holds: "[[Knowledge Field]], [[Read]], [[Recognition Read|Recognition]], [[Pattern]], [[Medium]], and [[Form]]. A read must be present, a pattern must be recognisable, and a medium must carry the form before representation as modelling can be named."
-  pairs: "[[Competence Boundary]]. Modelling names the representation through which compatible carrying is extended through medium; Competence Boundary names the located scope at which that carrying can no longer be reliably extended. Each requires the other: modelling extends what competence boundary marks as the limit."
+  needs:
+    targets:
+      - third.knowledge-field
+      - first.read
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+      - second.form
+  holds:
+    targets:
+      - third.knowledge-field
+      - first.read
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+      - second.form
+    read: "[[Knowledge Field]], [[Read]], [[Recognition Read|Recognition]], [[Pattern]], [[Medium]], and [[Form]]. A read must be present, a pattern must be recognisable, and a medium must carry the form before representation as modelling can be named."
+  pairs:
+    targets:
+      - third.competence-boundary
+    read: "[[Competence Boundary]]. Modelling names the representation through which compatible carrying is extended through medium; Competence Boundary names the located scope at which that carrying can no longer be reliably extended. Each requires the other: modelling extends what competence boundary marks as the limit."
   traces:
-    - "[[Knowledge Field]]"
-    - "[[Read]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Pattern]]"
-    - "[[Medium]]"
-    - "[[Form]]"
-    - "[[Knowledge]]"
-  nests: "within the Knowledge Field as the path read for carried representation — the structural ground for AI, externalised cognition, and knowledge-system reads."
-  reads: "Modelling becomes readable where a condition is carried in a simplified or usable form without becoming the condition itself."
-  carries: []
-
+    targets:
+      - third.knowledge-field
+      - first.read
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+      - second.form
+      - third.knowledge
+  nests:
+    targets: []
+    read: "within the Knowledge Field as the path read for carried representation — the structural ground for AI, externalised cognition, and knowledge-system reads."
+  reads:
+    targets: []
+    read: "Modelling becomes readable where a condition is carried in a simplified or usable form without becoming the condition itself."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

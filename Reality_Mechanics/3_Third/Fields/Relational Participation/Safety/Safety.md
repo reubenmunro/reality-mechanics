@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.safety
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Branch]]"
-  - "[[Relational Participation Field]]"
-  - "[[Availability]]"
-  - "[[Compatibility]]"
-  - "[[Collapse]]"
-  - "[[Boundary]]"
 
 conditions:
   places: "the condition through which available bearing is preserved from incompatible carrying — the relational condition that keeps harmful or collapsing carrying from removing required availability."
-  holds: "[[Branch]], [[Relational Participation Field]], [[Availability]], [[Compatibility]], [[Collapse]], and [[Boundary]]. Availability must be at stake and incompatibility or collapse must be a readable threat before the preservation of available bearing can be named as safety."
-  pairs: "[[Harm]]. Safety names the condition through which available bearing is preserved; Harm names carrying that damages or removes available bearing."
+  needs:
+    targets:
+      - third.branch
+      - third.relational-participation-field
+      - first.availability
+      - second.compatibility
+      - second.collapse
+      - first.boundary
+  holds:
+    targets:
+      - third.branch
+      - third.relational-participation-field
+      - first.availability
+      - second.compatibility
+      - second.collapse
+      - first.boundary
+    read: "[[Branch]], [[Relational Participation Field]], [[Availability]], [[Compatibility]], [[Collapse]], and [[Boundary]]. Availability must be at stake and incompatibility or collapse must be a readable threat before the preservation of available bearing can be named as safety."
+  pairs:
+    targets:
+      - third.harm
+    read: "[[Harm]]. Safety names the condition through which available bearing is preserved; Harm names carrying that damages or removes available bearing."
   traces:
-    - "[[Branch]]"
-    - "[[Relational Participation Field]]"
-    - "[[Availability]]"
-    - "[[Compatibility]]"
-    - "[[Collapse]]"
-    - "[[Boundary]]"
-  nests: "within Relational Participation as the branch-level condition through which compatible bearing is protected from violation and collapse."
-  reads: "Safety becomes readable where participation remains protected from incompatible collapse while preserving the availability required for relation to continue."
+    targets:
+      - third.branch
+      - third.relational-participation-field
+      - first.availability
+      - second.compatibility
+      - second.collapse
+      - first.boundary
+  nests:
+    targets: []
+    read: "within Relational Participation as the branch-level condition through which compatible bearing is protected from violation and collapse."
+  reads:
+    targets: []
+    read: "Safety becomes readable where participation remains protected from incompatible collapse while preserving the availability required for relation to continue."
   carries:
-    - "[[Safety Boundary]]" 
-
+    targets:
+      - third.safety-boundary
 publish: true
 status: stable
 ---

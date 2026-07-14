@@ -5,38 +5,54 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.physical-field-conditions
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Branch]]"
-  - "[[Natural World Field]]"
-  - "[[Physical]]"
-  - "[[Condition]]"
-  - "[[Constraint]]"
-  - "[[Field Bearing]]"
 
 conditions:
   places: "the branch container for natural-world physical reads — the structural node through which physical, field-bearing, and constraint conditions are held as a named branch."
-  holds: "[[Branch]], [[Natural World Field]], [[Physical]], [[Condition]], [[Constraint]], and [[Field Bearing]]. Physical and field-bearing conditions must be nameable and constrainable before they can be held as a branch."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.branch
+      - third.natural-world-field
+      - third.physical
+      - second.condition
+      - second.constraint
+      - third.field-bearing
+  holds:
+    targets:
+      - third.branch
+      - third.natural-world-field
+      - third.physical
+      - second.condition
+      - second.constraint
+      - third.field-bearing
+    read: "[[Branch]], [[Natural World Field]], [[Physical]], [[Condition]], [[Constraint]], and [[Field Bearing]]. Physical and field-bearing conditions must be nameable and constrainable before they can be held as a branch."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Branch]]"
-    - "[[Natural World Field]]"
-    - "[[Physical]]"
-    - "[[Condition]]"
-    - "[[Constraint]]"
-    - "[[Field Bearing]]"
-  nests: "within the Natural World Field as the branch container for physical and field-bearing structural reads."
-  reads: "Physical Field Conditions becomes readable where bounded field conditions alter availability enough to be sensed, measured, located, or modelled."
+    targets:
+      - third.branch
+      - third.natural-world-field
+      - third.physical
+      - second.condition
+      - second.constraint
+      - third.field-bearing
+  nests:
+    targets: []
+    read: "within the Natural World Field as the branch container for physical and field-bearing structural reads."
+  reads:
+    targets: []
+    read: "Physical Field Conditions becomes readable where bounded field conditions alter availability enough to be sensed, measured, located, or modelled."
   carries:
-    - "[[Gravity]]"
-    - "[[Field Availability Pattern]]"
-    - "[[Physical Space]]"
-    - "[[Timescale]]"
-    - "[[Light]]"
-    - "[[Neutrino]]"
-    - "[[Casimir Plates]]" 
-
+    targets:
+      - third.gravity
+      - third.field-availability-pattern
+      - third.physical-space
+      - third.timescale
+      - third.light
+      - third.neutrino
+      - third.casimir-plates
 publish: true
 status: stable
 ---

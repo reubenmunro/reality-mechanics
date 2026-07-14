@@ -5,42 +5,63 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.extractive-acceleration
+determination: pd.v3.pre-provenance-baseline
 domain: applied-diagnosis
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Diagnosis]]"
-  - "[[Earth Carrying]]"
-  - "[[Acceleration]]"
-  - "[[Pace]]"
-  - "[[Resolution]]"
-  - "[[Carrying]]"
-  - "[[Scale]]"
-  - "[[Source Drift]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Source Drift]]"
 
 conditions:
   places: "the applied diagnosis of acceleration produced by converting long-order Earth carrying into short-order resolution."
-  holds: "[[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], [[Source Drift]], and [[Translation Boundary]]. Source Drift must cross explicitly into the applied diagnosis rather than becoming a third-order source."
-  pairs: "No lateral pair is required at this placement yet; Extractive Acceleration stands as a single applied diagnosis of speed produced by drawing down longer-order carrying."
+  needs:
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - third.earth-carrying
+      - second.acceleration
+      - second.pace
+      - first.resolution
+      - second.carrying
+      - second.scale
+      - higher.source-drift
+      - third.translation-boundary
+  holds:
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - third.earth-carrying
+      - second.acceleration
+      - second.pace
+      - first.resolution
+      - second.carrying
+      - second.scale
+      - higher.source-drift
+      - third.translation-boundary
+    read: "[[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], [[Source Drift]], and [[Translation Boundary]]. Source Drift must cross explicitly into the applied diagnosis rather than becoming a third-order source."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; Extractive Acceleration stands as a single applied diagnosis of speed produced by drawing down longer-order carrying."
   traces:
-    - "[[Applied Read]]"
-    - "[[Diagnosis]]"
-    - "[[Earth Carrying]]"
-    - "[[Acceleration]]"
-    - "[[Pace]]"
-    - "[[Resolution]]"
-    - "[[Carrying]]"
-    - "[[Scale]]"
-    - "[[Source Drift]]"
-    - "[[Translation Boundary]]"
-  nests: "within Applied Diagnosis as a scale-and-carrying diagnosis - where a fast order appears self-accelerating because the slower order carrying it has been backgrounded."
-  reads: "Extractive Acceleration becomes readable where slow-order carrying is converted into fast-order resolution, increasing the rate of demand, update, decision, replacement, and consequence inside the coupled human system."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.diagnosis
+      - third.earth-carrying
+      - second.acceleration
+      - second.pace
+      - first.resolution
+      - second.carrying
+      - second.scale
+      - higher.source-drift
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "within Applied Diagnosis as a scale-and-carrying diagnosis - where a fast order appears self-accelerating because the slower order carrying it has been backgrounded."
+  reads:
+    targets: []
+    read: "Extractive Acceleration becomes readable where slow-order carrying is converted into fast-order resolution, increasing the rate of demand, update, decision, replacement, and consequence inside the coupled human system."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

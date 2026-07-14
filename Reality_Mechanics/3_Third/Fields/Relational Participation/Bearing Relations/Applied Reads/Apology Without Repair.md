@@ -5,29 +5,45 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.apology-without-repair
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Misrepair]]"
-  - "[[Harm]]"
-  - "[[Care Without Bearing]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read of a closure-scope condition where acknowledgement of harm occurs without compatible re-bearing."
-  holds: "[[Applied Read]], [[Misrepair]], [[Harm]], [[Care Without Bearing]], and [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.misrepair
+      - third.harm
+      - third.care-without-bearing
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.misrepair
+      - third.harm
+      - third.care-without-bearing
+      - second.closure-scope
+    read: "[[Applied Read]], [[Misrepair]], [[Harm]], [[Care Without Bearing]], and [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Misrepair]]"
-    - "[[Harm]]"
-    - "[[Care Without Bearing]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Misrepair, where the gesture of repair fails to restore compatible bearing."
-  reads: "Apology Without Repair becomes readable where apology permits proceeding while the harmed bearing condition remains unavailable."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.misrepair
+      - third.harm
+      - third.care-without-bearing
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Misrepair, where the gesture of repair fails to restore compatible bearing."
+  reads:
+    targets: []
+    read: "Apology Without Repair becomes readable where apology permits proceeding while the harmed bearing condition remains unavailable."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

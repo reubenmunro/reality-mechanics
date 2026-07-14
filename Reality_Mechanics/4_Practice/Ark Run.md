@@ -1,36 +1,53 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.ark-run
-
-needs:
-  - "[[Pressure]]"
-  - "[[Retrace Practice]]"
-  - "[[Check]]"
-  - "[[Determine]]"
-  - "[[Step]]"
-  - "[[AI Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the runtime practice by which pressure is carried through retrace, check, determination, and step without losing dependency order."
-  holds: "[[Pressure]], [[Retrace Practice]], [[Check]], [[Determine]], [[Step]], and [[AI Participation]]."
-  pairs: "[[Atlas Practice]]. Atlas Practice tends the worked surface; Ark Run carries one live movement through it."
+  needs:
+    targets:
+      - second.pressure
+      - practice.retrace-practice
+      - practice.check
+      - practice.determine
+      - practice.step
+      - practice.ai-participation
+  holds:
+    targets:
+      - second.pressure
+      - practice.retrace-practice
+      - practice.check
+      - practice.determine
+      - practice.step
+      - practice.ai-participation
+    read: "[[Pressure]], [[Retrace Practice]], [[Check]], [[Determine]], [[Step]], and [[AI Participation]]."
+  pairs:
+    targets:
+      - practice.atlas-practice
+    read: "[[Atlas Practice]]. Atlas Practice tends the worked surface; Ark Run carries one live movement through it."
   traces:
-    - "[[Pressure]]"
-    - "[[Retrace Practice]]"
-    - "[[Check]]"
-    - "[[Determine]]"
-    - "[[Step]]"
-    - "[[AI Participation]]"
-  nests: "inside Atlas Practice as an available flow for determinations made by a participant."
-  reads: "where pressure is not answered directly, but carried through trace, bounded scope, determination, discernment, force read, and next posture."
+    targets:
+      - second.pressure
+      - practice.retrace-practice
+      - practice.check
+      - practice.determine
+      - practice.step
+      - practice.ai-participation
+  nests:
+    targets: []
+    read: "inside Atlas Practice as an available flow for determinations made by a participant."
+  reads:
+    targets: []
+    read: "where pressure is not answered directly, but carried through trace, bounded scope, determination, discernment, force read, and next posture."
   carries:
-    - "[[Determination]]"
-    - "[[Care-Control Check]]"
-
+    targets:
+      - practice.determination
+      - practice.care-control-check
 publish: true
 status: working
 ---

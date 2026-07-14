@@ -5,35 +5,54 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.pace-mismatch
+determination: pd.v3.pre-provenance-baseline
 domain: teaching
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Learning Pace]]"
-  - "[[Teaching Boundary]]"
-  - "[[Capacity]]"
-  - "[[Overload]]"
-  - "[[Closure Scope]]"
-  - "[[Pace]]"
-  - "[[Teaching]]"
 
 conditions:
   places: "the local teaching case where instruction continues faster than learning can be compatibly borne."
-  holds: "[[Applied Read]], [[Learning Pace]], [[Teaching Boundary]], [[Capacity]], [[Overload]], [[Closure Scope]], [[Pace]], [[Teaching]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.learning-pace
+      - third.teaching-boundary
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+      - second.pace
+      - third.teaching
+  holds:
+    targets:
+      - third.applied-read
+      - third.learning-pace
+      - third.teaching-boundary
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+      - second.pace
+      - third.teaching
+    read: "[[Applied Read]], [[Learning Pace]], [[Teaching Boundary]], [[Capacity]], [[Overload]], [[Closure Scope]], [[Pace]], [[Teaching]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Learning Pace]]"
-    - "[[Teaching Boundary]]"
-    - "[[Capacity]]"
-    - "[[Overload]]"
-    - "[[Closure Scope]]"
-    - "[[Pace]]"
-    - "[[Teaching]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Pace Mismatch becomes readable where instruction proceeds from the teacher's carrying while the learner's capacity for uptake is exceeded at the evaluated scope, and the overload has not yet corrected the teaching pace."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.learning-pace
+      - third.teaching-boundary
+      - second.capacity
+      - second.overload
+      - second.closure-scope
+      - second.pace
+      - third.teaching
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Pace Mismatch becomes readable where instruction proceeds from the teacher's carrying while the learner's capacity for uptake is exceeded at the evaluated scope, and the overload has not yet corrected the teaching pace."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

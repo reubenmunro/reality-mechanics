@@ -5,23 +5,37 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.light
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Natural World Field]]"
-  - "[[Physical Field Conditions]]"
 
 conditions:
   places: "the physical field condition through which field-bearing availability traverses medium at the maximum compatible rate — the natural-world read of electromagnetic carrying across available field."
-  holds: "[[Natural World Field]] and [[Physical Field Conditions]]. Physical field conditions must hold before electromagnetic traversal can be named as light."
-  pairs: "[[Neutrino]]. Light names full-coupling electromagnetic traversal; Neutrino names minimal-coupling field traversal. Each carries relation through the physical field under different coupling conditions."
+  needs:
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+  holds:
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+    read: "[[Natural World Field]] and [[Physical Field Conditions]]. Physical field conditions must hold before electromagnetic traversal can be named as light."
+  pairs:
+    targets:
+      - third.neutrino
+    read: "[[Neutrino]]. Light names full-coupling electromagnetic traversal; Neutrino names minimal-coupling field traversal. Each carries relation through the physical field under different coupling conditions."
   traces:
-    - "[[Natural World Field]]"
-    - "[[Physical Field Conditions]]"
-  nests: "within Physical Field Conditions as the traversal field-bearing condition — one physical-field case in the Cosmic Polarity Read."
-  reads: "Light becomes readable where clearance appears as outward traversal, separation, visibility, or field-event readability at a local boundary."
-  carries: []
-
+    targets:
+      - third.natural-world-field
+      - third.physical-field-conditions
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the traversal field-bearing condition — one physical-field case in the Cosmic Polarity Read."
+  reads:
+    targets: []
+    read: "Light becomes readable where clearance appears as outward traversal, separation, visibility, or field-event readability at a local boundary."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

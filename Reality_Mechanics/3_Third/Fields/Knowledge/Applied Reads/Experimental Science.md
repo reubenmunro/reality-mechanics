@@ -5,35 +5,54 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.experimental-science
+determination: pd.v3.pre-provenance-baseline
 domain: knowledge
-
-needs:
-  - "[[Knowledge Field]]"
-  - "[[Modelling]]"
-  - "[[Bearing Source]]"
-  - "[[Reality Check]]"
-  - "[[Competence Boundary]]"
-  - "[[Recurrence]]"
-  - "[[Observation]]"
-  - "[[Readability]]"
 
 conditions:
   places: "the applied domain through which knowledge claims are made testable by structured design — where a model is held against recurrent conditions so that compatibility or incompatibility becomes readable rather than assumed."
-  holds: "[[Knowledge Field]], [[Modelling]], [[Bearing Source]], [[Reality Check]], [[Competence Boundary]], [[Recurrence]], [[Observation]], and [[Readability]]. A model must carry a claim, a bearing source must ground it, and conditions must be readable across recurrence before the structured testing of knowledge can be named as experimental science."
-  pairs: "No lateral pair is required at this placement yet. Experimental Science names the formalised practice of testing knowledge against recurrence and compatibility; its structural contrast — a knowledge-producing practice that does not test against recurrence but proceeds through authority, deduction, or tradition alone — is not yet a named vault term."
+  needs:
+    targets:
+      - third.knowledge-field
+      - third.modelling
+      - second.bearing-source
+      - third.reality-check
+      - third.competence-boundary
+      - second.recurrence
+      - second.observation
+      - second.readability
+  holds:
+    targets:
+      - third.knowledge-field
+      - third.modelling
+      - second.bearing-source
+      - third.reality-check
+      - third.competence-boundary
+      - second.recurrence
+      - second.observation
+      - second.readability
+    read: "[[Knowledge Field]], [[Modelling]], [[Bearing Source]], [[Reality Check]], [[Competence Boundary]], [[Recurrence]], [[Observation]], and [[Readability]]. A model must carry a claim, a bearing source must ground it, and conditions must be readable across recurrence before the structured testing of knowledge can be named as experimental science."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Experimental Science names the formalised practice of testing knowledge against recurrence and compatibility; its structural contrast — a knowledge-producing practice that does not test against recurrence but proceeds through authority, deduction, or tradition alone — is not yet a named vault term."
   traces:
-    - "[[Knowledge Field]]"
-    - "[[Modelling]]"
-    - "[[Bearing Source]]"
-    - "[[Reality Check]]"
-    - "[[Competence Boundary]]"
-    - "[[Recurrence]]"
-    - "[[Observation]]"
-    - "[[Readability]]"
-  nests: "within Knowledge Field as an applied domain read — a practice through which the structural conditions of knowledge (Modelling, Bearing Source, Reality Check, Competence Boundary) become explicit, bounded, and communicable."
-  reads: "Experimental Science becomes readable where a knowledge claim is held against conditions designed to confirm or disconfirm it — where compatible carrying and incompatible carrying are distinguished through structured recurrence rather than assertion."
-  carries: []
-
+    targets:
+      - third.knowledge-field
+      - third.modelling
+      - second.bearing-source
+      - third.reality-check
+      - third.competence-boundary
+      - second.recurrence
+      - second.observation
+      - second.readability
+  nests:
+    targets: []
+    read: "within Knowledge Field as an applied domain read — a practice through which the structural conditions of knowledge (Modelling, Bearing Source, Reality Check, Competence Boundary) become explicit, bounded, and communicable."
+  reads:
+    targets: []
+    read: "Experimental Science becomes readable where a knowledge claim is held against conditions designed to confirm or disconfirm it — where compatible carrying and incompatible carrying are distinguished through structured recurrence rather than assertion."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

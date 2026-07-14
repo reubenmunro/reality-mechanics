@@ -5,34 +5,50 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.harmony
+determination: pd.v3.pre-provenance-baseline
 domain: music
-
-needs:
-  - "[[Sound]]"
-  - "[[Coupling]]"
-  - "[[Resonance]]"
-  - "[[Strain]]"
-  - "[[Bearing]]"
-  - "[[Melody]]"
 
 conditions:
   places: "the coupling condition through which simultaneously sounding tones become readable as tension or rest"
-  holds: "[[Sound]], [[Coupling]], [[Resonance]], [[Strain]], [[Bearing]], and [[Melody]]. Tones must be available as sound and carried as melody before they can couple vertically into harmony."
-  pairs: "No lateral pair is required at this placement. Sound/Noise holds the broader audible contrast; Harmony names sound coupled through resonance into readable tension or rest."
+  needs:
+    targets:
+      - third.sound
+      - second.coupling
+      - second.resonance
+      - first.strain
+      - first.bearing
+      - third.melody
+  holds:
+    targets:
+      - third.sound
+      - second.coupling
+      - second.resonance
+      - first.strain
+      - first.bearing
+      - third.melody
+    read: "[[Sound]], [[Coupling]], [[Resonance]], [[Strain]], [[Bearing]], and [[Melody]]. Tones must be available as sound and carried as melody before they can couple vertically into harmony."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement. Sound/Noise holds the broader audible contrast; Harmony names sound coupled through resonance into readable tension or rest."
   traces:
-    - "[[Sound]]"
-    - "[[Coupling]]"
-    - "[[Resonance]]"
-    - "[[Strain]]"
-    - "[[Bearing]]"
-    - "[[Melody]]"
-    - "[[Music]]"
-  nests: "within the music domain as the vertical coupling condition — the structural ground of tension and rest"
-  reads: "where simultaneously sounding tones couple into a condition that bears strain (dissonance) or reduced strain (consonance), readable as tension or rest"
+    targets:
+      - third.sound
+      - second.coupling
+      - second.resonance
+      - first.strain
+      - first.bearing
+      - third.melody
+      - third.music
+  nests:
+    targets: []
+    read: "within the music domain as the vertical coupling condition — the structural ground of tension and rest"
+  reads:
+    targets: []
+    read: "where simultaneously sounding tones couple into a condition that bears strain (dissonance) or reduced strain (consonance), readable as tension or rest"
   carries:
-    - "[[Musical Resolution]]"
-    - "[[Harmonic Drift]]"
-
+    targets:
+      - third.musical-resolution
+      - third.harmonic-drift
 publish: true
 status: stable
 ---

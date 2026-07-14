@@ -5,24 +5,39 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.absorb
-
-needs:
-  - "[[Resolution]]"
-  - "[[Bearing]]"
-  - "[[Strain]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "resolution where bearing takes strain into itself and dampens or contains it"
-  holds: "[[Resolution]], [[Bearing]], and [[Strain]] — strain must be borne before it can be taken in"
-  pairs: "[[Transfer]] — Absorb takes a condition in under strain; Transfer moves a resolved condition to another carrier. Each requires the other to be locatable."
+  needs:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+  holds:
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+    read: "[[Resolution]], [[Bearing]], and [[Strain]] — strain must be borne before it can be taken in"
+  pairs:
+    targets:
+      - first.transfer
+    read: "[[Transfer]] — Absorb takes a condition in under strain; Transfer moves a resolved condition to another carrier. Each requires the other to be locatable."
   traces:
-    - "[[Resolution]]"
-    - "[[Bearing]]"
-    - "[[Strain]]"
-  nests: "under first-order resolution — can support later carrying where contained strain remains supportable"
-  reads: "where bearing resolves by taking strain into the condition rather than passing it on, releasing it, or collapsing under it"
-  carries: []
-
+    targets:
+      - first.resolution
+      - first.bearing
+      - first.strain
+  nests:
+    targets: []
+    read: "under first-order resolution — can support later carrying where contained strain remains supportable"
+  reads:
+    targets: []
+    read: "where bearing resolves by taking strain into the condition rather than passing it on, releasing it, or collapsing under it"
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

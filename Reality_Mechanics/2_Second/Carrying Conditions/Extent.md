@@ -5,28 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.extent
-
-needs:
-  - "[[Extend]]"
-  - "[[Carrying]]"
-  - "[[Boundary]]"
-  - "[[Trace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the reached range of carrying."
-  holds: "[[Extend]], [[Carrying]], [[Boundary]], and [[Trace]]. Carrying must reach outward, the reach must be locatable, and trace must remain available before extent can be named."
-  pairs: "No lateral pair is required at this placement yet. Extent is evaluated by whether the reached range remains traceable enough to be read and bounded enough by scope to be evaluated."
+  needs:
+    targets:
+      - second.extend
+      - second.carrying
+      - first.boundary
+      - first.trace
+  holds:
+    targets:
+      - second.extend
+      - second.carrying
+      - first.boundary
+      - first.trace
+    read: "[[Extend]], [[Carrying]], [[Boundary]], and [[Trace]]. Carrying must reach outward, the reach must be locatable, and trace must remain available before extent can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Extent is evaluated by whether the reached range remains traceable enough to be read and bounded enough by scope to be evaluated."
   traces:
-    - "[[Extend]]"
-    - "[[Carrying]]"
-    - "[[Boundary]]"
-    - "[[Trace]]"
-  nests: "inside carrying where extension has a reached range that can be located, tested, or answered for."
-  reads: "Extent becomes readable where the reach of a condition, read, structure, claim, responsibility, or action can be located as far as it holds."
+    targets:
+      - second.extend
+      - second.carrying
+      - first.boundary
+      - first.trace
+  nests:
+    targets: []
+    read: "inside carrying where extension has a reached range that can be located, tested, or answered for."
+  reads:
+    targets: []
+    read: "Extent becomes readable where the reach of a condition, read, structure, claim, responsibility, or action can be located as far as it holds."
   carries:
-    - "[[Scope]]"
-    - "[[Closure Scope]]"
-
+    targets:
+      - second.scope
+      - second.closure-scope
 publish: true
 status: stable
 ---

@@ -5,30 +5,47 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.adaptation
-
-needs:
-  - "[[Bounded Asymmetry]]"
-  - "[[Resolution]]"
-  - "[[Shift]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the capacity to keep producing complete local resolutions without requiring the larger asymmetry to collapse."
-  holds: "[[Bounded Asymmetry]], [[Resolution]], [[Shift]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Asymmetry must remain bounded, local resolution must occur, and carrying must remain compatible across changed orientation before adaptation can be named."
-  pairs: "No lateral pair is required at this placement yet. Adaptation names compatible reorientation within bounded asymmetry rather than an opposite state."
+  needs:
+    targets:
+      - first.bounded-asymmetry
+      - first.resolution
+      - first.shift
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+  holds:
+    targets:
+      - first.bounded-asymmetry
+      - first.resolution
+      - first.shift
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+    read: "[[Bounded Asymmetry]], [[Resolution]], [[Shift]], [[Carrying]], [[Compatibility]], and [[Closure Scope]]. Asymmetry must remain bounded, local resolution must occur, and carrying must remain compatible across changed orientation before adaptation can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Adaptation names compatible reorientation within bounded asymmetry rather than an opposite state."
   traces:
-    - "[[Bounded Asymmetry]]"
-    - "[[Resolution]]"
-    - "[[Shift]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-  nests: "inside carrying as the condition through which local resolution can continue without reducing the wider asymmetry to closure."
-  reads: "Adaptation becomes readable where a condition can resolve locally, shift orientation, and continue carrying while the larger asymmetry remains available for further relation."
-  carries: []
-
+    targets:
+      - first.bounded-asymmetry
+      - first.resolution
+      - first.shift
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "inside carrying as the condition through which local resolution can continue without reducing the wider asymmetry to closure."
+  reads:
+    targets: []
+    read: "Adaptation becomes readable where a condition can resolve locally, shift orientation, and continue carrying while the larger asymmetry remains available for further relation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

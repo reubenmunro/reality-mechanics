@@ -5,25 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.recursive
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying re-entering its own condition."
-  holds: "[[Recurrence]] and [[Carrying]]."
-  pairs: "Asymmetry carries downward — into [[Recursive Regulation]]"
+  needs:
+    targets:
+      - second.recurrence
+      - second.carrying
+  holds:
+    targets:
+      - second.recurrence
+      - second.carrying
+    read: "[[Recurrence]] and [[Carrying]]."
+  pairs:
+    targets:
+      - second.recursive-regulation
+    read: "Asymmetry carries downward — into [[Recursive Regulation]]"
   traces:
-    - "[[Recurrence]]"
-    - "[[Carrying]]"
-  nests: "where carrying returns to and re-enters the condition it carries."
-  reads: "where carrying can be read as re-entering the condition it carries — where what is being sustained contributes to sustaining itself."
+    targets:
+      - second.recurrence
+      - second.carrying
+  nests:
+    targets: []
+    read: "where carrying returns to and re-enters the condition it carries."
+  reads:
+    targets: []
+    read: "where carrying can be read as re-entering the condition it carries — where what is being sustained contributes to sustaining itself."
   carries:
-    - "[[Recursive Regulation]]"
-    - "[[Third Order Crossing|Threshold (Third → Higher)]]"
-    - "[[Recursion]]"
-
+    targets:
+      - second.recursive-regulation
+      - third.third-order-crossing
+      - higher.recursion
 publish: true
 status: stable
 ---

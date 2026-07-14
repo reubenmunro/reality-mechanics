@@ -1,34 +1,50 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.tend
-
-needs:
-  - "[[Practice]]"
-  - "[[Care]]"
-  - "[[Attend]]"
-  - "[[Recurrence]]"
-  - "[[Maintained Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "care applied through attended practice so a relation can keep carrying."
-  holds: "[[Practice]], [[Care]], [[Attend]], [[Recurrence]], and [[Maintained Coupling]]. Practice must be attended, care must preserve availability, and return must be recurrent enough for tending to be read."
-  pairs: "[[Contend]]. Tend names care applied through attended practice; Contend names tending where care must meet pressure, resistance, or competing claim without dropping relation."
+  needs:
+    targets:
+      - practice.practice
+      - third.care
+      - first.attend
+      - second.recurrence
+      - third.maintained-coupling
+  holds:
+    targets:
+      - practice.practice
+      - third.care
+      - first.attend
+      - second.recurrence
+      - third.maintained-coupling
+    read: "[[Practice]], [[Care]], [[Attend]], [[Recurrence]], and [[Maintained Coupling]]. Practice must be attended, care must preserve availability, and return must be recurrent enough for tending to be read."
+  pairs:
+    targets:
+      - practice.contend
+    read: "[[Contend]]. Tend names care applied through attended practice; Contend names tending where care must meet pressure, resistance, or competing claim without dropping relation."
   traces:
-    - "[[Practice]]"
-    - "[[Care]]"
-    - "[[Attend]]"
-    - "[[Recurrence]]"
-    - "[[Maintained Coupling]]"
-  nests: "within practice as the recurrent care through which relation remains available and carried."
-  reads: "Tend becomes readable where attention does not only notice a relation, but returns to adjust conditions so the relation can keep holding."
+    targets:
+      - practice.practice
+      - third.care
+      - first.attend
+      - second.recurrence
+      - third.maintained-coupling
+  nests:
+    targets: []
+    read: "within practice as the recurrent care through which relation remains available and carried."
+  reads:
+    targets: []
+    read: "Tend becomes readable where attention does not only notice a relation, but returns to adjust conditions so the relation can keep holding."
   carries:
-    - "[[Contend]]"
-    - "[[Atlas Fabric]]"
-
+    targets:
+      - practice.contend
+      - practice.atlas-garden
 publish: true
 status: stable
 ---

@@ -1,33 +1,48 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.order-trace
-
-needs:
-  - "[[Root Order]]"
-  - "[[Relation]]"
-  - "[[Trace]]"
-  - "[[Atlas Practice]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the visible path through the Atlas orders: relation becoming readable, answerable, carryable, participatory, nested, and retraceable."
-  holds: "[[Root Order]], [[Relation]], [[Trace]], and [[Atlas Practice]]."
-  pairs: "[[Retrace Practice]]. Order Trace follows the dependency movement forward; Retrace Practice checks whether that movement still holds when followed back."
+  needs:
+    targets:
+      - ground.root-order
+      - first.relation
+      - first.trace
+      - practice.atlas-practice
+  holds:
+    targets:
+      - ground.root-order
+      - first.relation
+      - first.trace
+      - practice.atlas-practice
+    read: "[[Root Order]], [[Relation]], [[Trace]], and [[Atlas Practice]]."
+  pairs:
+    targets:
+      - practice.retrace-practice
+    read: "[[Retrace Practice]]. Order Trace follows the dependency movement forward; Retrace Practice checks whether that movement still holds when followed back."
   traces:
-    - "[[Root Order]]"
-    - "[[Relation]]"
-    - "[[Trace]]"
-    - "[[Atlas Practice]]"
-  nests: "as a guide-read across orders. It can hold the broad movement without replacing smaller direct traces inside each term."
-  reads: "where the Atlas can be followed as a dependency movement:"
+    targets:
+      - ground.root-order
+      - first.relation
+      - first.trace
+      - practice.atlas-practice
+  nests:
+    targets: []
+    read: "as a guide-read across orders. It can hold the broad movement without replacing smaller direct traces inside each term."
+  reads:
+    targets: []
+    read: "where the Atlas can be followed as a dependency movement:"
   carries:
-    - "[[Translation Boundary]]"
-    - "[[Degeneration Read]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - third.translation-boundary
+      - third.degeneration-read
+      - practice.reasoning
 publish: true
 status: stable
 ---

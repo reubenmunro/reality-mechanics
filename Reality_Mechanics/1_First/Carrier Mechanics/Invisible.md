@@ -5,21 +5,33 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.invisible
-
-needs:
-  - "[[Apparent]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "non-presented readability — distinction that can hold without being presented to read"
-  holds: "[[Apparent]] — a distinction can be apparent to structure without being presented to read"
-  pairs: "[[Visible]] — Visible presents readability; Invisible carries non-presented readability without becoming absent or hidden"
+  needs:
+    targets:
+      - first.apparent
+  holds:
+    targets:
+      - first.apparent
+    read: "[[Apparent]] — a distinction can be apparent to structure without being presented to read"
+  pairs:
+    targets:
+      - first.visible
+    read: "[[Visible]] — Visible presents readability; Invisible carries non-presented readability without becoming absent or hidden"
   traces:
-    - "[[Apparent]]"
-  nests: "under apparent presentation as its non-presented counterpart — can remain structurally active without becoming absent from relation"
-  reads: "where distinction is read as not presented rather than absent from relation"
+    targets:
+      - first.apparent
+  nests:
+    targets: []
+    read: "under apparent presentation as its non-presented counterpart — can remain structurally active without becoming absent from relation"
+  reads:
+    targets: []
+    read: "where distinction is read as not presented rather than absent from relation"
   carries:
-    - "[[Invisible Bearing Read]]"
-
+    targets:
+      - second.invisible-bearing-read
 publish: true
 status: stable
 ---

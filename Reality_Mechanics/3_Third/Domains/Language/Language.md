@@ -5,31 +5,48 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.language
+determination: pd.v3.pre-provenance-baseline
 domain: language
-
-needs:
-  - "[[Branch]]"
-  - "[[Language Domain]]"
-  - "[[Readability]]"
-  - "[[Difference]]"
-  - "[[Medium]]"
-  - "[[Expression]]"
 
 conditions:
   places: "branch-level expression through which readable distinction is carried."
-  holds: "[[Branch]], [[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Expression]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.branch
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - third.expression
+  holds:
+    targets:
+      - third.branch
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - third.expression
+    read: "[[Branch]], [[Language Domain]], [[Readability]], [[Difference]], [[Medium]], [[Expression]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Branch]]"
-    - "[[Language Domain]]"
-    - "[[Readability]]"
-    - "[[Difference]]"
-    - "[[Medium]]"
-    - "[[Expression]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Language becomes readable where readable distinction is carried between positions through naming, address, definition, translation, or instruction."
-  carries: []
-
+    targets:
+      - third.branch
+      - third.language-domain
+      - second.readability
+      - second.difference
+      - second.medium
+      - third.expression
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Language becomes readable where readable distinction is carried between positions through naming, address, definition, translation, or instruction."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

@@ -5,24 +5,38 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.structural-gathering
-
-needs:
-  - "[[Nested Relation]]"
-  - "[[Form]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "multiple participating relations held as one readable arrangement."
-  holds: "[[Nested Relation]] and [[Form]]."
-  pairs: "Asymmetry carries downward — into [[Structure]] and [[Fabric]]"
+  needs:
+    targets:
+      - second.nested-relation
+      - second.form
+  holds:
+    targets:
+      - second.nested-relation
+      - second.form
+    read: "[[Nested Relation]] and [[Form]]."
+  pairs:
+    targets:
+      - second.structure
+      - higher.fabric
+    read: "Asymmetry carries downward — into [[Structure]] and [[Fabric]]"
   traces:
-    - "[[Nested Relation]]"
-    - "[[Form]]"
-  nests: "where multiple nested relations can be read as one arrangement."
-  reads: "where multiple participating relations can be read together as one arrangement — where what is nested can be held as a readable whole rather than traced individually."
+    targets:
+      - second.nested-relation
+      - second.form
+  nests:
+    targets: []
+    read: "where multiple nested relations can be read as one arrangement."
+  reads:
+    targets: []
+    read: "where multiple participating relations can be read together as one arrangement — where what is nested can be held as a readable whole rather than traced individually."
   carries:
-    - "[[Structure]]"
-    - "[[Fabric]]"
-
+    targets:
+      - second.structure
+      - higher.fabric
 publish: true
 status: stable
 ---

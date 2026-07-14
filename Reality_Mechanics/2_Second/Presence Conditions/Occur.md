@@ -5,25 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.occur
-
-needs:
-  - "[[Presence]]"
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presence taking place within a closure scope."
-  holds: "[[Presence]] and [[Closure Scope]]."
-  pairs: "Asymmetry carries downward — into [[Recurrence]], [[Interval]], and [[Scene]]"
+  needs:
+    targets:
+      - second.presence
+      - second.closure-scope
+  holds:
+    targets:
+      - second.presence
+      - second.closure-scope
+    read: "[[Presence]] and [[Closure Scope]]."
+  pairs:
+    targets:
+      - second.recurrence
+      - second.interval
+      - third.scene
+    read: "Asymmetry carries downward — into [[Recurrence]], [[Interval]], and [[Scene]]"
   traces:
-    - "[[Presence]]"
-    - "[[Closure Scope]]"
-  nests: "where presence takes place within closure scope before recurrence, sequence, process, or scene."
-  reads: "where presence can be read as taking place within scope — where a condition is not only available to be encountered, but has happened, is happening, or can be distinguished as a local occurrence."
+    targets:
+      - second.presence
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where presence takes place within closure scope before recurrence, sequence, process, or scene."
+  reads:
+    targets: []
+    read: "where presence can be read as taking place within scope — where a condition is not only available to be encountered, but has happened, is happening, or can be distinguished as a local occurrence."
   carries:
-    - "[[Recurrence]]"
-    - "[[Interval]]"
-    - "[[Scene]]"
-
+    targets:
+      - second.recurrence
+      - second.interval
+      - third.scene
 publish: true
 status: stable
 ---

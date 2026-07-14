@@ -1,33 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.generative-trace
-
-needs:
-  - "[[Trace]]"
-  - "[[Generic]]"
-  - "[[Carrying]]"
-  - "[[Regenerate]]"
-  - "[[Order Generation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the trace that preserves enough of the generating order to seed continuation."
-  holds: "[[Trace]], [[Generic]], [[Carrying]], [[Regenerate]], and [[Order Generation]]. A generative source, a carrying path, and a recoverable trace of how carrying became available must be present before a trace can be read as generative."
-  pairs: "[[Degenerative Trace]]. Generative Trace preserves the generating order strongly enough to seed continuation; Degenerative Trace follows where carrying continued while that generating order was lost."
+  needs:
+    targets:
+      - first.trace
+      - ground.generic
+      - second.carrying
+      - ground.regenerate
+      - practice.order-generation
+  holds:
+    targets:
+      - first.trace
+      - ground.generic
+      - second.carrying
+      - ground.regenerate
+      - practice.order-generation
+    read: "[[Trace]], [[Generic]], [[Carrying]], [[Regenerate]], and [[Order Generation]]. A generative source, a carrying path, and a recoverable trace of how carrying became available must be present before a trace can be read as generative."
+  pairs:
+    targets:
+      - practice.degenerative-trace
+    read: "[[Degenerative Trace]]. Generative Trace preserves the generating order strongly enough to seed continuation; Degenerative Trace follows where carrying continued while that generating order was lost."
   traces:
-    - "[[Trace]]"
-    - "[[Generic]]"
-    - "[[Carrying]]"
-    - "[[Regenerate]]"
-    - "[[Order Generation]]"
-  nests: "inside Atlas Practice as the bridge between a recorded trace and a re-enterable carrying process."
-  reads: "where a trace does not merely record what happened, but preserves how carrying became possible enough that another participant or later run can re-enter and continue."
+    targets:
+      - first.trace
+      - ground.generic
+      - second.carrying
+      - ground.regenerate
+      - practice.order-generation
+  nests:
+    targets: []
+    read: "inside Atlas Practice as the bridge between a recorded trace and a re-enterable carrying process."
+  reads:
+    targets: []
+    read: "where a trace does not merely record what happened, but preserves how carrying became possible enough that another participant or later run can re-enter and continue."
   carries:
-    - "[[Generate and Regenerate]]"
-
+    targets:
+      - practice.generate-and-regenerate
 publish: true
 status: working
 ---

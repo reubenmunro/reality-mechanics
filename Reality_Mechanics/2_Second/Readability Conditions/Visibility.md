@@ -5,26 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.visibility
-
-needs:
-  - "[[Visible]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the condition through which presented distinction becomes readable."
-  holds: "[[Visible]] and [[Readability]]."
-  pairs: "[[Observation]]. Visibility makes presentation readable; Observation takes that readability into evaluation."
+  needs:
+    targets:
+      - first.visible
+      - second.readability
+  holds:
+    targets:
+      - first.visible
+      - second.readability
+    read: "[[Visible]] and [[Readability]]."
+  pairs:
+    targets:
+      - second.observation
+    read: "[[Observation]]. Visibility makes presentation readable; Observation takes that readability into evaluation."
   traces:
-    - "[[Visible]]"
-    - "[[Readability]]"
-    - "[[Allow]]"
-  nests: "where presented distinction can be taken up into evaluation."
-  reads: "where presented distinction can be taken up into evaluation, so what is there can be read rather than only present."
+    targets:
+      - first.visible
+      - second.readability
+      - first.allow
+  nests:
+    targets: []
+    read: "where presented distinction can be taken up into evaluation."
+  reads:
+    targets: []
+    read: "where presented distinction can be taken up into evaluation, so what is there can be read rather than only present."
   carries:
-    - "[[Observation]]"
-    - "[[Glamour]]"
-    - "[[Illusion]]"
-
+    targets:
+      - second.observation
+      - third.glamour
+      - third.illusion
 publish: true
 status: stable
 ---

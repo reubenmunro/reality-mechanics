@@ -5,23 +5,35 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.invariant
-
-needs:
-  - "[[Root Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "what remains stable across traversal, revision, application, or scale — preserved structure, not permanent immobility"
-  holds: "[[Root Order]] — the governing arrangement must hold before what it preserves across variation can be named"
-  pairs: "[[Primitive]] — Primitive names irreducible availability; Invariant names what remains unchanged across variation"
+  needs:
+    targets:
+      - ground.root-order
+  holds:
+    targets:
+      - ground.root-order
+    read: "[[Root Order]] — the governing arrangement must hold before what it preserves across variation can be named"
+  pairs:
+    targets:
+      - ground.primitive
+    read: "[[Primitive]] — Primitive names irreducible availability; Invariant names what remains unchanged across variation"
   traces:
-    - "[[Root Order]]"
-  nests: "across variation — holds where change occurs without altering the condition being tested"
-  reads: "where variation occurs while a condition remains unchanged enough to keep the read stable"
+    targets:
+      - ground.root-order
+  nests:
+    targets: []
+    read: "across variation — holds where change occurs without altering the condition being tested"
+  reads:
+    targets: []
+    read: "where variation occurs while a condition remains unchanged enough to keep the read stable"
   carries:
-    - "[[Bounded Asymmetry]]"
-    - "[[Root System]]"
-    - "[[Translation Invariance]]"
-
+    targets:
+      - first.bounded-asymmetry
+      - practice.root-system
+      - practice.translation-invariance
 publish: true
 status: stable
 ---

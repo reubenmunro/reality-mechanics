@@ -5,33 +5,50 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.branch
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Domain]]"
-  - "[[Dependency Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a dependency path through participation."
-  holds: "[[Field of Participation]], [[Domain]], and [[Dependency Order]]."
-  pairs: "Asymmetry carries downward — into [[Path Reads]], [[Retrace Read]], [[Applied Read]], [[Diagnosis]]"
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.domain
+      - ground.dependency-order
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.domain
+      - ground.dependency-order
+    read: "[[Field of Participation]], [[Domain]], and [[Dependency Order]]."
+  pairs:
+    targets:
+      - third.path-reads
+      - second.retrace-read
+      - third.applied-read
+      - third.diagnosis
+    read: "Asymmetry carries downward — into [[Path Reads]], [[Retrace Read]], [[Applied Read]], [[Diagnosis]]"
   traces:
-    - "[[Field of Participation]]"
-    - "[[Domain]]"
-    - "[[Dependency Order]]"
-    - "[[Organised Domain]]"
-    - "[[Terminal]]"
-    - "[[Translation Boundary]]"
-  nests: "as a retraceable dependency path through fields, domains, or crossings."
-  reads: "A Branch becomes recognisable where terms can be followed as a dependency path rather than as a loose collection. A branch remains readable only while its path can be retraced through the dependencies that carry it."
+    targets:
+      - third.field-of-participation
+      - third.domain
+      - ground.dependency-order
+      - third.organised-domain
+      - second.terminal
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "as a retraceable dependency path through fields, domains, or crossings."
+  reads:
+    targets: []
+    read: "A Branch becomes recognisable where terms can be followed as a dependency path rather than as a loose collection. A branch remains readable only while its path can be retraced through the dependencies that carry it."
   carries:
-    - "[[Faith Read]]"
-    - "[[Teaching]]"
-    - "[[Parenting]]"
-    - "[[Placement Mode]]"
-    - "[[Ship and Ark]]"
-    - "[[Path Reads]]"
-
+    targets:
+      - third.faith-read
+      - third.teaching
+      - third.parenting
+      - third.placement-mode
+      - third.ship-and-ark
+      - third.path-reads
 publish: true
 status: stable
 ---

@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.boundary-loosening
-
-needs:
-  - "[[Coupled Boundary]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a coupled boundary becoming less tightly held while the coupling has not yet fully broken."
-  holds: "[[Coupled Boundary]] and [[Compatibility]]."
-  pairs: "Asymmetry carries downward — into [[Decoupling]]"
+  needs:
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+  holds:
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+    read: "[[Coupled Boundary]] and [[Compatibility]]."
+  pairs:
+    targets:
+      - second.decoupling
+    read: "Asymmetry carries downward — into [[Decoupling]]"
   traces:
-    - "[[Coupled Boundary]]"
-    - "[[Compatibility]]"
-  nests: "between coupled boundary and decoupling. It names weakening before full break."
-  reads: "where a coupled boundary remains available but no longer holds the same tightness, constraint, or mutual fit it previously carried."
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+  nests:
+    targets: []
+    read: "between coupled boundary and decoupling. It names weakening before full break."
+  reads:
+    targets: []
+    read: "where a coupled boundary remains available but no longer holds the same tightness, constraint, or mutual fit it previously carried."
   carries:
-    - "[[Decoupling]]"
-
+    targets:
+      - second.decoupling
 publish: true
 status: stable
 ---

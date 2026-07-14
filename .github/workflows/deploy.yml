@@ -6,21 +6,19 @@ on:
     branches: [main]
     paths:
       - ".atlas-publisher/**"
+      - "Reality_Mechanics/**"
       - "member/**"
       - "reality-mechanics-mcp/**"
-      - "atlas-structure-contract.mjs"
       - "field-maturity.mjs"
-      - "public-surface-manifest.mjs"
       - ".github/workflows/deploy.yml"
   push:
     branches: [main]
     paths:
       - ".atlas-publisher/**"
+      - "Reality_Mechanics/**"
       - "member/**"
       - "reality-mechanics-mcp/**"
-      - "atlas-structure-contract.mjs"
       - "field-maturity.mjs"
-      - "public-surface-manifest.mjs"
       - ".github/workflows/deploy.yml"
 
 jobs:
@@ -55,6 +53,9 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
       - name: Test Field worker
         run: |
           cd .atlas-publisher
@@ -102,6 +103,9 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
       - name: Test MCP worker
         run: |
           cd reality-mechanics-mcp

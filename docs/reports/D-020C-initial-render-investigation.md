@@ -184,8 +184,12 @@ Do not tune coefficients yet. A fix commission should decide whether:
 
 ---
 
+## Follow-on implementation direction
+
+The recommended implementation is to open the Observatory in neutral whole-field mode unless an explicit term is supplied, so condensation becomes a deliberate observation event rather than the default first frame.
+
+---
+
 ## Commission closure
 
 **Status:** D-020C investigation complete. Cause identified; no code changes.
-
-**Commission D-020C closed** (investigation).

@@ -5,30 +5,45 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.know
-
-needs:
-  - "[[Recognition Read|Recognition]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a recognised read held as available."
-  holds: "[[Recognition Read|Recognition]], [[Carrying]], and [[Compatibility]]."
-  pairs: "Asymmetry carries downward — into [[Knowledge]], [[Competence Boundary]]"
+  needs:
+    targets:
+      - second.recognition-read
+      - second.carrying
+      - second.compatibility
+  holds:
+    targets:
+      - second.recognition-read
+      - second.carrying
+      - second.compatibility
+    read: "[[Recognition Read|Recognition]], [[Carrying]], and [[Compatibility]]."
+  pairs:
+    targets:
+      - third.knowledge
+      - third.competence-boundary
+    read: "Asymmetry carries downward — into [[Knowledge]], [[Competence Boundary]]"
   traces:
-    - "[[Recognition Read|Recognition]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-    - "[[Closure Scope]]"
-    - "[[Information]]"
-    - "[[Readability]]"
-  nests: "where recognition remains carried, usable, checkable, and revisable within scope."
-  reads: "where a recognised read can be carried, used, checked, or revised — where what has been recognised continues to be available rather than having to be re-established."
+    targets:
+      - second.recognition-read
+      - second.carrying
+      - second.compatibility
+      - second.closure-scope
+      - second.information
+      - second.readability
+  nests:
+    targets: []
+    read: "where recognition remains carried, usable, checkable, and revisable within scope."
+  reads:
+    targets: []
+    read: "where a recognised read can be carried, used, checked, or revised — where what has been recognised continues to be available rather than having to be re-established."
   carries:
-    - "[[Knowledge]]"
-    - "[[Competence Boundary]]"
-    - "[[Knowing]]"
-
+    targets:
+      - third.knowledge
+      - third.competence-boundary
+      - third.knowing
 publish: true
 status: stable
 ---

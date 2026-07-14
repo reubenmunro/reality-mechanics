@@ -5,27 +5,42 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.repair-mismatch
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Repair]]"
-  - "[[Misrepair]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where repair is attempted but addresses the wrong scope, condition, or bearing gap — restoration that misses where it needs to land."
-  holds: "[[Applied Read]], [[Repair]], [[Misrepair]], and [[Closure Scope]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.applied-read
+      - third.repair
+      - third.misrepair
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.repair
+      - third.misrepair
+      - second.closure-scope
+    read: "[[Applied Read]], [[Repair]], [[Misrepair]], and [[Closure Scope]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Applied Read]]"
-    - "[[Repair]]"
-    - "[[Misrepair]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Repair and Misrepair, where restoration of bearing misses the required scope."
-  reads: "Repair Mismatch becomes readable where repair-like action preserves proceeding while failing to restore the bearing condition that was lost."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.repair
+      - third.misrepair
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Repair and Misrepair, where restoration of bearing misses the required scope."
+  reads:
+    targets: []
+    read: "Repair Mismatch becomes readable where repair-like action preserves proceeding while failing to restore the bearing condition that was lost."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

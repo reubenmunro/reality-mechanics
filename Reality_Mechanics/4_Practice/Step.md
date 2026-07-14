@@ -1,31 +1,47 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.step
-
-needs:
-  - "[[Read]]"
-  - "[[Trace]]"
-  - "[[Carrying]]"
-  - "[[Practice]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the smallest answerable movement opened by a read."
-  holds: "[[Read]], [[Trace]], [[Carrying]], and [[Practice]]."
-  pairs: "[[Check]]. Check tests the boundary of a read from both directions; Step names the smallest answerable movement that boundary opens. Each requires the other: Check without Step has located a boundary but not moved from it; Step without Check has moved without establishing that the boundary held."
+  needs:
+    targets:
+      - first.read
+      - first.trace
+      - second.carrying
+      - practice.practice
+  holds:
+    targets:
+      - first.read
+      - first.trace
+      - second.carrying
+      - practice.practice
+    read: "[[Read]], [[Trace]], [[Carrying]], and [[Practice]]."
+  pairs:
+    targets:
+      - practice.check
+    read: "[[Check]]. Check tests the boundary of a read from both directions; Step names the smallest answerable movement that boundary opens. Each requires the other: Check without Step has located a boundary but not moved from it; Step without Check has moved without establishing that the boundary held."
   traces:
-    - "[[Read]]"
-    - "[[Trace]]"
-    - "[[Carrying]]"
-    - "[[Practice]]"
-    - "[[Count]]"
-  nests: "where practice becomes small enough to be answerable."
-  reads: "where a read opens a next movement small enough to stay with the trace and real enough to carry the read in practice."
+    targets:
+      - first.read
+      - first.trace
+      - second.carrying
+      - practice.practice
+      - second.count
+  nests:
+    targets: []
+    read: "where practice becomes small enough to be answerable."
+  reads:
+    targets: []
+    read: "where a read opens a next movement small enough to stay with the trace and real enough to carry the read in practice."
   carries:
-    - "[[Atlas Practice]]"
+    targets:
+      - practice.atlas-practice
 publish: true
 status: stable
 ---

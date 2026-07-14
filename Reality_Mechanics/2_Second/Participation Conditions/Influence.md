@@ -5,27 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.influence
-
-needs:
-  - "[[Participation]]"
-  - "[[Effect]]"
-  - "[[Readability]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "one participating condition altering how another condition is read, carried, or made available."
-  holds: "[[Participation]], [[Effect]], and [[Readability]]."
-  pairs: "Asymmetry carries downward — into [[Enchantment]], [[Binding]], [[Wonder]]"
+  needs:
+    targets:
+      - second.participation
+      - second.effect
+      - second.readability
+  holds:
+    targets:
+      - second.participation
+      - second.effect
+      - second.readability
+    read: "[[Participation]], [[Effect]], and [[Readability]]."
+  pairs:
+    targets:
+      - third.enchantment
+      - third.binding
+      - third.wonder
+    read: "Asymmetry carries downward — into [[Enchantment]], [[Binding]], [[Wonder]]"
   traces:
-    - "[[Participation]]"
-    - "[[Effect]]"
-    - "[[Readability]]"
-  nests: "where one participation changes the readability or continuation of another condition without becoming control by itself."
-  reads: "where participation changes how another condition can be read, carried, constrained, opened, or continued."
+    targets:
+      - second.participation
+      - second.effect
+      - second.readability
+  nests:
+    targets: []
+    read: "where one participation changes the readability or continuation of another condition without becoming control by itself."
+  reads:
+    targets: []
+    read: "where participation changes how another condition can be read, carried, constrained, opened, or continued."
   carries:
-    - "[[Enchantment]]"
-    - "[[Binding]]"
-    - "[[Wonder]]"
-
+    targets:
+      - third.enchantment
+      - third.binding
+      - third.wonder
 publish: true
 status: stable
 ---

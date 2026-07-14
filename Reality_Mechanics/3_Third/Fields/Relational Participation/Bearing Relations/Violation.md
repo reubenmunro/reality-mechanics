@@ -5,27 +5,40 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.violation
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Coupled Boundary]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition of a coupled boundary broken against compatible participation — where what was required for bearing to continue is overridden."
-  holds: "[[Coupled Boundary]] and [[Compatibility]]. A boundary must be coupled and compatibility between participants must be required before a crossing can be read as violation rather than ordinary boundary change."
-  pairs: "[[Repair]]. Violation names the break of a coupled boundary against participation; Repair names the restoration of what the break damaged."
+  needs:
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+  holds:
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+    read: "[[Coupled Boundary]] and [[Compatibility]]. A boundary must be coupled and compatibility between participants must be required before a crossing can be read as violation rather than ordinary boundary change."
+  pairs:
+    targets:
+      - third.repair
+    read: "[[Repair]]. Violation names the break of a coupled boundary against participation; Repair names the restoration of what the break damaged."
   traces:
-    - "[[Coupled Boundary]]"
-    - "[[Compatibility]]"
-  nests: "within Relational Participation as a bearing-relations read on boundary conditions. It names where the structural requirement of compatible participation is overridden."
-  reads: "Violation becomes readable where a coupled boundary is crossed or altered in a way that damages available bearing, support, or retraceable participation."
+    targets:
+      - second.coupled-boundary
+      - second.compatibility
+  nests:
+    targets: []
+    read: "within Relational Participation as a bearing-relations read on boundary conditions. It names where the structural requirement of compatible participation is overridden."
+  reads:
+    targets: []
+    read: "Violation becomes readable where a coupled boundary is crossed or altered in a way that damages available bearing, support, or retraceable participation."
   carries:
-    - "[[Betrayal]]"
-    - "[[Repair]]"
-    - "[[Harm]]"
-    - "[[Domination]]"
-
+    targets:
+      - third.betrayal
+      - third.repair
+      - third.harm
+      - third.domination
 publish: true
 status: stable
 ---

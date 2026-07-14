@@ -6,23 +6,34 @@ id: first.place
 kind: operation
 ai_role: carrier
 condition_key: first.place
+determination: pd.v3.pre-provenance-baseline
 canonical_key: first.place
-
-needs:
-  - "[[Relation]]"
 
 conditions:
   places: "locatable entry into relation, so an operation can be read, checked, corrected, or carried forward."
-  holds: "[[Relation]]. Relation must remain available for any operation to become locatable within it — Relation does not finish before Place begins."
-  pairs: "No lateral pair is required. Place is a first-order operation in the Atlas, locatable through relation, carry, and trace rather than constituted by a lateral pairing."
+  needs:
+    targets:
+      - first.relation
+  holds:
+    targets:
+      - first.relation
+    read: "[[Relation]]. Relation must remain available for any operation to become locatable within it — Relation does not finish before Place begins."
+  pairs:
+    targets: []
+    read: "No lateral pair is required. Place is a first-order operation in the Atlas, locatable through relation, carry, and trace rather than constituted by a lateral pairing."
   traces:
-    - "[[Relation]]"
-  nests: "within first order, as the operation that makes carrying enterable, readable, and correctable — distinct from field-specific place reads."
-  reads: "where an operation becomes locatable enough to be entered, read, checked, corrected, or carried forward without being confused with a later field of place."
+    targets:
+      - first.relation
+  nests:
+    targets: []
+    read: "within first order, as the operation that makes carrying enterable, readable, and correctable — distinct from field-specific place reads."
+  reads:
+    targets: []
+    read: "where an operation becomes locatable enough to be entered, read, checked, corrected, or carried forward without being confused with a later field of place."
   carries:
-    - "[[First Order Crossing|Threshold (First → Second)]]"
-    - "[[Atlas Practice]]"
-
+    targets:
+      - first.first-order-crossing
+      - practice.atlas-practice
 publish: true
 status: working
 ---

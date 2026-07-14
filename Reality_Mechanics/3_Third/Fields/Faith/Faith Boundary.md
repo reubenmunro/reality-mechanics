@@ -5,31 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.faith-boundary
+determination: pd.v3.pre-provenance-baseline
 domain: faith
-
-needs:
-  - "[[Faith Read|Faith]]"
-  - "[[Relation]]"
-  - "[[Boundary]]"
-  - "[[Bearing]]"
-  - "[[Delayed Availability]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the located limit at which relation is recognised but what it carries cannot yet be read — the boundary around unresolvable readability held by faith."
-  holds: "[[Faith Read|Faith]], [[Relation]], [[Boundary]], [[Bearing]], [[Delayed Availability]], and [[Closure Scope]]. Faith must hold the condition and a boundary must locate the limit of current readability before the unresolvable edge can be named."
-  pairs: "[[Faith Read]]. Faith Boundary names the edge at which faith's claim becomes untestable at scope; Faith Read names the carried commitment that meets that edge."
+  needs:
+    targets:
+      - third.faith-read
+      - first.relation
+      - first.boundary
+      - first.bearing
+      - second.delayed-availability
+      - second.closure-scope
+  holds:
+    targets:
+      - third.faith-read
+      - first.relation
+      - first.boundary
+      - first.bearing
+      - second.delayed-availability
+      - second.closure-scope
+    read: "[[Faith Read|Faith]], [[Relation]], [[Boundary]], [[Bearing]], [[Delayed Availability]], and [[Closure Scope]]. Faith must hold the condition and a boundary must locate the limit of current readability before the unresolvable edge can be named."
+  pairs:
+    targets:
+      - third.faith-read
+    read: "[[Faith Read]]. Faith Boundary names the edge at which faith's claim becomes untestable at scope; Faith Read names the carried commitment that meets that edge."
   traces:
-    - "[[Faith Read|Faith]]"
-    - "[[Relation]]"
-    - "[[Boundary]]"
-    - "[[Bearing]]"
-    - "[[Delayed Availability]]"
-    - "[[Closure Scope]]"
-  nests: "within the Faith Field as the closure-scope condition through which faith holds what cannot yet be read."
-  reads: "Faith Boundary becomes readable where relation is recognised, what it is cannot yet be read, and a carried boundary allows bearing before resolution, recurrence, or higher-order return becomes available."
-  carries: []
-
+    targets:
+      - third.faith-read
+      - first.relation
+      - first.boundary
+      - first.bearing
+      - second.delayed-availability
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within the Faith Field as the closure-scope condition through which faith holds what cannot yet be read."
+  reads:
+    targets: []
+    read: "Faith Boundary becomes readable where relation is recognised, what it is cannot yet be read, and a carried boundary allows bearing before resolution, recurrence, or higher-order return becomes available."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

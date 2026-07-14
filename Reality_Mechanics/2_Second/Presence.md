@@ -5,27 +5,39 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.presence
-
-needs:
-  - "[[Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "coupled relation locally available to read."
-  holds: "[[Coupling]] — coupled relation remains held while it is locally available within scope; coupling does not finish before presence begins"
-  pairs: "Asymmetry carries downward — into [[Bearing Relation]]"
+  needs:
+    targets:
+      - second.coupling
+  holds:
+    targets:
+      - second.coupling
+    read: "[[Coupling]] — coupled relation remains held while it is locally available within scope; coupling does not finish before presence begins"
+  pairs:
+    targets:
+      - second.bearing-relation
+    read: "Asymmetry carries downward — into [[Bearing Relation]]"
   traces:
-    - "[[Coupling]]"
-  nests: "as a second-order root condition. It makes coupled relation encounterable without reducing presence to appearance."
-  reads: "where relation is available as this rather than not-this, so something can be encountered within the current scope rather than only implied."
+    targets:
+      - second.coupling
+  nests:
+    targets: []
+    read: "as a second-order root condition. It makes coupled relation encounterable without reducing presence to appearance."
+  reads:
+    targets: []
+    read: "where relation is available as this rather than not-this, so something can be encountered within the current scope rather than only implied."
   carries:
-    - "[[Be]]"
-    - "[[Occur]]"
-    - "[[Real]]"
-    - "[[Coupled Contact]]"
-    - "[[Bearing Relation]]"
-    - "[[Scene]]"
-    - "[[Participation]]"
-
+    targets:
+      - second.be
+      - second.occur
+      - second.real
+      - second.coupled-contact
+      - second.bearing-relation
+      - third.scene
+      - second.participation
 publish: true
 status: stable
 ---

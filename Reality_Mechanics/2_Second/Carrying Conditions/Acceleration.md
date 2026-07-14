@@ -5,26 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.acceleration
-
-needs:
-  - "[[Velocity]]"
-  - "[[Change]]"
-  - "[[Interval]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "change in velocity across interval."
-  holds: "[[Velocity]], [[Change]], and [[Interval]]."
-  pairs: "Asymmetry carries downward — change of [[Velocity]] through [[Change]]"
+  needs:
+    targets:
+      - second.velocity
+      - second.change
+      - second.interval
+  holds:
+    targets:
+      - second.velocity
+      - second.change
+      - second.interval
+    read: "[[Velocity]], [[Change]], and [[Interval]]."
+  pairs:
+    targets:
+      - second.velocity
+      - second.change
+    read: "Asymmetry carries downward — change of [[Velocity]] through [[Change]]"
   traces:
-    - "[[Velocity]]"
-    - "[[Change]]"
-    - "[[Interval]]"
-    - "[[Speed]]"
-  nests: "in traversal and rate reads. It depends on velocity, change, and interval without by itself identifying what bears the change."
-  reads: "where directed traversal can be read as speeding up, slowing down, or changing velocity across interval."
+    targets:
+      - second.velocity
+      - second.change
+      - second.interval
+      - second.speed
+  nests:
+    targets: []
+    read: "in traversal and rate reads. It depends on velocity, change, and interval without by itself identifying what bears the change."
+  reads:
+    targets: []
+    read: "where directed traversal can be read as speeding up, slowing down, or changing velocity across interval."
   carries:
-    - "[[Extractive Acceleration]]"
-
+    targets:
+      - third.extractive-acceleration
 publish: true
 status: stable
 ---

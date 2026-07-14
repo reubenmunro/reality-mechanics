@@ -1,35 +1,52 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: state
 ai_role: practice
 condition_key: practice.determination
-
-needs:
-  - "[[Ark Run]]"
-  - "[[Determine]]"
-  - "[[Hold]]"
-  - "[[Trace]]"
-  - "[[Scope]]"
-  - "[[Check]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the temporary scoped hold produced when pressure has been retraced, checked, and bounded enough for a next answerable step."
-  holds: "[[Ark Run]], [[Determine]], [[Hold]], [[Trace]], [[Scope]], and [[Check]]."
-  pairs: "[[Decision]]. Decision may select; Determination holds only where the selected read remains scoped, warranted, and retraceable."
+  needs:
+    targets:
+      - practice.ark-run
+      - practice.determine
+      - first.hold
+      - first.trace
+      - second.scope
+      - practice.check
+  holds:
+    targets:
+      - practice.ark-run
+      - practice.determine
+      - first.hold
+      - first.trace
+      - second.scope
+      - practice.check
+    read: "[[Ark Run]], [[Determine]], [[Hold]], [[Trace]], [[Scope]], and [[Check]]."
+  pairs:
+    targets:
+      - second.decision
+    read: "[[Decision]]. Decision may select; Determination holds only where the selected read remains scoped, warranted, and retraceable."
   traces:
-    - "[[Determine]]"
-    - "[[Ark Run]]"
-    - "[[Hold]]"
-    - "[[Trace]]"
-    - "[[Scope]]"
-    - "[[Check]]"
-  nests: "inside Ark Run as the held state between bounded scope and next carrying posture."
-  reads: "where a participant can state what is temporarily fixed, at what scope, by what warrant, and what remains open."
+    targets:
+      - practice.determine
+      - practice.ark-run
+      - first.hold
+      - first.trace
+      - second.scope
+      - practice.check
+  nests:
+    targets: []
+    read: "inside Ark Run as the held state between bounded scope and next carrying posture."
+  reads:
+    targets: []
+    read: "where a participant can state what is temporarily fixed, at what scope, by what warrant, and what remains open."
   carries:
-    - "[[Care-Control Check]]"
-
+    targets:
+      - practice.care-control-check
 publish: true
 status: working
 ---

@@ -5,35 +5,52 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.knowledge-field
+determination: pd.v3.pre-provenance-baseline
 domain: knowledge
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Know]]"
-  - "[[Carrying]]"
-  - "[[Recurrence]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the recurring field of participation through which carried knowing — modelling, testing, tracing, and competence — becomes readable as organised experience."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Know]], [[Carrying]], [[Recurrence]], and [[Compatibility]]. Field of Participation must structure a recurring scope and knowing must be carried and testable before the knowledge field can be named."
-  pairs: "[[Faith Field]]. Knowledge Field names the field of carried knowing tested through recurrence and compatibility; Faith Field names the field of carried commitment toward unavailable resolution. Each requires the other to be distinguishable: knowledge tests what faith carries; faith holds what knowledge cannot yet reach."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+    read: "[[Field of Participation]], [[Organic Field]], [[Know]], [[Carrying]], [[Recurrence]], and [[Compatibility]]. Field of Participation must structure a recurring scope and knowing must be carried and testable before the knowledge field can be named."
+  pairs:
+    targets:
+      - third.faith-field
+    read: "[[Faith Field]]. Knowledge Field names the field of carried knowing tested through recurrence and compatibility; Faith Field names the field of carried commitment toward unavailable resolution. Each requires the other to be distinguishable: knowledge tests what faith carries; faith holds what knowledge cannot yet reach."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Know]]"
-    - "[[Carrying]]"
-    - "[[Recurrence]]"
-    - "[[Compatibility]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where knowing, modelling, teaching, revision, inheritance, or retraced understanding organises participation as carried knowledge."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.know
+      - second.carrying
+      - second.recurrence
+      - second.compatibility
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where knowing, modelling, teaching, revision, inheritance, or retraced understanding organises participation as carried knowledge."
   carries:
-    - "[[Knowledge]]"
-    - "[[Modelling]]"
-    - "[[Experimental Science]]" 
-    - "[[Teaching]]"
-
+    targets:
+      - third.knowledge
+      - third.modelling
+      - third.experimental-science
+      - third.teaching
 publish: true
 status: stable
 ---

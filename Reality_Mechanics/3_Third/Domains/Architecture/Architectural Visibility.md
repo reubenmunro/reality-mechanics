@@ -5,23 +5,37 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.architectural-visibility
+determination: pd.v3.pre-provenance-baseline
 domain: architecture
-
-needs:
-  - "[[Architecture]]"
-  - "[[Visibility]]"
 
 conditions:
   places: "what becomes readable within a built condition."
-  holds: "[[Architecture]], [[Visibility]]."
-  pairs: "[[Architectural Documentation]]. Architectural Visibility names the condition of structural readability; Architectural Documentation names the medium-carried form through which architectural structure is made visible."
+  needs:
+    targets:
+      - third.architecture
+      - second.visibility
+  holds:
+    targets:
+      - third.architecture
+      - second.visibility
+    read: "[[Architecture]], [[Visibility]]."
+  pairs:
+    targets:
+      - third.architectural-documentation
+    read: "[[Architectural Documentation]]. Architectural Visibility names the condition of structural readability; Architectural Documentation names the medium-carried form through which architectural structure is made visible."
   traces:
-    - "[[Architecture]]"
-    - "[[Visibility]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Architectural Visibility becomes readable where a built condition presents enough of its bearing, boundary, access, or documentation to be evaluated."
-  carries: []
-
+    targets:
+      - third.architecture
+      - second.visibility
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Architectural Visibility becomes readable where a built condition presents enough of its bearing, boundary, access, or documentation to be evaluated."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

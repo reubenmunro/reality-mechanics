@@ -5,28 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.splinter
-
-needs:
-  - "[[Intake]]"
-  - "[[Boundary]]"
-  - "[[Regulation]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "inward crossing that remains unresolved inside carrying."
-  holds: "[[Intake]], [[Boundary]], [[Regulation]], and [[Carrying]]."
-  pairs: "[[Integration]]. Integration names what has crossed inward and becomes carried by the receiving order; Splinter names what has crossed inward but remains unresolved within it."
+  needs:
+    targets:
+      - second.intake
+      - first.boundary
+      - second.regulation
+      - second.carrying
+  holds:
+    targets:
+      - second.intake
+      - first.boundary
+      - second.regulation
+      - second.carrying
+    read: "[[Intake]], [[Boundary]], [[Regulation]], and [[Carrying]]."
+  pairs:
+    targets:
+      - second.integration
+    read: "[[Integration]]. Integration names what has crossed inward and becomes carried by the receiving order; Splinter names what has crossed inward but remains unresolved within it."
   traces:
-    - "[[Intake]]"
-    - "[[Boundary]]"
-    - "[[Regulation]]"
-    - "[[Carrying]]"
-  nests: "inside carrying as unresolved foreignness after inward crossing."
-  reads: "where something has crossed into a carrying condition but remains unintegrated by that condition — present inside the system, but not yet carried by the system's own order."
+    targets:
+      - second.intake
+      - first.boundary
+      - second.regulation
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside carrying as unresolved foreignness after inward crossing."
+  reads:
+    targets: []
+    read: "where something has crossed into a carrying condition but remains unintegrated by that condition — present inside the system, but not yet carried by the system's own order."
   carries:
-    - "[[Injury]]"
-    - "[[Space-Based Solar Power]]"
-
+    targets:
+      - third.injury
+      - third.space-based-solar-power
 publish: true
 status: stable
 ---

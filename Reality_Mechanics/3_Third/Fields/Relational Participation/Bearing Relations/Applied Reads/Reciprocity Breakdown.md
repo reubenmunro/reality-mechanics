@@ -5,25 +5,40 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.reciprocity-breakdown
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Applied Read]]"
-  - "[[Reciprocity]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "the applied read where reciprocal bearing within participation fails at a closure scope — where bearing no longer moves compatibly between participants."
-  holds: "[[Applied Read]], [[Reciprocity]], and [[Closure Scope]]."
-  pairs: "[[Reciprocity]]. Reciprocity names compatible bearing across participation; Reciprocity Breakdown names its failure at scope."
+  needs:
+    targets:
+      - third.applied-read
+      - third.reciprocity
+      - second.closure-scope
+  holds:
+    targets:
+      - third.applied-read
+      - third.reciprocity
+      - second.closure-scope
+    read: "[[Applied Read]], [[Reciprocity]], and [[Closure Scope]]."
+  pairs:
+    targets:
+      - third.reciprocity
+    read: "[[Reciprocity]]. Reciprocity names compatible bearing across participation; Reciprocity Breakdown names its failure at scope."
   traces:
-    - "[[Applied Read]]"
-    - "[[Reciprocity]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as an applied read of Reciprocity at the point of failure."
-  reads: "Reciprocity Breakdown becomes readable where one side of participation continues without the mutual bearing required for reciprocal carrying."
-  carries: []
-
+    targets:
+      - third.applied-read
+      - third.reciprocity
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as an applied read of Reciprocity at the point of failure."
+  reads:
+    targets: []
+    read: "Reciprocity Breakdown becomes readable where one side of participation continues without the mutual bearing required for reciprocal carrying."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

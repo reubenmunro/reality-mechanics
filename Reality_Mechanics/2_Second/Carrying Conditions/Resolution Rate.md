@@ -5,32 +5,49 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.resolution-rate
-
-needs:
-  - "[[Rate]]"
-  - "[[Resolution]]"
-  - "[[Clearance]]"
-  - "[[Coupling]]"
-  - "[[Carrying]]"
-  - "[[Nesting Read]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the rate at which meaningful distinction can be resolved while maintaining retraceable order."
-  holds: "[[Rate]], [[Resolution]], [[Clearance]], [[Coupling]], [[Carrying]], and [[Nesting Read]]. Rate must be readable, distinction must resolve, relation must retain clearance and coupling, carrying must continue, and prior order must remain retraceable within the current read."
-  pairs: "[[Speed]]. Speed measures traversal per interval; Resolution Rate measures resolved relation per available continuation."
+  needs:
+    targets:
+      - second.rate
+      - first.resolution
+      - first.clearance
+      - second.coupling
+      - second.carrying
+      - second.nesting-read
+  holds:
+    targets:
+      - second.rate
+      - first.resolution
+      - first.clearance
+      - second.coupling
+      - second.carrying
+      - second.nesting-read
+    read: "[[Rate]], [[Resolution]], [[Clearance]], [[Coupling]], [[Carrying]], and [[Nesting Read]]. Rate must be readable, distinction must resolve, relation must retain clearance and coupling, carrying must continue, and prior order must remain retraceable within the current read."
+  pairs:
+    targets:
+      - second.speed
+    read: "[[Speed]]. Speed measures traversal per interval; Resolution Rate measures resolved relation per available continuation."
   traces:
-    - "[[Rate]]"
-    - "[[Resolution]]"
-    - "[[Clearance]]"
-    - "[[Coupling]]"
-    - "[[Carrying]]"
-    - "[[Nesting Read]]"
-    - "[[Retrace Read|Retrace]]"
-  nests: "where resolving distinction, carrying, coupling, and nested prior order remain available quickly enough to support meaningful continuation."
-  reads: "where different systems, practices, or the Atlas itself can be compared by how quickly they resolve meaningful distinction without losing coupling, clearance, re-entry, or trace."
+    targets:
+      - second.rate
+      - first.resolution
+      - first.clearance
+      - second.coupling
+      - second.carrying
+      - second.nesting-read
+      - second.retrace-read
+  nests:
+    targets: []
+    read: "where resolving distinction, carrying, coupling, and nested prior order remain available quickly enough to support meaningful continuation."
+  reads:
+    targets: []
+    read: "where different systems, practices, or the Atlas itself can be compared by how quickly they resolve meaningful distinction without losing coupling, clearance, re-entry, or trace."
   carries:
-    - "[[Bearing Pass]]"
-
+    targets:
+      - practice.garden-pass
 publish: true
 status: working
 ---

@@ -1,34 +1,49 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.discipline
-
-needs:
-  - "[[Practice]]"
-  - "[[Closure Scope]]"
-  - "[[Common Term Structure]]"
-  - "[[Check]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "practice constrained by a standard, scope, and retraceable correction."
-  holds: "[[Practice]], [[Closure Scope]], [[Common Term Structure]], and [[Check]]."
-  pairs: "[[Practice]]. Discipline gives the ordered constraint through which practice remains answerable."
+  needs:
+    targets:
+      - practice.practice
+      - second.closure-scope
+      - foundation.common-term-structure
+      - practice.check
+  holds:
+    targets:
+      - practice.practice
+      - second.closure-scope
+      - foundation.common-term-structure
+      - practice.check
+    read: "[[Practice]], [[Closure Scope]], [[Common Term Structure]], and [[Check]]."
+  pairs:
+    targets:
+      - practice.practice
+    read: "[[Practice]]. Discipline gives the ordered constraint through which practice remains answerable."
   traces:
-    - "[[Practice]]"
-    - "[[Restraint]]"
-    - "[[Closure Scope]]"
-    - "[[Common Term Structure]]"
-    - "[[Check]]"
-    - "[[Attend]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where practice remains answerable to a standard and can be checked, corrected, and retraced within a scope."
+    targets:
+      - practice.practice
+      - third.restraint
+      - second.closure-scope
+      - foundation.common-term-structure
+      - practice.check
+      - first.attend
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where practice remains answerable to a standard and can be checked, corrected, and retraced within a scope."
   carries:
-    - "[[Reality Mechanics]]"
-    - "[[Atlas Practice]]"
-
+    targets:
+      - practice.reality-mechanics
+      - practice.atlas-practice
 publish: true
 status: stable
 ---

@@ -1,30 +1,46 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.archive
-
-needs:
-  - "[[Trace]]"
-  - "[[Retain]]"
-  - "[[Atlas Practice]]"
-  - "[[RM System Map]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice of preserving a release state so that Reality Mechanics can be returned to, cited, compared, and retraced after later movement."
-  holds: "[[Trace]], [[Retain]], [[Atlas Practice]], and [[RM System Map]]."
-  pairs: "[[Retrace Practice]]. Archive preserves a release state; retrace follows dependency back through what a state carries."
+  needs:
+    targets:
+      - first.trace
+      - second.retain
+      - practice.atlas-practice
+      - practice.rm-system-map
+  holds:
+    targets:
+      - first.trace
+      - second.retain
+      - practice.atlas-practice
+      - practice.rm-system-map
+    read: "[[Trace]], [[Retain]], [[Atlas Practice]], and [[RM System Map]]."
+  pairs:
+    targets:
+      - practice.retrace-practice
+    read: "[[Retrace Practice]]. Archive preserves a release state; retrace follows dependency back through what a state carries."
   traces:
-    - "[[Trace]]"
-    - "[[Retain]]"
-    - "[[Atlas Practice]]"
-    - "[[RM System Map]]"
-  nests: "around public release and preservation rather than inside the term dependency spine."
-  reads: "where a version of the work needs a durable public return point that can be cited, compared, or corrected by later versions."
-  carries: "No direct downstream term is required. Archive preserves return rather than generating a new concept."
-
+    targets:
+      - first.trace
+      - second.retain
+      - practice.atlas-practice
+      - practice.rm-system-map
+  nests:
+    targets: []
+    read: "around public release and preservation rather than inside the term dependency spine."
+  reads:
+    targets: []
+    read: "where a version of the work needs a durable public return point that can be cited, compared, or corrected by later versions."
+  carries:
+    targets: []
+    read: "No direct downstream term is required. Archive preserves return rather than generating a new concept."
 publish: true
 status: working
 ---

@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.recursive-regulation
-
-needs:
-  - "[[Recursive]]"
-  - "[[Regulation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "regulation occurring through recursive carrying."
-  holds: "[[Recursive]] and [[Regulation]]."
-  pairs: "Asymmetry carries downward — into [[Stability]]"
+  needs:
+    targets:
+      - second.recursive
+      - second.regulation
+  holds:
+    targets:
+      - second.recursive
+      - second.regulation
+    read: "[[Recursive]] and [[Regulation]]."
+  pairs:
+    targets:
+      - second.stability
+    read: "Asymmetry carries downward — into [[Stability]]"
   traces:
-    - "[[Recursive]]"
-    - "[[Regulation]]"
-  nests: "where regulation loops back into what it regulates without losing dependency path."
-  reads: "where a condition contributes to maintaining the carrying conditions through which it is itself maintained — where regulation loops back into what it regulates without losing the dependency path."
+    targets:
+      - second.recursive
+      - second.regulation
+  nests:
+    targets: []
+    read: "where regulation loops back into what it regulates without losing dependency path."
+  reads:
+    targets: []
+    read: "where a condition contributes to maintaining the carrying conditions through which it is itself maintained — where regulation loops back into what it regulates without losing the dependency path."
   carries:
-    - "[[Stability]]"
-
+    targets:
+      - second.stability
 publish: true
 status: stable
 ---

@@ -5,29 +5,42 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.stability
-
-needs:
-  - "[[Identity]]"
-  - "[[Coherence]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "identity and coherence holding across scope."
-  holds: "[[Identity]] and [[Coherence]]."
-  pairs: "[[Disorder]]. Stability names identity and coherence holding across scope; Disorder names that holding becoming unreadable."
+  needs:
+    targets:
+      - second.identity
+      - second.coherence
+  holds:
+    targets:
+      - second.identity
+      - second.coherence
+    read: "[[Identity]] and [[Coherence]]."
+  pairs:
+    targets:
+      - second.disorder
+    read: "[[Disorder]]. Stability names identity and coherence holding across scope; Disorder names that holding becoming unreadable."
   traces:
-    - "[[Identity]]"
-    - "[[Coherence]]"
-    - "[[Compatibility]]"
-    - "[[Recursive Regulation]]"
-    - "[[Structure]]"
-    - "[[Condition]]"
-  nests: "where identity and coherence continue across scope without constant re-establishment."
-  reads: "where identity and coherence can be read as sustained across scope — where what holds continues to hold without collapsing under strain."
+    targets:
+      - second.identity
+      - second.coherence
+      - second.compatibility
+      - second.recursive-regulation
+      - second.structure
+      - second.condition
+  nests:
+    targets: []
+    read: "where identity and coherence continue across scope without constant re-establishment."
+  reads:
+    targets: []
+    read: "where identity and coherence can be read as sustained across scope — where what holds continues to hold without collapsing under strain."
   carries:
-    - "[[Disorder]]"
-    - "[[Nesting Read]]"
-    - "[[Thing]]"
-
+    targets:
+      - second.disorder
+      - second.nesting-read
+      - second.thing
 publish: true
 status: stable
 ---

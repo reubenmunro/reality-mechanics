@@ -5,32 +5,50 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.emotion
+determination: pd.v3.pre-provenance-baseline
 domain: body
-
-needs:
-  - "[[Feeling]]"
-  - "[[Pattern]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Strain]]"
-  - "[[Bearing]]"
-  - "[[Compatibility]]"
 
 conditions:
   places: "the condition through which gathered pattern presses available bearing toward expression or action — the structural node where readability gathered from feeling presses on carrying."
-  holds: "[[Feeling]], [[Pattern]], [[Recognition Read|Recognition]], [[Strain]], [[Bearing]], and [[Compatibility]]. Feeling must make availability readable, pattern must gather, and strain must press bearing before the condition can be read as emotion."
-  pairs: "[[Feeling]]. Feeling names the available detection of strain; Emotion names the condition where felt pattern gathers and presses bearing toward response."
+  needs:
+    targets:
+      - third.feeling
+      - second.pattern
+      - second.recognition-read
+      - first.strain
+      - first.bearing
+      - second.compatibility
+  holds:
+    targets:
+      - third.feeling
+      - second.pattern
+      - second.recognition-read
+      - first.strain
+      - first.bearing
+      - second.compatibility
+    read: "[[Feeling]], [[Pattern]], [[Recognition Read|Recognition]], [[Strain]], [[Bearing]], and [[Compatibility]]. Feeling must make availability readable, pattern must gather, and strain must press bearing before the condition can be read as emotion."
+  pairs:
+    targets:
+      - third.feeling
+    read: "[[Feeling]]. Feeling names the available detection of strain; Emotion names the condition where felt pattern gathers and presses bearing toward response."
   traces:
-    - "[[Feeling]]"
-    - "[[Pattern]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Strain]]"
-    - "[[Bearing]]"
-    - "[[Compatibility]]"
-    - "[[Body]]"
-  nests: "within the Body Field as the condition through which felt pattern pressures bearing toward response."
-  reads: "Emotion becomes readable where feeling gathers enough pattern, recognition, and strain to pressure action, expression, protection, care, or repair."
-  carries: []
-
+    targets:
+      - third.feeling
+      - second.pattern
+      - second.recognition-read
+      - first.strain
+      - first.bearing
+      - second.compatibility
+      - third.body
+  nests:
+    targets: []
+    read: "within the Body Field as the condition through which felt pattern pressures bearing toward response."
+  reads:
+    targets: []
+    read: "Emotion becomes readable where feeling gathers enough pattern, recognition, and strain to pressure action, expression, protection, care, or repair."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

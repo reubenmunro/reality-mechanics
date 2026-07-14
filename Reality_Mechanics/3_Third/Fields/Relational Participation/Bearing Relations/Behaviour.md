@@ -5,25 +5,39 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.behaviour
+determination: pd.v3.pre-provenance-baseline
 domain: relational-participation
-
-needs:
-  - "[[Carrying]]"
-  - "[[Control]]"
-  - "[[Closure Scope]]"
 
 conditions:
   places: "carrying through relation at a closure scope — what is actually done through a control or participation condition, rather than what is intended."
-  holds: "[[Carrying]], [[Control]], and [[Closure Scope]]. A carrying condition must be present and closure scope must bound the read before what is done becomes readable as behaviour."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.carrying
+      - third.control
+      - second.closure-scope
+  holds:
+    targets:
+      - second.carrying
+      - third.control
+      - second.closure-scope
+    read: "[[Carrying]], [[Control]], and [[Closure Scope]]. A carrying condition must be present and closure scope must bound the read before what is done becomes readable as behaviour."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Carrying]]"
-    - "[[Control]]"
-    - "[[Closure Scope]]"
-  nests: "within Relational Participation as the closure-scope read of what carrying produces through control or participation."
-  reads: "Behaviour becomes readable where carrying has entered action and can be evaluated by whether it preserves or damages compatible relation at the relevant closure scope."
-  carries: []
-
+    targets:
+      - second.carrying
+      - third.control
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "within Relational Participation as the closure-scope read of what carrying produces through control or participation."
+  reads:
+    targets: []
+    read: "Behaviour becomes readable where carrying has entered action and can be evaluated by whether it preserves or damages compatible relation at the relevant closure scope."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

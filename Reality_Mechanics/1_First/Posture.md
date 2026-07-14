@@ -5,23 +5,35 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.posture
-
-needs:
-  - "[[Connection]]"
-  - "[[Asymmetry]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "connection held with orientation — how relation is held toward relation so that order can become constructible."
-  holds: "[[Connection]] and [[Asymmetry]]. Connection must remain held as a passage, and asymmetry must continue giving that passage direction, while order proceeds through the oriented holding."
-  pairs: "No lateral pair placed yet."
+  needs:
+    targets:
+      - first.connection
+      - first.asymmetry
+  holds:
+    targets:
+      - first.connection
+      - first.asymmetry
+    read: "[[Connection]] and [[Asymmetry]]. Connection must remain held as a passage, and asymmetry must continue giving that passage direction, while order proceeds through the oriented holding."
+  pairs:
+    targets: []
+    read: "No lateral pair placed yet."
   traces:
-    - "[[Connection]]"
-    - "[[Asymmetry]]"
-  nests: "within first order, after connection — the orientation through which held passage becomes constructible rather than merely available."
-  reads: "where a connection is not just held but directed — where the holding has a toward-ness that makes order begin to emerge. The toward-ness must be directed enough that the carry it opens is determinable at some scope, even if that scope is not currently in view."
+    targets:
+      - first.connection
+      - first.asymmetry
+  nests:
+    targets: []
+    read: "within first order, after connection — the orientation through which held passage becomes constructible rather than merely available."
+  reads:
+    targets: []
+    read: "where a connection is not just held but directed — where the holding has a toward-ness that makes order begin to emerge. The toward-ness must be directed enough that the carry it opens is determinable at some scope, even if that scope is not currently in view."
   carries:
-    - "[[Posture Read]]"
-
+    targets:
+      - practice.posture-read
 publish: true
 status: stable
 ---

@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.function
-
-needs:
-  - "[[Structure]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "what a form makes available through compatible carrying."
-  holds: "[[Structure]] and [[Compatibility]]."
-  pairs: "Asymmetry carries downward — into [[Strategy]]"
+  needs:
+    targets:
+      - second.structure
+      - second.compatibility
+  holds:
+    targets:
+      - second.structure
+      - second.compatibility
+    read: "[[Structure]] and [[Compatibility]]."
+  pairs:
+    targets:
+      - second.strategy
+    read: "Asymmetry carries downward — into [[Strategy]]"
   traces:
-    - "[[Structure]]"
-    - "[[Compatibility]]"
-  nests: "inside structure and compatibility as available participation made possible by form."
-  reads: "where a structural arrangement can be read as making something available — where what a form carries can be taken up and used within the current scope."
+    targets:
+      - second.structure
+      - second.compatibility
+  nests:
+    targets: []
+    read: "inside structure and compatibility as available participation made possible by form."
+  reads:
+    targets: []
+    read: "where a structural arrangement can be read as making something available — where what a form carries can be taken up and used within the current scope."
   carries:
-    - "[[Strategy]]"
-    - "[[Transforming]]"
-
+    targets:
+      - second.strategy
+      - third.transforming
 publish: true
 status: stable
 ---

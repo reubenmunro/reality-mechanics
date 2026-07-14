@@ -1,37 +1,52 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.check
-
-needs:
-  - "[[Practice]]"
-  - "[[Boundary]]"
-  - "[[Tracing]]"
-  - "[[Retracing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the Atlas practice of testing a term from both directions to locate its boundary."
-  holds: "[[Practice]], [[Boundary]], [[Tracing]], and [[Retracing]]."
-  pairs: "[[Step]]. Check tests the boundary of a read; Step names the smallest answerable movement from it."
+  needs:
+    targets:
+      - practice.practice
+      - first.boundary
+      - practice.tracing
+      - practice.retracing
+  holds:
+    targets:
+      - practice.practice
+      - first.boundary
+      - practice.tracing
+      - practice.retracing
+    read: "[[Practice]], [[Boundary]], [[Tracing]], and [[Retracing]]."
+  pairs:
+    targets:
+      - practice.step
+    read: "[[Step]]. Check tests the boundary of a read; Step names the smallest answerable movement from it."
   traces:
-    - "[[Terms and Conditions]]"
-    - "[[Common Term Structure]]"
-    - "[[Groundedness]]"
-    - "[[Practice]]"
-    - "[[Boundary]]"
-    - "[[Tracing]]"
-    - "[[Retracing]]"
-  nests: "where a read is tested from both directions until its boundary becomes clear."
-  reads: "where a term, note, or contribution is tested backward from the present read through trace, and projected forward only as openings until downstream retrace confirms carrying, so that its boundary becomes readable rather than assumed as a thing."
+    targets:
+      - practice.terms-and-conditions
+      - foundation.common-term-structure
+      - ground.groundedness
+      - practice.practice
+      - first.boundary
+      - practice.tracing
+      - practice.retracing
+  nests:
+    targets: []
+    read: "where a read is tested from both directions until its boundary becomes clear."
+  reads:
+    targets: []
+    read: "where a term, note, or contribution is tested backward from the present read through trace, and projected forward only as openings until downstream retrace confirms carrying, so that its boundary becomes readable rather than assumed as a thing."
   carries:
-    - "[[Atlasing]]"
-    - "[[Discipline]]"
-    - "[[Bearing Pass]]"
-    - "[[Reasoning]]"
-
+    targets:
+      - practice.atlasing
+      - practice.discipline
+      - practice.garden-pass
+      - practice.reasoning
 publish: true
 status: stable
 ---

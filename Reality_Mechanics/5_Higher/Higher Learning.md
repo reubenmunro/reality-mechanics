@@ -5,28 +5,44 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.higher-learning
-
-needs:
-  - "[[Recursion]]"
-  - "[[Consciousness]]"
-  - "[[Higher Retrace|Retrace]]"
-  - "[[Self-Regulation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "learning where participation becomes able to change its own future carrying through conscious or retraceable self-correction."
-  holds: "[[Recursion]], [[Consciousness]], [[Higher Retrace|Retrace]], and [[Self-Regulation]]."
-  pairs: "[[Higher Recognition]]. Higher Learning names participation becoming able to change its own future carrying through conscious retrace and self-correction; Higher Recognition names the coherence of derivation and observation that makes that self-correction possible."
+  needs:
+    targets:
+      - higher.recursion
+      - higher.consciousness
+      - higher.higher-retrace
+      - higher.self-regulation
+  holds:
+    targets:
+      - higher.recursion
+      - higher.consciousness
+      - higher.higher-retrace
+      - higher.self-regulation
+    read: "[[Recursion]], [[Consciousness]], [[Higher Retrace|Retrace]], and [[Self-Regulation]]."
+  pairs:
+    targets:
+      - higher.higher-recognition
+    read: "[[Higher Recognition]]. Higher Learning names participation becoming able to change its own future carrying through conscious retrace and self-correction; Higher Recognition names the coherence of derivation and observation that makes that self-correction possible."
   traces:
-    - "[[Recursion]]"
-    - "[[Consciousness]]"
-    - "[[Higher Retrace|Retrace]]"
-    - "[[Self-Regulation]]"
-    - "[[Memory]]"
-    - "[[Learning]]"
-  nests: "where retrace and recognition change future participation."
-  reads: "where a participant can notice how it is carrying a read, recover enough of the path that produced it, and adjust future participation without losing bearing."
-  carries: []
-
+    targets:
+      - higher.recursion
+      - higher.consciousness
+      - higher.higher-retrace
+      - higher.self-regulation
+      - third.memory
+      - third.learning
+  nests:
+    targets: []
+    read: "where retrace and recognition change future participation."
+  reads:
+    targets: []
+    read: "where a participant can notice how it is carrying a read, recover enough of the path that produced it, and adjust future participation without losing bearing."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

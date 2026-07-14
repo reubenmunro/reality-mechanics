@@ -5,26 +5,40 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.frequency
-
-needs:
-  - "[[Recurrence]]"
-  - "[[Return]]"
-  - "[[Rate]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "countable return as rate."
-  holds: "[[Recurrence]], [[Return]], and [[Rate]]."
-  pairs: "No universal lateral pair is required. [[Period]] is the reciprocal measure of Frequency where returns form a stable cycle; irregular recurrence may have a rate without one fixed period."
+  needs:
+    targets:
+      - second.recurrence
+      - second.return
+      - second.rate
+  holds:
+    targets:
+      - second.recurrence
+      - second.return
+      - second.rate
+    read: "[[Recurrence]], [[Return]], and [[Rate]]."
+  pairs:
+    targets:
+      - second.period
+    read: "No universal lateral pair is required. [[Period]] is the reciprocal measure of Frequency where returns form a stable cycle; irregular recurrence may have a rate without one fixed period."
   traces:
-    - "[[Recurrence]]"
-    - "[[Return]]"
-    - "[[Rate]]"
-  nests: "inside recurrence and rate as counted returns within an interval."
-  reads: "where recurring participation has a return condition distinct enough to count per interval."
+    targets:
+      - second.recurrence
+      - second.return
+      - second.rate
+  nests:
+    targets: []
+    read: "inside recurrence and rate as counted returns within an interval."
+  reads:
+    targets: []
+    read: "where recurring participation has a return condition distinct enough to count per interval."
   carries:
-    - "[[Hertz]]"
-    - "[[Resonance]]"
-
+    targets:
+      - second.hertz
+      - second.resonance
 publish: true
 status: stable
 ---

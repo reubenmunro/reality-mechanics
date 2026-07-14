@@ -5,34 +5,51 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.field-availability-pattern
+determination: pd.v3.pre-provenance-baseline
 domain: natural-world
-
-needs:
-  - "[[Physical Field Conditions]]"
-  - "[[Pattern]]"
-  - "[[Field Bearing]]"
-  - "[[Invisible Bearing]]"
-  - "[[Natural World]]"
-  - "[[Translation Boundary]]"
 
 crossings:
   - "[[Invisible Bearing]]"
 
 conditions:
   places: "the structural pattern through which field-bearing conditions make availability readable — the recurrent structural shape of how fields present their carrying to readability."
-  holds: "[[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], [[Natural World]], and [[Translation Boundary]]. Invisible Bearing must cross explicitly into the physical-field pattern read."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.physical-field-conditions
+      - second.pattern
+      - third.field-bearing
+      - higher.invisible-bearing
+      - third.natural-world
+      - third.translation-boundary
+  holds:
+    targets:
+      - third.physical-field-conditions
+      - second.pattern
+      - third.field-bearing
+      - higher.invisible-bearing
+      - third.natural-world
+      - third.translation-boundary
+    read: "[[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], [[Natural World]], and [[Translation Boundary]]. Invisible Bearing must cross explicitly into the physical-field pattern read."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Physical Field Conditions]]"
-    - "[[Pattern]]"
-    - "[[Field Bearing]]"
-    - "[[Invisible Bearing]]"
-    - "[[Natural World]]"
-    - "[[Translation Boundary]]"
-  nests: "within Physical Field Conditions as the structural pattern condition that makes field-bearing availability readable."
-  reads: "Field Availability Pattern becomes readable where a physical-field condition changes what can escape, couple, traverse, appear, bear, or be measured."
-  carries: []
-
+    targets:
+      - third.physical-field-conditions
+      - second.pattern
+      - third.field-bearing
+      - higher.invisible-bearing
+      - third.natural-world
+      - third.translation-boundary
+  nests:
+    targets: []
+    read: "within Physical Field Conditions as the structural pattern condition that makes field-bearing availability readable."
+  reads:
+    targets: []
+    read: "Field Availability Pattern becomes readable where a physical-field condition changes what can escape, couple, traverse, appear, bear, or be measured."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

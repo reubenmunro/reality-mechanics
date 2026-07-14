@@ -5,27 +5,41 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.bearing-relation
-
-needs:
-  - "[[Coupling]]"
-  - "[[Presence]]"
-  - "[[Bearing]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "coupled relation bearing on coupled relation."
-  holds: "[[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must remain locally available and able to bear while active participation proceeds."
-  pairs: "Asymmetry carries downward — into [[Participation]]"
+  needs:
+    targets:
+      - second.coupling
+      - second.presence
+      - first.bearing
+  holds:
+    targets:
+      - second.coupling
+      - second.presence
+      - first.bearing
+    read: "[[Coupling]], [[Presence]], and [[Bearing]]. Coupled relation must remain locally available and able to bear while active participation proceeds."
+  pairs:
+    targets:
+      - second.participation
+    read: "Asymmetry carries downward — into [[Participation]]"
   traces:
-    - "[[Coupling]]"
-    - "[[Presence]]"
-    - "[[Bearing]]"
-  nests: "as a second-order bridge between coupling, presence, and participation. It is singular and structural, and should not be collapsed into the third-order branch family Bearing Relations."
-  reads: "where coupled relation does not merely remain mutually available, but bears on what it is coupled with so that participation can become active."
+    targets:
+      - second.coupling
+      - second.presence
+      - first.bearing
+  nests:
+    targets: []
+    read: "as a second-order bridge between coupling, presence, and participation. It is singular and structural, and should not be collapsed into the third-order branch family Bearing Relations."
+  reads:
+    targets: []
+    read: "where coupled relation does not merely remain mutually available, but bears on what it is coupled with so that participation can become active."
   carries:
-    - "[[Participation]]"
-    - "[[Relationship]]"
-    - "[[Trust]]"
-
+    targets:
+      - second.participation
+      - third.relationship
+      - third.trust
 publish: true
 status: stable
 ---

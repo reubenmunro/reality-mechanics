@@ -5,35 +5,49 @@ order: third
 kind: class
 ai_role: class
 condition_key: third.placement-mode
-
-needs:
-  - "[[Third Order]]"
-  - "[[Branch]]"
-  - "[[Dependency Order]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the sorting of a third-order note by primary carrying mode."
-  holds: "[[Third Order]], [[Branch]], and [[Dependency Order]]."
-  pairs: "[[Diagnosis]]. Placement Mode sorts by carrying mode; Diagnosis tests how a path read applies in a bounded case."
+  needs:
+    targets:
+      - third.third-order
+      - third.branch
+      - ground.dependency-order
+  holds:
+    targets:
+      - third.third-order
+      - third.branch
+      - ground.dependency-order
+    read: "[[Third Order]], [[Branch]], and [[Dependency Order]]."
+  pairs:
+    targets:
+      - third.diagnosis
+    read: "[[Diagnosis]]. Placement Mode sorts by carrying mode; Diagnosis tests how a path read applies in a bounded case."
   traces:
-    - "[[Third Order]]"
-    - "[[Branch]]"
-    - "[[Dependency Order]]"
-  nests: "as a sorting read for third-order notes by primary carrying mode, not as an order root."
-  reads: "where a note can be located against a primary carrying mode and optional secondary crossings."
+    targets:
+      - third.third-order
+      - third.branch
+      - ground.dependency-order
+  nests:
+    targets: []
+    read: "as a sorting read for third-order notes by primary carrying mode, not as an order root."
+  reads:
+    targets: []
+    read: "where a note can be located against a primary carrying mode and optional secondary crossings."
   carries:
-    - "[[Knowing]]"
-    - "[[Caring]]"
-    - "[[Sustaining]]"
-    - "[[Locating]]"
-    - "[[Sensing]]"
-    - "[[Communicating]]"
-    - "[[Transforming]]"
-    - "[[Governing]]"
-    - "[[Moving]]"
-    - "[[Expressing]]"
-    - "[[Exchanging]]"
-
+    targets:
+      - third.knowing
+      - third.caring
+      - third.sustaining
+      - third.locating
+      - third.sensing
+      - third.communicating
+      - third.transforming
+      - third.governing
+      - third.moving
+      - third.expressing
+      - third.exchanging
 publish: true
 status: stable
 ---

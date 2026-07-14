@@ -5,31 +5,43 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.higher-retrace
-
-needs:
-  - "[[Higher Recognition|Recognition]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "participation through a trace to recover the dependency path."
-  holds: "[[Higher Recognition|Recognition]]."
-  pairs: "Asymmetry carries downward — into [[Recursion]]"
+  needs:
+    targets:
+      - higher.higher-recognition
+  holds:
+    targets:
+      - higher.higher-recognition
+    read: "[[Higher Recognition|Recognition]]."
+  pairs:
+    targets:
+      - higher.recursion
+    read: "Asymmetry carries downward — into [[Recursion]]"
   traces:
-    - "[[Regenerate]]"
-    - "[[Higher Recognition|Recognition]]"
-    - "[[Higher Order Crossing|Threshold (Higher → Atlas Practice)]]"
-    - "[[Fabric]]"
-    - "[[Organic and Organised Organisation]]"
-    - "[[Organised Domain]]"
-  nests: "where retrace moves through nested order rather than a single local path."
-  reads: "where participation moves back through a dependency path and recovers access to what produced the current read — where the path is not merely remembered but re-entered."
+    targets:
+      - ground.regenerate
+      - higher.higher-recognition
+      - higher.higher-order-crossing
+      - higher.fabric
+      - third.organic-and-organised-organisation
+      - third.organised-domain
+  nests:
+    targets: []
+    read: "where retrace moves through nested order rather than a single local path."
+  reads:
+    targets: []
+    read: "where participation moves back through a dependency path and recovers access to what produced the current read — where the path is not merely remembered but re-entered."
   carries:
-    - "[[Recursion]]"
-    - "[[Hidden Bearing]]"
-    - "[[Higher Faith]]"
-    - "[[Higher Learning]]"
-    - "[[Invisible Bearing]]"
-    - "[[Source Drift]]"
-
+    targets:
+      - higher.recursion
+      - higher.hidden-bearing
+      - higher.higher-faith
+      - higher.higher-learning
+      - higher.invisible-bearing
+      - higher.source-drift
 publish: true
 status: stable
 ---

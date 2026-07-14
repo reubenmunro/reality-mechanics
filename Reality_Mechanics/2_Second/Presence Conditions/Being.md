@@ -5,24 +5,37 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.being
-
-needs:
-  - "[[Be]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "presence carried."
-  holds: "[[Be]] and [[Carrying]]."
-  pairs: "Asymmetry carries downward — into [[Become]]"
+  needs:
+    targets:
+      - second.be
+      - second.carrying
+  holds:
+    targets:
+      - second.be
+      - second.carrying
+    read: "[[Be]] and [[Carrying]]."
+  pairs:
+    targets:
+      - second.become
+    read: "Asymmetry carries downward — into [[Become]]"
   traces:
-    - "[[Be]]"
-    - "[[Carrying]]"
-    - "[[Live]]"
-  nests: "where held presence is sustained through carrying."
-  reads: "where presence can be read as carried, so something is present and participating forward through what carries it."
+    targets:
+      - second.be
+      - second.carrying
+      - second.live
+  nests:
+    targets: []
+    read: "where held presence is sustained through carrying."
+  reads:
+    targets: []
+    read: "where presence can be read as carried, so something is present and participating forward through what carries it."
   carries:
-    - "[[Become]]"
-
+    targets:
+      - second.become
 publish: true
 status: stable
 ---

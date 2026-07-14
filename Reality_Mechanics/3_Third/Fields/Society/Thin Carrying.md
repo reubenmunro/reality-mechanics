@@ -5,32 +5,48 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.thin-carrying
+determination: pd.v3.pre-provenance-baseline
 domain: society
-
-needs:
-  - "[[Carrying]]"
-  - "[[Society]]"
-  - "[[Relation]]"
-  - "[[Care]]"
-  - "[[Destination-Led Carrying]]"
 
 conditions:
   places: "the condition through which institutional or social carrying loses the relational depth that would make it traceable — carrying that proceeds without the structural grounding required for retrace."
-  holds: "[[Carrying]], [[Society]], [[Relation]], [[Care]], and [[Destination-Led Carrying]]. Carrying must be present and relational depth must be absent or insufficient before the loss of traceable grounding can be named."
-  pairs: "[[Destination-Led Carrying]]. Destination-Led Carrying names the condition through which carrying is shaped by endpoints; Thin Carrying names the structural consequence when that carrying loses relational depth."
+  needs:
+    targets:
+      - second.carrying
+      - third.society
+      - first.relation
+      - third.care
+      - third.destination-led-carrying
+  holds:
+    targets:
+      - second.carrying
+      - third.society
+      - first.relation
+      - third.care
+      - third.destination-led-carrying
+    read: "[[Carrying]], [[Society]], [[Relation]], [[Care]], and [[Destination-Led Carrying]]. Carrying must be present and relational depth must be absent or insufficient before the loss of traceable grounding can be named."
+  pairs:
+    targets:
+      - third.destination-led-carrying
+    read: "[[Destination-Led Carrying]]. Destination-Led Carrying names the condition through which carrying is shaped by endpoints; Thin Carrying names the structural consequence when that carrying loses relational depth."
   traces:
-    - "[[Degenerate]]"
-    - "[[Carrying]]"
-    - "[[Society]]"
-    - "[[Relation]]"
-    - "[[Care]]"
-    - "[[Destination-Led Carrying]]"
-  nests: "within the Society Field as the condition through which institutional carrying loses the relational depth required for retrace."
-  reads: "where a system still performs carrying administratively, economically, legally, digitally, statistically, or procedurally, but the relational, ecological, historical, or repair-bearing depth of that carrying has become less readable."
+    targets:
+      - ground.degenerate
+      - second.carrying
+      - third.society
+      - first.relation
+      - third.care
+      - third.destination-led-carrying
+  nests:
+    targets: []
+    read: "within the Society Field as the condition through which institutional carrying loses the relational depth required for retrace."
+  reads:
+    targets: []
+    read: "where a system still performs carrying administratively, economically, legally, digitally, statistically, or procedurally, but the relational, ecological, historical, or repair-bearing depth of that carrying has become less readable."
   carries:
-    - "[[Care Without Bearing]]"
-    - "[[Documentation Gap]]"
-
+    targets:
+      - third.care-without-bearing
+      - third.documentation-gap
 publish: true
 status: stable
 ---

@@ -5,21 +5,34 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.digress
-
-needs:
-  - "[[Traversal]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "traversal departing from the current scope."
-  holds: "[[Traversal]]."
-  pairs: "No lateral pair is required. Digress may open a later [[Return]], but Return does not require departure."
+  needs:
+    targets:
+      - second.traversal
+  holds:
+    targets:
+      - second.traversal
+    read: "[[Traversal]]."
+  pairs:
+    targets:
+      - second.return
+    read: "No lateral pair is required. Digress may open a later [[Return]], but Return does not require departure."
   traces:
-    - "[[Traversal]]"
-    - "[[Proceed]]"
-  nests: "where traversal departs from current scope while relation remains available."
-  reads: "where traversal can be read as departing from the current scope — where participation moves outside the bounded extent without losing relation."
-  carries: []
-
+    targets:
+      - second.traversal
+      - second.proceed
+  nests:
+    targets: []
+    read: "where traversal departs from current scope while relation remains available."
+  reads:
+    targets: []
+    read: "where traversal can be read as departing from the current scope — where participation moves outside the bounded extent without losing relation."
+  carries:
+    targets: []
+    read: "No demonstrated downstream carry is currently determined."
 publish: true
 status: stable
 ---

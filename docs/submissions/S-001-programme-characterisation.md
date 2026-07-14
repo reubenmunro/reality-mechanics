@@ -1,6 +1,6 @@
 # S-001 — Programme Characterisation for First Public Submission
 
-> **Supersession (M-001):** Product map (Field/Calibration/MCP, pre-Calculus) is **historical**. Governance and authority-order sections remain useful. Current synthesis: [`docs/reports/R-005-programme-synthesis.md`](../reports/R-005-programme-synthesis.md).
+> **Superseded evidence:** This submission predates Canonical Translation. Counts, paths, contracts, and public-surface claims below describe that earlier state and are not current authority. See [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md) and [`docs/reports/SUPERSESSION_INDEX.md`](../reports/SUPERSESSION_INDEX.md).
 
 **Programme:** First Public Submission · **Commission:** S-001 · **Role:** Programme Characterisation Lead (architectural coordination, not research, theory, or editing).
 

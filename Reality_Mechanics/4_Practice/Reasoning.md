@@ -1,38 +1,55 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: term
 ai_role: practice
 condition_key: practice.reasoning
-
-needs:
-  - "[[Ratio]]"
-  - "[[Reference Frame]]"
-  - "[[Read]]"
-  - "[[Trace]]"
-  - "[[Practice]]"
-  - "[[Order Trace]]"
-  - "[[Check]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the practice of carrying a ratio-read through traceable order so that a claim, action, read, or continuation remains answerable to what holds it."
-  holds: "[[Ratio]], [[Reference Frame]], [[Read]], [[Trace]], [[Practice]], [[Order Trace]], and [[Check]]. Comparison must be readable, the reference frame must be explicit, a meaningful distinction must be read, trace must remain available, practice must keep return possible, order trace must make the movement followable, and check must keep the continuation answerable."
-  pairs: "Mere explanation. Reasoning carries a read through traceable order; mere explanation can describe a result without preserving the support that made the result answerable."
+  needs:
+    targets:
+      - first.ratio
+      - second.reference-frame
+      - first.read
+      - first.trace
+      - practice.practice
+      - practice.order-trace
+      - practice.check
+  holds:
+    targets:
+      - first.ratio
+      - second.reference-frame
+      - first.read
+      - first.trace
+      - practice.practice
+      - practice.order-trace
+      - practice.check
+    read: "[[Ratio]], [[Reference Frame]], [[Read]], [[Trace]], [[Practice]], [[Order Trace]], and [[Check]]. Comparison must be readable, the reference frame must be explicit, a meaningful distinction must be read, trace must remain available, practice must keep return possible, order trace must make the movement followable, and check must keep the continuation answerable."
+  pairs:
+    targets: []
+    read: "Mere explanation. Reasoning carries a read through traceable order; mere explanation can describe a result without preserving the support that made the result answerable."
   traces:
-    - "[[Ratio]]"
-    - "[[Reference Frame]]"
-    - "[[Read]]"
-    - "[[Trace]]"
-    - "[[Practice]]"
-    - "[[Order Trace]]"
-    - "[[Check]]"
-  nests: "inside Atlas Practice as the ordinary practice the Atlas preserves, exposes, and tends."
-  reads: "where a participant follows what holds a read, carries only what can remain answerable, and can return through the dependency path without turning the reason into a detached justification."
+    targets:
+      - first.ratio
+      - second.reference-frame
+      - first.read
+      - first.trace
+      - practice.practice
+      - practice.order-trace
+      - practice.check
+  nests:
+    targets: []
+    read: "inside Atlas Practice as the ordinary practice the Atlas preserves, exposes, and tends."
+  reads:
+    targets: []
+    read: "where a participant follows what holds a read, carries only what can remain answerable, and can return through the dependency path without turning the reason into a detached justification."
   carries:
-    - "[[Atlas Practice]]"
-    - "[[Rational]]"
-
+    targets:
+      - practice.atlas-practice
+      - practice.rational
 publish: true
 status: working
 aliases:

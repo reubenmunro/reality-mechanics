@@ -5,29 +5,44 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.extend
-
-needs:
-  - "[[Carrying]]"
-  - "[[Relation]]"
-  - "[[Boundary]]"
-  - "[[Trace]]"
-  - "[[Compatibility]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying outward beyond a current boundary while remaining answerable to the relation it carries from."
-  holds: "[[Carrying]], [[Relation]], [[Boundary]], [[Trace]], and [[Compatibility]]. Carrying must continue beyond a current scope, cross or reach a boundary, remain traceable to the relation it carries from, and stay compatible before extension can be named."
-  pairs: "No lateral pair is required at this placement yet. Extend is evaluated by whether outward carrying remains traceable to the relation it carries from or drifts from it."
+  needs:
+    targets:
+      - second.carrying
+      - first.relation
+      - first.boundary
+      - first.trace
+      - second.compatibility
+  holds:
+    targets:
+      - second.carrying
+      - first.relation
+      - first.boundary
+      - first.trace
+      - second.compatibility
+    read: "[[Carrying]], [[Relation]], [[Boundary]], [[Trace]], and [[Compatibility]]. Carrying must continue beyond a current scope, cross or reach a boundary, remain traceable to the relation it carries from, and stay compatible before extension can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet. Extend is evaluated by whether outward carrying remains traceable to the relation it carries from or drifts from it."
   traces:
-    - "[[Carrying]]"
-    - "[[Relation]]"
-    - "[[Boundary]]"
-    - "[[Trace]]"
-    - "[[Compatibility]]"
-  nests: "inside carrying where a resolved condition reaches beyond its current scope without losing answerability to what bears it."
-  reads: "Extend becomes readable where carrying reaches outward from an existing hold, capacity, read, function, or relation and remains traceable enough to be evaluated."
+    targets:
+      - second.carrying
+      - first.relation
+      - first.boundary
+      - first.trace
+      - second.compatibility
+  nests:
+    targets: []
+    read: "inside carrying where a resolved condition reaches beyond its current scope without losing answerability to what bears it."
+  reads:
+    targets: []
+    read: "Extend becomes readable where carrying reaches outward from an existing hold, capacity, read, function, or relation and remains traceable enough to be evaluated."
   carries:
-    - "[[Extent]]"
-
+    targets:
+      - second.extent
 publish: true
 status: stable
 ---

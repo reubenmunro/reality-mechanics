@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.borne-and-carried
+determination: pd.v3.pre-provenance-baseline
 domain: our-story
-
-needs:
-  - "[[Life]]"
-  - "[[Our Story Field]]"
-  - "[[Carrying]]"
-  - "[[Carried Condition]]"
-  - "[[Inheritance]]"
-  - "[[Responsibility]]"
 
 conditions:
   places: "the human-scope read that carrying becomes possible because the human first arrives borne and carried."
-  holds: "[[Life]], [[Our Story Field]], [[Carrying]], [[Carried Condition]], [[Inheritance]], and [[Responsibility]]. Living arrival, prior carrying, carried condition, and inherited relation must be readable before human carrying can be named as received and answerable."
-  pairs: "[[Carrying Better]]. Borne and Carried names the received origin of human carrying; Carrying Better names the correction and improvement of what has been received."
+  needs:
+    targets:
+      - third.life
+      - third.our-story-field
+      - second.carrying
+      - second.carried-condition
+      - third.inheritance
+      - second.responsibility
+  holds:
+    targets:
+      - third.life
+      - third.our-story-field
+      - second.carrying
+      - second.carried-condition
+      - third.inheritance
+      - second.responsibility
+    read: "[[Life]], [[Our Story Field]], [[Carrying]], [[Carried Condition]], [[Inheritance]], and [[Responsibility]]. Living arrival, prior carrying, carried condition, and inherited relation must be readable before human carrying can be named as received and answerable."
+  pairs:
+    targets:
+      - third.carrying-better
+    read: "[[Carrying Better]]. Borne and Carried names the received origin of human carrying; Carrying Better names the correction and improvement of what has been received."
   traces:
-    - "[[Life]]"
-    - "[[Our Story Field]]"
-    - "[[Carrying]]"
-    - "[[Carried Condition]]"
-    - "[[Inheritance]]"
-    - "[[Responsibility]]"
-  nests: "within the Our Story Field as a human carrying read: received carrying becoming the capacity and obligation to carry."
-  reads: "where human carrying is not self-originating but begins from being borne by body, relation, language, care, world, ancestry, field, and circumstance."
+    targets:
+      - third.life
+      - third.our-story-field
+      - second.carrying
+      - second.carried-condition
+      - third.inheritance
+      - second.responsibility
+  nests:
+    targets: []
+    read: "within the Our Story Field as a human carrying read: received carrying becoming the capacity and obligation to carry."
+  reads:
+    targets: []
+    read: "where human carrying is not self-originating but begins from being borne by body, relation, language, care, world, ancestry, field, and circumstance."
   carries:
-    - "[[Carrying Better]]"
-
+    targets:
+      - third.carrying-better
 publish: true
 status: working
 ---

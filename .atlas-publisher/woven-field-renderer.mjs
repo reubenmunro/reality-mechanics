@@ -7,6 +7,7 @@
 import {
   legStrokeAppearance,
   resolveLeg,
+  THREAD_RELATION_KEYS,
 } from "./thread-mechanics.mjs";
 import { MECHANICS_AMPLIFICATION } from "./mechanics-amplification.mjs";
 
@@ -73,10 +74,12 @@ export function planHomeWeaveDrawOrder(connections, resolveLegFn) {
  */
 export function buildClientMechanicsBundle() {
   const visJson = JSON.stringify(HOME_WOVEN_VISIBILITY);
+  const threadRelationKeysJson = JSON.stringify(THREAD_RELATION_KEYS);
   return `
 // O-008 woven-field renderer — client thread-mechanics activation (keep aligned with thread-mechanics.mjs)
 (function activateRMMechanics() {
   const TMS_RESOLVER_VERSION = 'tms.v1';
+  const THREAD_RELATION_KEYS = Object.freeze(${threadRelationKeysJson});
   const LEG_RHYTHM_MODES = Object.freeze({
     holds: 'anchor', traces: 'return', carries: 'travel', pairs: 'answer', nests: 'circulate',
   });
@@ -98,7 +101,7 @@ export function buildClientMechanicsBundle() {
     const state = emptyPairState();
     if (!srcOp || !tgtOp) return state;
     const srcId = srcOp.id, tgtId = tgtOp.id;
-    ['holds', 'traces', 'carries', 'pairs', 'nests'].forEach((key) => {
+    THREAD_RELATION_KEYS.forEach((key) => {
       if ((srcOp[key] || []).includes(tgtId)) mergePairState(state, key);
       if ((tgtOp[key] || []).includes(srcId)) mergePairState(state, key);
     });

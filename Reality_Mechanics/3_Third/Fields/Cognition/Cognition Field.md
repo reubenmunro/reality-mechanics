@@ -5,31 +5,49 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.cognition-field
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Field of Participation]]"
-  - "[[Organic Field]]"
-  - "[[Cognitive Participation]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Know]]"
-  - "[[Recurrence]]"
 
 conditions:
   places: "the recurring field of participation through which ordered readability becomes organised as thought, memory, self, knowing, and cognitive experience."
-  holds: "[[Field of Participation]], [[Organic Field]], [[Cognitive Participation]], [[Recognition Read|Recognition]], [[Know]], and [[Recurrence]]. Field of Participation must structure a recurring scope, cognitive participation must be available, and its organised reads must be traceable before the cognition field can be named."
-  pairs: "[[Body Field]]. Cognition Field names the recurring field of cognitive participation; Body Field names the recurring field of embodied participation. Each bounds a scope the other depends on for full participation to hold."
+  needs:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.cognitive-participation
+      - second.recognition-read
+      - second.know
+      - second.recurrence
+  holds:
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.cognitive-participation
+      - second.recognition-read
+      - second.know
+      - second.recurrence
+    read: "[[Field of Participation]], [[Organic Field]], [[Cognitive Participation]], [[Recognition Read|Recognition]], [[Know]], and [[Recurrence]]. Field of Participation must structure a recurring scope, cognitive participation must be available, and its organised reads must be traceable before the cognition field can be named."
+  pairs:
+    targets:
+      - third.body-field
+    read: "[[Body Field]]. Cognition Field names the recurring field of cognitive participation; Body Field names the recurring field of embodied participation. Each bounds a scope the other depends on for full participation to hold."
   traces:
-    - "[[Field of Participation]]"
-    - "[[Organic Field]]"
-    - "[[Cognitive Participation]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Know]]"
-    - "[[Recurrence]]"
-  nests: "as a public field container. Detailed branch notes remain compressed as working material."
-  reads: "where receiving, distinguishing, retaining, comparing, modelling, self-reading, memory, or knowing organises participation as cognitive experience."
+    targets:
+      - third.field-of-participation
+      - third.organic-field
+      - second.cognitive-participation
+      - second.recognition-read
+      - second.know
+      - second.recurrence
+  nests:
+    targets: []
+    read: "as a public field container. Detailed branch notes remain compressed as working material."
+  reads:
+    targets: []
+    read: "where receiving, distinguishing, retaining, comparing, modelling, self-reading, memory, or knowing organises participation as cognitive experience."
   carries:
-    - "[[Cognition]]"
+    targets:
+      - third.cognition
 publish: true
 status: stable
 ---

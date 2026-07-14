@@ -5,24 +5,37 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.carry
-
-needs:
-  - "[[Hold]]"
-  - "[[Connection]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the forward availability of held connection."
-  holds: "[[Hold]] and [[Connection]]. Connection must remain held for forward passage through it to be available — Hold does not finish before Carry begins; Carry is held support becoming available beyond itself."
-  pairs: "[[Trace]]. Carry is the forward availability of held connection; Trace is the backward availability of the same connection."
+  needs:
+    targets:
+      - first.hold
+      - first.connection
+  holds:
+    targets:
+      - first.hold
+      - first.connection
+    read: "[[Hold]] and [[Connection]]. Connection must remain held for forward passage through it to be available — Hold does not finish before Carry begins; Carry is held support becoming available beyond itself."
+  pairs:
+    targets:
+      - first.trace
+    read: "[[Trace]]. Carry is the forward availability of held connection; Trace is the backward availability of the same connection."
   traces:
-    - "[[Hold]]"
-    - "[[Connection]]"
-  nests: "within connection as its forward availability, before that availability is enacted as carrying."
-  reads: "where held connection offers passage from a prior condition into a further condition without requiring that passage already to have been enacted."
+    targets:
+      - first.hold
+      - first.connection
+  nests:
+    targets: []
+    read: "within connection as its forward availability, before that availability is enacted as carrying."
+  reads:
+    targets: []
+    read: "where held connection offers passage from a prior condition into a further condition without requiring that passage already to have been enacted."
   carries:
-    - "[[First Order Crossing]]"
-    - "[[Carrying]]"
-
+    targets:
+      - first.first-order-crossing
+      - second.carrying
 publish: true
 status: stable
 ---

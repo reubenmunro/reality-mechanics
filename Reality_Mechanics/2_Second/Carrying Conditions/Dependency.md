@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.dependency
-
-needs:
-  - "[[Dependency Order]]"
-  - "[[Carrying]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "one condition requiring another to remain available."
-  holds: "[[Dependency Order]] and [[Carrying]]."
-  pairs: "[[Dependency Disorder]]. Dependency names required support; Dependency Disorder names disorder where required support is misread, missing, or displaced."
+  needs:
+    targets:
+      - ground.dependency-order
+      - second.carrying
+  holds:
+    targets:
+      - ground.dependency-order
+      - second.carrying
+    read: "[[Dependency Order]] and [[Carrying]]."
+  pairs:
+    targets:
+      - second.dependency-disorder
+    read: "[[Dependency Disorder]]. Dependency names required support; Dependency Disorder names disorder where required support is misread, missing, or displaced."
   traces:
-    - "[[Dependency Order]]"
-    - "[[Carrying]]"
-  nests: "inside carrying where one condition requires another to remain available."
-  reads: "where a condition cannot remain available without another condition also holding — where carrying is conditional on what else must be carried."
+    targets:
+      - ground.dependency-order
+      - second.carrying
+  nests:
+    targets: []
+    read: "inside carrying where one condition requires another to remain available."
+  reads:
+    targets: []
+    read: "where a condition cannot remain available without another condition also holding — where carrying is conditional on what else must be carried."
   carries:
-    - "[[Dependency Disorder]]"
-
+    targets:
+      - second.dependency-disorder
 publish: true
 status: stable
 ---

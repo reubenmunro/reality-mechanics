@@ -5,30 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.traversal
-
-needs:
-  - "[[Closure Scope]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "a read being followed through a closure scope."
-  holds: "[[Closure Scope]]."
-  pairs: "Asymmetry carries downward — lateral pair appears in what it carries: [[Process]] ↔ [[Sequence]]"
+  needs:
+    targets:
+      - second.closure-scope
+  holds:
+    targets:
+      - second.closure-scope
+    read: "[[Closure Scope]]."
+  pairs:
+    targets:
+      - second.process
+      - second.sequence
+    read: "Asymmetry carries downward — lateral pair appears in what it carries: [[Process]] ↔ [[Sequence]]"
   traces:
-    - "[[Closure Scope]]"
-  nests: "where reads can be followed through available conditions within a bounded extent."
-  reads: "where reads can be followed through available conditions within a bounded extent — where movement through a scope is possible rather than merely presence within it."
+    targets:
+      - second.closure-scope
+  nests:
+    targets: []
+    read: "where reads can be followed through available conditions within a bounded extent."
+  reads:
+    targets: []
+    read: "where reads can be followed through available conditions within a bounded extent — where movement through a scope is possible rather than merely presence within it."
   carries:
-    - "[[Sequence]]"
-    - "[[Interval]]"
-    - "[[Change]]"
-    - "[[Speed]]"
-    - "[[Retrace Read|Retrace]]"
-    - "[[Recurrence]]"
-    - "[[Digress]]"
-    - "[[Velocity]]"
-    - "[[Field Bearing]]"
-    - "[[Moving]]"
-
+    targets:
+      - second.sequence
+      - second.interval
+      - second.change
+      - second.speed
+      - second.retrace-read
+      - second.recurrence
+      - second.digress
+      - second.velocity
+      - third.field-bearing
+      - third.moving
 publish: true
 status: stable
 ---

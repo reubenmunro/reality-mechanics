@@ -5,32 +5,44 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.availability
-
-needs:
-  - "[[Boundary]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the condition through which located distinction can present — what boundary makes possible before carrying, allowance, or resolution are decided"
-  holds: "[[Boundary]] — a distinction must be located before its availability can be read"
-  pairs: "[[Boundary]] — boundary locates distinction; availability names the condition through which that located distinction can present"
+  needs:
+    targets:
+      - first.boundary
+  holds:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — a distinction must be located before its availability can be read"
+  pairs:
+    targets:
+      - first.boundary
+    read: "[[Boundary]] — boundary locates distinction; availability names the condition through which that located distinction can present"
   traces:
-    - "[[Boundary]]"
-  nests: "as both a first-order root condition and a passage condition — names entry into possible participation"
-  reads: "where a located distinction is present enough to participate in evaluation — where something can enter strain, allowance, or resolution"
+    targets:
+      - first.boundary
+  nests:
+    targets: []
+    read: "as both a first-order root condition and a passage condition — names entry into possible participation"
+  reads:
+    targets: []
+    read: "where a located distinction is present enough to participate in evaluation — where something can enter strain, allowance, or resolution"
   carries:
-    - "[[Strain]]"
-    - "[[Allow]]"
-    - "[[Not]]"
-    - "[[Control]]"
-    - "[[Attend]]"
-    - "[[Notice]]"
-    - "[[Guard]]"
-    - "[[Intake]]"
-    - "[[Delayed Availability]]"
-    - "[[Caring]]"
-    - "[[Sensing]]"
-    - "[[Resolution Polarity]]"
-
+    targets:
+      - first.strain
+      - first.allow
+      - first.not
+      - third.control
+      - first.attend
+      - first.notice
+      - second.guard
+      - second.intake
+      - second.delayed-availability
+      - third.caring
+      - third.sensing
+      - third.resolution-polarity
 publish: true
 status: stable
 ---

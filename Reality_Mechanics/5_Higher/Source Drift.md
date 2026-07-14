@@ -5,29 +5,43 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.source-drift
-
-needs:
-  - "[[Hidden Bearing]]"
-  - "[[Invisible Bearing]]"
-  - "[[Higher Retrace|Retrace]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "the higher-order disorder where nested carrying is mistaken for source."
-  holds: "[[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]]."
-  pairs: "[[Higher Faith]]. Source Drift names participation through carrying taken as source without retrace — trust without answerability; Higher Faith names participation through carrying that retrace has confirmed answerable — trust grounded in actual return. Each requires the other: Source Drift is only nameable against the condition where trust would be grounded; Higher Faith is only nameable against the condition where trust is unfounded."
+  needs:
+    targets:
+      - higher.hidden-bearing
+      - higher.invisible-bearing
+      - higher.higher-retrace
+  holds:
+    targets:
+      - higher.hidden-bearing
+      - higher.invisible-bearing
+      - higher.higher-retrace
+    read: "[[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]]."
+  pairs:
+    targets:
+      - higher.higher-faith
+    read: "[[Higher Faith]]. Source Drift names participation through carrying taken as source without retrace — trust without answerability; Higher Faith names participation through carrying that retrace has confirmed answerable — trust grounded in actual return. Each requires the other: Source Drift is only nameable against the condition where trust would be grounded; Higher Faith is only nameable against the condition where trust is unfounded."
   traces:
-    - "[[Degenerate]]"
-    - "[[Hidden Bearing]]"
-    - "[[Invisible Bearing]]"
-    - "[[Higher Retrace|Retrace]]"
-    - "[[Bearing Source]]"
-    - "[[Apparent Source]]"
-  nests: "within higher-order or practice conditions."
-  reads: "where a model, language, institution, identity, governance structure, technology, or framework carries participation so strongly that it is treated as source rather than as nested carrying."
+    targets:
+      - ground.degenerate
+      - higher.hidden-bearing
+      - higher.invisible-bearing
+      - higher.higher-retrace
+      - second.bearing-source
+      - second.apparent-source
+  nests:
+    targets: []
+    read: "within higher-order or practice conditions."
+  reads:
+    targets: []
+    read: "where a model, language, institution, identity, governance structure, technology, or framework carries participation so strongly that it is treated as source rather than as nested carrying."
   carries:
-    - "[[Degeneration Read]]"
-    - "[[Extractive Acceleration]]"
-
+    targets:
+      - third.degeneration-read
+      - third.extractive-acceleration
 publish: true
 status: stable
 ---

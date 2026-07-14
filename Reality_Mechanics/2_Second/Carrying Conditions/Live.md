@@ -5,23 +5,36 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.live
-
-needs:
-  - "[[Carrying]]"
-  - "[[Participation]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "carrying continuing in participation."
-  holds: "[[Carrying]] and [[Participation]]."
-  pairs: "Asymmetry carries downward — into [[Being]]"
+  needs:
+    targets:
+      - second.carrying
+      - second.participation
+  holds:
+    targets:
+      - second.carrying
+      - second.participation
+    read: "[[Carrying]] and [[Participation]]."
+  pairs:
+    targets:
+      - second.being
+    read: "Asymmetry carries downward — into [[Being]]"
   traces:
-    - "[[Carrying]]"
-    - "[[Participation]]"
-  nests: "where carrying and participation are both continuing in the current scope."
-  reads: "where participation is continuing rather than only having occurred — where carrying and participation are both present and active within the current scope."
+    targets:
+      - second.carrying
+      - second.participation
+  nests:
+    targets: []
+    read: "where carrying and participation are both continuing in the current scope."
+  reads:
+    targets: []
+    read: "where participation is continuing rather than only having occurred — where carrying and participation are both present and active within the current scope."
   carries:
-    - "[[Being]]"
-
+    targets:
+      - second.being
 publish: true
 status: stable
 ---

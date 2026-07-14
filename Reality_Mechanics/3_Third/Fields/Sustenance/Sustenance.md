@@ -5,26 +5,38 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.sustenance
+determination: pd.v3.pre-provenance-baseline
 domain: sustenance
-
-needs:
-  - "[[Participation]]"
-  - "[[Field of Participation]]"
 
 conditions:
   places: "the third-order field where participation depends on renewed availability that can continue to carry life, body, place, or practice — the structural field for nourishment, renewal, and continued carrying."
-  holds: "[[Participation]] and [[Field of Participation]]. Participation must structure a field and renewed availability must be required before the sustaining condition can be named."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - second.participation
+      - third.field-of-participation
+  holds:
+    targets:
+      - second.participation
+      - third.field-of-participation
+    read: "[[Participation]] and [[Field of Participation]]. Participation must structure a field and renewed availability must be required before the sustaining condition can be named."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Participation]]"
-    - "[[Field of Participation]]"
-  nests: "within the Sustenance Field branch as the field-level container for nourishment and renewal reads."
-  reads: "where participation depends on renewed availability that can continue to carry life, body, place, or practice."
+    targets:
+      - second.participation
+      - third.field-of-participation
+  nests:
+    targets: []
+    read: "within the Sustenance Field branch as the field-level container for nourishment and renewal reads."
+  reads:
+    targets: []
+    read: "where participation depends on renewed availability that can continue to carry life, body, place, or practice."
   carries:
-    - "[[Nourishment]]"
-    - "[[Life]]"
-    - "[[Care]]"
-
+    targets:
+      - third.nourishment
+      - third.life
+      - third.care
 publish: true
 status: stable
 ---

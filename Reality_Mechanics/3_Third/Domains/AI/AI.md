@@ -5,35 +5,49 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.ai
+determination: pd.v3.pre-provenance-baseline
 domain: ai
-
-needs:
-  - "[[Branch]]"
-  - "[[Engineered Coupling]]"
-  - "[[Technology Domain]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the third-order domain read for engineered interaction — where generated output, model interface, and human evaluation alter how dependency is carried while still requiring retraceable structural grounding."
-  holds: "[[Branch]], [[Engineered Coupling]], [[Technology Domain]], and [[Medium]] — it requires that engineered transformation remain testable rather than fully replace the dependency structure it mediates."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - third.branch
+      - third.engineered-coupling
+      - third.technology-domain
+      - second.medium
+  holds:
+    targets:
+      - third.branch
+      - third.engineered-coupling
+      - third.technology-domain
+      - second.medium
+    read: "[[Branch]], [[Engineered Coupling]], [[Technology Domain]], and [[Medium]] — it requires that engineered transformation remain testable rather than fully replace the dependency structure it mediates."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Branch]]"
-    - "[[Engineered Coupling]]"
-    - "[[Technology Domain]]"
-    - "[[Medium]]"
-  nests: "as the engineered-coupling domain within the Technology Domain branch."
-  reads: "AI becomes readable where engineered coupling, generated output, interface mediation, and human evaluation alter how relation is carried while still requiring retraceable dependency."
+    targets:
+      - third.branch
+      - third.engineered-coupling
+      - third.technology-domain
+      - second.medium
+  nests:
+    targets: []
+    read: "as the engineered-coupling domain within the Technology Domain branch."
+  reads:
+    targets: []
+    read: "AI becomes readable where engineered coupling, generated output, interface mediation, and human evaluation alter how relation is carried while still requiring retraceable dependency."
   carries:
-    - "[[AI Coupling]]"
-    - "[[AI Availability]]"
-    - "[[AI Atlas Grounding]]"
-    - "[[AI Drift]]"
-    - "[[Ungrounded Fabrication]]"
-    - "[[AI Misrepair]]"
-    - "[[AI Reply Drift]]"
-    - "[[AI Confident Correction]]"
-
+    targets:
+      - third.ai-coupling
+      - third.ai-availability
+      - third.ai-atlas-grounding
+      - third.ai-drift
+      - third.ungrounded-fabrication
+      - third.ai-misrepair
+      - third.ai-reply-drift
+      - third.ai-confident-correction
 publish: true
 status: stable
 ---

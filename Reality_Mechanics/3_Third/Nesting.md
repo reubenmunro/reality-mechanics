@@ -5,25 +5,40 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.nesting
-needs:
-- '[[Participation]]'
-- '[[Recurrence]]'
-- '[[Field of Participation]]'
+determination: pd.v3.pre-provenance-baseline
 conditions:
   places: "ordered participation — prior organisation remaining available within later organisation."
-  holds: "[[Participation]], [[Recurrence]], and [[Field of Participation]] — participation must recur in a field before prior organisation can remain available within later organisation."
-  pairs: "Vertical. Participation, Recurrence, and Field of Participation carry downward into Nesting. Nesting is not paired as an opposite; its structural contrast is flat participation, where connection continues without prior order remaining retraceable."
+  needs:
+    targets:
+      - second.participation
+      - second.recurrence
+      - third.field-of-participation
+  holds:
+    targets:
+      - second.participation
+      - second.recurrence
+      - third.field-of-participation
+    read: "[[Participation]], [[Recurrence]], and [[Field of Participation]] — participation must recur in a field before prior organisation can remain available within later organisation."
+  pairs:
+    targets: []
+    read: "Vertical. Participation, Recurrence, and Field of Participation carry downward into Nesting. Nesting is not paired as an opposite; its structural contrast is flat participation, where connection continues without prior order remaining retraceable."
   traces:
-  - '[[Participation]]'
-  - '[[Recurrence]]'
-  - '[[Field of Participation]]'
-  nests: "where prior organisation remains available within later organisation without being replaced."
-  reads: "where later participation carries prior organisation within it, ordering relation by dependency rather than flattening it into connection alone."
+    targets:
+      - second.participation
+      - second.recurrence
+      - third.field-of-participation
+  nests:
+    targets: []
+    read: "where prior organisation remains available within later organisation without being replaced."
+  reads:
+    targets: []
+    read: "where later participation carries prior organisation within it, ordering relation by dependency rather than flattening it into connection alone."
   carries:
-  - '[[Recursion]]'
-  - '[[Third Order Crossing]]'
-  - '[[Legion]]'
-  - '[[Higher Order]]'
+    targets:
+      - higher.recursion
+      - third.third-order-crossing
+      - higher.legion
+      - higher.higher-order
 order_terminal:
   is_terminal: true
   terminal_of: third_order

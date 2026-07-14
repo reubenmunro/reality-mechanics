@@ -5,28 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.retain
-
-needs:
-  - "[[Pressure]]"
-  - "[[Carrying]]"
-  - "[[Compatibility]]"
-  - "[[Hold]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "pressure kept within a carrying relation."
-  holds: "[[Pressure]], [[Carrying]], [[Compatibility]], and [[Hold]]. Pressure must be locally borne, carrying must remain available, and holding must remain compatible before pressure can be read as retained."
-  pairs: "[[Release]]. Retain names pressure kept within a carrying relation; Release names strain leaving the bearing condition. Each is readable against the other."
+  needs:
+    targets:
+      - second.pressure
+      - second.carrying
+      - second.compatibility
+      - first.hold
+  holds:
+    targets:
+      - second.pressure
+      - second.carrying
+      - second.compatibility
+      - first.hold
+    read: "[[Pressure]], [[Carrying]], [[Compatibility]], and [[Hold]]. Pressure must be locally borne, carrying must remain available, and holding must remain compatible before pressure can be read as retained."
+  pairs:
+    targets:
+      - first.release
+    read: "[[Release]]. Retain names pressure kept within a carrying relation; Release names strain leaving the bearing condition. Each is readable against the other."
   traces:
-    - "[[Pressure]]"
-    - "[[Carrying]]"
-    - "[[Compatibility]]"
-    - "[[Hold]]"
-  nests: "inside carrying as ongoing keeping of pressure after it has become locally borne."
-  reads: "Retain becomes readable where pressure remains kept in a carrying relation without immediately discharging, transferring, or collapsing."
+    targets:
+      - second.pressure
+      - second.carrying
+      - second.compatibility
+      - first.hold
+  nests:
+    targets: []
+    read: "inside carrying as ongoing keeping of pressure after it has become locally borne."
+  reads:
+    targets: []
+    read: "Retain becomes readable where pressure remains kept in a carrying relation without immediately discharging, transferring, or collapsing."
   carries:
-    - "[[Energy]]"
-    - "[[Balance]]"
-
+    targets:
+      - second.energy
+      - second.balance
 publish: true
 status: stable
 ---

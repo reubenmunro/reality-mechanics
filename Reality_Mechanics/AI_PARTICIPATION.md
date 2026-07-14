@@ -1,49 +1,73 @@
 ---
 
 grounded: true
-order: practice
+register: practice
 kind: meta
 ai_role: participation
 condition_key: practice.ai-participation
-
-needs:
-  - "[[Atlas]]"
-  - "[[Participant]]"
-  - "[[Common Term Structure]]"
-  - "[[Groundedness]]"
-  - "[[Ark Run]]"
-  - "[[Atlas Oracle]]"
-  - "[[Oracle Carrying Conditions]]"
+determination: pd.v3.phase-4-minimal-architecture
 
 conditions:
-  places: "the participation rule for AI working inside the Atlas without inventing theory, grounding notes, or collapsing dependency order."
-  holds: "[[Atlas]], [[Participant]], [[Common Term Structure]], [[Groundedness]], [[Ark Run]], [[Atlas Oracle]], and [[Oracle Carrying Conditions]]."
-  pairs: "[[Participant]]. AI Participation names a constrained participant mode; Participant names the broader condition of taking part."
+  places: "the participation rule for AI working inside the Atlas without inventing theory, making participant determinations, or collapsing dependency order."
+  needs:
+    targets:
+      - practice.atlas
+      - practice.participant
+      - foundation.common-term-structure
+      - ground.groundedness
+      - practice.ark-run
+      - practice.atlas-oracle
+      - practice.oracle-carrying-conditions
+  holds:
+    targets:
+      - practice.atlas
+      - practice.participant
+      - foundation.common-term-structure
+      - ground.groundedness
+      - practice.ark-run
+      - practice.atlas-oracle
+      - practice.oracle-carrying-conditions
+    read: "[[Atlas]], [[Participant]], [[Common Term Structure]], [[Groundedness]], [[Ark Run]], [[Atlas Oracle]], and [[Oracle Carrying Conditions]]."
+  pairs:
+    targets:
+      - practice.participant
+    read: "[[Participant]]. AI Participation names a constrained participant mode; Participant names the broader condition of taking part."
   traces:
-    - "[[Atlas]]"
-    - "[[Participant]]"
-    - "[[Common Term Structure]]"
-    - "[[Groundedness]]"
-    - "[[Check]]"
-    - "[[Step]]"
-    - "[[Source Drift]]"
-    - "[[Ark Run]]"
-    - "[[Atlas Oracle]]"
-    - "[[Oracle Carrying Conditions]]"
-  nests: "inside Atlas Practice as the AI-facing participation contract for preserving trace, reciprocity, uncertainty, and authorial intent."
-  reads: "where an AI contributes to Atlas tending by tracing, checking, flagging uncertainty, preserving dependency order, refusing to ground notes on its own, and making Ark Run available when pressure moves toward determination."
+    targets:
+      - practice.atlas
+      - practice.participant
+      - foundation.common-term-structure
+      - ground.groundedness
+      - practice.check
+      - practice.step
+      - higher.source-drift
+      - practice.ark-run
+      - practice.atlas-oracle
+      - practice.oracle-carrying-conditions
+  nests:
+    targets: []
+    read: "inside Atlas Practice as the AI-facing participation contract for preserving trace, reciprocity, uncertainty, and authorial intent."
+  reads:
+    targets: []
+    read: "where an AI contributes to Atlas tending by tracing, checking, flagging uncertainty, preserving dependency order, refusing to make participant determinations, and making Ark Run available when pressure moves toward determination."
   carries:
-    - "[[Ark Run]]"
-    - "[[Atlas Oracle]]"
-    - "[[Oracle Carrying Conditions]]"
-    - "[[Generate and Regenerate]]"
+    targets:
+      - practice.ark-run
+      - practice.atlas-oracle
+      - practice.oracle-carrying-conditions
+      - practice.generate-and-regenerate
+protocols:
+  ai-entry:
+    - practice.atlas
+    - foundation.common-term-structure
+    - practice.ai-participation
 
 publish: true
 status: working
 ---
 # AI Participation
 
-The participation rule for AI working inside the Atlas without inventing theory, grounding notes, or collapsing dependency order.
+The participation rule for AI working inside the Atlas without inventing theory, making participant determinations, or collapsing dependency order.
 
 For AI systems, the primary doorway is the Reality Mechanics MCP. Public pages may be read by people, and the public AI export may be inspected, but Atlas-assisted AI should use the MCP protocol so search, entry reading, relation traversal, and the AI entry protocol remain available as tools rather than background memory.
 
@@ -53,7 +77,7 @@ Where pressure moves toward determination, AI participation can enter [[Ark Run]
 
 Where a participant asks whether a read, note, run, argument, design, or decision can be continued or repaired, AI participation can use [[Generate and Regenerate]] as a formula. The formula is not a source of authority; it is a way to expose origin, operation, bound, trace state, return path, and next recarry.
 
-Where an AI participant wants to help change the Atlas itself, AI participation reads through the MCP, traces the target entry with `get_entry` before prose, and uses `open_source_for_entry` to locate the GitHub source. The AI proposes a calibrated diff — exact before/after text — for a human participant to review and commit. It does not push commits, ground entries, or rewrite canonical Atlas content on its own.
+Where an AI participant wants to help change the Atlas itself, AI participation reads through the MCP, traces the target entry with `get_entry` before prose, and uses `open_source_for_entry` to locate the GitHub source. The AI proposes a calibrated diff — exact before/after text — for a human participant to review and commit. It does not push commits, make participant determinations, set grounded status, or rewrite canonical Atlas content on its own.
 
 Where a participant brings a live question or pressure to the public interface, AI participation can enter [[Atlas Oracle]]. Atlas Oracle is not open-ended chat. It is one bounded operation: answer through the Atlas, expose the trace, name the bound, offer the next recarry, and let the participant challenge what does or does not hold.
 
@@ -68,7 +92,7 @@ Where Atlas Oracle is used, AI participation must also preserve [[Oracle Carryin
 - Prioritise examples or readability over dependency order.
 - Claim a carry that cannot be retraced. Where no connection holds, no carry or trace is claimed between conditions.
 - Rewrite the author's intent or language into mainstream terminology.
-- Ground a note on its own. Only a participant grounds (see [[Groundedness]]).
+- Make a participant determination or set grounded status. Grounding is recorded only as the result of participant determination (see [[Groundedness]]).
 
 ## An AI should
 

@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import worker, { deriveFieldStatesPayload, fieldPage, submissionPage, theoryPage, calculusPage } from "../main-website-worker.js";
 
 const entries = [
@@ -108,6 +109,7 @@ function makeDb() {
         params: [],
         bind(...params) { this.params = params; return this; },
         async all() {
+          if (/FROM atlas_metadata\b/.test(sql)) return { results: [{ value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" }] };
           if (/FROM entries\b/.test(sql)) return { results: entries };
           if (/FROM entry_revisions\b/.test(sql)) return { results: revisions };
           if (/FROM proposals\b/.test(sql)) return { results: proposals };
@@ -136,11 +138,11 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
 
   assert.equal(payload.contractVersion, 1);
   assert.equal(payload.source, "d1-derived");
-  assert.equal(payload.atlasVersion, "test-atlas-version");
+  assert.equal(payload.sourceHash, "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a");
   assert.deepEqual(payload.excludes, ["weather", "clearance", "lightShadowPressure", "geodesicBending", "membraneEdge"]);
 
   const carry = payload.states.find((state) => state.id === "first.carry");
-  assert.deepEqual(carry.relations, { holds: [], traces: [], carries: [], pairs: [], nests: [] });
+  assert.deepEqual(carry.relations, { needs: [], holds: [], pairs: [], traces: [], nests: [], reads: [], carries: [] });
   assert.equal(carry.place, "Directional availability within one relation.");
   assert.match(carry.atlasUrl, /github\.com\/reubenmunro\/reality-mechanics\/blob\/main\//);
   assert.equal("excerpt" in carry, false);
@@ -293,16 +295,16 @@ test("D-021.4 endpointOnly path is confined to focused condensation draw", () =>
   assert.match(html, /wholeField = neutralWholeFieldOpen\(\)/);
 });
 
-test("/theory serves concise public Theory page", async () => {
+test("/theory serves the complete generated canonical Theory entry", async () => {
   const res = await worker.fetch(new Request("https://realitymechanics.nz/theory"), {});
   const html = await res.text();
 
   assert.equal(res.status, 200);
-  assert.match(html, /Why the discipline works/);
+  assert.match(html, /<h1>The Working Postulate<\/h1>/);
   assert.match(html, /Theory\.md/);
-  assert.match(html, /Runtime principles/);
-  assert.match(html, /calculus-notebook/);
-  assert.match(html, /PRACTICE_CALCULUS\.md/);
+  assert.match(html, /Failure Tests/);
+  assert.match(html, /Determination:/);
+  assert.match(html, /sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a/);
   assert.doesNotMatch(html, /^# Invariant/m);
   assert.doesNotMatch(html, /border-bottom:1px solid var\(--line\)/);
 });
@@ -317,8 +319,8 @@ test("D-026 visual refinement removes nav icons and card chrome", () => {
     assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
   }
   assert.doesNotMatch(proofHtml, /class="card/);
-  assert.match(proofHtml, /record-section accepted/);
-  assert.match(theoryHtml, /postulate/);
+  assert.match(proofHtml, /record-section atlas-record/);
+  assert.match(theoryHtml, /canonical-identity/);
   assert.match(calculusHtml, /chain-step/);
   assert.match(fieldHtml, /homeMode && !focusId/);
 });
@@ -340,7 +342,7 @@ test("/submission serves the public Submission 001 page", async () => {
   assert.equal(res.status, 200);
   assert.match(html, /Retrace pathway/);
   assert.match(html, /Submission 001/);
-  assert.match(html, /Accepted/);
+  assert.match(html, /Recorded in Atlas/);
   assert.match(html, /Candidate/);
   assert.match(html, /Unresolved/);
   assert.match(html, /href="\/field"/);
@@ -368,11 +370,13 @@ test("D-021.5 public structure is Observatory Pulse Theory Proof Calculus", () =
   assert.doesNotMatch(fieldHtml, /href="\/garden"/);
 });
 
-test("submissionPage renders accepted/candidate/unresolved without promoting the calculus", () => {
+test("submissionPage separates generated Atlas records from candidate and unresolved evidence", () => {
   const html = submissionPage();
-  assert.match(html, /Relation<\/b> as the sole primitive|Relation<\/b> as the sole/);
+  assert.match(html, /first\.relation/);
+  assert.match(html, /practice\.atlas/);
+  assert.match(html, /Determination:/);
   assert.match(html, /not minimal/);
-  assert.match(html, /explicitly unpromoted/);
+  assert.match(html, /does not determine Atlas structure/);
 });
 
 test("/atlas is no longer a public surface", async () => {
@@ -495,8 +499,8 @@ test("D-022 Theory states the working postulate without inventing theory", async
   assert.match(html, /Relation holds\./);
   assert.match(html, /Order carries\./);
   assert.match(html, /Trace places\./);
-  assert.match(html, /Reality already carries order/);
-  assert.match(html, /corrected by failure\. Not a doctrine/);
+  assert.match(html, /Rooted working postulate, version 0\.6/);
+  assert.match(html, /Structural Care/);
 });
 
 test("D-023 placement derives from declared structure only", () => {
@@ -532,12 +536,11 @@ test("D-023 Theory leads with the claim and cites sparingly", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 200);
-  assert.match(html, /<h1>Reality already carries order\.<\/h1>/);
-  assert.match(html, /Why the discipline works\./);
-  assert.match(html, /Working Postulate v0\.6/);
-  assert.match(html, /independently reviewable/);
-  assert.match(html, /independently retraceable/);
-  assert.match(html, /Constitution — constitutional aim/);
+  assert.match(html, /<h1>The Working Postulate<\/h1>/);
+  assert.match(html, /current participant-determined postulate/);
+  assert.match(html, /version 0\.6/);
+  assert.match(html, /Failure Tests/);
+  assert.match(html, /practice\.reality-mechanics-theory|Theory\.md/);
 });
 
 test("D-023 Proof shows the retrace pathway and visible humility", async () => {
@@ -616,31 +619,16 @@ test("D-024 retired routes name five surfaces", async () => {
   assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
 });
 
-test("D-025 Calculus page and MCP render from one manifest — no drift possible", async () => {
-  const { DERIVATION_CHAIN, DERIVATION_INVENTORY, STATUS_VOCABULARY, PUBLIC_SURFACES } =
-    await import("../../public-surface-manifest.mjs");
-  const html = calculusPage();
+test("Stage 2 separates generated structure from maintained Calculus evidence", () => {
+  const theory = theoryPage();
+  const calculus = calculusPage();
+  const mcpSource = readFileSync(new URL("../../reality-mechanics-mcp/src/index.js", import.meta.url), "utf8");
 
-  for (const step of DERIVATION_CHAIN) {
-    assert.ok(html.includes(step.rule), `calculus page carries chain rule: ${step.step}`);
-  }
-  for (const v of STATUS_VOCABULARY) {
-    assert.ok(html.includes(v.meaning), `calculus page carries vocabulary meaning: ${v.status}`);
-  }
-  for (const [status, items] of Object.entries(DERIVATION_INVENTORY)) {
-    for (const item of items) {
-      assert.ok(html.includes(item.claim), `calculus page carries ${status} claim: ${item.claim.slice(0, 40)}`);
-    }
-  }
-
-  // The manifest's website routes must actually be served by this worker.
-  const websiteSurfaces = PUBLIC_SURFACES.filter((s) => s.baseUrl === "https://realitymechanics.nz");
-  for (const surface of websiteSurfaces) {
-    for (const route of surface.routes) {
-      const res = await worker.fetch(new Request("https://realitymechanics.nz" + route), {});
-      assert.ok([200, 503].includes(res.status), `manifest route ${route} is served (got ${res.status})`);
-    }
-  }
+  assert.match(theory, /sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a/);
+  assert.match(theory, /Failure Tests/);
+  assert.match(calculus, /Canonical comparison baseline/);
+  assert.match(calculus, /needs · holds · pairs · traces · nests · reads · carries/);
+  assert.doesNotMatch(mcpSource, /calculus-evidence|public-surface-manifest/);
 });
 
 test("R-004 Observatory first impression: readiness before API and sheet closed on neutral open", () => {
@@ -732,6 +720,7 @@ test("O-006 read engine: behaviour trace exposes readEngine bundle", async () =>
           params: [],
           bind(...params) { this.params = params; return this; },
           async all() {
+            if (/FROM atlas_metadata\b/.test(sql)) return { results: [{ value: "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a" }] };
             if (/FROM entries\b/.test(sql)) return { results: entries };
             return { results: [] };
           },

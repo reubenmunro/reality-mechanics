@@ -5,29 +5,43 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.effect
-
-needs:
-  - "[[Coupling]]"
-  - "[[Carrying]]"
-  - "[[Change]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "change in one condition carried through coupling from another condition."
-  holds: "[[Coupling]], [[Carrying]], and [[Change]]. Conditions must be coupled, carrying must pass through the relation, and a readable change must occur before effect can be named."
-  pairs: "Asymmetry carries downward — into [[Influence]]. Effect is the singular carried change from which participatory alteration can later be read as influence."
+  needs:
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.change
+  holds:
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.change
+    read: "[[Coupling]], [[Carrying]], and [[Change]]. Conditions must be coupled, carrying must pass through the relation, and a readable change must occur before effect can be named."
+  pairs:
+    targets:
+      - second.influence
+    read: "Asymmetry carries downward — into [[Influence]]. Effect is the singular carried change from which participatory alteration can later be read as influence."
   traces:
-    - "[[Coupling]]"
-    - "[[Carrying]]"
-    - "[[Change]]"
-    - "[[Coupled Contact]]"
-  nests: "inside coupling where carrying from one condition becomes readable as change in another, whether contact is direct or mediated."
-  reads: "where a change can be traced through a coupled relation to carrying from another condition rather than only occurring alongside it."
+    targets:
+      - second.coupling
+      - second.carrying
+      - second.change
+      - second.coupled-contact
+  nests:
+    targets: []
+    read: "inside coupling where carrying from one condition becomes readable as change in another, whether contact is direct or mediated."
+  reads:
+    targets: []
+    read: "where a change can be traced through a coupled relation to carrying from another condition rather than only occurring alongside it."
   carries:
-    - "[[Influence]]"
-    - "[[Responsibility]]"
-    - "[[Consequence]]"
-    - "[[Read and Effect]]"
-
+    targets:
+      - second.influence
+      - second.responsibility
+      - second.consequence
+      - second.read-and-effect
 publish: true
 status: stable
 ---

@@ -32,13 +32,14 @@ test("W-001 MCP orientation: what, why, read-only, how to begin, endpoint", () =
   }
 });
 
-test("W-001 evidence ladder retraces site to GitHub to Atlas to reports to contracts", () => {
+test("W-001 evidence ladder names canonical Atlas identity and non-canonical proof", () => {
   for (const [name, page] of DOC_PAGES) {
     const html = page();
     assert.match(html, /evidence-ladder/, `${name}: ladder present`);
     assert.match(html, /tree\/main\/Reality_Mechanics/, `${name}: Atlas link`);
     assert.match(html, /docs\/reports/, `${name}: reports link`);
-    assert.match(html, /tree\/main\/docs\/runtime/, `${name}: runtime contracts link`);
+    assert.match(html, /sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a/, `${name}: canonical source hash`);
+    assert.match(html, /remain non-canonical/, `${name}: proof boundary`);
   }
 });
 

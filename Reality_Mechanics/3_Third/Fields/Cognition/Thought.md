@@ -5,32 +5,49 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.thought
+determination: pd.v3.pre-provenance-baseline
 domain: cognition
-
-needs:
-  - "[[Cognition]]"
-  - "[[Read]]"
-  - "[[Readability]]"
-  - "[[Recognition Read|Recognition]]"
-  - "[[Pattern]]"
-  - "[[Medium]]"
 
 conditions:
   places: "the condition through which readability is modelled or named — the carrying of a recognised pattern into a form that can guide attention or action."
-  holds: "[[Cognition]], [[Read]], [[Readability]], [[Recognition Read|Recognition]], [[Pattern]], and [[Medium]]. Readability must be present and pattern must be recognisable before the modelling or naming of that pattern can be carried as thought."
-  pairs: "[[Memory]]. Thought names the current cognitive carry; Memory names thought that recurs and remains retraceable."
+  needs:
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+  holds:
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+    read: "[[Cognition]], [[Read]], [[Readability]], [[Recognition Read|Recognition]], [[Pattern]], and [[Medium]]. Readability must be present and pattern must be recognisable before the modelling or naming of that pattern can be carried as thought."
+  pairs:
+    targets:
+      - third.memory
+    read: "[[Memory]]. Thought names the current cognitive carry; Memory names thought that recurs and remains retraceable."
   traces:
-    - "[[Cognition]]"
-    - "[[Read]]"
-    - "[[Readability]]"
-    - "[[Recognition Read|Recognition]]"
-    - "[[Pattern]]"
-    - "[[Medium]]"
-  nests: "within the Cognition Field as the condition through which readability is carried into nameable form — the structural ground for memory, self, and cognitive carrying reads."
-  reads: "Thought becomes readable where relation is taken up into a cognitive model that can be held, revised, spoken, checked, or released."
+    targets:
+      - third.cognition
+      - first.read
+      - second.readability
+      - second.recognition-read
+      - second.pattern
+      - second.medium
+  nests:
+    targets: []
+    read: "within the Cognition Field as the condition through which readability is carried into nameable form — the structural ground for memory, self, and cognitive carrying reads."
+  reads:
+    targets: []
+    read: "Thought becomes readable where relation is taken up into a cognitive model that can be held, revised, spoken, checked, or released."
   carries:
-    - "[[Memory]]"
-
+    targets:
+      - third.memory
 publish: true
 status: stable
 ---

@@ -5,30 +5,46 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.coupled-boundary
-
-needs:
-  - "[[Boundary]]"
-  - "[[Coupling]]"
+determination: pd.v3.pre-provenance-baseline
 
 conditions:
   places: "boundary held through coupling."
-  holds: "[[Boundary]] and [[Coupling]]."
-  pairs: "Asymmetry carries downward — into [[Coupled Contact]], [[Boundary Loosening]], [[Sever]], and [[Decoupling]]"
+  needs:
+    targets:
+      - first.boundary
+      - second.coupling
+  holds:
+    targets:
+      - first.boundary
+      - second.coupling
+    read: "[[Boundary]] and [[Coupling]]."
+  pairs:
+    targets:
+      - second.coupled-contact
+      - second.boundary-loosening
+      - second.sever
+      - second.decoupling
+    read: "Asymmetry carries downward — into [[Coupled Contact]], [[Boundary Loosening]], [[Sever]], and [[Decoupling]]"
   traces:
-    - "[[Boundary]]"
-    - "[[Coupling]]"
-  nests: "as the boundary form of coupling. It keeps boundaries mutually available without collapse or unrelated separation."
-  reads: "where a boundary is not merely located, but held in relation with another boundary so that each side remains distinct while participating in a shared coupling. It can also become readable where consequence follows a coupling back to the boundary at which participation became actionable."
+    targets:
+      - first.boundary
+      - second.coupling
+  nests:
+    targets: []
+    read: "as the boundary form of coupling. It keeps boundaries mutually available without collapse or unrelated separation."
+  reads:
+    targets: []
+    read: "where a boundary is not merely located, but held in relation with another boundary so that each side remains distinct while participating in a shared coupling. It can also become readable where consequence follows a coupling back to the boundary at which participation became actionable."
   carries:
-    - "[[Coupled Contact]]"
-    - "[[Boundary Loosening]]"
-    - "[[Sever]]"
-    - "[[Decoupling]]"
-    - "[[Relationship]]"
-    - "[[Trust]]"
-    - "[[Violation]]"
-    - "[[Responsibility]]"
-
+    targets:
+      - second.coupled-contact
+      - second.boundary-loosening
+      - second.sever
+      - second.decoupling
+      - third.relationship
+      - third.trust
+      - third.violation
+      - second.responsibility
 publish: true
 status: stable
 ---

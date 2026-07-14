@@ -5,32 +5,48 @@ order: third
 kind: term
 ai_role: domain
 condition_key: third.parenting
+determination: pd.v3.pre-provenance-baseline
 domain: parenting
-
-needs:
-  - "[[Branch]]"
-  - "[[Care]]"
-  - "[[Teaching]]"
-  - "[[Compatibility]]"
-  - "[[Recognition Read]]"
 
 conditions:
   places: "branch-level participation where dependent life is carried through care, boundary, teaching, repair, and ongoing relation."
-  holds: "[[Branch]], [[Care]], [[Teaching]], [[Compatibility]], [[Recognition Read]]."
-  pairs: "[[Teaching]]. Teaching names knowledge-bearing through medium for a participant who can already carry; Parenting names care-bearing through recognition and compatibility for a participant whose carrying capacity is still developing. Each is a distinct developmental bearing condition."
+  needs:
+    targets:
+      - third.branch
+      - third.care
+      - third.teaching
+      - second.compatibility
+      - second.recognition-read
+  holds:
+    targets:
+      - third.branch
+      - third.care
+      - third.teaching
+      - second.compatibility
+      - second.recognition-read
+    read: "[[Branch]], [[Care]], [[Teaching]], [[Compatibility]], [[Recognition Read]]."
+  pairs:
+    targets:
+      - third.teaching
+    read: "[[Teaching]]. Teaching names knowledge-bearing through medium for a participant who can already carry; Parenting names care-bearing through recognition and compatibility for a participant whose carrying capacity is still developing. Each is a distinct developmental bearing condition."
   traces:
-    - "[[Branch]]"
-    - "[[Care]]"
-    - "[[Teaching]]"
-    - "[[Compatibility]]"
-    - "[[Recognition Read|Recognition]]"
-  nests: "where this read holds at its field, domain, or practice scope without losing trace."
-  reads: "Parenting becomes readable where dependent participation is borne through care, boundary, repair, and learning at the relevant closure scope."
+    targets:
+      - third.branch
+      - third.care
+      - third.teaching
+      - second.compatibility
+      - second.recognition-read
+  nests:
+    targets: []
+    read: "where this read holds at its field, domain, or practice scope without losing trace."
+  reads:
+    targets: []
+    read: "Parenting becomes readable where dependent participation is borne through care, boundary, repair, and learning at the relevant closure scope."
   carries:
-    - "[[Parenting Boundary]]"
-    - "[[Parenting Repair]]"
-    - "[[Protective Control]]"
-
+    targets:
+      - third.parenting-boundary
+      - third.parenting-repair
+      - third.protective-control
 publish: true
 status: stable
 ---

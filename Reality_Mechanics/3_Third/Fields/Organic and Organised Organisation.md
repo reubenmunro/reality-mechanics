@@ -5,31 +5,44 @@ order: third
 kind: term
 ai_role: field
 condition_key: third.organic-and-organised-organisation
+determination: pd.v3.pre-provenance-baseline
 domain: organic-and-organised-organisation
-
-needs:
-  - "[[Natural Order]]"
-  - "[[Participation]]"
-  - "[[Field of Participation]]"
 
 conditions:
   places: "the distinction between participation that arises through Natural Order and participation that is intentionally arranged."
-  holds: "[[Natural Order]], [[Participation]], and [[Field of Participation]]."
-  pairs: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
+  needs:
+    targets:
+      - ground.natural-order
+      - second.participation
+      - third.field-of-participation
+  holds:
+    targets:
+      - ground.natural-order
+      - second.participation
+      - third.field-of-participation
+    read: "[[Natural Order]], [[Participation]], and [[Field of Participation]]."
+  pairs:
+    targets: []
+    read: "No lateral pair is required at this placement yet; this term currently reads as a branch or terminal read."
   traces:
-    - "[[Natural Order]]"
-    - "[[Participation]]"
-    - "[[Field of Participation]]"
-    - "[[Organic]]"
-  nests: "as a distinction between organisation arising through participation and organisation intentionally arranged through participation."
-  reads: "Organic organisation becomes recognisable where participation repeatedly organises without requiring intentional arrangement. Engineered organisation becomes recognisable where participation is intentionally arranged, maintained, revised, or imposed. The distinction becomes readable where the same Natural Order can be seen producing both organic recurrence and engineered organisation."
+    targets:
+      - ground.natural-order
+      - second.participation
+      - third.field-of-participation
+      - third.organic
+  nests:
+    targets: []
+    read: "as a distinction between organisation arising through participation and organisation intentionally arranged through participation."
+  reads:
+    targets: []
+    read: "Organic organisation becomes recognisable where participation repeatedly organises without requiring intentional arrangement. Engineered organisation becomes recognisable where participation is intentionally arranged, maintained, revised, or imposed. The distinction becomes readable where the same Natural Order can be seen producing both organic recurrence and engineered organisation."
   carries:
-    - "[[Organic Field]]"
-    - "[[Organised Domain]]"
-    - "[[Higher Retrace|Retrace]]"
-    - "[[Hidden Bearing]]"
-    - "[[Domain]]"
-
+    targets:
+      - third.organic-field
+      - third.organised-domain
+      - higher.higher-retrace
+      - higher.hidden-bearing
+      - third.domain
 publish: true
 status: stable
 ---
