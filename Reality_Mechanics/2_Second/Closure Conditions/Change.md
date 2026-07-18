@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.change
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "a readable difference across traversal."
@@ -42,6 +42,7 @@ conditions:
       - second.heat
       - second.effect
       - second.acceleration
+      - second.drift
 publish: true
 status: stable
 ---
@@ -86,3 +87,4 @@ Change becomes recognisable where a condition can be followed from one readable 
 - [[Heat]]
 - [[Effect]]
 - [[Acceleration]]
+- [[Drift]]

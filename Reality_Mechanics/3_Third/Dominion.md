@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.dominion
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain."
@@ -16,6 +16,7 @@ conditions:
       - third.control
       - first.boundary
       - third.competence-boundary
+      - third.authority
   holds:
     targets:
       - third.domain
@@ -23,7 +24,8 @@ conditions:
       - third.control
       - first.boundary
       - third.competence-boundary
-    read: "[[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named."
+      - third.authority
+    read: "[[Domain]], [[Care]], [[Control]], [[Boundary]], [[Competence Boundary]], and [[Authority]]. A domain must be present, authority must be warranted, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named."
   pairs:
     targets:
       - third.domination
@@ -35,6 +37,7 @@ conditions:
       - third.control
       - first.boundary
       - third.competence-boundary
+      - third.authority
   nests:
     targets: []
     read: "within domains where authority directs participation while remaining answerable to what the domain requires in order to keep carrying."
@@ -51,7 +54,7 @@ status: stable
 
 Bounded authority over a domain that remains answerable to the care, limits, and carrying conditions of that domain.
 
-Dominion is held by [[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named.
+Dominion is held by [[Domain]], [[Care]], [[Control]], [[Boundary]], [[Competence Boundary]], and [[Authority]]. A domain must be present, authority must be warranted, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named.
 
 Dominion is not domination. Dominion is authority under obligation: the domain is not merely available to be used, extracted, or directed. It must remain cared for according to the conditions that let it continue carrying.
 
@@ -63,7 +66,7 @@ Dominion places bounded authority over a domain that remains answerable to the c
 
 ## Holds
 
-Dominion is held by [[Domain]], [[Care]], [[Control]], [[Boundary]], and [[Competence Boundary]]. A domain must be present, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named.
+Dominion is held by [[Domain]], [[Care]], [[Control]], [[Boundary]], [[Competence Boundary]], and [[Authority]]. A domain must be present, authority must be warranted, control must remain bounded, care must preserve availability, and competence boundary must limit authority before dominion can be named.
 
 ## Pairs
 
@@ -76,6 +79,7 @@ Dominion pairs with [[Domination]]. Dominion names authority that remains answer
 - [[Control]]
 - [[Boundary]]
 - [[Competence Boundary]]
+- [[Authority]]
 
 ## Nests
 

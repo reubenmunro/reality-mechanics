@@ -38,7 +38,7 @@ test("W-001 evidence ladder names canonical Atlas identity and non-canonical pro
     assert.match(html, /evidence-ladder/, `${name}: ladder present`);
     assert.match(html, /tree\/main\/Reality_Mechanics/, `${name}: Atlas link`);
     assert.match(html, /docs\/reports/, `${name}: reports link`);
-    assert.match(html, /sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a/, `${name}: canonical source hash`);
+    assert.match(html, /sha256:cdb20a2e39aa5f1865a395749331fb9d541e549fa9d70e79f8d771233f849164/, `${name}: canonical source hash`);
     assert.match(html, /remain non-canonical/, `${name}: proof boundary`);
   }
 });

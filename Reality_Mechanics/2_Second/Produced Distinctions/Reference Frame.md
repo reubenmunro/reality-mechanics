@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.reference-frame
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the nested placement through which a ratio, relation, scale, or relative read becomes answerable and one face of carrying becomes readable."
@@ -28,6 +28,7 @@ conditions:
     read: "[[Relative]] — Reference Frame names the placed reference; Relative names the read made answerable through that placement."
   traces:
     targets:
+      - second.carrying
       - first.ratio
       - first.boundary
       - second.closure-scope
@@ -42,6 +43,8 @@ conditions:
     targets:
       - second.relative
       - second.scale
+      - second.balance
+      - second.drift
       - practice.reasoning
 publish: true
 status: working
@@ -74,6 +77,7 @@ Reference Frame pairs with [[Relative]]. Reference Frame names the placed refere
 
 ## Traces
 
+- [[Carrying]]
 - [[Ratio]]
 - [[Boundary]]
 - [[Closure Scope]]
@@ -89,8 +93,12 @@ Reference Frame becomes readable where the reference of a read is explicit enoug
 
 It also becomes readable where a changed frame reveals a different face without requiring reality itself to split. The same carrying may be latent from one placement and radiant from another.
 
+Some reference frames are themselves carried through wider movement. Where a wider carrying relation remains compatible and within capacity, it can preserve local conditions long enough for a read to remain answerable within that frame. A changed carrier may expose pressure or movement that the prior frame held outside its local read.
+
 ## Carries
 
 - [[Relative]]
 - [[Scale]]
+- [[Balance]]
+- [[Drift]]
 - [[Reasoning]]

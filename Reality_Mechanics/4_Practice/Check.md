@@ -5,7 +5,7 @@ register: practice
 kind: term
 ai_role: practice
 condition_key: practice.check
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the Atlas practice of testing a term from both directions to locate its boundary."
@@ -47,6 +47,7 @@ conditions:
       - practice.discipline
       - practice.garden-pass
       - practice.reasoning
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -95,3 +96,4 @@ The forward and backward movements have different evidential weight. A backward 
 - [[Discipline]]
 - [[Bearing Pass]]
 - [[Reasoning]]
+- [[Calibration]]

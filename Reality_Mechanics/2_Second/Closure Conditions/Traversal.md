@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.traversal
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "a read being followed through a closure scope."
@@ -42,6 +42,7 @@ conditions:
       - second.velocity
       - third.field-bearing
       - third.moving
+      - second.drift
 publish: true
 status: stable
 ---
@@ -88,3 +89,4 @@ Traversal becomes recognisable where reads can be followed through available con
 - [[Velocity]]
 - [[Field Bearing]]
 - [[Moving]]
+- [[Drift]]

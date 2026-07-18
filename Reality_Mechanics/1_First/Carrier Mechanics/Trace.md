@@ -5,7 +5,7 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.trace
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the backward availability of held connection."
@@ -57,6 +57,8 @@ conditions:
       - practice.retrace-practice
       - practice.grafting
       - practice.reasoning
+      - second.drift
+      - third.translation
 publish: true
 status: stable
 ---
@@ -118,3 +120,5 @@ Trace becomes recognisable where held connection offers a path back toward the c
 - [[Retrace Practice]]
 - [[Splicing]]
 - [[Reasoning]]
+- [[Drift]]
+- [[Translation]]

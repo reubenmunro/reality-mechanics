@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.readability
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the sustained condition that makes reading possible."
@@ -63,6 +63,7 @@ conditions:
       - third.path-reads
       - practice.practice
       - practice.section
+      - third.translation
 publish: true
 status: stable
 ---
@@ -99,6 +100,8 @@ Readability nests as a second-order support root. It supports cognitive particip
 Readability becomes recognisable where a condition is present enough, attended enough, traceable enough, and held enough that a read can take place.
 
 Readability is constrained by resolution band. A condition may be real and effective without being directly readable to a participant whose current band cannot receive, integrate, or carry it. What cannot be resolved directly may still become readable through translation, measurement, slowed sequence, repeated exposure, or changed carrying conditions.
+
+In ordinary language, “sensible” may name this condition of being available to a read. “Sensibility” can describe the relational fit between a readable condition and a participant's present resolution and capacity, but it is not a separate structure or a property belonging solely to the condition or participant. Detection belongs to [[Sensing]], bodily detection may be carried through [[Feeling]], uptake belongs to [[Cognitive Participation]], and recognition comes later.
 ## Carries
 
 
@@ -123,3 +126,4 @@ Readability is constrained by resolution band. A condition may be real and effec
 - [[Path Reads]]
 - [[Practice]]
 - [[Section]]
+- [[Translation]]

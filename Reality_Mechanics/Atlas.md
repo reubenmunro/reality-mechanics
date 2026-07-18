@@ -5,7 +5,7 @@ register: practice
 kind: term
 ai_role: practice
 condition_key: practice.atlas
-determination: pd.v3.public-surface-propagation
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the dependency-ordered reasoning system produced by [[Reality Mechanics]] — the worked and tended surface where terms, traces, reads, and corrections are held in retraceable order."
@@ -61,7 +61,7 @@ An Operating System for Reasoning may become a future-facing evolution of the At
 
 The Atlas is canonically recorded in this source. Its structure may be translated through words, signs, diagrams, arrangements, actions, or machine representations; those carriers participate in the Atlas determination but do not become another Atlas.
 
-The Atlas is not authority over reality. Within Reality Mechanics it is the sole canonical structural authority; its determinations remain corrigible through participant review. The relation-order-trace practice must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
+The Atlas is not authority over reality. Within Reality Mechanics it has bounded [[Authority|canonical structural authority]]: warranted standing to carry participant determinations as the canonical record within its declared scope. That authority remains answerable to reality, participant review, Atlas Practice, and correction. The relation-order-trace practice must remain repeatable: place the term, trace what holds it, test what it carries, relieve where it drifts, and correct what no longer remains answerable.
 
 The working postulate — relation holds, order carries, trace places — bounds what counts as a valid Atlas operation. Generative order and reading order are distinct: [[Seed]] : [[Ground]] names the generative condition becoming active; [[One]] : [[Other]] names the first readable expression of that condition; [[Ratio]] names relation made readable as comparison without collapse. The posture sequence — [[Connection]], [[Posture]], [[Structure]], [[Clear]], [[Clean]] — remains a planted read for testing how that operation becomes workable.
 

@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.responsibility
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "participation made answerable for an effect where trace returns to the coupled boundary through which that effect became actionable."
@@ -40,6 +40,7 @@ conditions:
   carries:
     targets:
       - third.competence-boundary
+      - third.authority
 publish: true
 status: stable
 ---
@@ -87,3 +88,4 @@ At human scope, [[Borne and Carried]] gives one reason responsibility becomes re
 ## Carries
 
 - [[Competence Boundary]]
+- [[Authority]]

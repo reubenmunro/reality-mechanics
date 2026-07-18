@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.carrying
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "held forward availability being enacted."
@@ -87,6 +87,9 @@ conditions:
       - third.extractive-acceleration
       - higher.nested-carrying
       - practice.step
+      - second.reference-frame
+      - second.drift
+      - third.translation
 publish: true
 status: stable
 ---
@@ -180,3 +183,6 @@ Carrying becomes recognisable where held forward availability is being entered o
 - [[Extractive Acceleration]]
 - [[Nested Carrying]]
 - [[Step]]
+- [[Reference Frame]]
+- [[Drift]]
+- [[Translation]]

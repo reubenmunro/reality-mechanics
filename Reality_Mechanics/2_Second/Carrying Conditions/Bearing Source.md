@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.bearing-source
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the structure recovered by trace as what actually bears a carried condition."
@@ -44,6 +44,7 @@ conditions:
       - third.competence-boundary
       - third.reality-check
       - higher.source-drift
+      - third.authority
 publish: true
 status: stable
 ---
@@ -89,3 +90,4 @@ Bearing Source becomes readable where a carried condition can be traced back to 
 - [[Competence Boundary]]
 - [[Reality Check]]
 - [[Source Drift]]
+- [[Authority]]
