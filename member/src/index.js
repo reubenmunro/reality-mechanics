@@ -10,7 +10,7 @@ const PAGE = `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>Pulse · Reality Mechanics</title>
   <style>
     :root {
@@ -101,8 +101,38 @@ const PAGE = `<!doctype html>
     .runtime-line a:hover { color:rgba(200,96,26,0.78); }
 
     @media (max-width:640px) {
+      html { scroll-padding-top:calc(env(safe-area-inset-top, 0px) + 4rem); }
+      body { color:rgba(212,197,169,0.8); font-size:16.5px; line-height:1.66; }
+      header {
+        min-height:calc(env(safe-area-inset-top, 0px) + 3.55rem);
+        padding:env(safe-area-inset-top, 0px) 0.7rem 0;
+        background:linear-gradient(180deg, rgba(7,9,14,0.97), rgba(7,9,14,0.9) 78%, rgba(7,9,14,0));
+        backdrop-filter:blur(12px);
+      }
+      header .brand { display:none; }
+      header nav {
+        width:100%; min-width:0; min-height:3.25rem; flex-wrap:nowrap;
+        justify-content:space-between; gap:0.1rem; overflow-x:auto;
+        scrollbar-width:none; -webkit-overflow-scrolling:touch;
+      }
+      header nav::-webkit-scrollbar { display:none; }
+      header nav a {
+        display:inline-flex; align-items:center; justify-content:center;
+        min-height:2.75rem; padding:0 0.32rem; white-space:nowrap;
+        color:rgba(128,147,168,0.84); font-size:9.5px; letter-spacing:0.09em;
+      }
+      header nav a[aria-current="page"] { color:rgba(200,96,26,0.94); }
+      main {
+        width:calc(100vw - 36px);
+        padding:calc(env(safe-area-inset-top, 0px) + 5.2rem) 0 calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+      }
+      h1 { font-size:clamp(36px, 11vw, 48px); line-height:1.06; margin-bottom:18px; }
+      .intro { margin-bottom:44px; }
+      .intro p { font-size:18px; line-height:1.58; }
+      .runtime-line { margin-top:18px; font-size:9.5px !important; line-height:1.75 !important; overflow-wrap:anywhere; }
       .readouts { grid-template-columns:repeat(2, minmax(0,1fr)); }
       .proof { grid-template-columns:1fr; }
+      .actions button { min-height:2.75rem; padding:0 0.25rem; }
     }
     a:focus-visible, button:focus-visible { outline:2px solid rgba(200,96,26,0.85); outline-offset:3px; border-radius:2px; }
     .ways-in { margin-top:64px; padding-top:30px; border-top:1px solid rgba(77,94,114,0.28); max-width:640px; }
