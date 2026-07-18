@@ -394,7 +394,7 @@ export function fieldPage(options = {}) {
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>Observatory · Reality Mechanics</title>
   <meta name="description" content="Reality Mechanics Observatory — observe structural relationships through participation."/>
   <style>
@@ -675,21 +675,36 @@ export function fieldPage(options = {}) {
       }
       body.mobile-observatory.landing-dismissed #observatory-landing { display: none; }
       body.mobile-observatory #access-row {
-        top: calc(env(safe-area-inset-top, 0px) + 0.45rem);
-        max-width: calc(100vw - 1rem); gap: 0.35rem 0.55rem;
+        top: env(safe-area-inset-top, 0px); width: 100%; max-width: none;
+        min-height: 3.25rem; padding: 0.25rem 0.55rem;
+        flex-wrap: nowrap; justify-content: space-between; gap: 0.1rem;
+        background: linear-gradient(180deg, rgba(6,8,13,0.94), rgba(6,8,13,0.72) 72%, rgba(6,8,13,0));
+        backdrop-filter: blur(12px);
       }
       body.mobile-observatory #access-row a {
-        font-size: 0.5rem; letter-spacing: 0.11em;
+        display: inline-flex; align-items: center; justify-content: center;
+        min-height: 2.75rem; padding: 0 0.28rem; white-space: nowrap;
+        color: rgba(128,147,168,0.82); font-size: 0.58rem; letter-spacing: 0.09em;
       }
+      body.mobile-observatory #access-row a[aria-current="page"] { color: rgba(200,96,26,0.94); }
       body.mobile-observatory #enter-form {
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.55rem);
-        width: min(14rem, calc(100vw - 1.25rem)); opacity: 0.42;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.9rem);
+        width: calc(100vw - 2rem); opacity: 0.96;
+        padding: 0.3rem 0.75rem;
+        border: 1px solid rgba(77,94,114,0.34); border-radius: 999px;
+        background: rgba(7,10,16,0.84); backdrop-filter: blur(14px);
       }
+      body.mobile-observatory #enter-input {
+        min-height: 2.35rem; padding: 0; border: 0; text-align: left;
+        color: rgba(212,197,169,0.9); font-size: 1rem;
+      }
+      body.mobile-observatory #enter-input::placeholder { color: rgba(128,147,168,0.86); }
       body.mobile-observatory.sheet-open #enter-form { opacity: 0; pointer-events: none; }
       body.mobile-observatory #field-status {
-        left: 0.55rem; right: auto;
-        bottom: calc(env(safe-area-inset-bottom, 0px) + 0.65rem);
-        font-size: 0.48rem; letter-spacing: 0.08em; max-width: 42vw; text-align: left;
+        left: 1.15rem; right: 1.15rem;
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 4.35rem);
+        font-size: 0.52rem; line-height: 1.35; letter-spacing: 0.08em;
+        max-width: none; text-align: center; color: rgba(128,147,168,0.76);
       }
       body.mobile-observatory #order-legend { display: none; }
       body.mobile-observatory #mechanics-panel.ready { display: none !important; }
@@ -697,8 +712,8 @@ export function fieldPage(options = {}) {
       body.mobile-observatory #sheet-drag-handle { display: block; }
       body.mobile-observatory #term-sheet {
         top: auto; left: 0; right: 0; bottom: 0; width: 100%; max-width: none;
-        max-height: min(78vh, 640px); height: auto;
-        padding: 1.75rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+        max-height: min(72dvh, 640px); height: auto; overscroll-behavior: contain;
+        padding: 2rem 1.15rem calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
         border-radius: 1rem 1rem 0 0;
         border-top: 1px solid rgba(255,255,255,0.06);
         transform: translateY(calc(100% + 1px));
@@ -706,18 +721,28 @@ export function fieldPage(options = {}) {
         right: auto;
       }
       body.mobile-observatory #term-sheet.open { transform: translateY(0); }
-      body.mobile-observatory #sheet-close { top: 0.55rem; right: 0.65rem; }
+      body.mobile-observatory #sheet-close {
+        position: sticky; top: -1.45rem; z-index: 2; float: right;
+        width: 2.75rem; height: 2.75rem; margin: -1.35rem -0.45rem -0.2rem 0;
+        display: inline-flex; align-items: center; justify-content: center;
+        border-radius: 50%; background: rgba(11,16,24,0.88); font-size: 1.25rem;
+      }
       body.mobile-observatory #sheet-title {
         font-size: clamp(1.25rem, 5vw, 1.65rem); margin-bottom: 0.85rem;
       }
       body.mobile-observatory #sheet-place {
         font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.85rem;
       }
-      body.mobile-observatory #sheet-relations { gap: 0.85rem 1rem; }
-      body.mobile-observatory .sheet-relation { font-size: 0.86rem; }
+      body.mobile-observatory #sheet-atlas-link {
+        min-height: 2.75rem; display: inline-flex; align-items: center;
+        color: rgba(111,167,189,0.9); font-size: 0.62rem;
+      }
+      body.mobile-observatory #sheet-atlas-link[hidden] { display: none; }
+      body.mobile-observatory #sheet-relations { gap: 1.1rem 1.35rem; clear: both; }
+      body.mobile-observatory .sheet-relation { min-height: 2.2rem; padding: 0.35rem 0; font-size: 0.94rem; }
     }
     @media (max-width: 900px) and (orientation: landscape) {
-      body.mobile-observatory #term-sheet { max-height: min(68vh, 480px); }
+      body.mobile-observatory #term-sheet { max-height: min(68dvh, 480px); }
       body.mobile-observatory #enter-form { display: none; }
     }
   </style>
@@ -3215,11 +3240,12 @@ function draw() {
     // D-022: label the focused term and its nearest structural neighbours so
     // relation and order remain readable without opening the term sheet.
     if (focus) {
+      const localLabelBudget = isMobileObservatory() ? 4 : LOCAL_LABEL_BUDGET;
       const labelled = [...local]
         .filter((id) => id !== focusId && operations[id])
         .map((id) => operations[id])
         .sort((a, b) => termDegree(b) - termDegree(a))
-        .slice(0, LOCAL_LABEL_BUDGET);
+        .slice(0, localLabelBudget);
       labelled.forEach((op) => {
         const p = screen(op);
         drawTermLabel(op, p.x, p.y + 16, 0.6 * sensibilityAlpha(op.id), 11);
@@ -3533,7 +3559,8 @@ function drawHomeStructuralLabels(alpha) {
   if (!neutralWholeFieldOpen() || !homeLabelIds.length) return;
   const vis = RMMechanics.HOME_WOVEN_VISIBILITY;
   const baseLabelAlpha = Math.min(0.68, 0.34 + alpha * 0.34);
-  homeLabelIds.forEach((id) => {
+  homeLabelIds.forEach((id, index) => {
+    if (isMobileObservatory() && index % HOME_LABELS_PER_ORDER !== 0) return;
     const op = allOps[id];
     if (!op) return;
     const profile = op.profile || computeProfile(op);
@@ -3910,6 +3937,48 @@ const WAYS_IN_CSS = `
     .evidence-ladder { margin-top:30px; max-width:640px; color:rgba(140,155,175,0.9); font-size:14px; line-height:1.7; }
 `;
 
+// W-003 — one quiet, source-preserving mobile frame for the document surfaces.
+// Page meaning and generated content remain unchanged; only presentation is shared.
+const MOBILE_DOCUMENT_CSS = `
+    @media (max-width:720px) {
+      html { scroll-padding-top:calc(env(safe-area-inset-top, 0px) + 4rem); }
+      body { color:rgba(212,197,169,0.8); font-size:16.5px; line-height:1.66; }
+      header {
+        inset:0 0 auto; min-height:calc(env(safe-area-inset-top, 0px) + 3.55rem);
+        padding:env(safe-area-inset-top, 0px) 0.7rem 0;
+        background:linear-gradient(180deg, rgba(6,8,13,0.97), rgba(6,8,13,0.9) 78%, rgba(6,8,13,0));
+        backdrop-filter:blur(12px);
+      }
+      header .brand { display:none; }
+      header nav {
+        width:100%; min-width:0; min-height:3.25rem; flex-wrap:nowrap;
+        justify-content:space-between; align-items:center; gap:0.1rem; overflow-x:auto;
+        scrollbar-width:none; -webkit-overflow-scrolling:touch;
+      }
+      header nav::-webkit-scrollbar { display:none; }
+      header nav a {
+        display:inline-flex; align-items:center; justify-content:center;
+        min-height:2.75rem; padding:0 0.32rem; border:0; white-space:nowrap;
+        color:rgba(128,147,168,0.84); font-size:9.5px; letter-spacing:0.09em;
+      }
+      header nav a[aria-current="page"] { color:rgba(200,96,26,0.94); }
+      main {
+        width:calc(100vw - 36px);
+        padding:calc(env(safe-area-inset-top, 0px) + 5.2rem) 0 calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+      }
+      h1 { font-size:clamp(34px, 10.8vw, 48px); line-height:1.06; margin-bottom:18px; }
+      .lede { font-size:18px; line-height:1.58; margin-bottom:36px; }
+      h2 { margin-top:42px; }
+      code, pre, .flow, .rule, .way-path, .endpoint { overflow-wrap:anywhere; word-break:break-word; }
+      .ways { grid-template-columns:1fr; gap:30px; }
+      .ways-in { margin-top:56px; padding-top:30px; }
+      .canonical-identity { overflow-wrap:anywhere; word-break:break-word; }
+    }
+    @media (max-width:520px) {
+      .pathway { grid-template-columns:1fr; gap:22px; }
+    }
+`;
+
 function waysInHtml() {
   return `
     <section id="ways-in" class="ways-in" aria-label="Two ways into the programme">
@@ -3977,7 +4046,7 @@ export function theoryPage() {
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>Theory · Reality Mechanics</title>
   <meta name="description" content="Why Reality Mechanics works — concise public Theory with links to canonical documents."/>
   <style>
@@ -4014,6 +4083,7 @@ export function theoryPage() {
     .calculus-notebook p { margin:0; font:15px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.78); }
     .calculus-notebook a { border-bottom-color:rgba(77,142,166,0.18); }
   ${WAYS_IN_CSS}
+  ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
 <body>
@@ -4079,7 +4149,7 @@ export function calculusPage() {
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>Calculus · Reality Mechanics</title>
   <meta name="description" content="Reality Mechanics Calculus — the derivation surface: what is derived, what is calibrated, what is heuristic, and what remains unresolved."/>
   <style>
@@ -4133,6 +4203,7 @@ export function calculusPage() {
     .status-line { margin-top:52px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:640px) { .vocab, .inventory { grid-template-columns:1fr; } }
   ${WAYS_IN_CSS}
+  ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
 <body>
@@ -4209,7 +4280,7 @@ export function submissionPage() {
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
   <title>Proof · Reality Mechanics</title>
   <meta name="description" content="Reality Mechanics Proof — retrace pathway through accepted evidence, candidates, and unresolved questions."/>
   <style>
@@ -4252,6 +4323,7 @@ export function submissionPage() {
     .status-line { margin-top:56px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } .pathway { grid-template-columns:1fr 1fr; } }
   ${WAYS_IN_CSS}
+  ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
 <body>

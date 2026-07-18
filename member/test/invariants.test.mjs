@@ -107,6 +107,15 @@ t("D-024 navigation reaches Calculus", () => {
   assert.ok(src.includes('href="https://realitymechanics.nz/calculus">Calculus'));
 });
 
+t("W-003 mobile Pulse shares the readable source-preserving public frame", () => {
+  assert.match(src, /viewport-fit=cover/);
+  assert.match(src, /header \.brand \{ display:none; \}/);
+  assert.match(src, /header nav \{[\s\S]*?flex-wrap:nowrap/);
+  assert.match(src, /header nav a \{[\s\S]*?min-height:2\.75rem/);
+  assert.match(src, /width:calc\(100vw - 36px\)/);
+  assert.match(src, /instrument contract/);
+});
+
 t("D-023 Pulse declares its honest runtime character", () => {
   assert.ok(src.includes("Mechanical runtime · no AI · no Atlas mutation"));
   assert.ok(src.includes('href="/api/health"'));
