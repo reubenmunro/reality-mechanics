@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.observation
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "participated readability held in evaluation."
@@ -44,6 +44,7 @@ conditions:
       - second.recognition-read
       - second.pattern
       - higher.higher-recognition
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -89,3 +90,4 @@ Observation becomes recognisable where a readable condition is being actively ev
 - [[Recognition Read|Recognition]]
 - [[Pattern]]
 - [[Higher Recognition]]
+- [[Calibration]]

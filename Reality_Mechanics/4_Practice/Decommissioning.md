@@ -5,7 +5,7 @@ register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.composting
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the structural practice of releasing failed or relieved material as doctrine while keeping what it taught available to the order."
@@ -46,7 +46,7 @@ The structural practice of releasing failed or relieved material as doctrine whi
 
 Decommissioning is held by [[Bearing Pass]], [[Release]], and [[Root Resilience]]. A bearing pass must identify the material, release must let the claim go, and root resilience must keep the failure from corrupting the dependency order.
 
-Decommissioning is not deletion. It is the practice of letting a claim stop carrying authority without erasing the trace of its failure. A failed posture can show what the order could not hold, what became occluded, where re-entry collapsed, or which dependency was missing.
+Decommissioning is not deletion. It is the practice of letting a claim stop carrying [[Authority|authority]] without erasing the trace of its failure. The authority being released is the claim's warranted standing to direct continuation as doctrine; Bearing Source remains the test of what actually bears it. A failed posture can show what the order could not hold, what became occluded, where re-entry collapsed, or which dependency was missing.
 
 ## Places
 

@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.sensing
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: placement-modes
 
 conditions:
@@ -37,8 +37,8 @@ conditions:
     targets: []
     read: "where a note is primarily placed by detectable local difference rather than by knowing, locating, caring, or sustaining."
   carries:
-    targets: []
-    read: "No demonstrated downstream carry is currently determined."
+    targets:
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -49,6 +49,8 @@ The mode where participation is primarily carried through detection of local dif
 Sensing is held by [[Placement Mode]], [[Availability]], and [[Bearing]]. A mode of participation must exist, local conditions must be available, and bearing must be present as a detectable difference before local detection can be placed as the primary mode.
 
 Where availability names what becomes present enough to participate in evaluation, sensing names the placement mode through which local differences in body, field, or environment become available as readable conditions.
+
+Ordinary language often uses “sense” for several different movements. Here, sensing names local detection. Bodily feeling is placed through [[Feeling]]; something being sensible or available to reading is placed through [[Readability]]; participant uptake is placed through [[Cognitive Participation]]; and identifying the read as this again belongs to [[Recognition Read|Recognition]].
 
 ## Places
 
@@ -78,4 +80,4 @@ Sensing becomes recognisable where a note is primarily placed by detectable loca
 
 ## Carries
 
-This note carries no further public branch at this scope.
+- [[Calibration]]

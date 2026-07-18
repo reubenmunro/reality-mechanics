@@ -5,7 +5,7 @@ register: practice
 kind: term
 ai_role: practice
 condition_key: practice.translation-invariance
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the practice test by which Atlas structure is varied in expression and checked for recoverable dependency order"
@@ -44,8 +44,8 @@ conditions:
     targets: []
     read: "where words, signs, diagrams, arrangements, actions, or thoughts vary while dependency placement remains recoverable — and where translation loss reveals structure that depended on the prior expression"
   carries:
-    targets: []
-    read: "No demonstrated downstream carry is currently determined."
+    targets:
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -110,4 +110,6 @@ Translation Invariance does not establish that an Atlas structure is natural ord
 
 ## Carries
 
-Nothing at practice grain. The test returns its result to the term, path, or structure being revised.
+- [[Calibration]]
+
+The test also returns its result to the term, path, or structure being revised.

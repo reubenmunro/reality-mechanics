@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.control-drift
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: relational-participation
 
 conditions:
@@ -14,15 +14,17 @@ conditions:
     targets:
       - third.applied-read
       - third.control
+      - second.drift
       - second.dependency-disorder
       - second.closure-scope
   holds:
     targets:
       - third.applied-read
       - third.control
+      - second.drift
       - second.dependency-disorder
       - second.closure-scope
-    read: "[[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]]."
+    read: "[[Applied Read]], [[Control]], [[Drift]], [[Dependency Disorder]], and [[Closure Scope]]."
   pairs:
     targets:
       - third.control-after-harm
@@ -31,6 +33,7 @@ conditions:
     targets:
       - third.applied-read
       - third.control
+      - second.drift
       - second.dependency-disorder
       - second.closure-scope
   nests:
@@ -49,7 +52,7 @@ status: stable
 
 The applied read where control departs from compatible directed availability, becoming incompatible carrying beyond the closure scope of its relational grounding.
 
-Control Drift is held by [[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]].
+Control Drift is held by [[Applied Read]], [[Control]], [[Drift]], [[Dependency Disorder]], and [[Closure Scope]].
 
 ## Places
 
@@ -57,7 +60,7 @@ Control Drift places the applied read where control departs from compatible dire
 
 ## Holds
 
-Control Drift is held by [[Applied Read]], [[Control]], [[Dependency Disorder]], and [[Closure Scope]].
+Control Drift is held by [[Applied Read]], [[Control]], [[Drift]], [[Dependency Disorder]], and [[Closure Scope]].
 
 ## Pairs
 
@@ -67,6 +70,7 @@ Control Drift pairs with [[Control After Harm]]. Control Drift names the disorde
 
 - [[Applied Read]]
 - [[Control]]
+- [[Drift]]
 - [[Dependency Disorder]]
 - [[Closure Scope]]
 
@@ -82,7 +86,7 @@ The dependency movement is:
 
 First: [[Bearing]] and [[Availability]] must hold enough for direction to remain supportable.
 
-Second: [[Dependency Disorder]] and [[Closure Scope]] make forced proceeding evaluable as drift.
+Second: [[Drift]], [[Dependency Disorder]], and [[Closure Scope]] make departure from compatible direction and its forced continuation evaluable.
 
 Third: [[Control Drift]] tests that condition inside the [[Relational Participation Field]] as an applied relation read.
 

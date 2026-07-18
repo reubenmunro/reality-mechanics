@@ -5,7 +5,7 @@ register: practice
 kind: term
 ai_role: practice
 condition_key: practice.participant
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "anyone or any system taking part in Reality Mechanics by using, questioning, testing, or contributing to the Atlas."
@@ -35,6 +35,7 @@ conditions:
   carries:
     targets:
       - practice.practice
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -71,9 +72,10 @@ Participant becomes recognisable where a person, AI, practice, or system engages
 
 A participant is not included by claim alone and not excluded for being unfinished. Participation becomes readable where contribution can enter with enough boundary, trace, and correction to remain answerable.
 
-Participation does not by itself confer grounding authority. A person, AI, or system may contribute to tracing and checking; an AI or automated system does not ground a note on its own. Grounding remains an accountable participant judgement rather than an output state inferred from fluent participation.
+Participation does not by itself confer [[Authority|grounding authority]]. A person, AI, or system may contribute to tracing and checking; an AI or automated system does not ground a note on its own. Grounding remains an accountable participant judgement whose authority must be warranted within the relevant practice and competence boundary, rather than an output state inferred from fluent participation.
 
 ## Carries
 
 
 - [[Practice]]
+- [[Calibration]]

@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.ai-drift
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: ai
 
 crossings:
@@ -18,6 +18,7 @@ conditions:
     targets:
       - third.ai
       - second.dependency-disorder
+      - second.drift
       - second.disorder
       - second.surface
       - second.coherence
@@ -28,13 +29,14 @@ conditions:
     targets:
       - third.ai
       - second.dependency-disorder
+      - second.drift
       - second.disorder
       - second.surface
       - second.coherence
       - higher.hidden-bearing
       - higher.source-drift
       - third.translation-boundary
-    read: "[[AI]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], [[Source Drift]], and [[Translation Boundary]]. Higher-order drift and bearing must cross explicitly into the AI-domain read."
+    read: "[[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], [[Source Drift]], and [[Translation Boundary]]. General departure and the specifically generated loss of dependency or source retrace must remain distinguishable."
   pairs:
     targets:
       - third.ai-coupling
@@ -43,6 +45,7 @@ conditions:
     targets:
       - third.ai
       - second.dependency-disorder
+      - second.drift
       - second.disorder
       - second.surface
       - second.coherence
@@ -65,7 +68,7 @@ status: stable
 
 The disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence — the specifically generated form of Source Drift.
 
-AI Drift is held by [[AI]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]].
+AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]]. General Drift places departure; Dependency Disorder and Source Drift specify the generated failure where surface coherence hides lost dependency or source retrace.
 
 ## Places
 
@@ -73,7 +76,7 @@ AI Drift places the disorder condition through which generated output departs fr
 
 ## Holds
 
-AI Drift is held by [[AI]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]].
+AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]].
 
 ## Pairs
 
@@ -82,6 +85,7 @@ AI Drift pairs with [[AI Coupling]]. AI Coupling names maintained compatible joi
 ## Traces
 
 - [[AI]]
+- [[Drift]]
 - [[Dependency Disorder]]
 - [[Disorder]]
 - [[Surface]]

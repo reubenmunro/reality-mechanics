@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.compatibility
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the condition through which what is being carried can continue through the conditions it moves into."
@@ -59,6 +59,7 @@ conditions:
       - second.coherence
       - third.sustaining
       - higher.self-regulation
+      - third.translation
 publish: true
 status: stable
 ---
@@ -118,3 +119,4 @@ Compatibility becomes recognisable where carrying can be evaluated as supportabl
 - [[Coherence]]
 - [[Sustaining]]
 - [[Self-Regulation]]
+- [[Translation]]

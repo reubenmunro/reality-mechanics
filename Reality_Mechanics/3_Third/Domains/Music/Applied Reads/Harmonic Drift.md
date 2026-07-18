@@ -5,27 +5,24 @@ order: third
 kind: term
 ai_role: applied_read
 condition_key: third.harmonic-drift
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: music
 
-crossings:
-  - "[[Source Drift]]"
-
 conditions:
-  places: "the musical disorder read where harmonic carrying loses retrace to the tonal centre"
+  places: "the musical read where harmonic carrying departs across traversal from a tonal reference."
   needs:
     targets:
       - third.applied-read
       - third.harmony
-      - higher.source-drift
+      - second.drift
       - third.translation-boundary
   holds:
     targets:
       - third.applied-read
       - third.harmony
-      - higher.source-drift
+      - second.drift
       - third.translation-boundary
-    read: "[[Applied Read]], [[Harmony]], [[Source Drift]], and [[Translation Boundary]]. Source Drift must cross explicitly into the musical applied read."
+    read: "[[Applied Read]], [[Harmony]], [[Drift]], and [[Translation Boundary]]. General drift crosses into the musical applied read through an explicit tonal reference."
   pairs:
     targets:
       - third.musical-resolution
@@ -34,7 +31,7 @@ conditions:
     targets:
       - third.applied-read
       - third.harmony
-      - higher.source-drift
+      - second.drift
       - third.translation-boundary
       - second.carrying
       - third.music
@@ -52,19 +49,19 @@ status: stable
 ---
 # Harmonic Drift
 
-The musical disorder read where harmonic carrying loses retrace to the tonal centre.
+The musical read where harmonic carrying departs across traversal from a tonal reference.
 
-Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Source Drift]]. Harmonic coupling must be present and active for drift to be distinguishable from mere atonality. The structural pattern of source drift — where the carrying structure is taken as the source rather than as carried — must be recognisable.
+Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Drift]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
 
 Harmonic Drift is not modulation. Modulation names a tonal move that is retraceable — where a new key is established with enough structural support to carry. Harmonic drift names the condition where the move cannot be retraced and the tonal ground is lost.
 
 ## Places
 
-Harmonic Drift places the musical disorder read where harmonic carrying loses retrace to the tonal centre.
+Harmonic Drift places the musical read where harmonic carrying departs across traversal from a tonal reference.
 
 ## Holds
 
-Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Source Drift]]. Harmonic coupling must be present and active for drift to be distinguishable from mere atonality. The structural pattern of source drift — where the carrying structure is taken as the source rather than as carried — must be recognisable.
+Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Drift]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
 
 ## Pairs
 
@@ -74,20 +71,20 @@ Harmonic Drift pairs with [[Musical Resolution]]. Musical Resolution names succe
 
 - [[Applied Read]]
 - [[Harmony]]
-- [[Source Drift]]
+- [[Drift]]
 - [[Carrying]]
 - [[Music]]
 - [[Translation Boundary]]
 
 ## Nests
 
-Harmonic Drift nests within the music domain as the diagnostic read for tonal disorientation. It is the music-domain application of the source drift pattern: a carrying structure (the harmonic progression) has moved far enough that it can no longer be read against the ground it claimed to carry.
+Harmonic Drift nests within the music domain as the read of harmonic departure relative to tonal reference. It becomes a disorder diagnosis only where the reference or retrace required for recovery is genuinely lost.
 
 ## Reads
 
-Harmonic Drift becomes recognisable where harmonic progression has moved away from the tonal centre without a retraceable path back — where the listener can no longer locate the key because the progression has drifted beyond the structural support that would make re-entry possible.
+Harmonic Drift becomes recognisable where harmonic progression moves away from a tonal centre across traversal. Recoverable drift preserves or later restores the reference required for re-entry; lost drift makes that reference unavailable.
 
-It is read where harmonic carrying has become self-referential: where each chord is heard only in relation to the preceding chord rather than in relation to a tonal ground. The harmonic structure carries, but what it is carrying from has become unavailable.
+Where harmonic carrying becomes self-referential — each chord heard only in relation to the preceding chord rather than a tonal reference — drift may become [[Source Drift]] if the progression is treated as the source of its own bearing.
 
 Harmonic Drift is not always a failure. In some compositional contexts — late Romantic chromaticism, impressionist harmony — drift is used deliberately to suspend tonal retrace. The diagnostic question is whether the drift is recoverable (retrace becomes available at the right structural moment) or lost (tonal bearing is genuinely gone and resolution is not available).
 

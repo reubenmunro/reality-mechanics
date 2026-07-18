@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.medium
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "what carrying occurs through."
@@ -46,6 +46,7 @@ conditions:
       - third.communicating
       - third.expressing
       - practice.translation-invariance
+      - third.translation
 publish: true
 status: stable
 ---
@@ -94,3 +95,4 @@ Medium becomes recognisable where carrying can be read as occurring through some
 - [[Communicating]]
 - [[Expressing]]
 - [[Translation Invariance]]
+- [[Translation]]

@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.competence-boundary
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: knowledge
 
 conditions:
@@ -52,6 +52,7 @@ conditions:
     targets:
       - third.restraint
       - third.dominion
+      - third.authority
 publish: true
 status: stable
 ---
@@ -95,3 +96,4 @@ Competence Boundary becomes readable where a participant, practice, or domain ca
 
 - [[Restraint]]
 - [[Dominion]]
+- [[Authority]]

@@ -35,10 +35,10 @@ function filesUnder(root) {
 }
 
 test("Canonical Graph carries only the validated Stage 1C source", () => {
-  assert.equal(graph.sourceHash, "sha256:a5cdc135b48fee7def6af3e080f9ec404c3ee0ddec8dad057fff9eda133c2c0a");
-  assert.equal(Object.keys(graph.entries).length, 490);
-  assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 442);
-  assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 48);
+  assert.equal(graph.sourceHash, "sha256:cdb20a2e39aa5f1865a395749331fb9d541e549fa9d70e79f8d771233f849164");
+  assert.equal(Object.keys(graph.entries).length, 493);
+  assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 444);
+  assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 49);
 
   const schemaOwners = Object.entries(graph.entries).filter(([, entry]) => entry.atlasSchema);
   const determinationOwners = Object.entries(graph.entries).filter(([, entry]) => entry.determinationRecords);
@@ -103,14 +103,14 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   ].join(" ");
   const result = spawnSync("sqlite3", [db, query], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(result.stdout.trim().split("\n"), ["490", "442", "48", "3", graph.sourceHash]);
+  assert.deepEqual(result.stdout.trim().split("\n"), ["493", "444", "49", "3", graph.sourceHash]);
 
   const rowsResult = spawnSync("sqlite3", ["-json", db,
     "select id,entry_order,entry_register,determination,structure,conditions from entries order by id;"],
   { encoding: "utf8" });
   assert.equal(rowsResult.status, 0, rowsResult.stderr);
   const rows = JSON.parse(rowsResult.stdout);
-  assert.equal(rows.length, 490);
+  assert.equal(rows.length, 493);
   for (const row of rows) {
     const entry = graph.entries[row.id];
     assert.ok(entry, row.id);
@@ -149,7 +149,7 @@ test("AI and search participation preserve graph identity and entry parity", () 
   const aiIndex = JSON.parse(readFileSync(join(generatedRoot, "ai", "current", "index.json"), "utf8"));
   const search = JSON.parse(readFileSync(join(generatedRoot, "participation", "search-index.json"), "utf8"));
   assert.equal(aiIndex.sourceHash, graph.sourceHash);
-  assert.equal(aiIndex.entryCount, 490);
+  assert.equal(aiIndex.entryCount, 493);
   assert.deepEqual(aiIndex.entryIds, Object.keys(graph.entries));
   assert.deepEqual(search.entries.map((entry) => entry.id), Object.keys(graph.entries));
 

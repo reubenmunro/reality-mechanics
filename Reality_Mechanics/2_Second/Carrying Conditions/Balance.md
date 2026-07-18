@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.balance
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "compatible regulation of pressure between retain and release."
@@ -16,6 +16,7 @@ conditions:
       - first.release
       - second.compatibility
       - second.capacity
+      - second.reference-frame
   holds:
     targets:
       - second.pressure
@@ -23,7 +24,8 @@ conditions:
       - first.release
       - second.compatibility
       - second.capacity
-    read: "[[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named."
+      - second.reference-frame
+    read: "[[Pressure]], [[Retain]], [[Release]], [[Compatibility]], [[Capacity]], and [[Reference Frame]]. Pressure must be locally borne within an explicit frame, retention and release must be available, and carrying must remain compatible before balance can be named."
   pairs:
     targets: []
     read: "No lateral pair is required at this placement yet. Balance names dynamic regulation rather than a static opposite."
@@ -34,6 +36,7 @@ conditions:
       - first.release
       - second.compatibility
       - second.capacity
+      - second.reference-frame
   nests:
     targets: []
     read: "inside carrying as the regulation through which pressure remains bearable enough for relation to continue."
@@ -50,7 +53,7 @@ status: stable
 
 Compatible regulation of pressure between retain and release.
 
-Balance is held by [[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named.
+Balance is held by [[Pressure]], [[Retain]], [[Release]], [[Compatibility]], [[Capacity]], and [[Reference Frame]]. Pressure must be locally borne within an explicit frame, retention and release must be available, and carrying must remain compatible before balance can be named.
 
 Balance is not stillness, symmetry, equality, or equal amount. It may be dynamic, uneven, rhythmic, responsive, and continuously adjusting. A body balancing, a building carrying load, a relationship bearing strain, or a mind returning to ground all show balance where pressure remains regulated enough for relation to continue.
 
@@ -60,7 +63,7 @@ Balance places compatible regulation of pressure between retain and release.
 
 ## Holds
 
-Balance is held by [[Pressure]], [[Retain]], [[Release]], [[Compatibility]], and [[Capacity]]. Pressure must be locally borne, retention and release must be available, and carrying must remain compatible before balance can be named.
+Balance is held by [[Pressure]], [[Retain]], [[Release]], [[Compatibility]], [[Capacity]], and [[Reference Frame]]. Pressure must be locally borne within an explicit frame, retention and release must be available, and carrying must remain compatible before balance can be named.
 
 ## Pairs
 
@@ -73,6 +76,7 @@ No lateral pair is required at this placement yet. Balance names dynamic regulat
 - [[Release]]
 - [[Compatibility]]
 - [[Capacity]]
+- [[Reference Frame]]
 
 ## Nests
 
@@ -80,7 +84,9 @@ Balance nests inside carrying as the regulation through which pressure remains b
 
 ## Reads
 
-Balance becomes readable where pressure is regulated between retain and release so relation remains compatible.
+Balance becomes readable where pressure is regulated between retain and release within an explicit reference frame so relation remains compatible.
+
+Balance is never absolute. A changed frame changes what pressure is locally borne and therefore changes what must be retained, released, or regulated. Where a wider carrying relation keeps local conditions compatible and within capacity, the carried frame may remain locally supportable. When that carrying relation changes, the balance read must be made again from the changed frame.
 
 Balance is the natural form of pressure where pressure remains answerable to relation. Too much retention can become overload, compression, rigidity, injury, or obsession. Too much release can become dissipation, loss of form, avoidance, collapse, or leakage.
 

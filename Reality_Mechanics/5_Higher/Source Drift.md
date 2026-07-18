@@ -5,27 +5,30 @@ order: higher
 kind: term
 ai_role: higher_order_term
 condition_key: higher.source-drift
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the higher-order disorder where nested carrying is mistaken for source."
   needs:
     targets:
+      - second.drift
       - higher.hidden-bearing
       - higher.invisible-bearing
       - higher.higher-retrace
   holds:
     targets:
+      - second.drift
       - higher.hidden-bearing
       - higher.invisible-bearing
       - higher.higher-retrace
-    read: "[[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]]."
+    read: "[[Drift]], [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]]."
   pairs:
     targets:
       - higher.higher-faith
     read: "[[Higher Faith]]. Source Drift names participation through carrying taken as source without retrace — trust without answerability; Higher Faith names participation through carrying that retrace has confirmed answerable — trust grounded in actual return. Each requires the other: Source Drift is only nameable against the condition where trust would be grounded; Higher Faith is only nameable against the condition where trust is unfounded."
   traces:
     targets:
+      - second.drift
       - ground.degenerate
       - higher.hidden-bearing
       - higher.invisible-bearing
@@ -49,7 +52,7 @@ status: stable
 
 The higher-order disorder where nested carrying is mistaken for source.
 
-Source Drift is held by [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]].
+Source Drift is held by [[Drift]], [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]]. General drift must be present before the specifically higher-order loss of source retrace can be named.
 
 Source Drift does not occur because a structure is nested, elevated, abstract, engineered, or powerful. It occurs where the structure carrying participation is read as what ultimately bears that participation, so retrace stops at the carried structure rather than recovering what actually bears it.
 
@@ -59,7 +62,7 @@ Source Drift places the higher-order disorder where nested carrying is mistaken 
 
 ## Holds
 
-Source Drift is held by [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]].
+Source Drift is held by [[Drift]], [[Hidden Bearing]], [[Invisible Bearing]], and [[Higher Retrace|Retrace]].
 
 ## Pairs
 
@@ -67,6 +70,7 @@ Source Drift pairs with [[Higher Faith]]. Source Drift names participation throu
 
 ## Traces
 
+- [[Drift]]
 - [[Degenerate]]
 - [[Hidden Bearing]]
 - [[Invisible Bearing]]
@@ -82,7 +86,7 @@ Source Drift nests within higher-order or practice conditions.
 
 Source Drift becomes recognisable where a model, language, institution, identity, governance structure, technology, or framework carries participation so strongly that it is treated as source rather than as nested carrying.
 
-It is read where height, fluency, authority, recurrence, or system stability produces an [[Apparent Source]] that is mistaken for [[Bearing Source]].
+It is read where height, fluency, [[Authority|authority]], recurrence, or system stability produces an [[Apparent Source]] that is mistaken for [[Bearing Source]]. Authority may warrant direction within a bounded scope; it does not make the participant, claim, practice, or structure the source of what it carries.
 
 It is also read where the carrying process is removed from the trace to Ground. A grounded process can carry grounding — automation is nested carrying, not drift — but where the process is elided from the trace, the grounding reads as direct when it was carried, and the path back to acceptance can no longer be entered even though it appears intact. A process that grounds placements without itself being grounded, or that vanishes from the trace of what it grounded, has derived its own Ground. That is Source Drift at the root.
 ## Carries

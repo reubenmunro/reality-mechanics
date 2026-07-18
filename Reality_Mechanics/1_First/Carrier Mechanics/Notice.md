@@ -5,7 +5,7 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.notice
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "first contact with what has become apparent"
@@ -37,6 +37,7 @@ conditions:
       - first.attend
       - first.enter
       - practice.atlas-practice
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -79,3 +80,4 @@ Notice becomes recognisable where something available is met as worth following 
 - [[Attend]]
 - [[Enter]]
 - [[Atlas Practice]]
+- [[Calibration]]

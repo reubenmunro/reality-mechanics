@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.evaluation
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "a read being assessed within a closure scope."
@@ -34,6 +34,7 @@ conditions:
     targets:
       - second.observation
       - second.progress
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -73,3 +74,4 @@ Evaluation becomes recognisable where a read is being actively assessed rather t
 
 - [[Observation]]
 - [[Progress]]
+- [[Calibration]]

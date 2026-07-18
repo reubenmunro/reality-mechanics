@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.domination
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "dominion failed into control detached from care."
@@ -53,7 +53,7 @@ Dominion failed into control detached from care.
 
 Domination is held by [[Dominion]], [[Control]], [[Care]], [[Violation]], and [[Harm]]. Dominion must be the claimed authority, control must proceed, care must be absent or overridden, and incompatible carrying must damage available bearing before domination can be named.
 
-Domination is not authority as such. It is authority that no longer remains answerable to the domain it claims to govern. The domain, body, field, relation, or participant is treated as available for direction, extraction, or override while the carrying conditions that make it available are ignored or damaged.
+Domination is not [[Authority]] as such. Authority names warranted standing within scope. Domination becomes readable where control continues after that standing has lost answerability to its warrant, care, competence boundary, or the domain's carrying conditions. The domain, body, field, relation, or participant is treated as available for direction, extraction, or override while the carrying conditions that make it available are ignored or damaged.
 
 ## Places
 

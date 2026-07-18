@@ -5,7 +5,7 @@ register: practice
 kind: practice
 ai_role: practice
 condition_key: practice.atlas-practice
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the practice layer through which the Atlas remains a traceable, correctable, relation-order-trace governed, and reality-bearing reasoning system as it grows."
@@ -70,6 +70,7 @@ conditions:
       - practice.order-trace
       - practice.posture-read
       - practice.atlas-garden
+      - practice.calibration
 publish: true
 status: stable
 ---
@@ -148,3 +149,4 @@ It is especially required where nested carrying risks [[Source Drift]]: where a 
 - [[Order Trace]]
 - [[Posture Read]]
 - [[Atlas Fabric]]
+- [[Calibration]]

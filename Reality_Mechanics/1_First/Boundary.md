@@ -5,7 +5,7 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.boundary
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "located distinction within relation — the locating act through which unevenness becomes a readable condition"
@@ -66,6 +66,7 @@ conditions:
       - third.space-based-solar-power
       - practice.check
       - practice.contend
+      - third.authority
 publish: true
 status: stable
 ---
@@ -142,3 +143,4 @@ Boundary is a passage condition as well as a first-order root condition: it loca
 - [[Space-Based Solar Power]]
 - [[Check]]
 - [[Contend]]
+- [[Authority]]

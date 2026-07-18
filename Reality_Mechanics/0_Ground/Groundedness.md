@@ -5,7 +5,7 @@ order: ground
 kind: term
 ai_role: term
 condition_key: ground.groundedness
-determination: pd.v3.phase-4-minimal-architecture
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "the condition of remaining answerable to what holds — where dependency contact is maintained rather than lost"
@@ -34,7 +34,13 @@ conditions:
       - practice.root-resilience
       - practice.terms-and-conditions
       - second.recarry
+      - practice.calibration
 determination_records:
+  pd.2026-07-18.calibration-revision-set:
+    proof: "docs/reports/PD-008-calibration-revision-set.md"
+    approved_on: "2026-07-18"
+    constitutional_response: "Calibration is placed as the bounded pre-Atlas practice; Translation is restored as a general operation; Authority and Drift receive explicit placements; local-frame balance and ordinary sense language are clarified; participant determination remains required before Atlasing."
+    structural_radius: constitutional
   pd.v3.pre-provenance-baseline:
     proof: "docs/reports/PD-006-stage-1b-canonical-source-migration.md#determination-provenance"
     approved_on: "2026-07-14"
@@ -78,6 +84,8 @@ Groundedness is held by [[Root Order]]. Dependency arrangement must hold before 
 
 In the Atlas, Groundedness records the result of participant determination: grounded where the claim is preserved, its dependency trace is placed, its structural radius is assessed, and the term remains answerable to what holds it. Investigation remains in Calibration. An unresolved record does not enter or remain in the Atlas as an ungrounded term.
 
+Grounding authority is a bounded instance of [[Authority]]: warranted participant standing to determine whether a checked claim may govern as Atlas structure. Participation, fluency, list movement, or automation alone does not confer it.
+
 ## Places
 
 Groundedness places the condition of remaining answerable to what holds. It names where dependency contact is maintained — where a term or read has not drifted from what makes it readable.
@@ -107,3 +115,4 @@ Groundedness becomes recognisable where a term, read, path, or practice remains 
 - [[Root Resilience]]
 - [[Terms and Conditions]]
 - [[Recarry]]
+- [[Calibration]]

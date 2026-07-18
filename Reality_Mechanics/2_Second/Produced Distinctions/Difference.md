@@ -5,7 +5,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.difference
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 
 conditions:
   places: "distinguishable non-sameness."
@@ -40,6 +40,7 @@ conditions:
       - second.information
       - second.change
       - second.dimension
+      - third.translation
 publish: true
 status: stable
 ---
@@ -82,3 +83,4 @@ Difference becomes recognisable where relation can be read as this rather than t
 - [[Information]]
 - [[Change]]
 - [[Dimension]]
+- [[Translation]]

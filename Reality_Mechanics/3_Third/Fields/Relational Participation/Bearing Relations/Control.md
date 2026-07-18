@@ -5,7 +5,7 @@ order: third
 kind: term
 ai_role: term
 condition_key: third.control
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-07-18.calibration-revision-set
 domain: relational-participation
 
 conditions:
@@ -45,6 +45,7 @@ conditions:
       - third.domination
       - third.dominion
       - third.restraint
+      - third.authority
 publish: true
 status: stable
 ---
@@ -90,3 +91,4 @@ Control carries [[Behaviour]], [[Constrained Resolution]], [[Control After Harm]
 - [[Domination]]
 - [[Dominion]]
 - [[Restraint]]
+- [[Authority]]
