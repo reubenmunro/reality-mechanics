@@ -4,7 +4,7 @@ Reality Mechanics observes structural relations already carried in reality and k
 
 ## Authority
 
-The 490 entries under [`Reality_Mechanics/`](Reality_Mechanics/) are the sole maintained structural authority. Calibration and every software or public representation are non-canonical participation.
+The 493 entries under [`Reality_Mechanics/`](Reality_Mechanics/) are the sole maintained structural authority. Calibration and every software or public representation are non-canonical participation.
 
 ```text
 Reality
