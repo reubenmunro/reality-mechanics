@@ -10,7 +10,7 @@ Operational deployment map only. Surface meaning remains in the Atlas; this file
 | Public Theory | `/theory` | `.atlas-publisher/` | Generated canonical Theory entry |
 | Proof | `/proof`, `/submission` | `.atlas-publisher/` | Generated canonical result links plus maintained evidence |
 | Calculus | `/calculus` | `.atlas-publisher/` | Generated baseline plus non-canonical evidence |
-| AI participation | `/ai/current/*` | Main Worker static assets | Generated index and 490 entry records |
+| AI participation | `/ai/current/*` | Main Worker static assets | Generated index and 493 entry records |
 | Search | `/participation/search-index.json` | Main Worker static assets | Generated Canonical Graph projection |
 | Release manifest | `/manifest.json` | Main Worker static assets | Generated release and parity identity |
 | Source-format documentation | `/participation/atlas-source-format.md` | Main Worker static assets | Generated from Common Term Structure |
@@ -41,7 +41,7 @@ Every Atlas-bearing Main or MCP response exposes `X-RM-Canonical-Source-Hash` an
 2. Confirm it equals the release Canonical Graph source hash.
 3. Call MCP `get_manifest` and require `parity: true`.
 4. Call MCP `get_ai_entry_protocol` and verify the three ordered members.
-5. Read `/api/field/states` and verify the same source hash and 490 entries.
+5. Read `/api/field/states` and verify the same source hash and 493 entries.
 6. Read `/theory` and verify its displayed source hash and determination.
 7. Read `/manifest.json` and verify the Canonical Graph, Translation, output, and expected D1 dataset hashes.
 8. Read all four generated route classes and verify matching identity headers.
