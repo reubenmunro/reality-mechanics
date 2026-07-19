@@ -52,6 +52,8 @@ Ordered participation — prior organisation remaining available within later or
 
 Nesting is held by [[Participation]], [[Recurrence]], and [[Field of Participation]]. Participation must recur in a field before prior organisation can remain available within later organisation.
 
+Nesting does not name spatial enclosure or the inward side of a boundary crossing; it names dependency-ordered continuity across later participation.
+
 Nesting carries; modelling represents.
 
 A prior read, trace, or organisation becomes nested where it continues to participate inside a later read without needing to be separately reconstructed.

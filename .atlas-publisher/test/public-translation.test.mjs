@@ -81,9 +81,9 @@ test("public bundle contains only the approved 493-entry generated participation
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   const index = JSON.parse(readFileSync(join(publicRoot, "ai", "current", "index.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:7fc43f39b0cad3eecaa044fb16d6bf9ed73ba80eac8d88a90430421a46636bfc");
+  assert.equal(manifest.canonicalGraphHash, "sha256:f74ec3faf84120de9081fcaf7af92a992b5763c42c86e5a7e2c7d9d867a1ebb8");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
-  assert.equal(manifest.translationHash, "sha256:33b117628f44450da2ed0c6897c71ae275ba276b1f1ccae66837de2a0df72596");
+  assert.equal(manifest.translationHash, "sha256:2dc3e783b0207c7076f907c619c2dcd51f485e5201dbfb39d02eb2c6d999032e");
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
   assert.deepEqual(manifest.counts, {
     entries: 493,
@@ -102,9 +102,9 @@ test("public bundle contains only the approved 493-entry generated participation
   assert.equal(index.entryIds.includes("practice.atlas-condition-header"), false);
   assert.equal(index.entryIds.includes("practice.atlas-note-standard"), false);
   assert.deepEqual(manifest.expectedD1DatasetHashes, {
-    entries: "sha256:7eb50021481ad1ae4fd8c6a4e04ab566341453c35a9f070bc37f6c07657d019d",
-    fts: "sha256:add49f7a6543644eeb95e08ba6e6bec8f2a90ac5023f45dccd83d2c30653fe6d",
-    metadata: "sha256:7a510403cc09cbc1c2395eaa42b6ebd734dc02160b8ea7f8f9d52705f349552d",
+    entries: "sha256:145457d1d51eb7c37a24156b24d39555778568fdab5960702a60df45f7d74fee",
+    fts: "sha256:b9d8195b987a7548563469d232029b9c57b3951fba36548078ddaca37474d836",
+    metadata: "sha256:2a8ef95d023b21a2d7705f6512647b0c0c7538b966866fa8cb833cf7ef8a198a",
     determinations: "sha256:aeed8bfe92d332d6106d8aa7b9200359557f889204c91b60f9e55f88bd77cc1a",
     protocol: "sha256:94829b499c48fe785a2f3aee9fd8902d36aa9262966e601bfb9b740e48b1b2be",
   });
@@ -241,7 +241,7 @@ test("the exact D1 sync path leaves the complete public Translation deployable",
 
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:7fc43f39b0cad3eecaa044fb16d6bf9ed73ba80eac8d88a90430421a46636bfc");
+  assert.equal(manifest.canonicalGraphHash, "sha256:f74ec3faf84120de9081fcaf7af92a992b5763c42c86e5a7e2c7d9d867a1ebb8");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
 });
