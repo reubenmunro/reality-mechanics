@@ -112,6 +112,14 @@ Its outcomes are [[Atlasing]], return for further calibration, release from acti
 
 On the Calibration Trello board, the operational translation is: Sensation carries notice and sensing; Translation makes the material structurally recoverable; Observation carries attention and evaluation; adding to the Atlas requires participant determination and Atlasing; Archive releases the item from active carrying.
 
+## Calibration Record — 2026-07-19
+
+Five Holding investigations were completed: Environment as carrying condition, Term ecology, Borne ↔ Nest ratio, Relation as first readable expression of Root Order, and Birth ↔ Nesting ratio. No new Atlas determinations were added. Four investigations required no Atlas change. Birth ↔ Nesting exposed a predictable readability error in an otherwise correct determination, so one clarification was added to [[Nesting]]:
+
+> Nesting does not name spatial enclosure or the inward side of a boundary crossing; it names dependency-ordered continuity across later participation.
+
+This was a readability clarification, not a structural change. Structural calibration tests whether the dependency order is incomplete or incorrect. Readability calibration tests whether a correct determination can be predictably misread. These are process distinctions within Calibration, not new Atlas terms or determinations.
+
 ## Carries
 
 - [[Atlasing]]

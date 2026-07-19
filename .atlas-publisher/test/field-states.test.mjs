@@ -110,7 +110,7 @@ function makeDb() {
         bind(...params) { this.params = params; return this; },
         async all() {
           if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-            { key: "source_hash", value: "sha256:1dd98216950c6267fffd23c09070158ca7e1db5d13d8fc776c5eaa1ac6a553ce" },
+            { key: "source_hash", value: "sha256:9765e58f7d755f530905539e36756e521420be39a4972141f6cb067f2e02a400" },
             { key: "entry_count", value: "493" },
           ] };
           if (/FROM entries\b/.test(sql)) return { results: entries };
@@ -143,7 +143,7 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
 
   assert.equal(payload.contractVersion, 1);
   assert.equal(payload.source, "d1-derived");
-  assert.equal(payload.sourceHash, "sha256:1dd98216950c6267fffd23c09070158ca7e1db5d13d8fc776c5eaa1ac6a553ce");
+  assert.equal(payload.sourceHash, "sha256:9765e58f7d755f530905539e36756e521420be39a4972141f6cb067f2e02a400");
   assert.deepEqual(payload.excludes, ["weather", "clearance", "lightShadowPressure", "geodesicBending", "membraneEdge"]);
 
   const carry = payload.states.find((state) => state.id === "first.carry");
@@ -309,7 +309,7 @@ test("/theory serves the complete generated canonical Theory entry", async () =>
   assert.match(html, /Theory\.md/);
   assert.match(html, /Failure Tests/);
   assert.match(html, /Determination:/);
-  assert.match(html, /sha256:1dd98216950c6267fffd23c09070158ca7e1db5d13d8fc776c5eaa1ac6a553ce/);
+  assert.match(html, /sha256:9765e58f7d755f530905539e36756e521420be39a4972141f6cb067f2e02a400/);
   assert.doesNotMatch(html, /^# Invariant/m);
   assert.doesNotMatch(html, /border-bottom:1px solid var\(--line\)/);
 });
@@ -626,7 +626,7 @@ test("Stage 2 separates generated structure from maintained Calculus evidence", 
   const calculus = calculusPage();
   const mcpSource = readFileSync(new URL("../../reality-mechanics-mcp/src/index.js", import.meta.url), "utf8");
 
-  assert.match(theory, /sha256:1dd98216950c6267fffd23c09070158ca7e1db5d13d8fc776c5eaa1ac6a553ce/);
+  assert.match(theory, /sha256:9765e58f7d755f530905539e36756e521420be39a4972141f6cb067f2e02a400/);
   assert.match(theory, /Failure Tests/);
   assert.match(calculus, /Canonical comparison baseline/);
   assert.match(calculus, /needs · holds · pairs · traces · nests · reads · carries/);
@@ -723,7 +723,7 @@ test("O-006 read engine: behaviour trace exposes readEngine bundle", async () =>
           bind(...params) { this.params = params; return this; },
           async all() {
             if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-              { key: "source_hash", value: "sha256:1dd98216950c6267fffd23c09070158ca7e1db5d13d8fc776c5eaa1ac6a553ce" },
+              { key: "source_hash", value: "sha256:9765e58f7d755f530905539e36756e521420be39a4972141f6cb067f2e02a400" },
               { key: "entry_count", value: "493" },
             ] };
             if (/FROM entries\b/.test(sql)) return { results: entries };
