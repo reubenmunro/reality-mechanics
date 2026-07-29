@@ -111,11 +111,11 @@ The Atlas lives primarily in reading order. It remains answerable to generative 
 ```text
 Relation
 ├── Connection ─── Posture
-└── Asymmetry → Bounded Asymmetry → Strained Asymmetry → Resolved Asymmetry
-                                     ↓
-                    Boundary → Availability → Strain → Bearing → Resolution
-                                                                      ↓
-                                                         Hold   Carry   Place
+└── Asymmetry → Bounded Asymmetry
+                ├── Distinction → Boundary → Availability → Strain → Bearing → Resolution
+                │                                                            ↓
+                │                                               Hold   Carry   Place
+                └── Strained Asymmetry → Resolved Asymmetry → Coupling
 ```
 
 **Posture read** (a reading of the spine, not a separate dependency chain or root postulate):
