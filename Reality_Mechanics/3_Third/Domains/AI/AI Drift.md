@@ -68,7 +68,7 @@ status: stable
 
 The disorder condition through which generated output departs from the dependency structure it claims to carry while preserving surface coherence — the specifically generated form of Source Drift.
 
-AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]]. General Drift places departure; Dependency Disorder and Source Drift specify the generated failure where surface coherence hides lost dependency or source retrace.
+AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], [[Source Drift]], and [[Translation Boundary]]. General Drift places departure; Dependency Disorder and Source Drift specify the generated failure where surface coherence hides lost dependency or source retrace.
 
 ## Places
 
@@ -76,7 +76,7 @@ AI Drift places the disorder condition through which generated output departs fr
 
 ## Holds
 
-AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], and [[Source Drift]].
+AI Drift is held by [[AI]], [[Drift]], [[Dependency Disorder]], [[Disorder]], [[Surface]], [[Coherence]], [[Hidden Bearing]], [[Source Drift]], and [[Translation Boundary]].
 
 ## Pairs
 

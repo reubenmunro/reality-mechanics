@@ -57,7 +57,7 @@ status: stable
 
 The structural pattern through which field-bearing conditions make availability readable — the recurrent structural shape of how fields present their carrying to readability.
 
-Field Availability Pattern is held by [[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], and [[Natural World]]. Physical field conditions must hold, bearing must be present in the field, and pattern must gather before the structural shape of field availability can be named.
+Field Availability Pattern is held by [[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], [[Natural World]], and [[Translation Boundary]]. Physical field conditions must hold, bearing must be present in the field, and pattern must gather before the structural shape of field availability can be named.
 
 Field Availability Pattern names that availability changes. [[Field Bearing]] names where changed field availability bears on traversal, escape, attraction, closure, visibility, or measurable path.
 
@@ -67,7 +67,7 @@ Field Availability Pattern places the structural pattern through which field-bea
 
 ## Holds
 
-Field Availability Pattern is held by [[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], and [[Natural World]]. Physical field conditions must hold, bearing must be present in the field, and pattern must gather before the structural shape of field availability can be named.
+Field Availability Pattern is held by [[Physical Field Conditions]], [[Pattern]], [[Field Bearing]], [[Invisible Bearing]], [[Natural World]], and [[Translation Boundary]]. Physical field conditions must hold, bearing must be present in the field, and pattern must gather before the structural shape of field availability can be named.
 
 ## Pairs
 

@@ -65,7 +65,7 @@ status: stable
 
 The evaluative read through which a claim, representation, or local model is checked for compatibility with what bears it — the closure-scope test of whether a read remains traceable.
 
-Reality Check is held by [[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], and [[Check]]. A claim must be present and compatibility must be evaluable at the relevant closure scope before the check can be performed.
+Reality Check is held by [[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], [[Check]], and [[Translation Boundary]]. A claim must be present and compatibility must be evaluable at the relevant closure scope before the check can be performed.
 
 ## Places
 
@@ -73,7 +73,7 @@ Reality Check places the evaluative read through which a claim, representation, 
 
 ## Holds
 
-Reality Check is held by [[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], and [[Check]]. A claim must be present and compatibility must be evaluable at the relevant closure scope before the check can be performed.
+Reality Check is held by [[Reality]], [[Read]], [[Compatibility]], [[Closure Scope]], [[Bearing Source]], [[Dependency Disorder]], [[Check]], and [[Translation Boundary]]. A claim must be present and compatibility must be evaluable at the relevant closure scope before the check can be performed.
 
 ## Pairs
 
