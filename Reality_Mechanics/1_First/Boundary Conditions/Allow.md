@@ -13,11 +13,13 @@ conditions:
     targets:
       - first.boundary
       - first.availability
+      - ground.passage-condition
   holds:
     targets:
       - first.boundary
       - first.availability
-    read: "[[Boundary]] and [[Availability]] — scope must be bounded and distinction present before permission at that scope can be read"
+      - ground.passage-condition
+    read: "[[Boundary]], [[Availability]], and [[Passage Condition]] — scope must be bounded and distinction present before permission at that scope can be read"
   pairs:
     targets:
       - first.enter
