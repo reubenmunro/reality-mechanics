@@ -51,7 +51,7 @@ status: stable
 
 The musical read where harmonic carrying departs across traversal from a tonal reference.
 
-Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Drift]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
+Harmonic Drift is held by [[Applied Read]], [[Harmony]], [[Drift]], and [[Translation Boundary]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
 
 Harmonic Drift is not modulation. Modulation names a tonal move that is retraceable — where a new key is established with enough structural support to carry. Harmonic drift names the condition where the move cannot be retraced and the tonal ground is lost.
 
@@ -61,7 +61,7 @@ Harmonic Drift places the musical read where harmonic carrying departs across tr
 
 ## Holds
 
-Harmonic Drift is held by [[Applied Read]], [[Harmony]], and [[Drift]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
+Harmonic Drift is held by [[Applied Read]], [[Harmony]], [[Drift]], and [[Translation Boundary]]. Harmonic coupling and a tonal reference must be available for departure to be readable rather than merely assumed.
 
 ## Pairs
 

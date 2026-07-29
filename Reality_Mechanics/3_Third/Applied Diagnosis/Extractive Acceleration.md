@@ -69,7 +69,7 @@ status: stable
 
 The applied diagnosis of acceleration produced by converting long-order Earth carrying into short-order resolution.
 
-Extractive Acceleration is held by [[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], and [[Source Drift]]. The long-order carrier, the fast-order resolution, the supportable pace, and the scale transition must all be readable before acceleration can be diagnosed as extractive rather than treated as neutral speed.
+Extractive Acceleration is held by [[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], [[Source Drift]], and [[Translation Boundary]]. The long-order carrier, the fast-order resolution, the supportable pace, and the scale transition must all be readable before acceleration can be diagnosed as extractive rather than treated as neutral speed.
 
 Earth carries long-order sequence: geological formation, ecological renewal, stored energy, soils, water cycles, inherited trust, bodies, attention, and repair conditions. Extractive systems draw those slow orders into fast activity. The fast order then appears efficient, productive, or inevitable while the slower carrier is treated as background.
 
@@ -85,7 +85,7 @@ Extractive Acceleration places the applied diagnosis of acceleration produced by
 
 ## Holds
 
-Extractive Acceleration is held by [[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], and [[Source Drift]]. The long-order carrier, the fast-order resolution, the supportable pace, and the scale transition must all be readable before acceleration can be diagnosed as extractive rather than treated as neutral speed.
+Extractive Acceleration is held by [[Applied Read]], [[Diagnosis]], [[Earth Carrying]], [[Acceleration]], [[Pace]], [[Resolution]], [[Carrying]], [[Scale]], [[Source Drift]], and [[Translation Boundary]]. The long-order carrier, the fast-order resolution, the supportable pace, and the scale transition must all be readable before acceleration can be diagnosed as extractive rather than treated as neutral speed.
 
 ## Pairs
 
