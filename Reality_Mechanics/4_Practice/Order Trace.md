@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: term
 ai_role: practice

@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: second
 kind: class
 ai_role: class

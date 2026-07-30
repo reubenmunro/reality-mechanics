@@ -1,5 +1,4 @@
 ---
-grounded: true
 register: practice
 kind: theory
 ai_role: theory

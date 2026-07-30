@@ -1,5 +1,4 @@
 ---
-grounded: true
 register: foundation
 kind: principle
 ai_role: practice
@@ -69,7 +68,6 @@ atlas_schema:
   identity_field: condition_key
   required_fields:
     - title
-    - grounded
     - condition_key
     - kind
     - status

@@ -35,7 +35,7 @@ function filesUnder(root) {
 }
 
 test("Canonical Graph carries only the validated Stage 1C source", () => {
-  assert.equal(graph.sourceHash, "sha256:dafd1134cfd21cb5a33d91f4e0f06200e5c5bddd353869a3d4a6e1fd1ca931fa");
+  assert.equal(graph.sourceHash, "sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655");
   assert.equal(Object.keys(graph.entries).length, 493);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 444);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 49);
@@ -48,6 +48,7 @@ test("Canonical Graph carries only the validated Stage 1C source", () => {
   assert.deepEqual(protocolOwners.map(([id]) => id), ["practice.ai-participation"]);
 
   const schema = schemaOwners[0][1].atlasSchema;
+  assert.equal(schema.requiredFields.includes("grounded"), false);
   assert.deepEqual(Object.keys(schema.relations), ["needs", "holds", "pairs", "traces", "nests", "reads", "carries"]);
   assert.deepEqual(schema.placement.orderValues, ["ground", "first", "second", "third", "higher"]);
   assert.deepEqual(schema.placement.registerValues, ["foundation", "practice"]);
@@ -66,6 +67,11 @@ test("Canonical Graph carries only the validated Stage 1C source", () => {
       assert.ok(Array.isArray(entry.conditions[relation].targets), `${id}:${relation}`);
       for (const target of entry.conditions[relation].targets) assert.ok(graph.entries[target], `${id}:${relation}:${target}`);
     }
+  }
+
+  for (const path of filesUnder(atlasRoot)) {
+    if (!path.endsWith(".md")) continue;
+    assert.doesNotMatch(readFileSync(join(atlasRoot, path), "utf8"), /^grounded:/m, path);
   }
 });
 
@@ -104,6 +110,10 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   const result = spawnSync("sqlite3", [db, query], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
   assert.deepEqual(result.stdout.trim().split("\n"), ["493", "444", "49", "3", graph.sourceHash]);
+
+  const columnsResult = spawnSync("sqlite3", ["-json", db, "pragma table_info(entries);"], { encoding: "utf8" });
+  assert.equal(columnsResult.status, 0, columnsResult.stderr);
+  assert.equal(JSON.parse(columnsResult.stdout).some(({ name }) => name === "grounded"), false);
 
   const rowsResult = spawnSync("sqlite3", ["-json", db,
     "select id,entry_order,entry_register,determination,structure,conditions from entries order by id;"],

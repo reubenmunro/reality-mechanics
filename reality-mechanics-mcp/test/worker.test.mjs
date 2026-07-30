@@ -14,7 +14,6 @@ const entry = (id, title, { order = null, register = null, structure = emptyStru
   source_path: `Reality_Mechanics/${title}.md`,
   public_url: `https://realitymechanics.nz/field#${id}`,
   status: "stable",
-  grounded: 1,
   entry_order: order,
   entry_register: register,
   determination: "pd.v3.pre-provenance-baseline",
@@ -103,6 +102,10 @@ assert.match(init.result.instructions, /generated from the canonical Atlas/);
 const listed = await rpc("tools/list");
 const tools = listed.result.tools.map((tool) => tool.name);
 assert.ok(["begin_atlas_session", "get_manifest", "get_ai_entry_protocol", "get_structure_contract", "get_entry", "get_related"].every((name) => tools.includes(name)));
+for (const name of ["search_atlas", "list_entries"]) {
+  const tool = listed.result.tools.find((candidate) => candidate.name === name);
+  assert.equal("grounded" in tool.inputSchema.properties, false, name);
+}
 assert.ok(!tools.includes("get_public_surfaces"));
 assert.ok(!tools.includes("get_derivation_status"));
 assert.ok(!tools.some((name) => /^(write|ground|update|rebuild|submit)/.test(name)));
@@ -138,6 +141,7 @@ assert.equal(atlas.determination, "pd.v3.pre-provenance-baseline");
 assert.deepEqual(Object.keys(atlas.structure), RELATION_KEYS);
 assert.equal(atlas.structure.carries[0].id, "practice.ai-participation");
 assert.equal("layers" in atlas, false);
+assert.equal("grounded" in atlas, false);
 
 const related = await callTool("get_related", { id: "practice.atlas" });
 assert.deepEqual(Object.keys(related.relations), RELATION_KEYS);

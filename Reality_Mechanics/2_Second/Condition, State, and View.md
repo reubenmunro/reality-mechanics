@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: second
 kind: distinction
 ai_role: distinction

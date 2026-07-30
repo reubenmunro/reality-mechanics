@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: first
 kind: primitive
 ai_role: primitive
