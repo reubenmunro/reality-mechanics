@@ -16,8 +16,8 @@ test("W-001 every document surface carries the two ways in", () => {
   for (const [name, page] of DOC_PAGES) {
     const html = page();
     assert.match(html, /Two ways in/, `${name}: section present`);
-    assert.match(html, /Observe .*Theory .*Proof .*Calculus .*Repository/, `${name}: human path`);
-    assert.match(html, /MCP .*Atlas .*Runtime contracts .*Programme index .*Repository/, `${name}: AI path`);
+    assert.match(html, /Atlas or Observatory .*Theory .*Proof .*Calculus/, `${name}: human path`);
+    assert.match(html, /MCP .*Atlas .*Runtime contracts .*Programme index/, `${name}: AI path`);
   }
 });
 
@@ -36,8 +36,8 @@ test("W-001 evidence ladder names canonical Atlas identity and non-canonical pro
   for (const [name, page] of DOC_PAGES) {
     const html = page();
     assert.match(html, /evidence-ladder/, `${name}: ladder present`);
-    assert.match(html, /tree\/main\/Reality_Mechanics/, `${name}: Atlas link`);
-    assert.match(html, /docs\/reports/, `${name}: reports link`);
+    assert.match(html, /href="\/atlas"/, `${name}: public Atlas link`);
+    assert.match(html, /href="\/provenance"/, `${name}: provenance link`);
     assert.match(html, /sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655/, `${name}: canonical source hash`);
     assert.match(html, /remain non-canonical/, `${name}: proof boundary`);
   }
@@ -55,7 +55,8 @@ test("W-001 document surfaces are keyboard-approachable", () => {
 test("W-001 Observatory orients without weakening the instrument", () => {
   const html = fieldPage();
   assert.match(html, /landing-meta/);
-  assert.match(html, /Every claim retraces to the/);
+  assert.match(html, /Every public surface retraces through one/);
+  assert.match(html, /href="\/provenance"/);
   assert.match(html, /\/proof#ways-in/);
   assert.match(html, /canvas id="field" aria-label="Woven field of Atlas terms/);
   assert.match(html, /id="field-status" role="status"/);

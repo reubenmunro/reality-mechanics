@@ -28,6 +28,12 @@ import {
 import { buildFieldBehaviourTrace, buildTraceIndex } from "./field-behaviour-trace.mjs";
 import { buildOrderTerminalAnnotation, orderTerminalForEntryId } from "./order-terminal.mjs";
 import {
+  atlasEntryPath,
+  atlasPage,
+  landingPage,
+  provenancePage,
+} from "./public-atlas.mjs";
+import {
   buildPairStateFromOps,
   emptyPairState,
   endpointRatioFromFieldState,
@@ -40,7 +46,7 @@ import {
   THREAD_RELATION_KEYS,
   weaveModeForLeg,
 } from "./thread-mechanics.mjs";
-import { atlasSourceViewUrl, observatoryPlaceDisplay } from "./observatory-panel.mjs";
+import { observatoryPlaceDisplay } from "./observatory-panel.mjs";
 import {
   MECHANICS_AMPLIFICATION,
   amplifiedCondensationFocus,
@@ -68,7 +74,6 @@ const HTML_HEADERS = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
 };
 
-const GITHUB_ATLAS_URL = "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics";
 const MAIN_ORIGIN = "https://realitymechanics.nz";
 const ATLAS_LEGACY_HOSTS = new Set([
   "atlas.realitymechanics.nz",
@@ -160,7 +165,7 @@ export function legacyRedirectFor(input) {
       target.search = url.search;
       return target.toString();
     }
-    return GITHUB_ATLAS_URL;
+    return new URL("/atlas", MAIN_ORIGIN).toString();
   }
   return null;
 }
@@ -304,7 +309,7 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
       register: entry.entry_register || null,
       determination: entry.determination,
       place: observatoryPlaceDisplay({ title: entry.title, body: entry.content || "" }),
-      atlasUrl: atlasSourceViewUrl(entry.source_path),
+      atlasUrl: atlasEntryPath(entry.id),
       orderTerminal: orderTerminalMeta,
       orderTerminalAnnotation,
       relations,
@@ -751,6 +756,8 @@ export function fieldPage(options = {}) {
 <canvas id="field" aria-label="Woven field of Atlas terms. Carrying and tracing are drawn as threads; select a place to observe its structure."></canvas>
 <div id="top"><div id="mode">Observatory</div></div>
 <nav id="access-row" aria-label="Reality Mechanics areas">
+  <a href="/">Home</a>
+  <a href="/atlas">Atlas</a>
   <a href="/field" aria-current="page">Observatory</a>
   <a href="https://calibration.realitymechanics.nz/">Pulse</a>
   <a href="/theory">Theory</a>
@@ -764,9 +771,9 @@ export function fieldPage(options = {}) {
   <div class="landing-actions">
     <button type="button" id="landing-observe">Observe the Field</button>
     <button type="button" id="landing-continue" hidden>Continue where I left off</button>
-    <a id="landing-atlas" href="https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics" target="_blank" rel="noopener noreferrer">Browse the Atlas</a>
+    <a id="landing-atlas" href="/atlas">Browse the Atlas</a>
   </div>
-  <p class="landing-meta">Every claim retraces to the <a href="https://github.com/reubenmunro/reality-mechanics" target="_blank" rel="noopener noreferrer">public repository</a>. AI workers enter through the read-only <a href="/proof#ways-in">MCP</a>.</p>
+  <p class="landing-meta">Every public surface retraces through one <a href="/provenance">canonical translation</a>. AI workers enter through the read-only <a href="/proof#ways-in">MCP</a>.</p>
 </section>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false" list="term-suggestions"
@@ -788,7 +795,7 @@ export function fieldPage(options = {}) {
     <div id="sheet-title"></div>
     <div id="sheet-place"></div>
     <div id="sheet-order-terminal" class="sheet-order-terminal" hidden></div>
-    <a id="sheet-atlas-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View Atlas Entry</a>
+    <a id="sheet-atlas-link" href="#" hidden>View Atlas Entry</a>
     <div id="sheet-relations"></div>
     <p id="sheet-empty"></p>
   </div>
@@ -829,7 +836,6 @@ const termSuggestionsEl = document.getElementById('term-suggestions');
 const orderLegendEl = document.getElementById('order-legend');
 const fieldStatusEl = document.getElementById('field-status');
 const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
-const ATLAS_TREE_URL = 'https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics';
 let selectedTermId = null;
 let tapPulseTermId = null;
 let tapPulseStartedAt = 0;
@@ -3899,7 +3905,6 @@ bootstrap();
 // ── Router ────────────────────────────────────────────────────────────────────
 
 const GITHUB_DOC = "https://github.com/reubenmunro/reality-mechanics/blob/main";
-const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
 const MCP_ENDPOINT = "https://mcp.realitymechanics.nz/mcp";
 const PROOF_CANONICAL_SELECTIONS = Object.freeze([
   "first.relation",
@@ -3913,14 +3918,14 @@ for (const id of PROOF_CANONICAL_SELECTIONS) {
 function proofCanonicalResultsHtml() {
   return PROOF_CANONICAL_SELECTIONS.map((id) => {
     const entry = CANONICAL_ENTRY_INDEX[id];
-    const url = `${GITHUB_DOC}/${entry.sourcePath.split("/").map(encodeURIComponent).join("/")}`;
+    const url = atlasEntryPath(id);
     return `<li><a href="${url}">${escapeDocumentHtml(entry.title)}</a> <code>${id}</code><br/>Determination: <code>${escapeDocumentHtml(entry.determination)}</code></li>`;
   }).join("");
 }
 
 // W-001 — shared wayfinding for the document surfaces. Two ways into one
 // record: observing (human) and MCP traversal (AI). Neither is primary; both
-// end in the repository, where the record is canonical.
+// read the same generated canonical translation.
 const WAYS_IN_CSS = `
     .skip-link { position:absolute; left:-999px; top:0; z-index:9; background:#0b1018; color:#d4c5a9; padding:10px 16px; font:500 12px/1 system-ui, sans-serif; letter-spacing:0.08em; }
     .skip-link:focus { left:12px; top:12px; }
@@ -3986,18 +3991,18 @@ function waysInHtml() {
       <div class="ways">
         <div class="way">
           <h3>Observing</h3>
-          <p class="way-path">Observe &rarr; Theory &rarr; Proof &rarr; Calculus &rarr; Repository</p>
-          <p>Begin in the <a href="/field">Observatory</a> and watch the structure before reading about it. <a href="/theory">Theory</a> explains why the discipline works, <a href="/proof">Proof</a> retraces the evidence, and <a href="/calculus">Calculus</a> shows what is derived &mdash; and what is not.</p>
+          <p class="way-path">Atlas or Observatory &rarr; Theory &rarr; Proof &rarr; Calculus</p>
+          <p>Begin in the <a href="/atlas">Atlas</a> to read the declared structure, or in the <a href="/field">Observatory</a> to watch that structure before reading about it. <a href="/theory">Theory</a> explains why the discipline works, <a href="/proof">Proof</a> retraces the evidence, and <a href="/calculus">Calculus</a> shows what is derived &mdash; and what is not.</p>
         </div>
         <div class="way">
           <h3>AI participation</h3>
-          <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index &rarr; Repository</p>
+          <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index</p>
           <p>The MCP is the read-only doorway for AI workers: the same canonical structure, served as traversal tools instead of pages. It exists so AI participants read structure rather than infer it. No write tools are exposed.</p>
           <p>Begin with <code>begin_atlas_session</code>, then use <code>get_entry</code> and <code>get_related</code>. The protocol and entry structure are generated from the Atlas.</p>
           <p class="endpoint"><code>${MCP_ENDPOINT}</code></p>
         </div>
       </div>
-      <p class="evidence-ladder">Canonical source: <a href="${GITHUB_REPO_URL}/tree/main/Reality_Mechanics">Atlas</a>. This participation was translated from <code>${CANONICAL_SOURCE_HASH}</code>. <a href="${GITHUB_DOC}/docs/reports">Proof records</a> and maintained interfaces remain non-canonical.</p>
+      <p class="evidence-ladder">Canonical source identity: <code>${CANONICAL_SOURCE_HASH}</code>. Read the <a href="/atlas">public Atlas</a> or inspect its <a href="/provenance">publication provenance</a>. Proof records and maintained interfaces remain non-canonical.</p>
     </section>
 `;
 }
@@ -4028,7 +4033,7 @@ function canonicalMarkdownHtml(markdown) {
 }
 
 function theoryEntryHtml() {
-  const sourceUrl = `${GITHUB_DOC}/${PUBLIC_THEORY_ENTRY.sourcePath.split("/").map(encodeURIComponent).join("/")}`;
+  const sourceUrl = atlasEntryPath("practice.reality-mechanics-theory");
   const sections = PUBLIC_THEORY_ENTRY.content.sections.map((section) => `
     <section>
       <h2>${escapeDocumentHtml(section.heading)}</h2>
@@ -4038,7 +4043,7 @@ function theoryEntryHtml() {
     <h1>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.title)}</h1>
     <div class="lede">${canonicalMarkdownHtml(PUBLIC_THEORY_ENTRY.content.lead)}</div>
     ${sections}
-    <p class="canonical-identity">Generated from <a href="${sourceUrl}">${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.sourcePath)}</a><br/>Determination: <code>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.determination)}</code><br/>Source: <code>${CANONICAL_SOURCE_HASH}</code></p>`;
+    <p class="canonical-identity">Generated from <a href="${sourceUrl}">the canonical Atlas entry</a><br/>Determination: <code>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.determination)}</code><br/>Source: <code>${CANONICAL_SOURCE_HASH}</code></p>`;
 }
 
 export function theoryPage() {
@@ -4091,6 +4096,8 @@ export function theoryPage() {
   <header>
     <div class="brand">Theory</div>
     <nav aria-label="Reality Mechanics">
+      <a href="/">Home</a>
+      <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
       <a href="/theory" aria-current="page">Theory</a>
@@ -4211,6 +4218,8 @@ export function calculusPage() {
   <header>
     <div class="brand">Calculus</div>
     <nav aria-label="Reality Mechanics areas">
+      <a href="/">Home</a>
+      <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
       <a href="/theory">Theory</a>
@@ -4331,6 +4340,8 @@ export function submissionPage() {
   <header>
     <div class="brand">Proof</div>
     <nav aria-label="Reality Mechanics areas">
+      <a href="/">Home</a>
+      <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
       <a href="/theory">Theory</a>
@@ -4346,7 +4357,7 @@ export function submissionPage() {
     <p>Every claim on this site can be walked back to its source. The pathway has four steps:</p>
     <div class="pathway">
       <div class="step"><span class="step-n">1</span><b>Claim</b>A preserved statement, explicitly separated from canonical Atlas identity.</div>
-      <a class="step" href="${GITHUB_DOC}/Reality_Mechanics"><span class="step-n">2</span><b>Source</b>The Atlas term or repository document the claim reads from. GitHub is canonical.</a>
+      <a class="step" href="/atlas"><span class="step-n">2</span><b>Source</b>The canonical Atlas entry or repository document the claim reads from.</a>
       <a class="step" href="${GITHUB_DOC}/docs/stewardship/STEWARDSHIP_V1.md"><span class="step-n">3</span><b>Method</b>The stewardship tests or commission that examined it. The burden of proof sits on every proposed change, never on existing structure.</a>
       <a class="step" href="${GITHUB_DOC}/docs/reports"><span class="step-n">4</span><b>Record</b>The evidence report that preserved the examination, in <code>docs/reports/</code>.</a>
     </div>
@@ -4431,8 +4442,6 @@ async function handleRequest(request, env) {
   const legacyTarget = legacyRedirectFor(url);
   if (legacyTarget) return Response.redirect(legacyTarget, 308);
 
-  if (pathname === "/atlas") return Response.redirect(GITHUB_ATLAS_URL, 308);
-
   if (pathname === "/robots.txt")
     return new Response("User-agent: *\nAllow: /\n", { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 
@@ -4441,6 +4450,7 @@ async function handleRequest(request, env) {
 
   const carriesCurrentTranslation = isGeneratedAssetPath(pathname)
     || pathname === "/" || pathname === "" || pathname === "/field"
+    || pathname === "/atlas" || pathname.startsWith("/atlas/") || pathname === "/provenance"
     || pathname === "/theory" || pathname === "/calculus"
     || pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001"
     || pathname.startsWith("/api/field/");
@@ -4466,7 +4476,32 @@ async function handleRequest(request, env) {
   }
 
   if (pathname === "/" || pathname === "")
-    return withTranslationIdentity(new Response(fieldPage(), { headers: HTML_HEADERS }));
+    return withTranslationIdentity(new Response(landingPage(), { headers: HTML_HEADERS }));
+
+  if (pathname === "/atlas")
+    return withTranslationIdentity(new Response(atlasPage(), { headers: HTML_HEADERS }));
+
+  if (pathname.startsWith("/atlas/")) {
+    let entryId = "";
+    try {
+      entryId = decodeURIComponent(pathname.slice("/atlas/".length));
+    } catch {
+      return withTranslationIdentity(new Response("Invalid Atlas entry identifier.", {
+        status: 400,
+        headers: { "Content-Type": "text/plain; charset=utf-8" },
+      }));
+    }
+    if (!CANONICAL_ENTRY_INDEX[entryId]) {
+      return withTranslationIdentity(new Response("Atlas entry not found.", {
+        status: 404,
+        headers: { "Content-Type": "text/plain; charset=utf-8" },
+      }));
+    }
+    return withTranslationIdentity(new Response(atlasPage(entryId), { headers: HTML_HEADERS }));
+  }
+
+  if (pathname === "/provenance")
+    return withTranslationIdentity(new Response(provenancePage(), { headers: HTML_HEADERS }));
 
   if (pathname === "/field")
     return withTranslationIdentity(new Response(fieldPage(), { headers: HTML_HEADERS }));
@@ -4480,7 +4515,7 @@ async function handleRequest(request, env) {
   if (pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001")
     return withTranslationIdentity(new Response(submissionPage(), { headers: HTML_HEADERS }));
 
-  return new Response("Reality Mechanics exposes Observatory, Pulse, Theory, Proof, and Calculus only.", {
+  return new Response("Reality Mechanics exposes Home, Atlas, Observatory, Pulse, Theory, Proof, and Calculus only.", {
     status: 410,
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
