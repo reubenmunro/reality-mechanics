@@ -149,7 +149,7 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
   const carry = payload.states.find((state) => state.id === "first.carry");
   assert.deepEqual(carry.relations, { needs: [], holds: [], pairs: [], traces: [], nests: [], reads: [], carries: [] });
   assert.equal(carry.place, "Directional availability within one relation.");
-  assert.match(carry.atlasUrl, /github\.com\/reubenmunro\/reality-mechanics\/blob\/main\//);
+  assert.equal(carry.atlasUrl, "/atlas/first.carry");
   assert.equal("excerpt" in carry, false);
   assert.equal(carry.mass.carriers, 2, "mass counts holds/traces in-degree only");
   assert.equal(carry.ratioMode.mode, "continuous");
@@ -214,7 +214,7 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
   assert.match(html, /href="\/proof">Proof/);
   assert.match(html, /href="\/calculus">Calculus/);
-  assert.doesNotMatch(html, /href="\/atlas"/);
+  assert.match(html, /href="\/atlas">Atlas/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
   assert.match(html, /id="sheet-place"/);
@@ -253,7 +253,7 @@ test("D-021.2 observatory landing orients before observation", () => {
   assert.match(html, /Observe how declared carrying and tracing weave into thread, fabric, and web\./);
   assert.match(html, /id="landing-observe">Observe the Field/);
   assert.match(html, /id="landing-continue" hidden>Continue where I left off/);
-  assert.match(html, /id="landing-atlas" href="https:\/\/github\.com\/reubenmunro\/reality-mechanics\/tree\/main\/Reality_Mechanics"/);
+  assert.match(html, /id="landing-atlas" href="\/atlas"/);
   assert.match(html, /Browse the Atlas/);
   assert.match(html, /id="sheet-neutral"/);
   assert.match(html, /id="sheet-neutral-title">Observatory/);
@@ -306,7 +306,7 @@ test("/theory serves the complete generated canonical Theory entry", async () =>
 
   assert.equal(res.status, 200);
   assert.match(html, /<h1>The Working Postulate<\/h1>/);
-  assert.match(html, /Theory\.md/);
+  assert.match(html, /\/atlas\/practice\.reality-mechanics-theory/);
   assert.match(html, /Failure Tests/);
   assert.match(html, /Determination:/);
   assert.match(html, /sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655/);
@@ -357,13 +357,15 @@ test("/submission serves the public Submission 001 page", async () => {
   assert.doesNotMatch(html, /structural term test/i);
 });
 
-test("D-021.5 public structure is Observatory Pulse Theory Proof Calculus", () => {
+test("public structure adds Home and Atlas without removing the five instruments", () => {
   const fieldHtml = fieldPage();
   const proofHtml = submissionPage();
   const theoryHtml = theoryPage();
   const calculusHtml = calculusPage();
 
   for (const html of [fieldHtml, proofHtml, theoryHtml, calculusHtml]) {
+    assert.match(html, />Home</);
+    assert.match(html, />Atlas</);
     assert.match(html, />Observatory</);
     assert.match(html, />Pulse</);
     assert.match(html, />Theory</);
@@ -371,7 +373,7 @@ test("D-021.5 public structure is Observatory Pulse Theory Proof Calculus", () =
     assert.match(html, />Calculus</);
     assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
   }
-  assert.doesNotMatch(fieldHtml, /href="\/atlas"/);
+  assert.match(fieldHtml, /href="\/atlas"/);
   assert.doesNotMatch(fieldHtml, /href="\/garden"/);
 });
 
@@ -384,10 +386,13 @@ test("submissionPage separates generated Atlas records from candidate and unreso
   assert.match(html, /does not determine Atlas structure/);
 });
 
-test("/atlas redirects to the canonical GitHub Atlas", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
-  assert.equal(res.status, 308);
-  assert.equal(res.headers.get("location"), "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics");
+test("/atlas serves the generated public Atlas", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), CURRENT_ENV);
+  const html = await res.text();
+  assert.equal(res.status, 200);
+  assert.match(html, /Read and traverse the canonical Reality Mechanics Atlas/);
+  assert.match(html, /participation\/search-index\.json/);
+  assert.match(html, /ai\/current\/entries/);
 });
 
 test("/member is a compatibility doorway to Calibration", async () => {
@@ -615,10 +620,13 @@ test("D-024 five public surfaces reachable from every page", () => {
   }
 });
 
-test("D-024 Atlas route carries canonical source redirect", async () => {
-  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), {});
-  assert.equal(res.status, 308);
-  assert.match(res.headers.get("location"), /github\.com\/reubenmunro\/reality-mechanics\/tree\/main\/Reality_Mechanics/);
+test("D-024 Atlas route carries the canonical translation identity", async () => {
+  const res = await worker.fetch(new Request("https://realitymechanics.nz/atlas"), CURRENT_ENV);
+  assert.equal(res.status, 200);
+  assert.equal(
+    res.headers.get("x-rm-canonical-source-hash"),
+    "sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655",
+  );
 });
 
 test("Stage 2 separates generated structure from maintained Calculus evidence", () => {

@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  atlasSourceViewUrl,
   observatoryPlaceDisplay,
   openingParagraphsBeforeTemplate,
   stripDuplicatedTitle,
@@ -115,11 +114,4 @@ Passage is held by [[Root Order]].`;
     "through Relation and held connection before hold prose.",
   );
   assert.doesNotMatch(observatoryPlaceDisplay({ title: "Passage", body }), /\[\[/);
-});
-
-test("atlasSourceViewUrl points to GitHub blob for source path", () => {
-  assert.equal(
-    atlasSourceViewUrl("Reality_Mechanics/3_Third/Field Relationships.md"),
-    "https://github.com/reubenmunro/reality-mechanics/blob/main/Reality_Mechanics/3_Third/Field%20Relationships.md",
-  );
 });

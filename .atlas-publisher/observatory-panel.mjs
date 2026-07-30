@@ -1,18 +1,3 @@
-const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
-const GITHUB_BRANCH = "main";
-
-export function encodeGithubPath(sourcePath) {
-  return String(sourcePath || "")
-    .split("/")
-    .map((segment) => encodeURIComponent(segment))
-    .join("/");
-}
-
-export function atlasSourceViewUrl(sourcePath) {
-  if (!sourcePath) return null;
-  return `${GITHUB_REPO_URL}/blob/${GITHUB_BRANCH}/${encodeGithubPath(sourcePath)}`;
-}
-
 export function openingParagraphsBeforeTemplate(body = "") {
   const preTemplate = String(body).split(/^##\s+/m)[0] || "";
   const paragraphs = [];

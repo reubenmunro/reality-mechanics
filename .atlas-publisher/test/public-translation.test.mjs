@@ -140,7 +140,7 @@ test("Main Worker serves every generated route with matching Translation identit
 });
 
 test("every Atlas-bearing HTML route exposes the same release identity", async () => {
-  for (const path of ["/", "/field", "/theory", "/proof", "/calculus"]) {
+  for (const path of ["/", "/atlas", "/atlas/first.carry", "/provenance", "/field", "/theory", "/proof", "/calculus"]) {
     const response = await worker.fetch(new Request(`https://realitymechanics.nz${path}`), workerEnv());
     assert.equal(response.status, 200, path);
     assert.equal(response.headers.get("x-rm-canonical-source-hash"), CANONICAL_SOURCE_HASH, path);
@@ -204,7 +204,7 @@ test("legacy custom and default Pages hosts map to the approved destinations", (
   );
   assert.equal(
     legacyRedirectFor("https://atlas.realitymechanics.nz/relation"),
-    "https://github.com/reubenmunro/reality-mechanics/tree/main/Reality_Mechanics",
+    "https://realitymechanics.nz/atlas",
   );
 });
 
