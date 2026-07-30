@@ -71,7 +71,7 @@ L6  appearance
 - That prose overrides structure when they disagree.
 - That D1 is editable source (`sourceRule`: GitHub is canonical).
 
-**API / modules:** canonical Atlas source; generated D1 `entries`; MCP `get_entry`, `get_related`, `open_source_for_entry`; generated Canonical Graph schema.
+**API / modules:** canonical Atlas source; generated D1 `entries`; MCP `get_entry`, `trace_relations`, `open_source_for_entry`; generated Canonical Graph schema.
 
 ---
 
@@ -269,7 +269,7 @@ Every promoted Field behaviour must declare:
 
 **Retrace API:** `GET /api/field/behaviour-trace?id={term}`  
 **States API:** `GET /api/field/states` → L0–L3 per term  
-**MCP retrace:** `get_entry` → L0; `get_derivation_status` → Calculus chain (partial stack)
+**MCP retrace:** `get_entry` → L0; `trace_relations` → explicit declared paths; `get_structure_contract` → generated relation schema.
 
 Server-side trace **defaults** `runtimeOverlay` to `{}`. Client **merges** `collectRuntimeOverlay()` before display.
 
@@ -281,7 +281,7 @@ Server-side trace **defaults** `runtimeOverlay` to `{}`. Client **merges** `coll
 |---|---|---|
 | **GitHub / Atlas** | L0 | — |
 | **D1** | L0 generated read model | With editable source |
-| **MCP** | L0 read traversal; programme manifest | `get_field_terms` = Atlas **domain** field, not L6 canvas |
+| **MCP** | L0 read traversal; programme manifest | `find_entries.scope` = repository-carried field/domain scope, not L6 canvas |
 | **`/api/field/states`** | L0–L3 | With L6 appearance |
 | **`/api/field/behaviour-trace`** | L0–L4 + optional L5 | `atlasSourceSummary` vs `runtimeOverlay` |
 | **Observatory canvas** | L4–L6 (+ cross-cut frame) | Invariant substrate vs paint |

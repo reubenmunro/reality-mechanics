@@ -77,7 +77,7 @@ export async function verifyRemoteD1({ database, generatedRoot, repoRoot, wrangl
 
   const datasets = {
     entries: "SELECT * FROM entries ORDER BY id;",
-    fts: "SELECT id,title,plain_text FROM entries_fts ORDER BY id;",
+    fts: "SELECT id,title,aliases,plain_text FROM entries_fts ORDER BY id;",
     metadata: "SELECT key,value FROM atlas_metadata ORDER BY key;",
     determinations: "SELECT * FROM atlas_determinations ORDER BY id;",
     protocol: "SELECT protocol,ordinal,entry_id FROM atlas_protocol_members ORDER BY protocol,ordinal;",

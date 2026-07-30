@@ -28,6 +28,8 @@ test("W-001 MCP orientation: what, why, read-only, how to begin, endpoint", () =
     assert.match(html, /read structure rather than infer it/, `${name}: why`);
     assert.match(html, /No write tools are exposed/, `${name}: read-only`);
     assert.match(html, /begin_atlas_session/, `${name}: how to begin`);
+    assert.match(html, /find_entries/, `${name}: neutral discovery`);
+    assert.match(html, /trace_relations/, `${name}: declared traversal`);
     assert.match(html, /https:\/\/mcp\.realitymechanics\.nz\/mcp/, `${name}: endpoint`);
   }
 });

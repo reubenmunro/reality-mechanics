@@ -3998,7 +3998,7 @@ function waysInHtml() {
           <h3>AI participation</h3>
           <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index</p>
           <p>The MCP is the read-only doorway for AI workers: the same canonical structure, served as traversal tools instead of pages. It exists so AI participants read structure rather than infer it. No write tools are exposed.</p>
-          <p>Begin with <code>begin_atlas_session</code>, then use <code>get_entry</code> and <code>get_related</code>. The protocol and entry structure are generated from the Atlas.</p>
+          <p>Begin with <code>begin_atlas_session</code>, locate entry points with <code>find_entries</code>, read with <code>get_entry</code>, and follow only declared paths with <code>trace_relations</code>. The protocol and entry structure are generated from the Atlas.</p>
           <p class="endpoint"><code>${MCP_ENDPOINT}</code></p>
         </div>
       </div>

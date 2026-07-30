@@ -116,7 +116,7 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   assert.equal(JSON.parse(columnsResult.stdout).some(({ name }) => name === "grounded"), false);
 
   const rowsResult = spawnSync("sqlite3", ["-json", db,
-    "select id,entry_order,entry_register,determination,structure,conditions from entries order by id;"],
+    "select id,public_url,entry_order,entry_register,determination,structure,conditions from entries order by id;"],
   { encoding: "utf8" });
   assert.equal(rowsResult.status, 0, rowsResult.stderr);
   const rows = JSON.parse(rowsResult.stdout);
@@ -124,6 +124,7 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   for (const row of rows) {
     const entry = graph.entries[row.id];
     assert.ok(entry, row.id);
+    assert.equal(row.public_url, `https://realitymechanics.nz/atlas/${row.id}`, `${row.id}:public_url`);
     assert.equal(row.entry_order ?? null, entry.order ?? null, `${row.id}:order`);
     assert.equal(row.entry_register ?? null, entry.register ?? null, `${row.id}:register`);
     assert.equal(row.determination, entry.determination, `${row.id}:determination`);
@@ -134,6 +135,18 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
       `${row.id}:structure`,
     );
   }
+
+  const aliasSearch = spawnSync("sqlite3", ["-json", db,
+    "select id from entries_fts where entries_fts match 'proportion';"],
+  { encoding: "utf8" });
+  assert.equal(aliasSearch.status, 0, aliasSearch.stderr);
+  assert.ok(JSON.parse(aliasSearch.stdout).some(({ id }) => id === "first.ratio"));
+
+  const porterSearch = spawnSync("sqlite3", ["-json", db,
+    "select id from entries_fts where entries_fts match 'carried';"],
+  { encoding: "utf8" });
+  assert.equal(porterSearch.status, 0, porterSearch.stderr);
+  assert.ok(JSON.parse(porterSearch.stdout).some(({ id }) => id === "first.carry"));
   rmSync(root, { recursive: true, force: true });
 });
 

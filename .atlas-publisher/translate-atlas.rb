@@ -454,11 +454,9 @@ class CanonicalTranslation
         headings TEXT NOT NULL,
         determination TEXT NOT NULL,
         word_count INTEGER NOT NULL,
-        created TEXT,
-        updated TEXT,
         CHECK ((entry_order IS NULL) <> (entry_register IS NULL))
       );
-      CREATE VIRTUAL TABLE entries_fts USING fts5(id, title, plain_text);
+      CREATE VIRTUAL TABLE entries_fts USING fts5(id, title, aliases, plain_text, tokenize='porter unicode61');
       CREATE TABLE atlas_metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL);
       CREATE TABLE atlas_determinations (
         id TEXT PRIMARY KEY,
@@ -511,7 +509,7 @@ class CanonicalTranslation
         entry.fetch("title"),
         slugify(entry.fetch("title")),
         entry.fetch("sourcePath"),
-        "https://realitymechanics.nz/field##{id}",
+        "https://realitymechanics.nz/atlas/#{id}",
         body,
         text,
         text.split(/\s+/).first(28).join(" "),
@@ -528,12 +526,10 @@ class CanonicalTranslation
         compact_json(headings),
         entry.fetch("determination"),
         text.split(/\s+/).reject(&:empty?).length,
-        nil,
-        nil,
       ]
-      columns = %w[id title slug source_path public_url content plain_text excerpt status entry_order entry_register entry_type branch aliases tags related structure conditions headings determination word_count created updated]
+      columns = %w[id title slug source_path public_url content plain_text excerpt status entry_order entry_register entry_type branch aliases tags related structure conditions headings determination word_count]
       lines << "INSERT INTO entries (#{columns.join(",")}) VALUES (#{values.map { |value| sql(value) }.join(",")});"
-      lines << "INSERT INTO entries_fts (id,title,plain_text) VALUES (#{sql(id)},#{sql(entry.fetch("title"))},#{sql(text)});"
+      lines << "INSERT INTO entries_fts (id,title,aliases,plain_text) VALUES (#{sql(id)},#{sql(entry.fetch("title"))},#{sql(entry.fetch("aliases", []).join(" "))},#{sql(text)});"
     end
 
     declaration(graph, "determinationRecords").each do |id, record|
