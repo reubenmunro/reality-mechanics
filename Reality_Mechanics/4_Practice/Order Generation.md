@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: map
 ai_role: practice

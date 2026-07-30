@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: state
 ai_role: practice

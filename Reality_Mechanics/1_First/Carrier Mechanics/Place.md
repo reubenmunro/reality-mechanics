@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: first
 id: first.place
 kind: operation

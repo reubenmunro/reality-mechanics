@@ -52,7 +52,6 @@ function parseEntry(row) {
     structure: row.structure ? JSON.parse(row.structure) : null,
     conditions: row.conditions ? JSON.parse(row.conditions) : null,
     headings: JSON.parse(row.headings || "[]"),
-    grounded: row.grounded === 1,
   };
 }
 
@@ -198,7 +197,6 @@ function sessionEntry(row) {
     title: entry.title,
     publicUrl: entry.public_url,
     status: entry.status,
-    grounded: entry.grounded,
     order: entry.entry_order,
     register: entry.entry_register,
     determination: entry.determination,
@@ -238,7 +236,7 @@ const TOOLS = [
     inputSchema: { type: "object", additionalProperties: false, required: ["query"], properties: {
       query: { type: "string" }, order: strOrArr,
       register: strOrArr,
-      grounded: { type: "boolean" }, limit: { type: "integer", minimum: 1, maximum: SEARCH_MAX } } } },
+      limit: { type: "integer", minimum: 1, maximum: SEARCH_MAX } } } },
 
   { name: "get_entry",
     description: "Return one Atlas entry with its dependency `structure` (holds/traces/carries/pairs/nests) as the primary field. Relation-first: trace the structure rather than reading the term as a definition.",
@@ -268,7 +266,7 @@ const TOOLS = [
   { name: "list_entries",
     description: "List entries by metadata filters. Supports pagination via offset.",
     inputSchema: { type: "object", additionalProperties: false, properties: {
-      order: strOrArr, register: strOrArr, grounded: { type: "boolean" },
+      order: strOrArr, register: strOrArr,
       limit: { type: "integer", minimum: 1, maximum: LIST_MAX },
       offset: { type: "integer", minimum: 0 } } } },
 
@@ -380,16 +378,11 @@ async function callTool(name, args, env) {
       clauses.push(`e.entry_register IN (${registers.map(() => "?").join(",")})`);
       params.push(...registers);
     }
-    if (args.grounded !== undefined) {
-      clauses.push("e.grounded = ?");
-      params.push(args.grounded ? 1 : 0);
-    }
-
     const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
     params.push(limit);
 
     const rows = await dbAll(env,
-      `SELECT e.id, e.title, e.excerpt, e.status, e.grounded,
+      `SELECT e.id, e.title, e.excerpt, e.status,
               e.entry_order, e.entry_register, e.determination,
               e.entry_type, e.source_path, e.public_url, e.updated
        FROM entries e ${where} LIMIT ?`, params);
@@ -398,7 +391,7 @@ async function callTool(name, args, env) {
       query, count: rows.length,
       results: rows.map(r => ({
         id: r.id, title: r.title, excerpt: r.excerpt,
-        status: r.status, grounded: r.grounded === 1,
+        status: r.status,
         order: r.entry_order, register: r.entry_register,
         determination: r.determination,
         type: r.entry_type,
@@ -438,7 +431,7 @@ async function callTool(name, args, env) {
       id: e.id, title: e.title, publicUrl: e.public_url,
       sourcePath: e.source_path,
       source: githubSourceLinks(e.source_path),
-      status: e.status, grounded: e.grounded,
+      status: e.status,
       order: e.entry_order, register: e.entry_register,
       determination: e.determination,
       type: e.entry_type,
@@ -615,15 +608,10 @@ async function callTool(name, args, env) {
       clauses.push(`entry_register IN (${registers.map(() => "?").join(",")})`);
       params.push(...registers);
     }
-    if (args.grounded !== undefined) {
-      clauses.push("grounded = ?");
-      params.push(args.grounded ? 1 : 0);
-    }
-
     const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
     const countRow = await dbFirst(env, `SELECT COUNT(*) as n FROM entries ${where}`, params);
     const rows = await dbAll(env,
-      `SELECT id, title, status, grounded, entry_order, entry_register, determination, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
+      `SELECT id, title, status, entry_order, entry_register, determination, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
       [...params, limit, offset]);
 
     return {
@@ -631,7 +619,6 @@ async function callTool(name, args, env) {
       hasMore: offset + rows.length < (countRow?.n || 0),
       entries: rows.map(r => ({
         id: r.id, title: r.title, status: r.status,
-        grounded: r.grounded === 1,
         order: r.entry_order, register: r.entry_register,
         determination: r.determination,
         publicUrl: r.public_url,
@@ -645,11 +632,11 @@ async function callTool(name, args, env) {
     const since = String(args.since || "");
     const limit = Math.min(Math.max(parseInt(args.limit) || LIST_DEFAULT, 1), LIST_MAX);
     const rows = await dbAll(env,
-      "SELECT id, title, updated, public_url, grounded FROM entries WHERE updated > ? ORDER BY updated DESC LIMIT ?",
+      "SELECT id, title, updated, public_url FROM entries WHERE updated > ? ORDER BY updated DESC LIMIT ?",
       [since, limit]);
     return {
       count: rows.length,
-      entries: rows.map(r => ({ id: r.id, title: r.title, updated: r.updated, publicUrl: r.public_url, grounded: r.grounded === 1 })),
+      entries: rows.map(r => ({ id: r.id, title: r.title, updated: r.updated, publicUrl: r.public_url })),
     };
   }
 
@@ -667,7 +654,7 @@ async function callTool(name, args, env) {
       [pattern1, pattern2]);
 
     const rows = await dbAll(env,
-      `SELECT id, title, entry_order, entry_type, grounded, public_url, source_path, structure
+      `SELECT id, title, entry_order, entry_type, public_url, source_path, structure
        FROM entries WHERE (source_path LIKE ? OR source_path LIKE ?) ORDER BY entry_order, title LIMIT ?`,
       [pattern1, pattern2, limit]);
 
@@ -686,7 +673,6 @@ async function callTool(name, args, env) {
         const struct = r.structure ? JSON.parse(r.structure) : null;
         return {
           id: r.id, title: r.title, order: r.entry_order, type: r.entry_type,
-          grounded: r.grounded === 1,
           publicUrl: r.public_url, sourcePath: r.source_path,
           upstream: struct ? { holds: (struct.holds || []), traces: (struct.traces || []) } : null,
         };

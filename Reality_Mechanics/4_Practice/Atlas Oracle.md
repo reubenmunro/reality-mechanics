@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: instrument
 ai_role: operation

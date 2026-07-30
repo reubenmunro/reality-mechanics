@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: ground
 kind: class
 ai_role: class

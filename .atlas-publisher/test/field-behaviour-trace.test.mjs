@@ -164,7 +164,7 @@ test("/api/field/behaviour-trace returns trace for known focus id", async () => 
           bind(...params) { this.params = params; return this; },
           async all() {
             if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-              { key: "source_hash", value: "sha256:dafd1134cfd21cb5a33d91f4e0f06200e5c5bddd353869a3d4a6e1fd1ca931fa" },
+              { key: "source_hash", value: "sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655" },
               { key: "entry_count", value: "493" },
             ] };
             if (/FROM entries\b/.test(sql)) return { results: entries };
@@ -205,7 +205,7 @@ test("/api/field/behaviour-trace returns 404 for unknown focus", async () => {
           bind(...params) { this.params = params; return this; },
           async all() {
             if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-              { key: "source_hash", value: "sha256:dafd1134cfd21cb5a33d91f4e0f06200e5c5bddd353869a3d4a6e1fd1ca931fa" },
+              { key: "source_hash", value: "sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655" },
               { key: "entry_count", value: "493" },
             ] };
             if (/FROM entries\b/.test(sql)) return { results: [] };

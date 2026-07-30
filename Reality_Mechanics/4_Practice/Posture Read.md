@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: read
 ai_role: theory

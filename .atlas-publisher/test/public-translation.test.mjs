@@ -81,9 +81,9 @@ test("public bundle contains only the approved 493-entry generated participation
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   const index = JSON.parse(readFileSync(join(publicRoot, "ai", "current", "index.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:f029925ddbffde2c46411e59c831621433a92eb0b533213e6811fdf620d0618c");
+  assert.equal(manifest.canonicalGraphHash, "sha256:1c69dbba6ea009fa23d26278d0d1521c966d79aefe5e04b4e85362c26437311e");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
-  assert.equal(manifest.translationHash, "sha256:dcd4b1ff7c445e7b64cbf59aec654ff734f8ebace8fb59ed493ea01713cbc39c");
+  assert.equal(manifest.translationHash, "sha256:cc83a192a7bc177f6e025ebfa5407ff399b51fbfbe6c623cfafe3fcc87adac7f");
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
   assert.deepEqual(manifest.counts, {
     entries: 493,
@@ -102,9 +102,9 @@ test("public bundle contains only the approved 493-entry generated participation
   assert.equal(index.entryIds.includes("practice.atlas-condition-header"), false);
   assert.equal(index.entryIds.includes("practice.atlas-note-standard"), false);
   assert.deepEqual(manifest.expectedD1DatasetHashes, {
-    entries: "sha256:b5e65a487d1a4f5d9fe985727aa82b87c543ddb3586bdbcc88d8f01da2fd6811",
+    entries: "sha256:e01330d920d8a42e143d3fba7a8b5d513083ae75fc6f3b4e54ecdefb11c19b0f",
     fts: "sha256:a4cd0aa2c196ca28a9f254328a7906bec85b2b47dc9564c8c0c93939a55e58c3",
-    metadata: "sha256:b62fa06fe7618b4d5d8a7fd837d3025e864ef634c645772f98a121bb1c5a25c4",
+    metadata: "sha256:aef9e5bf29ad5a9824182a19c07645d6509d0af2770a14c484a2dac96bd4e716",
     determinations: "sha256:aeed8bfe92d332d6106d8aa7b9200359557f889204c91b60f9e55f88bd77cc1a",
     protocol: "sha256:94829b499c48fe785a2f3aee9fd8902d36aa9262966e601bfb9b740e48b1b2be",
   });
@@ -241,7 +241,7 @@ test("the exact D1 sync path leaves the complete public Translation deployable",
 
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:f029925ddbffde2c46411e59c831621433a92eb0b533213e6811fdf620d0618c");
+  assert.equal(manifest.canonicalGraphHash, "sha256:1c69dbba6ea009fa23d26278d0d1521c966d79aefe5e04b4e85362c26437311e");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
 });

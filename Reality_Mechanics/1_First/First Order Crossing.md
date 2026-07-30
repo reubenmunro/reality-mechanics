@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: first
 kind: crossing
 ai_role: crossing

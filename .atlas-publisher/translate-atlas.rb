@@ -164,7 +164,6 @@ class CanonicalTranslation
     identity_field = schema.fetch("identityField")
     id = data[identity_field]
     fail_translation("Missing #{identity_field}: #{record[:path]}") unless id.is_a?(String) && !id.empty?
-    fail_translation("Entry is not grounded: #{record[:path]}") unless data["grounded"] == true
     fail_translation("Entry publish is not true: #{record[:path]}") unless data["publish"] == true
     fail_translation("Missing kind: #{record[:path]}") unless data["kind"].is_a?(String) && !data["kind"].empty?
     fail_translation("Invalid status #{data["status"].inspect}: #{record[:path]}") unless schema.fetch("statuses").key?(data["status"])
@@ -443,7 +442,6 @@ class CanonicalTranslation
         plain_text TEXT NOT NULL,
         excerpt TEXT NOT NULL,
         status TEXT NOT NULL,
-        grounded INTEGER NOT NULL CHECK (grounded = 1),
         entry_order TEXT,
         entry_register TEXT,
         entry_type TEXT NOT NULL,
@@ -518,7 +516,6 @@ class CanonicalTranslation
         text,
         text.split(/\s+/).first(28).join(" "),
         entry.fetch("status"),
-        1,
         entry["order"],
         entry["register"],
         entry.fetch("kind"),
@@ -534,7 +531,7 @@ class CanonicalTranslation
         nil,
         nil,
       ]
-      columns = %w[id title slug source_path public_url content plain_text excerpt status grounded entry_order entry_register entry_type branch aliases tags related structure conditions headings determination word_count created updated]
+      columns = %w[id title slug source_path public_url content plain_text excerpt status entry_order entry_register entry_type branch aliases tags related structure conditions headings determination word_count created updated]
       lines << "INSERT INTO entries (#{columns.join(",")}) VALUES (#{values.map { |value| sql(value) }.join(",")});"
       lines << "INSERT INTO entries_fts (id,title,plain_text) VALUES (#{sql(id)},#{sql(entry.fetch("title"))},#{sql(text)});"
     end

@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: first
 kind: carrier
 ai_role: carrier

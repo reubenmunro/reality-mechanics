@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: operation
 ai_role: practice

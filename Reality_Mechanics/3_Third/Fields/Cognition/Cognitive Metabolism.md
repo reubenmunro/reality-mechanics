@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: third
 kind: term
 ai_role: term

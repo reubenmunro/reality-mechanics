@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 register: practice
 kind: meta
 ai_role: participation

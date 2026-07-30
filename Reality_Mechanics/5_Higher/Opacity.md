@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: higher
 kind: term
 ai_role: higher_order_term

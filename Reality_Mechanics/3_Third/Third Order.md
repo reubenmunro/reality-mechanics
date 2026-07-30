@@ -1,6 +1,5 @@
 ---
 
-grounded: true
 order: third
 kind: order
 ai_role: order
