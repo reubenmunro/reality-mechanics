@@ -21,12 +21,17 @@ import {
 } from "../generated/release-identity.mjs";
 
 const PROTOCOL_VERSION = "2025-06-18";
-const SERVER_INFO = { name: "reality-mechanics-atlas", version: "3.0.0" };
+const SERVER_INFO = { name: "reality-mechanics-atlas", version: "4.0.0" };
 const MAX_QUERY = 200;
-const SEARCH_MAX = 25, SEARCH_DEFAULT = 8;
-const LIST_MAX = 200, LIST_DEFAULT = 50;
+const FIND_MAX = 100, FIND_DEFAULT = 25;
+const TRACE_MAX_DEPTH = 5, TRACE_MAX_NODES = 200;
 const GITHUB_REPO_URL = "https://github.com/reubenmunro/reality-mechanics";
 const GITHUB_BRANCH = "main";
+const SEARCH_STOP_WORDS = new Set([
+  "a", "an", "and", "are", "as", "at", "be", "by", "can", "for", "from",
+  "has", "in", "is", "it", "of", "on", "or", "that", "the", "this", "to",
+  "was", "were", "with",
+]);
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -53,10 +58,6 @@ function parseEntry(row) {
     conditions: row.conditions ? JSON.parse(row.conditions) : null,
     headings: JSON.parse(row.headings || "[]"),
   };
-}
-
-function relationBetween(structure = {}, rightId = "") {
-  return RELATION_KEYS.filter((relation) => Array.isArray(structure?.[relation]) && structure[relation].includes(rightId));
 }
 
 async function dbAll(env, sql, params = []) {
@@ -91,24 +92,6 @@ function clip(text, max = 2400) {
   return `${value.slice(0, max)}\n\n[clipped for session start; call get_entry for the full entry]`;
 }
 
-function plainTextFromContent(content) {
-  return String(content || "")
-    .replace(/\r\n/g, "\n")
-    .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, alias) => alias || target)
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/^#{1,6}\s+/gm, "")
-    .replace(/[*_~>#-]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function excerptFromText(text, max = 180) {
-  const value = String(text || "").trim();
-  if (value.length <= max) return value;
-  return `${value.slice(0, max).trim()}…`;
-}
-
 function githubSourceLinks(sourcePath) {
   const path = String(sourcePath || "").trim();
   if (!path) return null;
@@ -121,35 +104,57 @@ function githubSourceLinks(sourcePath) {
   };
 }
 
-// Walk upstream holds/traces chains from a starting entry ID up to maxDepth hops.
-// Returns a Set of all upstream entry IDs reachable within that depth.
-async function getUpstreamIds(env, startId, maxDepth = 3) {
-  const visited = new Set([startId]);
-  const upstream = new Set();
-  let frontier = [startId];
+function asList(value) {
+  if (value === undefined || value === null || value === "") return [];
+  return (Array.isArray(value) ? value : [value]).map(String).map((item) => item.trim()).filter(Boolean);
+}
 
-  for (let depth = 0; depth < maxDepth && frontier.length > 0; depth++) {
-    const placeholders = frontier.map(() => "?").join(",");
-    const rows = await dbAll(env,
-      `SELECT id, structure FROM entries WHERE id IN (${placeholders})`, frontier);
+function normalise(value) {
+  return String(value || "").trim().toLocaleLowerCase("en");
+}
 
-    const nextFrontier = [];
-    for (const row of rows) {
-      const struct = row.structure ? JSON.parse(row.structure) : null;
-      if (!struct) continue;
-      const upIds = [...(struct.holds || []), ...(struct.traces || [])].filter(Boolean);
-      for (const uid of upIds) {
-        upstream.add(uid);
-        if (!visited.has(uid)) {
-          visited.add(uid);
-          nextFrontier.push(uid);
-        }
-      }
-    }
-    frontier = nextFrontier;
-  }
+function sourceScope(sourcePath) {
+  const match = String(sourcePath || "").match(/\/(?:Fields|Domains)\/([^/]+)\//);
+  return match?.[1] || null;
+}
 
-  return upstream;
+function searchTokens(query) {
+  const tokens = String(query || "").toLocaleLowerCase("en").match(/[\p{L}\p{N}]+/gu) || [];
+  const meaningful = tokens.filter((token) => token.length > 1 && !SEARCH_STOP_WORDS.has(token));
+  return [...new Set(meaningful.length ? meaningful : tokens.filter((token) => token.length > 1))];
+}
+
+function searchStem(token) {
+  if (token.endsWith("ied") && token.length > 4) return `${token.slice(0, -3)}y`;
+  if (token.endsWith("ing") && token.length > 5) return token.slice(0, -3);
+  if (token.endsWith("ed") && token.length > 4) return token.slice(0, -2);
+  return token;
+}
+
+function ftsExpression(query) {
+  return searchTokens(query).map((token) => `"${token.replaceAll('"', '""')}"*`).join(" OR ");
+}
+
+function entrySummary(row) {
+  return {
+    id: row.id,
+    title: row.title,
+    aliases: JSON.parse(row.aliases || "[]"),
+    publicUrl: row.public_url,
+    sourcePath: row.source_path,
+    scope: sourceScope(row.source_path),
+    status: row.status,
+    order: row.entry_order,
+    register: row.entry_register,
+    determination: row.determination,
+    kind: row.entry_type,
+    excerpt: row.excerpt,
+  };
+}
+
+function uniqueSorted(values) {
+  return [...new Set(values.filter((value) => value !== null && value !== undefined && value !== ""))]
+    .sort((left, right) => String(left).localeCompare(String(right)));
 }
 
 async function manifest(env) {
@@ -200,7 +205,7 @@ function sessionEntry(row) {
     order: entry.entry_order,
     register: entry.entry_register,
     determination: entry.determination,
-    type: entry.entry_type,
+    kind: entry.entry_type,
     structure: entry.structure,
     conditions: entry.conditions,
     excerpt: entry.excerpt,
@@ -208,94 +213,71 @@ function sessionEntry(row) {
   };
 }
 
-const MCP_INSTRUCTIONS = "Begin with begin_atlas_session. The returned protocol and entries are generated from the canonical Atlas. Search locates entries; get_entry and get_related carry the canonical relations. This MCP is read-only.";
+const MCP_INSTRUCTIONS = "Begin with begin_atlas_session. The returned protocol and entries are generated from the canonical Atlas. find_entries locates entry points; get_entry reads one determination; trace_relations follows only declared relations. This MCP is read-only.";
 
 // ── Tool definitions ───────────────────────────────────────────────────────────
 
-const strOrArr = { anyOf: [{ type: "string" }, { type: "array", items: { type: "string" } }] };
+const stringOrArray = (values = null) => {
+  const item = values ? { type: "string", enum: values } : { type: "string" };
+  return { anyOf: [item, { type: "array", items: item }] };
+};
+
+const orderValues = [...ATLAS_SCHEMA.placement.orderValues];
+const registerValues = [...ATLAS_SCHEMA.placement.registerValues];
+const statusValues = Object.keys(ATLAS_SCHEMA.statuses);
+const determinationValues = Object.keys(DETERMINATION_RECORDS);
 
 const TOOLS = [
   { name: "begin_atlas_session",
-    description: "Start any Reality Mechanics Atlas session. Returns the protocol, required practice entries, manifest/version, and current governance rules before search or edits.",
+    description: "Start any Reality Mechanics Atlas session. Returns the generated protocol, required practice entries, manifest identity, and the neutral read path before discovery or traversal.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
 
   { name: "get_manifest",
     description: "Return the identity and current state of the Atlas read model.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false } },
 
-  { name: "get_ai_entry_protocol",
-    description: "Return the ordered AI entry protocol generated from the canonical Atlas.",
-    inputSchema: { type: "object", properties: {}, additionalProperties: false } },
-
   { name: "get_structure_contract",
     description: "Return the generated Atlas schema, determinations, protocols, and source identity.",
     inputSchema: { type: "object", additionalProperties: false, properties: {} } },
 
-  { name: "search_atlas",
-    description: "Find entry points into the dependency-ordered Atlas by text and metadata. Each result is a place to begin tracing, not a final answer — follow its relations with get_entry/get_related.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["query"], properties: {
-      query: { type: "string" }, order: strOrArr,
-      register: strOrArr,
-      limit: { type: "integer", minimum: 1, maximum: SEARCH_MAX } } } },
+  { name: "find_entries",
+    description: "Find or browse canonical Atlas entries through one neutral discovery surface. Text results are relevance-ordered entry points, never determinations. Filters mirror generated metadata and repository-carried field/domain scopes.",
+    inputSchema: { type: "object", additionalProperties: false, properties: {
+      query: { type: "string", maxLength: MAX_QUERY },
+      exact_title: { type: "string" },
+      ids: { type: "array", items: { type: "string" }, maxItems: 100 },
+      order: stringOrArray(orderValues),
+      register: stringOrArray(registerValues),
+      kind: stringOrArray(),
+      status: stringOrArray(statusValues),
+      determination: stringOrArray(determinationValues),
+      scope: stringOrArray(),
+      limit: { type: "integer", minimum: 1, maximum: FIND_MAX },
+      offset: { type: "integer", minimum: 0 },
+    } } },
 
   { name: "get_entry",
-    description: "Return one Atlas entry with its dependency `structure` (holds/traces/carries/pairs/nests) as the primary field. Relation-first: trace the structure rather than reading the term as a definition.",
-    inputSchema: { type: "object", additionalProperties: false, properties: { id: { type: "string" } } } },
+    description: "Return one canonical Atlas entry with all seven declared relation reads: needs, holds, pairs, traces, nests, reads, and carries. It reports authored structure without inferring dependency direction, primitive status, groundedness, or equivalence.",
+    inputSchema: { type: "object", additionalProperties: false, required: ["id"], properties: {
+      id: { type: "string" },
+      include_provenance: { type: "boolean", default: false },
+    } } },
 
-  { name: "get_related",
-    description: "Traverse an entry's typed, directional dependency relations: upstream (holds/traces — what it depends on), downstream (carries — what it opens), lateral (pairs), nesting. The core navigation tool.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["id"], properties: { id: { type: "string" } } } },
+  { name: "trace_relations",
+    description: "Traverse only explicitly declared Atlas relations from one entry. Select any of the seven relation types, outgoing declarations, incoming declarations, or both, and a bounded depth. Returns nodes, declared edges, and paths without evaluating what the traversal means.",
+    inputSchema: { type: "object", additionalProperties: false, required: ["id"], properties: {
+      id: { type: "string" },
+      relations: stringOrArray([...RELATION_KEYS]),
+      direction: { type: "string", enum: ["outgoing", "incoming", "both"], default: "outgoing" },
+      depth: { type: "integer", minimum: 1, maximum: TRACE_MAX_DEPTH, default: 1 },
+      max_nodes: { type: "integer", minimum: 2, maximum: TRACE_MAX_NODES, default: 100 },
+    } } },
 
   { name: "open_source_for_entry",
-    description: "Return the GitHub source file for an Atlas entry after reading it through D1. This is a read-only bridge from semantic navigation to source editing.",
+    description: "Return optional maintained-source provenance for an entry after it has been read through MCP. The local public Atlas remains the primary reader; GitHub links are supplied only for proof or an explicitly authorised source-editing workflow.",
     inputSchema: { type: "object", additionalProperties: false, properties: {
       id: { type: "string", description: "Atlas entry id, e.g. first.ratio" },
       title: { type: "string", description: "Exact Atlas title when id is not known, e.g. Ratio" } } } },
-
-  { name: "read_ratio",
-    description: "Read a ratio between two Atlas entries from a declared reference frame. Returns the structural relation, reciprocal relation, and continuation pressure without creating a new dependency.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["left_id", "right_id"], properties: {
-      left_id: { type: "string" },
-      right_id: { type: "string" },
-      reference_frame: { type: "string", description: "Frame from which the ratio is being read, e.g. reading-order, field, calibration, human-prose, ai-frontmatter" } } } },
-
-  { name: "get_entry_by_title",
-    description: "Look up one or more Atlas entries by exact title (case-insensitive).",
-    inputSchema: { type: "object", additionalProperties: false, required: ["title"], properties: { title: { type: "string" } } } },
-
-  { name: "list_entries",
-    description: "List entries by metadata filters. Supports pagination via offset.",
-    inputSchema: { type: "object", additionalProperties: false, properties: {
-      order: strOrArr, register: strOrArr,
-      limit: { type: "integer", minimum: 1, maximum: LIST_MAX },
-      offset: { type: "integer", minimum: 0 } } } },
-
-  { name: "get_recent_changes",
-    description: "Return entries updated after a given date.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["since"], properties: {
-      since: { type: "string", description: "ISO date" },
-      limit: { type: "integer", minimum: 1, maximum: LIST_MAX } } } },
-
-  // ── Translation tools ────────────────────────────────────────────────────────
-
-  { name: "get_field_terms",
-    description: "Return all entries belonging to a named field or domain by source_path match. Use to enumerate a field's terms before finding shared ground between fields or translating a reason across them. Known fields: 'Society', 'Natural World', 'Knowledge', 'Life', 'Expression', 'Making', 'Body', 'Sustenance', 'Faith', 'Place', 'Cognition', 'Our Story', 'Relational Participation'.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["field_name"], properties: {
-      field_name: { type: "string", description: "Field name as in the vault path, e.g. 'Society', 'Natural World', 'Knowledge'" },
-      limit: { type: "integer", minimum: 1, maximum: LIST_MAX } } } },
-
-  { name: "find_shared_ground",
-    description: "Given two or more entry IDs, walk their upstream holds/traces chains (up to 3 hops) and return the first/second-order Atlas terms that appear in all chains. The intersection is the genuine structural translation surface between any two terms or fields — not metaphor, shared dependency.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["ids"], properties: {
-      ids: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 10,
-             description: "Two or more entry IDs to find shared upstream ground for" } } } },
-
-  { name: "translate_reason",
-    description: "Translate a reason (traceable support) from one field register into another using shared Atlas grounding. FTS-matches the reason text to source Atlas terms, traces upstream to find the shared first/second-order translation surface, then returns the target field's terms that hold those same structural conditions. Output is a structured map only — the calling AI generates the target-field reason and verifies it via Translation Invariance.",
-    inputSchema: { type: "object", additionalProperties: false, required: ["reason", "target_field"], properties: {
-      reason: { type: "string", description: "The reason to translate — natural language traceable support" },
-      target_field: { type: "string", description: "Target field name, e.g. 'Natural World', 'Knowledge', 'Society'" },
-      source_field: { type: "string", description: "Optional: narrow FTS to a specific source field" } } } },
 ];
 
 // ── Tool dispatch ─────────────────────────────────────────────────────────────
@@ -325,9 +307,10 @@ async function callTool(name, args, env) {
       protocol: { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH, members: protocolIds },
       requiredEntries,
       next: {
-        forQuestions: ["search_atlas", "get_entry", "get_related"],
-        forKnownTerms: ["get_entry_by_title", "get_entry", "get_related"],
-        forFieldTranslation: ["get_field_terms", "find_shared_ground", "translate_reason"],
+        discover: ["find_entries"],
+        read: ["get_entry"],
+        traverse: ["trace_relations"],
+        provenance: ["open_source_for_entry"],
       },
     };
   }
@@ -348,56 +331,109 @@ async function callTool(name, args, env) {
     return currentReadModel;
   }
 
-  // ── get_ai_entry_protocol ──
-  if (name === "get_ai_entry_protocol") {
-    return { name: "ai-entry", sourceHash: CANONICAL_SOURCE_HASH, translationHash: TRANSLATION_HASH, members: [...AI_ENTRY_PROTOCOL] };
-  }
-
-  // ── search_atlas ──
-  if (name === "search_atlas") {
+  // ── find_entries ──
+  if (name === "find_entries") {
     const query = String(args.query || "").trim();
-    if (!query) return { error: "query is required" };
     if (query.length > MAX_QUERY) return { error: `query too long (max ${MAX_QUERY})` };
-    const limit = Math.min(Math.max(parseInt(args.limit) || SEARCH_DEFAULT, 1), SEARCH_MAX);
+    const exactTitle = String(args.exact_title || "").trim();
+    const ids = new Set(asList(args.ids));
+    const orders = new Set(asList(args.order));
+    const registers = new Set(asList(args.register));
+    const kinds = new Set(asList(args.kind));
+    const statuses = new Set(asList(args.status));
+    const determinations = new Set(asList(args.determination));
+    const scopes = new Set(asList(args.scope).map(normalise));
+    const limit = Math.min(Math.max(parseInt(args.limit) || FIND_DEFAULT, 1), FIND_MAX);
+    const offset = Math.max(parseInt(args.offset) || 0, 0);
 
-    // Build WHERE clauses for filters
-    const clauses = [];
-    const params = [];
-
-    // FTS search
-    clauses.push("e.id IN (SELECT id FROM entries_fts WHERE entries_fts MATCH ?)");
-    params.push(query.replace(/['"*]/g, " ").trim() + "*");
-
-    if (args.order) {
-      const orders = Array.isArray(args.order) ? args.order : [args.order];
-      clauses.push(`e.entry_order IN (${orders.map(() => "?").join(",")})`);
-      params.push(...orders);
+    for (const [label, selected, allowed] of [
+      ["order", orders, orderValues],
+      ["register", registers, registerValues],
+      ["status", statuses, statusValues],
+      ["determination", determinations, determinationValues],
+    ]) {
+      const invalid = [...selected].filter((value) => !allowed.includes(value));
+      if (invalid.length) return { error: `invalid ${label}`, invalid, allowed };
     }
-    if (args.register) {
-      const registers = Array.isArray(args.register) ? args.register : [args.register];
-      clauses.push(`e.entry_register IN (${registers.map(() => "?").join(",")})`);
-      params.push(...registers);
-    }
-    const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
-    params.push(limit);
 
     const rows = await dbAll(env,
-      `SELECT e.id, e.title, e.excerpt, e.status,
-              e.entry_order, e.entry_register, e.determination,
-              e.entry_type, e.source_path, e.public_url, e.updated
-       FROM entries e ${where} LIMIT ?`, params);
+      `SELECT id, title, aliases, excerpt, status, entry_order, entry_register,
+              determination, entry_type, source_path, public_url
+       FROM entries ORDER BY source_path, id`);
+    const availableFilters = {
+      order: uniqueSorted(rows.map((row) => row.entry_order)),
+      register: uniqueSorted(rows.map((row) => row.entry_register)),
+      kind: uniqueSorted(rows.map((row) => row.entry_type)),
+      status: uniqueSorted(rows.map((row) => row.status)),
+      determination: uniqueSorted(rows.map((row) => row.determination)),
+      scope: uniqueSorted(rows.map((row) => sourceScope(row.source_path))),
+    };
+    const invalidKinds = [...kinds].filter((value) => !availableFilters.kind.includes(value));
+    if (invalidKinds.length) return { error: "invalid kind", invalid: invalidKinds, allowed: availableFilters.kind };
+    const scopeByNormal = new Map(availableFilters.scope.map((value) => [normalise(value), value]));
+    const invalidScopes = [...scopes].filter((value) => !scopeByNormal.has(value));
+    if (invalidScopes.length) return { error: "invalid scope", invalid: invalidScopes, allowed: availableFilters.scope };
+
+    let rankById = null;
+    const expression = query ? ftsExpression(query) : "";
+    if (query && !expression) return { error: "query contains no searchable terms" };
+    if (expression) {
+      const hits = await dbAll(env,
+        `SELECT id, bm25(entries_fts, 0.0, 8.0, 4.0, 1.0) AS rank
+         FROM entries_fts WHERE entries_fts MATCH ? ORDER BY rank, id LIMIT 500`,
+        [expression]);
+      rankById = new Map(hits.map((hit) => [hit.id, Number(hit.rank) || 0]));
+    }
+
+    const exact = normalise(exactTitle);
+    const queryNormal = normalise(query);
+    const queryTerms = searchTokens(query);
+    const queryStems = queryTerms.map(searchStem);
+    const filtered = rows.filter((row) => {
+      const aliases = JSON.parse(row.aliases || "[]");
+      if (rankById && !rankById.has(row.id)) return false;
+      if (ids.size && !ids.has(row.id)) return false;
+      if (orders.size && !orders.has(row.entry_order)) return false;
+      if (registers.size && !registers.has(row.entry_register)) return false;
+      if (kinds.size && !kinds.has(row.entry_type)) return false;
+      if (statuses.size && !statuses.has(row.status)) return false;
+      if (determinations.size && !determinations.has(row.determination)) return false;
+      if (scopes.size && !scopes.has(normalise(sourceScope(row.source_path)))) return false;
+      if (exact && normalise(row.title) !== exact && !aliases.some((alias) => normalise(alias) === exact)) return false;
+      return true;
+    });
+
+    filtered.sort((left, right) => {
+      if (rankById) {
+        const leftTitle = normalise(left.title);
+        const rightTitle = normalise(right.title);
+        const leftExact = leftTitle === queryNormal ? 0 : 1;
+        const rightExact = rightTitle === queryNormal ? 0 : 1;
+        if (leftExact !== rightExact) return leftExact - rightExact;
+        const leftStemExact = queryStems.includes(leftTitle) ? 0 : 1;
+        const rightStemExact = queryStems.includes(rightTitle) ? 0 : 1;
+        if (leftStemExact !== rightStemExact) return leftStemExact - rightStemExact;
+        const leftPrefix = [...queryTerms, ...queryStems].some((term) => leftTitle.startsWith(term)) ? 0 : 1;
+        const rightPrefix = [...queryTerms, ...queryStems].some((term) => rightTitle.startsWith(term)) ? 0 : 1;
+        if (leftPrefix !== rightPrefix) return leftPrefix - rightPrefix;
+        const rank = (rankById.get(left.id) || 0) - (rankById.get(right.id) || 0);
+        if (rank) return rank;
+      }
+      return left.source_path.localeCompare(right.source_path) || left.id.localeCompare(right.id);
+    });
+
+    const entries = filtered.slice(offset, offset + limit).map(entrySummary);
 
     return {
-      query, count: rows.length,
-      results: rows.map(r => ({
-        id: r.id, title: r.title, excerpt: r.excerpt,
-        status: r.status,
-        order: r.entry_order, register: r.entry_register,
-        determination: r.determination,
-        type: r.entry_type,
-        sourcePath: r.source_path, publicUrl: r.public_url,
-        updated: r.updated,
-      })),
+      query: query || null,
+      exactTitle: exactTitle || null,
+      total: filtered.length,
+      count: entries.length,
+      offset,
+      hasMore: offset + entries.length < filtered.length,
+      entries,
+      availableFilters,
+      note: "Discovery returns entry points. Read get_entry and trace_relations before making an Atlas claim.",
     };
   }
 
@@ -430,56 +466,135 @@ async function callTool(name, args, env) {
     return {
       id: e.id, title: e.title, publicUrl: e.public_url,
       sourcePath: e.source_path,
-      source: githubSourceLinks(e.source_path),
+      ...(args.include_provenance ? { provenance: githubSourceLinks(e.source_path) } : {}),
       status: e.status,
       order: e.entry_order, register: e.entry_register,
       determination: e.determination,
-      type: e.entry_type,
+      kind: e.entry_type,
       structure: resolvedStructure,
       conditions: e.conditions,
       content: e.content,
       headings: e.headings,
       wordCount: e.word_count,
-      updatedAt: e.updated,
     };
   }
 
-  // ── get_related ──
-  if (name === "get_related") {
+  // ── trace_relations ──
+  if (name === "trace_relations") {
     const id = String(args.id || "").trim();
     if (!id) return { error: "id is required" };
+    const selected = asList(args.relations);
+    const relations = selected.length ? selected : [...RELATION_KEYS];
+    const invalidRelations = relations.filter((relation) => !RELATION_KEYS.includes(relation));
+    if (invalidRelations.length) return { error: "invalid relations", invalid: invalidRelations, allowed: [...RELATION_KEYS] };
+    const direction = String(args.direction || "outgoing");
+    if (!["outgoing", "incoming", "both"].includes(direction)) {
+      return { error: "invalid direction", invalid: direction, allowed: ["outgoing", "incoming", "both"] };
+    }
+    const depth = Math.min(Math.max(parseInt(args.depth) || 1, 1), TRACE_MAX_DEPTH);
+    const maxNodes = Math.min(Math.max(parseInt(args.max_nodes) || 100, 2), TRACE_MAX_NODES);
 
-    const row = await dbFirst(env, "SELECT * FROM entries WHERE id = ?", [id]);
-    if (!row) return { notFound: true, id };
-    const e = parseEntry(row);
+    const rows = await dbAll(env,
+      "SELECT id, title, public_url, entry_order, entry_register, determination, entry_type, structure FROM entries ORDER BY id");
+    const entries = new Map(rows.map((row) => [row.id, {
+      ...row,
+      structure: row.structure ? JSON.parse(row.structure) : Object.fromEntries(RELATION_KEYS.map((relation) => [relation, []])),
+    }]));
+    const start = entries.get(id);
+    if (!start) return { notFound: true, id };
 
-    let relations = Object.fromEntries(RELATION_KEYS.map((relation) => [relation, []]));
+    const nodes = new Map([[id, {
+      id: start.id,
+      title: start.title,
+      publicUrl: start.public_url,
+      order: start.entry_order,
+      register: start.entry_register,
+      determination: start.determination,
+      kind: start.entry_type,
+      depth: 0,
+    }]]);
+    const queue = [{ id, depth: 0, path: [id] }];
+    const visitedAt = new Map([[id, 0]]);
+    const edges = [];
+    const edgeKeys = new Set();
+    let truncated = false;
 
-    if (e.structure) {
-      const allIds = RELATION_KEYS.flatMap((relation) => e.structure[relation] || []).filter(Boolean);
+    const addEdge = (from, to, relation, traversed, nextDepth, path) => {
+      const key = `${from}\0${relation}\0${to}\0${traversed}`;
+      if (!edgeKeys.has(key)) {
+        edgeKeys.add(key);
+        edges.push({ from, to, relation, traversed, depth: nextDepth, path });
+      }
+    };
 
-      if (allIds.length) {
-        const placeholders = allIds.map(() => "?").join(",");
-        const related = await dbAll(env,
-          `SELECT id, title, public_url FROM entries WHERE id IN (${placeholders})`, allIds);
-        const byId = makeById(related);
-        relations = Object.fromEntries(
-          RELATION_KEYS.map((relation) => [relation, resolveIds(e.structure[relation], byId)]),
-        );
+    while (queue.length) {
+      const current = queue.shift();
+      if (current.depth >= depth) continue;
+      const currentEntry = entries.get(current.id);
+      const candidates = [];
+
+      if (direction === "outgoing" || direction === "both") {
+        for (const relation of relations) {
+          for (const target of currentEntry.structure[relation] || []) {
+            candidates.push({ next: target, from: current.id, to: target, relation, traversed: "outgoing" });
+          }
+        }
+      }
+      if (direction === "incoming" || direction === "both") {
+        for (const candidate of entries.values()) {
+          for (const relation of relations) {
+            if ((candidate.structure[relation] || []).includes(current.id)) {
+              candidates.push({ next: candidate.id, from: candidate.id, to: current.id, relation, traversed: "incoming" });
+            }
+          }
+        }
+      }
+
+      for (const candidate of candidates) {
+        const nextEntry = entries.get(candidate.next);
+        if (!nextEntry) {
+          addEdge(candidate.from, candidate.to, candidate.relation, candidate.traversed, current.depth + 1, [...current.path, candidate.next]);
+          continue;
+        }
+        if (!nodes.has(candidate.next) && nodes.size >= maxNodes) {
+          truncated = true;
+          continue;
+        }
+        const nextDepth = current.depth + 1;
+        const path = [...current.path, candidate.next];
+        addEdge(candidate.from, candidate.to, candidate.relation, candidate.traversed, nextDepth, path);
+        if (!nodes.has(candidate.next)) {
+          nodes.set(candidate.next, {
+            id: nextEntry.id,
+            title: nextEntry.title,
+            publicUrl: nextEntry.public_url,
+            order: nextEntry.entry_order,
+            register: nextEntry.entry_register,
+            determination: nextEntry.determination,
+            kind: nextEntry.entry_type,
+            depth: nextDepth,
+          });
+        }
+        if (!visitedAt.has(candidate.next) || nextDepth < visitedAt.get(candidate.next)) {
+          visitedAt.set(candidate.next, nextDepth);
+          queue.push({ id: candidate.next, depth: nextDepth, path });
+        }
       }
     }
 
-    const result = {
-      id, title: e.title,
-      determination: e.determination,
+    return {
+      start: nodes.get(id),
       relations,
+      direction,
+      depth,
+      maxNodes,
+      nodeCount: nodes.size,
+      edgeCount: edges.length,
+      truncated,
+      nodes: [...nodes.values()],
+      edges,
+      note: "Every edge is an authored Atlas declaration. No dependency direction, primitive status, groundedness, equivalence, or shared meaning is inferred.",
     };
-
-    if ((relations.needs || []).length === 0) {
-      result.atPrimitive = true;
-    }
-
-    return result;
   }
 
   // ── open_source_for_entry ──
@@ -490,10 +605,10 @@ async function callTool(name, args, env) {
 
     const rows = id
       ? await dbAll(env,
-          "SELECT id, title, source_path, public_url, updated FROM entries WHERE id = ?",
+          "SELECT id, title, source_path, public_url FROM entries WHERE id = ?",
           [id])
       : await dbAll(env,
-          "SELECT id, title, source_path, public_url, updated FROM entries WHERE title = ? COLLATE NOCASE",
+          "SELECT id, title, source_path, public_url FROM entries WHERE title = ? COLLATE NOCASE",
           [title]);
 
     if (!rows.length) return { notFound: true, id: id || null, title: title || null };
@@ -504,9 +619,8 @@ async function callTool(name, args, env) {
         id: row.id,
         title: row.title,
         publicUrl: row.public_url,
-        updated: row.updated,
         sourcePath: row.source_path || null,
-        source,
+        maintainedRecord: source,
         editable: !!source,
       };
     });
@@ -516,323 +630,7 @@ async function callTool(name, args, env) {
       count: entries.length,
       collision: entries.length > 1,
       entries,
-      instruction: "Read through MCP first, edit the GitHub source file, commit, then run the repo-to-D1 sync so MCP reads the regenerated structure.",
-    };
-  }
-
-  // ── read_ratio ──
-  if (name === "read_ratio") {
-    const leftId = String(args.left_id || "").trim();
-    const rightId = String(args.right_id || "").trim();
-    const referenceFrame = String(args.reference_frame || "reading-order").trim();
-    if (!leftId || !rightId) return { error: "left_id and right_id are required" };
-
-    const rows = await dbAll(env,
-      "SELECT id, title, entry_order, public_url, structure FROM entries WHERE id IN (?, ?)",
-      [leftId, rightId]);
-    const byId = makeById(rows);
-    const left = byId.get(leftId);
-    const right = byId.get(rightId);
-    if (!left || !right) {
-      return { error: "entry not found", missing: [!left ? leftId : null, !right ? rightId : null].filter(Boolean) };
-    }
-
-    const leftStructure = left.structure ? JSON.parse(left.structure) : {};
-    const rightStructure = right.structure ? JSON.parse(right.structure) : {};
-    const leftToRight = relationBetween(leftStructure, rightId);
-    const rightToLeft = relationBetween(rightStructure, leftId);
-    const hasDirectRelation = leftToRight.length > 0 || rightToLeft.length > 0;
-
-    return {
-      ratio: `${left.title} : ${right.title}`,
-      left: { id: left.id, title: left.title, order: left.entry_order, publicUrl: left.public_url },
-      right: { id: right.id, title: right.title, order: right.entry_order, publicUrl: right.public_url },
-      referenceFrame,
-      relation: hasDirectRelation
-        ? { leftToRight, rightToLeft }
-        : { leftToRight: [], rightToLeft: [], note: "No canonical direct relation is recorded; treat this as a possible read, not an Atlas dependency." },
-      trace: {
-        instruction: "Use get_related on both entries, then trace upstream holds/traces before making a claim about this ratio.",
-        leftDependsOn: [...(leftStructure.holds || []), ...(leftStructure.traces || [])],
-        rightDependsOn: [...(rightStructure.holds || []), ...(rightStructure.traces || [])],
-      },
-      continuation: hasDirectRelation
-        ? "Canonical relation exists; reason from the typed relation and declared frame."
-        : "No direct relation exists; treat it as a possible read unless the GitHub source is changed and synced.",
-      sourceHash: CANONICAL_SOURCE_HASH,
-    };
-  }
-
-  // ── get_entry_by_title ──
-  if (name === "get_entry_by_title") {
-    const query = String(args.title || "").trim();
-    if (!query) return { error: "title is required" };
-
-    const rows = await dbAll(env,
-      "SELECT id, title, entry_order, entry_register, determination, entry_type, status, source_path, public_url FROM entries WHERE title = ? COLLATE NOCASE",
-      [query]);
-
-    if (!rows.length) {
-      // Suggest near-matches
-      const suggestions = await dbAll(env,
-        "SELECT id, title, entry_order FROM entries WHERE title LIKE ? COLLATE NOCASE LIMIT 5",
-        [`%${query}%`]);
-      return { notFound: true, query, suggestions: suggestions.map(r => ({ id: r.id, title: r.title, order: r.entry_order })) };
-    }
-
-    return {
-      query, count: rows.length, collision: rows.length > 1,
-      entries: rows.map(r => ({
-        id: r.id, title: r.title, order: r.entry_order, register: r.entry_register,
-        determination: r.determination, type: r.entry_type,
-        status: r.status,
-        sourcePath: r.source_path, publicUrl: r.public_url,
-      })),
-    };
-  }
-
-  // ── list_entries ──
-  if (name === "list_entries") {
-    const limit = Math.min(Math.max(parseInt(args.limit) || LIST_DEFAULT, 1), LIST_MAX);
-    const offset = Math.max(parseInt(args.offset) || 0, 0);
-    const clauses = [];
-    const params = [];
-
-    if (args.order) {
-      const orders = Array.isArray(args.order) ? args.order : [args.order];
-      clauses.push(`entry_order IN (${orders.map(() => "?").join(",")})`);
-      params.push(...orders);
-    }
-    if (args.register) {
-      const registers = Array.isArray(args.register) ? args.register : [args.register];
-      clauses.push(`entry_register IN (${registers.map(() => "?").join(",")})`);
-      params.push(...registers);
-    }
-    const where = clauses.length ? "WHERE " + clauses.join(" AND ") : "";
-    const countRow = await dbFirst(env, `SELECT COUNT(*) as n FROM entries ${where}`, params);
-    const rows = await dbAll(env,
-      `SELECT id, title, status, entry_order, entry_register, determination, public_url, source_path, updated FROM entries ${where} ORDER BY source_path, id LIMIT ? OFFSET ?`,
-      [...params, limit, offset]);
-
-    return {
-      total: countRow?.n || 0, count: rows.length, offset,
-      hasMore: offset + rows.length < (countRow?.n || 0),
-      entries: rows.map(r => ({
-        id: r.id, title: r.title, status: r.status,
-        order: r.entry_order, register: r.entry_register,
-        determination: r.determination,
-        publicUrl: r.public_url,
-        sourcePath: r.source_path, updated: r.updated,
-      })),
-    };
-  }
-
-  // ── get_recent_changes ──
-  if (name === "get_recent_changes") {
-    const since = String(args.since || "");
-    const limit = Math.min(Math.max(parseInt(args.limit) || LIST_DEFAULT, 1), LIST_MAX);
-    const rows = await dbAll(env,
-      "SELECT id, title, updated, public_url FROM entries WHERE updated > ? ORDER BY updated DESC LIMIT ?",
-      [since, limit]);
-    return {
-      count: rows.length,
-      entries: rows.map(r => ({ id: r.id, title: r.title, updated: r.updated, publicUrl: r.public_url })),
-    };
-  }
-
-  // ── get_field_terms ──
-  if (name === "get_field_terms") {
-    const fieldName = String(args.field_name || "").trim();
-    if (!fieldName) return { error: "field_name is required" };
-    const limit = Math.min(Math.max(parseInt(args.limit) || LIST_DEFAULT, 1), LIST_MAX);
-
-    const pattern1 = `%/Fields/${fieldName}/%`;
-    const pattern2 = `%/Domains/${fieldName}/%`;
-
-    const countRow = await dbFirst(env,
-      `SELECT COUNT(*) as n FROM entries WHERE source_path LIKE ? OR source_path LIKE ?`,
-      [pattern1, pattern2]);
-
-    const rows = await dbAll(env,
-      `SELECT id, title, entry_order, entry_type, public_url, source_path, structure
-       FROM entries WHERE (source_path LIKE ? OR source_path LIKE ?) ORDER BY entry_order, title LIMIT ?`,
-      [pattern1, pattern2, limit]);
-
-    if (!rows.length) {
-      return {
-        field: fieldName, total: 0, count: 0, entries: [],
-        note: `No entries found for field '${fieldName}'. Check spelling — known fields include: Society, Natural World, Knowledge, Life, Expression, Making, Body, Sustenance, Faith, Place, Cognition, Our Story, Relational Participation.`,
-      };
-    }
-
-    return {
-      field: fieldName,
-      total: countRow?.n || 0,
-      count: rows.length,
-      entries: rows.map(r => {
-        const struct = r.structure ? JSON.parse(r.structure) : null;
-        return {
-          id: r.id, title: r.title, order: r.entry_order, type: r.entry_type,
-          publicUrl: r.public_url, sourcePath: r.source_path,
-          upstream: struct ? { holds: (struct.holds || []), traces: (struct.traces || []) } : null,
-        };
-      }),
-      note: "upstream.holds and upstream.traces are raw IDs — use find_shared_ground or get_entry to resolve them.",
-    };
-  }
-
-  // ── find_shared_ground ──
-  if (name === "find_shared_ground") {
-    const ids = Array.isArray(args.ids) ? args.ids.map(String).filter(Boolean) : [];
-    if (ids.length < 2) return { error: "ids must contain at least two entry IDs" };
-
-    // Walk upstream for each starting ID
-    const upstreamSets = await Promise.all(ids.map(id => getUpstreamIds(env, id)));
-
-    // Intersect all sets
-    const intersection = new Set(upstreamSets[0]);
-    for (let i = 1; i < upstreamSets.length; i++) {
-      for (const id of intersection) {
-        if (!upstreamSets[i].has(id)) intersection.delete(id);
-      }
-    }
-
-    if (intersection.size === 0) {
-      return {
-        sourceIds: ids,
-        sharedGround: [],
-        note: "No shared upstream terms found within 3 hops. The entries may not share Atlas grounding at this depth, or they may have diverged before the first/second order.",
-      };
-    }
-
-    const sgIds = [...intersection];
-    const placeholders = sgIds.map(() => "?").join(",");
-    const rows = await dbAll(env,
-      `SELECT id, title, entry_order, public_url FROM entries WHERE id IN (${placeholders}) AND entry_order IN ('ground', 'first', 'second') ORDER BY CASE entry_order WHEN 'ground' THEN 0 WHEN 'first' THEN 1 WHEN 'second' THEN 2 ELSE 3 END, title`,
-      sgIds);
-
-    return {
-      sourceIds: ids,
-      sharedGround: rows.map(r => ({ id: r.id, title: r.title, order: r.entry_order, publicUrl: r.public_url })),
-      note: "Shared first/second-order Atlas terms in all entries' upstream dependency chains — the genuine translation surface. These terms appear in both fields under different local names.",
-    };
-  }
-
-  // ── translate_reason ──
-  if (name === "translate_reason") {
-    const reason = String(args.reason || "").trim();
-    const targetField = String(args.target_field || "").trim();
-    const sourceField = String(args.source_field || "").trim();
-
-    if (!reason) return { error: "reason is required" };
-    if (!targetField) return { error: "target_field is required" };
-
-    // Step 1: FTS reason text to find candidate source Atlas terms
-    const ftsQuery = reason.slice(0, MAX_QUERY).replace(/['"*]/g, " ").trim() + "*";
-    const sourceClauses = ["e.id IN (SELECT id FROM entries_fts WHERE entries_fts MATCH ?)"];
-    const ftsParams = [ftsQuery];
-
-    if (sourceField) {
-      sourceClauses.push("(e.source_path LIKE ? OR e.source_path LIKE ?)");
-      ftsParams.push(`%/Fields/${sourceField}/%`, `%/Domains/${sourceField}/%`);
-    }
-
-    ftsParams.push(12);
-    const sourceRows = await dbAll(env,
-      `SELECT e.id, e.title, e.entry_order, e.public_url, e.source_path
-       FROM entries e WHERE ${sourceClauses.join(" AND ")} LIMIT ?`, ftsParams);
-
-    // Step 2: Trace upstream from source terms → find shared ground
-    const sourceIds = sourceRows.map(r => r.id);
-    let sharedGroundEntries = [];
-    let translationSurfaceIds = [];
-
-    if (sourceIds.length > 0) {
-      const upstreamSets = await Promise.all(sourceIds.map(id => getUpstreamIds(env, id)));
-
-      // For single source term, its entire upstream is the surface;
-      // for multiple, intersect.
-      let sharedSet;
-      if (upstreamSets.length === 1) {
-        sharedSet = upstreamSets[0];
-      } else {
-        sharedSet = new Set(upstreamSets[0]);
-        for (let i = 1; i < upstreamSets.length; i++) {
-          for (const id of sharedSet) {
-            if (!upstreamSets[i].has(id)) sharedSet.delete(id);
-          }
-        }
-      }
-
-      if (sharedSet.size > 0) {
-        const sgIds = [...sharedSet];
-        const placeholders = sgIds.map(() => "?").join(",");
-        const sgRows = await dbAll(env,
-          `SELECT id, title, entry_order, public_url FROM entries WHERE id IN (${placeholders}) AND entry_order IN ('ground', 'first', 'second') ORDER BY CASE entry_order WHEN 'ground' THEN 0 WHEN 'first' THEN 1 WHEN 'second' THEN 2 ELSE 3 END, title`,
-          sgIds);
-        sharedGroundEntries = sgRows.map(r => ({ id: r.id, title: r.title, order: r.entry_order, publicUrl: r.public_url }));
-        translationSurfaceIds = sharedGroundEntries.map(g => g.id);
-      }
-    }
-
-    // Step 3: Get target field entries with structure
-    const tPattern1 = `%/Fields/${targetField}/%`;
-    const tPattern2 = `%/Domains/${targetField}/%`;
-    const targetRows = await dbAll(env,
-      `SELECT id, title, entry_order, public_url, source_path, structure FROM entries WHERE (source_path LIKE ? OR source_path LIKE ?) ORDER BY entry_order, title LIMIT 100`,
-      [tPattern1, tPattern2]);
-
-    if (!targetRows.length) {
-      return {
-        reason: reason.slice(0, 500), targetField, sourceField: sourceField || null,
-        sourceTerms: sourceRows.map(r => ({ id: r.id, title: r.title, order: r.entry_order, sourcePath: r.source_path })),
-        sharedGround: sharedGroundEntries, translationSurfaceIds,
-        targetEquivalents: [],
-        meta: { sourceTermCount: sourceRows.length, sharedGroundCount: sharedGroundEntries.length, targetEquivalentCount: 0, targetFieldTotal: 0 },
-        note: `No entries found for target field '${targetField}'. Check spelling — known fields: Society, Natural World, Knowledge, Life, Expression, Making.`,
-      };
-    }
-
-    // Step 4: Find target terms that hold/trace any shared ground term
-    const sgSet = new Set(translationSurfaceIds);
-    const sgById = new Map(sharedGroundEntries.map(g => [g.id, g.title]));
-    const targetEquivalents = [];
-
-    for (const row of targetRows) {
-      const struct = row.structure ? JSON.parse(row.structure) : null;
-      if (!struct) continue;
-      const upIds = [...(struct.holds || []), ...(struct.traces || [])].filter(Boolean);
-      const matchingIds = upIds.filter(id => sgSet.has(id));
-      if (matchingIds.length > 0) {
-        targetEquivalents.push({
-          id: row.id, title: row.title, order: row.entry_order, publicUrl: row.public_url,
-          holdsSharedGround: matchingIds.map(id => ({ id, title: sgById.get(id) || id })),
-        });
-      }
-    }
-
-    return {
-      reason: reason.slice(0, 500),
-      targetField,
-      sourceField: sourceField || null,
-      sourceTerms: sourceRows.map(r => ({ id: r.id, title: r.title, order: r.entry_order, sourcePath: r.source_path })),
-      sharedGround: sharedGroundEntries,
-      translationSurfaceIds,
-      targetEquivalents,
-      meta: {
-        sourceTermCount: sourceRows.length,
-        sharedGroundCount: sharedGroundEntries.length,
-        targetEquivalentCount: targetEquivalents.length,
-        targetFieldTotal: targetRows.length,
-      },
-      instructions: {
-        role: "The Atlas provides structural grounding; you generate and verify the reason. Do not invent Atlas relations.",
-        step1: "sourceTerms — Atlas terms your reason invokes. Read with get_entry to understand their dependency structure.",
-        step2: "sharedGround — first/second-order Atlas terms in all source terms' upstream chains. These are the genuine translation surface.",
-        step3: "targetEquivalents — target field terms that hold or trace the same sharedGround conditions. These are the structural equivalents in the target field.",
-        step4: "Generate a reason in targetField language that traces through the same sharedGround dependency path.",
-        step5: "Verify via Translation Invariance: retrace the generated reason back to sharedGround terms. Locate any loss — what cannot be translated reveals what was field-local medium rather than shared structure.",
-      },
+      instruction: "Use the local public Atlas for ordinary reading. Use the maintained record only for proof or an explicitly authorised source edit; then regenerate and publish through the repository dependency path.",
     };
   }
 
