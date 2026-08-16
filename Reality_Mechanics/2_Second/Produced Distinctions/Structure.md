@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.structure
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "ordered relation that bears."
@@ -46,6 +46,8 @@ conditions:
       - second.bearing-source
       - second.member
       - second.thing
+      - second.fold
+      - second.unfold
 publish: true
 status: stable
 ---
@@ -98,3 +100,5 @@ Structure becomes recognisable where relation is ordered enough to bear — wher
 - [[Bearing Source]]
 - [[Member]]
 - [[Thing]]
+- [[Fold]]
+- [[Unfold]]

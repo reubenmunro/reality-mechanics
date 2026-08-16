@@ -4,7 +4,7 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.thread
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "followable continuity through a readable length, across terms, or within an order."
@@ -23,7 +23,7 @@ conditions:
     targets:
       - first.thread
       - higher.recursion
-    read: "Term, Trace, and Read carry forward — into [[Thread]]. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Thread's structural complements appear at other orders: Terminal at second order names where the strand ends; [[Recursion]] at higher order names where carrying folds back."
+    read: "Term, Trace, and Read carry forward — into [[Thread]]. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Thread's structural complements appear at other orders: Terminal at second order names where the strand ends; [[Recursion]] at higher order names where carrying re-enters its own condition."
   traces:
     targets:
       - ground.term
@@ -64,7 +64,7 @@ Thread is held by [[Term]], [[Trace]], and [[Read]].
 
 ## Pairs
 
-[[Term]], [[Trace]], and [[Read]] carry forward into Thread. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Its complements appear at other orders: [[Terminal]] names where the strand can no longer be followed as the same read; [[Recursion]] names where carrying folds back into its own condition.
+[[Term]], [[Trace]], and [[Read]] carry forward into Thread. Thread is the continuity that holds when following, reading, and terms are sustained through a readable length. Its complements appear at other orders: [[Terminal]] names where the strand can no longer be followed as the same read; [[Recursion]] names where carrying re-enters its own condition.
 
 ## Traces
 

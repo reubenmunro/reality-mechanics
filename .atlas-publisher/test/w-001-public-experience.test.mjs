@@ -40,7 +40,7 @@ test("W-001 evidence ladder names canonical Atlas identity and non-canonical pro
     assert.match(html, /evidence-ladder/, `${name}: ladder present`);
     assert.match(html, /href="\/atlas"/, `${name}: public Atlas link`);
     assert.match(html, /href="\/provenance"/, `${name}: provenance link`);
-    assert.match(html, /sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655/, `${name}: canonical source hash`);
+    assert.match(html, /sha256:dc163a1a6a675adcade4828a2bdc00ed979783e84a694c9bab79ca3618669cfb/, `${name}: canonical source hash`);
     assert.match(html, /remain non-canonical/, `${name}: proof boundary`);
   }
 });

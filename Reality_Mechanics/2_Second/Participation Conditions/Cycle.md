@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.cycle
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "a return bounded by a recognisable period."
@@ -35,7 +35,7 @@ conditions:
     read: "where recurrence makes a carried condition readable again through a recognisable period."
   reads:
     targets: []
-    read: "where a return can be bounded as one complete recurrence through a period."
+    read: "where a return can be bounded as one recurrence through a recognisable period, complete only relative to that selected boundary."
   carries:
     targets: []
     read: "No demonstrated downstream carry is currently determined."
@@ -72,6 +72,6 @@ Cycle nests where recurrence makes a carried condition readable again through a 
 
 ## Reads
 
-Cycle becomes recognisable where a return can be bounded as one complete recurrence through a period.
+Cycle becomes recognisable where a return can be bounded as one recurrence through a recognisable period. Its completion is relative to the selected period and return boundary; it does not claim exact recurrence of every position, relation, or condition.
 
 ## Carries

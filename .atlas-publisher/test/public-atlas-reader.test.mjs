@@ -25,7 +25,7 @@ function currentEnv() {
           async all() {
             return { results: [
               { key: "source_hash", value: CANONICAL_SOURCE_HASH },
-              { key: "entry_count", value: "493" },
+              { key: "entry_count", value: "495" },
             ] };
           },
         };

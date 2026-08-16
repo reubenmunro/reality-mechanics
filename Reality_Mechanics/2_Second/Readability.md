@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.readability
-determination: pd.2026-07-18.calibration-revision-set
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "the sustained condition that makes reading possible."
@@ -63,6 +63,7 @@ conditions:
       - practice.practice
       - practice.section
       - third.translation
+      - second.unfold
 publish: true
 status: stable
 ---
@@ -126,3 +127,4 @@ In ordinary language, “sensible” may name this condition of being available 
 - [[Practice]]
 - [[Section]]
 - [[Translation]]
+- [[Unfold]]

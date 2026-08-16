@@ -35,6 +35,11 @@ conditions:
       - second.recarry
       - practice.calibration
 determination_records:
+  pd.2026-08-17.fold-unfold-family:
+    proof: "docs/reports/PD-009-fold-unfold-family.md"
+    approved_on: "2026-08-17"
+    constitutional_response: "Fold and Unfold are placed as related Second Order operations. Fold carries existing Structure through changed arrangement with retrace preserved; Unfold makes carried Structure newly readable without requiring prior Fold or new creation. Return, Recurrence, Cycle, Recursive, Recursion, and indefinite language are corrected only where this determination warrants it."
+    structural_radius: dependency
   pd.2026-07-18.calibration-revision-set:
     proof: "docs/reports/PD-008-calibration-revision-set.md"
     approved_on: "2026-07-18"

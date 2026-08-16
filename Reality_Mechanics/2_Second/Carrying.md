@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.carrying
-determination: pd.2026-07-18.calibration-revision-set
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "held forward availability being enacted."
@@ -89,6 +89,8 @@ conditions:
       - second.reference-frame
       - second.drift
       - third.translation
+      - second.fold
+      - second.unfold
 publish: true
 status: stable
 ---
@@ -185,3 +187,5 @@ Carrying becomes recognisable where held forward availability is being entered o
 - [[Reference Frame]]
 - [[Drift]]
 - [[Translation]]
+- [[Fold]]
+- [[Unfold]]

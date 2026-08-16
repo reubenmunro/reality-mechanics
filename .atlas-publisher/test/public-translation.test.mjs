@@ -59,7 +59,7 @@ function workerEnv(sourceHash = CANONICAL_SOURCE_HASH) {
           async all() {
             if (/FROM atlas_metadata\b/.test(sql)) return { results: [
               { key: "source_hash", value: sourceHash },
-              { key: "entry_count", value: sourceHash === CANONICAL_SOURCE_HASH ? "493" : "490" },
+              { key: "entry_count", value: sourceHash === CANONICAL_SOURCE_HASH ? "495" : "490" },
             ] };
             return { results: [] };
           },
@@ -77,35 +77,35 @@ function workerEnv(sourceHash = CANONICAL_SOURCE_HASH) {
   };
 }
 
-test("public bundle contains only the approved 493-entry generated participation", () => {
+test("public bundle contains only the approved 495-entry generated participation", () => {
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   const index = JSON.parse(readFileSync(join(publicRoot, "ai", "current", "index.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:1c69dbba6ea009fa23d26278d0d1521c966d79aefe5e04b4e85362c26437311e");
+  assert.equal(manifest.canonicalGraphHash, "sha256:86d7558ab66d563ca31e098de34883fac7100a3577555596cdb74961f2c618e0");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
-  assert.equal(manifest.translationHash, "sha256:95465ae80b3c009883eb72343175156cba52220f597f73b3f1fe32c48e67ebc9");
+  assert.equal(manifest.translationHash, "sha256:73ce749caf9ec1725d70d482bdce7cf58fa3ed6a8023d40e49dd3c497e4a311e");
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
   assert.deepEqual(manifest.counts, {
-    entries: 493,
-    orderEntries: 444,
+    entries: 495,
+    orderEntries: 446,
     registerEntries: 49,
-    relationTargets: 7325,
-    determinationReferences: 493,
-    determinationRecords: 7,
+    relationTargets: 7355,
+    determinationReferences: 495,
+    determinationRecords: 8,
     protocolMembers: 3,
-    generatedOutputs: 504,
-    publicAssets: 497,
+    generatedOutputs: 506,
+    publicAssets: 499,
   });
-  assert.equal(index.entryCount, 493);
-  assert.equal(index.entryIds.length, 493);
-  assert.equal(filesUnder(join(publicRoot, "ai", "current", "entries")).length, 493);
+  assert.equal(index.entryCount, 495);
+  assert.equal(index.entryIds.length, 495);
+  assert.equal(filesUnder(join(publicRoot, "ai", "current", "entries")).length, 495);
   assert.equal(index.entryIds.includes("practice.atlas-condition-header"), false);
   assert.equal(index.entryIds.includes("practice.atlas-note-standard"), false);
   assert.deepEqual(manifest.expectedD1DatasetHashes, {
-    entries: "sha256:e4dde8a4cd944bf13766c8ee5e941b830be112f10b201dfcf65bf7711b3587fe",
-    fts: "sha256:de2f3502b468c21cf471804c309d8eb91a837ca1a4632f6767ceb82f7eb86e3e",
-    metadata: "sha256:aef9e5bf29ad5a9824182a19c07645d6509d0af2770a14c484a2dac96bd4e716",
-    determinations: "sha256:aeed8bfe92d332d6106d8aa7b9200359557f889204c91b60f9e55f88bd77cc1a",
+    entries: "sha256:4d92ba6a6be2dbda34919ea31669ed72c33102df1f4f7ec4a34f6b82754b1ad8",
+    fts: "sha256:7dee5d1f6dc0212ddaad0011a3d159ff768decfb980792f931cf3cb432e1de31",
+    metadata: "sha256:de0a1fed452e644a04f0107d7dbfb09806c715330dc93263ba38366088015735",
+    determinations: "sha256:2a5e44ec2d8200ef4dce6ab3250e882d81ca0c2e39e03f8343e4ad9e499b2a53",
     protocol: "sha256:94829b499c48fe785a2f3aee9fd8902d36aa9262966e601bfb9b740e48b1b2be",
   });
 });
@@ -163,7 +163,7 @@ test("Main Worker fails closed before a stale generated asset can be served", as
   const env = workerEnv("sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
   env.ASSETS.fetch = async () => {
     assetReads += 1;
-    return new Response(JSON.stringify({ entryCount: 493 }));
+    return new Response(JSON.stringify({ entryCount: 495 }));
   };
   for (const path of ["/ai/current/index.json", "/theory"]) {
     const response = await worker.fetch(new Request(`https://realitymechanics.nz${path}`), env);
@@ -235,13 +235,13 @@ test("the exact D1 sync path leaves the complete public Translation deployable",
   });
   assert.equal(sync.status, 0, sync.stderr);
   assert.equal(existsSync(publicRoot), true);
-  assert.equal(filesUnder(publicRoot).length, 497);
+  assert.equal(filesUnder(publicRoot).length, 499);
   assert.equal(existsSync(join(publicRoot, "manifest.json")), true);
   assert.equal(existsSync(join(generatedRoot, "release-identity.mjs")), true);
 
   const manifest = JSON.parse(readFileSync(join(publicRoot, "manifest.json"), "utf8"));
   assert.equal(manifest.canonicalSourceHash, CANONICAL_SOURCE_HASH);
-  assert.equal(manifest.canonicalGraphHash, "sha256:1c69dbba6ea009fa23d26278d0d1521c966d79aefe5e04b4e85362c26437311e");
+  assert.equal(manifest.canonicalGraphHash, "sha256:86d7558ab66d563ca31e098de34883fac7100a3577555596cdb74961f2c618e0");
   assert.equal(manifest.translationHash, TRANSLATION_HASH);
   assert.equal(manifest.releaseIdentifier, RELEASE_IDENTIFIER);
 });

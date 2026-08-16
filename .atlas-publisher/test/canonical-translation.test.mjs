@@ -35,9 +35,9 @@ function filesUnder(root) {
 }
 
 test("Canonical Graph carries only the validated Stage 1C source", () => {
-  assert.equal(graph.sourceHash, "sha256:adce2786fd4ba111593007953f584626dd7e3e66aadfcde3ddfeb39709c62655");
-  assert.equal(Object.keys(graph.entries).length, 493);
-  assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 444);
+  assert.equal(graph.sourceHash, "sha256:dc163a1a6a675adcade4828a2bdc00ed979783e84a694c9bab79ca3618669cfb");
+  assert.equal(Object.keys(graph.entries).length, 495);
+  assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 446);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 49);
 
   const schemaOwners = Object.entries(graph.entries).filter(([, entry]) => entry.atlasSchema);
@@ -75,6 +75,50 @@ test("Canonical Graph carries only the validated Stage 1C source", () => {
   }
 });
 
+test("PD-009 places Fold and Unfold as independent Second Order operations", () => {
+  const fold = graph.entries["second.fold"];
+  const unfold = graph.entries["second.unfold"];
+  assert.ok(fold);
+  assert.ok(unfold);
+  assert.equal(fold.order, "second");
+  assert.equal(unfold.order, "second");
+  assert.equal(fold.kind, "operation");
+  assert.equal(unfold.kind, "operation");
+  assert.deepEqual(fold.conditions.needs.targets, ["second.structure", "second.carrying", "first.trace"]);
+  assert.deepEqual(unfold.conditions.needs.targets, ["second.structure", "second.carrying", "second.readability", "first.trace"]);
+  assert.deepEqual(fold.conditions.pairs.targets, ["second.unfold"]);
+  assert.deepEqual(unfold.conditions.pairs.targets, ["second.fold"]);
+  assert.deepEqual(fold.conditions.carries.targets, []);
+  assert.deepEqual(unfold.conditions.carries.targets, []);
+  assert.equal(fold.determination, "pd.2026-08-17.fold-unfold-family");
+  assert.equal(unfold.determination, "pd.2026-08-17.fold-unfold-family");
+
+  assert.deepEqual(
+    graph.entries["first.trace"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),
+    ["second.fold", "second.unfold"],
+  );
+  assert.deepEqual(
+    graph.entries["second.carrying"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),
+    ["second.fold", "second.unfold"],
+  );
+  assert.deepEqual(
+    graph.entries["second.structure"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),
+    ["second.fold", "second.unfold"],
+  );
+  assert.deepEqual(
+    graph.entries["second.readability"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),
+    ["second.unfold"],
+  );
+
+  const nestingTargets = Object.values(graph.entries["third.nesting"].conditions)
+    .flatMap((condition) => condition.targets || []);
+  assert.equal(nestingTargets.includes("second.fold"), false);
+  assert.equal(nestingTargets.includes("second.unfold"), false);
+  assert.equal(graph.entries["third.fold"], undefined);
+  assert.equal(graph.entries["third.unfold"], undefined);
+  assert.ok(graph.entries["ground.groundedness"].determinationRecords["pd.2026-08-17.fold-unfold-family"]);
+});
+
 test("Translation stops on an unresolved exact relation target", () => {
   const root = mkdtempSync(join(tmpdir(), "rm-invalid-atlas-"));
   const atlas = join(root, "Reality_Mechanics");
@@ -109,7 +153,7 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   ].join(" ");
   const result = spawnSync("sqlite3", [db, query], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(result.stdout.trim().split("\n"), ["493", "444", "49", "3", graph.sourceHash]);
+  assert.deepEqual(result.stdout.trim().split("\n"), ["495", "446", "49", "3", graph.sourceHash]);
 
   const columnsResult = spawnSync("sqlite3", ["-json", db, "pragma table_info(entries);"], { encoding: "utf8" });
   assert.equal(columnsResult.status, 0, columnsResult.stderr);
@@ -120,7 +164,7 @@ test("D1 reconstructs all identities, placements, determinations, relations, and
   { encoding: "utf8" });
   assert.equal(rowsResult.status, 0, rowsResult.stderr);
   const rows = JSON.parse(rowsResult.stdout);
-  assert.equal(rows.length, 493);
+  assert.equal(rows.length, 495);
   for (const row of rows) {
     const entry = graph.entries[row.id];
     assert.ok(entry, row.id);
@@ -172,7 +216,7 @@ test("AI and search participation preserve graph identity and entry parity", () 
   const aiIndex = JSON.parse(readFileSync(join(generatedRoot, "ai", "current", "index.json"), "utf8"));
   const search = JSON.parse(readFileSync(join(generatedRoot, "participation", "search-index.json"), "utf8"));
   assert.equal(aiIndex.sourceHash, graph.sourceHash);
-  assert.equal(aiIndex.entryCount, 493);
+  assert.equal(aiIndex.entryCount, 495);
   assert.deepEqual(aiIndex.entryIds, Object.keys(graph.entries));
   assert.deepEqual(search.entries.map((entry) => entry.id), Object.keys(graph.entries));
 

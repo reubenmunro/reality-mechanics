@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.recurrence
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "participation occurring again."
@@ -34,7 +34,7 @@ conditions:
     read: "where participation occurs again and remains recognisable across instances."
   reads:
     targets: []
-    read: "where participation can be read as occurring again — where what takes part now can be identified as the same condition that took part before."
+    read: "where participation can be read as occurring again — where a carried condition remains recognisable across changed instances without the instances being treated as identical."
   carries:
     targets:
       - second.pattern
@@ -90,7 +90,9 @@ Recurrence nests where participation occurs again and remains recognisable acros
 
 ## Reads
 
-Recurrence becomes recognisable where participation can be read as occurring again — where what takes part now can be identified as the same condition that took part before.
+Recurrence becomes recognisable where participation can be read as occurring again — where a carried condition remains recognisable across changed instances without the instances being treated as identical.
+
+Recurrence does not require exact repetition or return to the same state. It requires enough carried continuity for participation across difference to be read as occurring again.
 
 ## Carries
 

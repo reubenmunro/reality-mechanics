@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.return
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "carried relation becoming readable again at a resolvable boundary."
@@ -52,7 +52,7 @@ Carried relation becoming readable again at a resolvable boundary.
 
 Return is held by [[Boundary]], [[Carrying]], and [[Readability]]. Relation must continue, a boundary must locate a distinguishable entry, and that boundary must fall within a resolution band able to read it.
 
-Return is not repetition. Repetition is the apparent occurrence of the same event again. Return requires a carried relation to remain traceable across the difference between entries. A return is not going back. It is re-entering a carrying system with new relation available.
+Return is not repetition. Repetition is the apparent occurrence of the same event again. Return requires a carried relation to remain traceable across the difference between entries. A return is not going back or arriving at an identical prior state. It is re-entering a carrying system through changed conditions with new relation available.
 
 Coupling is a common form of the relation carried through Return, but it is not required in every instance. Return is also distinct from restoring a broken coupling. If coupling ceased, its restoration establishes coupling again; Return does not name that act. Return applies where carried relation becomes readable again, whether the carrying was continuously visible or only becomes visible at the returning boundary.
 
@@ -82,7 +82,7 @@ Return nests where carried relation enters a boundary resolvable enough for its 
 
 Return becomes recognisable where continuity becomes readable again at a boundary — not as the same event repeated, but as carried relation recognised through a new entry.
 
-An orbit carries coupling continuously; a year is readable at a selected return condition. A groove may continue through sound and bodily participation; a beat or bar marks a return condition within it. These are Atlas reads of continuity, not claims that physical continuity is made by observation.
+An orbit carries coupling continuously; a year is readable at a selected return condition, not as arrival at literally the same place. A groove may continue through sound and bodily participation; a beat or bar marks a return condition within it. These are Atlas reads of continuity, not claims that physical continuity is made by observation or that recurrence is exact.
 
 ## Carries
 

@@ -4,7 +4,7 @@ order: second
 kind: term
 ai_role: term
 condition_key: second.recursive
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "carrying re-entering its own condition."
@@ -27,7 +27,7 @@ conditions:
       - second.carrying
   nests:
     targets: []
-    read: "where carrying returns to and re-enters the condition it carries."
+    read: "where carrying re-enters the condition it carries through a later carrying scope without being treated as return to an identical state."
   reads:
     targets: []
     read: "where carrying can be read as re-entering the condition it carries — where what is being sustained contributes to sustaining itself."
@@ -55,7 +55,7 @@ Recursive is held by [[Recurrence]] and [[Carrying]].
 
 ## Pairs
 
-Recursive is vertical. It names carrying re-entering its own condition, and carries this forward into [[Recursive Regulation]]. Recursive holds [[Recurrence]] and [[Carrying]] — it is a downstream read of carrying turning back on itself, not a lateral co-present condition alongside another second-order term.
+Recursive is vertical. It names carrying re-entering its own condition, and carries this forward into [[Recursive Regulation]]. Recursive holds [[Recurrence]] and [[Carrying]] — it is a downstream read of carrying entering its own carrying condition through a later carrying scope, not a closed turn back to an identical state or a lateral co-present condition alongside another second-order term.
 
 
 ## Traces
@@ -65,7 +65,7 @@ Recursive is vertical. It names carrying re-entering its own condition, and carr
 
 ## Nests
 
-Recursive nests where carrying returns to and re-enters the condition it carries.
+Recursive nests where carrying re-enters the condition it carries through a later carrying scope without being treated as return to an identical state.
 
 ## Reads
 

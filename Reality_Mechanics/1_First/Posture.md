@@ -4,7 +4,7 @@ order: first
 kind: term
 ai_role: term
 condition_key: first.posture
-determination: pd.v3.pre-provenance-baseline
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "connection held with orientation — how relation is held toward relation so that order can become constructible."
@@ -73,7 +73,7 @@ Posture nests within first order, after connection. It is the orientation throug
 
 Posture becomes recognisable where a connection is not just held but directed — where the holding has a toward-ness that makes order begin to emerge rather than remain merely available.
 
-The toward-ness must be directed enough that the carry it opens is determinable at some scope. That scope may be wider than the scope at which the posture is currently read. What appears as indefinite holding from within one scope is posture resolving at a scope not yet entered — the orbit that looks permanent from inside a human lifetime, the held potential that has not yet met its condition. Posture is not indeterminate; it is resolution deferred to a scope not yet in view.
+The toward-ness must be directed enough that the carry it opens is determinable at some scope. That scope may be wider than the scope at which the posture is currently read. What appears to continue indefinitely from within one scope may be posture resolving at a scope not yet entered — the orbit that looks permanent from inside a human lifetime, the held potential that has not yet met its condition. *Indefinitely* names the absence of a determined end at the current scope; it does not mean infinitely or permanently. Posture is not therefore indeterminate; its resolution may be deferred to a scope not yet in view.
 
 ## Carries
 

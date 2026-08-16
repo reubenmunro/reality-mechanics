@@ -4,7 +4,7 @@ order: first
 kind: carrier
 ai_role: carrier
 condition_key: first.trace
-determination: pd.2026-07-18.calibration-revision-set
+determination: pd.2026-08-17.fold-unfold-family
 
 conditions:
   places: "the backward availability of held connection."
@@ -58,6 +58,8 @@ conditions:
       - practice.reasoning
       - second.drift
       - third.translation
+      - second.fold
+      - second.unfold
 publish: true
 status: stable
 ---
@@ -121,3 +123,5 @@ Trace becomes recognisable where held connection offers a path back toward the c
 - [[Reasoning]]
 - [[Drift]]
 - [[Translation]]
+- [[Fold]]
+- [[Unfold]]
