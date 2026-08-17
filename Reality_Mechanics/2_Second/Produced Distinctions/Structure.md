@@ -47,7 +47,6 @@ conditions:
       - second.member
       - second.thing
       - second.fold
-      - second.unfold
 publish: true
 status: stable
 ---

@@ -35,7 +35,7 @@ function filesUnder(root) {
 }
 
 test("Canonical Graph carries only the validated Stage 1C source", () => {
-  assert.equal(graph.sourceHash, "sha256:dc163a1a6a675adcade4828a2bdc00ed979783e84a694c9bab79ca3618669cfb");
+  assert.equal(graph.sourceHash, "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443");
   assert.equal(Object.keys(graph.entries).length, 495);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 446);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 49);
@@ -85,7 +85,7 @@ test("PD-009 places Fold and Unfold as independent Second Order operations", () 
   assert.equal(fold.kind, "operation");
   assert.equal(unfold.kind, "operation");
   assert.deepEqual(fold.conditions.needs.targets, ["second.structure", "second.carrying", "first.trace"]);
-  assert.deepEqual(unfold.conditions.needs.targets, ["second.structure", "second.carrying", "second.readability", "first.trace"]);
+  assert.deepEqual(unfold.conditions.needs.targets, ["second.carrying", "second.readability", "first.trace"]);
   assert.deepEqual(fold.conditions.pairs.targets, ["second.unfold"]);
   assert.deepEqual(unfold.conditions.pairs.targets, ["second.fold"]);
   assert.deepEqual(fold.conditions.carries.targets, []);
@@ -103,7 +103,7 @@ test("PD-009 places Fold and Unfold as independent Second Order operations", () 
   );
   assert.deepEqual(
     graph.entries["second.structure"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),
-    ["second.fold", "second.unfold"],
+    ["second.fold"],
   );
   assert.deepEqual(
     graph.entries["second.readability"].conditions.carries.targets.filter((id) => id === "second.fold" || id === "second.unfold"),

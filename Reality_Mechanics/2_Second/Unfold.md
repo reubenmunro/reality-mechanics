@@ -10,24 +10,21 @@ conditions:
   places: "the operation through which carried structure becomes newly exposed and readable while remaining available to trace."
   needs:
     targets:
-      - second.structure
       - second.carrying
       - second.readability
       - first.trace
   holds:
     targets:
-      - second.structure
       - second.carrying
       - second.readability
       - first.trace
-    read: "[[Structure]], [[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named."
+    read: "[[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named."
   pairs:
     targets:
       - second.fold
     read: "[[Fold]]. Fold and Unfold form a comparative operational pair: Fold reduces present exposure while preserving retrace; Unfold makes carried structure newly readable. Neither operation requires the other to have occurred, and neither is the exact inverse of the other."
   traces:
     targets:
-      - second.structure
       - second.carrying
       - second.readability
       - first.trace
@@ -49,7 +46,7 @@ aliases:
 
 The operation through which carried structure becomes newly exposed and readable while remaining available to trace.
 
-Unfold is held by [[Structure]], [[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named.
+Unfold is held by [[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named.
 
 Unfold does not require [[Fold]]. History, organisation, relation, or other carried structure may become newly exposed without a discrete prior folding operation being demonstrated.
 
@@ -63,7 +60,7 @@ Unfold places the operation through which carried structure becomes newly expose
 
 ## Holds
 
-Unfold is held by [[Structure]], [[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named.
+Unfold is held by [[Carrying]], [[Readability]], and [[Trace]]. Structure must already be carried, become newly readable, and remain available through its dependency path before Unfold can be named.
 
 ## Pairs
 
@@ -71,7 +68,6 @@ Unfold pairs with [[Fold]] as a comparative operational read. Fold reduces prese
 
 ## Traces
 
-- [[Structure]]
 - [[Carrying]]
 - [[Readability]]
 - [[Trace]]

@@ -13,7 +13,7 @@ The participant determined Fold and Unfold as related Second Order operations af
 The smallest coherent revision is:
 
 1. Place `second.fold` as `Structure + Carrying + Trace → Fold`.
-2. Place `second.unfold` as `Structure + Carrying + Readability + Trace → Unfold`.
+2. Place `second.unfold` as `Carrying + Readability + Trace → Unfold`.
 3. Record Fold and Unfold as a comparative operational pair without making either an exact inverse, prerequisite, or compulsory causal continuation of the other.
 4. Keep `third.nesting` as the order-terminal of Third Order. Nesting may retain folded structure across later organisation but does not generate Fold or Unfold.
 5. Correct Return, Recurrence, Cycle, Recursive, and Recursion where their existing language could imply exact repetition, return to an identical state, or premature reliance on Third Order nesting.
@@ -29,7 +29,7 @@ Compression, increased density, reduced extent, layering, and concealment are po
 
 ### Unfold
 
-Carried Structure becomes newly exposed and readable while remaining available to Trace.
+Carried structure becomes newly exposed and readable while remaining available to Trace.
 
 The exposure does not require the exposed Structure itself to have just been created. An unfolding may nevertheless establish new local relations.
 
@@ -53,7 +53,7 @@ One unfolding can expose another fold. This permits indefinite continuation with
 ## Structural consequences
 
 - Structure, Carrying, and Trace carry Fold.
-- Structure, Carrying, Readability, and Trace carry Unfold.
+- Carrying, Readability, and Trace carry Unfold.
 - Fold and Unfold name a reciprocal comparative read without a causal edge between them.
 - Nesting receives no Fold or Unfold carry target.
 - No downstream term is inferred merely because an unfolding may establish new relations.
