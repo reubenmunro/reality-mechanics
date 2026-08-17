@@ -150,7 +150,7 @@ for (const retired of [
 
 const manifest = await callTool("get_manifest");
 assert.equal(manifest.parity, true);
-assert.equal(manifest.entryCount, 493);
+assert.equal(manifest.entryCount, 495);
 assert.equal(manifest.sourceHash, CANONICAL_SOURCE_HASH);
 assert.equal(manifest.translationHash, TRANSLATION_HASH);
 

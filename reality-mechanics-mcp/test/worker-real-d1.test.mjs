@@ -86,7 +86,7 @@ test("find_entries unifies exact title, scope, kind, and pagination", async () =
   assert.equal(architecture.total, 9);
 
   const operations = await callTool("find_entries", { kind: "operation", limit: 1 });
-  assert.equal(operations.total, 2);
+  assert.equal(operations.total, 4);
   assert.equal(operations.count, 1);
   assert.equal(operations.hasMore, true);
 });
