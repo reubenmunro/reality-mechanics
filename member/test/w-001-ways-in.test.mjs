@@ -1,4 +1,5 @@
-// W-001: Pulse orients visitors into the wider programme without new mechanics.
+// W-001: Pulse remains one bounded primary surface without predeclaring the
+// nested Theory, Proof, and Calculus inquiry.
 import assert from "node:assert";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -10,11 +11,12 @@ const src = readFileSync(join(here, "../src/index.js"), "utf8");
 let n = 0;
 const t = (name, fn) => { fn(); n++; console.log("  ✓", name); };
 
-t("Pulse carries ways into the programme", () => {
-  assert.ok(src.includes('class="ways-in"'));
+t("Pulse stays within the primary navigation", () => {
+  assert.ok(src.includes("realitymechanics.nz/atlas"));
   assert.ok(src.includes("realitymechanics.nz/field"));
-  assert.ok(src.includes("realitymechanics.nz/proof"));
-  assert.ok(src.includes("proof#ways-in"), "points to MCP orientation without a runtime network reference (invariant preserved)");
+  assert.ok(!src.includes('class="ways-in"'));
+  assert.ok(!src.includes("proof#ways-in"));
+  assert.doesNotMatch(src, /realitymechanics\.nz\/(?:theory|proof|calculus)/);
 });
 
 t("Pulse keeps calm keyboard focus", () => {

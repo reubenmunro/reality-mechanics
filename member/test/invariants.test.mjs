@@ -95,16 +95,17 @@ t("D-026 Pulse visual refinement removes card chrome", () => {
   assert.ok(src.includes("Iowan Old Style"));
 });
 
-t("navigation reaches Observatory, Theory, and Proof", () => {
+t("navigation stays bounded to the four primary surfaces", () => {
+  assert.ok(src.includes('href="https://realitymechanics.nz/">Home'));
+  assert.ok(src.includes('href="https://realitymechanics.nz/atlas">Atlas'));
   assert.ok(src.includes('href="https://realitymechanics.nz/field">Observatory'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/proof">Proof'));
   assert.ok(src.includes('href="https://calibration.realitymechanics.nz/" aria-current="page">Pulse'));
-  assert.ok(src.includes('href="https://realitymechanics.nz/theory">Theory'));
+  assert.doesNotMatch(src, /href="https:\/\/realitymechanics\.nz\/(?:theory|proof|calculus)"/);
   assert.ok(!/🔭|❤️|📖|✓|∴/.test(src));
 });
 
-t("D-024 navigation reaches Calculus", () => {
-  assert.ok(src.includes('href="https://realitymechanics.nz/calculus">Calculus'));
+t("D-024 nested inquiry is not promoted in Pulse", () => {
+  assert.ok(!src.includes('href="https://realitymechanics.nz/calculus">Calculus'));
 });
 
 t("W-003 mobile Pulse shares the readable source-preserving public frame", () => {

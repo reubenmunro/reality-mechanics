@@ -213,11 +213,8 @@ test("fieldPage consumes only the derived states endpoint", () => {
   assert.match(html, /id="access-row"/);
   assert.match(html, /href="\/field"[^>]*>Observatory/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
-  assert.match(html, /href="\/theory">Theory/);
-  assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
-  assert.match(html, /href="\/proof">Proof/);
-  assert.match(html, /href="\/calculus">Calculus/);
   assert.match(html, /href="\/atlas">Atlas/);
+  assert.doesNotMatch(html, /href="\/(?:theory|proof|calculus)"/);
   assert.doesNotMatch(html, /href="\/garden"/);
   assert.doesNotMatch(html, /href="https:\/\/theory\.realitymechanics\.nz\/#theory-descent"/);
   assert.match(html, /id="sheet-place"/);
@@ -239,30 +236,32 @@ test("drawCurrent applies shared term ratio mode to all relation types", () => {
   assert.doesNotMatch(html, /isCarry \? termRatioMode\(a\)/);
 });
 
-test("Field links to Proof alongside Pulse", () => {
+test("Field navigation stays bounded to the primary surfaces", () => {
   const html = fieldPage();
-  assert.match(html, /href="\/proof">Proof/);
+  assert.match(html, /href="\/">Home/);
+  assert.match(html, /href="\/atlas">Atlas/);
   assert.match(html, /href="https:\/\/calibration\.realitymechanics\.nz\/">Pulse/);
   assert.match(html, /href="\/field"[^>]*>Observatory/);
-  assert.match(html, /href="\/theory">Theory/);
-  assert.match(html, /href="\/calculus">Calculus/);
-  assert.doesNotMatch(html, /Theory\.md">📖 Theory/);
+  assert.doesNotMatch(html, /href="\/(?:theory|proof|calculus)"/);
 });
 
-test("D-021.2 observatory landing orients before observation", () => {
+test("Observatory landing places the bounded entrances before observation", () => {
   const html = fieldPage();
   assert.match(html, /id="observatory-landing"/);
   assert.match(html, /Reality Mechanics Observatory/);
-  assert.match(html, /Observe how declared carrying and tracing weave into thread, fabric, and web\./);
+  assert.match(html, /Relation holds\. Order carries\. Trace places\./);
   assert.match(html, /id="landing-observe">Observe the Field/);
-  assert.match(html, /id="landing-continue" hidden>Continue where I left off/);
   assert.match(html, /id="landing-atlas" href="\/atlas"/);
   assert.match(html, /Browse the Atlas/);
+  assert.doesNotMatch(html, /Observe how declared carrying and tracing weave/);
+  assert.doesNotMatch(html, /Every public surface retraces through one/);
+  assert.doesNotMatch(html, /AI workers enter through/);
   assert.match(html, /id="sheet-neutral"/);
   assert.match(html, /id="sheet-neutral-title">Observatory/);
   assert.match(html, /Select a place in the field to observe its structure\./);
   assert.match(html, /id="sheet-term" hidden/);
-  assert.match(html, /observatory\.lastFocusId/);
+  assert.doesNotMatch(html, /Continue where I left off/);
+  assert.doesNotMatch(html, /observatory\.lastFocusId/);
   assert.match(html, /function renderNeutralSheet/);
   assert.match(html, /function observeTerm/);
   assert.match(html, /function dismissObservatoryLanding/);
@@ -360,22 +359,24 @@ test("/submission serves the public Submission 001 page", async () => {
   assert.doesNotMatch(html, /structural term test/i);
 });
 
-test("public structure adds Home and Atlas without removing the five instruments", () => {
+test("primary navigation is bounded while inquiry routes remain contextual", () => {
   const fieldHtml = fieldPage();
   const proofHtml = submissionPage();
   const theoryHtml = theoryPage();
   const calculusHtml = calculusPage();
 
   for (const html of [fieldHtml, proofHtml, theoryHtml, calculusHtml]) {
-    assert.match(html, />Home</);
-    assert.match(html, />Atlas</);
-    assert.match(html, />Observatory</);
-    assert.match(html, />Pulse</);
-    assert.match(html, />Theory</);
-    assert.match(html, />Proof</);
-    assert.match(html, />Calculus</);
+    const nav = html.match(/<nav[\s\S]*?<\/nav>/)?.[0] || "";
+    assert.match(nav, />Home</);
+    assert.match(nav, />Atlas</);
+    assert.match(nav, />Observatory</);
+    assert.match(nav, />Pulse</);
+    assert.doesNotMatch(nav, /href="\/(?:theory|proof|calculus)"/);
     assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
   }
+  assert.match(theoryHtml, /class="nested-path"><a href="\/proof">Retrace this claim/);
+  assert.match(proofHtml, /class="nested-path"><a href="\/calculus">Inspect the present limits of derivation/);
+  assert.match(calculusHtml, /class="nested-path"><a href="\/proof">Retrace the evidence/);
   assert.match(fieldHtml, /href="\/atlas"/);
   assert.doesNotMatch(fieldHtml, /href="\/garden"/);
 });
@@ -410,7 +411,7 @@ test("/api/enter is retired as a renderer placement mechanism", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/);
 });
 
 test("Ark movement API is retired as a second renderer state path", async () => {
@@ -419,7 +420,7 @@ test("Ark movement API is retired as a second renderer state path", async () => 
     const body = await res.text();
 
     assert.equal(res.status, 410, path);
-    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, path);
+    assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/, path);
   }
 });
 
@@ -428,7 +429,7 @@ test("/ark is retired as a standalone doorway", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/);
 });
 
 test("/api/field/entries is retired in favour of derived field states", async () => {
@@ -436,7 +437,7 @@ test("/api/field/entries is retired in favour of derived field states", async ()
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/);
 });
 
 test("Garden routes are no longer public surfaces", async () => {
@@ -453,7 +454,7 @@ test("Garden routes are no longer public surfaces", async () => {
     const res = await worker.fetch(new Request(url, init), {});
     const body = await res.text();
     assert.equal(res.status, 410, url);
-    assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/, url);
+    assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/, url);
   }
 });
 
@@ -462,7 +463,7 @@ test("/garden is no longer a public surface", async () => {
   const html = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(html, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.match(html, /Home, Atlas, Observatory, and Pulse as primary surfaces/);
 });
 
 test("Theory shortcuts are no longer public surfaces", async () => {
@@ -470,7 +471,7 @@ test("Theory shortcuts are no longer public surfaces", async () => {
   const body = await res.text();
 
   assert.equal(res.status, 410);
-  assert.match(body, /Observatory, Pulse, Theory, Proof, and Calculus only/);
+  assert.match(body, /Home, Atlas, Observatory, and Pulse as primary surfaces/);
 });
 
 test("D-022 language enters the field: canvas term labels", () => {
@@ -539,7 +540,9 @@ test("D-023 the strands are named in renderer colours", () => {
 test("D-023 landing opens with the working postulate", () => {
   const html = fieldPage();
   assert.match(html, /landing-postulate">Relation holds\. Order carries\. Trace places\./);
-  assert.match(html, /Continuation and recoverability read before any term is chosen/);
+  assert.match(html, /id="landing-observe">Observe the Field/);
+  assert.match(html, /id="landing-atlas" href="\/atlas">Browse the Atlas/);
+  assert.doesNotMatch(html, /Continuation and recoverability read before any term is chosen/);
 });
 
 test("D-023 Theory leads with the claim and cites sparingly", async () => {
@@ -613,14 +616,13 @@ test("D-024 candidate calculus presented without promotion", async () => {
   assert.match(html, /promotes nothing/);
 });
 
-test("D-024 five public surfaces reachable from every page", () => {
-  const pages = [fieldPage(), theoryPage(), submissionPage(), calculusPage()];
-  for (const html of pages) {
-    assert.match(html, /href="\/calculus"[^>]*>Calculus/);
-    assert.match(html, /href="\/proof"[^>]*>Proof/);
-    assert.match(html, /href="\/field"[^>]*>Observatory/);
-    assert.doesNotMatch(html, /🔭|❤️|📖|✓|∴/);
-  }
+test("D-024 derivation remains reachable through the nested inquiry path", () => {
+  const theoryHtml = theoryPage();
+  const proofHtml = submissionPage();
+  const calculusHtml = calculusPage();
+  assert.match(theoryHtml, /href="\/proof">Retrace this claim/);
+  assert.match(proofHtml, /href="\/calculus">Inspect the present limits of derivation/);
+  assert.match(calculusHtml, /href="\/proof">Retrace the evidence/);
 });
 
 test("D-024 Atlas route carries the canonical translation identity", async () => {
@@ -670,7 +672,6 @@ test("O-001 field-first home renderer: woven structure before condensation, stru
   assert.doesNotMatch(html, /function drawHomeNode/);
   assert.match(html, /function drawHomeStructuralLabels/);
   assert.match(html, /homeLabelIds\.forEach/);
-  assert.match(html, /Continuation and recoverability read before any term is chosen/);
 });
 
 test("O-002 fabric renderer: carry+trace weave rules and drift/archive modes", () => {

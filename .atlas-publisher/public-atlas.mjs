@@ -10,6 +10,7 @@ import {
 } from "./generated/release-identity.mjs";
 
 const GITHUB_COMMIT_URL = "https://github.com/reubenmunro/reality-mechanics";
+const MCP_ENDPOINT = "https://mcp.realitymechanics.nz/mcp";
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -25,9 +26,6 @@ function navigation(current = "") {
     ["atlas", "/atlas", "Atlas"],
     ["field", "/field", "Observatory"],
     ["pulse", "https://calibration.realitymechanics.nz/", "Pulse"],
-    ["theory", "/theory", "Theory"],
-    ["proof", "/proof", "Proof"],
-    ["calculus", "/calculus", "Calculus"],
   ];
   return links.map(([id, href, label]) => (
     `<a href="${href}"${id === current ? ' aria-current="page"' : ""}>${label}</a>`
@@ -78,14 +76,10 @@ export function landingPage() {
     .entrance h2 { margin:0 0 12px; color:var(--warm); font:500 28px/1.2 "Iowan Old Style",Charter,Georgia,serif; }
     .entrance p { margin:0; color:rgba(212,197,169,.68); }
     .entrance .enter { display:inline-block; margin-top:30px; color:rgba(200,96,26,.9); font:500 11px/1 system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
-    .support { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; margin-top:58px; padding-top:30px; border-top:1px solid rgba(77,94,114,.22); }
-    .support a { color:rgba(128,147,168,.88); border:0; font:500 11px/1.4 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; }
-    .support span { display:block; margin-top:8px; color:rgba(128,147,168,.6); font:14px/1.5 "Iowan Old Style",Charter,Georgia,serif; letter-spacing:0; text-transform:none; }
     footer { margin-top:70px; color:rgba(128,147,168,.62); font-size:13px; }
     @media (max-width:700px) {
       main { width:calc(100vw - 36px); padding-top:62px; }
       .entrances { grid-template-columns:1fr; }
-      .support { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
   </style>
 </head>
@@ -107,12 +101,6 @@ export function landingPage() {
         <p>Observe the declared structure as a field. The instrument reads the Atlas without determining it.</p>
         <span class="enter">Observe the field</span>
       </a>
-    </section>
-    <section class="support" aria-label="Supporting surfaces">
-      <a href="/theory">Theory<span>The working claim.</span></a>
-      <a href="/proof">Proof<span>Evidence and retrace.</span></a>
-      <a href="https://calibration.realitymechanics.nz/">Pulse<span>Behaviour through time.</span></a>
-      <a href="/calculus">Calculus<span>What has and has not been derived.</span></a>
     </section>
     <footer>
       Canonical release <code>${escapeHtml(RELEASE_IDENTIFIER)}</code> · <a href="/provenance">Provenance</a>
@@ -167,6 +155,10 @@ export function provenancePage() {
       <li>Every Atlas-bearing response carries the same release identity.</li>
     </ol>
     <p>The <a href="/atlas">public Atlas</a> is the ordinary reading surface. This page preserves the technical retrace without requiring repository navigation.</p>
+    <details>
+      <summary>Machine access</summary>
+      <p>Read-only MCP: <code>${MCP_ENDPOINT}</code>. Begin with <code>begin_atlas_session</code>.</p>
+    </details>
     <details>
       <summary>Maintained record</summary>
       <p>The repository records file-level revision history and exact release custody. <a href="${GITHUB_COMMIT_URL}">Inspect the maintained record on GitHub</a>.</p>
@@ -223,6 +215,7 @@ export function atlasPage(initialId = "") {
     .empty-entry { margin-top:12vh; }
     .empty-entry h1 { max-width:620px; }
     .empty-entry p { max-width:540px; font-size:19px; }
+    .empty-entry .nested-path { margin-top:28px; font-size:14px; }
     .graph-panel { position:sticky; top:61px; align-self:start; height:calc(100vh - 61px); padding:24px 20px; border-left:1px solid rgba(77,94,114,.22); background:rgba(5,8,13,.38); overflow:auto; }
     .graph-panel h2 { margin:0 0 6px; color:rgba(212,197,169,.86); font:500 20px/1.3 "Iowan Old Style",Charter,Georgia,serif; }
     .graph-note { margin:0 0 18px; color:rgba(128,147,168,.64); font-size:13px; }
@@ -263,7 +256,7 @@ export function atlasPage(initialId = "") {
       <ul class="entry-list" id="entry-list"></ul>
     </aside>
     <article id="entry" tabindex="-1">
-      <div class="empty-entry"><h1>Atlas</h1><p>Choose an entry to read its canonical text and traverse its declared relations.</p></div>
+      <div class="empty-entry"><h1>Atlas</h1><p>Choose an entry to read its canonical text and traverse its declared relations.</p><p class="nested-path"><a href="/theory">Read the working postulate</a></p></div>
     </article>
     <aside class="graph-panel" aria-label="Bounded relation graph">
       <h2>Local graph</h2>

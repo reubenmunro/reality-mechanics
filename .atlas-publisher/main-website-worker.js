@@ -426,11 +426,6 @@ export function fieldPage(options = {}) {
       font: 500 0.94rem/1.4 "Iowan Old Style", Charter, Georgia, serif;
       color: rgba(200,96,26,0.78); letter-spacing: 0.01em;
     }
-    #observatory-landing .landing-orientation {
-      margin: 0 0 1.1rem;
-      font: 500 0.9rem/1.6 "Iowan Old Style", Charter, Georgia, serif;
-      color: rgba(58,80,112,0.74);
-    }
     body.landing-dismissed #observatory-landing .landing-postulate { display: none; }
     #observatory-landing .landing-actions {
       display: flex; flex-direction: column; align-items: flex-start; gap: 0.38rem;
@@ -444,7 +439,6 @@ export function fieldPage(options = {}) {
     #observatory-landing .landing-actions button:hover,
     #observatory-landing .landing-actions a:hover { color: rgba(200,96,26,0.92); }
     #observatory-landing .landing-actions button[hidden] { display: none; }
-    body.landing-dismissed #observatory-landing .landing-orientation,
     body.landing-dismissed #observatory-landing .landing-actions { display: none; }
     body.landing-dismissed #observatory-landing h1 {
       font: 700 0.58rem/1 system-ui, sans-serif; letter-spacing: 0.12em;
@@ -653,9 +647,6 @@ export function fieldPage(options = {}) {
     }
     body.sheet-open #field-status { display: none; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid rgba(200,96,26,0.85); outline-offset: 3px; }
-    #observatory-landing .landing-meta { margin: 0.85rem 0 0; max-width: 21rem; color: rgba(120,135,155,0.85); font: 400 12.5px/1.6 system-ui, sans-serif; }
-    #observatory-landing .landing-meta a { color: rgba(77,142,166,0.9); text-decoration: none; border-bottom: 1px solid rgba(77,142,166,0.25); }
-    #observatory-landing .landing-meta a:hover { color: rgba(200,96,26,0.9); }
     #sheet-backdrop {
       position: fixed; inset: 0; z-index: 28; pointer-events: none;
       background: rgba(4,6,10,0); opacity: 0; transition: opacity 0.32s ease;
@@ -676,9 +667,7 @@ export function fieldPage(options = {}) {
         max-width: calc(100vw - 1.3rem); z-index: 7;
       }
       body.mobile-observatory #observatory-landing h1,
-      body.mobile-observatory #observatory-landing .landing-postulate,
-      body.mobile-observatory #observatory-landing .landing-orientation,
-      body.mobile-observatory #observatory-landing .landing-meta { display: none; }
+      body.mobile-observatory #observatory-landing .landing-postulate { display: none; }
       body.mobile-observatory #observatory-landing .landing-actions {
         flex-direction: row; flex-wrap: wrap; gap: 0.5rem 0.85rem;
       }
@@ -764,20 +753,14 @@ export function fieldPage(options = {}) {
   <a href="/atlas">Atlas</a>
   <a href="/field" aria-current="page">Observatory</a>
   <a href="https://calibration.realitymechanics.nz/">Pulse</a>
-  <a href="/theory">Theory</a>
-  <a href="/proof">Proof</a>
-  <a href="/calculus">Calculus</a>
 </nav>
 <section id="observatory-landing" aria-label="Observatory orientation">
   <h1>Reality Mechanics Observatory</h1>
   <p class="landing-postulate">Relation holds. Order carries. Trace places.</p>
-  <p class="landing-orientation">Observe how declared carrying and tracing weave into thread, fabric, and web. Continuation and recoverability read before any term is chosen; interaction reveals where structure holds.</p>
   <div class="landing-actions">
     <button type="button" id="landing-observe">Observe the Field</button>
-    <button type="button" id="landing-continue" hidden>Continue where I left off</button>
     <a id="landing-atlas" href="/atlas">Browse the Atlas</a>
   </div>
-  <p class="landing-meta">Every public surface retraces through one <a href="/provenance">canonical translation</a>. AI workers enter through the read-only <a href="/proof#ways-in">MCP</a>.</p>
 </section>
 <form id="enter-form" role="search">
   <input id="enter-input" type="text" autocomplete="off" spellcheck="false" list="term-suggestions"
@@ -835,11 +818,9 @@ const sheetEmptyEl = document.getElementById('sheet-empty');
 const sheetNeutralEl = document.getElementById('sheet-neutral');
 const sheetTermEl = document.getElementById('sheet-term');
 const landingObserveEl = document.getElementById('landing-observe');
-const landingContinueEl = document.getElementById('landing-continue');
 const termSuggestionsEl = document.getElementById('term-suggestions');
 const orderLegendEl = document.getElementById('order-legend');
 const fieldStatusEl = document.getElementById('field-status');
-const OBSERVATORY_LAST_FOCUS_KEY = 'observatory.lastFocusId';
 let selectedTermId = null;
 let tapPulseTermId = null;
 let tapPulseStartedAt = 0;
@@ -1725,20 +1706,6 @@ function relationTargets(op, key) {
     .filter((item) => item?.id);
 }
 
-function saveLastFocus(id) {
-  if (!id) return;
-  try { localStorage.setItem(OBSERVATORY_LAST_FOCUS_KEY, id); } catch (e) {}
-}
-
-function readLastFocus() {
-  try {
-    const id = localStorage.getItem(OBSERVATORY_LAST_FOCUS_KEY);
-    return id && allOps[id] ? id : null;
-  } catch (e) {
-    return null;
-  }
-}
-
 function syncSheetView() {
   const neutral = !selectedTermId;
   if (sheetNeutralEl) sheetNeutralEl.hidden = !neutral;
@@ -1798,7 +1765,6 @@ function observeTerm(id, options = {}) {
   syncSheetView();
   if (!options.deferRender && !renderTermSheet(id)) return false;
   if (modeEl) modeEl.textContent = allOps[id].title || id;
-  saveLastFocus(id);
   dismissObservatoryLanding();
   return true;
 }
@@ -3827,9 +3793,6 @@ async function bootstrap() {
     console.error('field bootstrap failed:', err);
   }
 
-  const lastFocus = readLastFocus();
-  if (landingContinueEl && lastFocus) landingContinueEl.hidden = false;
-
   const hash = decodeURIComponent(location.hash.slice(1) || '');
   const explicitTermId = (hash && allOps[hash]) ? hash : null;
 
@@ -3875,15 +3838,6 @@ if (landingObserveEl) {
     closeTermSheet();
   });
 }
-if (landingContinueEl) {
-  landingContinueEl.addEventListener('click', () => {
-    const lastFocus = readLastFocus();
-    if (!lastFocus) return;
-    dismissObservatoryLanding();
-    enterOperation(lastFocus);
-  });
-}
-
 // Colour mode toggle — fire (order-hue, brightness = burn) or heat (original ember↔ash)
 (function initColour() {
   const btn = document.getElementById('colour-toggle');
@@ -3909,7 +3863,6 @@ bootstrap();
 // ── Router ────────────────────────────────────────────────────────────────────
 
 const GITHUB_DOC = "https://github.com/reubenmunro/reality-mechanics/blob/main";
-const MCP_ENDPOINT = "https://mcp.realitymechanics.nz/mcp";
 const PROOF_CANONICAL_SELECTIONS = Object.freeze([
   "first.relation",
   "practice.atlas",
@@ -3927,23 +3880,11 @@ function proofCanonicalResultsHtml() {
   }).join("");
 }
 
-// W-001 — shared wayfinding for the document surfaces. Two ways into one
-// record: observing (human) and MCP traversal (AI). Neither is primary; both
-// read the same generated canonical translation.
-const WAYS_IN_CSS = `
+const DOCUMENT_ACCESS_CSS = `
     .skip-link { position:absolute; left:-999px; top:0; z-index:9; background:#0b1018; color:#d4c5a9; padding:10px 16px; font:500 12px/1 system-ui, sans-serif; letter-spacing:0.08em; }
     .skip-link:focus { left:12px; top:12px; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid rgba(200,96,26,0.85); outline-offset:3px; border-radius:2px; }
-    .ways-in { margin-top:72px; padding-top:38px; border-top:1px solid rgba(77,94,114,0.28); }
-    .ways-in h2 { margin-top:0; }
-    .ways { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:28px; max-width:640px; }
-    .way h3 { margin:0 0 6px; color:rgba(212,197,169,0.88); font:500 16px/1.3 "Iowan Old Style", Charter, Georgia, serif; }
-    .way-path { margin:0 0 10px; color:rgba(77,94,114,0.85); font:500 10.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.08em; text-transform:uppercase; }
-    .way p { font-size:15px; line-height:1.66; margin:10px 0; }
-    .way code { font:13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.85); }
-    .endpoint { margin:12px 0 0; }
-    .endpoint code { display:inline-block; padding:7px 10px; border:1px solid rgba(77,94,114,0.35); border-radius:3px; background:rgba(11,16,24,0.6); }
-    .evidence-ladder { margin-top:30px; max-width:640px; color:rgba(140,155,175,0.9); font-size:14px; line-height:1.7; }
+    .nested-path { margin-top:48px; padding-top:24px; border-top:1px solid rgba(77,94,114,0.24); color:rgba(128,147,168,0.82); font-size:14px; }
 `;
 
 // W-003 — one quiet, source-preserving mobile frame for the document surfaces.
@@ -3978,38 +3919,13 @@ const MOBILE_DOCUMENT_CSS = `
       h1 { font-size:clamp(34px, 10.8vw, 48px); line-height:1.06; margin-bottom:18px; }
       .lede { font-size:18px; line-height:1.58; margin-bottom:36px; }
       h2 { margin-top:42px; }
-      code, pre, .flow, .rule, .way-path, .endpoint { overflow-wrap:anywhere; word-break:break-word; }
-      .ways { grid-template-columns:1fr; gap:30px; }
-      .ways-in { margin-top:56px; padding-top:30px; }
+      code, pre, .flow, .rule { overflow-wrap:anywhere; word-break:break-word; }
       .canonical-identity { overflow-wrap:anywhere; word-break:break-word; }
     }
     @media (max-width:520px) {
       .pathway { grid-template-columns:1fr; gap:22px; }
     }
 `;
-
-function waysInHtml() {
-  return `
-    <section id="ways-in" class="ways-in" aria-label="Two ways into the programme">
-      <h2>Two ways in</h2>
-      <div class="ways">
-        <div class="way">
-          <h3>Observing</h3>
-          <p class="way-path">Atlas or Observatory &rarr; Theory &rarr; Proof &rarr; Calculus</p>
-          <p>Begin in the <a href="/atlas">Atlas</a> to read the declared structure, or in the <a href="/field">Observatory</a> to watch that structure before reading about it. <a href="/theory">Theory</a> explains why the discipline works, <a href="/proof">Proof</a> retraces the evidence, and <a href="/calculus">Calculus</a> shows what is derived &mdash; and what is not.</p>
-        </div>
-        <div class="way">
-          <h3>AI participation</h3>
-          <p class="way-path">MCP &rarr; Atlas &rarr; Runtime contracts &rarr; Programme index</p>
-          <p>The MCP is the read-only doorway for AI workers: the same canonical structure, served as traversal tools instead of pages. It exists so AI participants read structure rather than infer it. No write tools are exposed.</p>
-          <p>Begin with <code>begin_atlas_session</code>, locate entry points with <code>find_entries</code>, read with <code>get_entry</code>, and follow only declared paths with <code>trace_relations</code>. The protocol and entry structure are generated from the Atlas.</p>
-          <p class="endpoint"><code>${MCP_ENDPOINT}</code></p>
-        </div>
-      </div>
-      <p class="evidence-ladder">Canonical source identity: <code>${CANONICAL_SOURCE_HASH}</code>. Read the <a href="/atlas">public Atlas</a> or inspect its <a href="/provenance">publication provenance</a>. Proof records and maintained interfaces remain non-canonical.</p>
-    </section>
-`;
-}
 
 function escapeDocumentHtml(value) {
   return String(value || "")
@@ -4047,7 +3963,8 @@ function theoryEntryHtml() {
     <h1>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.title)}</h1>
     <div class="lede">${canonicalMarkdownHtml(PUBLIC_THEORY_ENTRY.content.lead)}</div>
     ${sections}
-    <p class="canonical-identity">Generated from <a href="${sourceUrl}">the canonical Atlas entry</a><br/>Determination: <code>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.determination)}</code><br/>Source: <code>${CANONICAL_SOURCE_HASH}</code></p>`;
+    <p class="canonical-identity">Generated from <a href="${sourceUrl}">the canonical Atlas entry</a><br/>Determination: <code>${escapeDocumentHtml(PUBLIC_THEORY_ENTRY.determination)}</code><br/>Source: <code>${CANONICAL_SOURCE_HASH}</code></p>
+    <p class="nested-path"><a href="/proof">Retrace this claim</a></p>`;
 }
 
 export function theoryPage() {
@@ -4091,7 +4008,7 @@ export function theoryPage() {
     .calculus-notebook .notebook-kicker { margin:0 0 10px; color:rgba(77,94,114,0.82); font:500 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:0.14em; text-transform:uppercase; }
     .calculus-notebook p { margin:0; font:15px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:rgba(192,205,220,0.78); }
     .calculus-notebook a { border-bottom-color:rgba(77,142,166,0.18); }
-  ${WAYS_IN_CSS}
+  ${DOCUMENT_ACCESS_CSS}
   ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
@@ -4104,14 +4021,10 @@ export function theoryPage() {
       <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
-      <a href="/theory" aria-current="page">Theory</a>
-      <a href="/proof">Proof</a>
-      <a href="/calculus">Calculus</a>
     </nav>
   </header>
   <main id="main">
     ${theoryEntryHtml()}
-  ${waysInHtml()}
   </main>
 </body>
 </html>`;
@@ -4213,7 +4126,7 @@ export function calculusPage() {
     .inv li::before { content:""; position:absolute; left:0; top:0.7em; width:3px; height:3px; border-radius:50%; background:rgba(77,94,114,0.4); }
     .status-line { margin-top:52px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:640px) { .vocab, .inventory { grid-template-columns:1fr; } }
-  ${WAYS_IN_CSS}
+  ${DOCUMENT_ACCESS_CSS}
   ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
@@ -4226,9 +4139,6 @@ export function calculusPage() {
       <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
-      <a href="/theory">Theory</a>
-      <a href="/proof">Proof</a>
-      <a href="/calculus" aria-current="page">Calculus</a>
     </nav>
   </header>
   <main id="main">
@@ -4278,11 +4188,8 @@ export function calculusPage() {
     <div class="inventory">${calculusInventoryHtml()}
     </div>
 
-    <h2>How this surface relates to the others</h2>
-    <p>The <a href="/field">Observatory</a> shows structure; <a href="https://calibration.realitymechanics.nz/">Pulse</a> shows behaviour through time; <a href="/theory">Theory</a> states the claim; <a href="/proof">Proof</a> retraces the evidence. The Calculus shows how far the claims have actually been derived — and exactly where derivation stops.</p>
-
     <p class="status-line">Calculus — the derivation surface. The Calculus remains an open investigation; this page records its state and promotes nothing.</p>
-  ${waysInHtml()}
+    <p class="nested-path"><a href="/proof">Retrace the evidence</a></p>
   </main>
 </body>
 </html>`;
@@ -4335,7 +4242,7 @@ export function submissionPage() {
     .step code { color:var(--lead); font-size:12px; }
     .status-line { margin-top:56px; color:rgba(77,94,114,0.78); font-size:14px; font-style:italic; max-width:640px; }
     @media (max-width:720px) { .record { grid-template-columns:1fr; gap:32px; } .pathway { grid-template-columns:1fr 1fr; } }
-  ${WAYS_IN_CSS}
+  ${DOCUMENT_ACCESS_CSS}
   ${MOBILE_DOCUMENT_CSS}
   </style>
 </head>
@@ -4348,9 +4255,6 @@ export function submissionPage() {
       <a href="/atlas">Atlas</a>
       <a href="/field">Observatory</a>
       <a href="https://calibration.realitymechanics.nz/">Pulse</a>
-      <a href="/theory">Theory</a>
-      <a href="/proof" aria-current="page">Proof</a>
-      <a href="/calculus">Calculus</a>
     </nav>
   </header>
   <main id="main">
@@ -4434,7 +4338,7 @@ export function submissionPage() {
     </ul>
 
     <p class="status-line">Proof — coordinated from accepted repository evidence. The Calculus remains an open investigation; nothing here promotes it.</p>
-  ${waysInHtml()}
+    <p class="nested-path"><a href="/calculus">Inspect the present limits of derivation</a></p>
   </main>
 </body>
 </html>`;
@@ -4519,7 +4423,7 @@ async function handleRequest(request, env) {
   if (pathname === "/proof" || pathname === "/submission" || pathname === "/submission-001")
     return withTranslationIdentity(new Response(submissionPage(), { headers: HTML_HEADERS }));
 
-  return new Response("Reality Mechanics exposes Home, Atlas, Observatory, Pulse, Theory, Proof, and Calculus only.", {
+  return new Response("Reality Mechanics exposes Home, Atlas, Observatory, and Pulse as primary surfaces. Theory, Proof, and Calculus remain contextual paths.", {
     status: 410,
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
