@@ -35,7 +35,7 @@ function filesUnder(root) {
 }
 
 test("Canonical Graph carries only the validated Stage 1C source", () => {
-  assert.equal(graph.sourceHash, "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443");
+  assert.equal(graph.sourceHash, "sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290");
   assert.equal(Object.keys(graph.entries).length, 495);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.order).length, 446);
   assert.equal(Object.values(graph.entries).filter((entry) => entry.register).length, 49);

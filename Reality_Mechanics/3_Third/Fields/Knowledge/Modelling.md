@@ -89,6 +89,8 @@ Modelling nests within the Knowledge Field as the path read for carried represen
 
 Modelling becomes readable where a condition is carried in a simplified or usable form without becoming the condition itself.
 
+Forming a model does not make the condition it represents hold. Choices or constraints in its formation set what it can show or test and the scope of its claims. A separate [[Reality Check]] tests those claims against their [[Bearing Source|bearing source]] at that scope. Where use or intervention produces a traceable [[Effect]] or [[Consequence]], the result may become material for that check. Revision may change the model, read, design, or scope, but the path through what failed remains traceable.
+
 The dependency movement is:
 
 First: [[Boundary]] and [[Availability]] make a condition present enough to be modelled.

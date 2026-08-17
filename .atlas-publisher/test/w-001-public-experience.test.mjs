@@ -68,7 +68,7 @@ test("W-001 canonical and evidential boundaries remain visible", () => {
   const theory = theoryPage();
   const proof = submissionPage();
   assert.match(theory, /canonical-identity/);
-  assert.match(theory, /sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443/);
+  assert.match(theory, /sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290/);
   assert.match(proof, /does not assign canonical status/);
   assert.match(provenancePage(), /Publication path/);
 });

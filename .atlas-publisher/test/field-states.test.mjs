@@ -110,7 +110,7 @@ function makeDb() {
         bind(...params) { this.params = params; return this; },
         async all() {
           if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-            { key: "source_hash", value: "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443" },
+            { key: "source_hash", value: "sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290" },
             { key: "entry_count", value: "495" },
           ] };
           if (/FROM entries\b/.test(sql)) {
@@ -146,7 +146,7 @@ test("deriveFieldStatesPayload derives renderer states from D1 records only", as
 
   assert.equal(payload.contractVersion, 1);
   assert.equal(payload.source, "d1-derived");
-  assert.equal(payload.sourceHash, "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443");
+  assert.equal(payload.sourceHash, "sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290");
   assert.deepEqual(payload.excludes, ["weather", "clearance", "lightShadowPressure", "geodesicBending", "membraneEdge"]);
 
   const carry = payload.states.find((state) => state.id === "first.carry");
@@ -311,7 +311,7 @@ test("/theory serves the complete generated canonical Theory entry", async () =>
   assert.match(html, /\/atlas\/practice\.reality-mechanics-theory/);
   assert.match(html, /Failure Tests/);
   assert.match(html, /Determination:/);
-  assert.match(html, /sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443/);
+  assert.match(html, /sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290/);
   assert.doesNotMatch(html, /^# Invariant/m);
   assert.doesNotMatch(html, /border-bottom:1px solid var\(--line\)/);
 });
@@ -630,7 +630,7 @@ test("D-024 Atlas route carries the canonical translation identity", async () =>
   assert.equal(res.status, 200);
   assert.equal(
     res.headers.get("x-rm-canonical-source-hash"),
-    "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443",
+    "sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290",
   );
 });
 
@@ -639,7 +639,7 @@ test("Stage 2 separates generated structure from maintained Calculus evidence", 
   const calculus = calculusPage();
   const mcpSource = readFileSync(new URL("../../reality-mechanics-mcp/src/index.js", import.meta.url), "utf8");
 
-  assert.match(theory, /sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443/);
+  assert.match(theory, /sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290/);
   assert.match(theory, /Failure Tests/);
   assert.match(calculus, /Canonical comparison baseline/);
   assert.match(calculus, /needs · holds · pairs · traces · nests · reads · carries/);
@@ -735,7 +735,7 @@ test("O-006 read engine: behaviour trace exposes readEngine bundle", async () =>
           bind(...params) { this.params = params; return this; },
           async all() {
             if (/FROM atlas_metadata\b/.test(sql)) return { results: [
-              { key: "source_hash", value: "sha256:aa7717f692e8cec839cb30c9062f66775df387f230a3a0b3982b3ca320a01443" },
+              { key: "source_hash", value: "sha256:5251246072dc8b00ef5381202621740cb9e13738435964f0165bae50edc20290" },
               { key: "entry_count", value: "495" },
             ] };
             if (/FROM entries\b/.test(sql)) return { results: entries };
