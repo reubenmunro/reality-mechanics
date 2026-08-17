@@ -221,7 +221,7 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
   if (!env.ATLAS_DB) throw new Error("db_unavailable");
 
   const [entries, revisions, proposals, sourceIdentity, ratioModeThresholds] = await Promise.all([
-    fieldAll(env, "SELECT id, title, entry_order, entry_register, determination, excerpt, plain_text, content, source_path, structure, created, updated FROM entries ORDER BY source_path, id"),
+    fieldAll(env, "SELECT id, title, entry_order, entry_register, determination, excerpt, plain_text, content, source_path, structure, NULL AS created, NULL AS updated FROM entries ORDER BY source_path, id"),
     fieldAll(env, "SELECT entry_id, edit_class, actor, at FROM entry_revisions"),
     fieldAll(env, "SELECT entry_id, status, light_count, shade_count, created_at, updated_at FROM proposals"),
     fieldAll(env, "SELECT value FROM atlas_metadata WHERE key = 'source_hash'"),
@@ -283,7 +283,11 @@ export async function deriveFieldStatesPayload(env, now = new Date()) {
     const maturityComponents = {
       daysStable,
       lastStructuralChange: changedAt,
-      lastChangeSource: latestStructural ? "entry_revisions" : "entries.updated (revision history is young)",
+      lastChangeSource: latestStructural
+        ? "entry_revisions"
+        : changedAt
+          ? "entries.updated (revision history is young)"
+          : "no structural revision recorded",
       carriers: mass.carriers,
       revertsLast90d: reverts90d,
       attestations: affirmedPasses + appliedProseTendings,
